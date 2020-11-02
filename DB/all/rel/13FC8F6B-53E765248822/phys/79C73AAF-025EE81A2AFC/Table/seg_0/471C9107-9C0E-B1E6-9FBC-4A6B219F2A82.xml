@@ -1,0 +1,71 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="member_basic" directorySegmentName="seg_0" id="471C9107-9C0E-B1E6-9FBC-4A6B219F2A82">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:12 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="account" id="23392ED4-8588-2F44-C096-F492B1500078">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="member_status_id" id="47D04BDB-BDF4-B4BC-E1F8-25B8F56DB913">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="last_name" id="69AF6C8E-E750-15FA-B91E-3FD0D4ECFD37">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="email" id="6F0EFC71-0279-3797-6EF5-B9F5B9E0678B">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="reg_date" id="77AEF108-1A18-E78B-95B9-9FCF46457383">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="first_name" id="99256458-DCA6-403A-C596-CF9B4091FCDF">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="id" id="C4F4DC7F-08D3-7B42-68EB-8A25EA11DF34">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="member_basic_member_status_fk" id="710F06C1-60FF-3D05-6D17-E1250BD248E8">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="memberid_pk" id="7CB2EDC6-0F25-CE67-BBC9-75A77D1BA29B">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+<uniqueKeys>
+<UniqueKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.UniqueOraclev10g" name="member_basic__un_account" id="30FD1007-EFCE-2FC3-3C92-22FB3C5D5C76">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</UniqueKey>
+</uniqueKeys>
+</TableProxyOraclev12c>

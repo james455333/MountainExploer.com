@@ -1,0 +1,48 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="camp_info" directorySegmentName="seg_0" id="D68F3809-5004-8EA4-9064-ABC6A9C0A063">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:12 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="campbasic_id" id="02D942E1-FC1A-8E8E-49A7-F1F673CB05B1">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="location" id="5782F306-1631-6871-9DF7-49CAE4E44F18">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="description" id="8BF9E560-1E54-6C6A-96D1-78B0EA01C3FD">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="name" id="95C55D1B-CA47-23B1-321C-0D72499D3BB7">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="camp_campv1_fk" id="E0DE44C8-BC3F-A5BD-E892-46AC68761928">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="camp_pk" id="6A0E024D-4224-402B-8A00-6F8D8A5A8251">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

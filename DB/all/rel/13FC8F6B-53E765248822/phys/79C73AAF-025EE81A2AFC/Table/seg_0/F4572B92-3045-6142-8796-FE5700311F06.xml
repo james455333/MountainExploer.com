@@ -1,0 +1,38 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="route_basic" directorySegmentName="seg_0" id="F4572B92-3045-6142-8796-FE5700311F06">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:12 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="id" id="1D314003-A229-6907-84F0-9BE9F9FF798D">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="national_park_id" id="FCEFFC3B-B80D-CBCD-9C80-676FC3DA00B7">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="route_basic_national_park_fk" id="196361D4-1274-4753-9298-C5595AD0D576">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="route_basic_pk" id="BB4936D3-70E8-E333-0CB6-6F62B3B81ECA">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

@@ -1,0 +1,53 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="item_info" directorySegmentName="seg_0" id="E34D7F04-D91C-9F46-F601-AFE877EB8F92">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:12 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="type" id="05627A06-758F-8CB5-CF2A-740B2D627B2F">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="item_basic_seqno" id="1852F977-4E5C-390C-1B8D-263B03D68226">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="price" id="28EBA834-F057-7365-4137-5915122CF82D">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="description" id="828FA518-B9E1-C4EA-48E9-329B4E426AFE">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="img_url" id="ED40E2D7-6904-A304-E338-E74F9CAAFAEB">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="item_info_item_basic_fk" id="26ECA7A3-41FB-D7D8-8C72-1358957F0D6B">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="allitem_pk" id="DD7D3AD3-1569-0835-3E8D-61E31AAD8850">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

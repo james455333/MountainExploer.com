@@ -1,0 +1,43 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="member_status" directorySegmentName="seg_0" id="985AD918-2F3A-1164-3EE3-F500033EFB5E">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:12 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="id" id="052B8A8A-8D6D-2251-3642-9D50B1348C64">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="name" id="873B7C5C-A625-AF10-B1AA-12BA7E583367">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="memberinfo_status_no_idx" id="14FF5392-1B25-E4D4-5E7F-627532DE21B2">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</IndexProxy>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="memberinfo_status_name_idx" id="93D29F1D-FB25-95FC-2EA9-FBA7C2C8E319">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</IndexProxy>
+</indexProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="memberinfo_pk" id="2B40A937-2372-8D21-0FDC-87D6B5831CE9">
+<createdBy>Japan</createdBy>
+<createdTime>2020-10-25 15:03:13 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>
