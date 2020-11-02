@@ -1,0 +1,200 @@
+
+
+#c_container{
+    position: relative;
+    left: 1%;
+    top:0%;
+    height: 100%;
+    width: 98%;
+    
+}
+
+.no-change {
+    position: relative;
+    top: 5%;
+    height: 5%;
+    width: 100%;
+    /* background-color: rgb(192, 204, 177); */
+    cursor: default;
+    border-style: none;
+    border-radius: 10px;
+    z-index:3;
+}
+.no-change div{
+    padding :auto;
+    cursor: default;
+    position: relative;
+    top: auto;
+    margin: auto;
+    height: 75%;
+    width: 30%;
+    transition: 0.4s;
+    background-color: blanchedalmond;
+    border-radius: 15px;
+    border: 2px solid 	#FFAF60;
+    text-align: center;
+    
+}
+.no-change  a{
+    cursor: pointer;
+    /* left: 5%; */
+    /* top: 10%; */
+    /* height: 80%; */
+    font-size: 100%;
+    color: 	#616130;
+    
+}
+.no-change  a:link{
+    text-decoration: none;
+}
+.no-change  a:visited{
+    color: rgb(139, 87, 8);
+}
+
+.use-flexbox{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.use-flexbox div{
+    display: none;
+}
+
+#m_present{
+	position : absolute;
+	width : 100%;
+	left : 0%;
+	height :100%;
+	top : 12.5%;
+	background-color : #F5FFE8;
+	border-radius : 15px;
+	z-index : 2;
+	
+}
+.third_bar{
+	position : relative;
+	font-size : 100%;
+	height : 5%;
+	width : 15%; 
+	top : 15%;
+	display:flex;
+    align-items:center;
+    justify-content:center;
+    background-color: #D3FF93;
+}
+#m_present .third_bar{
+	display : inline-flex;
+	boder = none;
+	
+}
+
+#m_present .third_bar a{
+	cursor: pointer;
+	color: rgb(139, 87, 8);
+}
+.third_bar a:link{
+    text-decoration: none;
+}
+.third_bar a:visited{
+    color: rgb(139, 87, 8);
+}
+.third_bar a:hover{
+    text-decoration: none;
+}
+.dataCon{
+	position: relative;
+	background-color : #DEFFAC;
+	width : 100%;
+	height : 100%;
+	border : 5px solid #8CEA00;
+	display : none;
+}
+
+.peakList{
+	position : relative;
+	border : 2px solid red;
+	height : 15%;
+	width : 100%;
+	display : none;
+	overflow : auto;
+}
+
+.peakList .peak{
+    border-radius :25px;
+	margin-left : 10px;
+	margin-top : 10px;
+	border : 3.5px solid 	#6FB7B7;
+	position : relative;
+	display : inline-flex;
+	height : 40%;
+	width : 12.5%;
+	text-align : center;
+    align-items:center;
+    justify-content:center;
+    background-color : 	#D1E9E9;
+    cursor: pointer;	
+    
+}
+
+.m_img{
+	position : relatvie;
+	margin-top : 1.5%;
+	margin-left : 2.5%; 
+	width : 50%;
+	height : 50%;
+	float : left;
+}
+.m_img img{
+	width : 100%;
+	height : 100%;
+}
+
+.m_descriptiion{
+	border : 5px solid 	#bdd10c;
+	background-color : #bae901;
+	text-align : justify;
+	padding : 5px;
+	border-radius : 20px;
+	position : relative;
+	top : 2.5%;
+	right : 2.5%;
+	width : 42.5%;
+	height : 50%;
+	float : right;
+	overflow : auto;
+	
+}
+
+.m_advice{
+	border : 5px solid 	#bdd10c;
+	background-color : #bae901;
+	border-radius : 20px;
+	position : absolute;
+	top : 52.5%;
+	left : 2.5%;
+	width : 50%;
+	height : 45%;
+	overflow : auto;
+}
+
+.m_traffic{
+	border : 5px solid 	#bdd10c;
+	background-color : #bae901;
+	border-radius : 20px;
+	position : absolute;
+	top : 52.5%;
+	right : 2.5%;
+	width : 42.5%;
+	height : 45%;
+	overflow : auto;
+	
+}
+
+.bar_active{
+	border : 5px solid #8CEA00;
+}
+
+.co_active{
+	display : block;
+}
+

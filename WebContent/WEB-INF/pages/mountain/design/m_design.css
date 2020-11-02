@@ -1,0 +1,173 @@
+@charset "UTF-8";
+
+
+.stocker{
+	position : relative;
+	height :2.5%;
+	/* background-color : yellow; */
+	text-align : center;
+}
+
+#m_present{
+	background-color : 	#FFFAF4;
+}
+
+.d_nav{
+	position : relative;
+	font-size : 150%;
+	height : 7.5%;
+	width : 100%; 
+	
+	display : inline-flex;
+    align-items:center;
+    justify-content:center;
+   
+}
+.d_nav div{
+	height : 100%;
+	width: 30% ;
+	background-color: #D3FF93;
+  	border-radius : 20px;
+  	display : inline-flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.d_nav a{
+	cursor : pointer;
+}
+
+
+.d_nav a:link{
+    text-decoration: none;
+}
+.d_nav a:visited{
+    color: rgb(139, 87, 8);
+}
+.d_nav a:hover{
+    text-decoration: none;
+}
+.controll-bar{
+	position : relative;
+	width : 75%;
+	height : 7.5%;
+	left : 12.5%;
+	display : inline-flex;
+    align-items:center;
+    justify-content:center;
+}
+.controll-bar div{
+	height : 50%;
+	width: 20% ;
+	background-color: black	;
+	margin : auto;
+	padding : auto;
+	color : white;
+	border : 5px outset #DDDDDD;
+  	border-radius : 10px;
+  	display : inline-flex;
+    align-items:center;
+    justify-content:center;
+    cursor : pointer ; 
+	
+}
+.act_manage{
+	display : none;
+	position : absolute;
+	height : 80%;
+	width : 95%;
+	left :2.5%;
+	top : 20%;
+	background-color : 		#FFFFF4;
+	border-radius : 25px;
+	overflow: auto;
+}
+
+.act_active{
+	display : block;
+}
+.act_name{
+	width : 35%;
+}
+.act_row{
+	height : 30%;
+}
+.a_titleName{
+    align-items:center;
+    justify-content:center;
+}
+
+.tr_title{
+	font-size : 50%;
+	
+}
+#new_act *{
+	margin : 0%;
+	padding : 0%;
+}
+#new_act fieldset{
+	border : 5px ridge #888888;
+	
+}
+#new_act fieldset legend{
+	font-size : 150%;	
+	width : auto;
+	text-align : center;
+}
+
+
+#new_act fieldset div{
+	width : 100%;
+	display : inline-flex;
+    align-items:center;
+    justify-content:center;
+    margin-top : 1%;
+    margin-bottom : 1%;
+}
+#new_act fieldset div div{
+	width : 50%;
+	display : inline-flex;
+    align-items:left;
+    justify-content:left;
+}
+.rt_wait{
+	display : none;
+}
+.rt_active{
+	display : block;
+}
+.act_packageDiv{
+	height : 30%;
+	
+}
+
+.finish_bar{
+	position : relative;
+	height : 10%;
+	width : 75%;
+	left : 12.5%;
+	display : inline-flex;
+    align-items:center;
+    justify-content:center;
+	
+}
+.finish_bar div{
+	width : 25%;
+	display : inline-flex;
+    align-items:center;
+    justify-content:center;
+}
+.act_show_detail{
+	border : 3px ridge	#737300;
+	background-color : 	#FFDC35;
+	text-align : center;
+	cursor : pointer;
+}
+.invisible_detail{
+	transition : 0.5s;
+	background-color : 	#FFF4C1;
+}
+#act_package{
+	padding : 2.5%;
+	overflow : auto;
+}

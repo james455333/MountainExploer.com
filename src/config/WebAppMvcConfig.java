@@ -1,0 +1,91 @@
+package config;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
+
+
+@Configuration
+@EnableWebMvc
+@ComponentScan( {"house","member","mountain","product","config","mainController"})
+public class WebAppMvcConfig implements WebMvcConfigurer  {
+	
+	//初始啟動
+	@Override
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+		System.out.println("test3");
+    	configurer.enable();
+    }
+	
+	
+	//返回VIEW的前綴與後綴
+	@Bean
+	public InternalResourceViewResolver viewResolver() {
+		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+		viewResolver.setPrefix("/WEB-INF/pages/");
+		viewResolver.setSuffix(".jsp");
+		viewResolver.setOrder(2);
+//		System.out.println("test1");
+		return viewResolver;
+	}
+	
+	//設置讀取特定路徑的真實路徑
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/images/**").addResourceLocations("/WEB-INF/resources/images/");
+//		System.out.println("test2");
+	}
+	
+	
+	
+	//JSONVIEW設置
+//	@Bean
+//	public MappingJackson2JsonView jsonView() {
+//		
+//		MappingJackson2JsonView mappingJackson2JsonView = new MappingJackson2JsonView();
+//		
+//		mappingJackson2JsonView.setPrettyPrint(true);
+//		
+//		return mappingJackson2JsonView;
+//	}
+//	
+//	@Bean
+//	public Jaxb2Marshaller jaxbMarshaller() {
+//		Jaxb2Marshaller jaxb2Marshaller = new Jaxb2Marshaller();
+////		jaxb2Marshaller.setClassesToBeBound(HouseBean.class);
+//		return jaxb2Marshaller;
+//		
+//	}
+//	
+//	@Bean
+//	public ContentNegotiatingViewResolver contentNegotiatingViewResolver() {
+//		ContentNegotiatingViewResolver contentNegotiatingViewResolver = new ContentNegotiatingViewResolver();
+//		List<View> defaultViewsList = new ArrayList<View>();
+//		View jsonView = (View)jsonView();
+//		defaultViewsList.add(jsonView);
+//		contentNegotiatingViewResolver.setDefaultViews(defaultViewsList);
+//		return contentNegotiatingViewResolver;
+//	}
+	
+	@Bean
+	public CommonsMultipartResolver multipartResolver() {
+		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+		multipartResolver.setDefaultEncoding("UTF-8");
+		return multipartResolver;
+	}
+	
+	
+}

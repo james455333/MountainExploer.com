@@ -1,0 +1,94 @@
+@charset "BIG5";
+
+.stocker{
+	position : relative;
+	height :2.5%;
+	/* background-color : yellow; */
+}
+.research{
+	position : relative;
+	width : 80%;
+	height : 5%;
+	left : 10%;
+	display : inline-flex;
+    align-items:center;
+    justify-content:center;
+    background-color : #D3FF93;
+    border-radius : 15px;
+}
+.act_show{
+	position : relative;
+	width : 97.5%;
+	height : 90%;
+	left :1.25%;
+	border : 2px groove 	#FFD306;
+	border-radius : 5px;
+	overflow : auto;
+}
+.tr_title{
+	font-size : 50%;
+	
+}
+.guide_name{
+	width : 10%;
+}
+.act_name{
+	width : 25%;
+	overflow : hide ;	
+}
+
+
+.act_show a:link{
+    text-decoration: none;
+    color: rgb(139, 87, 8);
+}
+.act_show a:visited{
+    color: rgb(139, 87, 8);
+}
+.act_show a:hover{
+    text-decoration: none;
+}
+#show_act *{
+	margin : 0%;
+	padding : 0%;
+}
+#show_act fieldset{
+	border : 5px ridge #888888;
+	
+}
+#show_act fieldset legend{
+	font-size : 150%;	
+	width : auto;
+	text-align : center;
+}
+
+
+#show_act fieldset div{
+	width : 100%;
+	display : inline-flex;
+    align-items:center;
+    justify-content:center;
+    margin-top : 1%;
+    margin-bottom : 1%;
+}
+#show_act fieldset div div{
+	width : 50%;
+	display : inline-flex;
+    align-items:left;
+    justify-content:left;
+}
+.finish_bar{
+	position : relative;
+	width : 75%;
+	left : 12.5%;
+	display : inline-flex;
+    align-items:center;
+    justify-content:center;
+	
+}
+.finish_bar div{
+	width : 25%;
+	display : inline-flex;
+    align-items:center;
+    justify-content:center;
+}

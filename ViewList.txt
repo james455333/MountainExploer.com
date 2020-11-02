@@ -1,0 +1,158 @@
+
+名稱 :　總查詢頁面
+頁面位置 :　/WEB-INF/pages/mountain/back/backMountain.jsp
+Controller : /mountainBackStage/mainPage
+
+	ModelAttribute (To view)
+
+		AttributeName : mainBean	
+		beanClass :	MountainBean
+			fieldClass			fieldName
+			------------------------------------------------------------
+		1.	int					seqno
+		2.	String				name
+		3.	String				description
+		4.	String				advice
+		5.	String				traffic
+		6.	String				npName
+		7.	String				imgUrl
+			------------------------------------------------------------
+	
+		AttributeName : mountainBean	
+		beanClass :	MountainBean
+			fieldClass			fieldName
+			------------------------------------------------------------
+		1.	int					seqno
+		2.	String				name
+		3.	String				description
+		4.	String				advice
+		5.	String				traffic
+		6.	String				npName
+		7.	String				imgUrl
+			------------------------------------------------------------
+		AttributeName : npBean	
+		beanClass :	NationalPark
+			fieldClass			fieldName
+			------------------------------------------------------------
+		1.	int					id
+		2.	String				name
+			------------------------------------------------------------
+		AttributeName : totalData
+			class			description
+			------------------------------------------------------------
+		1.	int				data total number
+			------------------------------------------------------------
+		AttributeName : showData
+			class			description
+			------------------------------------------------------------
+		1.	int				data show in this number's range
+			------------------------------------------------------------
+		AttributeName : totalPage
+			class			description
+			------------------------------------------------------------
+		1.	int				total page number
+			------------------------------------------------------------	
+		AttributeName : page
+			class			description
+			------------------------------------------------------------
+		1.	int				select page number order
+			------------------------------------------------------------
+		AttributeName : controllerPath
+			class			description
+			------------------------------------------------------------
+		1.	String			driect to controller correctly
+			------------------------------------------------------------
+			
+	RequestParameter (To Controller)
+	
+		Form - Controller : /mountainBackStage/updateDataPage
+		description : send select seqno to updateDataPage to prepare View
+			parameter		中文描述
+			------------------------------------------------------------
+		1.	seqno			路線編號
+			------------------------------------------------------------
+		Form - Controller : /mountainBackStage/deleteData
+		description : send select seqno to deleteData to delete select data
+			parameter		中文描述
+			------------------------------------------------------------
+		1.	seqno			路線編號
+			------------------------------------------------------------
+		Form - Controller : /mountainBackStage/backNPSearch
+		description : send select nationalParkID to backNPSearch to search
+			parameter		中文描述
+			------------------------------------------------------------
+		1.	nationalPark	國家公園編號
+			------------------------------------------------------------
+		Form - Controller : /mountainBackStage/backRTSearch
+		description : send select seqno to backRTSearch to search
+			parameter		中文描述
+			------------------------------------------------------------
+		1.	route			路線編號
+			------------------------------------------------------------	
+		
+
+名稱 :　新增資料
+頁面位置 :　/WEB-INF/pages/mountain/back/backMountainCreate.jsp
+Controller : /mountainBackStage/createDataPage
+
+	RequestParameter (To Controller)
+	
+		Form - Controller : /mountainBackStage/createMountainData
+		description : send new information to createMountainData to create new data
+			parameter		中文描述
+			------------------------------------------------------------
+		1.	npName			國家公園名稱
+		2.	routeName		路線名稱
+		3.	routeImg		路線圖檔案
+		4.	routeDesp		路線介紹
+		5.	routeAdvice		建議路線
+		6.	routeTraffic	交通資訊
+			------------------------------------------------------------
+
+名稱　：　編輯資料
+頁面位置 :　/WEB-INF/pages/mountain/back/backMountainUpdate.jsp
+Controller : /mountainBackStage/updateDataPage
+
+	ModelAttribute (To view)
+
+		AttributeName : mainBean	
+		beanClass :	MountainBean
+			fieldClass			fieldName
+			------------------------------------------------------------
+		1.	int					seqno
+		2.	String				name
+		3.	String				description
+		4.	String				advice
+		5.	String				traffic
+		6.	String				npName
+		7.	String				imgUrl
+			------------------------------------------------------------
+		
+		AttributeName : npBean	
+		beanClass :	NationalPark
+			fieldClass			fieldName
+			------------------------------------------------------------
+		1.	int					id
+		2.	String				name
+			------------------------------------------------------------
+		AttributeName : defaultNP	
+		beanClass :	NationalPark
+			fieldClass			fieldName
+			------------------------------------------------------------
+		1.	int					id
+			------------------------------------------------------------
+
+	RequestParameter (To Controller)
+	
+		Form - Controller : /mountainBackStage/updateData
+		description : send datas which need to be updated to updateData
+			parameterName	中文描述
+			------------------------------------------------------------
+		1.	routeNum		路線編號
+		2.	npID			國家公園編號
+		3.	routeName		路線名稱
+		4.	routeImg		路線圖檔案
+		5.	routeDesp		路線介紹
+		6.	routeAdvice		建議路線
+		7.	routeTraffic	交通資訊
+			------------------------------------------------------------

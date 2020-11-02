@@ -1,0 +1,42 @@
+
+
+頁面位置 :　/WEB-INF/pages/mountain/back/backMountainCreate.jsp
+Controller : /mountainBackStage/createDataPage
+	
+	View
+	beanName		beanClass		beanContent	
+	------------------------------------------------------------
+	none
+	------------------------------------------------------------
+
+	Form - Controller : /mountainBackStage/createMountainData
+	parameter		中文描述
+	------------------------------------------------------------
+	npName			國家公園名稱
+	routeName		路線名稱
+	routeImg		路線圖檔案(尚未實作)
+	routeDesp		路線介紹
+	routeAdvice		建議路線
+	routeTraffic	交通資訊
+	------------------------------------------------------------
+
+
+頁面位置 :　/WEB-INF/pages/mountain/back/backMountainCreate.jsp
+Controller : /mountainBackStage/createDataPage
+
+	beanName		beanClass		beanContent	
+	------------------------------------------------------------
+
+	------------------------------------------------------------
+
+	Controller : /mountainBackStage/mainPage
+	parameter		中文描述
+	------------------------------------------------------------
+	npName			國家公園名稱
+	routeName		路線名稱
+	routeImg		路線圖檔案(尚未實作)
+	routeDesp		路線介紹
+	routeAdvice		建議路線
+	routeTraffic	交通資訊
+
+	------------------------------------------------------------
