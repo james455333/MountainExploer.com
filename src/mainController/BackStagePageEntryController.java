@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class BackStagePageEntryController {
 	
-	@RequestMapping(path = "backStageEntry" , method = RequestMethod.GET)
+	@RequestMapping(path = "/backStageEntry" , method = RequestMethod.GET)
 	public String BackStageEntry(Model model) {
 		return "backStage";
 	}

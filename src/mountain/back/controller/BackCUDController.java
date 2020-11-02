@@ -47,9 +47,22 @@ public class BackCUDController {
 	// 資料刪除
 	@RequestMapping(path = "/mountainBackStage/deleteData" , method = RequestMethod.GET)
 	public String deleteDate(RedirectAttributes rdAttr,@RequestParam(name = "deleteID") String deleteID) {
-		System.out.println("=================================");
-		System.out.println("deletID : " + deleteID);
-		rdAttr.addFlashAttribute("result", "刪除成功");
+//		System.out.println("=================================");
+//		System.out.println("deletID : " + deleteID);
+		
+		if (deleteID !=null && !deleteID.isEmpty()) {
+			int rbID = Integer.parseInt(deleteID.replaceAll("[\\D]", ""));
+			RouteBasicService rtBasicService =this.rtBasicService;
+			boolean check = rtBasicService.delete(rbID);
+			System.out.println("=================================");
+			System.out.println("Delete Status : " + check);
+			if (check) {
+				rdAttr.addFlashAttribute("result", "刪除成功");
+			}else {
+				rdAttr.addFlashAttribute("result", "刪除失敗");
+			}
+		}
+		
 		return "redirect:/mountainBackStage/mainPage?page=1";
 	}
 	// 資料修改

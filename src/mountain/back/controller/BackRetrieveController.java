@@ -137,14 +137,14 @@ public class BackRetrieveController {
 	}
 	
 	//國家公園查詢
-	@RequestMapping(path = "/mountainBackStage/backNPSearch", method = RequestMethod.GET)
-	public String processNPSearch(Model model, @RequestParam(name="nationalPark") String seqno,HttpServletRequest request) {
+	@RequestMapping(path = "/mountainBackStage/backNPSearch", method = RequestMethod.GET )
+	public String processNPSearch(Model model, @RequestParam(name="nationalPark") String seqno,HttpServletRequest request, RedirectAttributes redrAttr) {
 //		System.out.println("seqno : " + seqno );
 		model.addAttribute("showData", showData);
 		model.addAttribute("controllerPath", "/mountainBackStage/backNPSearch?nationalPark=".concat(seqno).concat("&"));
 		// 設置錯誤接收
 		Map<String, String> errors = new HashMap<String, String>();
-		model.addAttribute("errors", errors);
+		redrAttr.addFlashAttribute("errors", errors);
 		// 主畫面接收Bean
 		List<MountainBean> mainBeans = new ArrayList<MountainBean>();
 		
