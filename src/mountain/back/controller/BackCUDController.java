@@ -33,7 +33,6 @@ import mountain.mountainList.service.impl.NationalParkService;
 import mountain.mountainList.service.impl.RouteBasicService;
 import mountain.mountainList.service.impl.RouteInfoService;
 
-@Controller
 public class BackCUDController {
 	
 	@Autowired
