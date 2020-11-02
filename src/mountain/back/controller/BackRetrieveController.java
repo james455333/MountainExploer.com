@@ -42,6 +42,7 @@ public class BackRetrieveController {
 	public String pageEntry(Model model,HttpServletRequest request,RedirectAttributes redrAttr) {
 		model.addAttribute("showData", showData);
 		model.addAttribute("controllerPath", "/mountainBackStage/mainPage?");
+		
 		// 主畫面接收Bean
 		List<MountainBean> mainBeans = new ArrayList<MountainBean>();
 		// 設置錯誤接收
