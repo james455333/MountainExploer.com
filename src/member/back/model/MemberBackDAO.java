@@ -33,5 +33,24 @@ public class MemberBackDAO {
 	}
 	
 	
+	//Update Member's info
+	public Member updateData(int memberId, Member mb) {
+		Session session = sessionFactory.getCurrentSession();
+		Member result = session.get(Member.class, memberId);
+		if(result != null) {
+			result.setAccount(mb.getAccount());
+			result.setName(mb.getName());
+			result.setAddress(mb.getAddress());
+			result.setEmail(mb.getEmail());
+			result.setTel(mb.getTel());
+			result.setExp(mb.getExp());
+			result.setGroupId(mb.getGroupId());
+			result.setTotalAmt(mb.getTotalAmt());
+			result.setUnpaid_amount(mb.getUnpaid_amount());
+			result.setMemberImage(mb.getMemberImage());
+		}
+		return result;
+	}
+	
 
 }
