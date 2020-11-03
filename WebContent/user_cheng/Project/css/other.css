@@ -1,0 +1,131 @@
+.p_information_td {
+    padding: 40% 30% 40% 30%;
+}
+
+.p_i_image {
+    text-align: left;
+}
+
+#p_i_content {
+    text-align: center;
+}
+
+/*---------下拉選單滑入展開---------*/
+
+.dropdown-menu li:hover .sub-menu {
+    visibility: visible;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* -------下拉選單滑入展開 ---------*/
+
+header {
+    background-color: #fff;
+    padding: 0px 0px;
+    height: 48px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    transition: top 0.4s ease-in-out;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+/* .hideUp header {
+    top: -60px;
+} */
+
+.bgi {
+    background-image: url(../images/001+.jpg);
+    background-attachment: scroll;
+}
+
+.count1 {
+    column-count: 3;
+    column-rule: 3px double gray;
+    width: auto;
+    padding: 30px;
+    margin: 10px auto;
+    background-image: url(../images/945952.jpg);
+    background-attachment: fixed;
+    /*背景附著*/
+    background-repeat: no-repeat;
+    /*重複背景*/
+    background-position: bottom;
+    /*背景位置*/
+    background-size: cover;
+    /*背景尺寸*/
+    display: flex;
+    opacity: 0.8;
+    z-index: 0;
+}
+
+.count1_img {
+    margin: auto;
+    text-align: center;
+    /* border-top: px; */
+}
+
+.zline {
+    z-index: 99;
+}
+
+.top_bar_a {
+    color: ivory;
+    text-align: center;
+}
+
+.p_information_td dl dd:hover {
+    color: #f9fd04;
+}
+
+.font1 {
+    color: lightcyan;
+}
+
+.div_ul {
+    box-sizing: border-box;
+    width: 1900px;
+    margin: 0 auto;
+    font-size: 13px;
+}
+
+.div_li1 {
+    width: 350px;
+    height: 400px;
+    text-align: center;
+    line-height: 400px;
+    float: left;
+    background-color: lightblue;
+    background-color: ;
+}
+
+.div_li2 {
+    margin-left: 120px;
+    margin-right: 120px;
+    height: 400px;
+    text-align: center;
+    line-height: 400px;
+    background-color: slategrey;
+}
+
+.div_li3 {
+    width: 350px;
+    height: 400px;
+    text-align: center;
+    line-height: 400px;
+    float: right;
+    ;
+    background-color: lightblue;
+}
+
+#footer {
+    clear: both;
+    background-color: lightgoldenrodyellow;
+    height: 100px;
+    text-align: center;
+    line-height: 80px;
+}
