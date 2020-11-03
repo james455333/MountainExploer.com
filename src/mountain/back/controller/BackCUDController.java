@@ -1,10 +1,6 @@
 package mountain.back.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -12,9 +8,7 @@ import java.util.Set;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,7 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import mountain.MountainGlobal;
-import mountain.dbint.ImportDataController;
 import mountain.mountainList.model.NationalPark;
 import mountain.mountainList.model.RouteBasic;
 import mountain.mountainList.model.RouteInfo;
@@ -33,6 +26,7 @@ import mountain.mountainList.service.impl.NationalParkService;
 import mountain.mountainList.service.impl.RouteBasicService;
 import mountain.mountainList.service.impl.RouteInfoService;
 
+@Controller
 public class BackCUDController {
 	
 	@Autowired
@@ -163,11 +157,11 @@ public class BackCUDController {
 			redirectAttributes.addFlashAttribute("result", "新增失敗");
 			return "redirect:/mountainBackStage/mainPage";
 		}
-		System.out.println("準備新增Result : 成功");
-		System.out.println("=============================");
+//		System.out.println("準備新增Result : 成功");
+//		System.out.println("=============================");
 		redirectAttributes.addFlashAttribute("result", "新增成功");
-		System.out.println("準備返回總查詢頁面");
-		System.out.println("=============================");
+//		System.out.println("準備返回總查詢頁面");
+//		System.out.println("=============================");
 		
 		return "redirect:/mountainBackStage/mainPage";
 	}
