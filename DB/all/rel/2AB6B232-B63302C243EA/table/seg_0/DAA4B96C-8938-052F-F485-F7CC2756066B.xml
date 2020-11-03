@@ -20,9 +20,6 @@
 <domain>57B577AF-1919-EE54-9C07-01B34C5E5B7A</domain>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="0E181842-CBFA-7406-804F-B83D42F1CA25" referredColumn="E8DC0B16-7BDC-4175-84C6-FFCE023C7ED0"/>
-</associations>
 </Column>
 <Column name="name" id="1328F48E-2542-FD2A-878E-818563EED725">
 <sourceDDLFile>all.ddl</sourceDDLFile>
@@ -76,6 +73,21 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="national_park_seqno" id="69450B20-1528-4DC5-D69B-1A732F41552F">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-03 12:42:12 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="538A6697-2FC9-5810-B6CC-6FD2211EFEF0" referredColumn="89A89E3E-0CF0-97EE-BBC3-0DD2915371C4"/>
+</associations>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="C4CC4EA7-2347-7862-90C9-8A81CEED5E8F" name="house_info_pk">
@@ -91,14 +103,14 @@
 <colUsage columnID="568CDC9B-AF0F-1F4E-45B0-13D9DEFDCC02"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="B6A2B6DD-8510-9C36-5E8E-8F5E6B9D048A" name="house_info_house_basic_fk">
+<ind_PK_UK id="3D960039-C400-EC00-E05F-645B4C43EC75" name="house_info_national_park_FK">
 <createdBy>Student</createdBy>
-<createdTime>2020-10-23 13:41:06 UTC</createdTime>
+<createdTime>2020-11-03 12:42:12 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="568CDC9B-AF0F-1F4E-45B0-13D9DEFDCC02"/>
+<colUsage columnID="69450B20-1528-4DC5-D69B-1A732F41552F"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

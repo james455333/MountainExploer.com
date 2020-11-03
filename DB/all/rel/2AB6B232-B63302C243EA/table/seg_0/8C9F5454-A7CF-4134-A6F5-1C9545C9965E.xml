@@ -9,26 +9,6 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="id" id="4BFF8017-1606-3812-1F86-15F125DF0DB1">
-<sourceDDLFile>all.ddl</sourceDDLFile>
-<createdBy>Student</createdBy>
-<createdTime>2020-10-23 13:41:05 UTC</createdTime>
-<ownerDesignName>all</ownerDesignName>
-<importedID>65A66D67-ED22-013F-3B71-DCDC596A38BE</importedID>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>3</dataTypePrecision>
-<ownDataTypeParameters>,3,</ownDataTypeParameters>
-<autoIncrementColumn>true</autoIncrementColumn>
-<identityColumn>true</identityColumn>
-<autoIncrementGenerateAlways>true</autoIncrementGenerateAlways>
-<autoIncrementStartWith>200</autoIncrementStartWith>
-<autoIncrementMinValue>200</autoIncrementMinValue>
-<autoIncrementMaxValue>299</autoIncrementMaxValue>
-<autoIncrementCycle>false</autoIncrementCycle>
-<autoIncrementGenerateTrigger>false</autoIncrementGenerateTrigger>
-</Column>
 <Column name="name" id="5F7FC441-2AAE-3E26-D525-37A8EBA8F623">
 <sourceDDLFile>all.ddl</sourceDDLFile>
 <createdBy>Student</createdBy>
@@ -53,7 +33,7 @@
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="4BFF8017-1606-3812-1F86-15F125DF0DB1"/>
+<colUsage columnID="5F7FC441-2AAE-3E26-D525-37A8EBA8F623"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

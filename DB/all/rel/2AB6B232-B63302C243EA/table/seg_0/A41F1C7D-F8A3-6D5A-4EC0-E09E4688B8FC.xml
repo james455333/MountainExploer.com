@@ -30,20 +30,18 @@
 <autoIncrementGenerateTrigger>false</autoIncrementGenerateTrigger>
 <notNullConstraintName>nnc_campv1_id</notNullConstraintName>
 </Column>
-<Column name="counties_id" id="5EBFA2AE-DD72-C015-C263-D25758A6E77E">
-<sourceDDLFile>all.ddl</sourceDDLFile>
+<Column name="counties_name" id="07500704-086A-1F13-6724-4FCA1D5AFFBC">
 <createdBy>Student</createdBy>
-<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<createdTime>2020-11-03 10:03:49 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
-<importedID>8A861DEC-D72A-0913-F2B2-E843E67F9AAA</importedID>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>4</dataTypePrecision>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>9D46FF11-7CDA-240B-FB7B-E6BE7A7AFC7E</domain>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="D72B0DB5-FEC5-2F3E-BF05-5BFDF2C54B8E" referredColumn="BDE3D799-6BDB-66BB-3075-029047E14483"/>
+<colAssociation fkAssociation="D72B0DB5-FEC5-2F3E-BF05-5BFDF2C54B8E" referredColumn="364B43F2-35C3-550C-4AE6-D032D48FC828"/>
 </associations>
 </Column>
 </columns>
@@ -68,7 +66,7 @@
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="5EBFA2AE-DD72-C015-C263-D25758A6E77E"/>
+<colUsage columnID="07500704-086A-1F13-6724-4FCA1D5AFFBC"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

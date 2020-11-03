@@ -9,7 +9,7 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="id" id="64A3D042-3748-6AA3-1A6C-8173D73AB193">
+<Column name="seqno" id="64A3D042-3748-6AA3-1A6C-8173D73AB193">
 <sourceDDLFile>all.ddl</sourceDDLFile>
 <createdBy>Student</createdBy>
 <createdTime>2020-10-23 13:41:06 UTC</createdTime>
@@ -39,7 +39,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>3</dataTypePrecision>
-<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="506AAC99-E013-02FD-F318-F0445B115F78" referredColumn="89A89E3E-0CF0-97EE-BBC3-0DD2915371C4"/>

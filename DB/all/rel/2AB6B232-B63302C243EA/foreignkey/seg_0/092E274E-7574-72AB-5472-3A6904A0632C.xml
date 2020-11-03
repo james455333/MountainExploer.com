@@ -1,17 +1,15 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="E91FE6F7-C183-9EF5-A920-AB8630CBF0AF" containerWithKeyObject="E278D244-418C-46E0-6C82-C7248C9F65A6" localFKIndex="9BCC1F5E-892D-D7EC-409F-0F7477BA5AFD" name="memberpwd_memberbasic_fk">
-<sourceDDLFile>all.ddl</sourceDDLFile>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="092E274E-7574-72AB-5472-3A6904A0632C" containerWithKeyObject="0D84BDBD-CA27-02B9-FD81-41BA8ECED9B5" localFKIndex="D4104347-97E6-E025-326E-1FC38B2F1921" name="shopping_member_dtail_member_basic_FK">
 <createdBy>Student</createdBy>
-<createdTime>2020-10-23 13:41:06 UTC</createdTime>
+<createdTime>2020-11-03 09:54:46 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
-<importedID>D00AD014-4B02-AACB-35E6-AEDD240C4783</importedID>
 <referredTableLongName>member_basic</referredTableLongName>
 <deleteRule>CASCADE</deleteRule>
 <referredTableID>6A0FDB96-6DC8-28D5-A109-495395AAF6E4</referredTableID>
 <keyObject>4EAE3050-AB00-0F37-0D3A-0B82B8C3610F</keyObject>
 <referredKeyID>4EAE3050-AB00-0F37-0D3A-0B82B8C3610F</referredKeyID>
 <mandatory>true</mandatory>
-<refColNames>id</refColNames>
+<refColNames>seqno</refColNames>
 <transferable>true</transferable>
 <rely>false</rely>
 <columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>

@@ -6,12 +6,12 @@
 <ownerDesignName>all</ownerDesignName>
 <importedID>E0267D43-483B-5144-5FAC-A268794FD237</importedID>
 <referredTableLongName>member_status</referredTableLongName>
-<deleteRule>CASCADE</deleteRule>
+<deleteRule>NO ACTION</deleteRule>
 <referredTableID>D7EDD77A-911D-D079-C27E-EA5644EB52B7</referredTableID>
 <keyObject>AE34E552-269A-2ABA-02AC-BAF51B2900C9</keyObject>
 <referredKeyID>AE34E552-269A-2ABA-02AC-BAF51B2900C9</referredKeyID>
 <mandatory>true</mandatory>
-<refColNames>id</refColNames>
+<refColNames>seqno</refColNames>
 <transferable>true</transferable>
 <rely>false</rely>
 <columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>

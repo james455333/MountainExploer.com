@@ -1,17 +1,15 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="E2B703F1-18DC-BFBC-873F-34DC1F2B001E" containerWithKeyObject="BD9A0E8A-7CEA-8934-1AF3-698815C3919E" localFKIndex="2159F422-A7A6-E5B8-DF1D-06C6D08145F2" name="house_basic_national_park_fk">
-<sourceDDLFile>all.ddl</sourceDDLFile>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="538A6697-2FC9-5810-B6CC-6FD2211EFEF0" containerWithKeyObject="DAA4B96C-8938-052F-F485-F7CC2756066B" localFKIndex="3D960039-C400-EC00-E05F-645B4C43EC75" name="house_info_national_park_FK">
 <createdBy>Student</createdBy>
-<createdTime>2020-10-23 13:41:06 UTC</createdTime>
+<createdTime>2020-11-03 12:42:12 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
-<importedID>DEAE9365-FE8A-97C9-D1C9-26F751C65B4B</importedID>
 <referredTableLongName>national_park</referredTableLongName>
-<deleteRule>CASCADE</deleteRule>
+<deleteRule>NO ACTION</deleteRule>
 <referredTableID>D64440C4-40A1-CE17-8295-3FE75B38A38F</referredTableID>
 <keyObject>D79DB7D4-44FD-8601-DD02-0352B787F2CB</keyObject>
 <referredKeyID>D79DB7D4-44FD-8601-DD02-0352B787F2CB</referredKeyID>
 <mandatory>true</mandatory>
-<refColNames>id</refColNames>
+<refColNames>seqno</refColNames>
 <transferable>true</transferable>
 <rely>false</rely>
 <columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>

@@ -4,17 +4,11 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-
-import org.springframework.ui.Model;
 
 import mountain.mountainList.model.MountainBean;
 import mountain.mountainList.model.NationalPark;
-import mountain.mountainList.model.RouteInfo;
 import mountain.mountainList.service.NationalParkHibernateService;
-import mountain.mountainList.service.RouteInfoHibernateService;
 import mountain.mountainList.service.impl.NationalParkService;
-import mountain.mountainList.service.impl.RouteInfoService;
 
 public class RetrieveFunction {
 	//全數查詢
@@ -28,7 +22,7 @@ public class RetrieveFunction {
 		System.out.println("seqno : " + seqno);
 		int seqnum = Integer.parseInt(seqno);
 
-		return sortMountainBeans(TransFuction.transNPBean(all,seqnum));
+		return sortMountainBeans(TransFuction.transToNPBean(all,seqnum));
 
 	}
 
@@ -47,7 +41,7 @@ public class RetrieveFunction {
 			throws IOException, SQLException {
 		List<MountainBean> mainBeans = null;
 
-		mainBeans = sortMountainBeans(TransFuction.transRouteInfos(all));
+		mainBeans = sortMountainBeans(TransFuction.transToMainBens(all));
 
 		return mainBeans;
 	}

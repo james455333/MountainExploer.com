@@ -9,7 +9,7 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="id" id="E9130D2D-3D31-AE0B-7BDC-7855A711C2AA">
+<Column name="seqno" id="E9130D2D-3D31-AE0B-7BDC-7855A711C2AA">
 <sourceDDLFile>all.ddl</sourceDDLFile>
 <createdBy>Student</createdBy>
 <createdTime>2020-10-23 13:41:06 UTC</createdTime>

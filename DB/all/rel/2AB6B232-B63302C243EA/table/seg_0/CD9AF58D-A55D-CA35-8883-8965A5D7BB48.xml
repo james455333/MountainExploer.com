@@ -9,7 +9,7 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="orderno" id="8FD32CE7-402E-BC4C-1381-317108130F23">
+<Column name="seqno" id="8FD32CE7-402E-BC4C-1381-317108130F23">
 <sourceDDLFile>all.ddl</sourceDDLFile>
 <createdBy>Student</createdBy>
 <createdTime>2020-10-23 13:41:06 UTC</createdTime>
@@ -36,6 +36,7 @@
 <createdTime>2020-10-23 13:41:06 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
 <importedID>21D3FC35-3809-399B-FB1F-15E64781233A</importedID>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>7</dataTypePrecision>
@@ -55,11 +56,8 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>6</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="1055BE27-3CBE-3628-A4B6-6A31614B7E81" referredColumn="672D231D-7DA5-870C-2C3C-1A10F0457B08"/>
-</associations>
 </Column>
 <Column name="totalamount" id="843092A7-BD0A-696E-7381-BDE9822BE09A">
 <sourceDDLFile>all.ddl</sourceDDLFile>
@@ -164,16 +162,6 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="8FD32CE7-402E-BC4C-1381-317108130F23"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="EF31861A-75B6-413D-D4B7-014952648B8F" name="orders_item_basic_fk">
-<createdBy>Student</createdBy>
-<createdTime>2020-10-23 13:41:06 UTC</createdTime>
-<ownerDesignName>all</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="59EE2F9C-1A51-6790-3836-938A0CAB2460"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="54CC19B8-6895-71D7-D563-E18A4081AA62" name="orders_member_basic_fk">

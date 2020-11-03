@@ -51,16 +51,16 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="img_url" id="6EC22CF1-3248-00B4-FBA4-C586FBFE87EC">
+<Column name="img" id="6EC22CF1-3248-00B4-FBA4-C586FBFE87EC">
 <sourceDDLFile>all.ddl</sourceDDLFile>
 <createdBy>Student</createdBy>
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
 <importedID>9299D4A6-B001-929B-E259-1295C2F518A3</importedID>
 <nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<logicalDatatype>LOGDT029</logicalDatatype>
-<domain>57AAEB89-ADE1-5295-799E-308DE467A9B3</domain>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT028</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>

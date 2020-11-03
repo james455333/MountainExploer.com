@@ -15,9 +15,10 @@
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
 <importedID>643AF171-F8B9-EB89-34FF-5C5FA2FE6FEE</importedID>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<domain>57B577AF-1919-EE54-9C07-01B34C5E5B7A</domain>
+<dataTypePrecision>5</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
@@ -50,16 +51,16 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="description" id="65050137-25DA-6BFC-54EB-159C82C04001">
+<Column name="url" id="65050137-25DA-6BFC-54EB-159C82C04001">
 <sourceDDLFile>all.ddl</sourceDDLFile>
 <createdBy>Student</createdBy>
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
 <importedID>089B7F89-9EFA-84FB-7881-900FB297AA6C</importedID>
 <nullsAllowed>true</nullsAllowed>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
 <logicalDatatype>LOGDT029</logicalDatatype>
-<domain>57AAEB89-ADE1-5295-799E-308DE467A9B3</domain>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>

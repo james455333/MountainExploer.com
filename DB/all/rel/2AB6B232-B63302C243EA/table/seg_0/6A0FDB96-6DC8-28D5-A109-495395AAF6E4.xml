@@ -9,7 +9,7 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="id" id="65FCDD1D-6006-4901-68AD-AD5A6ECA2E65">
+<Column name="seqno" id="65FCDD1D-6006-4901-68AD-AD5A6ECA2E65">
 <sourceDDLFile>all.ddl</sourceDDLFile>
 <createdBy>Student</createdBy>
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>
@@ -42,7 +42,7 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="last_name" id="2080DE1E-2B33-9D8C-D3C0-7B2C535FDCE6">
+<Column name="name" id="2080DE1E-2B33-9D8C-D3C0-7B2C535FDCE6">
 <sourceDDLFile>all.ddl</sourceDDLFile>
 <createdBy>Student</createdBy>
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>
@@ -51,18 +51,6 @@
 <use>0</use>
 <logicalDatatype>LOGDT037</logicalDatatype>
 <domain>E9193C42-BBD2-F8B5-5FC6-09DD148AAEF0</domain>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="first_name" id="ED071786-8D77-143B-1605-FC6DAC5A04B1">
-<sourceDDLFile>all.ddl</sourceDDLFile>
-<createdBy>Student</createdBy>
-<createdTime>2020-10-23 13:41:05 UTC</createdTime>
-<ownerDesignName>all</ownerDesignName>
-<importedID>6257CE34-BB99-7967-9BE7-0F52BFAFDFC1</importedID>
-<use>0</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<domain>E78AEA67-2309-BDD0-331B-45B46F6F88F8</domain>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>

@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 public class NationalPark {
 	
 	@Id
-	@Column(name = "ID")
+	@Column(name = "SEQNO")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Column(name = "NAME", unique = true)

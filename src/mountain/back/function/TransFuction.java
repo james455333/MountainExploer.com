@@ -1,14 +1,10 @@
 package mountain.back.function;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 import mountain.mountainList.model.MountainBean;
 import mountain.mountainList.model.NationalPark;
@@ -52,7 +48,7 @@ public class TransFuction {
 	}
 
 	// 轉換全部查詢結果為顯示用BeanList
-	public static List<MountainBean> transRouteInfos(List<NationalPark> all) throws IOException, SQLException  {
+	public static List<MountainBean> transToMainBens(List<NationalPark> all) throws IOException, SQLException  {
 		List<MountainBean> showList = new ArrayList<MountainBean>();
 		
 		for (NationalPark nationalPark : all) {
@@ -84,7 +80,7 @@ public class TransFuction {
 	}
 
 	// 轉換NationalParkBean為導覽列用List
-	public static List<MountainBean> transNPBean(List<NationalPark> all, int seqnum) throws IOException, SQLException  {
+	public static List<MountainBean> transToNPBean(List<NationalPark> all, int seqnum) throws IOException, SQLException  {
 		List<MountainBean> mainBeans = new ArrayList<MountainBean>();
 		for (NationalPark nationalPark : all) {
 			if (nationalPark.getId() == seqnum) {

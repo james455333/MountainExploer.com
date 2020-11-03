@@ -9,9 +9,9 @@
 <accessDriverType>oracle_loader</accessDriverType>
 <rejectLimit></rejectLimit>
 <columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
-<ColumnProxy name="counties_id" id="5EBFA2AE-DD72-C015-C263-D25758A6E77E">
+<ColumnProxy name="counties_name" id="07500704-086A-1F13-6724-4FCA1D5AFFBC">
 <createdBy>Student</createdBy>
-<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<createdTime>2020-11-03 10:03:49 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
 </ColumnProxy>
 <ColumnProxy name="id" id="8F4D0422-4D91-0250-D87C-3869781438A5">
