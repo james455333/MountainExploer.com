@@ -21,6 +21,10 @@ public class MemberBackService {
 		return memberBackDAO.selectAll();
 	}
 	
+	public List<Member> selectOne(String account){
+		return memberBackDAO.selectOne(account);
+	}
+	
 	public Member updateData(int memberId, Member mb) {
 		return memberBackDAO.updateData(memberId, mb);
 	}

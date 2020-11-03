@@ -1,5 +1,6 @@
 package member.back.controller;
 
+import java.io.Reader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,21 +27,35 @@ public class MemberBackController {
 	}
 	
 	
+//	public String processEntryAction() {
+//		
+//	}
 	
-	@RequestMapping(path = "/memberBack/memberBackSelect", method = RequestMethod.GET)
+	
+	
+	@RequestMapping(path = "/memberBack/memberBackSelect", method = RequestMethod.POST)
 	public String processSelectAction1(@RequestParam(name = "selectAll")String selectAll, Model m) {
-		
 		
 		if(selectAll != null) {
 			List<Member> mbList = memberBackService.selectAll();
 			m.addAttribute("mbList", mbList);
 			return "member/memberBackSelectList";
-		}
-		
+		} 
 		return "member/memberBackSelectList";
-		
 	}
 	
+	@RequestMapping(path = "/memberBack/memberBackOne", method = RequestMethod.POST)
+	public String processSelectAction2(@RequestParam(name="account")String account, Model m) {
+		
+		if(account != null) {
+			List<Member> mbList = memberBackService.selectOne(account);
+			m.addAttribute("mblist", mbList);
+			return "member/memberBackSelectList";
+		}
+		return "member/memberBackSelectList";
+	}
+	
+		
 	
 
 }

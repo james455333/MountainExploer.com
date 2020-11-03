@@ -50,6 +50,18 @@ public class MemberBackDAO {
 	}
 	
 	
+	// Select single Member's Info
+	public List<Member> selectOne(String account){
+		Session session = sessionFactory.getCurrentSession();
+		Query<Member> query = session.createQuery("From Member where account = ?0", Member.class);
+		query.setParameter(0, account);
+		
+		List<Member> list = query.list();
+		
+		return list;
+	}
+	
+	
 	//Update Member's info
 	public Member updateData(int memberId, Member mb) {
 		Session session = sessionFactory.getCurrentSession();
