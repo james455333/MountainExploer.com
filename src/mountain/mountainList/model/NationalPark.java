@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -20,6 +19,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class NationalPark {
 	
+	
 	@Id
 	@Column(name = "SEQNO")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +28,6 @@ public class NationalPark {
 	private String name;
 	@OneToMany(fetch = FetchType.LAZY , mappedBy = "national_park" , cascade = CascadeType.ALL)
 	private Set<RouteBasic> routeBasic;
-	
 	public int getId() {
 		return id;
 	}

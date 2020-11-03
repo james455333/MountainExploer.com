@@ -67,6 +67,11 @@ public class BackRetrieveController {
 			// 設置導覽列NPBean
 			navNPBean = all;
 			// 將全部資料轉換為MountainBean型態
+			if (all==null || all.isEmpty()) {
+				System.out.println("無資料");
+				errors.put("msg", "資料庫內無相關資料");
+				return"redirect:/backStageEntry";
+			}
 			List<MountainBean> mainBeanAll = RetrieveFunction.getMainBean(all);
 			// 設置導覽列RTBean
 			navRTBeans = mainBeanAll;
