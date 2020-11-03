@@ -23,6 +23,23 @@ public class MemberBackDAO {
 	}
 	
 	
+	//Back Login
+	public boolean checkLogin(String account, String password) {
+		Session session = sessionFactory.getCurrentSession();
+		Query<Member> query = session.createQuery("From Member where account = ?0 and password = ?1", Member.class);
+		query.setParameter(0, account);
+		query.setParameter(1, password);
+		
+		Member qBean = query.uniqueResult();
+		
+		if(qBean != null) {
+			return true;
+		}
+		return false;
+	}
+	
+	
+	
 	//Select all Member's Info
 	public List<Member> selectAll(){
 		Session session = sessionFactory.getCurrentSession();

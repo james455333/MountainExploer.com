@@ -20,20 +20,24 @@ public class MemberBackController {
 	@Autowired
 	private MemberBackService memberBackService;
 	
-	@RequestMapping(path = "/memberBack/memberBackEntry.controller", method = RequestMethod.GET)
+	@RequestMapping(path = "/member/memberBackEntry", method = RequestMethod.GET)
 	public String processEntryPage() {
-		return "form";
+		return "member/memberBackSelectList";
 	}
 	
 	
 	
-	@RequestMapping(path = "/memberBack/memberBackSelectAll.controller", method = RequestMethod.GET)
-	public String processSelectAction1(@RequestParam(name = "account")String account, Model m) {
+	@RequestMapping(path = "/memberBack/memberBackSelect", method = RequestMethod.GET)
+	public String processSelectAction1(@RequestParam(name = "selectAll")String selectAll, Model m) {
 		
 		
-		List<Member> mbList = memberBackService.selectAll();
-		m.addAttribute("mbList", mbList);
-		return "memberLsit";
+		if(selectAll != null) {
+			List<Member> mbList = memberBackService.selectAll();
+			m.addAttribute("mbList", mbList);
+			return "member/memberBackSelectList";
+		}
+		
+		return "member/memberBackSelectList";
 		
 	}
 	

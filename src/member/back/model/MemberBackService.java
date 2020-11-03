@@ -13,6 +13,10 @@ public class MemberBackService {
 	@Autowired
 	private MemberBackDAO memberBackDAO;
 	
+	public boolean checkLogin(String account, String password) {
+		return memberBackDAO.checkLogin(account, password);
+	}
+	
 	public List<Member> selectAll(){
 		return memberBackDAO.selectAll();
 	}
