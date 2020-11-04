@@ -18,6 +18,10 @@ public class MemberService {
 		return memberDao.listInfo();
 	}
 	
+	public List<MemberInfo> listMbInfo(){
+		return memberDao.listMbInfo();
+	}
+	
 	public MemberBasic updateData(int seqno, MemberBasic mb) {
 		return memberDao.updateData(seqno, mb);
 	}

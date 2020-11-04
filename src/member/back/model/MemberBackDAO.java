@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import member.model.MemberBasic;
+import member.model.MemberInfo;
+import oracle.net.aso.q;
 
 
 @Repository("memberBackDao")
@@ -50,9 +52,18 @@ public class MemberBackDAO {
 	}
 	
 	
+	public List<MemberInfo> selectMbAll(){
+		Session session = sessionFactory.getCurrentSession();
+		Query<MemberInfo> query = session.createQuery("From Member_Info", MemberInfo.class);
+		List<MemberInfo> list = query.list();
+		
+		return list;
+	}
+	
+	
 	
 	// Select single Member's Info
-	public List<MemberBasic>selectOne(String account){
+	public List<MemberBasic> selectOne(String account){
 		Session session = sessionFactory.getCurrentSession();
 		Query<MemberBasic> query = session.createQuery("From Member_Basic where account = ?0", MemberBasic.class);
 		query.setParameter(0, account);
@@ -63,10 +74,23 @@ public class MemberBackDAO {
 	}
 	
 	
-	//Update Member's info
-	public MemberBasic updateData(int memberId, MemberBasic mb) {
+	public List<MemberInfo> selectMbOne(int seqno){
 		Session session = sessionFactory.getCurrentSession();
-		MemberBasic result = session.get(MemberBasic.class, memberId);
+		Query<MemberInfo> query = session.createQuery("From Member_Info where seqno = ?0", MemberInfo.class);
+		query.setParameter(0, seqno);
+		
+		List<MemberInfo> list = query.list();
+		
+		return list;
+		
+	}
+	
+	
+	
+	//Update Member's info
+	public MemberBasic updateData(int seqno, MemberBasic mb) {
+		Session session = sessionFactory.getCurrentSession();
+		MemberBasic result = session.get(MemberBasic.class, seqno);
 		if(result != null) {
 			result.setAccount(mb.getAccount());
 			result.setName(mb.getName());
@@ -75,6 +99,23 @@ public class MemberBackDAO {
 		}
 		return result;
 	}
+	
+	public MemberInfo updateMbData(int seqno, MemberInfo mI) {
+		Session session = sessionFactory.getCurrentSession();
+		MemberInfo result = session.get(MemberInfo.class, seqno);
+		if(result != null) {
+			result.setBirthday(mI.getBirthday());
+			result.setNeck_name(mI.getNeck_name());
+			result.setPhone(mI.getPhone());
+			result.setGender(mI.getGender());
+			result.setClimb_ex(mI.getClimb_ex());
+			result.setPer_img(mI.getPer_img());
+			result.setOther(mI.getOther());
+		}
+		
+		return result;
+	}
+	
 	
 
 }

@@ -59,6 +59,15 @@ public class MemberDAO {
 	}
 	
 	
+	public List<MemberInfo> listMbInfo(){
+		Session session = sessionFactory.getCurrentSession();
+		Query<MemberInfo> query = session.createQuery("From Member_Info", MemberInfo.class);
+		List<MemberInfo> list = query.list();
+		
+		return list;
+	}
+	
+	
 	
 	
 	//Update Member's info
@@ -73,6 +82,7 @@ public class MemberDAO {
 		}
 		return result;
 	}
+	
 	
 	public MemberInfo updateInfo(int member_basic_id, MemberInfo mI) {
 		Session session = sessionFactory.getCurrentSession();
