@@ -1,0 +1,129 @@
+package member.model;
+
+import java.sql.Blob;
+import java.sql.Clob;
+import java.sql.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "MEMBER_INFO")
+public class MemberInfo {
+	
+	private int member_basic_id;
+	private Date birthday;
+	private String neck_name;
+	private String phone;
+	private String gender;
+	private String climb_ex;
+	private Clob per_img;
+	private Blob other;	
+
+	public MemberInfo() {
+		
+	}
+	
+	public MemberInfo(int member_basic_id, Date birthday, String neck_name, 
+			String phone, String gender, String climb_ex, Clob per_img, Blob other) {
+		
+		this.member_basic_id = member_basic_id;
+		this.birthday = birthday;
+		this.neck_name = neck_name;
+		this.phone = phone;
+		this.gender = gender;
+		this.climb_ex = climb_ex;
+		this.per_img = per_img;
+		this.other = other;
+	}
+
+	
+	@Id @Column(name = "MEMBER_BASIC_ID")
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	public int getMember_basic_id() {
+		return member_basic_id;
+	}
+
+	public void setMember_basic_id(int member_basic_id) {
+		this.member_basic_id = member_basic_id;
+	}
+
+	
+	@Column(name = "BIRTHDAY")
+	public Date getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+
+	
+	@Column(name = "NECK_NAME")
+	public String getNeck_name() {
+		return neck_name;
+	}
+
+	public void setNeck_name(String neck_name) {
+		this.neck_name = neck_name;
+	}
+
+	
+	@Column(name = "PHONE")
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	
+	@Column(name = "GENDER")
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	
+	@Column(name = "CLIMB_EX")
+	public String getClimb_ex() {
+		return climb_ex;
+	}
+
+	public void setClimb_ex(String climb_ex) {
+		this.climb_ex = climb_ex;
+	}
+
+	
+	@Column(name = "PER_IMG")
+	public Clob getPer_img() {
+		return per_img;
+	}
+
+	public void setPer_img(Clob per_img) {
+		this.per_img = per_img;
+	}
+
+	
+	@Column(name = "OTHER")
+	public Blob getOther() {
+		return other;
+	}
+
+	public void setOther(Blob other) {
+		this.other = other;
+	}
+	
+	
+	
+	
+
+}

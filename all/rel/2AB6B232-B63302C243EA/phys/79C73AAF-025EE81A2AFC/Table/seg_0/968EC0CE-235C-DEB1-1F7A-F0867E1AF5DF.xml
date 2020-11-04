@@ -1,0 +1,84 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="activity_registry_info" directorySegmentName="seg_0" id="968EC0CE-235C-DEB1-1F7A-F0867E1AF5DF">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="emg_contact_phone" id="0D2E9194-1EF6-EA60-C09E-298182E175AC">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="activity_registry_seqno" id="0F5B71DB-EBC7-626B-091E-1DE0F253894A">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="seqno" id="17AC0F47-8075-D340-DAE0-94F962501738">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<autoIncrementDDL>IDENTITY_CLAUSE</autoIncrementDDL>
+</ColumnProxy>
+<ColumnProxy name="personal_id" id="25F0C07B-C0DD-06BE-4919-CEF1F41D2210">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="contact_cellphone" id="355A225B-C41C-4DC3-C4A0-FAE9BF2F56C0">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="name" id="4927CE0E-02D4-F040-0474-E46AD65C59FB">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="contact_email" id="4F77F397-570B-D0B6-54F6-4B7ED6D45B98">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="birthday" id="A18B43B2-A89B-60AD-2982-D85F7176D94C">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="contact_phone" id="AEED968D-9904-4829-BFD5-9F5E3902832A">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="emg_contact_name" id="C029C7DC-27DA-BAC1-0D32-08264505281D">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="emg_contact_cellphone" id="F369CC2C-134D-8C54-B904-7571FBCE2CEF">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="activity_registry_info_activity_registry_fk" id="94F4BFD2-DF73-BDBF-8FDD-DC32A7A57108">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:06 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="activity_registry_info_pk" id="D9399E22-885B-391F-9154-AD7D946BF407">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

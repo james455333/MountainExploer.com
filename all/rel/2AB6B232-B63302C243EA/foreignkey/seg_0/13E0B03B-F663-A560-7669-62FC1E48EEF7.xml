@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="13E0B03B-F663-A560-7669-62FC1E48EEF7" containerWithKeyObject="00FFBEF1-C9B0-E55E-1724-AC12107AE6CB" localFKIndex="3EC0824A-1AF3-D40A-8289-AB4C77996083" name="activity_sideresp_activity_response_fk">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:06 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>61E3237C-4798-F256-ED69-9434FE5834CC</importedID>
+<referredTableLongName>activity_response</referredTableLongName>
+<deleteRule>CASCADE</deleteRule>
+<referredTableID>89D65847-B43C-46C4-8B74-FE7B36220642</referredTableID>
+<keyObject>9C847829-4A43-CFA6-16B6-57EDEDC6CF33</keyObject>
+<referredKeyID>9C847829-4A43-CFA6-16B6-57EDEDC6CF33</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>seqno</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
