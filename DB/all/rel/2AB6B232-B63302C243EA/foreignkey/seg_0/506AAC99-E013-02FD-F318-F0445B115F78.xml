@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="506AAC99-E013-02FD-F318-F0445B115F78" containerWithKeyObject="99431341-3994-B66C-8A5B-D3A791204002" localFKIndex="5B735816-DAAF-CE71-F606-371796B9C2EC" name="route_basic_national_park_fk">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:06 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>26A1E906-3FE8-5291-BEA4-01D20D74273D</importedID>
+<referredTableLongName>national_park</referredTableLongName>
+<deleteRule>CASCADE</deleteRule>
+<referredTableID>D64440C4-40A1-CE17-8295-3FE75B38A38F</referredTableID>
+<keyObject>D79DB7D4-44FD-8601-DD02-0352B787F2CB</keyObject>
+<referredKeyID>D79DB7D4-44FD-8601-DD02-0352B787F2CB</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
