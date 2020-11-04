@@ -1,6 +1,10 @@
 package mountain.back.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -9,6 +13,7 @@ import java.util.Set;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import mountain.MountainGlobal;
+import mountain.dbint.ImportDataController;
 import mountain.mountainList.model.NationalPark;
 import mountain.mountainList.model.RouteBasic;
 import mountain.mountainList.model.RouteInfo;
@@ -41,21 +47,9 @@ public class BackCUDController {
 	// 資料刪除
 	@RequestMapping(path = "/mountainBackStage/deleteData" , method = RequestMethod.GET)
 	public String deleteDate(RedirectAttributes rdAttr,@RequestParam(name = "deleteID") String deleteID) {
-//		System.out.println("=================================");
-//		System.out.println("deletID : " + deleteID);
-		
-		if (deleteID !=null && !deleteID.isEmpty()) {
-			int rbID = Integer.parseInt(deleteID.replaceAll("[\\D]", ""));
-			RouteBasicService rtBasicService =this.rtBasicService;
-			boolean check = rtBasicService.delete(rbID);
-			System.out.println("=================================");
-			System.out.println("Delete Status : " + check);
-			if (check) {
-				rdAttr.addFlashAttribute("result", "刪除成功");
-			}else {
-				rdAttr.addFlashAttribute("result", "刪除失敗");
-			}
-		}
+		System.out.println("=================================");
+		System.out.println("deletID : " + deleteID);
+		rdAttr.addFlashAttribute("result", "刪除成功");
 		return "redirect:/mountainBackStage/mainPage?page=1";
 	}
 	// 資料修改
@@ -157,11 +151,11 @@ public class BackCUDController {
 			redirectAttributes.addFlashAttribute("result", "新增失敗");
 			return "redirect:/mountainBackStage/mainPage";
 		}
-//		System.out.println("準備新增Result : 成功");
-//		System.out.println("=============================");
+		System.out.println("準備新增Result : 成功");
+		System.out.println("=============================");
 		redirectAttributes.addFlashAttribute("result", "新增成功");
-//		System.out.println("準備返回總查詢頁面");
-//		System.out.println("=============================");
+		System.out.println("準備返回總查詢頁面");
+		System.out.println("=============================");
 		
 		return "redirect:/mountainBackStage/mainPage";
 	}

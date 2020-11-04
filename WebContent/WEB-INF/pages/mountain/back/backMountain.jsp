@@ -71,7 +71,7 @@
 							<div class="searchSelect">
 								<span>路線名稱 :&nbsp</span>
 									<select name="route" class="route" >
-										<c:forEach var="peakBean" items="${navRTBean}" varStatus="vsRT">
+										<c:forEach var="peakBean" items="${mountainBean}" varStatus="vsRT">
 											<c:if test="${ peakBean.npName == npBean.name}">
 												<option value="${peakBean.seqno}">${peakBean.name}</option>
 											</c:if>	
@@ -88,7 +88,7 @@
 							<div class="searchSelect">
 								<span>路線名稱 :&nbsp</span>
 									<select name="route" class="route" >
-										<c:forEach var="peakBean" items="${navRTBean}" varStatus="vsRT">
+										<c:forEach var="peakBean" items="${mountainBean}" varStatus="vsRT">
 											<c:if test="${ peakBean.npName == npBean.name}">
 												<option value="${peakBean.seqno}">${peakBean.name}</option>
 											</c:if>	
