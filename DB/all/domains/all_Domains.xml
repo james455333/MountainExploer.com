@@ -1,0 +1,290 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<DomainFile class="oracle.dbtools.crest.model.design.DomainFileWrapper" fileName="all_Domains">
+<domains>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="VARCHAR_0_0_1 CHAR" id="081F619A-8F22-E694-AFE4-AB27C754FE38">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>1 CHAR</dataTypeSize>
+<fileName>all_Domains</fileName>
+<logicalDatatype>LOGDT024</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="NUMERIC_8_0_0" id="1E295CD4-75A9-EDD9-22F0-A409402C269A">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>8</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>0</dataTypeSize>
+<fileName>all_Domains</fileName>
+<logicalDatatype>LOGDT019</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="VARCHAR_0_0_20" id="2C45A144-3AC3-1C5E-4DC7-42D9E20FB884">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>20</dataTypeSize>
+<fileName>all_Domains</fileName>
+<logicalDatatype>LOGDT024</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="NUMERIC_7_0_0" id="466754EF-0E78-0A42-4E8D-64700CF12377">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>7</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>0</dataTypeSize>
+<fileName>all_Domains</fileName>
+<logicalDatatype>LOGDT019</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="Date_0_0_0" id="510DFE1A-9D4B-BC4F-55FE-2DF450A92059">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<fileName>all_Domains</fileName>
+<logicalDatatype>LOGDT007</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="NUMERIC_0_0_0" id="5796B9F8-1198-7F45-2EDC-2ACB79DD304D">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:06 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<fileName>all_Domains</fileName>
+<logicalDatatype>LOGDT019</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="BLOB_0_0_0" id="57AAEB89-ADE1-5295-799E-308DE467A9B3">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<fileName>all_Domains</fileName>
+<logicalDatatype>LOGDT029</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="NUMERIC_5_0_0" id="57B577AF-1919-EE54-9C07-01B34C5E5B7A">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>5</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>0</dataTypeSize>
+<fileName>all_Domains</fileName>
+<logicalDatatype>LOGDT019</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="CLOB_0_0_0" id="5AFD528A-ABFB-CF2C-1CDD-C88E5A159F18">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<fileName>all_Domains</fileName>
+<logicalDatatype>LOGDT028</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="NVARCHAR_0_0_50" id="5B60ADEF-F757-A9A6-6BD3-2533ECE08052">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>50</dataTypeSize>
+<fileName>all_Domains</fileName>
+<logicalDatatype>LOGDT037</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="VARCHAR_0_0_100" id="5B64D7F3-0B9F-B791-6410-4F08CCB83361">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>100</dataTypeSize>
+<fileName>all_Domains</fileName>
+<logicalDatatype>LOGDT024</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="VARCHAR_0_0_72" id="8A8260DC-D3AD-0C00-B691-6F47E2E0848A">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:06 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>72</dataTypeSize>
+<fileName>all_Domains</fileName>
+<logicalDatatype>LOGDT024</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="NVARCHAR_0_0_1" id="914A738E-C53C-867B-5DDD-3907BF129AF1">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>1</dataTypeSize>
+<fileName>all_Domains</fileName>
+<logicalDatatype>LOGDT037</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="NUMERIC_3_0_0" id="9CB8B398-6760-E4B9-28C8-71BA6DDF50D0">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>3</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>0</dataTypeSize>
+<fileName>all_Domains</fileName>
+<logicalDatatype>LOGDT019</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="VARCHAR_0_0_50" id="9D46FF11-7CDA-240B-FB7B-E6BE7A7AFC7E">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>50</dataTypeSize>
+<fileName>all_Domains</fileName>
+<logicalDatatype>LOGDT024</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="NUMERIC_11_1_0" id="A88477AA-A8BF-75FA-979C-D763EFE48A23">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:06 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>11</dataTypePrecision>
+<dataTypeScale>1</dataTypeScale>
+<dataTypeSize>0</dataTypeSize>
+<fileName>all_Domains</fileName>
+<logicalDatatype>LOGDT019</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="NUMERIC_10_0_0" id="AD58C6BD-26D1-C390-4C66-9813EBD3D28C">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>0</dataTypeSize>
+<fileName>all_Domains</fileName>
+<logicalDatatype>LOGDT019</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="NUMERIC_4_0_0" id="B1D1D522-99A4-8943-7517-3922D03DE61D">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>0</dataTypeSize>
+<fileName>all_Domains</fileName>
+<logicalDatatype>LOGDT019</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="VARCHAR_0_0_15" id="BD53D5AF-8DBC-8868-A5D0-03BB4EFBE8BC">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>15</dataTypeSize>
+<fileName>all_Domains</fileName>
+<logicalDatatype>LOGDT024</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="NUMERIC_6_0_0" id="C2FB5CED-A8C3-501A-6503-121A1C8F4C0E">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>6</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>0</dataTypeSize>
+<fileName>all_Domains</fileName>
+<logicalDatatype>LOGDT019</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="NCHAR_0_0_3" id="C7604F41-9F5D-2010-4B54-3E7EBD53679A">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>3</dataTypeSize>
+<fileName>all_Domains</fileName>
+<logicalDatatype>LOGDT035</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="NVARCHAR_0_0_250" id="CBA6874A-31D8-2C72-CFD6-592C9DC0EBC7">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>250</dataTypeSize>
+<fileName>all_Domains</fileName>
+<logicalDatatype>LOGDT037</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="VARCHAR_0_0_30 CHAR" id="D8981D3C-87ED-9F80-35B2-2DBB3FE40B5C">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<fileName>all_Domains</fileName>
+<logicalDatatype>LOGDT024</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="NUMERIC_*_0_0" id="DB374332-B60C-E4FA-ABD9-24AA4129EF8D">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:06 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>0</dataTypeSize>
+<fileName>all_Domains</fileName>
+<logicalDatatype>LOGDT019</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="VARCHAR_0_0_150" id="E78AEA67-2309-BDD0-331B-45B46F6F88F8">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>150</dataTypeSize>
+<fileName>all_Domains</fileName>
+<logicalDatatype>LOGDT024</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="NVARCHAR_0_0_150" id="E9193C42-BBD2-F8B5-5FC6-09DD148AAEF0">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>150</dataTypeSize>
+<fileName>all_Domains</fileName>
+<logicalDatatype>LOGDT037</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="NUMERIC_18_1_0" id="F1222C06-DAE3-AC42-B730-DED7F512A952">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:06 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>18</dataTypePrecision>
+<dataTypeScale>1</dataTypeScale>
+<dataTypeSize>0</dataTypeSize>
+<fileName>all_Domains</fileName>
+<logicalDatatype>LOGDT019</logicalDatatype>
+</Domain>
+</domains>
+</DomainFile>
