@@ -76,3 +76,24 @@ document.getElementById("demo5").addEventListener("click", function () {
     window.location.href = 'http://google.com';
   });
 });
+
+// demo6 再次確認提醒
+document.getElementById("demo6").addEventListener("click", function () {
+  swal({
+  title: "確認刪除?",
+  text: "刪除將無法復原!",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,//按鈕不要紅底直接註解此行
+  
+})
+.then((willDelete) => {
+  if (willDelete) {
+    swal("刪除成功!","需加第二個雙引號才能把第一個雙引號變為title,皆可以為空字串",
+    {icon: "success",}
+    );
+  } else {
+    swal("取消!", "123!", "success");
+  }
+});
+});
