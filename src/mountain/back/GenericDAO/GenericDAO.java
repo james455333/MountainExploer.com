@@ -1,7 +1,5 @@
 package mountain.back.GenericDAO;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -11,19 +9,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import mountain.GenericObject.GenericMountainObject;
-import net.bytebuddy.asm.Advice.This;
 
 @Repository
-public class GenericDAO<T extends GenericMountainObject> {
+public class GenericDAO<T extends GenericMountainObject> implements AbstractDAO<T> {
 
 	private T entity;
 	@Autowired
 	private SessionFactory sessionFactory;
 
+	@Override
 	public void save(T entity) {
 		this.entity = entity;
 	}
-
+	
+	@Override
 	public T select(int id) {
 
 		Session session = sessionFactory.getCurrentSession();
@@ -34,6 +33,7 @@ public class GenericDAO<T extends GenericMountainObject> {
 
 	}
 
+	@Override
 	public T select(String name) {
 		Session session = sessionFactory.getCurrentSession();
 
@@ -50,6 +50,7 @@ public class GenericDAO<T extends GenericMountainObject> {
 
 	}
 
+	@Override
 	public List<T> selectAll() {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "From " + entity.getClass().getName();
@@ -58,6 +59,7 @@ public class GenericDAO<T extends GenericMountainObject> {
 		return list;
 	}
 
+	@Override
 	public T insert(T entity) {
 
 		Session session = sessionFactory.getCurrentSession();
@@ -78,10 +80,11 @@ public class GenericDAO<T extends GenericMountainObject> {
 
 	}
 
-	public T update() {
+	@Override
+	public T update(T entity) {
 		
 		Session session = sessionFactory.getCurrentSession();
-		System.out.println("entity name : " + entity.getName() + "\tentity seqno : " + entity.getId());
+//		System.out.println("entity name : " + entity.getName() + "\tentity seqno : " + entity.getId());
 		try {
 
 			T result = (T) session.get(entity.getClass(), entity.getId());
@@ -105,6 +108,7 @@ public class GenericDAO<T extends GenericMountainObject> {
 
 	}
 
+	@Override
 	public boolean delete(int id) {
 
 		Session session = sessionFactory.getCurrentSession();
