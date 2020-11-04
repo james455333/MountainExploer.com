@@ -10,39 +10,34 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
-import mountain.GenericObject.GenericMountainObject;
-
 @Entity
 @Table(name = "national_park")
 @Component
-public class NationalPark extends GenericMountainObject {
-	
+public class NationalPark {
 	
 	@Id
-	@Column(name = "SEQNO")
+	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Column(name = "NAME", unique = true)
 	private String name;
 	@OneToMany(fetch = FetchType.LAZY , mappedBy = "national_park" , cascade = CascadeType.ALL)
 	private Set<RouteBasic> routeBasic;
-	@Override
+	
 	public int getId() {
 		return id;
 	}
-	@Override
 	public void setId(int id) {
 		this.id = id;
 	}
-	@Override
 	public String getName() {
 		return name;
 	}
-	@Override
 	public void setName(String name) {
 		this.name = name;
 	}

@@ -1,10 +1,13 @@
 package mountain.back.function;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import mountain.mountainList.model.MountainBean;
 import mountain.mountainList.model.NationalPark;
@@ -14,99 +17,111 @@ import mountain.mountainList.model.RouteInfo;
 public class TransFuction {
 
 	// 轉換路線單一查詢為顯示用Bean
-	public static List<MountainBean> transSingleRI(List<NationalPark> all, int seqnum) throws IOException, SQLException  {
+	public static List<MountainBean> transSingleRI(RouteInfo singleRI) throws Exception {
 		List<MountainBean> showList = new ArrayList<MountainBean>();
-		for (NationalPark nationalPark : all) {
-			Iterator<RouteBasic> iterator = nationalPark.getRouteBasic().iterator();
-			while(iterator.hasNext()) {
-				RouteBasic rb = iterator.next();
-				if (rb.getRouteid() == seqnum) {
-					RouteInfo routeInfo = rb.getRouteInfo();
-					MountainBean mountainBean = new MountainBean();
-					mountainBean.setSeqno(seqnum);
-					mountainBean.setName(routeInfo.getName());
-					
-					String description = bytesToString(routeInfo.getDescription());
-					mountainBean.setDescription(description);
-					
-					String advice = bytesToString(routeInfo.getAdvice());
-					mountainBean.setAdvice(advice);
-					
-					String traffic = bytesToString(routeInfo.getTraffic());
-					mountainBean.setTraffic(traffic);
-					
-					String nPName = nationalPark.getName();
-					mountainBean.setNpName(nPName);
+
+		MountainBean mountainBean = new MountainBean();
+		mountainBean.setSeqno(singleRI.getRbPK());
+//				System.out.println("Seqno : " +routeInfo.getRbPK() );
+		mountainBean.setName(singleRI.getName());
+
+		String description = bytesToString(singleRI.getDescription());
+		mountainBean.setDescription(description);
+
+		String advice = bytesToString(singleRI.getAdvice());
+		mountainBean.setAdvice(advice);
+
+		String traffic = bytesToString(singleRI.getTraffic());
+		mountainBean.setTraffic(traffic);
+
+//		Blob imgUrlBlob = singleRI.getImgUrl();
+//		String imgURL = blobToString(imgUrlBlob);
+//		if (imgURL.equals("#")) {
+//			mountainBean.setImgUrl(imgURL);
+//		} else {
+//			mountainBean.setImgUrl(imgURL);
+//		}
+
+		RouteBasic routeBasic = singleRI.getRoute_basic();
+		NationalPark nationalPark = routeBasic.getNational_park();
+		String nPName = nationalPark.getName();
+		mountainBean.setNpName(nPName);
 //				System.out.println("國家公園名 : " +nPName );
-					showList.add(mountainBean);
-					break;
-				}
-			}
-		}
+		showList.add(mountainBean);
 
 		return showList;
 	}
 
 	// 轉換全部查詢結果為顯示用BeanList
-	public static List<MountainBean> transToMainBens(List<NationalPark> all) throws IOException, SQLException  {
+	public static List<MountainBean> transRouteInfos(List<RouteInfo> rIBean) throws Exception {
 		List<MountainBean> showList = new ArrayList<MountainBean>();
-		
-		for (NationalPark nationalPark : all) {
-			Iterator<RouteBasic> iterator = nationalPark.getRouteBasic().iterator();
-			while (iterator.hasNext()) {
-				RouteBasic next = iterator.next();
-				RouteInfo routeInfo = next.getRouteInfo();
-				MountainBean mountainBean = new MountainBean();
-				mountainBean.setSeqno(routeInfo.getRbPK());
+
+		for (RouteInfo routeInfo : rIBean) {
+			MountainBean mountainBean = new MountainBean();
+			mountainBean.setSeqno(routeInfo.getRbPK());
 //				System.out.println("Seqno : " +routeInfo.getRbPK() );
-				mountainBean.setName(routeInfo.getName());
-				
-				String description = bytesToString(routeInfo.getDescription());
-				mountainBean.setDescription(description);
-				
-				String advice = bytesToString(routeInfo.getAdvice());
-				mountainBean.setAdvice(advice);
-				
-				String traffic = bytesToString(routeInfo.getTraffic());
-				mountainBean.setTraffic(traffic);
-				
-				String nPName = nationalPark.getName();
-				mountainBean.setNpName(nPName);
+			mountainBean.setName(routeInfo.getName());
+
+			String description = bytesToString(routeInfo.getDescription());
+			mountainBean.setDescription(description);
+
+			String advice = bytesToString(routeInfo.getAdvice());
+			mountainBean.setAdvice(advice);
+
+			String traffic = bytesToString(routeInfo.getTraffic());
+			mountainBean.setTraffic(traffic);
+
+//			Blob imgUrlBlob = routeInfo.getImgUrl();
+//			String imgURL = blobToString(imgUrlBlob);
+//			if (imgURL.equals("#")) {
+//				mountainBean.setImgUrl(imgURL);
+//			} else {
+//				mountainBean.setImgUrl(imgURL);
+//			}
+
+			RouteBasic routeBasic = routeInfo.getRoute_basic();
+			NationalPark nationalPark = routeBasic.getNational_park();
+			String nPName = nationalPark.getName();
+			mountainBean.setNpName(nPName);
 //				System.out.println("國家公園名 : " +nPName );
-				showList.add(mountainBean);
-			}
+			showList.add(mountainBean);
 		}
 		return showList;
 	}
 
-	// 轉換NationalParkBean為導覽列用List
-	public static List<MountainBean> transToNPBean(List<NationalPark> all, int seqnum) throws IOException, SQLException  {
+	// 轉換NationalParkBean為MountainBeanList
+	public static List<MountainBean> transNPBean(NationalPark npBean) throws Exception {
 		List<MountainBean> mainBeans = new ArrayList<MountainBean>();
-		for (NationalPark nationalPark : all) {
-			if (nationalPark.getId() == seqnum) {
-				Iterator<RouteBasic> iterator = nationalPark.getRouteBasic().iterator();
-				while(iterator.hasNext()) {
-					MountainBean mountainBean = new MountainBean();
-					RouteBasic routeBasic = iterator.next();
-					RouteInfo routeInfo = routeBasic.getRouteInfo();
-					mountainBean.setSeqno(routeInfo.getRbPK());
-					mountainBean.setName(routeInfo.getName());
 
-					String description = bytesToString(routeInfo.getDescription());
-					mountainBean.setDescription(description);
+		Set<RouteBasic> routeBasics = npBean.getRouteBasic();
 
-					String advice = bytesToString(routeInfo.getAdvice());
-					mountainBean.setAdvice(advice);
+		for (RouteBasic routeBasic : routeBasics) {
+			MountainBean mountainBean = new MountainBean();
+			RouteInfo routeInfo = routeBasic.getRouteInfo();
+			mountainBean.setSeqno(routeInfo.getRbPK());
+//				System.out.println("Seqno : " +routeInfo.getRbPK() );
+			mountainBean.setName(routeInfo.getName());
 
-					String traffic = bytesToString(routeInfo.getTraffic());
-					mountainBean.setTraffic(traffic);
+			String description = bytesToString(routeInfo.getDescription());
+			mountainBean.setDescription(description);
 
-					String nPName = nationalPark.getName();
-					mountainBean.setNpName(nPName);
-//						System.out.println("國家公園名 : " +nPName );
-					mainBeans.add(mountainBean);
-				}
-			}
+			String advice = bytesToString(routeInfo.getAdvice());
+			mountainBean.setAdvice(advice);
+
+			String traffic = bytesToString(routeInfo.getTraffic());
+			mountainBean.setTraffic(traffic);
+
+//			String imgURL = bytesToString(routeInfo.getImgUrl());
+//			if (imgURL.equals("#")) {
+//				mountainBean.setImgUrl(imgURL);
+//			} else {
+//				mountainBean.setImgUrl(imgURL);
+//			}
+
+			String nPName = npBean.getName();
+			mountainBean.setNpName(nPName);
+//				System.out.println("國家公園名 : " +nPName );
+			mainBeans.add(mountainBean);
 		}
 
 		return mainBeans;

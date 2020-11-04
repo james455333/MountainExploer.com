@@ -32,7 +32,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import mountain.MountainGlobal;
 import mountain.mountainList.model.NationalPark;
@@ -55,9 +54,9 @@ public class ImportDataController {
 	private SessionFactory sessionFactory;
 
 	@RequestMapping(path = "/mountainDataImport" , method = RequestMethod.POST)
-	public String importData(Model model,@RequestParam(name = "datafile")MultipartFile multipartFile,RedirectAttributes redAttr) throws IOException {
+	public String importData(Model model,@RequestParam(name = "datafile")MultipartFile multipartFile) throws IOException {
 		Map<String, String> errors = new HashMap<String, String>();
-		
+		model.addAttribute("errors", errors);
 		
 		//創造images資料夾
 		
@@ -70,17 +69,15 @@ public class ImportDataController {
 		try {
 			importDataToDB(multipartFile);
 		} catch (Exception e) {
-			
-			errors.put("msg", "資料輸入過程發生錯誤" );
+			errors.put("msg", "資料輸入過程產生例外 : " + e.getMessage());
 		}
 		if (errors.isEmpty()) {
-			redAttr.addFlashAttribute("result", "資料輸入成功");
+			model.addAttribute("result", "資料輸入成功");
 		}
-		redAttr.addFlashAttribute("errors", errors);
 		return "redirect:/backStageEntry";
 	}
 
-	private void importDataToDB (MultipartFile multipartFile)throws Exception {
+	private void importDataToDB(MultipartFile multipartFile) {
 		int importCounter = 0;
 		Session session = sessionFactory.getCurrentSession();
 
@@ -142,15 +139,21 @@ public class ImportDataController {
 				}
 
 			}
-		} 
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
 
 	}
 
 	private byte[] getURLtoBytes(String imgURL) {
 		System.out.println(imgURL);
 		byte[] bytes = null;
-		int counter = 1;
-		String localPath = MountainGlobal.ImgDownloadPath+RouteImgTitle+(counter++) + ".jpg";
+		String localPath = MountainGlobal.ImgDownloadPath+RouteImgTitle+ ".jpg";
 
 		// download
 		try (InputStream is = new URL(imgURL).openStream();) {
