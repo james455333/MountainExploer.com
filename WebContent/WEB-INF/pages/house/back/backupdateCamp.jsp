@@ -65,20 +65,20 @@
 					</tr>
 				</thead>
 				<tbody>
-				  <tr>  
-				   
-				  	<c:forEach var="l" items="${camp_campname}"> 
-				  	<form  action="<c:url value='/mountainHouseCampBack/updateCamp'></c:url>"method='post'>	
-				    		<input type="hidden" name="updatacamp_id" size="10" value="${l.campid}">				    		
-				    		<input type="text" name="updatecamp_city" size="10" value="${l.city}">
-				    		<input type="text" name="updatecamp_town" size="10" value="${l.camptown}">
-				    		<input type="text" name="updatecamp_name" size="20" value="${l.campname}">
-				    		<input type="text" name="updatecamp_desc" size="50" value="${l.campdesc}">
+				  <c:forEach var="l" items="${jumpupdatename}"> 
+				<tr>  
+				 <td>
+				  	<form  action="<c:url value='/mountainHouseCampBack/updateCamp'></c:url>"method="get">	
+				    	<input type="hidden" name="updatacamp_id" size="10" value="${l.campid}">	 			    		
+				    	<input type="text" name="updatecamp_city" size="10" value="${l.city}">		 
+				    	<input type="text" name="updatecamp_town" size="10" value="${l.camptown}"> 	
+				    	<input type="text" name="updatecamp_name" size="20" value="${l.campname}"> 	
+				    	<input type="text" name="updatecamp_desc" size="50" value="${l.campdesc}"> 	
 				    	<input type="submit"  value="修改">
 				    	</form>
+				 </td>
+				</tr> 
 				    	</c:forEach> 
-				   
-				    </tr>
 			</table>
 		</div>
 		

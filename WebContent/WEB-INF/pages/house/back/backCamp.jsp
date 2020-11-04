@@ -75,6 +75,7 @@
 					</tr>
 				</thead>
 				<tbody>
+				<!-- 查詢全部 -->
 				<c:forEach var="i" items="${camp_all}">
 				    <tr >	
 				      <td>${i.campid}</td>			      
@@ -82,8 +83,23 @@
 				      <td>${i.camptown}</td>
 				      <td> ${i.campname}</td>
 				      <td><a href="${i.campdesc}">${i.campdesc}</a></td> 
-				    </tr>
+				    <td>
+				      <form  action="<c:url value='/mountainHouseCampBack/deleteCamp'></c:url>"method='post'>
+				      <input type="hidden" name="deletecamp" value="${i.campid}">
+				      <input type="submit"  value="刪除" >
+				      </form>
+				      </td> 
+				    
+				   <td>
+				  	<form  action="<c:url value='/mountainHouseCampBack/updatejump'></c:url>"method='get'>
+				    	 <input type="hidden" name="jumpupdate" value="${i.campid}">
+				    	<input type="submit"  value="修改">
+					</form>				  
+				   
+				   </td>
+				    </tr>	    
 				 </c:forEach>
+				<!-- 查詢縣市 -->
 				 
 				 <c:forEach var="j" items="${camp_city}">
 				    <tr >	
@@ -92,8 +108,23 @@
 				      <td>${j.camptown}</td>
 				      <td> ${j.campname}</td>
 				      <td><a href="${j.campdesc}">${j.campdesc}</a></td>   
+				     <td>
+				      <form  action="<c:url value='/mountainHouseCampBack/deleteCamp'></c:url>"method='post'>
+				      <input type="hidden" name="deletecamp" value="${j.campid}">
+				      <input type="submit"  value="刪除" >
+				      </form>
+				      </td> 
+				    
+				   <td>
+				  	<form  action="<c:url value='/mountainHouseCampBack/updatejump'></c:url>"method='get'>
+				    	 <input type="hidden" name="jumpupdate" value="${j.campid}">
+				    	<input type="submit"  value="修改">
+					</form>				  
+				   
+				   </td>
 				    </tr>
 				 </c:forEach>
+				 <!-- 查詢鄉鎮 -->				
 				 
 				 <c:forEach var="k" items="${camp_town}">
 				    <tr >
@@ -102,9 +133,23 @@
 				      <td>${k.camptown}</td>
 				      <td> ${k.campname}</td>
 				      <td><a href="${k.campdesc}">${k.campdesc}</a></td>   
+				     <td>
+				      <form  action="<c:url value='/mountainHouseCampBack/deleteCamp'></c:url>"method='post'>
+				      <input type="hidden" name="deletecamp" value="${k.campid}">
+				      <input type="submit"  value="刪除" >
+				      </form>
+				      </td> 
+				    
+				   <td>
+				  	<form  action="<c:url value='/mountainHouseCampBack/updatejump'></c:url>"method='get'>
+				    	 <input type="hidden" name="jumpupdate" value="${k.campid}">
+				    	<input type="submit"  value="修改">
+					</form>				  
+				   
+				   </td>
 				    </tr>
 				 </c:forEach>
-				 
+				 <!-- 查詢營地 -->
 				 <c:forEach var="l" items="${camp_campname}">
 				    <tr >	
 				      <td>${l.campid}</td>		      
@@ -125,10 +170,31 @@
 				    	 <input type="hidden" name="jumpupdate" value="${l.campid}">
 				    	<input type="submit"  value="修改">
 					</form>				  
-				   </a>
+				   
 				   </td>
 				   </tr>
 				 </c:forEach>
+				 
+				  <c:forEach var="m" items="${lookupdate}">
+				    <tr >	
+				      <td>${m.campid}</td>		      
+				      <td>${m.city}</td>
+				      <td>${m.camptown}</td>
+				      <td> ${m.campname}</td>
+				      <td><a href="${m.campdesc}">${m.campdesc}</a></td>  
+				     </tr>
+				 </c:forEach>
+				 
+				 <c:forEach var="n" items="${lookinser}">
+				    <tr >	
+				      <td>${n.campid}</td>		      
+				      <td>${n.city}</td>
+				      <td>${n.camptown}</td>
+				      <td> ${n.campname}</td>
+				      <td><a href="${n.campdesc}">${n.campdesc}</a></td>  
+				     </tr>
+				 </c:forEach>
+				 
 				 
 			</table>
 		</div>

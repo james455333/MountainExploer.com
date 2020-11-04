@@ -14,4 +14,5 @@ public interface ICampBeanService {
 	public CampBean insertCamp(CampBean bean);
 	public CampBean update( CampBean cBean);
 	public CampBean deleteCamp(int campid);
+	public List<CampBean> selectcampid(int campid);
 }

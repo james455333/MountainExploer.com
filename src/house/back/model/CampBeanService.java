@@ -35,7 +35,7 @@ public class CampBeanService implements ICampBeanService {
 
 
 	@Override
-	public List<CampBean> selectCampName(String campname) {
+	public List<CampBean> selectCampName( String campname) {
 		return cDao.selectCampName(campname);
 	}
 
@@ -56,6 +56,11 @@ public class CampBeanService implements ICampBeanService {
 	@Override
 	public CampBean update(CampBean cBean) {
 		return cDao.update(cBean);
+	}
+
+	@Override
+	public List<CampBean> selectcampid(int campid) {
+		return cDao.selectcampid(campid);
 	}
 
 	

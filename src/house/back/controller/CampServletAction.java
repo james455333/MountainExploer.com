@@ -24,8 +24,7 @@ public class CampServletAction {
 	private CampBeanService campBeanService;
 	@Autowired
 	private SessionFactory sessionfactory;
-	@Autowired
-	private CampBean cbean;
+	
 	
 	
 	@RequestMapping(path = "/mountainHouseCampBack/selectAll", method = RequestMethod.GET)
@@ -60,8 +59,9 @@ public class CampServletAction {
 		return "house/back/backCamp";
 		
 	}
+	
 	@RequestMapping(path = "/mountainHouseCampBack/insertCamp", method = RequestMethod.POST)
-	public String insertCamp(CampBean bean , Model m,
+	public String insertCamp(CampBean bean , Model m,String id,
 			@RequestParam(name = "insercamp_city") String city,
 			@RequestParam(name = "insercamp_town") String town,
 			@RequestParam(name = "insercamp_name") String name,
@@ -71,11 +71,14 @@ public class CampServletAction {
 		bean.setCamptown(town);
 		bean.setCampname(name);
 		bean.setCampdesc(desc);
-		
+
 		campBeanService.insertCamp(bean);
-		
+		int campid = Integer.parseInt(id);
+		List<CampBean> list = campBeanService.selectcampid(campid);
+		m.addAttribute("lookinser",list);
 		return "house/back/backCamp";
 	}
+	
 	@RequestMapping(path = "/mountainHouseCampBack/deleteCamp", method = RequestMethod.POST)
 	public String deleteCamp(@RequestParam(name = "deletecamp")String campid, Model m) {
 		
@@ -84,18 +87,26 @@ public class CampServletAction {
 		return "house/back/backCamp";
 
 	}
-	@RequestMapping(path = "/mountainHouseCampBack/updateCamp",method = RequestMethod.POST)
+	@RequestMapping(path = "/mountainHouseCampBack/updateCamp",method = RequestMethod.GET)
 	public String update(CampBean cBean, Model m, 
+			@RequestParam(name = "updatacamp_id") String id,
 			@RequestParam(name = "updatecamp_city") String city,
 			@RequestParam(name = "updatecamp_town") String town,
 			@RequestParam(name = "updatecamp_name") String name,
 			@RequestParam(name = "updatecamp_desc") String desc
 			) {
+		int campid = Integer.parseInt(id);
+		cBean.setCampid(campid);
 		cBean.setCity(city);
 		cBean.setCamptown(town);
 		cBean.setCampname(name);
 		cBean.setCampdesc(desc);
-				campBeanService.update(cBean);
+		campBeanService.update(cBean);
+//		System.out.println(cBean);
+		
+		List<CampBean> list = campBeanService.selectcampid(campid);
+		m.addAttribute("lookupdate",list);
+//		System.out.println(list);
 		return "house/back/backCamp";
 	}
 	@RequestMapping(path = "/mountainHouseCampBack/inserjump", method = RequestMethod.GET)
@@ -103,10 +114,11 @@ public class CampServletAction {
 		return "house/back/backinserCamp";
 	}
 	@RequestMapping(path = "/mountainHouseCampBack/updatejump", method = RequestMethod.GET)
-	public String jumpupdate(@RequestParam(name = "jumpupdate")String campid, Model m) {
-		int deletecampid = Integer.parseInt(campid);
-		campBeanService.select(deletecampid);
-		m.addAttribute(attributeValue)
+	public String jumpupdate(@RequestParam(name = "jumpupdate")String id, Model m) {
+			int campid = Integer.parseInt(id);
+		List<CampBean> list = campBeanService.selectcampid(campid);
+				m.addAttribute("jumpupdatename",list);
+				System.out.println("list" + list);
 		return "house/back/backupdateCamp";
 	}
 	

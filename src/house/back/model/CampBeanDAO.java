@@ -28,6 +28,12 @@ public class CampBeanDAO {
 			
 		}
 		
+		public List<CampBean> selectcampid(int campid){
+			Query<CampBean> query = getSession().createQuery("From CampBean where campid="+campid, CampBean.class);
+			List<CampBean> list = query.list();
+			return list;
+		}
+		
 		
 		public List<CampBean> selectAll() {
 			Query<CampBean> query = getSession().createQuery("From CampBean",CampBean.class);
