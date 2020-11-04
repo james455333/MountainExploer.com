@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D50F20F0-6A9B-204A-D3AF-84445F3DA447" name="counties">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>34D6501E-5989-0EFB-64A7-E99A8FC75C68</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="name" id="364B43F2-35C3-550C-4AE6-D032D48FC828">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>D6FF963E-FD9A-09E0-0CD7-AE203943BBB1</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>9D46FF11-7CDA-240B-FB7B-E6BE7A7AFC7E</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="area_name" id="F2E3F8F0-8858-7D21-1C87-9C809D4F992A">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-03 10:03:32 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>9D46FF11-7CDA-240B-FB7B-E6BE7A7AFC7E</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="41310798-28D9-A65E-88C7-531BBC77CA2B" referredColumn="5F7FC441-2AAE-3E26-D525-37A8EBA8F623"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="36F43F6A-9D26-DB4B-205E-20DB6F54CB4D" name="counties_pk">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>0B81E6ED-C82F-4413-0245-79611D5CC9E1</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="364B43F2-35C3-550C-4AE6-D032D48FC828"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0933049D-21F9-17FD-54A5-1CB50290336D" name="counties_area_fk">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:06 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F2E3F8F0-8858-7D21-1C87-9C809D4F992A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

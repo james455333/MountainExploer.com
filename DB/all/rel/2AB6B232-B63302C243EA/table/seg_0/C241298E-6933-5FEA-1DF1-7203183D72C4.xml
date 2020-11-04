@@ -1,0 +1,78 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C241298E-6933-5FEA-1DF1-7203183D72C4" name="act_img">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>30A01D73-1BA5-7036-6262-07146A4C61E7</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="seqno" id="6295F627-D772-E7AE-9A1E-7E438E43D9DC">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>FDF70335-E640-510B-1C13-665E08B0EE75</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>466754EF-0E78-0A42-4E8D-64700CF12377</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="img" id="BC80FD90-4AE9-4BEA-6090-328F4873163F">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>066A6600-5318-FDF8-CBCD-E4B2111A9642</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT028</logicalDatatype>
+<domain>5AFD528A-ABFB-CF2C-1CDD-C88E5A159F18</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="activity_basic_seqno" id="94F4FF6F-F70F-CE1D-EF09-13D8995D148C">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>1E7DE284-A28C-41D4-A10A-8C44CE5E5AAA</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>57B577AF-1919-EE54-9C07-01B34C5E5B7A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AC8E6BB0-29F2-9CB5-5E9D-584EB99CD236" referredColumn="C4AA0944-B645-2ECF-5636-002A4CF55F8A"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="538F0C42-BD97-93E5-594D-23E6B1F3189A" name="act_img_pk">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>68CAFD10-9575-7B2C-18F7-73DA7F63AC23</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6295F627-D772-E7AE-9A1E-7E438E43D9DC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A9B9ECA0-F974-C2CE-AB43-8F6B8F029138" name="act_img_activity_basic_fk">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:06 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="94F4FF6F-F70F-CE1D-EF09-13D8995D148C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

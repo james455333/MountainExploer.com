@@ -1,0 +1,151 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DD152EC3-CAA6-FCC5-89D6-650CAF477345" name="activity_registry">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>EA6943DD-762F-D5AF-EF3D-42E002A43CC7</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="seqno" id="34173109-6514-89CC-CB8D-145854F9FB88">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>6274860A-A357-4BD9-178A-C67F99D85595</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementGenerateAlways>true</autoIncrementGenerateAlways>
+<autoIncrementStartWith>4000000</autoIncrementStartWith>
+<autoIncrementMinValue>4000000</autoIncrementMinValue>
+<autoIncrementMaxValue>4999999</autoIncrementMaxValue>
+<autoIncrementDisableCache>false</autoIncrementDisableCache>
+<autoIncrementCache>10</autoIncrementCache>
+<autoIncrementGenerateTrigger>false</autoIncrementGenerateTrigger>
+</Column>
+<Column name="activity_basic_seqno" id="3F9BD9DC-4349-2E30-C2BA-C8DA22621B9A">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>E49130D8-2E51-A2F3-C391-EAD5EC8AEA58</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="02250F80-8A86-04DA-0B8B-5ABCA2671481" referredColumn="C4AA0944-B645-2ECF-5636-002A4CF55F8A"/>
+</associations>
+</Column>
+<Column name="member_basic_id" id="600A6576-339C-AB9D-A8CB-911280AC6DE5">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>43AC9136-CA4B-AAB6-6529-DA7BA6FA04FB</importedID>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F4EA08AD-238C-24EA-FCDE-DC01992EF2D7" referredColumn="65FCDD1D-6006-4901-68AD-AD5A6ECA2E65"/>
+</associations>
+</Column>
+<Column name="reg_date" id="F77203A5-7493-7677-1178-516F60FA4F1A">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>D2B2F0AB-19F5-9189-A6BB-A90266D8B14A</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>510DFE1A-9D4B-BC4F-55FE-2DF450A92059</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="deniedtag" id="E233DA11-2EDF-1B33-6067-542D58AA4B93">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>5035E0B4-7968-81E9-D071-9131462E2787</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>081F619A-8F22-E694-AFE4-AB27C754FE38</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="confirm" id="D5B0AC68-CF42-2922-9D73-3317DECDBF7D">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>59AE00D8-719F-F881-4B54-F86E21F4A63E</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>081F619A-8F22-E694-AFE4-AB27C754FE38</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="deny_reson" id="5D5FD081-49BB-DBC2-91F6-A963838E5DA5">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>AA08E808-F2FE-F9B0-1211-69B9455F938F</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT029</logicalDatatype>
+<domain>57AAEB89-ADE1-5295-799E-308DE467A9B3</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="6D003D8F-D871-545F-F318-A2F6B91269EC" name="activity_registry_pk">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>9E94AC86-72C6-C11C-02EE-CE77A2947C03</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="34173109-6514-89CC-CB8D-145854F9FB88"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0F7DE598-B054-99E9-F19A-4FF55012A1E6" name="activity_registry_activity_basic_fk">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:06 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3F9BD9DC-4349-2E30-C2BA-C8DA22621B9A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8D0BDD0E-BEA2-E45A-6FB0-2CD0CD17FD71" name="activity_registry_member_basic_fk">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:06 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="600A6576-339C-AB9D-A8CB-911280AC6DE5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
