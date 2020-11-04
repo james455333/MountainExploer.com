@@ -1,5 +1,11 @@
-#p_i_content {
+.p_i_name {
+    
     text-align: center;
+}
+
+.p_i_content {
+    text-align: center;
+    
 }
 
 /*---------下拉選單滑入展開---------*/
@@ -88,10 +94,12 @@ header {
     border-radius: 25px;
     transition: all 0.5s linear;
 }
-.div_ul{
-    margin: auto;
-    /* margin-bottom: 0px; */
+
+.div_ul {
+    box-sizing: border-box;
+    /* margin: auto; */
 }
+
 .div_li1 {
     width: 200px;
     /* height: 400px; */
@@ -102,18 +110,6 @@ header {
     background-color: lightblue;
     margin-left: 5px;
     margin-right: 5px;
-  
-    
-}
-
-.div_li2 {
-    margin-left: 210px;
-    margin-right: 210px;
-    /* height: 400px; */
-    height:auto;
-    text-align: center;
-    line-height: 400px;
-    background-color: slategrey;
 }
 
 .div_li3 {
@@ -127,6 +123,15 @@ header {
     margin-left: 5px;
     margin-right: 5px;
 }
+.div_li2 {
+    margin-left: 215px;
+    margin-right: 215px;
+    /* height: 500px; */
+    height: auto;
+    text-align: center;
+    line-height: 15px;
+    background-color: slategrey;
+}
 
 #footer {
     clear: both;
@@ -135,7 +140,26 @@ header {
     text-align: center;
     line-height: 80px;
 }
-.c004{
-text-align: center;
-margin-top: 5px;
+
+.c001 {
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.c002 {
+    box-sizing: border-box;
+    text-align: center;
+    padding: 100px;
+}
+
+.c003 {
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.c004 {
+    text-align: center;
+    width: auto;
+    overflow: hidden;
+    /* width: 255px; */
 }
