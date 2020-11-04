@@ -12,19 +12,42 @@ import mountain.mountainList.model.NationalPark;
 @Controller
 public class DemoGeneric {
 	
+//	@Autowired
+//	private  GenericDAO<NationalPark> nPDAO;
 	@Autowired
-	private  GenericDAO<NationalPark> nPDAO;
+	private GenericService<NationalPark> npService;
 	
 	@RequestMapping(path = "/mountain/demoGeneric")
 	public String demoGeneric( Model model) {
 		
+		NationalPark nationalPark = new NationalPark();
 		
-		GenericDAO<NationalPark> npDAO = this.nPDAO;
- 		
-		NationalPark npBean = npDAO.select(300);
+		//	設定測試內值
+		nationalPark.setName("updateGeneric1");
+		nationalPark.setId(304);
 		
-		model.addAttribute("result", npBean);
+//		nationalPark.setName("updateGeneric1");
+		GenericService<NationalPark> npService = this.npService;
+		npService.save(nationalPark);
 		
+		
+		//Select(int) Success
+//		NationalPark npBean = npService.select(300);
+		
+		//select(String) Suceess
+//		NationalPark npBean = npService.select("testGeneric");
+		
+		//insert(obj) Success
+//		NationalPark insert = npService.insert(nationalPark);
+//		if (insert != null) {
+//		model.addAttribute("result", npBean);
+//		}
+
+		//update(obj) 		
+		
+		NationalPark update = npService.update();
+		
+		model.addAttribute("result", update);
 		return "mountain/back/demoGeneric";
 	}
 	

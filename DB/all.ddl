@@ -1,5 +1,5 @@
 -- 產生者Oracle SQL Developer Data Modeler 20.2.0.167.1538
--- 於:2020-11-03 21:33:33 TST
+-- 於:2020-11-04 14:23:17 TST
 -- 位置:Oracle Database 12cR2
 -- 類型:Oracle Database 12cR2
 
@@ -213,6 +213,7 @@ CREATE TABLE member_basic (
         GENERATED ALWAYS AS IDENTITY ( START WITH 1000000 MINVALUE 1000000 MAXVALUE 1999999 CYCLE CACHE 10 ORDER )
     NOT NULL,
     account           VARCHAR2(150) NOT NULL,
+    password          VARCHAR2(50) NOT NULL,
     name              NVARCHAR2(150) NOT NULL,
     email             VARCHAR2(150) NOT NULL,
     member_status_id  NUMBER NOT NULL,
