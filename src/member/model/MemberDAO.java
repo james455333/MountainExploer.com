@@ -21,9 +21,9 @@ public class MemberDAO {
 	}
 	
 	//Registered new user
-	public Member insert(Member mb) {
+	public MemberBasic insert(MemberBasic mb) {
 		Session session = sessionFactory.getCurrentSession();
-		Member result = session.get(Member.class, mb.getMemberId());
+		MemberBasic result = session.get(MemberBasic.class, mb.getSeqno());
 		if(result == null) {
 			session.save(mb);
 			return mb;
@@ -33,14 +33,14 @@ public class MemberDAO {
 	
 	
 	//Login Check Password
-	public Member checkPassword(String account, String password) {
+	public MemberBasic checkPassword(String account, String password) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = "From Member where account = ?0 and password = ?1";
-		Query<Member> query = session.createQuery(hql, Member.class);
+		String hql = "From Member_Basic where account = ?0 and password = ?1";
+		Query<MemberBasic> query = session.createQuery(hql, MemberBasic.class);
 		query.setParameter(0, account);
 		query.setParameter(1, password);
 		
-		Member qBean = query.uniqueResult();
+		MemberBasic qBean = query.uniqueResult();
 		
 		if(qBean != null) {
 			return qBean;
@@ -50,31 +50,45 @@ public class MemberDAO {
 	
 	
 	//After login success return Member's info
-	public List<Member> listInfo(){
+	public List<MemberBasic> listInfo(){
 		Session session = sessionFactory.getCurrentSession();
-		Query<Member> query = session.createQuery("From Member", Member.class);
-		List<Member> list = query.list();
+		Query<MemberBasic> query = session.createQuery("From Member_Basic", MemberBasic.class);
+		List<MemberBasic> list = query.list();
 		
 		return list;
 	}
 	
 	
+	
+	
 	//Update Member's info
-	public Member updateData(int memberId, Member mb) {
+	public MemberBasic updateData(int seqno, MemberBasic mb) {
 		Session session = sessionFactory.getCurrentSession();
-		Member result = session.get(Member.class, memberId);
+		MemberBasic result = session.get(MemberBasic.class, seqno);
 		if(result != null) {
-			result.setPassword(mb.getPassword());
+			result.setAccount(mb.getAccount());
 			result.setName(mb.getName());
-			result.setAddress(mb.getAddress());
 			result.setEmail(mb.getEmail());
-			result.setTel(mb.getTel());
-			result.setExp(mb.getExp());
+			result.setPassword(mb.getPassword());
 		}
 		return result;
 	}
 	
-	
+	public MemberInfo updateInfo(int member_basic_id, MemberInfo mI) {
+		Session session = sessionFactory.getCurrentSession();
+		MemberInfo result = session.get(MemberInfo.class, member_basic_id);
+		if(result != null) {
+			result.setBirthday(mI.getBirthday());
+			result.setNeck_name(mI.getNeck_name());
+			result.setPhone(mI.getPhone());
+			result.setGender(mI.getGender());
+			result.setClimb_ex(mI.getClimb_ex());
+			result.setPer_img(mI.getPer_img());
+			result.setOther(mI.getOther());
+		}
+		return result;
+	}
+
 	
 
 }

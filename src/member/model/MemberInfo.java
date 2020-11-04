@@ -3,12 +3,17 @@ package member.model;
 import java.sql.Blob;
 import java.sql.Clob;
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +28,7 @@ public class MemberInfo {
 	private String climb_ex;
 	private Clob per_img;
 	private Blob other;	
+	
 
 	public MemberInfo() {
 		
@@ -121,7 +127,6 @@ public class MemberInfo {
 	public void setOther(Blob other) {
 		this.other = other;
 	}
-	
 	
 	
 	

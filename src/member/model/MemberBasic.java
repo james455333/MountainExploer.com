@@ -1,12 +1,17 @@
 package member.model;
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +24,9 @@ public class MemberBasic {
 	private String email;
 	private int member_status_id;
 	private Date reg_Date;
+	private String password;
+	private Set<MemberInfo> memberInfo = new HashSet<MemberInfo>();
+	private Set<MemberStatus> memberStatus = new HashSet<MemberStatus>();
 	
 	public MemberBasic() {
 		
@@ -96,9 +104,37 @@ public class MemberBasic {
 	public void setReg_Date(Date reg_Date) {
 		this.reg_Date = reg_Date;
 	}
+	
+	
+	@Column (name = "PASSWORD")
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	
+	@OneToMany (fetch = FetchType.LAZY, mappedBy = "MEMBER_BASIC", cascade = CascadeType.ALL)
+	public Set<MemberInfo> getMemberInfo() {
+		return memberInfo;
+	}
+
+	public void setMemberInfo(Set<MemberInfo> memberInfo) {
+		this.memberInfo = memberInfo;
+	}
+
 	
+	@OneToMany (fetch = FetchType.LAZY, mappedBy = "MEMBER_BASIC", cascade = CascadeType.ALL)
+	public Set<MemberStatus> getMemberStatus() {
+		return memberStatus;
+	}
+
+	public void setMemberStatus(Set<MemberStatus> memberStatus) {
+		this.memberStatus = memberStatus;
+	}
+
 	
 	
 	

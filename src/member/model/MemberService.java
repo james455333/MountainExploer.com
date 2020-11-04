@@ -6,20 +6,25 @@ public class MemberService {
 	
 	private MemberDAO memberDao;
 	
-	public Member insert(Member mb) {
+	public MemberBasic insert(MemberBasic mb) {
 		return memberDao.insert(mb);
 	}
 	
-	public Member checkPassword(String account, String password) {
+	public MemberBasic checkPassword(String account, String password) {
 		return memberDao.checkPassword(account, password);
 	}
 	
-	public List<Member> listInfo(){
+	public List<MemberBasic> listInfo() {
 		return memberDao.listInfo();
 	}
 	
-	public Member updateData(int memberId, Member mb) {
-		return memberDao.updateData(memberId, mb);
+	public MemberBasic updateData(int seqno, MemberBasic mb) {
+		return memberDao.updateData(seqno, mb);
 	}
+	
+	public MemberInfo updateInfo(int member_basic_id, MemberInfo mI) {
+		return memberDao.updateInfo(member_basic_id, mI);
+	}
+	
 
 }
