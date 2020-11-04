@@ -12,6 +12,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
@@ -28,6 +30,7 @@ public class MemberInfo {
 	private String climb_ex;
 	private Clob per_img;
 	private Blob other;	
+	private MemberBasic memberBasic;
 	
 
 	public MemberInfo() {
@@ -126,6 +129,17 @@ public class MemberInfo {
 
 	public void setOther(Blob other) {
 		this.other = other;
+	}
+
+	
+	@ManyToOne (fetch = FetchType.LAZY)
+	@JoinColumn(name = "SEQNO")
+	public MemberBasic getMemberBasic() {
+		return memberBasic;
+	}
+
+	public void setMemberBasic(MemberBasic memberBasic) {
+		this.memberBasic = memberBasic;
 	}
 	
 	

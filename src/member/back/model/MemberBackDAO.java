@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import member.model.Member;
+import member.model.MemberBasic;
 
 
 @Repository("memberBackDao")
@@ -26,11 +26,11 @@ public class MemberBackDAO {
 	//Back Login
 	public boolean checkLogin(String account, String password) {
 		Session session = sessionFactory.getCurrentSession();
-		Query<Member> query = session.createQuery("From Member where account = ?0 and password = ?1", Member.class);
+		Query<MemberBasic> query = session.createQuery("From Member_Basic where account = ?0 and password = ?1", MemberBasic.class);
 		query.setParameter(0, account);
 		query.setParameter(1, password);
 		
-		Member qBean = query.uniqueResult();
+		MemberBasic qBean = query.uniqueResult();
 		
 		if(qBean != null) {
 			return true;
@@ -41,42 +41,37 @@ public class MemberBackDAO {
 	
 	
 	//Select all Member's Info
-	public List<Member> selectAll(){
+	public List<MemberBasic> selectAll(){
 		Session session = sessionFactory.getCurrentSession();
-		Query<Member> query = session.createQuery("From Member", Member.class);
-		List<Member> list = query.list();
+		Query<MemberBasic> query = session.createQuery("From Member_Basic", MemberBasic.class);
+		List<MemberBasic> list = query.list();
 		
 		return list;
 	}
 	
 	
+	
 	// Select single Member's Info
-	public List<Member> selectOne(String account){
+	public List<MemberBasic>selectOne(String account){
 		Session session = sessionFactory.getCurrentSession();
-		Query<Member> query = session.createQuery("From Member where account = ?0", Member.class);
+		Query<MemberBasic> query = session.createQuery("From Member_Basic where account = ?0", MemberBasic.class);
 		query.setParameter(0, account);
 		
-		List<Member> list = query.list();
+		List<MemberBasic> list = query.list();
 		
 		return list;
 	}
 	
 	
 	//Update Member's info
-	public Member updateData(int memberId, Member mb) {
+	public MemberBasic updateData(int memberId, MemberBasic mb) {
 		Session session = sessionFactory.getCurrentSession();
-		Member result = session.get(Member.class, memberId);
+		MemberBasic result = session.get(MemberBasic.class, memberId);
 		if(result != null) {
 			result.setAccount(mb.getAccount());
 			result.setName(mb.getName());
-			result.setAddress(mb.getAddress());
 			result.setEmail(mb.getEmail());
-			result.setTel(mb.getTel());
-			result.setExp(mb.getExp());
-			result.setGroupId(mb.getGroupId());
-			result.setTotalAmt(mb.getTotalAmt());
-			result.setUnpaid_amount(mb.getUnpaid_amount());
-			result.setMemberImage(mb.getMemberImage());
+			result.setMember_status_id(mb.getMember_status_id());
 		}
 		return result;
 	}

@@ -2,9 +2,12 @@ package member.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,6 +16,7 @@ public class MemberStatus {
 	
 	private int seqno;
 	private String name;
+	private MemberBasic memberBasic;
 
 	public MemberStatus() {
 		
@@ -42,6 +46,17 @@ public class MemberStatus {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	
+	@ManyToOne (fetch = FetchType.LAZY)
+	@JoinColumn (name = "SEQNO")
+	public MemberBasic getMemberBasic() {
+		return memberBasic;
+	}
+
+	public void setMemberBasic(MemberBasic memberBasic) {
+		this.memberBasic = memberBasic;
 	}
 	
 	

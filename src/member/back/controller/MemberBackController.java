@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import member.back.model.MemberBackService;
+import member.model.MemberBasic;
 
 @Controller
 public class MemberBackController {
@@ -36,7 +37,7 @@ public class MemberBackController {
 	public String processSelectAction1(@RequestParam(name = "selectAll")String selectAll, Model m) {
 		
 		if(selectAll != null) {
-			List<Member> mbList = memberBackService.selectAll();
+			List<MemberBasic> mbList = memberBackService.selectAll();
 			m.addAttribute("mbList", mbList);
 			return "member/memberBackSelectList";
 		} 
@@ -47,7 +48,7 @@ public class MemberBackController {
 	public String processSelectAction2(@RequestParam(name="account")String account, Model m) {
 		
 		if(account != null) {
-			List<Member> mbList = memberBackService.selectOne(account);
+			List<MemberBasic> mbList = memberBackService.selectOne(account);
 			m.addAttribute("mblist", mbList);
 			return "member/memberBackSelectList";
 		}

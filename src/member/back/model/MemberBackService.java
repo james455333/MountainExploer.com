@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import member.model.Member;
+import member.model.MemberBasic;
 
 @Service("memberBackService")
 public class MemberBackService {
@@ -17,15 +17,15 @@ public class MemberBackService {
 		return memberBackDAO.checkLogin(account, password);
 	}
 	
-	public List<Member> selectAll(){
+	public List<MemberBasic> selectAll() {
 		return memberBackDAO.selectAll();
 	}
 	
-	public List<Member> selectOne(String account){
+	public List<MemberBasic>selectOne(String account) {
 		return memberBackDAO.selectOne(account);
 	}
 	
-	public Member updateData(int memberId, Member mb) {
+	public MemberBasic updateData(int memberId, MemberBasic mb) {
 		return memberBackDAO.updateData(memberId, mb);
 	}
 	
