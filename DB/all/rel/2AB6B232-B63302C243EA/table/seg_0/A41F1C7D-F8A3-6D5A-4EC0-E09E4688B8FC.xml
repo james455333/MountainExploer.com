@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A41F1C7D-F8A3-6D5A-4EC0-E09E4688B8FC" name="camp_baisc">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>4975BAB7-8640-5D11-EF00-BAABC7382133</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="8F4D0422-4D91-0250-D87C-3869781438A5">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>D52E5196-F9DB-9EB8-07D5-856708B5C77F</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementStartWith>20000</autoIncrementStartWith>
+<autoIncrementMinValue>20000</autoIncrementMinValue>
+<autoIncrementMaxValue>25999</autoIncrementMaxValue>
+<autoIncrementDisableCache>false</autoIncrementDisableCache>
+<autoIncrementCache>10</autoIncrementCache>
+<autoIncrementGenerateTrigger>false</autoIncrementGenerateTrigger>
+<notNullConstraintName>nnc_campv1_id</notNullConstraintName>
+</Column>
+<Column name="counties_name" id="07500704-086A-1F13-6724-4FCA1D5AFFBC">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-03 10:03:49 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>9D46FF11-7CDA-240B-FB7B-E6BE7A7AFC7E</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D72B0DB5-FEC5-2F3E-BF05-5BFDF2C54B8E" referredColumn="364B43F2-35C3-550C-4AE6-D032D48FC828"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="461F7453-9831-6F8C-1F89-A2CFCE585C82" name="campv1_pk">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>F635CED6-CE68-7C44-B2F4-1ABD28CBDD3B</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8F4D0422-4D91-0250-D87C-3869781438A5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D1263FAD-66D3-9299-7923-712C0A05CC40" name="campv1_counties_fk">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:06 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="07500704-086A-1F13-6724-4FCA1D5AFFBC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

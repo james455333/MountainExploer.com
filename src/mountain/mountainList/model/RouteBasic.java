@@ -7,9 +7,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
@@ -18,13 +20,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class RouteBasic {
 	@Id
-	@Column(name = "ID")
+	@Column(name = "SEQNO")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int routeid;
-	
-	
-	
+	@Transient
+	private int npid;
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="NATIONAL_PARK_ID",referencedColumnName = "SEQNO")
 	private NationalPark national_park;
 	public NationalPark getNational_park() {
 		return national_park;
@@ -47,6 +49,12 @@ public class RouteBasic {
 	}
 	public void setRouteInfo(RouteInfo routeInfo) {
 		this.routeInfo = routeInfo;
+	}
+	public int getNpid() {
+		return npid;
+	}
+	public void setNpid(int npid) {
+		this.npid = npid;
 	}
 	
 	

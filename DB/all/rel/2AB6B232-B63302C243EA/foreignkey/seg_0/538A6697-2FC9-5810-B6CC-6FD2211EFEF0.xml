@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="538A6697-2FC9-5810-B6CC-6FD2211EFEF0" containerWithKeyObject="DAA4B96C-8938-052F-F485-F7CC2756066B" localFKIndex="3D960039-C400-EC00-E05F-645B4C43EC75" name="house_info_national_park_FK">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-03 12:42:12 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<referredTableLongName>national_park</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>D64440C4-40A1-CE17-8295-3FE75B38A38F</referredTableID>
+<keyObject>D79DB7D4-44FD-8601-DD02-0352B787F2CB</keyObject>
+<referredKeyID>D79DB7D4-44FD-8601-DD02-0352B787F2CB</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>seqno</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
