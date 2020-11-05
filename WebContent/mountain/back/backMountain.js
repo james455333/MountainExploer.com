@@ -14,20 +14,37 @@ $(".deleteButton").on("click",function(){
         text: "取消",
         visible: true
       },
-      // danger: {
-      //變紅底
+      
       danger: {
         text: "確定執行刪除",
         visible: true,
-
+		value : true
       },
-    }
-  }).then(() => {
-   		
-    
+    },
+	
+  }).then((value) => {
+		if(value){
+	   		$("#deleteForm").submit();
+		}
+    	
   });
 	
 })
+
+//招出結果視窗
+if(result!=null){
+	swal({
+		title: result,
+	    icon: "success"
+	}
+	);
+}
+
+//招出錯誤訊息
+if(errors!=null){
+	swal("Oops! 出現錯誤了", errors,"errors")
+}
+
 $("#deleteCancel").on("click",function(){
 	$("#deleteID").empty()
 	$("#deleteBlock").css({
@@ -38,7 +55,6 @@ $("#deleteCancel").on("click",function(){
 	
 })
 
-$("")
 
 //列表切換
 $("#nPSelect").on("change",function(){
@@ -77,3 +93,11 @@ $(".routeImg").on("mouseenter",function(e){
 }).on("mouseleave",function(){
 	$(this).siblings().hide();
 })
+
+
+$(".rtSubmit").on("mouseenter",function(){
+	let status = $(this).siblings(".searchSelect").find(".route")
+	console.log(status)
+})
+
+

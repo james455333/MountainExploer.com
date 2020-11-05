@@ -42,7 +42,9 @@ public class BackRetrieveController {
 	// 總查詢
 	@SuppressWarnings("unchecked")
 	@RequestMapping(path = "/mountainBackStage/mainPage", method = RequestMethod.GET)
-	public String pageEntry(Model model, HttpServletRequest request, RedirectAttributes redrAttr) {
+	public String pageEntry(Model model,RedirectAttributes redrAttr,
+			@RequestParam(name = "page", required = false) String pageString,
+			@RequestParam(name = "showData", required = false) String showDataString) {
 
 		// 設置錯誤接收Bean
 		Map<String, String> errors = new HashMap<String, String>();
@@ -56,7 +58,7 @@ public class BackRetrieveController {
 		List<MountainBean> mainBeans = null;
 		// 根基List
 		List<NationalPark> all = null;
-		// 頁面參數
+		//	頁面控制參數預設值
 		int pageNO = 1; // 目前頁面 預設為第一頁 有錯誤則回到第一頁
 		int totalData = 1; // 查詢物件總數
 		int showData = 3; // 顯示數量 預設為三筆
@@ -78,18 +80,21 @@ public class BackRetrieveController {
 			navRTBeans = mainBeanAll;
 
 			// 確定有顯示數量參數傳入，若無則以預設值 3 顯示
-			if (request.getParameter("showData") != null) {
-				showData = Integer.parseInt(request.getParameter("showData"));
+			if (showDataString != null) {
+				showData = Integer.parseInt(showDataString);
 			}
-			// 確定有目前頁面參數傳入，若無，則單頁顯示所有資料
-			if (request.getParameter("page") != null) {
-				pageNO = Integer.parseInt(request.getParameter("page"));
+			// 確定有目前頁面參數傳入，若無，則顯示預設值
+			if ( pageString != null) {
+				pageNO = Integer.parseInt(pageString);
 				PageFunction pageFunction = new PageFunction(pageNO, showData);
 				mainBeans = pageFunction.getReturnList(mainBeanAll);
 				totalPage = pageFunction.getTotalPage();
 				totalData = pageFunction.getTotalData();
 			} else {
-				mainBeans = mainBeanAll;
+				PageFunction pageFunction = new PageFunction(pageNO, showData);
+				mainBeans = pageFunction.getReturnList(mainBeanAll);
+				totalPage = pageFunction.getTotalPage();
+				totalData = pageFunction.getTotalData();
 			}
 		} catch (IOException e) {
 			errors.put("msg", "發生IO錯誤 : " + e.getMessage());
@@ -187,7 +192,10 @@ public class BackRetrieveController {
 
 	// 國家公園查詢
 	@RequestMapping(path = "/mountainBackStage/backNPSearch", method = RequestMethod.GET)
-	public String processNPSearch(Model model, @RequestParam(name = "nationalPark") String seqno,HttpServletRequest request, RedirectAttributes redrAttr) {
+	public String processNPSearch(Model model, RedirectAttributes redrAttr,
+			@RequestParam(name = "nationalPark") String seqno,
+			@RequestParam(name = "page", required = false) String pageString,
+			@RequestParam(name = "showData", required = false) String showDataString) {
 		//	設置錯誤接收
 		Map<String, String> errors = new HashMap<String, String>();
 		redrAttr.addFlashAttribute("errors", errors);
@@ -210,19 +218,22 @@ public class BackRetrieveController {
 			navRTBeans = RetrieveFunction.getMainBean(all);
 			List<MountainBean> mainBeanBefore = RetrieveFunction.getNPResult(seqno, all);
 			//	確定有顯示數量參數傳入，若無則以預設值 3 顯示
-			if (request.getParameter("showData") != null) {
-				showData = Integer.parseInt(request.getParameter("showData"));
+			if ( showDataString != null) {
+				showData = Integer.parseInt(showDataString);
 			}
 
-			//	確定有頁面參數傳入，若無，則單頁顯示所有資料
-			if (request.getParameter("page") != null) {
-				page = Integer.parseInt(request.getParameter("page"));
+			//	確定有頁面參數傳入，若無，則顯示預設(page=1 showData=3)
+			if ( pageString != null) {
+				page = Integer.parseInt(pageString);
 				PageFunction pageFunction = new PageFunction(page, showData);
 				mainBeans = pageFunction.getReturnList(mainBeanBefore);
 				totalPage = pageFunction.getTotalPage();
 				totalData = pageFunction.getTotalData();
 			} else {
-				mainBeans = mainBeanBefore;
+				PageFunction pageFunction = new PageFunction(page, showData);
+				mainBeans = pageFunction.getReturnList(mainBeanBefore);
+				totalPage = pageFunction.getTotalPage();
+				totalData = pageFunction.getTotalData();
 			}
 		} catch (IOException e) {
 			errors.put("msg", "發生IO錯誤 : " + e.getMessage());
@@ -248,6 +259,7 @@ public class BackRetrieveController {
 		model.addAttribute("totalData", totalData);
 		model.addAttribute("page", page);
 		model.addAttribute("totalPage", totalPage);
+		model.addAttribute("nationalPark", seqno);
 		model.addAttribute("controllerPath", "/mountainBackStage/backNPSearch?nationalPark=".concat(seqno).concat("&"));
 		
 		return "forward:/mountainBackStage/retrievePage";
