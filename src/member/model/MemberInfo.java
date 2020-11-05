@@ -15,8 +15,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 @Entity
 @Table(name = "MEMBER_INFO")
@@ -51,8 +56,10 @@ public class MemberInfo {
 	}
 
 	
-	@Id @Column(name = "MEMBER_BASIC_ID")
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GenericGenerator(name = "generator", strategy = "foreign", parameters = @Parameter(name = "property", value = "MemberBasic"))
+	@Id 
+	@GeneratedValue (generator = "generator")
+	@Column(name = "MEMBER_BASIC_ID")
 	public int getMember_basic_id() {
 		return member_basic_id;
 	}
@@ -132,8 +139,8 @@ public class MemberInfo {
 	}
 
 	
-	@ManyToOne (fetch = FetchType.LAZY)
-	@JoinColumn(name = "SEQNO")
+	@OneToOne (fetch = FetchType.LAZY)
+	@PrimaryKeyJoinColumn
 	public MemberBasic getMemberBasic() {
 		return memberBasic;
 	}

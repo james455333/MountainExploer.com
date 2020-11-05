@@ -1,5 +1,9 @@
 package member.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,13 +21,13 @@ public class MemberStatus {
 	
 	private int seqno;
 	private String name;
-	private MemberBasic memberBasic;
+	private Set<MemberBasic> memberBasics = new HashSet<MemberBasic>();
 
 	public MemberStatus() {
 		
 	}
 	
-	private MemberStatus(int seqno, String name) {
+	public MemberStatus(int seqno, String name) {
 		this.seqno = seqno;
 		this.name = name;
 	}
@@ -47,17 +52,19 @@ public class MemberStatus {
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	
-	
-	@ManyToOne (fetch = FetchType.LAZY)
-	@JoinColumn (name = "SEQNO")
-	public MemberBasic getMemberBasic() {
-		return memberBasic;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "MEMBER_STATUS", cascade = CascadeType.ALL)
+	public Set<MemberBasic> getMemberBasics() {
+		return memberBasics;
 	}
 
-	public void setMemberBasic(MemberBasic memberBasic) {
-		this.memberBasic = memberBasic;
+	public void setMemberBasics(Set<MemberBasic> memberBasics) {
+		this.memberBasics = memberBasics;
 	}
+	
+	
+	
 	
 	
 	

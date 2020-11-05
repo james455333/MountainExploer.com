@@ -16,13 +16,14 @@ import oracle.net.aso.q;
 
 @Repository("memberBackDao")
 public class MemberBackDAO {
-	
+	@Autowired
+	@Qualifier("sessionFactory")
 	private SessionFactory sessionFactory;
 	
-	@Autowired
-	public MemberBackDAO(@Qualifier("sessionFactory")SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
+	
+//	public MemberBackDAO(SessionFactory sessionFactory) {
+//		this.sessionFactory = sessionFactory;
+//	}
 	
 	
 	//Back Login
