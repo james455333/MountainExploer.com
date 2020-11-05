@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import main.generic.model.GenericTypeObject;
 
 @Repository
+@SuppressWarnings("unchecked")
 public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 
 	private T entity;
