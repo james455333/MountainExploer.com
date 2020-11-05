@@ -2,14 +2,39 @@
 //招出刪除確認視窗及阻擋層
 $(".deleteButton").on("click",function(){
 	
+	
 	let routeID = $(this).siblings().val()
-	//console.log(routeID)
 	$("#deleteID").append( "路線編號 : " + routeID + `<input type='text' name='deleteID' value='${routeID}' style='display:none;'>`  )
-	$("#deleteBlock").css({
-		"opacity" : "0.25",
-		"pointer-events" : "none",
-	});
-	$("#deleteConfirm").show();
+	
+	swal({
+    title: "確認",
+    text: "內容",
+    icon: "warning",
+    buttons: {
+      cancel: {
+        text: "取消",
+        visible: true
+      },
+      // danger: {
+      //變紅底
+      commit: {
+        text: "確認",
+        visible: true,
+
+      },
+      danger: {
+        text: "紅色",
+        visible: true
+      }
+    }
+  }).then((value) => {
+    swal(`你選擇了 ${value}`);
+    //要執行的程式碼放在  .then((value) => {` 這邊 `});
+    // if(value !==)
+    
+  });
+	
+	//$("#deleteConfirm").show();
 })
 $("#deleteCancel").on("click",function(){
 	$("#deleteID").empty()
@@ -60,3 +85,5 @@ $(".routeImg").on("mouseenter",function(e){
 }).on("mouseleave",function(){
 	$(this).siblings().hide();
 })
+
+
