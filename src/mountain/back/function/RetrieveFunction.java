@@ -3,17 +3,22 @@ package mountain.back.function;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-import mountain.mountainList.model.MountainBean;
-import mountain.mountainList.model.NationalPark;
-import mountain.mountainList.service.NationalParkHibernateService;
-import mountain.mountainList.service.impl.NationalParkService;
+import main.generic.service.AbstractService;
+import main.generic.service.GenericService;
+import mountain.model.MountainBean;
+import mountain.model.NationalPark;
+import mountain.model.RouteBasic;
 
 public class RetrieveFunction {
+	
+	
 	//全數查詢
-	public static List<NationalPark> getAll(NationalParkHibernateService nPHibService){
-		NationalParkService nParkService= nPHibService;
+	public static List<NationalPark> getAll(GenericService<NationalPark> nPHibService){
+		AbstractService<NationalPark> nParkService= nPHibService;
+		
 		return nParkService.selectAll();
 	}
 
@@ -45,6 +50,9 @@ public class RetrieveFunction {
 
 		return mainBeans;
 	}
+	
+	
+	
 
 	// 整理主要顯示LIST順序
 	public static List<MountainBean> sortMountainBeans(List<MountainBean> beforeOrder) {
@@ -64,6 +72,24 @@ public class RetrieveFunction {
 			}
 		}
 		return afterOrder;
+	}
+	
+	
+	//	返回指定路線ID的國家公園ID
+	public static int defaultNPID(String seqno, List<NationalPark> all) {
+		
+		int seqnum = Integer.parseInt(seqno);
+		
+		for (NationalPark nationalPark : all) {
+			Iterator<RouteBasic> iterator = nationalPark.getRouteBasic().iterator();
+			while (iterator.hasNext()) {
+				RouteBasic routeBasic = iterator.next();
+				if (routeBasic.getId() == seqnum ) {
+					return nationalPark.getId();
+				}
+			}
+		}
+		return 0;
 	}
 
 }
