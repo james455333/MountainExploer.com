@@ -25,9 +25,20 @@ public class SecondClassDAO {
 			return bean;
 		}
 		//查詢
-//		public SecondClass select(String secondClassName) {
-//			return session.get(SecondClass.class, secondClassName);
-//		}
+		public SecondClass select(String secondClassName) {
+			Session session = sessionFactory.getCurrentSession();
+
+			String hql = "From second_class  where Name like '" + secondClassName + "'";
+
+			Query<SecondClass> query = session.createQuery(hql, SecondClass.class);
+
+			SecondClass uniqueResult = query.uniqueResult();
+
+			if (uniqueResult != null) {
+				return uniqueResult;
+			}
+			return null;
+		}
 		//
 //		public List<SecondClass> selectAll(){
 //			Query<SecondClass> query = session.createQuery("From SecondClass", SecondClass.class);

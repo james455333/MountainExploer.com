@@ -74,6 +74,12 @@ public class ItemInfo {
 		this.description = description;
 	}
 	
+	public int getStock() {
+		return stock;
+	}
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
 
 	public ItemBasic getItemBasic() {
 		return itemBasic;
@@ -82,12 +88,6 @@ public class ItemInfo {
 		this.itemBasic = itemBasic;
 	}
 
-	public int getStock() {
-		return stock;
-	}
-	public void setStock(int stock) {
-		this.stock = stock;
-	}
 	
 	
 	

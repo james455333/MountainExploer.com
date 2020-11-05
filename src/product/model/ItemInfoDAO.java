@@ -25,9 +25,13 @@ public class ItemInfoDAO {
 			return bean;
 		}
 		//查詢
-//		public ItemInfo selectNo(String itemBasicSeqno) {
-//			return session.get(ItemInfo.class, itemBasicSeqno);
-//		}
+		public ItemInfo selectNo(String itemBasicSeqno) {
+			Session session = sessionFactory.getCurrentSession();
+			
+			ItemInfo result = (ItemInfo)session.get(ItemInfo.class, itemBasicSeqno);
+			
+			return result;
+		}
 //		//
 //		public ItemInfo selectType(String type) {
 //			return session.get(ItemInfo.class, type);

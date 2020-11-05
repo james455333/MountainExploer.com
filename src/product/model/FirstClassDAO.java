@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import main.generic.model.GenericTypeObject;
+
 @Repository
 public class FirstClassDAO {
 
@@ -16,6 +18,9 @@ public class FirstClassDAO {
 //	public FirstClassDAO(Session session) {
 //		Session session = sessionFactory.getCurrentSession();
 //	}
+
+		
+	
 	
 	//新增FirstClass
 	public FirstClass insert(FirstClass bean) {
@@ -30,9 +35,20 @@ public class FirstClassDAO {
 //			return session.get(FirstClass.class, firstClassId);
 //		}
 		//
-//		public FirstClass select(String firstClassName) {
-//			return session.get(FirstClass.class, firstClassName);
-//		}
+		public FirstClass select(String firstClassName) {
+			Session session = sessionFactory.getCurrentSession();
+
+			String hql = "From first_class  where Name like '" + firstClassName + "'";
+
+			Query<FirstClass> query = session.createQuery(hql, FirstClass.class);
+
+			FirstClass uniqueResult = query.uniqueResult();
+
+			if (uniqueResult != null) {
+				return uniqueResult;
+			}
+			return null;
+		}
 		//
 //		public List<FirstClass> selectAll(){
 //			Query<FirstClass> query = session.createQuery("From FirstClass", FirstClass.class);

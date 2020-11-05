@@ -133,24 +133,44 @@ public class ProductImportDataController {
 				//	放入值
 				
 				//	放入firstClass 
+				firstClass.setName(csvRecord.get("FIRST_CLASS_NAME"));
 				
 				//	放入secondeClass
-				
+				secondClass.setName(csvRecord.get("SECOND_CLASS"));
 				//	放入itemBasic
-				
+				itemBasic.setName(csvRecord.get("NAME"));
 				//	放入itemInfo
+				itemInfo.setType(csvRecord.get("TYPE"));
+				itemInfo.setPrice(Integer.parseInt(csvRecord.get("PRICE")));
+				int stockNum = 100;
+				itemInfo.setStock(stockNum);
+				
+				byte[] bytesDescp = csvRecord.get("DESCRIPTION").getBytes(CHARSET);
+				itemInfo.setDescription(bytesDescp);
+				byte[] bytesImg = getURLtoBytes(csvRecord.get("IMG_URL"));
+				itemInfo.setImg(bytesImg);
 				
 				
 				//	放入物件
-				Set<SecondClass> secondSet = new HashSet<SecondClass>();
-				secondSet.add(secondClass);
-				firstClass.setSecondClasses(secondSet);
+				Set<SecondClass> secondClassSet = new HashSet<SecondClass>();
+				secondClassSet.add(secondClass);
+				firstClass.setSecondClasses(secondClassSet);
+
+				Set<ItemBasic> itemBasicSet = new HashSet<ItemBasic>();
+				itemBasicSet.add(itemBasic);
+				secondClass.setItemBasics(itemBasicSet);
 				
+				itemBasic.setItemInfo(itemInfo);
+//				itemInfo.setItemBasic(itemBasic);
+				
+				
+				firstClassDAO.insert(firstClass);
 				//	條件判斷
 				
 				// 先用DAO判斷有無FirstClass_name重複存在
-					FirstClass checkFirstClass = firstClassDAO.select(String firstClass.getName());
+					FirstClass checkFirstClass = firstClassDAO.select(firstClass.getName());
 				if (checkFirstClass != null) {
+					
 					// 再判斷 secondClass有無重複
 					SecondClass checkSecond = secondClassDAO.select(secondClass.getName());
 					if (checkSecond!=null) {
