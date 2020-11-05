@@ -1,15 +1,11 @@
 
-//招出刪除確認視窗及阻擋層
+//招出刪除確認
 $(".deleteButton").on("click",function(){
 	
 	let routeID = $(this).siblings().val()
 	//console.log(routeID)
-	$("#deleteID").append( "路線編號 : " + routeID + `<input type='text' name='deleteID' value='${routeID}' style='display:none;'>`  )
-	$("#deleteBlock").css({
-		"opacity" : "0.25",
-		"pointer-events" : "none",
-	});
-	$("#deleteConfirm").show();
+	
+	
 })
 $("#deleteCancel").on("click",function(){
 	$("#deleteID").empty()
