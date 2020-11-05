@@ -49,13 +49,12 @@ import product.model.SecondClass;
 import product.model.SecondClassDAO;
 
 @Controller
-public class ImportDataController {
+public class ProductImportDataController {
 	// 靜態參數設定
 	private static String productImgTitle = "ProductImgTemp";
 	public static String ImgDownloadPath = "C:\\MountainExploer\\product\\images\\";
 	public static String CHARSET = "UTF-8";
 
-	
 	
 	FirstClassDAO firstClassDAO = new FirstClassDAO();
 	SecondClassDAO secondClassDAO = new SecondClassDAO();
@@ -76,6 +75,9 @@ public class ImportDataController {
 		
 		//創造images資料夾
 		File file = new File(ImgDownloadPath);
+		
+		File file2 = new File("C:\\mountain/shopitem_UTF8.csv");
+		
 		if (file.mkdirs()) {
 			System.out.println("資料夾創建成功，路徑 : " + ImgDownloadPath);
 		}else {
@@ -83,7 +85,8 @@ public class ImportDataController {
 		} 
 		//	解析傳入檔案(CSV)
 		try {
-			importDataToDB(multipartFile);
+//			importDataToDB(multipartFile);
+			importDataToDB(file2);
 		} catch (Exception e) {
 			e.printStackTrace();
 			errors.put("msg", "資料輸入過程發生錯誤" );
@@ -95,11 +98,15 @@ public class ImportDataController {
 		return "redirect:/backStageEntry";
 	}
 
-	private void importDataToDB (MultipartFile multipartFile)throws Exception {
-		int importCounter = 0;
+	@Autowired
+//	private void importDataToDB (MultipartFile multipartFile)throws Exception {
+		private void importDataToDB (File file)throws Exception {
+//		int importCounter = 0;
 
-		try (InputStream is1 = multipartFile.getInputStream();
-				InputStreamReader isr = new InputStreamReader(is1, CHARSET);
+//		try (InputStream is1 = multipartFile.getInputStream();
+				try (FileInputStream fis = new FileInputStream(file);
+//				InputStreamReader isr = new InputStreamReader(is1, CHARSET);
+				InputStreamReader isr = new InputStreamReader(fis, CHARSET);
 				BufferedReader br = new BufferedReader(isr);) {
 			CSVParser parser = CSVFormat.EXCEL.withHeader().parse(br);
 			System.out.println("File load Succsess");
@@ -155,29 +162,22 @@ public class ImportDataController {
 								
 								//ItemInfo資料注入
 								ItemInfo itemInfoBean = new ItemInfo();
-//								String name = csvRecord.get("NAME");
 								int stock = 100;
 								String type = csvRecord.get("TYPE");
 								String price = csvRecord.get("PRICE");
 								String imgURL = csvRecord.get("IMG_URL");
-//								String imgURL = csvRecord.get("img_url");
 								String description = csvRecord.get("DESCRIPTION");
 								
 								itemInfoBean.setStock(stock);
 								itemInfoBean.setType(type);
 								itemInfoBean.setType(price);
 								
-//								byte[] bytesImg = getURLtoBytes(imgURL);
-//								rIBean.setImgUrl(bytesImg);
+								byte[] bytesDescption = getURLtoBytes(description);
+								itemInfoBean.setDescription(bytesDescption);
+
+								byte[] bytesImg = getURLtoBytes(imgURL);
+								itemInfoBean.setImg(bytesImg);
 								
-								
-								byte[] bytesDescption = description.getBytes(CHARSET);
-								Blob descptionBlob = Hibernate.getLobCreator(session).createBlob(bytesDescption);
-								itemInfoBean.setDescription(descptionBlob);
-								String localPath = downloadGetLocalPath(imgURL);
-								byte[] bytesImgURL = localPath.getBytes(CHARSET);
-								Blob imgUrlBlob = Hibernate.getLobCreator(session).createBlob(bytesImgURL);
-								itemInfoBean.setImgUrl(imgUrlBlob);
 								//ItemBasic資料注入
 								ItemBasic itemBasicBean = new ItemBasic();
 								String name = csvRecord.get("NAME");
@@ -208,66 +208,15 @@ public class ImportDataController {
 
 		}
 
-//			for (CSVRecord csvRecord : results) {
-//				String npName = csvRecord.get("npName");
-//				String name = csvRecord.get("name");
-//				String description = csvRecord.get("description");
-//				String advice = csvRecord.get("advice");
-//				String traffic = csvRecord.get("traffic");
-//				String imgURL = csvRecord.get("img_url");
-//
-//				NationalPark npBean = new NationalPark();
-//				npBean.setName(npName);
-//				RouteBasic rBBean = new RouteBasic();
-//				RouteInfo rIBean = new RouteInfo();
-//
-//				rIBean.setName(name);
-//				byte[] bytesDescp = description.getBytes(MountainGlobal.CHARSET);
-//				rIBean.setDescription(bytesDescp);
-//				byte[] bytesAdvice = advice.getBytes(MountainGlobal.CHARSET);
-//				rIBean.setAdvice(bytesAdvice);
-//				byte[] bytesTra = traffic.getBytes(MountainGlobal.CHARSET);
-//				rIBean.setTraffic(bytesTra);
-//				byte[] bytesImg = getURLtoBytes(imgURL);
-//				rIBean.setImgUrl(bytesImg);
-//
-//				rBBean.setNational_park(npBean);
-//				Set<RouteBasic> rBBeanSet = new HashSet<RouteBasic>();
-//				rBBeanSet.add(rBBean);
-//				npBean.setRouteBasic(rBBeanSet);
-//				rBBean.setRouteInfo(rIBean);
-//				rIBean.setRoute_basic(rBBean);
-//				npService.save(npBean);
-//				NationalPark queryNP = npService.select(npName);
-//				if (queryNP != null) {
-//
-//					rBService.save(rBBean);
-//					rBBean.setNational_park(queryNP);
-//					RouteBasic insertRB = rBService.insert(rBBean);
-//					if (insertRB == null) {
-//						System.out.println("第" + (++importCounter) + "筆資料為空");
-//					} else {
-//						System.out.println("第" + (++importCounter) + "筆 : \t" + rIBean.getName() + "輸入成功");
-//					}
-//				} else {
-//					NationalPark insertNP = npService.insert(npBean);
-//					if (insertNP == null) {
-//						System.out.println("第" + (++importCounter) + "筆資料為空");
-//					} else {
-//						System.out.println("第" + (++importCounter) + "筆 : \t" + rIBean.getName() + "輸入成功");
-//					}
-//				}
-//
-//			}
 		} 
 
-	}
+	
 
 	private byte[] getURLtoBytes(String imgURL) {
 		System.out.println(imgURL);
 		byte[] bytes = null;
 		int counter = 1;
-		String localPath = MountainGlobal.ImgDownloadPath+productImgTitle+(counter++) + ".jpg";
+		String localPath = ImgDownloadPath+productImgTitle+(counter++) + ".jpg";
 
 		// download
 		try (InputStream is = new URL(imgURL).openStream();) {

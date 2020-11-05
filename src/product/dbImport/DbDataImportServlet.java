@@ -42,7 +42,6 @@ import product.model.ItemInfo;
 import product.model.ItemInfoDAO;
 import product.model.SecondClass;
 import product.model.SecondClassDAO;
-import util.HibernateUtil;
 
 @WebServlet("/product/DbDataImportServlet")
 public class DbDataImportServlet extends HttpServlet {
@@ -79,10 +78,10 @@ public class DbDataImportServlet extends HttpServlet {
 			CSVParser parser = CSVFormat.EXCEL.withHeader().parse(br);
 			out.write("檔案載入成功");
 			
-			FirstClassDAO firstClassDAO = new FirstClassDAO(session);
-			SecondClassDAO secondClassDAO = new SecondClassDAO(session);
-			ItemBasicDAO itemBasicDAO = new ItemBasicDAO(session);
-			ItemInfoDAO itemInfoDAO = new ItemInfoDAO(session);
+			FirstClassDAO firstClassDAO = new FirstClassDAO();
+			SecondClassDAO secondClassDAO = new SecondClassDAO();
+			ItemBasicDAO itemBasicDAO = new ItemBasicDAO();
+			ItemInfoDAO itemInfoDAO = new ItemInfoDAO();
 			
 			List<CSVRecord> results = parser.getRecords();
 			Set<FirstClass> firstSet = null;

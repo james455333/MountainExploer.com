@@ -63,7 +63,7 @@ public class ItemInfo {
 	public byte[] getImg() {
 		return img;
 	}
-	public void setImgUrl(byte[] img) {
+	public void setImg(byte[] img) {
 		this.img = img;
 	}
 
