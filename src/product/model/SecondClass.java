@@ -1,6 +1,5 @@
 package product.model;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -22,7 +21,7 @@ import javax.persistence.Transient;
 @Entity
 @Table(name = "second_class")
 public class SecondClass {
-	@Id@Column(name = "id")
+	@Id@Column(name = "SEQNO")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
@@ -33,7 +32,7 @@ public class SecondClass {
 	private String firstClassId;
 	
 	@ManyToOne(fetch = FetchType.LAZY )
-	@JoinColumn( name = "FIRST_CLASS_ID",referencedColumnName = "ID")
+	@JoinColumn( name = "FIRST_CLASS_ID",referencedColumnName = "SEQNO")
 	private FirstClass firstClass;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "secondClass")

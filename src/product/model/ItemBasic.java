@@ -21,11 +21,14 @@ public class ItemBasic {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long seqno;
 	
+	@Column(name = "NAME")
+	private String name;
+	
 	@Transient
 	private int secondClassId;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "SECOND_CLASS_ID" ,referencedColumnName = "ID")
+	@JoinColumn(name = "SECOND_CLASS_ID" ,referencedColumnName = "SEQNO")
 	private SecondClass secondClass;
 	
 	@OneToOne(fetch = FetchType.LAZY, mappedBy = "itemBasic", cascade = CascadeType.ALL)
@@ -38,6 +41,14 @@ public class ItemBasic {
 	public void setSeqno(long seqno) {
 		this.seqno = seqno;
 	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	public int getSecondClassId() {
 		return secondClassId;
 	}

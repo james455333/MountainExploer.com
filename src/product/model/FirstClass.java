@@ -21,7 +21,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "first_class")
 public class FirstClass {
-	@Id@Column(name = "ID")
+	@Id@Column(name = "SEQNO")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	

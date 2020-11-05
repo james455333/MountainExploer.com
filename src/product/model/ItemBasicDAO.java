@@ -3,64 +3,63 @@ package product.model;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 public class ItemBasicDAO {
 
-	private Session session;
-
-	public ItemBasicDAO(Session session) {
-		this.session =session;
-	}
+	@Autowired @Qualifier("sessionFactory")
+	private SessionFactory sessionFactory;
 
 	//新增
 	public ItemBasic insert(ItemBasic bean) {
 		
-		ItemBasic result = session.get(ItemBasic.class, bean.getName());
+		Session session = sessionFactory.getCurrentSession();
 		
-		if (result==null) {
+		if (bean !=null) {
 			session.save(bean);
-			return bean;
 		}
-		return null;
+		return bean;
 	}
 	//查詢
-	public ItemBasic select(String name) {
-		String hql = "From item_basic where name like '";
-		hql = hql.concat(name+"'");
-		Query<ItemBasic> query = session.createQuery(hql, ItemBasic.class);
-		List<ItemBasic> list = query.list();
-		if(list.size()!=0) {
-			return list.get(0);
-		}else {
-			return null;
-		}
-	}
+//	public ItemBasic select(String name) {
+//		String hql = "From item_basic where name like '";
+//		hql = hql.concat(name+"'");
+//		Query<ItemBasic> query = session.createQuery(hql, ItemBasic.class);
+//		List<ItemBasic> list = query.list();
+//		if(list.size()!=0) {
+//			return list.get(0);
+//		}else {
+//			return null;
+//		}
+//	}
 	//
-	public ItemBasic select(int id) {
-		return session.get(ItemBasic.class, id);
-	}
+//	public ItemBasic select(int id) {
+//		return session.get(ItemBasic.class, id);
+//	}
 	//
-	public List<ItemBasic> selectAll(){
-		Query<ItemBasic> query = session.createQuery("From ItemBasic", ItemBasic.class);
-		List<ItemBasic> list = query.list();
-		return list;
+//	public List<ItemBasic> selectAll(){
+//		Query<ItemBasic> query = session.createQuery("From ItemBasic", ItemBasic.class);
+//		List<ItemBasic> list = query.list();
+//		return list;
 	}
 	//修改(庫存量)
-	public ItemBasic update(int stock) {
-		ItemBasic result = session.get(ItemBasic.class, stock);
-		if (result!=null) {
-			result.setSotck(stock);
-		}
-		return result;
-	}
+//	public ItemBasic update(int stock) {
+//		ItemBasic result = session.get(ItemBasic.class, stock);
+//		if (result!=null) {
+//			result.setStock(stock);
+//		}
+//		return result;
+//	}
 	//刪除
-	public boolean delete(String name) {
-		ItemBasic result = session.get(ItemBasic.class, name);
-		if (result!= null) {
-			session.delete(result);
-			return true;
-		}
-		return false;
-	}
-}
+//	public boolean delete(String name) {
+//		ItemBasic result = session.get(ItemBasic.class, name);
+//		if (result!= null) {
+//			session.delete(result);
+//			return true;
+//		}
+//		return false;
+//	}
+//}
