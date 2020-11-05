@@ -1,4 +1,4 @@
-package mountain.Model;
+package mountain.model;
 
 import java.util.Set;
 
@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
-import main.GenericObject.GenericTypeObject;
+import main.generic.model.GenericTypeObject;
 
 @Entity
 @Table(name = "national_park")

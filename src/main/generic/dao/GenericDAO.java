@@ -1,4 +1,4 @@
-package main.GenericDAO;
+package main.generic.dao;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import main.GenericObject.GenericTypeObject;
+import main.generic.model.GenericTypeObject;
 
 @Repository
 public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
@@ -16,7 +16,7 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 	private T entity;
 	@Autowired
 	private SessionFactory sessionFactory;
-
+	
 	@Override
 	public void save(T entity) {
 		this.entity = entity;

@@ -1,4 +1,4 @@
-package mountain.back.Controller;
+package mountain.back.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -21,13 +21,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import main.GenericService.AbstractService;
-import main.GenericService.GenericService;
-import mountain.Model.MountainBean;
-import mountain.Model.NationalPark;
-import mountain.Model.RouteInfo;
-import mountain.back.Function.PageFunction;
-import mountain.back.Function.RetrieveFunction;
+import main.generic.service.AbstractService;
+import main.generic.service.GenericService;
+import mountain.back.function.PageFunction;
+import mountain.back.function.RetrieveFunction;
+import mountain.model.MountainBean;
+import mountain.model.NationalPark;
+import mountain.model.RouteInfo;
 
 @Controller
 public class BackRetrieveController {
@@ -36,12 +36,11 @@ public class BackRetrieveController {
 
 	@Autowired
 	private GenericService<RouteInfo> rtInfoService;
-//	@Autowired
-//	private NationalParkHibernateService nPService;
 	@Autowired
 	private GenericService<NationalPark> nPService;
 
 	// 總查詢
+	@SuppressWarnings("unchecked")
 	@RequestMapping(path = "/mountainBackStage/mainPage", method = RequestMethod.GET)
 	public String pageEntry(Model model, HttpServletRequest request, RedirectAttributes redrAttr) {
 
@@ -282,8 +281,9 @@ public class BackRetrieveController {
 			e.printStackTrace();
 		}
 		if (!errors.isEmpty()) {
-			return "mountain/back/backMountain";
+			return "forward:/mountainBackStage/mainPage";
 		}
+		
 		model.addAttribute("npBean", all);
 		model.addAttribute("defaultNP", defaultNP);
 		model.addAttribute("mainBean", rtResult.get(0));

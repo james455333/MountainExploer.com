@@ -1,4 +1,4 @@
-package mountain.back.Controller;
+package mountain.back.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import main.GenericService.AbstractService;
-import main.GenericService.GenericService;
+import main.generic.service.AbstractService;
+import main.generic.service.GenericService;
 import mountain.MountainGlobal;
-import mountain.Model.NationalPark;
-import mountain.Model.RouteBasic;
-import mountain.Model.RouteInfo;
+import mountain.model.NationalPark;
+import mountain.model.RouteBasic;
+import mountain.model.RouteInfo;
 
 @Controller
 public class BackCUDController {
@@ -100,28 +100,19 @@ public class BackCUDController {
 					byte[] newImgBytes = MountainGlobal.downloadImage(multipartFile);
 					rtInfo.setImgUrl(newImgBytes);
 				}
-				System.out.println("allParams.get(\"npID\") : " + allParams.get("npID"));
 				// 判斷國家公園名稱是否有更改
 				int npID = Integer.parseInt(allParams.get("npID").replaceAll("[\\D]", ""));
 				npService.save(new NationalPark());
 				NationalPark selectNP = npService.select(npID);
 				RouteBasic originRB = rtInfo.getRoute_basic();
 				NationalPark originNP = originRB.getNational_park();
-				System.out.println("selectNP ID : " + selectNP.getId());
-				System.out.println("originNP ID : " + originNP.getId());
 				if (selectNP.getId() != originNP.getId()) {
 					originRB.setNational_park(selectNP);
 					originRB.setRouteInfo(rtInfo);
-					System.out.println("=============================");
-					System.out.println("以originRB開始修改");
-					System.out.println("=============================");
 					rtBasicService.save(new RouteBasic());
 					rtBasicService.update(originRB);
 
 				} else {
-					System.out.println("=============================");
-					System.out.println("以rtInfo開始修改");
-					System.out.println("=============================");
 					rtInfoService.save(new RouteInfo());
 					rtInfoService.update(rtInfo);
 				}
@@ -133,9 +124,6 @@ public class BackCUDController {
 		if (errors.isEmpty()) {
 			redirectAttributes.addFlashAttribute("result", "修改成功");
 		}
-		System.out.println("=============================");
-		System.out.println("修改完成返回總查詢頁面");
-		System.out.println("=============================");
 		return "redirect:/mountainBackStage/mainPage";
 	}
 	
@@ -155,11 +143,7 @@ public class BackCUDController {
 			redirectAttributes.addFlashAttribute("result", "新增失敗");
 			return "redirect:/mountainBackStage/mainPage";
 		}
-//		System.out.println("準備新增Result : 成功");
-//		System.out.println("=============================");
 		redirectAttributes.addFlashAttribute("result", "新增成功");
-//		System.out.println("準備返回總查詢頁面");
-//		System.out.println("=============================");
 		
 		return "redirect:/mountainBackStage/mainPage";
 	}

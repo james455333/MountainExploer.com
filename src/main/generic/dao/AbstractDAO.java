@@ -1,8 +1,8 @@
-package main.GenericDAO;
+package main.generic.dao;
 
 import java.util.List;
 
-import main.GenericObject.GenericTypeObject;
+import main.generic.model.GenericTypeObject;
 
 public interface AbstractDAO<T extends GenericTypeObject> {
 

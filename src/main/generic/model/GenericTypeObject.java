@@ -1,4 +1,4 @@
-package main.GenericObject;
+package main.generic.model;
 
 
 public class GenericTypeObject {

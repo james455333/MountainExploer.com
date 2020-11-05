@@ -1,8 +1,8 @@
-package main.GenericService;
+package main.generic.service;
 
 import java.util.List;
 
-import main.GenericObject.GenericTypeObject;
+import main.generic.model.GenericTypeObject;
 
 public interface AbstractService<T extends GenericTypeObject> {
 

@@ -1,4 +1,4 @@
-package mountain.Model;
+package mountain.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +13,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 import org.springframework.stereotype.Component;
 
-import main.GenericObject.GenericTypeObject;
+import main.generic.model.GenericTypeObject;
 @Entity
 @Table(name = "route_info")
 @Component

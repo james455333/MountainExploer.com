@@ -1,4 +1,4 @@
-package mountain.back.Controller;
+package mountain.back.controller;
 
 import java.io.File;
 import java.io.FileInputStream;

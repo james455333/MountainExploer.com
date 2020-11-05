@@ -1,4 +1,4 @@
-package mountain.back.Function;
+package mountain.back.function;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -6,16 +6,19 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import main.GenericService.AbstractService;
-import main.GenericService.GenericService;
-import mountain.Model.MountainBean;
-import mountain.Model.NationalPark;
-import mountain.Model.RouteBasic;
+import main.generic.service.AbstractService;
+import main.generic.service.GenericService;
+import mountain.model.MountainBean;
+import mountain.model.NationalPark;
+import mountain.model.RouteBasic;
 
 public class RetrieveFunction {
+	
+	
 	//全數查詢
 	public static List<NationalPark> getAll(GenericService<NationalPark> nPHibService){
 		AbstractService<NationalPark> nParkService= nPHibService;
+		
 		return nParkService.selectAll();
 	}
 

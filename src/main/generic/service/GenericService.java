@@ -1,12 +1,12 @@
-package main.GenericService;
+package main.generic.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import main.GenericDAO.GenericDAO;
-import main.GenericObject.GenericTypeObject;
+import main.generic.dao.GenericDAO;
+import main.generic.model.GenericTypeObject;
 
 
 

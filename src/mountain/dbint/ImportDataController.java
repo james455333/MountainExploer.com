@@ -1,4 +1,4 @@
-package mountain.Dbint;
+package mountain.dbint;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -31,11 +31,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import main.GenericService.GenericService;
+import main.generic.service.GenericService;
 import mountain.MountainGlobal;
-import mountain.Model.NationalPark;
-import mountain.Model.RouteBasic;
-import mountain.Model.RouteInfo;
+import mountain.model.NationalPark;
+import mountain.model.RouteBasic;
+import mountain.model.RouteInfo;
 
 @Controller
 public class ImportDataController {
