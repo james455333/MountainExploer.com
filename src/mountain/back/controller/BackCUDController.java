@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,28 +14,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import main.generic.service.AbstractService;
+import main.generic.service.GenericService;
 import mountain.MountainGlobal;
-import mountain.mountainList.model.NationalPark;
-import mountain.mountainList.model.RouteBasic;
-import mountain.mountainList.model.RouteInfo;
-import mountain.mountainList.service.NationalParkHibernateService;
-import mountain.mountainList.service.RouteBasicHibernateService;
-import mountain.mountainList.service.RouteInfoHibernateService;
-import mountain.mountainList.service.impl.NationalParkService;
-import mountain.mountainList.service.impl.RouteBasicService;
-import mountain.mountainList.service.impl.RouteInfoService;
+import mountain.model.NationalPark;
+import mountain.model.RouteBasic;
+import mountain.model.RouteInfo;
 
 @Controller
 public class BackCUDController {
 	
 	@Autowired
-	private NationalParkHibernateService npHibService;
+	private GenericService<NationalPark> npService;
 	@Autowired
-	private RouteBasicHibernateService rtBasicService;
+	private GenericService<RouteBasic> rtBasicService;
 	@Autowired
-	private RouteInfoHibernateService rtInfoService;
-	@Autowired
-	private SessionFactory sessionFactory;
+	private GenericService<RouteInfo> rtInfoService;
 	
 	// 資料刪除
 	@RequestMapping(path = "/mountainBackStage/deleteData" , method = RequestMethod.GET)
@@ -46,7 +39,8 @@ public class BackCUDController {
 		
 		if (deleteID !=null && !deleteID.isEmpty()) {
 			int rbID = Integer.parseInt(deleteID.replaceAll("[\\D]", ""));
-			RouteBasicService rtBasicService =this.rtBasicService;
+			AbstractService<RouteBasic> rtBasicService =this.rtBasicService;
+			rtBasicService.save(new RouteBasic());
 			boolean check = rtBasicService.delete(rbID);
 			System.out.println("=================================");
 			System.out.println("Delete Status : " + check);
@@ -56,7 +50,7 @@ public class BackCUDController {
 				rdAttr.addFlashAttribute("result", "刪除失敗");
 			}
 		}
-		return "redirect:/mountainBackStage/mainPage?page=1";
+		return "redirect:/mountainBackStage/mainPage";
 	}
 	// 資料修改
 	@RequestMapping(path = "/mountainBackStage/updateData", method = RequestMethod.POST)
@@ -66,13 +60,14 @@ public class BackCUDController {
 		Map<String, String> errors = new HashMap<String, String>();
 		redirectAttributes.addFlashAttribute("errors", errors);
 
-		NationalParkService npService = npHibService;
-		RouteBasicService rtBasicService = this.rtBasicService;
-		RouteInfoService rtInfoService = this.rtInfoService;
+		AbstractService<NationalPark> npService = this.npService;
+		AbstractService<RouteBasic> rtBasicService = this.rtBasicService;
+		AbstractService<RouteInfo> rtInfoService = this.rtInfoService;
 	
 		// 判斷是否路線編號為空
 		if (allParams.get("routeNum") != null && !allParams.get("routeNum").isEmpty()) {
 			int routeNum = Integer.parseInt(allParams.get("routeNum").replaceAll("[\\D]", ""));
+			rtInfoService.save(new RouteInfo());
 			RouteInfo rtInfo = rtInfoService.select(routeNum);
 			// 判斷指定修改資料是否存在
 			if (rtInfo != null) {
@@ -105,26 +100,21 @@ public class BackCUDController {
 					byte[] newImgBytes = MountainGlobal.downloadImage(multipartFile);
 					rtInfo.setImgUrl(newImgBytes);
 				}
-				System.out.println("allParams.get(\"npID\") : " + allParams.get("npID"));
 				// 判斷國家公園名稱是否有更改
 				int npID = Integer.parseInt(allParams.get("npID").replaceAll("[\\D]", ""));
+				npService.save(new NationalPark());
 				NationalPark selectNP = npService.select(npID);
 				RouteBasic originRB = rtInfo.getRoute_basic();
 				NationalPark originNP = originRB.getNational_park();
-				System.out.println("selectNP ID : " + selectNP.getId());
-				System.out.println("originNP ID : " + originNP.getId());
+				System.out.println("originRB : " + originRB.getId());
 				if (selectNP.getId() != originNP.getId()) {
 					originRB.setNational_park(selectNP);
 					originRB.setRouteInfo(rtInfo);
-					System.out.println("=============================");
-					System.out.println("以originRB開始修改");
-					System.out.println("=============================");
+					rtBasicService.save(new RouteBasic());
 					rtBasicService.update(originRB);
 
 				} else {
-					System.out.println("=============================");
-					System.out.println("以rtInfo開始修改");
-					System.out.println("=============================");
+					rtInfoService.save(new RouteInfo());
 					rtInfoService.update(rtInfo);
 				}
 
@@ -135,9 +125,6 @@ public class BackCUDController {
 		if (errors.isEmpty()) {
 			redirectAttributes.addFlashAttribute("result", "修改成功");
 		}
-		System.out.println("=============================");
-		System.out.println("修改完成返回總查詢頁面");
-		System.out.println("=============================");
 		return "redirect:/mountainBackStage/mainPage";
 	}
 	
@@ -157,11 +144,7 @@ public class BackCUDController {
 			redirectAttributes.addFlashAttribute("result", "新增失敗");
 			return "redirect:/mountainBackStage/mainPage";
 		}
-//		System.out.println("準備新增Result : 成功");
-//		System.out.println("=============================");
 		redirectAttributes.addFlashAttribute("result", "新增成功");
-//		System.out.println("準備返回總查詢頁面");
-//		System.out.println("=============================");
 		
 		return "redirect:/mountainBackStage/mainPage";
 	}
@@ -169,9 +152,9 @@ public class BackCUDController {
 		NationalPark nationalPark = new NationalPark();
 		RouteBasic routeBasic = new RouteBasic();
 		RouteInfo routeInfo = new RouteInfo();
-		NationalParkService npService = npHibService;
-		RouteBasicService rtBasicService = this.rtBasicService;
-		RouteInfoService rtInfoService = this.rtInfoService;
+		AbstractService<NationalPark> npService = this.npService;
+		AbstractService<RouteBasic> rtBasicService = this.rtBasicService;
+		AbstractService<RouteInfo> rtInfoService = this.rtInfoService;
 		
 		nationalPark.setName(allParams.get("npName"));
 		
@@ -195,17 +178,21 @@ public class BackCUDController {
 		Set<RouteBasic> rbSet = new HashSet<RouteBasic>();
 		rbSet.add(routeBasic);
 		nationalPark.setRouteBasic(rbSet);
+		npService.save(new NationalPark());
 		NationalPark npCheck = npService.select(allParams.get("npName"));
 		if (npCheck==null) {
 			System.out.println("準備自國家公園表格新增資料");
 			System.out.println("=============================");
+			npService.save(new NationalPark());
 			npService.insert(nationalPark);
 		}else {
+			rtInfoService.save(new RouteInfo());
 			RouteInfo rtInfoCheck = rtInfoService.select(allParams.get("routeName"));
 			if (rtInfoCheck==null) {
 				System.out.println("準備自路線表格新增資料");
 				System.out.println("=============================");
 				routeBasic.setNational_park(npCheck);
+				rtBasicService.save(new RouteBasic());
 				rtBasicService.insert(routeBasic);
 			}else {
 				System.out.println("準備新增錯誤訊息");

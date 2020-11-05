@@ -21,14 +21,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import main.generic.service.AbstractService;
+import main.generic.service.GenericService;
 import mountain.back.function.PageFunction;
 import mountain.back.function.RetrieveFunction;
-import mountain.mountainList.model.MountainBean;
-import mountain.mountainList.model.NationalPark;
-import mountain.mountainList.model.RouteInfo;
-import mountain.mountainList.service.NationalParkHibernateService;
-import mountain.mountainList.service.RouteInfoHibernateService;
-import mountain.mountainList.service.impl.RouteInfoService;
+import mountain.model.MountainBean;
+import mountain.model.NationalPark;
+import mountain.model.RouteInfo;
 
 @Controller
 public class BackRetrieveController {
@@ -36,11 +35,12 @@ public class BackRetrieveController {
 //	private int showData = 5;
 
 	@Autowired
-	private RouteInfoHibernateService rtInfoService;
+	private GenericService<RouteInfo> rtInfoService;
 	@Autowired
-	private NationalParkHibernateService nPService;
+	private GenericService<NationalPark> nPService;
 
-	// 總查詢主畫面
+	// 總查詢
+	@SuppressWarnings("unchecked")
 	@RequestMapping(path = "/mountainBackStage/mainPage", method = RequestMethod.GET)
 	public String pageEntry(Model model, HttpServletRequest request, RedirectAttributes redrAttr) {
 
@@ -63,6 +63,7 @@ public class BackRetrieveController {
 		int totalPage = 1; // 查詢物件總數 / 顯示數量
 		try {
 			// 得到全部資料
+			nPService.save(new NationalPark());
 			all = RetrieveFunction.getAll(nPService);
 			// 設置導覽列NPBean
 			navNPBean = all;
@@ -134,7 +135,7 @@ public class BackRetrieveController {
 		model.addAttribute("totalPage", totalPage);
 		model.addAttribute("controllerPath", "/mountainBackStage/mainPage?");
 
-		return "mountain/back/backMountain";
+		return "forward:/mountainBackStage/retrievePage";
 	}
 
 	// 路線查詢
@@ -154,6 +155,7 @@ public class BackRetrieveController {
 
 		try {
 			// 導覽列Bean
+			nPService.save(new NationalPark());
 			all = RetrieveFunction.getAll(nPService);
 			navRTBeans = RetrieveFunction.getMainBean(all);
 			// 主畫面查詢結果Bean
@@ -180,7 +182,7 @@ public class BackRetrieveController {
 		model.addAttribute("page", 1);
 		model.addAttribute("totalPage", 1);
 
-		return "mountain/back/backMountain";
+		return "forward:/mountainBackStage/retrievePage";
 	}
 
 	// 國家公園查詢
@@ -201,6 +203,7 @@ public class BackRetrieveController {
 		int showData = 3;
 		try {
 			//	得到導覽列Bean
+			nPService.save(new NationalPark());
 			all = RetrieveFunction.getAll(nPService);
 			//	得到查詢結果
 			navNPBean = all;
@@ -247,15 +250,56 @@ public class BackRetrieveController {
 		model.addAttribute("totalPage", totalPage);
 		model.addAttribute("controllerPath", "/mountainBackStage/backNPSearch?nationalPark=".concat(seqno).concat("&"));
 		
-		return "mountain/back/backMountain";
+		return "forward:/mountainBackStage/retrievePage";
 	}
-
+	
+	//顯示修改頁面資料
+	@RequestMapping(path = "/mountainBackStage/updateDataPage", method = RequestMethod.GET)
+	public String updatePage(@RequestParam(name = "seqno") String seqno, Model model) {
+		
+		Map<String, String> errors = new HashMap<String, String>();
+		model.addAttribute("errors", errors);
+		List<NationalPark> all = null;
+		int defaultNP = 0;
+		List<MountainBean> rtResult = null;
+		try {
+			
+		nPService.save(new NationalPark());
+		all = RetrieveFunction.getAll(nPService);
+		
+		defaultNP = RetrieveFunction.defaultNPID(seqno,all);
+		
+		rtResult = RetrieveFunction.getRTResult(seqno, all);
+		
+		} catch (IOException e) {
+			errors.put("msg", "發生IO錯誤 : " + e.getMessage());
+			e.printStackTrace();
+		} catch (SQLException e) {
+			errors.put("msg", "發生SQL錯誤 : " + e.getMessage() + "\nSQLStatus : " + e.getSQLState());
+		} catch (Exception e) {
+			errors.put("msg", "發生不知名錯誤");
+			e.printStackTrace();
+		}
+		if (!errors.isEmpty()) {
+			return "forward:/mountainBackStage/mainPage";
+		}
+		
+		model.addAttribute("npBean", all);
+		model.addAttribute("defaultNP", defaultNP);
+		model.addAttribute("mainBean", rtResult.get(0));
+		return "forward:/mountainBackStage/updateDataEntry";
+	}
+	
+	
+	
+	
 	// 顯示特定圖片
 	@RequestMapping(path = "/mountainBackStage/images", method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<byte[]> showImage(@RequestParam(name = "seqno") String seqno) {
 		System.out.println("圖片輸入開始");
-		RouteInfoService rInfoService = rtInfoService;
+		rtInfoService.save(new RouteInfo());
+		AbstractService<RouteInfo> rInfoService = rtInfoService;
 		Integer rbPK = Integer.valueOf(seqno);
 		RouteInfo result = rInfoService.select(rbPK);
 		byte[] imgBytes = result.getImgUrl();
