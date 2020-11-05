@@ -4,7 +4,28 @@ $(".deleteButton").on("click",function(){
 	
 	let routeID = $(this).siblings().val()
 	//console.log(routeID)
-	
+	swal({
+    title: `路線編號 : ${routeID}`,
+    text: "請注意，本操作將刪除本筆資料而無法回復。\n\n\n\n\t確定要執行本操作?",
+    icon: "warning",
+	dangerMode: true,
+    buttons: {
+      cancel: {
+        text: "取消",
+        visible: true
+      },
+      // danger: {
+      //變紅底
+      danger: {
+        text: "確定執行刪除",
+        visible: true,
+
+      },
+    }
+  }).then(() => {
+   		
+    
+  });
 	
 })
 $("#deleteCancel").on("click",function(){

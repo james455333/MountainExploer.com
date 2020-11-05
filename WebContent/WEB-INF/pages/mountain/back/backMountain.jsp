@@ -171,7 +171,9 @@
 				    			</form>
 				    		</div>
 				    		<div>
-				    			<input type="text" name="seqno" value="${peakName.seqno}" style="display: none;" readonly>
+				    			<form style="display: none;" action="<c:url value="/mountainBackStage/deleteData" />">
+					    			<input type="text" name="deleteID" value="${peakName.seqno}"  readonly>
+				    			</form>
 				    			<input type="button" class="deleteButton" value="刪除">
 				    		</div>
 				    	</td>

@@ -18,6 +18,7 @@ public class WebAppMvcConfig implements WebMvcConfigurer  {
 	//初始啟動
 	@Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+		System.out.println("congigure Start");
     	configurer.enable();
     	System.out.println("Configure Success");
     }
