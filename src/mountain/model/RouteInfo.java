@@ -23,7 +23,7 @@ public class RouteInfo extends GenericTypeObject {
 	@Id
 	@Column( name = "ROUTE_BASIC_ID")
 	@GeneratedValue(generator = "rbidG1")
-	private int rbPK;
+	private Integer rbPK;
 	
 	@Column( name = "NAME")
 	private String name;
@@ -78,11 +78,12 @@ public class RouteInfo extends GenericTypeObject {
 	public void setAdvice(byte[] advice) {
 		this.advice = advice;
 	}
-
-	public int getRbPK() {
+	@Override
+	public Integer getId() {
 		return rbPK;
 	}
-	public void setRbPK(int rbPK) {
+	@Override
+	public void setId(Integer rbPK) {
 		this.rbPK = rbPK;
 	}
 

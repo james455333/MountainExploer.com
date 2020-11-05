@@ -106,6 +106,7 @@ public class BackCUDController {
 				NationalPark selectNP = npService.select(npID);
 				RouteBasic originRB = rtInfo.getRoute_basic();
 				NationalPark originNP = originRB.getNational_park();
+				System.out.println("originRB : " + originRB.getId());
 				if (selectNP.getId() != originNP.getId()) {
 					originRB.setNational_park(selectNP);
 					originRB.setRouteInfo(rtInfo);

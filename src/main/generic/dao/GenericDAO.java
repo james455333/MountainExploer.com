@@ -23,6 +23,7 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 		this.entity = entity;
 	}
 	
+	
 	@Override
 	public T select(int id) {
 
@@ -76,6 +77,7 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 		try {
 
 			T result = (T) session.get(entity.getClass(), entity.getId());
+			System.out.println("id : " + result.getId());
 			if (result != null) {
 				session.update(entity);
 				return entity;

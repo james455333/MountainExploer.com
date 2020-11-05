@@ -3,19 +3,19 @@ package main.generic.model;
 
 public class GenericTypeObject {
 	
-	private int id;
-	private int seqno;
+	private Integer id;
+	private Integer seqno;
 	private String name;
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public int getSeqno() {
+	public Integer getSeqno() {
 		return seqno;
 	}
-	public void setSeqno(int seqno) {
+	public void setSeqno(Integer seqno) {
 		this.seqno = seqno;
 	}
 	public String getName() {

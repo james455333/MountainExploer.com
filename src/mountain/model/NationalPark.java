@@ -25,17 +25,17 @@ public class NationalPark extends GenericTypeObject {
 	@Id
 	@Column(name = "SEQNO")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	@Column(name = "NAME", unique = true)
 	private String name;
 	@OneToMany(fetch = FetchType.LAZY , mappedBy = "national_park" , cascade = CascadeType.ALL)
 	private Set<RouteBasic> routeBasic;
 	@Override
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	@Override
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	@Override

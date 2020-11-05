@@ -84,7 +84,7 @@ public class RetrieveFunction {
 			Iterator<RouteBasic> iterator = nationalPark.getRouteBasic().iterator();
 			while (iterator.hasNext()) {
 				RouteBasic routeBasic = iterator.next();
-				if (routeBasic.getRouteid() == seqnum ) {
+				if (routeBasic.getId() == seqnum ) {
 					return nationalPark.getId();
 				}
 			}

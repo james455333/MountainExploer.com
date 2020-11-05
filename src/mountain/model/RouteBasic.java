@@ -24,9 +24,9 @@ public class RouteBasic extends GenericTypeObject{
 	@Id
 	@Column(name = "SEQNO")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int routeid;
+	private Integer id;
 	@Transient
-	private int npid;
+	private Integer npid;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="NATIONAL_PARK_ID",referencedColumnName = "SEQNO")
 	private NationalPark national_park;
@@ -38,12 +38,13 @@ public class RouteBasic extends GenericTypeObject{
 	}
 	@OneToOne(fetch = FetchType.LAZY, mappedBy = "route_basic", cascade = CascadeType.ALL)
 	private RouteInfo routeInfo;
-	
-	public int getRouteid() {
-		return routeid;
+	@Override
+	public Integer getId() {
+		return id;
 	}
-	public void setRouteid(int routeid) {
-		this.routeid = routeid;
+	@Override
+	public void setId(Integer routeid) {
+		this.id = routeid;
 	}
 		
 	public RouteInfo getRouteInfo() {
@@ -55,7 +56,7 @@ public class RouteBasic extends GenericTypeObject{
 	public int getNpid() {
 		return npid;
 	}
-	public void setNpid(int npid) {
+	public void setNpid(Integer npid) {
 		this.npid = npid;
 	}
 	

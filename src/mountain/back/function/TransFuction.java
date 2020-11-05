@@ -20,7 +20,7 @@ public class TransFuction {
 			Iterator<RouteBasic> iterator = nationalPark.getRouteBasic().iterator();
 			while(iterator.hasNext()) {
 				RouteBasic rb = iterator.next();
-				if (rb.getRouteid() == seqnum) {
+				if (rb.getId() == seqnum) {
 					RouteInfo routeInfo = rb.getRouteInfo();
 					MountainBean mountainBean = new MountainBean();
 					mountainBean.setSeqno(seqnum);
@@ -57,7 +57,7 @@ public class TransFuction {
 				RouteBasic next = iterator.next();
 				RouteInfo routeInfo = next.getRouteInfo();
 				MountainBean mountainBean = new MountainBean();
-				mountainBean.setSeqno(routeInfo.getRbPK());
+				mountainBean.setSeqno(routeInfo.getId());
 //				System.out.println("Seqno : " +routeInfo.getRbPK() );
 				mountainBean.setName(routeInfo.getName());
 				
@@ -89,7 +89,7 @@ public class TransFuction {
 					MountainBean mountainBean = new MountainBean();
 					RouteBasic routeBasic = iterator.next();
 					RouteInfo routeInfo = routeBasic.getRouteInfo();
-					mountainBean.setSeqno(routeInfo.getRbPK());
+					mountainBean.setSeqno(routeInfo.getId());
 					mountainBean.setName(routeInfo.getName());
 
 					String description = bytesToString(routeInfo.getDescription());
