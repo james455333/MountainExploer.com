@@ -5,8 +5,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
 
-
+@Repository
 public class FirstClassDAO {
 
 	@Autowired @Qualifier("sessionFactory")
@@ -21,9 +22,7 @@ public class FirstClassDAO {
 		Session session = sessionFactory.getCurrentSession();
 		
 //		FirstClass result = session.get(FirstClass.class, bean.getId());
-		if (bean !=null) {
-			session.save(bean);
-		}
+		session.save(bean);
 		return bean;
 	}
 	//查詢FirstClass
