@@ -120,7 +120,7 @@ public class MemberBasic {
 	}
 
 	
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "MemberBasic", cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "memberBasic", cascade = CascadeType.ALL)
 	public MemberInfo getMemberInfo() {
 		return memberInfo;
 	}

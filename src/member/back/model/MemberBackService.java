@@ -18,6 +18,12 @@ public class MemberBackService {
 		return memberBackDAO.checkLogin(account, password);
 	}
 	
+	
+	public MemberBasic insert(MemberBasic mb) {
+		return memberBackDAO.insert(mb);
+	}
+	
+	
 	public List<MemberBasic> selectAll() {
 		return memberBackDAO.selectAll();
 	}

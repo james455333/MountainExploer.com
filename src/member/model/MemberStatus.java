@@ -21,7 +21,7 @@ public class MemberStatus {
 	
 	private int seqno;
 	private String name;
-	private Set<MemberBasic> memberBasics = new HashSet<MemberBasic>();
+	private Set<MemberBasic> memberBasic = new HashSet<MemberBasic>();
 
 	public MemberStatus() {
 		
@@ -54,13 +54,13 @@ public class MemberStatus {
 	}
 
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "MEMBER_STATUS", cascade = CascadeType.ALL)
-	public Set<MemberBasic> getMemberBasics() {
-		return memberBasics;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "memberStatus", cascade = CascadeType.ALL)
+	public Set<MemberBasic> getMemberBasic() {
+		return memberBasic;
 	}
 
-	public void setMemberBasics(Set<MemberBasic> memberBasics) {
-		this.memberBasics = memberBasics;
+	public void setMemberBasic(Set<MemberBasic> memberBasics) {
+		this.memberBasic = memberBasics;
 	}
 	
 	

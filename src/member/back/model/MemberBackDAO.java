@@ -42,6 +42,17 @@ public class MemberBackDAO {
 	}
 	
 	
+	//Registered new user
+	public MemberBasic insert(MemberBasic mb) {
+		Session session = sessionFactory.getCurrentSession();
+		MemberBasic result = session.get(MemberBasic.class, mb.getSeqno());
+		if(result == null) {
+			session.save(mb);
+			return mb;
+		}
+		return null;
+	}
+	
 	
 	//Select all Member's Info
 	public List<MemberBasic> selectAll(){

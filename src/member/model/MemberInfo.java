@@ -56,7 +56,7 @@ public class MemberInfo {
 	}
 
 	
-	@GenericGenerator(name = "generator", strategy = "foreign", parameters = @Parameter(name = "property", value = "MemberBasic"))
+	@GenericGenerator(name = "generator", strategy = "foreign", parameters = @Parameter(name = "property", value = "memberBasic"))
 	@Id 
 	@GeneratedValue (generator = "generator")
 	@Column(name = "MEMBER_BASIC_ID")
