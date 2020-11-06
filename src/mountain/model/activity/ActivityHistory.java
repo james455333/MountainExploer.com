@@ -3,8 +3,8 @@ package mountain.model.activity;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,37 +19,30 @@ import org.hibernate.annotations.Parameter;
 import org.springframework.stereotype.Component;
 
 import main.generic.model.GenericTypeObject;
-import mountain.model.activity.Registry.ActRegistry;
 import mountain.model.route.RouteBasic;
 
 @Entity
-@Table(name = "activity_info")
+@Table(name = "activity_history")
 @Component
-public class ActivityInfo extends GenericTypeObject {
+public class ActivityHistory extends GenericTypeObject {
 	@Id
-	@Column(name = "activity_basic_seqno")
-	@GenericGenerator(name = "actBasicG1", strategy = "foreign", parameters = @Parameter(name = "property", value = "actBasic"))
-	@GeneratedValue(generator = "actBasicG1")
+	@Column(name = "seqno")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@OneToOne(fetch = FetchType.LAZY)
-	@PrimaryKeyJoinColumn
-	private ActivityBasic actBasic;
-	@ManyToOne
-	@JoinColumn(name = "ROUTE_BASIC_ID")
-	private RouteBasic rtBasic;
+	@Column(name = "MEMBER_ID")
+	private Integer memberID;
+	@Column(name = "ROUTE_NAME")
+	private String RouteNmae;
 	@Column(name = "TITLE")
 	private String title;
 	@Column(name = "PRICE")
 	private Integer price;
-	@Column(name = "TOTALDAY")
+	@Column(name = "TOTOALDAY")
 	private String totalDay;
 	@Column(name="note")
 	private byte[] note;
-	@Column(name = "REG_NOW")
-	private Integer regNow;
-	@Column(name = "REG_TOP")
-	private Integer regTop;
-	
+	@Column(name = "REG_final")
+	private Integer regFinal;
 	@Basic
 	@Column(name = "START_DATE")
 	@Temporal(TemporalType.DATE)
@@ -66,7 +59,6 @@ public class ActivityInfo extends GenericTypeObject {
 	@Column(name = "POST_DATE")
 	@Temporal(TemporalType.DATE)
 	private java.util.Date postDate;
-
 	
 	@Override
 	public Integer getId() {
@@ -75,18 +67,6 @@ public class ActivityInfo extends GenericTypeObject {
 	@Override
 	public void setId(Integer id) {
 		this.id = id;
-	}
-	public ActivityBasic getActBasic() {
-		return actBasic;
-	}
-	public void setActBasic(ActivityBasic actBasic) {
-		this.actBasic = actBasic;
-	}
-	public RouteBasic getRtBasic() {
-		return rtBasic;
-	}
-	public void setRtBasic(RouteBasic rtBasic) {
-		this.rtBasic = rtBasic;
 	}
 	public String getTitle() {
 		return title;
@@ -113,12 +93,6 @@ public class ActivityInfo extends GenericTypeObject {
 		this.note = note;
 	}
 
-	public Integer getRegTop() {
-		return regTop;
-	}
-	public void setRegTop(Integer regTop) {
-		this.regTop = regTop;
-	}
 	public java.util.Date getStartDate() {
 		return startDate;
 	}
@@ -143,11 +117,23 @@ public class ActivityInfo extends GenericTypeObject {
 	public void setPostDate(java.util.Date postDate) {
 		this.postDate = postDate;
 	}
-	public Integer getRegNow() {
-		return regNow;
+	public Integer getMemberID() {
+		return memberID;
 	}
-	public void setRegNow(Integer regNow) {
-		this.regNow = regNow;
+	public void setMemberID(Integer memberID) {
+		this.memberID = memberID;
+	}
+	public String getRouteNmae() {
+		return RouteNmae;
+	}
+	public void setRouteNmae(String routeNmae) {
+		RouteNmae = routeNmae;
+	}
+	public Integer getRegFinal() {
+		return regFinal;
+	}
+	public void setRegFinal(Integer regFinal) {
+		this.regFinal = regFinal;
 	}
 	
 	
