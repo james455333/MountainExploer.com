@@ -11,27 +11,32 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.hibernate.tool.schema.extract.internal.SequenceInformationExtractorNoOpImpl;
+import org.springframework.stereotype.Component;
 
+import main.generic.model.GenericTypeObject;
 import member.model.MemberBasic;
 
 @Entity
 @Table(name = "activity_basic")
-public class ActivityBasic {
+@Component
+public class ActivityBasic extends GenericTypeObject{
 	
-	private int seqno;
+	private Integer seqno;
 	private MemberBasic memberBasic;
 	
 	@Id
 	@Column(name = "seqno")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public int getSeqno() {
+	@Override
+	public Integer getSeqno() {
 		return seqno;
 	}
-	public void setSeqno(int seqno) {
+	@Override
+	public void setSeqno(Integer seqno) {
 		this.seqno = seqno;
 	}
 	@ManyToOne
-	@JoinColumn(name = "memeber_basic_id", referencedColumnName = "seqno")
+	@JoinColumn(name = "member_basic_id", referencedColumnName = "seqno")
 	public MemberBasic getMemberBasic() {
 		return memberBasic;
 	}
