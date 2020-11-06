@@ -16,13 +16,14 @@ import oracle.net.aso.q;
 
 @Repository("memberBackDao")
 public class MemberBackDAO {
-	
+	@Autowired
+	@Qualifier("sessionFactory")
 	private SessionFactory sessionFactory;
 	
-	@Autowired
-	public MemberBackDAO(@Qualifier("sessionFactory")SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
+	
+//	public MemberBackDAO(SessionFactory sessionFactory) {
+//		this.sessionFactory = sessionFactory;
+//	}
 	
 	
 	//Back Login
@@ -40,6 +41,17 @@ public class MemberBackDAO {
 		return false;
 	}
 	
+	
+	//Registered new user
+	public MemberBasic insert(MemberBasic mb) {
+		Session session = sessionFactory.getCurrentSession();
+		MemberBasic result = session.get(MemberBasic.class, mb.getSeqno());
+		if(result == null) {
+			session.save(mb);
+			return mb;
+		}
+		return null;
+	}
 	
 	
 	//Select all Member's Info

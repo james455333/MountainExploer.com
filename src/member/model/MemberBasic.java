@@ -11,8 +11,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "MEMBER_BASIC")
@@ -25,8 +29,8 @@ public class MemberBasic {
 	private int member_status_id;
 	private Date reg_Date;
 	private String password;
-	private Set<MemberInfo> memberInfo = new HashSet<MemberInfo>();
-	private Set<MemberStatus> memberStatus = new HashSet<MemberStatus>();
+	private MemberInfo memberInfo;
+	private MemberStatus memberStatus;
 	
 	public MemberBasic() {
 		
@@ -86,7 +90,7 @@ public class MemberBasic {
 	}
 
 	
-	@Column (name = "MEMBER_STATUS_ID")
+	@Transient
 	public int getMember_status_id() {
 		return member_status_id;
 	}
@@ -116,25 +120,29 @@ public class MemberBasic {
 	}
 
 	
-	@OneToMany (fetch = FetchType.LAZY, mappedBy = "MEMBER_BASIC", cascade = CascadeType.ALL)
-	public Set<MemberInfo> getMemberInfo() {
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "memberBasic", cascade = CascadeType.ALL)
+	public MemberInfo getMemberInfo() {
 		return memberInfo;
 	}
 
-	public void setMemberInfo(Set<MemberInfo> memberInfo) {
+	public void setMemberInfo(MemberInfo memberInfo) {
 		this.memberInfo = memberInfo;
 	}
-
 	
-	@OneToMany (fetch = FetchType.LAZY, mappedBy = "MEMBER_BASIC", cascade = CascadeType.ALL)
-	public Set<MemberStatus> getMemberStatus() {
+	
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn
+	public MemberStatus getMemberStatus() {
 		return memberStatus;
 	}
 
-	public void setMemberStatus(Set<MemberStatus> memberStatus) {
+	public void setMemberStatus(MemberStatus memberStatus) {
 		this.memberStatus = memberStatus;
 	}
 
+	
+	
 	
 	
 	
