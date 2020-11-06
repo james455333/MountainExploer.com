@@ -8,7 +8,10 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.sun.org.apache.bcel.internal.generic.Select;
+
 import main.generic.model.GenericTypeObject;
+import sun.security.ec.ECDSAOperations.Seed;
 
 @Repository
 @SuppressWarnings("unchecked")
@@ -23,6 +26,12 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 		this.entity = entity;
 	}
 	
+	public T selectWithPage(int page, int showdata) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "From " + entity.getName();
+		session.createQuery(, resultType)
+	
+	}
 	
 	@Override
 	public T select(int id) {

@@ -1,4 +1,6 @@
 
+
+
 //招出刪除確認
 $(".deleteButton").on("click",function(){
 	
@@ -56,24 +58,30 @@ $("#deleteCancel").on("click",function(){
 })
 
 
-//列表切換
+//列表切換與按鈕切換
 $("#nPSelect").on("change",function(){
 	
 	let thisVal = $(this).val() ;
-	// console.log(val);
 	let npNum = $("#nPSelect").find("option").length;
-	// console.log(npNum);
 	
 	for(let i = 0 ; i < npNum ; i++ ){
+		
 		let optionVal = $("#nPSelect").find("option").eq(i).val()
+		let status = $(".rtSubmit").eq(i).parent().siblings("div").find("option").length
 		if(thisVal == optionVal){
-			console.log(optionVal)
 			$(".scopeQuery").hide();
 			$(".scopeQuery").eq(i).show();
+			if(status < 1 ){
+				$(".npSubmit").prop("disabled",true).val("無路線可查詢")
+			}else{
+				$(".npSubmit").prop("disabled",false).val("國家公園查詢")
+			}
 		}
 	}
 	
 });
+
+
 
 //滑鼠移動呈現放大圖片
 $(".routeImg").on("mouseenter",function(e){
@@ -95,9 +103,30 @@ $(".routeImg").on("mouseenter",function(e){
 })
 
 
-$(".rtSubmit").on("mouseenter",function(){
-	let status = $(this).siblings(".searchSelect").find(".route")
-	console.log(status)
-})
+/*$(".rtSubmit").on("mouseenter",function(){
+	let status = $(this).parent().siblings("div").find("option").length
+	if(status <= 0){
+		$(this).prop("disabled",true)
+	}
+}).on("mouseleave",function(){
+	$(".rtSubmit").prop("disabled",false)
+})*/
+
+//判斷
+let rtsubmit = $(".rtSubmit").length
+let npsubmit = $(".npsubmit").length
+for(let i = 0 ; i<rtsubmit ; i++){
+	let status = $(".rtSubmit").eq(i).parent().siblings("div").find("option").length
+	if(status <= 0){
+		$(".rtSubmit").eq(i).prop("disabled",true)
+	}
+	
+}
+
+if($(".rtSubmit").eq(0).prop("disabled")){
+	$(".npSubmit").prop("disabled",true).val("無路線可查詢")
+}
+
+
 
 

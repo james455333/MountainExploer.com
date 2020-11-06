@@ -56,22 +56,26 @@ public class RetrieveFunction {
 
 	// 整理主要顯示LIST順序
 	public static List<MountainBean> sortMountainBeans(List<MountainBean> beforeOrder) {
-		List<MountainBean> afterOrder = new ArrayList<MountainBean>();
-		afterOrder.add(beforeOrder.get(0));
-		for (MountainBean mountainBean : beforeOrder) {
-			int beforeNum = mountainBean.getSeqno();
-			for (int i = 0; i < afterOrder.size(); i++) {
-				int afterNum = afterOrder.get(i).getSeqno();
-				if (beforeNum < afterNum && !afterOrder.contains(mountainBean)) {
-					afterOrder.add(i, mountainBean);
-					break;
-				} else if (i == afterOrder.size() - 1 && !afterOrder.contains(mountainBean)) {
-					afterOrder.add(mountainBean);
-					break;
+		if (beforeOrder != null && beforeOrder.size()>1) {
+			List<MountainBean> afterOrder = new ArrayList<MountainBean>();
+			afterOrder.add(beforeOrder.get(0));
+			for (MountainBean mountainBean : beforeOrder) {
+				int beforeNum = mountainBean.getSeqno();
+				for (int i = 0; i < afterOrder.size(); i++) {
+					int afterNum = afterOrder.get(i).getSeqno();
+					if (beforeNum < afterNum && !afterOrder.contains(mountainBean)) {
+						afterOrder.add(i, mountainBean);
+						break;
+					} else if (i == afterOrder.size() - 1 && !afterOrder.contains(mountainBean)) {
+						afterOrder.add(mountainBean);
+						break;
+					}
 				}
 			}
+			return afterOrder;
+		}else {
+			return beforeOrder;
 		}
-		return afterOrder;
 	}
 	
 	
