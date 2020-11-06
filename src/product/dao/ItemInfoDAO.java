@@ -70,4 +70,9 @@ public class ItemInfoDAO {
 //			return false;
 //		}
 //
+//	byte[] b1 = new byte[1];
+//	String s1 = new String(b1,"UTF-8");
+	
+	
+	
 }
