@@ -28,8 +28,10 @@ public class MemberBackRegisterController {
 		mb.setAccount("makoto222");
 		mb.setName("丹禮真");
 		mb.setEmail("makoto@gmail.com");
-		mb.setMember_status_id(100);
+//		mb.setMember_status_id(100);
 		mb.setPassword("Do!ng123");
+		
+		System.out.println(mb.getAccount());
 		
 		memberBackService.insert(mb);
 		return "redirect:member/backLogin";
