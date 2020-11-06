@@ -1,10 +1,11 @@
 package product.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import product.dao.ItemInfoDAO;
-import product.model.FirstClass;
 import product.model.ItemInfo;
 
 @Service("itemInfoService")
@@ -29,5 +30,12 @@ public class ItemInfoService {
 		return itemInfoDao.selectNo(itemBasicSeqno);
 	}
 	
+	public List<ItemInfo> selectAll() {
+		return itemInfoDao.selectAll();
+	}
+
+	public ItemInfo updateStock(Integer stock) {
+		return itemInfoDao.updateStock(stock);
+	}
 
 }

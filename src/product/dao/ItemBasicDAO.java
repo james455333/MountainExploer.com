@@ -45,31 +45,23 @@ public class ItemBasicDAO {
 		}
 		return null;
 	}
-	//
-//	public ItemBasic select(int id) {
-//		return session.get(ItemBasic.class, id);
-//	}
-	//
-//	public List<ItemBasic> selectAll(){
-//		Query<ItemBasic> query = session.createQuery("From ItemBasic", ItemBasic.class);
-//		List<ItemBasic> list = query.list();
-//		return list;
-}
-// 修改(庫存量)
-//	public ItemBasic update(int stock) {
-//		ItemBasic result = session.get(ItemBasic.class, stock);
-//		if (result!=null) {
-//			result.setStock(stock);
-//		}
-//		return result;
-//	}
+
+	public List<ItemBasic> selectAll(){
+		Session session = sessionFactory.getCurrentSession();
+		Query<ItemBasic> query = session.createQuery("From ItemBasic", ItemBasic.class);
+		List<ItemBasic> list = query.list();
+		return list;
+	}
+// 修改
+
 // 刪除
-//	public boolean delete(String name) {
-//		ItemBasic result = session.get(ItemBasic.class, name);
-//		if (result!= null) {
-//			session.delete(result);
-//			return true;
-//		}
-//		return false;
-//	}
-//}
+	public boolean delete(String name) {
+		Session session = sessionFactory.getCurrentSession();
+		ItemBasic result = session.get(ItemBasic.class, name);
+		if (result!= null) {
+			session.delete(result);
+			return true;
+		}
+		return false;
+	}
+}

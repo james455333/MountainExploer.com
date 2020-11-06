@@ -1,5 +1,9 @@
 package product.service;
 
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,5 +27,11 @@ public class ItemBasicService {
 		
 		return itemBasicDao.select(name);
 	}
+	public List<ItemBasic> selectAll(){
+		return itemBasicDao.selectAll();
+	}
 	
+	public boolean delete(String name) {
+		return itemBasicDao.delete(name);
+	}
 }
