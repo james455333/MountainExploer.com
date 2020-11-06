@@ -48,6 +48,9 @@ import product.model.ItemInfo;
 import product.model.ItemInfoDAO;
 import product.model.SecondClass;
 import product.model.SecondClassDAO;
+import product.service.FirstClassService;
+import product.service.ItemBasicService;
+import product.service.SecondClassService;
 
 @Controller
 public class ProductImportDataController {
@@ -56,17 +59,13 @@ public class ProductImportDataController {
 	public static String ImgDownloadPath = "C:\\MountainExploer\\product\\images\\";
 	public static String CHARSET = "UTF-8";
 
-	FirstClassDAO firstClassDAO = new FirstClassDAO();
-	SecondClassDAO secondClassDAO = new SecondClassDAO();
-	ItemBasicDAO itemBasicDAO = new ItemBasicDAO();
-	ItemInfoDAO itemInfoDAO = new ItemInfoDAO();
-//	@Autowired
-//	private GenericService<NationalPark> npService;
-//	@Autowired
-//	private GenericService<RouteBasic> rBService;
-//	@Autowired
-//	@Qualifier("sessionFactory")
-//	private SessionFactory sessionFactory;
+	@Autowired
+	private FirstClassService firstClassService;
+	@Autowired
+	private SecondClassService secondClassService;
+	@Autowired
+	private ItemBasicService itemBasicService;
+
 
 	@RequestMapping(path = "/fileuploadEnrty.controller", method = RequestMethod.GET)
 	public String processEntryFormPage() {
@@ -118,7 +117,7 @@ public class ProductImportDataController {
 
 			List<CSVRecord> results = parser.getRecords();
 
-			Set<FirstClass> firstSet = null;
+//			Set<FirstClass> firstSet = null;
 			//	CSV每筆資料分別取出
 			for (CSVRecord csvRecord : results) {
 				//	取出欄位值
@@ -134,7 +133,8 @@ public class ProductImportDataController {
 				
 				//	放入firstClass 
 				firstClass.setName(csvRecord.get("FIRST_CLASS_NAME"));
-				
+				System.out.println(firstClass.getName());
+				System.out.println(FirstClass.class.getName());
 				//	放入secondeClass
 				secondClass.setName(csvRecord.get("SECOND_CLASS"));
 				//	放入itemBasic
@@ -164,25 +164,25 @@ public class ProductImportDataController {
 //				itemInfo.setItemBasic(itemBasic);
 				
 				
-				firstClassDAO.insert(firstClass);
+//				firstClassDAO.insert(firstClass);
 				//	條件判斷
 				
 				// 先用DAO判斷有無FirstClass_name重複存在
-					FirstClass checkFirstClass = firstClassDAO.select(firstClass.getName());
+					FirstClass checkFirstClass = firstClassService.select(firstClass.getName());
 				if (checkFirstClass != null) {
 					
 					// 再判斷 secondClass有無重複
-					SecondClass checkSecond = secondClassDAO.select(secondClass.getName());
+					SecondClass checkSecond = secondClassService.select(secondClass.getName());
 					if (checkSecond!=null) {
 						// insert(itemBasic)
-						itemBasicDAO.insert(itemBasic);
+						itemBasicService.insert(itemBasic);
 						System.out.println("第" + (++importCounter) +  "筆，完成 :　" + itemBasic.getName() );
 					}else {
-						secondClassDAO.insert(secondClass);
+						secondClassService.insert(secondClass);
 						System.out.println("第" + (++importCounter) +  "筆，完成 :　" + secondClass.getName() + " : " + itemBasic.getName() );
 					}
 				}else {
-					firstClassDAO.insert(firstClass);
+					firstClassService.insert(firstClass);
 					System.out.println("第" + (++importCounter) +  "筆，完成 :　" + firstClass.getName() + secondClass.getName() + " : " + itemBasic.getName() );
 				}
 				

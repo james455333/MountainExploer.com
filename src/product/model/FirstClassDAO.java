@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import main.generic.model.GenericTypeObject;
 
-@Repository
+@Repository("firstClassDao")
 public class FirstClassDAO {
 
 	@Autowired @Qualifier("sessionFactory")
@@ -39,6 +39,7 @@ public class FirstClassDAO {
 			Session session = sessionFactory.getCurrentSession();
 
 			String hql = "From first_class  where Name like '" + firstClassName + "'";
+//			String hql = "From"+ FirstClass.class.getName() +" where Name like '" + firstClassName + "'";
 
 			Query<FirstClass> query = session.createQuery(hql, FirstClass.class);
 
