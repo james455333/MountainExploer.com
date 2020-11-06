@@ -1,4 +1,4 @@
-package product.model;
+package product.dao;
 
 import java.util.List;
 
@@ -8,6 +8,8 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
+
+import product.model.ItemBasic;
 
 @Repository("itemBasicDao")
 public class ItemBasicDAO {
@@ -20,7 +22,7 @@ public class ItemBasicDAO {
 	public ItemBasic insert(ItemBasic bean) {
 
 		Session session = sessionFactory.getCurrentSession();
-
+		System.out.println("start basic insert");
 		if (bean != null) {
 			session.save(bean);
 		}
@@ -31,9 +33,10 @@ public class ItemBasicDAO {
 	public ItemBasic select(String name) {
 		Session session = sessionFactory.getCurrentSession();
 
-		String hql = "From item_basic  where Name like '" + name + "'";
+		String hql = "From ItemBasic where Name like '" + name + "'";
 
 		Query<ItemBasic> query = session.createQuery(hql, ItemBasic.class);
+		System.out.println("Start ItemBasic Query" );
 
 		ItemBasic uniqueResult = query.uniqueResult();
 

@@ -1,4 +1,4 @@
-package product.model;
+package product.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -8,18 +8,15 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import main.generic.model.GenericTypeObject;
+import product.model.FirstClass;
 
 @Repository("firstClassDao")
 public class FirstClassDAO {
 
-	@Autowired @Qualifier("sessionFactory")
+	@Autowired 
 	private SessionFactory sessionFactory;
 	
-//	public FirstClassDAO(Session session) {
-//		Session session = sessionFactory.getCurrentSession();
-//	}
 
-		
 	
 	
 	//新增FirstClass
@@ -38,16 +35,18 @@ public class FirstClassDAO {
 		public FirstClass select(String firstClassName) {
 			Session session = sessionFactory.getCurrentSession();
 
-			String hql = "From first_class  where Name like '" + firstClassName + "'";
+			String hql = "From FirstClass where name like '" + firstClassName + "'";
 //			String hql = "From"+ FirstClass.class.getName() +" where Name like '" + firstClassName + "'";
 
 			Query<FirstClass> query = session.createQuery(hql, FirstClass.class);
-
+			System.out.println("Start FirstClass Query" );
 			FirstClass uniqueResult = query.uniqueResult();
 
 			if (uniqueResult != null) {
+				System.out.println("uResult != null");
 				return uniqueResult;
 			}
+			System.out.println("uResult == null");
 			return null;
 		}
 		//

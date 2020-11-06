@@ -1,4 +1,4 @@
-package product.model;
+package product.dao;
 
 import java.util.List;
 
@@ -8,6 +8,8 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
+
+import product.model.SecondClass;
 
 @Repository("secondClassDao")
 public class SecondClassDAO {
@@ -28,9 +30,10 @@ public class SecondClassDAO {
 		public SecondClass select(String secondClassName) {
 			Session session = sessionFactory.getCurrentSession();
 
-			String hql = "From second_class  where Name like '" + secondClassName + "'";
+			String hql = "From SecondClass  where Name like '" + secondClassName + "'";
 
 			Query<SecondClass> query = session.createQuery(hql, SecondClass.class);
+			System.out.println("Start SecondClass Query" );
 
 			SecondClass uniqueResult = query.uniqueResult();
 

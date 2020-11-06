@@ -3,8 +3,9 @@ package product.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import product.dao.ItemInfoDAO;
+import product.model.FirstClass;
 import product.model.ItemInfo;
-import product.model.ItemInfoDAO;
 
 @Service("itemInfoService")
 public class ItemInfoService {
@@ -13,6 +14,10 @@ public class ItemInfoService {
 
 	public ItemInfoService(ItemInfoDAO itemInfoDao) {
 		this.itemInfoDao = itemInfoDao;
+	}
+	
+	public void save(ItemInfo itemInfo) {
+		itemInfoDao.save(itemInfo);
 	}
 	
 	public ItemInfo insert(ItemInfo bean) {

@@ -3,8 +3,8 @@ package product.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import product.dao.ItemBasicDAO;
 import product.model.ItemBasic;
-import product.model.ItemBasicDAO;
 @Service("itemBasicService")
 public class ItemBasicService {
 	@Autowired

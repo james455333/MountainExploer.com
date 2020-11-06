@@ -3,8 +3,8 @@ package product.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import product.dao.SecondClassDAO;
 import product.model.SecondClass;
-import product.model.SecondClassDAO;
 
 @Service("secondClassService")
 public class SecondClassService {
