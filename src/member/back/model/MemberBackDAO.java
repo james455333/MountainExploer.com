@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 
 import member.model.MemberBasic;
 import member.model.MemberInfo;
-import oracle.net.aso.q;
 
 
 @Repository("memberBackDao")
@@ -126,6 +125,16 @@ public class MemberBackDAO {
 		}
 		
 		return result;
+	}
+
+
+	public MemberInfo insert(MemberInfo mbInfo) {
+		Session session = sessionFactory.getCurrentSession();
+		MemberInfo result = session.get(MemberInfo.class, mbInfo.getMember_basic_id());
+		if(result == null) {
+			session.save(mbInfo);
+		}
+		return null;
 	}
 	
 	

@@ -48,4 +48,9 @@ public class MemberBackService {
 		return memberBackDAO.updateMbData(seqno, mI);
 	}
 
+
+	public MemberInfo insert(MemberInfo mbInfo) {
+		return memberBackDAO.insert(mbInfo);
+	}
+
 }
