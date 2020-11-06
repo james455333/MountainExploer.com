@@ -148,6 +148,8 @@ public class BackCUDController {
 		
 		return "redirect:/mountainBackStage/mainPage";
 	}
+	
+	
 	private void insertDataToDB(Map<String,String> allParams,MultipartFile multipartFile,Map<String, String> errors) throws IllegalStateException, IOException {
 		NationalPark nationalPark = new NationalPark();
 		RouteBasic routeBasic = new RouteBasic();

@@ -1,5 +1,6 @@
 package main.generic.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -8,10 +9,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.sun.org.apache.bcel.internal.generic.Select;
-
 import main.generic.model.GenericTypeObject;
-import sun.security.ec.ECDSAOperations.Seed;
 
 @Repository
 @SuppressWarnings("unchecked")
@@ -26,11 +24,16 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 		this.entity = entity;
 	}
 	
-	public T selectWithPage(int page, int showdata) {
+	public List<T> selectWithPage(int page, int showdata) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = "From " + entity.getName();
-		session.createQuery(, resultType)
-	
+		int startPosition = (page-1) * showdata;
+		List<T> list = new ArrayList<T>();
+		String hql = "From " + entity.getClass().getName();
+		list = session.createQuery(hql)
+					.setFirstResult(startPosition)
+					.setMaxResults(showdata)
+					.getResultList();
+		return list;
 	}
 	
 	@Override
