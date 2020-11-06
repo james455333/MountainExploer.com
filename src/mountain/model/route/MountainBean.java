@@ -1,4 +1,4 @@
-package mountain.model;
+package mountain.model.route;
 
 import org.springframework.stereotype.Component;
 

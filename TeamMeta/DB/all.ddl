@@ -1,5 +1,5 @@
 -- 產生者Oracle SQL Developer Data Modeler 20.2.0.167.1538
--- 於:2020-11-04 14:23:17 TST
+-- 於:2020-11-06 20:21:11 TST
 -- 位置:Oracle Database 12cR2
 -- 類型:Oracle Database 12cR2
 

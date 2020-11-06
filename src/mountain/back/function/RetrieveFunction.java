@@ -8,9 +8,9 @@ import java.util.List;
 
 import main.generic.service.AbstractService;
 import main.generic.service.GenericService;
-import mountain.model.MountainBean;
-import mountain.model.NationalPark;
-import mountain.model.RouteBasic;
+import mountain.model.route.MountainBean;
+import mountain.model.route.NationalPark;
+import mountain.model.route.RouteBasic;
 
 public class RetrieveFunction {
 	

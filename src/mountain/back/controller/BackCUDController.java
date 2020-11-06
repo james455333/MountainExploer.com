@@ -17,9 +17,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import main.generic.service.AbstractService;
 import main.generic.service.GenericService;
 import mountain.MountainGlobal;
-import mountain.model.NationalPark;
-import mountain.model.RouteBasic;
-import mountain.model.RouteInfo;
+import mountain.model.route.NationalPark;
+import mountain.model.route.RouteBasic;
+import mountain.model.route.RouteInfo;
 
 @Controller
 public class BackCUDController {

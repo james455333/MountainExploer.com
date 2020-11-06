@@ -25,9 +25,9 @@ import main.generic.service.AbstractService;
 import main.generic.service.GenericService;
 import mountain.back.function.PageFunction;
 import mountain.back.function.RetrieveFunction;
-import mountain.model.MountainBean;
-import mountain.model.NationalPark;
-import mountain.model.RouteInfo;
+import mountain.model.route.MountainBean;
+import mountain.model.route.NationalPark;
+import mountain.model.route.RouteInfo;
 
 @Controller
 public class BackRetrieveController {

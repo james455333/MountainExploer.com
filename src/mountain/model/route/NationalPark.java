@@ -1,4 +1,4 @@
-package mountain.model;
+package mountain.model.route;
 
 import java.util.Set;
 
