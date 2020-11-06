@@ -9,28 +9,15 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href='<c:url value="/backstage/css/backStage.css"/>'> 
 <link rel="stylesheet" href='<c:url value="/mountain/back/backMountain.css"/>' >
+<link rel="shortcut icon" type="image/png" href="<c:url value="/favicon.ico"/>"/>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
 </head>
 <body>
-	<!-- 刪除確認視窗 -->
-	<div id="deleteConfirm">
-		<form action="<c:url value='/mountainBackStage/deleteData'/>" method="get">
-			<div>
-				<div id="deleteID"></div>
-				<div>確定刪除本筆資料?</div>
-				<div>!!!--- 此操作將永久刪除本筆資料且無法恢復 ---!!!</div>
-			</div>
-			<div id="deleteConfirmButton">
-				<div><input type="submit" value="確定"></div>
-				<div><input id="deleteCancel" type="button" value="取消"></div>
-			</div>
-		</form>
-	</div>
-	<!-- 刪除確認阻止穿透層 -->
-	<div id="deleteBlock">
+	
+	
 	
 	<div id="container1">
 		<!-- 引入共同頁首 -->
@@ -39,18 +26,34 @@
 		<%-- <c:forEach var="peakName" items="${mountainBean}" varStatus="vs">
 		</c:forEach> --%>
 		<!-- 測尋錯誤訊息 -->
-		<c:if test="${ !empty errors}">
-			<script type="text/javascript" charset="UTF-8">
-				alert("${errors.msg}")
-			</script>
-		</c:if>
+		<c:choose>
+			<c:when test="${ !empty errors}">
+				<script type="text/javascript" charset="UTF-8">
+					var errors = ${errors.msg};
+				</script>
+			</c:when>
+			<c:otherwise>
+				<script type="text/javascript">
+					var errors = null;
+				</script>
+			</c:otherwise>
+		</c:choose>
+		
 		
 		<!-- 測尋結果訊息 -->
-		<c:if test="${ !empty result}">
-			<script type="text/javascript" charset="UTF-8">
-				alert("${result}")
-			</script>
-		</c:if>
+		<c:choose>
+			<c:when test="${ !empty result}">
+				<script type="text/javascript" charset="UTF-8">
+					var result = "${result}";
+				</script>
+			</c:when>
+			<c:otherwise>
+				<script type="text/javascript" charset="UTF-8">
+					var result = null;
+				</script>
+			</c:otherwise>
+		</c:choose>
+		
 		
 		<!-- 查詢列 -->
 		<div id="searchBar">
@@ -65,7 +68,8 @@
 				</div>
 				<div class="searchSelect">
 					<input type="text" name="page" value="1" style="display: none;">
-					<input type="submit" value="國家公園查詢">
+					<input type="text" name="showData" value="${showData}" style="display: none;">
+					<input type="submit" value="國家公園查詢" class="npSubmit">
 				</div>
 			</form>
 			<c:forEach var="npBean" items="${npBean}" varStatus="vsNP" >
@@ -83,7 +87,7 @@
 									</select>
 							</div >
 							<div class="searchSelect">
-								<input type="submit" value="特定路線查詢">
+								<input type="submit" value="特定路線查詢" class="rtSubmit">
 							</div>
 						</form>
 					</c:when>
@@ -100,7 +104,7 @@
 									</select>
 							</div >
 							<div class="searchSelect">
-								<input type="submit" value="特定路線查詢">
+								<input type="submit" value="特定路線查詢" class="rtSubmit">
 							</div>
 						</form>
 					</c:otherwise>
@@ -124,7 +128,25 @@
 				<span>目前查詢資料總筆數 : ${totalData}</span>
 			</div>
 			<div>
-				<span>目前每頁顯示最大資料筆數 : ${showData}</span>
+				<form action="<c:url value='${controllerPath}'/>">
+					<span>每頁顯示筆數 :</span>
+					<select name="showData">
+						<c:forEach var="selectShow" begin="1" end="5" varStatus="vs"> 
+							<c:choose>
+								<c:when test="${vs.count == showData}">
+									<option value="${vs.count}" selected="selected">${vs.count}</option>
+								</c:when>
+								<c:otherwise>
+									<option value="${vs.count}">${vs.count}</option>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+					</select>
+					<input name="nationalPark" value="${nationalPark}" style="display: none;"> 
+					<input name="page" value="${page}" style="display: none;"> 
+					<input type="submit" value="更改顯示">
+					<span>預設為3筆</span>
+				</form>
 			</div>
 		
 		<!-- 呈現畫面 -->
@@ -171,7 +193,9 @@
 				    			</form>
 				    		</div>
 				    		<div>
-				    			<input type="text" name="seqno" value="${peakName.seqno}" style="display: none;" readonly>
+				    			<form style="display: none;" action="<c:url value="/mountainBackStage/deleteData" />" id="deleteForm">
+					    			<input type="text" name="deleteID" value="${peakName.seqno}"  readonly>
+				    			</form>
 				    			<input type="button" class="deleteButton" value="刪除">
 				    		</div>
 				    	</td>
@@ -184,7 +208,7 @@
 				<div>
 					<c:choose>
 						<c:when test="${page>1}">
-							<a href='<c:url value="${controllerPath}page=1" />'> 最前頁 </a>
+							<a href='<c:url value="${controllerPath}page=1&showData=${showData}" />'> 最前頁 </a>
 						</c:when>
 						<c:otherwise>
 							<i> 最前頁 </i>
@@ -194,7 +218,7 @@
 				<div>
 					<c:choose>
 						<c:when test="${page>1}">
-							<a href='<c:url value="${controllerPath}page=${page-1}" />'> 上一頁 </a>
+							<a href='<c:url value="${controllerPath}page=${page-1}&showData=${showData}" />'> 上一頁 </a>
 						</c:when>
 						<c:otherwise>
 							<i> 前一頁 </i>
@@ -207,7 +231,7 @@
 				<div>
 					<c:choose>
 						<c:when test="${page<totalPage}">
-							<a href='<c:url value="${controllerPath}page=${page+1}" />'> 下一頁 </a>
+							<a href='<c:url value="${controllerPath}page=${page+1}&showData=${showData}" />'> 下一頁 </a>
 						</c:when>
 						<c:otherwise>
 							<i> 後一頁 </i>
@@ -217,7 +241,7 @@
 				<div>
 					<c:choose>
 						<c:when test="${page<totalPage}">
-							<a href='<c:url value="${controllerPath}page=${totalPage}" />'> 最尾頁 </a>
+							<a href='<c:url value="${controllerPath}page=${totalPage}&showData=${showData}" />'> 最尾頁 </a>
 						</c:when>
 						<c:otherwise>
 							<i > 最尾頁 </i>
@@ -233,7 +257,6 @@
 			
 		</div>
 		
-	</div>
 	</div>
 	
 

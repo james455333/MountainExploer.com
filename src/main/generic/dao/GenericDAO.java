@@ -1,5 +1,6 @@
 package main.generic.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -23,6 +24,17 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 		this.entity = entity;
 	}
 	
+	public List<T> selectWithPage(int page, int showdata) {
+		Session session = sessionFactory.getCurrentSession();
+		int startPosition = (page-1) * showdata;
+		List<T> list = new ArrayList<T>();
+		String hql = "From " + entity.getClass().getName();
+		list = session.createQuery(hql)
+					.setFirstResult(startPosition)
+					.setMaxResults(showdata)
+					.getResultList();
+		return list;
+	}
 	
 	@Override
 	public T select(int id) {

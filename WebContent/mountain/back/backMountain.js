@@ -1,41 +1,53 @@
 
-//招出刪除確認視窗及阻擋層
+
+
+//招出刪除確認
 $(".deleteButton").on("click",function(){
 	
 	
 	let routeID = $(this).siblings().val()
-	$("#deleteID").append( "路線編號 : " + routeID + `<input type='text' name='deleteID' value='${routeID}' style='display:none;'>`  )
-	
+	//console.log(routeID)
 	swal({
-    title: "確認",
-    text: "內容",
+    title: `路線編號 : ${routeID}`,
+    text: "請注意，本操作將刪除本筆資料而無法回復。\n\n\n\n\t確定要執行本操作?",
     icon: "warning",
+	dangerMode: true,
     buttons: {
       cancel: {
         text: "取消",
         visible: true
       },
-      // danger: {
-      //變紅底
-      commit: {
-        text: "確認",
-        visible: true,
-
-      },
+      
       danger: {
-        text: "紅色",
-        visible: true
-      }
-    }
+        text: "確定執行刪除",
+        visible: true,
+		value : true
+      },
+    },
+	
   }).then((value) => {
-    swal(`你選擇了 ${value}`);
-    //要執行的程式碼放在  .then((value) => {` 這邊 `});
-    // if(value !==)
-    
+		if(value){
+	   		$("#deleteForm").submit();
+		}
+    	
   });
 	
-	//$("#deleteConfirm").show();
 })
+
+//招出結果視窗
+if(result!=null){
+	swal({
+		title: result,
+	    icon: "success"
+	}
+	);
+}
+
+//招出錯誤訊息
+if(errors!=null){
+	swal("Oops! 出現錯誤了", errors,"errors")
+}
+
 $("#deleteCancel").on("click",function(){
 	$("#deleteID").empty()
 	$("#deleteBlock").css({
@@ -46,26 +58,31 @@ $("#deleteCancel").on("click",function(){
 	
 })
 
-$("")
 
-//列表切換
+//列表切換與按鈕切換
 $("#nPSelect").on("change",function(){
 	
 	let thisVal = $(this).val() ;
-	// console.log(val);
 	let npNum = $("#nPSelect").find("option").length;
-	// console.log(npNum);
 	
 	for(let i = 0 ; i < npNum ; i++ ){
+		
 		let optionVal = $("#nPSelect").find("option").eq(i).val()
+		let status = $(".rtSubmit").eq(i).parent().siblings("div").find("option").length
 		if(thisVal == optionVal){
-			console.log(optionVal)
 			$(".scopeQuery").hide();
 			$(".scopeQuery").eq(i).show();
+			if(status < 1 ){
+				$(".npSubmit").prop("disabled",true).val("無路線可查詢")
+			}else{
+				$(".npSubmit").prop("disabled",false).val("國家公園查詢")
+			}
 		}
 	}
 	
 });
+
+
 
 //滑鼠移動呈現放大圖片
 $(".routeImg").on("mouseenter",function(e){
@@ -85,5 +102,32 @@ $(".routeImg").on("mouseenter",function(e){
 }).on("mouseleave",function(){
 	$(this).siblings().hide();
 })
+
+
+/*$(".rtSubmit").on("mouseenter",function(){
+	let status = $(this).parent().siblings("div").find("option").length
+	if(status <= 0){
+		$(this).prop("disabled",true)
+	}
+}).on("mouseleave",function(){
+	$(".rtSubmit").prop("disabled",false)
+})*/
+
+//判斷
+let rtsubmit = $(".rtSubmit").length
+let npsubmit = $(".npsubmit").length
+for(let i = 0 ; i<rtsubmit ; i++){
+	let status = $(".rtSubmit").eq(i).parent().siblings("div").find("option").length
+	if(status <= 0){
+		$(".rtSubmit").eq(i).prop("disabled",true)
+	}
+	
+}
+
+if($(".rtSubmit").eq(0).prop("disabled")){
+	$(".npSubmit").prop("disabled",true).val("無路線可查詢")
+}
+
+
 
 
