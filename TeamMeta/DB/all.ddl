@@ -1,5 +1,5 @@
 -- 產生者Oracle SQL Developer Data Modeler 20.2.0.167.1538
--- 於:2020-11-06 20:21:11 TST
+-- 於:2020-11-06 22:27:35 TST
 -- 位置:Oracle Database 12cR2
 -- 類型:Oracle Database 12cR2
 
@@ -232,7 +232,7 @@ CREATE TABLE member_info (
     phone            VARCHAR2(15),
     gender           VARCHAR2(30 CHAR),
     climb_ex         VARCHAR2(20),
-    per_img          CLOB,
+    per_img          BLOB,
     other            BLOB
 )
 LOGGING;
