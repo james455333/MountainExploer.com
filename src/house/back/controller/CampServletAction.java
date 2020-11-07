@@ -6,18 +6,15 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import house.back.model.CampBean;
-import house.back.model.CampBeanDAO;
 import house.back.model.CampBeanService;
 
 @Controller
+@RequestMapping("/mountainCampBack")
 public class CampServletAction {
 	
 	@Autowired
@@ -27,14 +24,15 @@ public class CampServletAction {
 	
 	
 	
-	@RequestMapping(path = "/mountainHouseCampBack/selectAll", method = RequestMethod.GET)
+	@RequestMapping(path = "/selectAll", method = RequestMethod.GET)
+//	@RequestMapping(path = "/mountainCampBack/selectAll", method = RequestMethod.GET)
 	public String selectAll(Model m) {
 		
 		List<CampBean> list = campBeanService.selectAll();
 		m.addAttribute("camp_all", list);
 		return "house/back/backCamp";
 	}
-	@RequestMapping(path = "/mountainHouseCampBack/selectCity", method = RequestMethod.POST)
+	@RequestMapping(path = "/mountainCampBack/selectCity", method = RequestMethod.POST)
 	public String selectCity(@RequestParam(name = "selectcity")String city , Model m) {
 		
 		List<CampBean> list = campBeanService.selectCity(city);
@@ -43,7 +41,7 @@ public class CampServletAction {
 		return "house/back/backCamp";
 		
 	}
-	@RequestMapping(path = "/mountainHouseCampBack/selectTown",method = RequestMethod.POST)
+	@RequestMapping(path = "/mountainCampBack/selectTown",method = RequestMethod.POST)
 	public String selectTown(@RequestParam(name = "selecttown")String town , Model m) {
 		List<CampBean> list = campBeanService.selectCampTown(town);
 		m.addAttribute("camp_town" , list);
@@ -51,7 +49,7 @@ public class CampServletAction {
 		
 		
 	}
-	@RequestMapping(path = "/mountainHouseCampBack/selectCamp", method = RequestMethod.POST)
+	@RequestMapping(path = "/mountainCampBack/selectCamp", method = RequestMethod.POST)
 	public String selectCampName(@RequestParam(name = "selectcampname")String campname , Model m) {
 		
 		List<CampBean> list = campBeanService.selectCampName(campname);
@@ -60,7 +58,7 @@ public class CampServletAction {
 		
 	}
 	
-	@RequestMapping(path = "/mountainHouseCampBack/insertCamp", method = RequestMethod.POST)
+	@RequestMapping(path = "/mountainCampBack/insertCamp", method = RequestMethod.POST)
 	public String insertCamp(CampBean bean , Model m,String id,
 			@RequestParam(name = "insercamp_city") String city,
 			@RequestParam(name = "insercamp_town") String town,
@@ -79,7 +77,7 @@ public class CampServletAction {
 		return "house/back/backCamp";
 	}
 	
-	@RequestMapping(path = "/mountainHouseCampBack/deleteCamp", method = RequestMethod.POST)
+	@RequestMapping(path = "/mountainCampBack/deleteCamp", method = RequestMethod.POST)
 	public String deleteCamp(@RequestParam(name = "deletecamp")String campid, Model m) {
 		
 		int deletecampid = Integer.parseInt(campid);
@@ -87,7 +85,7 @@ public class CampServletAction {
 		return "house/back/backCamp";
 
 	}
-	@RequestMapping(path = "/mountainHouseCampBack/updateCamp",method = RequestMethod.GET)
+	@RequestMapping(path = "/mountainCampBack/updateCamp",method = RequestMethod.GET)
 	public String update(CampBean cBean, Model m, 
 			@RequestParam(name = "updatacamp_id") String id,
 			@RequestParam(name = "updatecamp_city") String city,
@@ -109,11 +107,11 @@ public class CampServletAction {
 //		System.out.println(list);
 		return "house/back/backCamp";
 	}
-	@RequestMapping(path = "/mountainHouseCampBack/inserjump", method = RequestMethod.GET)
+	@RequestMapping(path = "/mountainCampBack/inserjump", method = RequestMethod.GET)
 	public String jumpinser() {
 		return "house/back/backinserCamp";
 	}
-	@RequestMapping(path = "/mountainHouseCampBack/updatejump", method = RequestMethod.GET)
+	@RequestMapping(path = "/mountainCampBack/updatejump", method = RequestMethod.GET)
 	public String jumpupdate(@RequestParam(name = "jumpupdate")String id, Model m) {
 			int campid = Integer.parseInt(id);
 		List<CampBean> list = campBeanService.selectcampid(campid);

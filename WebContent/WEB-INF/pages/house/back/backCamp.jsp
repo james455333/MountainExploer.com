@@ -16,26 +16,26 @@
 		<jsp:include page="../../fragment/backTopNav.jsp"></jsp:include>
 		<div id="searchBar">
 			<div class="searchAll">
-				<form action="<c:url value='/mountainHouseCampBack/selectAll'></c:url>"method='get'>		
+				<form action="<c:url value='/mountainCampBack/selectAll'></c:url>"method='get'>		
 				<input  type="submit" value="全部觀看">
 				</form>
 			</div>
 			<div  class="searchSelect">
-			<form action="<c:url value='/mountainHouseCampBack/selectCity'></c:url>"method='post'>	
+			<form action="<c:url value='/mountainCampBack/selectCity'></c:url>"method='post'>	
 				<span>縣市 :&nbsp </span>
 				<input type="text" name="selectcity"> 
                 <input type="submit" value="查詢" >				
 				</form>			
 			</div>
 			<div class="searchSelect">
-			<form action="<c:url value='/mountainHouseCampBack/selectTown'></c:url>"method='post'>	
+			<form action="<c:url value='/mountainCampBack/selectTown'></c:url>"method='post'>	
 				<span>鄉鎮 :&nbsp </span>
 				<input type="text" name="selecttown"> 
                 <input type="submit" value="查詢" >	
                 </form>	
 			</div >
 			<div class="searchName">
-				<form action="<c:url value='/mountainHouseCampBack/selectCamp'></c:url>"method='post'>	
+				<form action="<c:url value='/mountainCampBack/selectCamp'></c:url>"method='post'>	
 				<span>營地名稱 :&nbsp </span>
 				<input type="text" name="selectcampname"> 
                 <input type="submit" value="查詢" >	
@@ -44,7 +44,7 @@
 		</div>
 		<div id="controller">
 			<div>
-				<form action="<c:url value='/mountainHouseCampBack/inserjump'></c:url>"method='get'>	
+				<form action="<c:url value='/mountainCampBack/inserjump'></c:url>"method='get'>	
 				
 					<input type="submit" src="#" name="" value="新增">		
 				</form>
@@ -84,14 +84,14 @@
 				      <td> ${i.campname}</td>
 				      <td><a href="${i.campdesc}">${i.campdesc}</a></td> 
 				    <td>
-				      <form  action="<c:url value='/mountainHouseCampBack/deleteCamp'></c:url>"method='post'>
+				      <form  action="<c:url value='/mountainCampBack/deleteCamp'></c:url>"method='post'>
 				      <input type="hidden" name="deletecamp" value="${i.campid}">
 				      <input type="submit"  value="刪除" >
 				      </form>
 				      </td> 
 				    
 				   <td>
-				  	<form  action="<c:url value='/mountainHouseCampBack/updatejump'></c:url>"method='get'>
+				  	<form  action="<c:url value='/mountainCampBack/updatejump'></c:url>"method='get'>
 				    	 <input type="hidden" name="jumpupdate" value="${i.campid}">
 				    	<input type="submit"  value="修改">
 					</form>				  
@@ -109,14 +109,14 @@
 				      <td> ${j.campname}</td>
 				      <td><a href="${j.campdesc}">${j.campdesc}</a></td>   
 				     <td>
-				      <form  action="<c:url value='/mountainHouseCampBack/deleteCamp'></c:url>"method='post'>
+				      <form  action="<c:url value='/mountainCampBack/deleteCamp'></c:url>"method='post'>
 				      <input type="hidden" name="deletecamp" value="${j.campid}">
 				      <input type="submit"  value="刪除" >
 				      </form>
 				      </td> 
 				    
 				   <td>
-				  	<form  action="<c:url value='/mountainHouseCampBack/updatejump'></c:url>"method='get'>
+				  	<form  action="<c:url value='/mountainCampBack/updatejump'></c:url>"method='get'>
 				    	 <input type="hidden" name="jumpupdate" value="${j.campid}">
 				    	<input type="submit"  value="修改">
 					</form>				  
@@ -134,14 +134,14 @@
 				      <td> ${k.campname}</td>
 				      <td><a href="${k.campdesc}">${k.campdesc}</a></td>   
 				     <td>
-				      <form  action="<c:url value='/mountainHouseCampBack/deleteCamp'></c:url>"method='post'>
+				      <form  action="<c:url value='/mountainCampBack/deleteCamp'></c:url>"method='post'>
 				      <input type="hidden" name="deletecamp" value="${k.campid}">
 				      <input type="submit"  value="刪除" >
 				      </form>
 				      </td> 
 				    
 				   <td>
-				  	<form  action="<c:url value='/mountainHouseCampBack/updatejump'></c:url>"method='get'>
+				  	<form  action="<c:url value='/mountainCampBack/updatejump'></c:url>"method='get'>
 				    	 <input type="hidden" name="jumpupdate" value="${k.campid}">
 				    	<input type="submit"  value="修改">
 					</form>				  
@@ -159,14 +159,14 @@
 				      <td><a href="${l.campdesc}">${l.campdesc}</a></td>  
 				     
 				      <td>
-				      <form  action="<c:url value='/mountainHouseCampBack/deleteCamp'></c:url>"method='post'>
+				      <form  action="<c:url value='/mountainCampBack/deleteCamp'></c:url>"method='post'>
 				      <input type="hidden" name="deletecamp" value="${l.campid}">
 				      <input type="submit"  value="刪除" >
 				      </form>
 				      </td> 
 				    
 				   <td>
-				  	<form  action="<c:url value='/mountainHouseCampBack/updatejump'></c:url>"method='get'>
+				  	<form  action="<c:url value='/mountainCampBack/updatejump'></c:url>"method='get'>
 				    	 <input type="hidden" name="jumpupdate" value="${l.campid}">
 				    	<input type="submit"  value="修改">
 					</form>				  

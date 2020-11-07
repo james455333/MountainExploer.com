@@ -19,11 +19,8 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>5</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="F691BD72-AF91-01AC-55D5-D87F3C52E39A" referredColumn="8F4D0422-4D91-0250-D87C-3869781438A5"/>
-</associations>
 </Column>
 <Column name="name" id="10A576FA-424E-A24A-D5D6-7B84BE5C4662">
 <sourceDDLFile>all.ddl</sourceDDLFile>
@@ -35,19 +32,6 @@
 <use>0</use>
 <logicalDatatype>LOGDT037</logicalDatatype>
 <domain>E9193C42-BBD2-F8B5-5FC6-09DD148AAEF0</domain>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="location" id="06C5B6E0-CFFE-0AD3-E07A-D9B6073E4B9C">
-<sourceDDLFile>all.ddl</sourceDDLFile>
-<createdBy>Student</createdBy>
-<createdTime>2020-10-23 13:41:05 UTC</createdTime>
-<ownerDesignName>all</ownerDesignName>
-<importedID>3E07FB6E-4F9F-ABF2-D0FA-A9C27E3771BE</importedID>
-<nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<domain>9D46FF11-7CDA-240B-FB7B-E6BE7A7AFC7E</domain>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
@@ -64,6 +48,20 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="counties_name" id="3FD0EF79-3CF2-B09C-8638-806B05BF5AD6">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-06 12:53:03 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>9D46FF11-7CDA-240B-FB7B-E6BE7A7AFC7E</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="21215541-1995-43BC-F1DB-DE46D4AF78F1" referredColumn="364B43F2-35C3-550C-4AE6-D032D48FC828"/>
+</associations>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="F8508609-E84D-024E-BD2B-243C0541B70E" name="camp_pk">
@@ -79,14 +77,14 @@
 <colUsage columnID="0C1675DF-C629-CE0C-D7B6-62AC5301A66A"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="5FB0286D-EF56-5B7F-1E25-3BE6D002E371" name="camp_campv1_fk">
+<ind_PK_UK id="575AB21E-07F2-A043-9CCD-2541946409DC" name="camp_info_counties_FK">
 <createdBy>Student</createdBy>
-<createdTime>2020-10-23 13:41:06 UTC</createdTime>
+<createdTime>2020-11-06 12:53:03 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="0C1675DF-C629-CE0C-D7B6-62AC5301A66A"/>
+<colUsage columnID="3FD0EF79-3CF2-B09C-8638-806B05BF5AD6"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

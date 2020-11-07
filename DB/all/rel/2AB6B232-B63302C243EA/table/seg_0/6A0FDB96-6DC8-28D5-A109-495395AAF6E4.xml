@@ -42,17 +42,6 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="password" id="6A415654-E9AF-BB8E-5FEE-C23D4B0884C3">
-<createdBy>Student</createdBy>
-<createdTime>2020-11-04 06:22:33 UTC</createdTime>
-<ownerDesignName>all</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
-<ownDataTypeParameters>50,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 <Column name="name" id="2080DE1E-2B33-9D8C-D3C0-7B2C535FDCE6">
 <sourceDDLFile>all.ddl</sourceDDLFile>
 <createdBy>Student</createdBy>
