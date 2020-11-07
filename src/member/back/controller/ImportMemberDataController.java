@@ -2,9 +2,16 @@ package member.back.controller;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.sql.Blob;
 import java.sql.Clob;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -26,7 +33,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 import member.MemberGlobal;
-import member.back.model.MemberBackService;
+import member.back.model.MemberBasicBackService;
+import member.back.model.MemberStatusBackService;
 import member.model.MemberBasic;
 import member.model.MemberInfo;
 import member.model.MemberStatus;
@@ -35,8 +43,13 @@ import member.model.MemberStatus;
 @Controller
 public class ImportMemberDataController {
 	
+	private static String MbImgTitle = "MbImgTitle";
+	
 	@Autowired
-	private MemberBackService memberBackService;
+	private MemberBasicBackService mbService;
+	
+	@Autowired
+	private MemberStatusBackService mbstService;
 	
 	@Autowired
 	@Qualifier("sessionFactory")
@@ -97,15 +110,21 @@ public class ImportMemberDataController {
 				MemberBasic mb = new MemberBasic();
 				MemberStatus mbStat = new MemberStatus();
 				MemberInfo mbInfo = new MemberInfo();
+				
+				mb.setAccount(account);
+				mb.setPassword(password);
+				mb.setName(name);
+				mb.setEmail(email);
+				mb.setMemberStatus(mbStat);
+				
 				mbInfo.setNeck_name(neckName);
 				
-				Clob bytesImg = getURLtoBytes(imgURL);
-				mbInfo.setPer_img(bytesImg);
+				byte[] bytesImg = getURLtoBytes(imgURL);
+//				mbInfo.setPer_img(bytesImg);
 				
 				Set<MemberBasic> mbSet = new HashSet<MemberBasic>();
 				mbSet.add(mb);
 				mbInfo.setMemberBasic((MemberBasic) mbSet);
-				mb.setMemberStatus(mbStat);
 				mbStat.setMemberBasic(mbSet);
 				mbStat.setName(status);
 				
@@ -114,6 +133,7 @@ public class ImportMemberDataController {
 				//沒有則新增status、basic、info
 				//新增basic時會一起新增info，select basic時也會直接把info拉出來，因為是OneToOne的關係
 				
+//				MemberStatus queryST
 				
 				
 			}
@@ -123,10 +143,40 @@ public class ImportMemberDataController {
 	}
 
 
-	private Clob getURLtoBytes(String imgURL) {
+	private byte[] getURLtoBytes(String imgURL) {
+		System.out.println(imgURL);
+		byte[] bytes = null;
+		int counter = 1;
+		String localPath = MemberGlobal.ImgDownLoadPath + MbImgTitle + (counter++) + ".jpg";
 		
-		return null;
+		//download
+		try (InputStream is = new URL(imgURL).openStream();){
+			Files.copy(is, Paths.get(localPath), StandardCopyOption.REPLACE_EXISTING);
+			System.out.println("Download Completed");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		} 
+		
+		
+		//transfer local image to bytes
+		try (FileInputStream fis = new FileInputStream(localPath);){
+			bytes = new byte[fis.available()];
+			fis.read(bytes);
+			System.out.println("transfer completed");
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		} 
+		
+		return bytes;
+		
 	}
+
+
 	
 
 }

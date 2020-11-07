@@ -33,7 +33,7 @@ public class MemberInfo {
 	private String phone;
 	private String gender;
 	private String climb_ex;
-	private Clob per_img;
+	private Blob per_img;
 	private Blob other;	
 	private MemberBasic memberBasic;
 	
@@ -43,7 +43,7 @@ public class MemberInfo {
 	}
 	
 	public MemberInfo(int member_basic_id, Date birthday, String neck_name, 
-			String phone, String gender, String climb_ex, Clob per_img, Blob other) {
+			String phone, String gender, String climb_ex, Blob per_img, Blob other) {
 		
 		this.member_basic_id = member_basic_id;
 		this.birthday = birthday;
@@ -120,11 +120,11 @@ public class MemberInfo {
 
 	
 	@Column(name = "PER_IMG")
-	public Clob getPer_img() {
+	public Blob getPer_img() {
 		return per_img;
 	}
 
-	public void setPer_img(Clob per_img) {
+	public void setPer_img(Blob per_img) {
 		this.per_img = per_img;
 	}
 

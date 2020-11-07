@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import member.back.model.MemberBackService;
+import member.back.model.MemberBasicBackService;
 
 @Controller
 public class MemberBackLoginController {
 	
 	@Autowired
-	private MemberBackService memberBackService;
+	private MemberBasicBackService mbServic;
 	
 	@RequestMapping(path = "/member/memberBackLoginEntry", method = RequestMethod.GET)
 	public String processBackLogin() {
@@ -48,7 +48,7 @@ public class MemberBackLoginController {
 //		}
 		
 		
-		boolean mbCheck = memberBackService.checkLogin(account, password);
+		boolean mbCheck = mbServic.checkLogin(account, password);
 		if(mbCheck) {
 			return "member/memberBackSelectList";
 		}

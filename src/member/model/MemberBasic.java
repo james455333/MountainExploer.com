@@ -1,8 +1,6 @@
 package member.model;
 
 import java.sql.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,14 +11,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import mountain.GenericObject.GenericMountainObject;
+
 @Entity
 @Table(name = "MEMBER_BASIC")
-public class MemberBasic {
+public class MemberBasic extends GenericMountainObject {
 
 	private int seqno;
 	private String account;
@@ -51,10 +50,12 @@ public class MemberBasic {
 	
 	@Id @Column(name = "SEQNO")
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@Override
 	public int getSeqno() {
 		return seqno;
 	}
 
+	@Override
 	public void setSeqno(int seqno) {
 		this.seqno = seqno;
 	}
@@ -64,7 +65,7 @@ public class MemberBasic {
 	public String getAccount() {
 		return account;
 	}
-
+	
 	public void setAccount(String account) {
 		this.account = account;
 	}
