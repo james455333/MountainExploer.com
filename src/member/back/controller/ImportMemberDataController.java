@@ -133,7 +133,23 @@ public class ImportMemberDataController {
 				//沒有則新增status、basic、info
 				//新增basic時會一起新增info，select basic時也會直接把info拉出來，因為是OneToOne的關係
 				
-//				MemberStatus queryST
+				MemberStatus queryST = mbstService.select(status);
+				if(queryST != null) {
+					mbStat.setName(status);
+					MemberStatus insertST = mbstService.insert(queryST);
+					if(insertST == null) {
+						System.out.println("第" + (++importCounter) + "筆資料為空");
+					} else {
+						System.out.println("第" + (++importCounter) + "筆：\t" + mb.getAccount() + "輸入成功");
+					}
+				} else {
+					MemberBasic insertMb = mbService.insert(mb);
+					if(insertMb == null) {
+						System.out.println("第" + (++importCounter) + "筆資料為空");
+					} else {
+						System.out.println("第" + (++importCounter) + "筆：\t" + mb.getAccount() + "輸入成功");
+					}
+				}
 				
 				
 			}
