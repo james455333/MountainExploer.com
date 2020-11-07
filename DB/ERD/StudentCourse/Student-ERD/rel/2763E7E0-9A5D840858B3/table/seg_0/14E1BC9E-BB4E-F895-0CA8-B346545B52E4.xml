@@ -1,0 +1,91 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="14E1BC9E-BB4E-F895-0CA8-B346545B52E4" schemaObject="00CBA762-16BD-C9B5-7B36-660BBDF0E784" name="COUNTRIES">
+<sourceConnName>HR</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>COUNTRIES</sourceObjName>
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:57 UTC</createdTime>
+<commentInRDBMS><![CDATA[country table. Contains 25 rows. References with locations table.]]></commentInRDBMS>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="COUNTRY_ID" id="2D4224F1-99BA-52BA-0ABE-F549FBCE31AC">
+<sourceConnName>HR</sourceConnName>
+<sourceObjSchema>COUNTRIES</sourceObjSchema>
+<sourceObjName>COUNTRY_ID</sourceObjName>
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:58 UTC</createdTime>
+<commentInRDBMS><![CDATA[Primary key of countries table.]]></commentInRDBMS>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>2 BYTE</dataTypeSize>
+<ownDataTypeParameters>2 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<notNullConstraintName>COUNTRY_ID_NN</notNullConstraintName>
+</Column>
+<Column name="COUNTRY_NAME" id="372FFD9D-8A0B-D35D-6747-E0480D15D2A2">
+<sourceConnName>HR</sourceConnName>
+<sourceObjSchema>COUNTRIES</sourceObjSchema>
+<sourceObjName>COUNTRY_NAME</sourceObjName>
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:58 UTC</createdTime>
+<commentInRDBMS><![CDATA[Country name]]></commentInRDBMS>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 BYTE</dataTypeSize>
+<ownDataTypeParameters>40 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="REGION_ID" id="696D1F1B-71D1-D3B7-AA38-8498F7A73E1B">
+<sourceConnName>HR</sourceConnName>
+<sourceObjSchema>COUNTRIES</sourceObjSchema>
+<sourceObjName>REGION_ID</sourceObjName>
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:58 UTC</createdTime>
+<commentInRDBMS><![CDATA[Region ID for the country. Foreign key to region_id column in the departments table.]]></commentInRDBMS>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7AFFA82E-844D-0F63-C80F-E15F13BE9B35" referredColumn="90788987-3697-ED4A-9EB9-C108B3E54379"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="8BE2FF16-AF84-8B3B-46C5-4C85C02B19F7" schemaObject="00CBA762-16BD-C9B5-7B36-660BBDF0E784" name="COUNTRY_C_ID_PK">
+<sourceConnName>HR</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>COUNTRY_C_ID_PK</sourceObjName>
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:58 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2D4224F1-99BA-52BA-0ABE-F549FBCE31AC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7EB27390-83D0-9552-8F38-7BC1B7290287" name="COUNTR_REG_FK">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:14:01 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="696D1F1B-71D1-D3B7-AA38-8498F7A73E1B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

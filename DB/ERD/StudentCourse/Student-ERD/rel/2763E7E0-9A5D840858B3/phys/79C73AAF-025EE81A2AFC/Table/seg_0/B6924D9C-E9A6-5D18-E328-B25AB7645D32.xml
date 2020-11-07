@@ -1,0 +1,80 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="DEPARTMENTS" directorySegmentName="seg_0" id="B6924D9C-E9A6-5D18-E328-B25AB7645D32">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:57 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<schemaObject>00CBA762-16BD-C9B5-7B36-660BBDF0E784</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>BB0F7A2A-D426-769F-385E-3A64C0887EB3</segment>
+<tableSpace>5078818F-4BEB-4BFB-99EB-2A95D9469108</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="DEPARTMENT_ID" id="36EA6DA6-DDC6-9DF8-1F98-4FCD8ECE91FF">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:58 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DEPARTMENT_NAME" id="7E438DD3-089F-FCFC-51BA-496FA1B58725">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:58 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="LOCATION_ID" id="C67762EB-4545-EA64-15DF-8CCE17BC8FA3">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:58 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="MANAGER_ID" id="FD24F70C-83AA-C18D-5B3C-B4815F347C81">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:58 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="DEPT_LOCATION_IX" id="45957384-9CB0-0C74-6198-5F4B766CD57B">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:58 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<schemaObject>00CBA762-16BD-C9B5-7B36-660BBDF0E784</schemaObject>
+<segment>87670531-1ED2-1C64-536D-6556E47DDA11</segment>
+<tableSpace>5078818F-4BEB-4BFB-99EB-2A95D9469108</tableSpace>
+</IndexProxy>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="DEPT_ID_PK" id="7B178DA6-527E-14A0-7E2B-515880E571A8">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:58 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<schemaObject>00CBA762-16BD-C9B5-7B36-660BBDF0E784</schemaObject>
+<segment>87670531-1ED2-1C64-536D-6556E47DDA11</segment>
+<tableSpace>5078818F-4BEB-4BFB-99EB-2A95D9469108</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="DEPT_MGR_FK" id="2F537C76-5AFA-402C-1A0E-73F270BD2247">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:14:01 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="DEPT_LOC_FK" id="4E39A9DF-D25A-8F20-6C5D-22D14EF46A82">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:14:01 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="DEPT_ID_PK" id="ED9ECEF7-1091-0391-4709-96961C750BFA">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:59 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<segment>87670531-1ED2-1C64-536D-6556E47DDA11</segment>
+<tableSpace>5078818F-4BEB-4BFB-99EB-2A95D9469108</tableSpace>
+<existingIndex>7B178DA6-527E-14A0-7E2B-515880E571A8</existingIndex>
+<indexSegment>87670531-1ED2-1C64-536D-6556E47DDA11</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

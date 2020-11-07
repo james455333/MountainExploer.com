@@ -1,0 +1,44 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="member_status" directorySegmentName="seg_0" id="D7EDD77A-911D-D079-C27E-EA5644EB52B7">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="id" id="4EC8C245-2F9D-AA54-193A-D16DE643BF36">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<autoIncrementDDL>IDENTITY_CLAUSE</autoIncrementDDL>
+</ColumnProxy>
+<ColumnProxy name="name" id="C1469686-6DFA-9601-0AF4-D206CD31EAA7">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="memberinfo_status_no_idx" id="60705824-6C69-37FE-3296-8E7928DD8F4B">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</IndexProxy>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="memberinfo_status_name_idx" id="6C406ECE-948F-C8F7-7964-400A9F36E176">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</IndexProxy>
+</indexProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="memberinfo_pk" id="AE34E552-269A-2ABA-02AC-BAF51B2900C9">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>
