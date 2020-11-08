@@ -43,15 +43,15 @@ public class MemberBackLoginController {
 			return "member/backLogin";
 		}
 		
-//		if("Areis".equalsIgnoreCase(account) && "test123".equalsIgnoreCase(password)) {
+		if("EEIT124".equalsIgnoreCase(account) && "test123".equalsIgnoreCase(password)) {
+			return "backStage";
+		}
+		
+		
+//		boolean mbCheck = mbServic.checkLogin(account, password);
+//		if(mbCheck) {
 //			return "member/memberBackSelectList";
 //		}
-		
-		
-		boolean mbCheck = mbServic.checkLogin(account, password);
-		if(mbCheck) {
-			return "member/memberBackSelectList";
-		}
 		
 		errors.put("msg", "Your UserName or Password is not correct.");
 		return "member/backLogin";

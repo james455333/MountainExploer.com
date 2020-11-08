@@ -33,7 +33,7 @@
 		<jsp:include page="fragment/backTopNav.jsp"></jsp:include>
 		<div id="container2">
 			<div class="importData">
-				<form action='#' method="post" enctype="multipart/form-data">
+				<form action='<c:url value="/memberDataImport" />' method="post" enctype="multipart/form-data">
 					<i>指定""會員資料""輸入檔案</i>
 					<input type="file" name="datafile" accept=".csv" required>
 					<input type="submit" value="確認輸入">

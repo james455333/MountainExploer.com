@@ -28,6 +28,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -55,8 +58,8 @@ public class ImportMemberDataController {
 	@Qualifier("sessionFactory")
 	private SessionFactory sessionFactory;
 	
-	
-	public String importData(Model m, MultipartFile multipartFile, RedirectAttributes redAttr) {
+	@RequestMapping(path = "/memberDataImport", method = RequestMethod.POST)
+	public String importData(Model m, @RequestParam(name = "datafile")MultipartFile multipartFile, RedirectAttributes redAttr) throws IOException {
 		Map<String, String> errors = new HashMap<String, String>();
 		
 		//創建images資料夾
@@ -105,7 +108,7 @@ public class ImportMemberDataController {
 				String email = csvRecord.get("email");
 				String status = csvRecord.get("status");
 				String neckName = csvRecord.get("neck_name");
-				String imgURL = csvRecord.get("imgURl");
+				String imgURL = csvRecord.get("imgURL");
 				
 				MemberBasic mb = new MemberBasic();
 				MemberStatus mbStat = new MemberStatus();
@@ -120,7 +123,7 @@ public class ImportMemberDataController {
 				mbInfo.setNeck_name(neckName);
 				
 				byte[] bytesImg = getURLtoBytes(imgURL);
-//				mbInfo.setPer_img(bytesImg);
+				mbInfo.setPer_img(bytesImg);
 				
 				Set<MemberBasic> mbSet = new HashSet<MemberBasic>();
 				mbSet.add(mb);
@@ -135,16 +138,17 @@ public class ImportMemberDataController {
 				
 				MemberStatus queryST = mbstService.select(status);
 				if(queryST != null) {
-					mbStat.setName(status);
-					MemberStatus insertST = mbstService.insert(queryST);
-					if(insertST == null) {
+					mb.setMember_status_id(queryST.getSeqno());
+					MemberBasic insertMB = mbService.insert(mb);
+					if(insertMB == null) {
 						System.out.println("第" + (++importCounter) + "筆資料為空");
 					} else {
 						System.out.println("第" + (++importCounter) + "筆：\t" + mb.getAccount() + "輸入成功");
 					}
 				} else {
-					MemberBasic insertMb = mbService.insert(mb);
-					if(insertMb == null) {
+					MemberStatus insertST = mbstService.insert(mbStat);
+					MemberBasic insertMB2 = mbService.insert(mb);
+					if(insertST == null || insertMB2 == null) {
 						System.out.println("第" + (++importCounter) + "筆資料為空");
 					} else {
 						System.out.println("第" + (++importCounter) + "筆：\t" + mb.getAccount() + "輸入成功");
