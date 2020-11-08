@@ -1,111 +1,203 @@
 
 $(function(){
 	//頁面參數
-	if( typeof page === 'undefined') var page = 1;
-	if( typeof showData === 'undefined') var showData = 3;
-	//all MainView Ajax 
+	var page = 1;
+	if(typeof showData === 'undefined') var showData = 3;
+	var totalPage = 0;
+	//	預設頁面
 	$(window).on("load", function(){
 		$.ajax({
 			url:"/MountainExploer.com/backstage/search/totalData",
 			method : "GET",
 			success:function(data){
 				var totalData = data;
-				var totalPage = Math.ceil(totalData/showData);
+				totalPage = Math.ceil(totalData/showData);
+				/*console.log("totalData : " + totalData)
+				console.log("totalPage : " + totalPage)*/
+				
+				$.ajax({
+					url : "/MountainExploer.com/backstage/search/all?page="+page+"&showData="+showData,
+					method : "GET",
+			 		dataType: 'json',
+			  		success:function(data){
+						//	使用回覆方法
+						insertTable(data);
+						//	預設第一頁
+						$("#pageNo").html(page + ' / ' +totalPage)
+						if(page>1){
+							$("#firstPage").attr("name",1).attr("disabled",false)
+							$("#previousPage").attr("name",Number(page)-1).attr("disabled",false)
+						}
+						if(page<totalPage){
+							console.log(page)
+							$("#nextPage").attr("name",(Number(page)+1)).attr("disabled",false)
+							$("#lastPage").attr("name",totalPage).attr("disabled",false)
+						}
+					}
+				})
+				//	國家公園列表設置
+				$.ajax({
+					url : "/MountainExploer.com/backstage/search/navNP",
+					method : "GET",
+			 		dataType: 'json',
+			  		success:function(result){
+						for(let i = 0 ; i < result.length ; i++){
+							
+							$("#nPSelect").append('<option value="' + result[i].seqno +'">' + result[i].npName + "</option>" )
+							
+						}
+						let firstNP = $("#nPSelect").find("option").eq(0).val()
+						console.log(firstNP)
+						// 路線列表預設為第一筆顯示之國家公園
+						$.ajax({
+							url : "/MountainExploer.com/backstage/search/navRT?nationalPark="+firstNP,
+							method : "GET",
+							dataType : "json",
+							success:function(data){
+								//console.log(data)
+								for(let i in data) $(".route").append("<option value='" + data[i].seqno + "'>" + data[i].name +"</option>")
+							}
+						})
+					}
+				})
+				
+				$("#pageController").on("click","input",function(){
+					var page = Number($(this).attr("name"));
+					console.log("page Before Click : " + page)
+					$.ajax({
+						url : "/MountainExploer.com/backstage/search/all?page="+page+"&showData="+showData,
+						method : "GET",
+				 		dataType: 'json',
+				  		success:function(data){
+							insertTable(data);
+							setPageController(page)
+						}
+					})
+					
+				}) 
+				
 			}
 		})
 		
-		console.log("totalData : " + totalData)
-		console.log("totalPage : " + totalPage)
-		
+	})
+	//國家公園列表Change觸發切換路線
+	$("#nPSelect").on("change",function(){
+		var npID = $("#nPSelect").val();
+		//console.log("npID : "  + npID)
 		$.ajax({
-			url : "/MountainExploer.com/backstage/search/all?page="+page+"&showData="+showData,
-			method : "GET",
-	 		dataType: 'json',
-	  		success:function(data){
-				//清空所在欄位
-				$(".table").find("tbody").empty();
-				
-				for(let i = 0 ; i < data.length ; i++){
-					$(".table").find("tbody").append(
-						"<tr>" +
-								"<th>" + data[i].seqno + "</th>"+
-	  							"<td><div class='ajaxSmallDiv'>" + data[i].name + "</div></td>"+
-	  							"<td><div class='ajaxSmallDiv'>" + data[i].npName + "</div></td>"+
-								"<td>"+
-									'<img src="/MountainExploer.com/backstage/search/images?seqno='+ data[i].seqno+'" class="routeImg" >'+
-									'<img src="/MountainExploer.com/backstage/search/images?seqno='+ data[i].seqno+'" class="extendImg" >'+
-				    			"</td>"+
-	  							"<td><div class='ajaxBigDiv'>" + data[i].description + "</div></td>" +
-	  							"<td><div class='ajaxBigDiv'>" + data[i].advice + "</div></td>" +
-	  							"<td><div class='ajaxBigDiv'>" + data[i].traffic + "</div></td>" +
-								"<td>" +
-									"<div>" +
-										"<form  action='/MountainExploer.com/backstage/update'>" +
-											'<input type="hidden" name="seqno" value="' + data[i].seqno + '" readonly>' +
-				    						'<input type="submit" value="修改">' +
-										'</form>' +
-									"</div>"+
-									"<div>"+
-										"<form class='hiddenForm' action='/MountainExploer.com/backstage/delete'>"+
-											'<input type="hidden" name="seqno" value="' + data[i].seqno + '" readonly>' +
-										'</form>' +
-										'<input type="button" class="deleteButton" value="刪除">' +
-									"</div>"+
-								"</td>"+
-						"</tr>"
-					)
-					
-				}
+		url : "/MountainExploer.com/backstage/search/navRT?nationalPark="+npID,
+		method : "GET",
+		dataType: 'json',
+		success:function(data){
+			//console.log(data)
+			$(".route").empty()
+			if(data.length != 0){
+				for(let i in data) 
+					$(".route").append("<option value='" + data[i].seqno + "'>" + data[i].name +"</option>")
+			}else{
+				$(".rtSubmit").attr("disabled",true)
+				$(".npSubmit").attr("disabled",true)
+			}
+			
 			}
 		})
 	})
-	// 頁面轉換
-	$("#pageController").on("click","input",function(){
-		var page = $(this).attr("name");
-		console.log(page)
+	
+	// 國家公園查詢
+	$(".npSubmit").on("click",function(){
+		page = 1;
+		console.log("show : " + showData + "\tpage : " + page)
+		let npID = $("#nPSelect").val();
+		console.log(npID);
 		$.ajax({
-			url : "/MountainExploer.com/backstage/search/all?page="+page+"&showData="+showData,
+			url:"/MountainExploer.com/backstage/search/totalData?nationalPark="+npID,
 			method : "GET",
-	 		dataType: 'json',
-	  		success:function(data){
-				$(".table").find("tbody").empty();
-				for(let i = 0 ; i < data.length ; i++){
-					$(".table").find("tbody").append(
-						"<tr>" +
-								"<th>" + data[i].seqno + "</th>"+
-	  							"<td><div class='ajaxSmallDiv'>" + data[i].name + "</div></td>"+
-	  							"<td><div class='ajaxSmallDiv'>" + data[i].npName + "</div></td>"+
-								"<td>"+
-									'<img src="/MountainExploer.com/backstage/search/images?seqno='+ data[i].seqno+'" class="routeImg" >'+
-									'<img src="/MountainExploer.com/backstage/search/images?seqno='+ data[i].seqno+'" class="extendImg" >'+
-				    			"</td>"+
-	  							"<td><div class='ajaxBigDiv'>" + data[i].description + "</div></td>" +
-	  							"<td><div class='ajaxBigDiv'>" + data[i].advice + "</div></td>" +
-	  							"<td><div class='ajaxBigDiv'>" + data[i].traffic + "</div></td>" +
-								"<td>" +
-									"<div>" +
-										"<form  action='/MountainExploer.com/backstage/update'>" +
-											'<input type="hidden" name="seqno" value="' + data[i].seqno + '" readonly>' +
-				    						'<input type="submit" value="修改">' +
-										'</form>' +
-									"</div>"+
-									"<div>"+
-										"<form class='hiddenForm' action='/MountainExploer.com/backstage/delete'>"+
-											'<input type="hidden" name="seqno" value="' + data[i].seqno + '" readonly>' +
-										'</form>' +
-										'<input type="button" class="deleteButton" value="刪除">' +
-									"</div>"+
-								"</td>"+
-						"</tr>"
-					)
+			success:function(data){
+				totalData = data;
+				console.log("np query TotalData : " + data )
+				totalPage = Math.ceil(totalData/showData);
+				console.log("np query TotalPage : " + totalPage)
+				$.ajax({
+					url : "/MountainExploer.com/backstage/search/navNP?nationalPark=" + npID+"&showData="+showData ,
+					method : "GET",
+					dataType : "json",
+					success : function(data){
+						
+						insertTable(data);
+						$("#")
+						setPageController(page)
+					}
 					
+				})
 				}
-			
-			
-			}
 		})
 		
-	}) 
+		
+	})
+	
+	//查詢結果回覆新增表格
+	function insertTable(data){
+		$(".table").find("tbody").empty();
+		for( let i in data){
+			$(".table").find("tbody").append(
+				"<tr>" +
+					"<th>" + data[i].seqno + "</th>"+
+			  		"<td><div class='ajaxSmallDiv'>" + data[i].name + "</div></td>"+
+			  		"<td><div class='ajaxSmallDiv'>" + data[i].npName + "</div></td>"+
+					"<td>"+
+						'<img src="/MountainExploer.com/backstage/search/images?seqno='+ data[i].seqno+'" class="routeImg" >'+
+						'<img src="/MountainExploer.com/backstage/search/images?seqno='+ data[i].seqno+'" class="extendImg" >'+
+					"</td>"+
+			  		"<td><div class='ajaxBigDiv'>" + data[i].description + "</div></td>" +
+			  		"<td><div class='ajaxBigDiv'>" + data[i].advice + "</div></td>" +
+			  		"<td><div class='ajaxBigDiv'>" + data[i].traffic + "</div></td>" +
+					"<td>" +
+						"<div>" +
+							"<form  action='/MountainExploer.com/backstage/update'>" +
+								'<input type="hidden" name="seqno" value="' + data[i].seqno + '" readonly>' +
+						    	'<input type="submit" value="修改">' +
+							'</form>' +
+						"</div>"+
+						"<div>"+
+							"<form class='hiddenForm' action='/MountainExploer.com/backstage/delete'>"+
+								'<input type="hidden" name="seqno" value="' + data[i].seqno + '" readonly>' +
+							'</form>' +
+							'<input type="button" class="deleteButton" value="刪除">' +
+						"</div>"+
+					"</td>"+
+				"</tr>"
+			)
+		} 
+	}
+	
+	function setPageController(page){
+		
+		if(page>1){
+			$("#pageNo").html(page + ' / ' +totalPage)
+		}else if(page == 1){
+			$("#pageNo").html(page + ' / ' +totalPage)
+		}
+		$("#pageController").find("input").attr("disabled",true)
+		if(page>1){
+			$("#firstPage").attr("name",1).attr("disabled",false)
+			$("#previousPage").attr("name",page-1).attr("disabled",false)
+		}
+		if(page<totalPage){
+			$("#nextPage").attr("name",page+1).attr("disabled",false)
+			$("#lastPage").attr("name",totalPage).attr("disabled",false)
+		}
+	}
+	
+	
+	// 路線單筆查詢
+	$(".rtSubmit").on("click",function(){
+		
+		
+	})
+	
+	
+	// 頁面轉換
+	
 	
 		//招出刪除確認
 	$(".deleteButton").on("click",function(){
@@ -166,7 +258,7 @@ $(function(){
 	
 	
 	//列表切換與按鈕切換
-	$("#nPSelect").on("change",function(){
+/*	$("#nPSelect").on("change",function(){
 		
 		let thisVal = $(this).val() ;
 		let npNum = $("#nPSelect").find("option").length;
@@ -187,7 +279,7 @@ $(function(){
 		}
 		
 	});
-	
+*/	
 	
 	
 	//滑鼠移動呈現放大圖片
@@ -219,7 +311,7 @@ $(function(){
 	}).on("mouseleave",function(){
 		$(".rtSubmit").prop("disabled",false)
 	})*/
-	
+/*	
 	//判斷
 	let rtsubmit = $(".rtSubmit").length
 	let npsubmit = $(".npsubmit").length
@@ -235,7 +327,7 @@ $(function(){
 		$(".npSubmit").prop("disabled",true).val("無路線可查詢")
 	}
 	
-	
+*/	
 	
 	
 })

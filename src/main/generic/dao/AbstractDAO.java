@@ -2,8 +2,10 @@ package main.generic.dao;
 
 import java.util.List;
 
-import main.generic.model.GenericTypeObject;
+import org.springframework.stereotype.Repository;
 
+import main.generic.model.GenericTypeObject;
+@Repository
 public interface AbstractDAO<T extends GenericTypeObject> {
 
 	void save(T entity);

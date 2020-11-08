@@ -18,24 +18,7 @@ public class BackPageEntryController {
 	
 	//前往查詢頁面
 	@RequestMapping("/retrieveEntry")
-	public String retrievePage(Model model,
-			@RequestParam(name = "page", required = false)Integer page,
-			@RequestParam(name = "showData", required = false)Integer showData) {
-		if (page == null || page == 0) {
-			page = 1;
-		}
-		System.out.println("page : " +page);
-		if (showData==null || showData == 0) {
-			showData = 3;
-		}
-		rtBasicService.save(new RouteBasic());
-		int totalData = rtBasicService.getAllData(new RouteBasic());
-		model.addAttribute("totalData", totalData);
-		model.addAttribute("page", page);
-		model.addAttribute("showData", showData);
-		model.addAttribute("totalPage", (int) Math.ceil(totalData * 1.0 / showData));
-		model.addAttribute("controllerPath", "/backstage/mountain/retrieveEntry?");
-		
+	public String retrievePage() {
 		
 		return "mountain/back/backMountain";
 	}

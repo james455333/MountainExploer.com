@@ -2,8 +2,10 @@ package main.generic.service;
 
 import java.util.List;
 
-import main.generic.model.GenericTypeObject;
+import org.springframework.stereotype.Service;
 
+import main.generic.model.GenericTypeObject;
+@Service
 public interface AbstractService<T extends GenericTypeObject> {
 
 	void save(T entity);

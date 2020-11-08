@@ -54,90 +54,24 @@
 				</script>
 			</c:otherwise>
 		</c:choose>
-		<!-- 偵測頁面訊息 -->
-		<c:choose>
-			<c:when test="${ !empty page}">
-				<script type="text/javascript" charset="UTF-8">
-					var page = "${page}";
-				</script>
-			</c:when>
-			<c:otherwise>
-				<script type="text/javascript" charset="UTF-8">
-					var page = 1;
-				</script>
-			</c:otherwise>
-		</c:choose>
-		<c:choose>
-			<c:when test="${ !empty showData}">
-				<script type="text/javascript" charset="UTF-8">
-					var showData = "${showData}";
-				</script>
-			</c:when>
-			<c:otherwise>
-				<script type="text/javascript" charset="UTF-8">
-					var showData = 3;
-				</script>
-			</c:otherwise>
-		</c:choose>
 		<!-- 查詢列 -->
 		<div id="searchBar">
-			<form action="<c:url value='/mountainBackStage/backNPSearch?page=1&' />" method="get" id="scopeQueryNP">
-				<div  class="searchSelect">
-					<span>國家公園 :&nbsp</span>
-					<select name="nationalPark" id="nPSelect">
-					</select>			
-				</div>
-				<div class="searchSelect">
-					<input type="text" name="page" value="1" style="display: none;">
-					<input type="text" name="showData" value="${showData}" style="display: none;">
-					<input type="submit" value="國家公園查詢" class="npSubmit">
-				</div>
-			</form>
-			<c:forEach var="npBean" items="${npBean}" varStatus="vsNP" >
-				<c:choose>
-					<c:when test="${vsNP.first}">
-						<form action="<c:url value='/mountainBackStage/backRTSearch' />" method="get" class="scopeQuery">
-							<div class="searchSelect">
-								<span>路線名稱 :&nbsp</span>
-									<select name="route" class="route" >
-										<c:forEach var="peakBean" items="${navRTBean}" varStatus="vsRT">
-											<c:if test="${ peakBean.npName == npBean.name}">
-												<option value="${peakBean.seqno}">${peakBean.name}</option>
-											</c:if>	
-										</c:forEach>
-									</select>
-							</div >
-							<div class="searchSelect">
-								<input type="submit" value="特定路線查詢" class="rtSubmit">
-							</div>
-						</form>
-					</c:when>
-					<c:otherwise>
-						<form action="<c:url value='/mountainBackStage/backRTSearch' />" method="get" class="scopeQuery" style="display: none;">
-							<div class="searchSelect">
-								<span>路線名稱 :&nbsp</span>
-									<select name="route" class="route" >
-										<c:forEach var="peakBean" items="${navRTBean}" varStatus="vsRT">
-											<c:if test="${ peakBean.npName == npBean.name}">
-												<option value="${peakBean.seqno}">${peakBean.name}</option>
-											</c:if>	
-										</c:forEach>
-									</select>
-							</div >
-							<div class="searchSelect">
-								<input type="submit" value="特定路線查詢" class="rtSubmit">
-							</div>
-						</form>
-					</c:otherwise>
-				</c:choose>
-			</c:forEach>
-			<!-- 
-			<div class="searchAll">
-				<form>
-				<input type="search" name="search1">
-				<input type="submit" value="搜尋">
-				</form>
-			</div> -->
+			<div  class="searchSelect">
+				<span>國家公園 :&nbsp</span>
+				<select name="nationalPark" id="nPSelect">
+				</select>			
+			</div>
+			<div class="searchSelect">
+				<input type="button" value="國家公園查詢" class="npSubmit">
+			</div>
+			<div class="searchSelect">
+				<span>路線名稱 :&nbsp</span>
+					<select name="route" class="route" >
+					</select>
+				</div >
+			<div class="searchSelect">
+				<input type="button" value="特定路線查詢" class="rtSubmit">
+			</div>
 		</div>
 		
 		<!-- 控制列 -->
@@ -146,15 +80,17 @@
 				<a href='<c:url value="/mountainBackStage/createDataPage"/>'>新增資料</a>	
 			</div>
 			<div>
-				<span>目前查詢資料總筆數 : ${totalData}</span>
+				<span>目前查詢資料總筆數 : </span>
+				<span id="totalData"> </span>
 			</div>
 			<div>
 				<form action="<c:url value='${controllerPath}'/>">
 					<span>每頁顯示筆數 :</span>
+					<span id="showData"></span>
 					<select name="showData">
-						<c:forEach var="selectShow" begin="1" end="5" varStatus="vs"> 
+						<c:forEach var="selectShow" begin="1" end="10" varStatus="vs"> 
 							<c:choose>
-								<c:when test="${vs.count == showData}">
+								<c:when test="${vs.count == 3}">
 									<option value="${vs.count}" selected="selected">${vs.count}</option>
 								</c:when>
 								<c:otherwise>
@@ -163,10 +99,7 @@
 							</c:choose>
 						</c:forEach>
 					</select>
-					<input name="nationalPark" value="${nationalPark}" style="display: none;"> 
-					<input name="page" value="${page}" style="display: none;"> 
-					<input type="submit" value="更改顯示">
-					<span>預設為3筆</span>
+					<input type="button" value="更改顯示" id="changeShowData">
 				</form>
 			</div>
 		
@@ -191,61 +124,27 @@
 					</tr>
 				</thead>
 				<tbody>
-				
 				<!-- 資料內容 -->
-			<!--	<c:forEach var="peakName" items="${mainBean}" varStatus="vs">
-				    
-				    <tr >
-				    	<th>${peakName.seqno}</th>
-				    	<td>${peakName.name}</td>
-				    	<td>${peakName.npName}</td>
-				    	<td>
-				    		<img style="width:50px;height:50px;"src="<c:url value='/mountainBackStage/images?seqno=${peakName.seqno}' />" class="routeImg" name="rtImg${vs.index})" >
-				    		<img src="<c:url value='/mountainBackStage/images?seqno=${peakName.seqno}' />" class="extendImg" name="rtImg${vs.index})">
-				    	</td>
-				    	<td><div style="width: 150px;height: 150px; overflow: auto;">${peakName.description}</div></td>
-				    	<td><div style="width: 150px;height: 150px; overflow: auto;">${peakName.advice}</div></td>
-				    	<td><div style="width: 150px;height: 150px; overflow: auto;">${peakName.traffic}</div></td>
-				    	<td>
-				    		<div>
-				    			<form action="<c:url value='/mountainBackStage/updateDataPage' />">
-				    				<input type="text" name="seqno" value="${peakName.seqno}" style="display: none;" readonly>
-				    				<input type="submit" value="修改">
-				    			</form>
-				    		</div>
-				    		<div>
-				    			<form style="display: none;" action="<c:url value="/mountainBackStage/deleteData" />" id="deleteForm">
-					    			<input type="text" name="deleteID" value="${peakName.seqno}"  readonly>
-				    			</form>
-				    			<input type="button" class="deleteButton" value="刪除">
-				    		</div>
-				    	</td>
-				    </tr>
-				    
-				</c:forEach> 
-				  -->
 				</tbody>
 			</table>
 			<!-- 頁數控制項 -->
 			<div id="pageController">
 				<div>
-					<input id="firstPage" type="button" value="最前頁" name="1">
+					<input id="firstPage" type="button" value="最前頁" name="1" disabled>
 				</div>
 				<div>
-					<input id="previousPage" type="button" value="前一頁" name=(page-1)>
+					<input id="previousPage" type="button" value="前一頁" name="" disabled>
 				</div>
 				<div>
-					<i>page / totalPage</i>
+					<i id="pageNo"></i>
 				</div>
 				<div>
-					<input id ="nextPage" type="button" value="下一頁" name=(page+1)>
+					<input id ="nextPage" type="button" value="下一頁" name="" disabled>
 				</div>
 				<div>
-					<input id="lastPage" type="button" value="最尾頁" name=totalPage>
+					<input id="lastPage" type="button" value="最尾頁" name="" disabled>
 				</div>
 			</div>
-			
-			<!-- 刪除確認視窗 -->
 			
 		</div>
 		

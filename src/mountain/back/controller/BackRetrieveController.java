@@ -2,7 +2,9 @@ package mountain.back.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -31,6 +33,7 @@ import mountain.model.route.MountainBean;
 import mountain.model.route.NationalPark;
 import mountain.model.route.RouteBasic;
 import mountain.model.route.RouteInfo;
+import mountain.service.RouteBasicServiceInterface;
 @RequestMapping(path = "/backstage/search")
 @Controller
 public class BackRetrieveController {
@@ -43,7 +46,10 @@ public class BackRetrieveController {
 	private GenericService<RouteBasic> rtBasicService;
 	@Autowired
 	private GenericService<NationalPark> nPService;
+	@Autowired
+	private RouteBasicServiceInterface rbSpecialService;
 	
+	// 預設查詢 總查詢
 	@GetMapping(value = "/all", produces = {"application/json;charset=UTF-8"})
 	@ResponseBody
 	public List<MountainBean> selectAll( Model model,
@@ -52,11 +58,11 @@ public class BackRetrieveController {
 		
 		List<MountainBean> allBeans = null;
 		
-		if (page == 0) {
+		if (page ==null) {
 			page = 1;
 		}
 		System.out.println("page : " +page);
-		if (showData == 0) {
+		if (showData == null) {
 			showData = 3;
 		}
 		
@@ -67,6 +73,7 @@ public class BackRetrieveController {
 		return allBeans;
 	}
 	
+	// 查找全部資料訊息
 	@GetMapping("/totalData")
 	@ResponseBody
 	public int setTotalData(
@@ -93,6 +100,69 @@ public class BackRetrieveController {
 		}
 		
 		return (int)totalData;
+	}
+	
+	// 國家公園導覽列及查詢
+	@GetMapping(value = "/navNP", produces = {"application/json;charset=UTF-8"})
+	@ResponseBody
+	public List<MountainBean> npSelectList(
+			@RequestParam(name = "nationalPark" , required = false) Integer npID,
+			@RequestParam(name = "page", required = false)Integer page,
+			@RequestParam(name = "showData", required = false)Integer showData) throws IOException, SQLException{
+		List<MountainBean> result = new ArrayList<MountainBean>();
+		List<NationalPark> npList = new ArrayList<NationalPark>();
+		if (npID == null ) {
+			nPService.save(new NationalPark());
+			List<NationalPark> before = nPService.selectAll();
+			for (NationalPark nationalPark : before) {
+				MountainBean mountainBean = new MountainBean();
+				mountainBean.setSeqno(nationalPark.getId());
+				mountainBean.setNpName(nationalPark.getName());
+				result.add(mountainBean);
+			}
+			return result;
+		}
+		if (page == null) {
+			page = 1;
+		}
+		System.out.println("page : " +page);
+		if (showData == null) {
+			showData = 3;
+		}
+		List<RouteBasic> rtBasicList = rbSpecialService.npIDsetPage(page, showData, npID);
+		result = RetrieveFunction.getMountainBeanList(rtBasicList);
+		
+		
+		return result;
+	}
+	
+	// 路線導覽列
+	@GetMapping(value = "/navRT", produces = {"application/json;charset=UTF-8"})
+	@ResponseBody
+	public List<MountainBean> rtInfoSelectList(
+			@RequestParam( name = "nationalPark" , required = false) Integer npID,
+			@RequestParam( name = "route" , required = false) Integer routeID) throws IOException, SQLException{
+		List<RouteBasic> selectList = new ArrayList<RouteBasic>();
+		List<MountainBean> result = null;
+		if (routeID == null) {
+			
+			nPService.save(new NationalPark());
+			NationalPark select = nPService.select(npID);
+			Set<RouteBasic> routeBasic = select.getRouteBasic();
+			Iterator<RouteBasic> rtBasicItr = routeBasic.iterator();
+			
+			while (rtBasicItr.hasNext()) {
+				selectList.add(rtBasicItr.next());
+			}
+			
+			result = RetrieveFunction.getMountainBeanList(selectList);
+			
+			return result ;
+			
+		}
+		
+		
+		return result;
 	}
 	
 	

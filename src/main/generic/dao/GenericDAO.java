@@ -19,6 +19,10 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	public GenericDAO() {
+		System.out.println("set GenericDAO");
+	}
+	
 	@Override
 	public void save(T entity) {
 		this.entity = entity;
@@ -30,12 +34,15 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 		List<T> list = new ArrayList<T>();
 		String hql = "From " + entity.getClass().getName() ;
 		list = session.createQuery(hql)
+					.setReadOnly(true)
 					.setFirstResult(startPosition)
 					.setMaxResults(showdata)
 					.getResultList();
 		System.out.println("result size : " + list.size());
 		return list;
 	}
+	
+	
 	
 	@Override
 	public T select(Integer id) {
@@ -56,7 +63,7 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 
 		Query<? extends GenericTypeObject> query = session.createQuery(hql, entity.getClass());
 
-		T uniqueResult = (T) query.uniqueResult();
+		T uniqueResult = (T) query.setReadOnly(true).uniqueResult();
 
 		if (uniqueResult != null) {
 			return uniqueResult;
@@ -70,7 +77,7 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "From " + entity.getClass().getName();
 		Query<T> query = (Query<T>) session.createQuery(hql, entity.getClass());
-		List<T> list = query.list();
+		List<T> list = query.setReadOnly(true).list();
 		return list;
 	}
 
