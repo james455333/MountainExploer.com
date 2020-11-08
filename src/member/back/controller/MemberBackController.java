@@ -1,7 +1,9 @@
 package member.back.controller;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -53,12 +55,20 @@ public class MemberBackController {
 	
 	@RequestMapping(path = "/memberBack/memberUpdateA", method = RequestMethod.POST)
 	public String processUpdate(@RequestParam(name = "updateA")String updateA, @RequestParam(name = "account2")String account2, Model m) {
-		if(updateA != null) {
+		
+//		Map<String, String> errors = new HashMap<String, String>();
+		
+		
+		if(updateA != null && account2 !=null) {
 			List<MemberBasic> mblist = mbServic.select(account2);
 			m.addAttribute("mbList", mblist);
 			return "member/backUpdate";
 		}
 		
+		if(account2 == null) {
+			return "member/memberBackSelectList";
+		}
+
 		return "member/memberBackSelectList";
 		
 	}

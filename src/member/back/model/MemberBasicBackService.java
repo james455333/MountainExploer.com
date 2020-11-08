@@ -25,6 +25,10 @@ public class MemberBasicBackService {
 		return mbDAO.select(account);
 	}
 	
+	public MemberBasic select(int seqno) {
+		return mbDAO.select(seqno);
+	}
+	
 	public List<MemberBasic> selectAll() {
 		return mbDAO.selectAll();
 	}

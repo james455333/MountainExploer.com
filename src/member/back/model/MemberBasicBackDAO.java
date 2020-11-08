@@ -68,6 +68,12 @@ public class MemberBasicBackDAO {
 	}
 	
 	
+	public MemberBasic select(int seqno) {
+		Session session = sessionFactory.getCurrentSession();
+		return session.get(MemberBasic.class, seqno);
+	}
+	
+	
 	//總查詢
 	public List<MemberBasic> selectAll() {
 		Session session = sessionFactory.getCurrentSession();
