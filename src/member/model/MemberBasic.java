@@ -35,17 +35,16 @@ public class MemberBasic {
 		
 	}
 	
-	public MemberBasic(int seqno, String account, String name, String email, int statusId, 
-			Date reg_Date) {
-		
-		this.seqno = seqno;
-		this.account = account;
-		this.name = name;
-		this.email = email;
-		this.statusId = statusId;
-		this.reg_Date = reg_Date;
-		
-	}
+//	public MemberBasic(int seqno, String account, String name, String email, int statusId,
+//			Date reg_Date, String password) {
+//		this.seqno = seqno;
+//		this.account = account;
+//		this.name = name;
+//		this.email = email;
+//		this.statusId = statusId;
+//		this.reg_Date = reg_Date;
+//		this.password = password;
+//	}
 
 	
 	@Id @Column(name = "SEQNO")
@@ -131,7 +130,7 @@ public class MemberBasic {
 	
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn
+	@JoinColumn(name = "MEMBER_STATUS_ID", referencedColumnName = "SEQNO")
 	public MemberStatus getMemberStatus() {
 		return memberStatus;
 	}

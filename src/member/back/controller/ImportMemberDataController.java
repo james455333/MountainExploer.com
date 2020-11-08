@@ -7,12 +7,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.sql.Blob;
-import java.sql.Clob;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -109,6 +103,7 @@ public class ImportMemberDataController {
 				String email = csvRecord.get("email");
 				String status = csvRecord.get("status");
 				String neckName = csvRecord.get("neck_name");
+				String regDate = csvRecord.get("regDate");
 				String imgURL = csvRecord.get("imgURL");
 				
 				MemberBasic mb = new MemberBasic();
@@ -119,6 +114,7 @@ public class ImportMemberDataController {
 				mb.setPassword(password);
 				mb.setName(name);
 				mb.setEmail(email);
+				mb.setReg_Date(java.sql.Date.valueOf(regDate));
 				
 				mbInfo.setNeck_name(neckName);
 				
@@ -131,7 +127,7 @@ public class ImportMemberDataController {
 				mbStat.setMemberBasic(mbSet);
 				mbStat.setName(status);
 				mb.setMemberStatus(mbStat);
-				
+				mb.setMemberInfo(mbInfo);
 				//判斷status有無資料
 				//有則只新增basic和info
 				//沒有則新增status、basic、info
@@ -147,9 +143,11 @@ public class ImportMemberDataController {
 						System.out.println("第" + (++importCounter) + "筆：\t" + mb.getAccount() + "輸入成功");
 					}
 				} else {
+					System.out.println("A");
+					System.out.println(status);
 					MemberStatus insertST = mbstService.insert(mbStat);
-					MemberBasic insertMB2 = mbService.insert(mb);
-					if(insertST == null || insertMB2 == null) {
+//					MemberBasic insertMB2 = mbService.insert(mb);
+					if(insertST == null) {
 						System.out.println("第" + (++importCounter) + "筆資料為空");
 					} else {
 						System.out.println("第" + (++importCounter) + "筆：\t" + mb.getAccount() + "輸入成功");

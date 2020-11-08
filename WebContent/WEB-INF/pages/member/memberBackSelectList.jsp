@@ -13,11 +13,23 @@
 		<div>
 			<label>總覽查詢：</label>
 			<input type="submit" id="selectAll" name="selectAll" value="會員資料查詢" />
-			
+		</div>
+	</form>
+	<form action="<c:url value='/memberBack/memberBackOne'/>" method="post">
+		<div>
 			<label>單筆查詢：</label>
-			<input type="text" id="account" name="account" value="請輸入會員帳號" />	
+			<input type="text" id="account" name="account" placeholder="請輸入會員帳號" />	
 			<input type="submit" id="selectOne" name="selectOne" value="查詢" />
 		</div>
+	</form>
+	<form action="<c:url value='/memberBack/memberUpdateA'/>" method="post">
+		<div>
+			<label>修改會員資料</label>
+			<input type="text" id="account2" name="account2" placeholder="請輸入會員帳號" />
+			<input type="submit" id="updateA" name="updateA" value="修改"/>
+			<input type="reset" id="reset" name="reset" value="清除"/>
+		</div>
+	</form>
 		<div>
 			<table>
 			<c:forEach var="info" items="${mbList}">
@@ -26,35 +38,31 @@
 					<th>會員帳號</th>
 <!-- 						<th>會員密碼</th> -->
 					<th>會員姓名</th>
-					<th>會員地址</th>
+					<th>會員性別</th>
+					<th>會員暱稱</th>
+					<th>會員生日</th>
 					<th>電子郵件</th>
-					<th>會員電話</th>
 					<th>登山經驗</th>
 					<th>會員身分組</th>
-					<th>購物總額</th>
-					<th>未付款餘額</th>
+					<th>註冊時間</th>
 				</tr>
 				<tr>
-					<td>${info.memberId}</td>
+					<td>${info.seqno}</td>
 					<td>${info.account}</td>
 <%-- 						<td>${mbList.password}</td> --%>
 					<td>${info.name}</td>
-					<td>${info.address}</td>
+					<td>${info.memberInfo.gender}</td>
+					<td>${info.memberInfo.neck_name}</td>
+					<td>${info.memberInfo.birthday}</td>
 					<td>${info.email}</td>
-					<td>${info.tel}</td>
-					<td>${info.exp}</td>
-					<td>${info.groupId}</td>
-					<td>${info.totalAmt}</td>
-					<td>${info.unpaid_amount}</td>
-					<td>${info.memberImage}</td>
-					<td>				
-						<input type="submit" id="update" name="updateA" value="修改"/>
-					</td>
+					<td>${info.memberInfo.exp}</td>
+					<td>${info.memberStatus.name}</td>
+					<td>${info.reg_Date}</td>
 				</tr>
 			</c:forEach>
 			</table>
 		</div>
-	</form>
+	
 	
 	
 </body>

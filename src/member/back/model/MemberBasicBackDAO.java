@@ -52,9 +52,19 @@ public class MemberBasicBackDAO {
 	
 	
 	//單筆查詢
-	public MemberBasic select(String account) {
+	public List<MemberBasic> select(String account) {
 		Session session = sessionFactory.getCurrentSession();
-		return session.get(MemberBasic.class, account);
+		Query<MemberBasic> query = session.createQuery("From MemberBasic where account = ?0", MemberBasic.class);
+		query.setParameter(0, account);
+		
+		List<MemberBasic> mb = query.list();
+		
+		for (MemberBasic mblist : mb) {
+			
+		}
+		
+		return mb;
+		
 	}
 	
 	

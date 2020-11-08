@@ -21,7 +21,7 @@ public class MemberBasicBackService {
 		return mbDAO.insert(mb);
 	}
 	
-	public MemberBasic select(String account) {
+	public List<MemberBasic> select(String account) {
 		return mbDAO.select(account);
 	}
 	
