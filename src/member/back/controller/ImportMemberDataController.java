@@ -73,6 +73,7 @@ public class ImportMemberDataController {
 		try {
 			importDataToDB(multipartFile);
 		} catch (Exception e) {
+			e.printStackTrace();
 			errors.put("msg", "資料輸入過程中發生錯誤");
 		}
 		
@@ -118,7 +119,6 @@ public class ImportMemberDataController {
 				mb.setPassword(password);
 				mb.setName(name);
 				mb.setEmail(email);
-				mb.setMemberStatus(mbStat);
 				
 				mbInfo.setNeck_name(neckName);
 				
@@ -127,9 +127,10 @@ public class ImportMemberDataController {
 				
 				Set<MemberBasic> mbSet = new HashSet<MemberBasic>();
 				mbSet.add(mb);
-				mbInfo.setMemberBasic((MemberBasic) mbSet);
+				mbInfo.setMemberBasic(mb);
 				mbStat.setMemberBasic(mbSet);
 				mbStat.setName(status);
+				mb.setMemberStatus(mbStat);
 				
 				//判斷status有無資料
 				//有則只新增basic和info
@@ -138,7 +139,7 @@ public class ImportMemberDataController {
 				
 				MemberStatus queryST = mbstService.select(status);
 				if(queryST != null) {
-					mb.setMember_status_id(queryST.getSeqno());
+					mb.setMemberStatus(queryST);
 					MemberBasic insertMB = mbService.insert(mb);
 					if(insertMB == null) {
 						System.out.println("第" + (++importCounter) + "筆資料為空");
@@ -163,24 +164,25 @@ public class ImportMemberDataController {
 	}
 
 
-	private byte[] getURLtoBytes(String imgURL) {
-		System.out.println(imgURL);
+	private byte[] getURLtoBytes(String localPath) {
+		System.out.println(localPath);
 		byte[] bytes = null;
-		int counter = 1;
-		String localPath = MemberGlobal.ImgDownLoadPath + MbImgTitle + (counter++) + ".jpg";
+//		int counter = 1;
+//		String localPath = MemberGlobal.ImgDownLoadPath + MbImgTitle + (counter++) + ".jpg";
 		
-		//download
-		try (InputStream is = new URL(imgURL).openStream();){
-			Files.copy(is, Paths.get(localPath), StandardCopyOption.REPLACE_EXISTING);
-			System.out.println("Download Completed");
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		} 
+		//download 從網路抓圖才要用
+//		try (InputStream is = new URL(imgURL).openStream();){
+//			Files.copy(is, Paths.get(localPath), StandardCopyOption.REPLACE_EXISTING);
+//			System.out.println("Download Completed");
+//		} catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//		} catch (IOException e1) {
+//			e1.printStackTrace();
+//		} 
 		
 		
 		//transfer local image to bytes
+		//本地圖片上傳
 		try (FileInputStream fis = new FileInputStream(localPath);){
 			bytes = new byte[fis.available()];
 			fis.read(bytes);

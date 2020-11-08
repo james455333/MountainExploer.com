@@ -145,6 +145,8 @@ public class MemberInfo {
 		return memberBasic;
 	}
 
+	
+
 	public void setMemberBasic(MemberBasic memberBasic) {
 		this.memberBasic = memberBasic;
 	}

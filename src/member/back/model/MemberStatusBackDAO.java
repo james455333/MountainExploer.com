@@ -1,8 +1,11 @@
 package member.back.model;
 
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -36,6 +39,11 @@ public class MemberStatusBackDAO {
 	
 	public MemberStatus select(String name) {
 		Session session = sessionFactory.getCurrentSession();
-		return session.get(MemberStatus.class, name);
+		Query<MemberStatus> query = session.createQuery("From MemberStatus where name = ?0", MemberStatus.class);
+		query.setParameter(0, name);
+		
+		MemberStatus qBean = query.uniqueResult();
+		
+		return qBean;
 	}
 }

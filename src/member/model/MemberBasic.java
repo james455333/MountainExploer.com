@@ -19,13 +19,13 @@ import mountain.GenericObject.GenericMountainObject;
 
 @Entity
 @Table(name = "MEMBER_BASIC")
-public class MemberBasic extends GenericMountainObject {
+public class MemberBasic {
 
 	private int seqno;
 	private String account;
 	private String name;
 	private String email;
-	private int member_status_id;
+	private int statusId;
 	private Date reg_Date;
 	private String password;
 	private MemberInfo memberInfo;
@@ -35,14 +35,14 @@ public class MemberBasic extends GenericMountainObject {
 		
 	}
 	
-	public MemberBasic(int seqno, String account, String name, String email, int member_status_id, 
+	public MemberBasic(int seqno, String account, String name, String email, int statusId, 
 			Date reg_Date) {
 		
 		this.seqno = seqno;
 		this.account = account;
 		this.name = name;
 		this.email = email;
-		this.member_status_id = member_status_id;
+		this.statusId = statusId;
 		this.reg_Date = reg_Date;
 		
 	}
@@ -50,12 +50,10 @@ public class MemberBasic extends GenericMountainObject {
 	
 	@Id @Column(name = "SEQNO")
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	@Override
 	public int getSeqno() {
 		return seqno;
 	}
 
-	@Override
 	public void setSeqno(int seqno) {
 		this.seqno = seqno;
 	}
@@ -92,12 +90,12 @@ public class MemberBasic extends GenericMountainObject {
 
 	
 	@Transient
-	public int getMember_status_id() {
-		return member_status_id;
+	public int getStatusId() {
+		return statusId;
 	}
 
-	public void setMember_status_id(int member_status_id) {
-		this.member_status_id = member_status_id;
+	public void setStatusId(int statusId) {
+		this.statusId = statusId;
 	}
 
 	
