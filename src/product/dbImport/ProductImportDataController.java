@@ -11,10 +11,8 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.sql.Blob;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -22,28 +20,15 @@ import java.util.Set;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
-import org.hibernate.Hibernate;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import main.generic.service.GenericService;
-import mountain.MountainGlobal;
-import mountain.model.NationalPark;
-import mountain.model.RouteBasic;
-import mountain.model.RouteInfo;
-import product.dao.FirstClassDAO;
-import product.dao.ItemBasicDAO;
-import product.dao.ItemInfoDAO;
-import product.dao.SecondClassDAO;
 import product.model.FirstClass;
 import product.model.ItemBasic;
 import product.model.ItemInfo;
@@ -79,7 +64,6 @@ public class ProductImportDataController {
 	@RequestMapping(path = "/productDataImport.controller", method = RequestMethod.POST)
 	public String importData(Model model, @RequestParam(name = "datafile") MultipartFile multipartFile,
 			RedirectAttributes redAttr) throws IOException {
-//		public String importData(Model model,@RequestParam(name = "datafile")MultipartFile multipartFile,RedirectAttributes redAttr) throws IOException {
 		Map<String, String> errors = new HashMap<String, String>();
 
 		// 創造images資料夾
@@ -108,16 +92,13 @@ public class ProductImportDataController {
 
 //	@Autowired
 	private void importDataToDB(MultipartFile multipartFile) throws Exception {
-//		private void importDataToDB (File file)throws Exception {
 		int importCounter = 0;
 		FirstClassService firstClassService = this.firstClassService;
 		SecondClassService secondClassService = this.secondClassService;
 		ItemBasicService itemBasicService = this.itemBasicService;
 
 		try (InputStream is1 = multipartFile.getInputStream();
-//				try (FileInputStream fis = new FileInputStream(file);
 				InputStreamReader isr = new InputStreamReader(is1, CHARSET);
-//				InputStreamReader isr = new InputStreamReader(fis, CHARSET);
 				BufferedReader br = new BufferedReader(isr);) {
 			CSVParser parser = CSVFormat.EXCEL.withHeader().parse(br);
 			System.out.println("File load Succsess");

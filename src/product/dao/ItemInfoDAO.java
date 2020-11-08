@@ -35,7 +35,7 @@ public class ItemInfoDAO {
 	}
 
 	// 查詢
-	public ItemInfo selectNo(String itemBasicSeqno) {
+	public ItemInfo selectNo(Integer itemBasicSeqno) {
 		Session session = sessionFactory.getCurrentSession();
 
 		ItemInfo result = (ItemInfo) session.get(ItemInfo.class, itemBasicSeqno);

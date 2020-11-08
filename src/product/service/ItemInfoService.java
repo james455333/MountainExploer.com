@@ -25,7 +25,7 @@ public class ItemInfoService {
 
 		return itemInfoDao.insert(bean);
 	}
-	public ItemInfo selectNo(String itemBasicSeqno) {
+	public ItemInfo selectNo(Integer itemBasicSeqno) {
 		
 		return itemInfoDao.selectNo(itemBasicSeqno);
 	}

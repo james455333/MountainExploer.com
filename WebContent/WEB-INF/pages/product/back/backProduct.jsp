@@ -24,53 +24,53 @@
 		
 		<!-- 查詢列 -->
 		<div id="searchBar">
-			<form action="<c:url value='/mountainBackStage/backNPSearch?page=1&' />" method="get" id="scopeQueryNP">
+			<form action="<c:url value='/mountainBackStage/backFCSearch?page=1&' />" method="get" id="scopeQueryNP">
 				<div  class="searchSelect">
-					<span>國家公園 :&nbsp</span>
-					<select name="nationalPark" id="nPSelect">
-						<c:forEach var="npBean" items="${npBean}" varStatus="vs">
-							<option value="${npBean.id}">${npBean.name}</option>
+					<span>主類別 :&nbsp</span>
+					<select name="firstclass" id="nPSelect">
+						<c:forEach var="fcBean" items="${fcBean}" varStatus="vs">
+							<option value="${fcBean.id}">${fcBean.name}</option>
 						</c:forEach>
 					</select>			
 				</div>
 				<div class="searchSelect">
 					<input type="text" name="page" value="1" style="display: none;">
-					<input type="submit" value="國家公園查詢">
+					<input type="submit" value="主類別查詢">
 				</div>
 			</form>
-			<c:forEach var="npBean" items="${npBean}" varStatus="vsNP" >
+			<c:forEach var="fcBean" items="${fcBean}" varStatus="vsNP" >
 				<c:choose>
 					<c:when test="${vsNP.first}">
-						<form action="<c:url value='/mountainBackStage/backRTSearch' />" method="get" class="scopeQuery">
+						<form action="<c:url value='/productBackStage/backSCSearch' />" method="get" class="scopeQuery">
 							<div class="searchSelect">
-								<span>路線名稱 :&nbsp</span>
-									<select name="route" class="route" >
-										<c:forEach var="peakBean" items="${navRTBean}" varStatus="vsRT">
-											<c:if test="${ peakBean.npName == npBean.name}">
-												<option value="${peakBean.seqno}">${peakBean.name}</option>
+								<span>次分類 :&nbsp</span>
+									<select name="secondclass" class="secondclass" >
+										<c:forEach var="scBean" items="${scBean}" varStatus="vsRT">
+											<c:if test="${ scBean.firstClassId == fcBean.id}">
+												<option value="${scBean.id}">${scBean.name}</option>
 											</c:if>	
 										</c:forEach>
 									</select>
 							</div >
 							<div class="searchSelect">
-								<input type="submit" value="特定路線查詢">
+								<input type="submit" value="次分類查詢">
 							</div>
 						</form>
 					</c:when>
 					<c:otherwise>
-						<form action="<c:url value='/mountainBackStage/backRTSearch' />" method="get" class="scopeQuery" style="display: none;">
+						<form action="<c:url value='/productBackStage/backSCSearch' />" method="get" class="scopeQuery" style="display: none;">
 							<div class="searchSelect">
-								<span>路線名稱 :&nbsp</span>
-									<select name="route" class="route" >
-										<c:forEach var="peakBean" items="${navRTBean}" varStatus="vsRT">
-											<c:if test="${ peakBean.npName == npBean.name}">
-												<option value="${peakBean.seqno}">${peakBean.name}</option>
+								<span>次分類 :&nbsp</span>
+									<select name="secondclass" class="secondclass" >
+										<c:forEach var="scBean" items="${scBean}" varStatus="vsRT">
+											<c:if test="${ scBean.firstClassId == fcBean.id}">
+												<option value="${scBean.id}">${scBean.name}</option>
 											</c:if>	
 										</c:forEach>
 									</select>
 							</div >
 							<div class="searchSelect">
-								<input type="submit" value="特定路線查詢">
+								<input type="submit" value="次分類查詢">
 							</div>
 						</form>
 					</c:otherwise>
@@ -106,7 +106,7 @@
 				<tbody>
 				
 				<!-- 資料內容 -->
-				<c:forEach var="productBean" items="${mainBean}" varStatus="vs">
+				<c:forEach var="productBean" items="${productBean}" varStatus="vs">
 				    
 				    <tr >
 				    	<th>${productBean.seqno}</th>
