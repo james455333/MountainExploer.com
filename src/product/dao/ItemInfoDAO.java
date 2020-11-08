@@ -52,11 +52,11 @@ public class ItemInfoDAO {
 	}
 
 	// 修改(庫存)
-	public ItemInfo updateStock(Integer stock) {
+	public ItemInfo update(Integer seqno, Integer stock) {
 		Session session = sessionFactory.getCurrentSession();
-		ItemInfo result = session.get(ItemInfo.class, stock);
+		ItemInfo result = session.get(ItemInfo.class, seqno);
 		if (result != null) {
-			result.setPrice(stock);
+			result.setStock(stock);
 		}
 		return result;
 	}

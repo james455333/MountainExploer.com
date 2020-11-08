@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class BackPageEntryController {
+public class ProductPageEntryController {
 	
 	//前往查詢頁面
 	@RequestMapping(path = "/productBackStage/retrievePage")
@@ -28,7 +28,7 @@ public class BackPageEntryController {
 
 		return "product/back/backProductUpdate";
 	}
-	
+
 
 	
 

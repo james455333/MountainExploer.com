@@ -29,27 +29,19 @@ public class TransFuction {
 				ItemBasic itemBasic = iterator.next();
 				ItemInfo itemInfo = itemBasic.getItemInfo();
 				if (secondClass.getId() == seqnum) {
-//					RouteInfo routeInfo = rb.getRouteInfo();
-//					MountainBean mountainBean = new MountainBean();
 					ProductBean productBean = new ProductBean();
-					productBean.setSeqno(seqnum);
+					productBean.setSeqno(itemBasic.getSeqno());
 					productBean.setName(itemBasic.getName());
 					productBean.setType(itemInfo.getType());
 					productBean.setPrice(itemInfo.getPrice());
 					productBean.setStock(itemInfo.getStock());
-//					mountainBean.setSeqno(seqnum);
-//					mountainBean.setName(routeInfo.getName());
-
-//					String description = bytesToString(itemInfo.getDescription());
-//					productBeann.setDescription(description);
 
 					String firstClassName = firstClass.getName();
 					productBean.setFirstClass(firstClassName);
 					String secondClassName = secondClass.getName();
 					productBean.setSecondClass(secondClassName);
-//				System.out.println(" : " +nPName );
+					
 					showList.add(productBean);
-					break;
 				}
 			}
 		}
@@ -83,7 +75,6 @@ public class TransFuction {
 					String secondClassName = secondClass.getName();
 					productBean.setSecondClass(secondClassName);
 
-//				System.out.println("國家公園名 : " +nPName );
 					showList.add(productBean);
 				}
 			}
@@ -94,16 +85,18 @@ public class TransFuction {
 	
 
 	// 轉換主類別為導覽列用List
-	public static List<ProductBean> transToFCBean(List<FirstClass> all, Integer seqnum)
-			throws IOException, SQLException {
+	public static List<ProductBean> transToFCBean(List<FirstClass> all, int seqnum)	throws IOException, SQLException {
 		List<ProductBean> showList = new ArrayList<ProductBean>();
 		for (FirstClass firstClass : all) {
-			if (firstClass.getId() == seqnum) {
-				Iterator<SecondClass> iterator = firstClass.getSecondClasses().iterator();
+				Set<SecondClass> secondClasses = firstClass.getSecondClasses();
+				Iterator<SecondClass> iterator = secondClasses.iterator();
+				
 				while (iterator.hasNext()) {
+			
 					SecondClass secondClass = iterator.next();
 					Iterator<ItemBasic> iterator2 = secondClass.getItemBasics().iterator();
 					while (iterator2.hasNext()) {
+						if (firstClass.getId() == seqnum) {
 						ItemBasic itemBasic = iterator2.next();
 						ItemInfo itemInfo = itemBasic.getItemInfo();
 
@@ -120,7 +113,7 @@ public class TransFuction {
 						String secondClassName = secondClass.getName();
 						productBean.setSecondClass(secondClassName);
 
-//					System.out.println("國家公園名 : " +nPName );
+						System.out.println(productBean.getName());
 						showList.add(productBean);
 					}
 				}

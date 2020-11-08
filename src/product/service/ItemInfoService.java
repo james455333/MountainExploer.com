@@ -34,8 +34,8 @@ public class ItemInfoService {
 		return itemInfoDao.selectAll();
 	}
 
-	public ItemInfo updateStock(Integer stock) {
-		return itemInfoDao.updateStock(stock);
+	public ItemInfo update(Integer seqno, Integer stock) {
+		return itemInfoDao.update(seqno,stock);
 	}
 
 }

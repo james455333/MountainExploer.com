@@ -31,7 +31,7 @@ public class ItemBasicService {
 		return itemBasicDao.selectAll();
 	}
 	
-	public boolean delete(String name) {
-		return itemBasicDao.delete(name);
+	public boolean delete(Integer seqno) {
+		return itemBasicDao.delete(seqno);
 	}
 }

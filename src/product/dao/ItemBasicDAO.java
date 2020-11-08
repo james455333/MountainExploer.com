@@ -55,9 +55,9 @@ public class ItemBasicDAO {
 // 修改
 
 // 刪除
-	public boolean delete(String name) {
+	public boolean delete(Integer seqno) {
 		Session session = sessionFactory.getCurrentSession();
-		ItemBasic result = session.get(ItemBasic.class, name);
+		ItemBasic result = session.get(ItemBasic.class, seqno);
 		if (result!= null) {
 			session.delete(result);
 			return true;

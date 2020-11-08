@@ -82,21 +82,21 @@ public class RetrieveFunction {
 //	}
 	
 	
-	//	返回指定路線ID的國家公園ID
-	public static int defaultNPID(String seqno, List<NationalPark> all) {
-		
-		int seqnum = Integer.parseInt(seqno);
-		
-		for (NationalPark nationalPark : all) {
-			Iterator<RouteBasic> iterator = nationalPark.getRouteBasic().iterator();
-			while (iterator.hasNext()) {
-				RouteBasic routeBasic = iterator.next();
-				if (routeBasic.getId() == seqnum ) {
-					return nationalPark.getId();
-				}
-			}
-		}
-		return 0;
-	}
-
+	//	返回指定ID
+//	public static int defaultNPID(String seqno, List<NationalPark> all) {
+//		
+//		int seqnum = Integer.parseInt(seqno);
+//		
+//		for (NationalPark nationalPark : all) {
+//			Iterator<RouteBasic> iterator = nationalPark.getRouteBasic().iterator();
+//			while (iterator.hasNext()) {
+//				RouteBasic routeBasic = iterator.next();
+//				if (routeBasic.getId() == seqnum ) {
+//					return nationalPark.getId();
+//				}
+//			}
+//		}
+//		return 0;
+//	}
+//
 }

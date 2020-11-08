@@ -8,52 +8,54 @@
 <title>後台資料維護系統/山岳資料/[新增]]</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href='<c:url value="/backstage/css/backStage.css"/>'> 
-<link rel="stylesheet" href='<c:url value="/mountain/back/backMountain.css"/>'>
 </head>
 <body>
 	<div id="container1">
 		<!-- 引入共同頁首 -->
 		<jsp:include page="../../fragment/backTopNav.jsp"></jsp:include>
 		
-		<%-- <c:forEach var="peakName" items="${mountainBean}" varStatus="vs">
-		</c:forEach> --%>
-		<c:if test="${ !empty errorMsg}">
-			<script type="text/javascript" charset="UTF-8">
-				alert("${errorMsg}")
-			</script>
-		</c:if>
+	
 		
-		<form action='<c:url value="/mountainBackStage/createMountainData"/>' class="newDataForm" enctype="multipart/form-data" method="post">
-			<div id="updateForm">
+		<form action='<c:url value="/productBackStage/createProductData"/>'  enctype="multipart/form-data" method="post">
+			<div >
 				<div>
 				* 為必填項目
 				</div>
 				<div>
-					<label for="npName">* 國家公園名稱 : &nbsp&nbsp</label>			
-					<input type="text" name="npName" required>
+					<label for="name">* 產品名稱: &nbsp&nbsp</label>			
+					<input type="text" name="name" required>
 				</div>
 				<div>
-					<label for="routeName">* 路線名稱 : &nbsp&nbsp</label>			
-					<input type="text" name="routeName" required>
+					<label for="fcName">* 主類別名稱 : &nbsp&nbsp</label>			
+					<input type="text" name="fcName" required>
 				</div>
 				<div>
-					<label for="routeImg">* 路線圖檔案 : &nbsp&nbsp</label>			
-					<input type="file" name="routeImg"  accept="image/*" required>
+					<label for="scName">* 次類別名稱 : &nbsp&nbsp</label>			
+					<input type="text" name="scName" required>
+				</div>
+				<div>
+					<label for="type">* 型號 : &nbsp&nbsp</label>			
+					<input type="text" name="type" required>
+				</div>
+				<div>
+					<label for="price">* 價格 : &nbsp&nbsp</label>			
+					<input type="text" name="price" required>
+				</div>
+				<div>
+					<label for="stock">* 庫存 : &nbsp&nbsp</label>			
+					<input type="text" name="scName" required>
+				</div>
+				<div>
+					<label for="productImg">* 產品圖檔案 : &nbsp&nbsp</label>			
+					<input type="file" name="productImg"  accept="image/*" required>
 				</div>
 				<div >
-					<label for="routeDesp">* 路線介紹 : &nbsp&nbsp</label>			
-					<textarea rows="2.5%" cols="50%" name="routeDesp" class="bigText" required></textarea>
+					<label for="description">* 介紹 : &nbsp&nbsp</label>			
+					<textarea rows="2.5%" cols="50%" name="description"  required></textarea>
 				</div>
-				<div >
-					<label for="routeAdvice">* 建議路線 : &nbsp&nbsp</label>			
-					<textarea rows="2.5%" cols="50%" name="routeAdvice" class="bigText" required></textarea>
-				</div>
-				<div >
-					<label for="routeTraffic">* 交通資訊 : &nbsp&nbsp</label>			
-					<textarea rows="2.5%" cols="50%" name="routeTraffic" class="bigText" required></textarea>
-				</div>
+			
 			</div>
-			<div id="new_confirm">
+			<div >
 				<div>
 					<input type="submit" value="確認新增">
 				</div>
