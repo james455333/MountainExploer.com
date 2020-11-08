@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,6 +16,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,12 +25,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import main.generic.service.AbstractService;
 import main.generic.service.GenericService;
-import mountain.back.function.PageFunction;
-import mountain.back.function.RetrieveFunction;
+import mountain.function.PageFunction;
+import mountain.function.RetrieveFunction;
 import mountain.model.route.MountainBean;
 import mountain.model.route.NationalPark;
+import mountain.model.route.RouteBasic;
 import mountain.model.route.RouteInfo;
-
+@RequestMapping(path = "/backstage/search")
 @Controller
 public class BackRetrieveController {
 
@@ -37,11 +40,65 @@ public class BackRetrieveController {
 	@Autowired
 	private GenericService<RouteInfo> rtInfoService;
 	@Autowired
+	private GenericService<RouteBasic> rtBasicService;
+	@Autowired
 	private GenericService<NationalPark> nPService;
-
+	
+	@GetMapping(value = "/all", produces = {"application/json;charset=UTF-8"})
+	@ResponseBody
+	public List<MountainBean> selectAll( Model model,
+			@RequestParam(name = "page", required = false)Integer page,
+			@RequestParam(name = "showData", required = false)Integer showData) throws IOException, SQLException{
+		
+		List<MountainBean> allBeans = null;
+		
+		if (page == 0) {
+			page = 1;
+		}
+		System.out.println("page : " +page);
+		if (showData == 0) {
+			showData = 3;
+		}
+		
+		rtBasicService.save(new RouteBasic());
+		List<RouteBasic> rtBasicList = rtBasicService.selectWithPage(page, showData);
+		allBeans = RetrieveFunction.getMountainBeanList(rtBasicList);
+		
+		return allBeans;
+	}
+	
+	@GetMapping("/totalData")
+	@ResponseBody
+	public int setTotalData(
+			@RequestParam(name = "nationalPark", required = false) String npID,
+			@RequestParam(name = "routeID", required = false) String routeID) {
+		Integer totalData = null;
+		
+		if (npID == null && routeID == null) {
+			rtBasicService.save(new RouteBasic());
+			totalData = rtBasicService.getAllData(new RouteBasic());
+			System.out.println("totalData : " + totalData);
+			return totalData;
+		}else if (routeID == null && npID != null) {
+			nPService.save(new NationalPark());
+			NationalPark npBean = nPService.select(Integer.parseInt(npID));
+			Set<RouteBasic> routeBasicSet = npBean.getRouteBasic();
+			System.out.println("totalData : " + totalData);
+			totalData = routeBasicSet.size();
+			return totalData;
+		}else if (npID == null && routeID != null) {
+			totalData = 1;
+			System.out.println("totalData : " + totalData);
+			return totalData;
+		}
+		
+		return (int)totalData;
+	}
+	
+	
 	// 總查詢
 	@SuppressWarnings("unchecked")
-	@RequestMapping(path = "/mountainBackStage/mainPage", method = RequestMethod.GET)
+	@RequestMapping(path = "/mainPage", method = RequestMethod.GET)
 	public String pageEntry(Model model,RedirectAttributes redrAttr,
 			@RequestParam(name = "page", required = false) String pageString,
 			@RequestParam(name = "showData", required = false) String showDataString) {
@@ -138,9 +195,9 @@ public class BackRetrieveController {
 		model.addAttribute("totalData", totalData);
 		model.addAttribute("page", pageNO);
 		model.addAttribute("totalPage", totalPage);
-		model.addAttribute("controllerPath", "/mountainBackStage/mainPage?");
+		model.addAttribute("controllerPath", "/backstage/search/mainPage?");
 
-		return "forward:/mountainBackStage/retrievePage";
+		return "forward:/backStage/mountain/retrieveEntry";
 	}
 
 	// 路線查詢
@@ -306,7 +363,7 @@ public class BackRetrieveController {
 	
 	
 	// 顯示特定圖片
-	@RequestMapping(path = "/mountainBackStage/images", method = RequestMethod.GET)
+	@RequestMapping(path = "/images", method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<byte[]> showImage(@RequestParam(name = "seqno") String seqno) {
 		System.out.println("圖片輸入開始");

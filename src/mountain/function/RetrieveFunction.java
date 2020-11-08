@@ -1,4 +1,4 @@
-package mountain.back.function;
+package mountain.function;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -51,6 +51,18 @@ public class RetrieveFunction {
 		return mainBeans;
 	}
 	
+	//設置顯示Bean
+	public static List<MountainBean> getMountainBeanList(List<RouteBasic> list) throws IOException, SQLException{
+		
+		List<MountainBean> mainBeans = null;
+		
+		mainBeans = sortMountainBeans(TransFuction.transRouteMultiple(list));
+		
+		System.out.println("mainBeans Size : " + mainBeans.size());
+		
+		return mainBeans;
+		
+	}
 	
 	
 

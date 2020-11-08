@@ -1,5 +1,7 @@
 package mountain.model.route;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,8 +19,13 @@ import main.generic.model.GenericTypeObject;
 @Entity
 @Table(name = "route_info")
 @Component
-public class RouteInfo extends GenericTypeObject {
+public class RouteInfo extends GenericTypeObject implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@GenericGenerator( name = "rbidG1", strategy = "foreign", parameters = @Parameter( name = "property", value = "route_basic"))
 	@Id
 	@Column( name = "ROUTE_BASIC_ID")

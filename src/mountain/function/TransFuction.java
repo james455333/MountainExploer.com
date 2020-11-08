@@ -1,4 +1,4 @@
-package mountain.back.function;
+package mountain.function;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -91,7 +91,7 @@ public class TransFuction {
 					RouteInfo routeInfo = routeBasic.getRouteInfo();
 					mountainBean.setSeqno(routeInfo.getId());
 					mountainBean.setName(routeInfo.getName());
-
+					
 					String description = bytesToString(routeInfo.getDescription());
 					mountainBean.setDescription(description);
 
@@ -118,6 +118,39 @@ public class TransFuction {
 		}
 		return new String(bytes,"UTF-8");
 	}
+
+	public static List<MountainBean> transRouteMultiple(List<RouteBasic> list) throws IOException, SQLException {
+		List<MountainBean> mainBeans = new ArrayList<MountainBean>();
+		for (RouteBasic routeBasic : list) {
+			MountainBean mountainBean = new MountainBean();
+			
+			NationalPark nationalPark = routeBasic.getNational_park();
+			RouteInfo routeInfo = routeBasic.getRouteInfo();
+			
+			mountainBean.setSeqno(routeInfo.getId());
+			mountainBean.setName(routeInfo.getName());
+			
+			String description = bytesToString(routeInfo.getDescription());
+			mountainBean.setDescription(description);
+
+			String advice = bytesToString(routeInfo.getAdvice());
+			mountainBean.setAdvice(advice);
+
+			String traffic = bytesToString(routeInfo.getTraffic());
+			mountainBean.setTraffic(traffic);
+
+			String nPName = nationalPark.getName();
+			mountainBean.setNpName(nPName);
+			System.out.println("國家公園名 : " +nPName );
+			mainBeans.add(mountainBean);
+			
+		}
+		
+		
+		return mainBeans;
+	}
+
+
 	
 		
 	

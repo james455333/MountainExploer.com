@@ -23,21 +23,22 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 	public void save(T entity) {
 		this.entity = entity;
 	}
-	
+	@Override
 	public List<T> selectWithPage(int page, int showdata) {
 		Session session = sessionFactory.getCurrentSession();
 		int startPosition = (page-1) * showdata;
 		List<T> list = new ArrayList<T>();
-		String hql = "From " + entity.getClass().getName();
+		String hql = "From " + entity.getClass().getName() ;
 		list = session.createQuery(hql)
 					.setFirstResult(startPosition)
 					.setMaxResults(showdata)
 					.getResultList();
+		System.out.println("result size : " + list.size());
 		return list;
 	}
 	
 	@Override
-	public T select(int id) {
+	public T select(Integer id) {
 
 		Session session = sessionFactory.getCurrentSession();
 
@@ -109,7 +110,7 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 	}
 
 	@Override
-	public boolean delete(int id) {
+	public boolean delete(Integer id) {
 
 		Session session = sessionFactory.getCurrentSession();
 
@@ -121,6 +122,18 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 		}
 		return false;
 
+	}
+	@Override
+	public int getAllData(T entity) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		String hql = "Select count(*)"+" From " + entity.getClass().getName();
+		
+		Query query = session.createQuery(hql);
+		long uniqueResult = (Long) query.uniqueResult();
+		
+		return (int)uniqueResult;
 	}
 
 }

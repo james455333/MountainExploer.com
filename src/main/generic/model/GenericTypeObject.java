@@ -3,9 +3,9 @@ package main.generic.model;
 
 public class GenericTypeObject {
 	
-	private Integer id;
-	private Integer seqno;
-	private String name;
+	private transient Integer id;
+	private transient Integer seqno;
+	private transient String name;
 	public Integer getId() {
 		return id;
 	}

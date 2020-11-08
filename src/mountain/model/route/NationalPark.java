@@ -1,5 +1,6 @@
 package mountain.model.route;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -19,9 +20,13 @@ import main.generic.model.GenericTypeObject;
 @Entity
 @Table(name = "national_park")
 @Component
-public class NationalPark extends GenericTypeObject {
+public class NationalPark extends GenericTypeObject implements Serializable {
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "SEQNO")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

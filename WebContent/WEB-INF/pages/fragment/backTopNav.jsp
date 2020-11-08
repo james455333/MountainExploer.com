@@ -7,7 +7,7 @@
 		<nav id="navbar1">
 			<div><a href='<c:url value="/member/backup/Memberback.jsp"/>'>會員資料</a></div>
 			<div><a href="#">活動紀錄(尚未實作)</a></div>
-			<div><a href='<c:url value="/mountainBackStage/mainPage?page=1"/>'>山岳及路線資料</a></div>
+			<div><a href='<c:url value="/backstage/mountain/retrieveEntry"/>'>山岳及路線資料</a></div>
 			<div><a href='<c:url value="/house/back/backCamp.jsp"/>'>露營地資料</a></div>
 			<div><a href='<c:url value="/house/back/backMountainHouse.jsp"/>'>山中小屋資料</a></div>
 			<div><a href='<c:url value="/shopping/shopBackStage.jsp"/>'>商品資料</a></div>

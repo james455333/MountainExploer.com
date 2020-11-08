@@ -101,12 +101,27 @@ public class ImportDataController {
 				RouteInfo rIBean = new RouteInfo();
 
 				rIBean.setName(name);
-				byte[] bytesDescp = description.getBytes(MountainGlobal.CHARSET);
-				rIBean.setDescription(bytesDescp);
-				byte[] bytesAdvice = advice.getBytes(MountainGlobal.CHARSET);
-				rIBean.setAdvice(bytesAdvice);
-				byte[] bytesTra = traffic.getBytes(MountainGlobal.CHARSET);
-				rIBean.setTraffic(bytesTra);
+				if (!description.isEmpty()) {
+					byte[] bytesDescp = description.getBytes(MountainGlobal.CHARSET);
+					rIBean.setDescription(bytesDescp);
+				}else {
+					byte[] bytesDescp = "尚無資料".getBytes(MountainGlobal.CHARSET);
+					rIBean.setDescription(bytesDescp);
+				}
+				if (!advice.isEmpty()) {
+					byte[] bytesAdvice = advice.getBytes(MountainGlobal.CHARSET);
+					rIBean.setAdvice(bytesAdvice);
+				}else {
+					byte[] bytesAdvice = "尚無資料".getBytes(MountainGlobal.CHARSET);
+					rIBean.setAdvice(bytesAdvice);
+				}
+				if (!traffic.isEmpty()) {
+					byte[] bytesTra = traffic.getBytes(MountainGlobal.CHARSET);
+					rIBean.setTraffic(bytesTra);
+				}else {
+					byte[] bytesTra = "尚無資料".getBytes(MountainGlobal.CHARSET);
+					rIBean.setTraffic(bytesTra);
+				}
 				byte[] bytesImg = getURLtoBytes(imgURL);
 				rIBean.setImgUrl(bytesImg);
 

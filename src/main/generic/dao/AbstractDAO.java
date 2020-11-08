@@ -8,7 +8,7 @@ public interface AbstractDAO<T extends GenericTypeObject> {
 
 	void save(T entity);
 
-	T select(int id);
+	T select(Integer id);
 
 	T select(String name);
 
@@ -18,6 +18,10 @@ public interface AbstractDAO<T extends GenericTypeObject> {
 
 	T update(T entity);
 
-	boolean delete(int id);
+	boolean delete(Integer id);
+	
+	List<T> selectWithPage(int page, int showdata);
+	
+	int getAllData(T entity);
 
 }

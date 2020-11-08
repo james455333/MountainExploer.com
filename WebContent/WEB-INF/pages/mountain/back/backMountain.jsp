@@ -11,9 +11,10 @@
 <link rel="stylesheet" href='<c:url value="/mountain/back/backMountain.css"/>' >
 <link rel="shortcut icon" type="image/png" href="<c:url value="/favicon.ico"/>"/>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script type="text/javascript" charset="UTF-8" src='<c:url value="/mountain/back/backMountain.js"/>'></script>
 </head>
 <body>
 	
@@ -53,17 +54,37 @@
 				</script>
 			</c:otherwise>
 		</c:choose>
-		
-		
+		<!-- 偵測頁面訊息 -->
+		<c:choose>
+			<c:when test="${ !empty page}">
+				<script type="text/javascript" charset="UTF-8">
+					var page = "${page}";
+				</script>
+			</c:when>
+			<c:otherwise>
+				<script type="text/javascript" charset="UTF-8">
+					var page = 1;
+				</script>
+			</c:otherwise>
+		</c:choose>
+		<c:choose>
+			<c:when test="${ !empty showData}">
+				<script type="text/javascript" charset="UTF-8">
+					var showData = "${showData}";
+				</script>
+			</c:when>
+			<c:otherwise>
+				<script type="text/javascript" charset="UTF-8">
+					var showData = 3;
+				</script>
+			</c:otherwise>
+		</c:choose>
 		<!-- 查詢列 -->
 		<div id="searchBar">
 			<form action="<c:url value='/mountainBackStage/backNPSearch?page=1&' />" method="get" id="scopeQueryNP">
 				<div  class="searchSelect">
 					<span>國家公園 :&nbsp</span>
 					<select name="nationalPark" id="nPSelect">
-						<c:forEach var="npBean" items="${npBean}" varStatus="vs">
-							<option value="${npBean.id}">${npBean.name}</option>
-						</c:forEach>
 					</select>			
 				</div>
 				<div class="searchSelect">
@@ -172,7 +193,7 @@
 				<tbody>
 				
 				<!-- 資料內容 -->
-				<c:forEach var="peakName" items="${mainBean}" varStatus="vs">
+			<!--	<c:forEach var="peakName" items="${mainBean}" varStatus="vs">
 				    
 				    <tr >
 				    	<th>${peakName.seqno}</th>
@@ -201,56 +222,27 @@
 				    	</td>
 				    </tr>
 				    
-				</c:forEach>
+				</c:forEach> 
+				  -->
+				</tbody>
 			</table>
 			<!-- 頁數控制項 -->
 			<div id="pageController">
 				<div>
-					<c:choose>
-						<c:when test="${page>1}">
-							<a href='<c:url value="${controllerPath}page=1&showData=${showData}" />'> 最前頁 </a>
-						</c:when>
-						<c:otherwise>
-							<i> 最前頁 </i>
-						</c:otherwise>
-					</c:choose>
+					<input id="firstPage" type="button" value="最前頁" name="1">
 				</div>
 				<div>
-					<c:choose>
-						<c:when test="${page>1}">
-							<a href='<c:url value="${controllerPath}page=${page-1}&showData=${showData}" />'> 上一頁 </a>
-						</c:when>
-						<c:otherwise>
-							<i> 前一頁 </i>
-						</c:otherwise>
-					</c:choose>
+					<input id="previousPage" type="button" value="前一頁" name=(page-1)>
 				</div>
 				<div>
-					<a> ${page} </a>
+					<i>page / totalPage</i>
 				</div>
 				<div>
-					<c:choose>
-						<c:when test="${page<totalPage}">
-							<a href='<c:url value="${controllerPath}page=${page+1}&showData=${showData}" />'> 下一頁 </a>
-						</c:when>
-						<c:otherwise>
-							<i> 後一頁 </i>
-						</c:otherwise>
-					</c:choose>
+					<input id ="nextPage" type="button" value="下一頁" name=(page+1)>
 				</div>
 				<div>
-					<c:choose>
-						<c:when test="${page<totalPage}">
-							<a href='<c:url value="${controllerPath}page=${totalPage}&showData=${showData}" />'> 最尾頁 </a>
-						</c:when>
-						<c:otherwise>
-							<i > 最尾頁 </i>
-						</c:otherwise>
-					</c:choose>
+					<input id="lastPage" type="button" value="最尾頁" name=totalPage>
 				</div>
-			</div>
-			<div id="showPage">
-				目前所在頁數 : ${page} / 總頁數 : ${totalPage} 
 			</div>
 			
 			<!-- 刪除確認視窗 -->
@@ -262,5 +254,5 @@
 
 </body>
 
-	<script type="text/javascript" charset="UTF-8" src='<c:url value="/mountain/back/backMountain.js"/>'></script>
+	
 </html>
