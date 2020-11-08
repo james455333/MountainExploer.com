@@ -97,7 +97,7 @@
 						<th scope="col"><span class="tr_title">主分類</span></th>
 						<th scope="col"><span class="tr_title">次分類</span></th>
 						<th scope="col"><span class="tr_title">圖片</span></th>
-						<th scope="col"><span class="tr_title">敘述</span></th>
+<!-- 						<th scope="col"><span class="tr_title">敘述</span></th> -->
 						<th scope="col"><span class="tr_title">價格</span></th>
 						<th scope="col"><span class="tr_title">庫存</span></th>
 						<th scope="col"><span class="tr_title">修改/刪除</span></th>
@@ -111,23 +111,24 @@
 				    <tr >
 				    	<th>${productBean.seqno}</th>
 				    	<td>${productBean.name}</td>
-				    	<td>${productBean.npName}</td>
+				    	<td>${productBean.type}</td>
+				    	<td>${productBean.firstClass}</td>
+				    	<td>${productBean.secondClass}</td>
 				    	<td>
-				    		<img style="width:50px;height:50px;"src="<c:url value='/mountainBackStage/images?seqno=${peakName.seqno}' />" class="routeImg" name="rtImg${vs.index})" >
-				    		<img src="<c:url value='/mountainBackStage/images?seqno=${peakName.seqno}' />" class="extendImg" name="rtImg${vs.index})">
+				    		<img style="width:50px;height:50px;"src="<c:url value='/productBackStage/images?seqno=${productBean.seqno}' />" class="routeImg" name="rtImg${vs.index})" >
+				    		<img src="<c:url value='/productBackStage/images?seqno=${productBean.seqno}' />" class="extendImg" name="rtImg${vs.index})">
 				    	</td>
-				    	<td><div style="width: 150px;height: 150px; overflow: auto;">${peakName.description}</div></td>
-				    	<td><div style="width: 150px;height: 150px; overflow: auto;">${peakName.advice}</div></td>
-				    	<td><div style="width: 150px;height: 150px; overflow: auto;">${peakName.traffic}</div></td>
+				    	<td><div style="width: 150px;height: 150px; overflow: auto;">${productBean.price}</div></td>
+				    	<td><div style="width: 150px;height: 150px; overflow: auto;">${productBean.stock}</div></td>
 				    	<td>
 				    		<div>
-				    			<form action="<c:url value='/mountainBackStage/updateDataPage' />">
-				    				<input type="text" name="seqno" value="${peakName.seqno}" style="display: none;" readonly>
+				    			<form action="<c:url value='/productBackStage/updateDataPage' />">
+				    				<input type="text" name="seqno" value="${productBean.seqno}" style="display: none;" readonly>
 				    				<input type="submit" value="修改">
 				    			</form>
 				    		</div>
 				    		<div>
-				    			<input type="text" name="seqno" value="${peakName.seqno}" style="display: none;" readonly>
+				    			<input type="text" name="seqno" value="${productBean.seqno}" style="display: none;" readonly>
 				    			<input type="button" class="deleteButton" value="刪除">
 				    		</div>
 				    	</td>
@@ -146,5 +147,5 @@
 
 </body>
 
-	<script type="text/javascript" charset="UTF-8" src='<c:url value="/mountain/back/backMountain.js"/>'></script>
+	<script type="text/javascript" charset="UTF-8" src='<c:url value="/product/back/backProduct.js"/>'></script>
 </html>
