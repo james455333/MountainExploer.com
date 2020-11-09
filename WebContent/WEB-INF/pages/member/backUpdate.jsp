@@ -15,9 +15,9 @@
   <link rel="stylesheet" href='<c:url value="/backstage/css/backStage.css"/>'> 
 </head>
 <body>
-	<c:if test="${ !empty msg}">
+	<c:if test="${ !empty result }">
 		<script type="text/javascript" charset="UTF-8">
-			alert("${msg.success}")
+			alert("${result}")
 		</script>
 	</c:if>
 	<c:if test="${ !empty error}">
@@ -25,7 +25,11 @@
 			alert("${error}")
 		</script>
 	</c:if>
-	<h2>更新會員資料</h2>
+	
+	<jsp:include page="../fragment/backTopNav.jsp"></jsp:include>
+	
+	<div id="container1">
+		<h2>更新會員資料</h2>
 	<form action="<c:url value='/memberBack/memberUpdate'/>" method="post">
 		<div id="container1">
 			<table>
@@ -77,6 +81,12 @@
 			<input type="submit" id="goBack" name="goBack" value="返回查詢"/>
 		</div>
 	</form>
+	
+	</div>
+	
+	
+	
+	
 
 </body>
 </html>

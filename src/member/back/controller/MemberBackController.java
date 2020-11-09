@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import member.back.model.MemberBasicBackService;
 import member.back.model.MemberStatusBackService;
@@ -27,7 +28,8 @@ public class MemberBackController {
 	private MemberStatusBackService mstService;
 	
 	@RequestMapping(path = "/member/memberBackEntry", method = RequestMethod.GET)
-	public String processEntryPage() {
+	public String processEntryPage(RedirectAttributes redAttr) {
+		System.out.println((String)redAttr.getAttribute("result"));
 		return "member/memberBackSelectList";
 	}
 

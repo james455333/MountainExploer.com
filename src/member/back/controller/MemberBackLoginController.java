@@ -48,6 +48,7 @@ public class MemberBackLoginController {
 		
 		if("EEIT124".equalsIgnoreCase(account) && "test123".equalsIgnoreCase(password)) {
 			m.addAttribute("LoginOK", account);
+			m.addAttribute("result", "登入成功");
 			return "backStage";
 		}
 		

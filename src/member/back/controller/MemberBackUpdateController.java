@@ -57,13 +57,16 @@ public class MemberBackUpdateController {
 			miUpdate.setGender(gender);
 			
 			miService.update(miUpdate);
-			msg.put("success", "會員資料修改成功");
-			return "member/backUpdate";
+			
+			redAttr.addFlashAttribute("result", "修改成功");
+			
+			return "redirect:/member/memberBackEntry";
+			
 		} else {
 			redAttr.addFlashAttribute("error", "會員資料修改失敗");
 		}
 		
-		return "member/memberBackSelectList";
+		return "redirect:/member/memberBackEntry";
 	}
 	
 	
