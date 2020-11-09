@@ -97,3 +97,33 @@ document.getElementById("demo6").addEventListener("click", function () {
   }
 });
 });
+
+
+// demo0 再次確認提醒
+document.getElementById("修改確認demo").addEventListener("click", function () {
+  swal({
+    title: "變更密碼",
+    text: "確認更改！",
+    icon: "warning",
+    showCancelButton: "true",
+    // buttons: true,
+    // confirmButtonColor: "#DD6B55",
+    confirmButtonText: "修改",
+    cancelButtonText: "取消",
+    closeOnConfirm: false
+}).then(function () {
+    swal({
+        title:"修改成功！",
+        text: "",
+        icon: "success",
+        confirmButtonText: "重新登錄",
+    }).then(function () {
+        window.location.href = "login.html"//回個人資料頁面
+    })
+})
+  
+});
+
+
+
+
