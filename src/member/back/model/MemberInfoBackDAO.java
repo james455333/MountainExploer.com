@@ -2,6 +2,7 @@ package member.back.model;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -14,6 +15,11 @@ public class MemberInfoBackDAO {
 	@Autowired
 	@Qualifier("sessionFactory")
 	private SessionFactory sessionFactory;
+	
+	public MemberInfo select(int seqno) {
+		Session session = sessionFactory.getCurrentSession();
+		return session.get(MemberInfo.class, seqno);
+	}
 	
 	public MemberInfo insert(MemberInfo mbInfo) {
 		Session session = sessionFactory.getCurrentSession();

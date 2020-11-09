@@ -36,14 +36,13 @@ public class MemberBasic {
 	}
 	
 //	public MemberBasic(int seqno, String account, String name, String email, int statusId,
-//			Date reg_Date, String password) {
+//			String password) {
 //		this.seqno = seqno;
 //		this.account = account;
 //		this.name = name;
 //		this.email = email;
 //		this.statusId = statusId;
-//		this.reg_Date = reg_Date;
-//		this.password = password;
+//		
 //	}
 
 	

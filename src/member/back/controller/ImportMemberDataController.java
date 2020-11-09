@@ -128,6 +128,8 @@ public class ImportMemberDataController {
 				mbStat.setName(status);
 				mb.setMemberStatus(mbStat);
 				mb.setMemberInfo(mbInfo);
+				
+				
 				//判斷status有無資料
 				//有則只新增basic和info
 				//沒有則新增status、basic、info

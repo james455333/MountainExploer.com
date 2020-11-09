@@ -1,15 +1,23 @@
 package member.back.controller;
 
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import member.back.model.MemberBasicBackService;
+import member.back.model.MemberInfoBackService;
 import member.model.MemberBasic;
+import member.model.MemberInfo;
+import member.model.MemberStatus;
 
 
 @Controller
@@ -18,17 +26,44 @@ public class MemberBackUpdateController {
 	@Autowired
 	private MemberBasicBackService mbService;
 	
+	@Autowired
+	private MemberInfoBackService miService;
+	
 	@RequestMapping(path = "/memberBack/memberUpdate", method = RequestMethod.POST)
 	public String processUpdate(@RequestParam(name = "updateB")String updateB, 
-								@RequestParam(name = "seqno")int seqno, Model m) {
+								@RequestParam(name = "seqno")int seqno, 
+								@RequestParam(name = "account")String account,
+								@RequestParam(name = "name")String name,
+								@RequestParam(name = "gender")String gender,
+								@RequestParam(name = "neckName")String neckName,
+								@RequestParam(name = "email")String email,
+								@RequestParam(name = "statusSeqno")int statusSeqno,
+								RedirectAttributes redAttr) {
+		Map<String, String> msg = new HashMap<String, String>();
+		
 		if(updateB != null) {
 			System.out.println(seqno);
-			MemberBasic mbQuery = mbService.select(seqno);
-			mbService.update(mbQuery);
-			m.addAttribute("mbList", mbQuery);
+			MemberBasic mbUpdate = mbService.select(seqno);
+			MemberInfo miUpdate = miService.select(seqno);
+			
+			mbUpdate.setAccount(account);
+			mbUpdate.setName(name);
+			mbUpdate.setEmail(email);
+			mbUpdate.setStatusId(statusSeqno);
+			
+			mbService.update(mbUpdate);
+			
+			miUpdate.setNeck_name(neckName);
+			miUpdate.setGender(gender);
+			
+			miService.update(miUpdate);
+			msg.put("success", "會員資料修改成功");
+		} else {
+			msg.put("error", "會員資料修改失敗");
+			
 		}
 		
-		return "member/backUpdate";
+		return "member/memberBackSelectList";
 	}
 	
 	

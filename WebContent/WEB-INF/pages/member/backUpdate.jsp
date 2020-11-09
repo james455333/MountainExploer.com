@@ -10,6 +10,16 @@
 <body>
 	<h2>更新會員資料</h2>
 	<form action="<c:url value='/memberBack/memberUpdate'/>" method="post">
+		<c:if test="${ !empty msg}">
+			<script type="text/javascript" charset="UTF-8">
+				alert("${msg.success}")
+			</script>
+		</c:if>
+		<c:if test="${ !empty msg}">
+			<script type="text/javascript" charset="UTF-8">
+				alert("${msg.error}")
+			</script>
+		</c:if>
 		<div>
 			<table>
 			<c:forEach var="info" items="${mbList}">
@@ -25,7 +35,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="text" id="seqno" name="seqno" disabled value="${info.seqno}"/>
+						<input type="text" id="seqno" name="seqno" readonly value="${info.seqno}"/>
 					</td>
 					<td>
 						<input type="text" name="account" value="${info.account}"/>

@@ -55,7 +55,7 @@
 					<td>${info.memberInfo.neck_name}</td>
 					<td>${info.memberInfo.birthday}</td>
 					<td>${info.email}</td>
-					<td>${info.memberInfo.exp}</td>
+					<td>${info.memberInfo.climb_ex}</td>
 					<td>${info.memberStatus.name}</td>
 					<td>${info.reg_Date}</td>
 				</tr>

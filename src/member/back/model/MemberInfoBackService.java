@@ -15,6 +15,10 @@ public class MemberInfoBackService {
 		return infoDAO.insert(mbInfo);
 	}
 	
+	public MemberInfo select(int seqno) {
+		return infoDAO.select(seqno);
+	}
+	
 	public MemberInfo update(MemberInfo mbInfo) {
 		return infoDAO.update(mbInfo);
 	}
