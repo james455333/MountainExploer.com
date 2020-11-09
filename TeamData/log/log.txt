@@ -1,0 +1,96 @@
+11月 08, 2020 8:24:18 上午 org.apache.catalina.startup.VersionLoggerListener log
+INFO: Server version name:   Apache Tomcat/9.0.38
+11月 08, 2020 8:24:18 上午 org.apache.catalina.startup.VersionLoggerListener log
+INFO: Server built:          Sep 10 2020 08:20:30 UTC
+11月 08, 2020 8:24:18 上午 org.apache.catalina.startup.VersionLoggerListener log
+INFO: Server version number: 9.0.38.0
+11月 08, 2020 8:24:18 上午 org.apache.catalina.startup.VersionLoggerListener log
+INFO: OS Name:               Windows 10
+11月 08, 2020 8:24:18 上午 org.apache.catalina.startup.VersionLoggerListener log
+INFO: OS Version:            10.0
+11月 08, 2020 8:24:18 上午 org.apache.catalina.startup.VersionLoggerListener log
+INFO: Architecture:          amd64
+11月 08, 2020 8:24:18 上午 org.apache.catalina.startup.VersionLoggerListener log
+INFO: Java Home:             C:\openjdk11_28_windows-x64_bin\jdk11
+11月 08, 2020 8:24:18 上午 org.apache.catalina.startup.VersionLoggerListener log
+INFO: JVM Version:           11+28
+11月 08, 2020 8:24:18 上午 org.apache.catalina.startup.VersionLoggerListener log
+INFO: JVM Vendor:            Oracle Corporation
+11月 08, 2020 8:24:18 上午 org.apache.catalina.startup.VersionLoggerListener log
+INFO: CATALINA_BASE:         C:\MountainProject\.metadata\.plugins\org.eclipse.wst.server.core\tmp0
+11月 08, 2020 8:24:18 上午 org.apache.catalina.startup.VersionLoggerListener log
+INFO: CATALINA_HOME:         C:\tomcat\apache-tomcat-9.0.38
+11月 08, 2020 8:24:18 上午 org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Dcatalina.base=C:\MountainProject\.metadata\.plugins\org.eclipse.wst.server.core\tmp0
+11月 08, 2020 8:24:18 上午 org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Dcatalina.home=C:\tomcat\apache-tomcat-9.0.38
+11月 08, 2020 8:24:18 上午 org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Dwtp.deploy=C:\MountainProject\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\WebContent
+11月 08, 2020 8:24:18 上午 org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Dfile.encoding=UTF-8
+11月 08, 2020 8:24:18 上午 org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+INFO: Loaded Apache Tomcat Native library [1.2.25] using APR version [1.7.0].
+11月 08, 2020 8:24:18 上午 org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+INFO: APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+11月 08, 2020 8:24:18 上午 org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+INFO: APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+11月 08, 2020 8:24:18 上午 org.apache.catalina.core.AprLifecycleListener initializeSSL
+INFO: OpenSSL successfully initialized [OpenSSL 1.1.1g  21 Apr 2020]
+11月 08, 2020 8:24:18 上午 org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["http-nio-9090"]
+11月 08, 2020 8:24:19 上午 org.apache.catalina.startup.Catalina load
+INFO: Server initialization in [682] milliseconds
+11月 08, 2020 8:24:19 上午 org.apache.catalina.core.StandardService startInternal
+INFO: Starting service [Catalina]
+11月 08, 2020 8:24:19 上午 org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet engine: [Apache Tomcat/9.0.38]
+11月 08, 2020 8:24:19 上午 org.apache.catalina.util.SessionIdGeneratorBase createSecureRandom
+WARNING: Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [123] milliseconds.
+11月 08, 2020 8:24:22 上午 org.apache.jasper.servlet.TldScanner scanJars
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+11月 08, 2020 8:24:22 上午 org.apache.catalina.core.ApplicationContext log
+INFO: 1 Spring WebApplicationInitializers detected on classpath
+11月 08, 2020 8:24:22 上午 org.apache.catalina.core.ApplicationContext log
+INFO: Initializing Spring root WebApplicationContext
+ds:org.apache.tomcat.dbcp.dbcp2.BasicDataSource@4ad113d6
+11月 08, 2020 8:24:23 上午 org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate ORM core version 5.4.22.Final
+11月 08, 2020 8:24:23 上午 org.hibernate.annotations.common.reflection.java.JavaReflectionManager <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+11月 08, 2020 8:24:24 上午 org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.Oracle12cDialect
+congigure Start
+Configure Success
+11月 08, 2020 8:24:27 上午 org.apache.catalina.core.ApplicationContext log
+INFO: Initializing Spring DispatcherServlet 'mvc'
+11月 08, 2020 8:24:27 上午 org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["http-nio-9090"]
+11月 08, 2020 8:24:27 上午 org.apache.catalina.startup.Catalina start
+INFO: Server startup in [8685] milliseconds
+Transaction Begin
+page : 1
+Hibernate: 
+    select
+        count(*) as col_0_0_ 
+    from
+        route_basic routebasic0_
+Transaction Commit
+Session Closed
+Transaction Begin
+Transaction Commit
+Session Closed
+Transaction Begin
+Hibernate: 
+    select
+        count(*) as col_0_0_ 
+    from
+        route_basic routebasic0_
+totalData : 29
+Transaction Begin
+Transaction Commit
+Session Closed
+Transaction Commit
+Session Closed

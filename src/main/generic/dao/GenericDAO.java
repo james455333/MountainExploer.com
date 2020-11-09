@@ -19,25 +19,31 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	public GenericDAO() {
+	}
+	
 	@Override
 	public void save(T entity) {
 		this.entity = entity;
 	}
-	
+	@Override
 	public List<T> selectWithPage(int page, int showdata) {
 		Session session = sessionFactory.getCurrentSession();
 		int startPosition = (page-1) * showdata;
 		List<T> list = new ArrayList<T>();
-		String hql = "From " + entity.getClass().getName();
+		String hql = "From " + entity.getClass().getName() ;
 		list = session.createQuery(hql)
+					.setReadOnly(true)
 					.setFirstResult(startPosition)
 					.setMaxResults(showdata)
 					.getResultList();
 		return list;
 	}
 	
+	
+	
 	@Override
-	public T select(int id) {
+	public T select(Integer id) {
 
 		Session session = sessionFactory.getCurrentSession();
 
@@ -55,7 +61,7 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 
 		Query<? extends GenericTypeObject> query = session.createQuery(hql, entity.getClass());
 
-		T uniqueResult = (T) query.uniqueResult();
+		T uniqueResult = (T) query.setReadOnly(true).uniqueResult();
 
 		if (uniqueResult != null) {
 			return uniqueResult;
@@ -69,7 +75,7 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "From " + entity.getClass().getName();
 		Query<T> query = (Query<T>) session.createQuery(hql, entity.getClass());
-		List<T> list = query.list();
+		List<T> list = query.setReadOnly(true).list();
 		return list;
 	}
 
@@ -109,7 +115,7 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 	}
 
 	@Override
-	public boolean delete(int id) {
+	public boolean delete(Integer id) {
 
 		Session session = sessionFactory.getCurrentSession();
 
@@ -121,6 +127,18 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 		}
 		return false;
 
+	}
+	@Override
+	public int getAllData(T entity) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		String hql = "Select count(*)"+" From " + entity.getClass().getName();
+		
+		Query query = session.createQuery(hql);
+		long uniqueResult = (Long) query.uniqueResult();
+		
+		return (int)uniqueResult;
 	}
 
 }

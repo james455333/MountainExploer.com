@@ -1,7 +1,6 @@
 package product.back.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -12,13 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import main.generic.service.AbstractService;
 import mountain.MountainGlobal;
-import mountain.model.NationalPark;
-import mountain.model.RouteBasic;
-import mountain.model.RouteInfo;
 import product.model.FirstClass;
 import product.model.ItemBasic;
 import product.model.ItemInfo;

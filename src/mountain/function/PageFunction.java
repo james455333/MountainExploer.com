@@ -1,4 +1,4 @@
-package mountain.back.function;
+package mountain.function;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -9,6 +9,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href='<c:url value="/backstage/css/backStage.css"/>'> 
 <link rel="stylesheet" href='<c:url value="/mountain/back/backMountain.css"/>'>
+<script src="https://code.jquery.com/jquery-3.5.1.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script type="text/javascript" charset="UTF-8" src='<c:url value="/mountain/back/update.js"/>'></script>
 </head>
 <body>
 	<div id="container1">
@@ -18,7 +22,7 @@
 		<%-- <c:forEach var="peakName" items="${mountainBean}" varStatus="vs">
 		</c:forEach> --%>
 		
-		<form action='<c:url value="/mountainBackStage/updateData"/>' class="newDataForm" enctype="multipart/form-data" method="post">
+		<form action='<c:url value="/backsatage/mountain/updateData"/>' class="newDataForm" enctype="multipart/form-data" method="post">
 			<div id="updateForm">
 				<c:if test="${ !empty mainBean }">
 					<div>
@@ -45,9 +49,11 @@
 						<input type="text" name="routeName" value="${mainBean.name}" required>
 					</div>
 					<div>
-						<label for="routeImg">現存路線圖檔案 : &nbsp&nbsp</label>
-						<img style="width:50px;height: 50px" src="<c:url value='/mountainBackStage/images?seqno=${mainBean.seqno}' />">	<br>			
-						<img style="width:250px;height: 250px;display: none;" src="<c:url value='/mountainBackStage/images?seqno=${mainBean.seqno}' />">	<br>			
+						<label>現存路線圖檔案 : &nbsp&nbsp</label>
+					</div>
+					<div>
+						<img class="routeImg" src="<c:url value='/backstage/mountain/search/images?seqno=${mainBean.seqno}' />">	<br>			
+						<img class="extendImg" src="<c:url value='/backstage/mountain/search/images?seqno=${mainBean.seqno}' />">	<br>			
 					</div>
 					<div>
 						<label for="routeImg">修改圖上傳 : &nbsp&nbsp</label>
@@ -88,10 +94,7 @@
 	
 
 </body>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
-	<script type="text/javascript" charset="UTF-8" src='<c:url value="/mountain/back/backMountain.js"/>'></script>
+	
 	<script>
 		$(function(){
 			$("#backPreviousPage").on("click",function(){

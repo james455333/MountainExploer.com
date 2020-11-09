@@ -1,0 +1,48 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="shopping_member_dtail" directorySegmentName="seg_0" id="0D84BDBD-CA27-02B9-FD81-41BA8ECED9B5">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-03 09:54:18 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="phone" id="296004E3-8EB3-A16A-9A4B-7EB3A1B75755">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-03 09:56:46 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="member_basic_id" id="9DAF23DF-7E63-6F01-F0DB-182FEF376AF7">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-03 09:54:46 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="address" id="BB7FFC8D-D431-16C4-991E-BF2492703D13">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-03 09:57:07 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="email" id="D0087BDB-DADC-9032-0FFB-61B2DA137662">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-03 09:56:32 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="shopping_member_dtail_member_basic_FK" id="D4104347-97E6-E025-326E-1FC38B2F1921">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-03 09:54:46 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="shopping_member_dtail_PK" id="B968E6A6-1033-66C0-3F4C-2A19D215C5C8">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-03 12:43:26 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

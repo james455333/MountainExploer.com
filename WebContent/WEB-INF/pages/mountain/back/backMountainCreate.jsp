@@ -23,7 +23,7 @@
 			</script>
 		</c:if>
 		
-		<form action='<c:url value="/mountainBackStage/createMountainData"/>' class="newDataForm" enctype="multipart/form-data" method="post">
+		<form action='<c:url value="/backsatage/mountain/createMountainData"/>' class="newDataForm" enctype="multipart/form-data" method="post">
 			<div id="updateForm">
 				<div>
 				* 為必填項目

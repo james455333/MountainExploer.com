@@ -1,5 +1,7 @@
 package mountain.model.route;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,12 +17,18 @@ import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import main.generic.model.GenericTypeObject;
 
 @Entity
 @Table(name = "route_basic")
 @Component
-public class RouteBasic extends GenericTypeObject{
+public class RouteBasic extends GenericTypeObject implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "SEQNO")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +37,7 @@ public class RouteBasic extends GenericTypeObject{
 	private Integer npid;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="NATIONAL_PARK_ID",referencedColumnName = "SEQNO")
+	@JsonIgnore
 	private NationalPark national_park;
 	public NationalPark getNational_park() {
 		return national_park;
@@ -37,6 +46,7 @@ public class RouteBasic extends GenericTypeObject{
 		this.national_park = national_park;
 	}
 	@OneToOne(fetch = FetchType.LAZY, mappedBy = "route_basic", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private RouteInfo routeInfo;
 	@Override
 	public Integer getId() {

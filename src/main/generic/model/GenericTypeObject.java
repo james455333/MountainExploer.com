@@ -1,11 +1,19 @@
 package main.generic.model;
 
+import javax.persistence.Embeddable;
+import javax.persistence.Entity;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class GenericTypeObject {
 	
-	private Integer id;
-	private Integer seqno;
-	private String name;
+	public GenericTypeObject() {
+	}
+	
+	private transient Integer id;
+	private transient Integer seqno;
+	private transient String name;
 	public Integer getId() {
 		return id;
 	}

@@ -17,7 +17,6 @@ public class GenericService<T extends GenericTypeObject> implements AbstractServ
 	private GenericDAO<T> genericDAO;
 	
 	public GenericService() {
-		
 	}
 	
 	@Override
@@ -27,7 +26,7 @@ public class GenericService<T extends GenericTypeObject> implements AbstractServ
 	
 		
 	@Override
-	public T select(int id) {
+	public T select(Integer id) {
 		return genericDAO.select(id);
 	}
 	
@@ -48,7 +47,17 @@ public class GenericService<T extends GenericTypeObject> implements AbstractServ
 		return genericDAO.update(entity);
 	}
 	@Override
-	public boolean delete(int id) {
+	public boolean delete(Integer id) {
 		return genericDAO.delete(id);
+	}
+
+	@Override
+	public List<T> selectWithPage(Integer page, Integer showdata) {
+		return genericDAO.selectWithPage(page, showdata);
+	}
+
+	@Override
+	public int getAllData(T entity) {
+		return genericDAO.getAllData(entity);
 	}
 }

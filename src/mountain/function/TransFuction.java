@@ -1,4 +1,4 @@
-package mountain.back.function;
+package mountain.function;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -12,7 +12,44 @@ import mountain.model.route.RouteBasic;
 import mountain.model.route.RouteInfo;
 
 public class TransFuction {
+	
+	public static String bytesToString(byte[] bytes) throws IOException, SQLException {
+		if (bytes == null ) {
+			return "尚未有資料";
+		}
+		return new String(bytes,"UTF-8");
+	}
 
+	public static List<MountainBean> transRouteMultiple(List<RouteBasic> list) throws IOException, SQLException {
+		List<MountainBean> mainBeans = new ArrayList<MountainBean>();
+		for (RouteBasic routeBasic : list) {
+			MountainBean mountainBean = new MountainBean();
+			
+			NationalPark nationalPark = routeBasic.getNational_park();
+			RouteInfo routeInfo = routeBasic.getRouteInfo();
+			
+			mountainBean.setSeqno(routeInfo.getId());
+			mountainBean.setName(routeInfo.getName());
+			
+			String description = bytesToString(routeInfo.getDescription());
+			mountainBean.setDescription(description);
+
+			String advice = bytesToString(routeInfo.getAdvice());
+			mountainBean.setAdvice(advice);
+
+			String traffic = bytesToString(routeInfo.getTraffic());
+			mountainBean.setTraffic(traffic);
+
+			String nPName = nationalPark.getName();
+			mountainBean.setNpName(nPName);
+			mainBeans.add(mountainBean);
+			
+		}
+		
+		
+		return mainBeans;
+	}
+	
 	// 轉換路線單一查詢為顯示用Bean
 	public static List<MountainBean> transSingleRI(List<NationalPark> all, int seqnum) throws IOException, SQLException  {
 		List<MountainBean> showList = new ArrayList<MountainBean>();
@@ -91,7 +128,7 @@ public class TransFuction {
 					RouteInfo routeInfo = routeBasic.getRouteInfo();
 					mountainBean.setSeqno(routeInfo.getId());
 					mountainBean.setName(routeInfo.getName());
-
+					
 					String description = bytesToString(routeInfo.getDescription());
 					mountainBean.setDescription(description);
 
@@ -111,13 +148,10 @@ public class TransFuction {
 
 		return mainBeans;
 	}
+	
+	
 
-	public static String bytesToString(byte[] bytes) throws IOException, SQLException {
-		if (bytes == null ) {
-			return "尚未有資料";
-		}
-		return new String(bytes,"UTF-8");
-	}
+
 	
 		
 	

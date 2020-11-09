@@ -1,4 +1,4 @@
-package mountain.back.function;
+package mountain.function;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -14,6 +14,44 @@ import mountain.model.route.RouteBasic;
 
 public class RetrieveFunction {
 	
+	//設置顯示Bean
+		public static List<MountainBean> getMountainBeanList(List<RouteBasic> list) throws IOException, SQLException{
+			
+			List<MountainBean> mainBeans = null;
+			
+			mainBeans = sortMountainBeans(TransFuction.transRouteMultiple(list));
+			
+			System.out.println("mainBeans Size : " + mainBeans.size());
+			
+			return mainBeans;
+			
+		}
+		
+		
+
+		// 整理主要顯示LIST順序
+		public static List<MountainBean> sortMountainBeans(List<MountainBean> beforeOrder) {
+			if (beforeOrder != null && beforeOrder.size()>1) {
+				List<MountainBean> afterOrder = new ArrayList<MountainBean>();
+				afterOrder.add(beforeOrder.get(0));
+				for (MountainBean mountainBean : beforeOrder) {
+					int beforeNum = mountainBean.getSeqno();
+					for (int i = 0; i < afterOrder.size(); i++) {
+						int afterNum = afterOrder.get(i).getSeqno();
+						if (beforeNum < afterNum && !afterOrder.contains(mountainBean)) {
+							afterOrder.add(i, mountainBean);
+							break;
+						} else if (i == afterOrder.size() - 1 && !afterOrder.contains(mountainBean)) {
+							afterOrder.add(mountainBean);
+							break;
+						}
+					}
+				}
+				return afterOrder;
+			}else {
+				return beforeOrder;
+			}
+		}
 	
 	//全數查詢
 	public static List<NationalPark> getAll(GenericService<NationalPark> nPHibService){
@@ -53,30 +91,6 @@ public class RetrieveFunction {
 	
 	
 	
-
-	// 整理主要顯示LIST順序
-	public static List<MountainBean> sortMountainBeans(List<MountainBean> beforeOrder) {
-		if (beforeOrder != null && beforeOrder.size()>1) {
-			List<MountainBean> afterOrder = new ArrayList<MountainBean>();
-			afterOrder.add(beforeOrder.get(0));
-			for (MountainBean mountainBean : beforeOrder) {
-				int beforeNum = mountainBean.getSeqno();
-				for (int i = 0; i < afterOrder.size(); i++) {
-					int afterNum = afterOrder.get(i).getSeqno();
-					if (beforeNum < afterNum && !afterOrder.contains(mountainBean)) {
-						afterOrder.add(i, mountainBean);
-						break;
-					} else if (i == afterOrder.size() - 1 && !afterOrder.contains(mountainBean)) {
-						afterOrder.add(mountainBean);
-						break;
-					}
-				}
-			}
-			return afterOrder;
-		}else {
-			return beforeOrder;
-		}
-	}
 	
 	
 	//	返回指定路線ID的國家公園ID
@@ -95,5 +109,6 @@ public class RetrieveFunction {
 		}
 		return 0;
 	}
+	
 
 }

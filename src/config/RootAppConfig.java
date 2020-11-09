@@ -58,6 +58,7 @@ public class RootAppConfig {
 		factory.setDataSource(dataSource());
 		factory.setPackagesToScan(new String[] { "house","member","mountain","product","config","main" });
 		factory.setHibernateProperties(additionalProperties());
+		System.out.println("set SessionFactory");
 		return factory;
 	}
 	
