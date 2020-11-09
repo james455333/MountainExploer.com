@@ -9,6 +9,5 @@ buildNumber.properties
 .mvn/timing.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
-*.xml
 
 DB/all/rel/2AB6B232-B63302C243EA/phys/79C73AAF-025EE81A2AFC/Table/seg_0/E1453BB0-ABB6-0BB3-A192-D0D8789A7F1F.xml

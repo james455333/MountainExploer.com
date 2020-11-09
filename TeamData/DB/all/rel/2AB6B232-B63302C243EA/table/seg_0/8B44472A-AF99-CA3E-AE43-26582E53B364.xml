@@ -1,0 +1,117 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8B44472A-AF99-CA3E-AE43-26582E53B364" name="route_info">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>8030D797-7068-9A2F-3FBB-1939629F0501</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="route_basic_id" id="5D18EA29-7B1F-B6A2-01AE-CF26FD0734ED">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:06 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>2BA622DC-8205-E789-7FE6-7C35A396B0C9</importedID>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D775436D-1B3B-0D81-6B10-C9AD9282FFC3" referredColumn="64A3D042-3748-6AA3-1A6C-8173D73AB193"/>
+</associations>
+</Column>
+<Column name="name" id="B6B789CC-1110-B956-96C4-75FA3693D67B">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:06 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>784306AA-8DD0-E523-6D3A-347745D153CA</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<domain>E9193C42-BBD2-F8B5-5FC6-09DD148AAEF0</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="description" id="C4F4B87D-DA5F-0EA6-4B50-36DCAC66AE2F">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:06 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>99BAE38F-B8F1-6891-7FF0-4225B751553F</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT029</logicalDatatype>
+<domain>57AAEB89-ADE1-5295-799E-308DE467A9B3</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="advice" id="3225D2C9-22D7-08C8-EA12-14099E207193">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:06 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>D4C0A6FB-81C9-872F-3FE5-338A977B43C1</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT029</logicalDatatype>
+<domain>57AAEB89-ADE1-5295-799E-308DE467A9B3</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="traffic" id="32E40F92-EDED-9A45-0669-015EC6432157">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:06 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>2FF14B3F-A585-84CA-E63C-50656DF553D3</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT029</logicalDatatype>
+<domain>57AAEB89-ADE1-5295-799E-308DE467A9B3</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="img_url" id="A3440E65-7054-D872-4F4B-4BFE9EECC49B">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:06 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>4010E5BC-31D1-948D-DC6E-268ED9840FE1</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT029</logicalDatatype>
+<domain>57AAEB89-ADE1-5295-799E-308DE467A9B3</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D0F5DBFF-8FC5-1E45-2340-D3D04841B70E" name="routeinfo_pk">
+<sourceDDLFile>all.ddl</sourceDDLFile>
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:06 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<importedID>A277F3E5-B9E9-276E-8E0B-0DF55CB1E9CC</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5D18EA29-7B1F-B6A2-01AE-CF26FD0734ED"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8DCBA03E-0201-0BA6-2821-AC28DDB8DF7F" name="route_info_route_basic_fk">
+<createdBy>Student</createdBy>
+<createdTime>2020-10-23 13:41:06 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5D18EA29-7B1F-B6A2-01AE-CF26FD0734ED"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
