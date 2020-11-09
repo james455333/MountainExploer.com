@@ -28,9 +28,9 @@
 <ownerDesignName>all</ownerDesignName>
 <importedID>066A6600-5318-FDF8-CBCD-E4B2111A9642</importedID>
 <nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<logicalDatatype>LOGDT028</logicalDatatype>
-<domain>5AFD528A-ABFB-CF2C-1CDD-C88E5A159F18</domain>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT029</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
@@ -40,9 +40,10 @@
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
 <importedID>1E7DE284-A28C-41D4-A10A-8C44CE5E5AAA</importedID>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<domain>57B577AF-1919-EE54-9C07-01B34C5E5B7A</domain>
+<dataTypePrecision>5</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>

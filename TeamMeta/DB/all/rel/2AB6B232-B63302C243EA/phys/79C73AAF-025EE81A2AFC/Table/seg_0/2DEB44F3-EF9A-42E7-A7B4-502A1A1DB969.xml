@@ -9,11 +9,6 @@
 <accessDriverType>oracle_loader</accessDriverType>
 <rejectLimit></rejectLimit>
 <columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
-<ColumnProxy name="location" id="06C5B6E0-CFFE-0AD3-E07A-D9B6073E4B9C">
-<createdBy>Student</createdBy>
-<createdTime>2020-10-23 13:41:05 UTC</createdTime>
-<ownerDesignName>all</ownerDesignName>
-</ColumnProxy>
 <ColumnProxy name="campbasic_id" id="0C1675DF-C629-CE0C-D7B6-62AC5301A66A">
 <createdBy>Student</createdBy>
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>
@@ -24,16 +19,21 @@
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
 </ColumnProxy>
-<ColumnProxy name="description" id="65050137-25DA-6BFC-54EB-159C82C04001">
+<ColumnProxy name="url" id="65050137-25DA-6BFC-54EB-159C82C04001">
 <createdBy>Student</createdBy>
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
 </ColumnProxy>
+<ColumnProxy name="counties_name" id="B4F1811A-A282-6328-4A37-6A43E1825541">
+<createdBy>Japan</createdBy>
+<createdTime>2020-11-09 14:43:00 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
 </columnProxies>
 <foreignKeys>
-<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="camp_campv1_fk" id="5FB0286D-EF56-5B7F-1E25-3BE6D002E371">
-<createdBy>Student</createdBy>
-<createdTime>2020-10-23 13:41:06 UTC</createdTime>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="campinfo_id" id="1E77999D-2F74-D1B2-1BDA-91418420FCE5">
+<createdBy>Japan</createdBy>
+<createdTime>2020-11-09 14:43:00 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
 </ForeignKey>
 </foreignKeys>
