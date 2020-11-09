@@ -5,14 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import member.back.model.MemberBackService;
+import member.back.model.MemberBasicBackService;
 import member.model.MemberBasic;
 
 @Controller
 public class MemberBackRegisterController {
 	
 	@Autowired
-	private MemberBackService memberBackService;
+	private MemberBasicBackService mbServic;
 	
 	@RequestMapping(path = "/member/memberBackRegisterEntry", method = RequestMethod.GET)
 	public String processRegisterEntry() {
@@ -33,7 +33,7 @@ public class MemberBackRegisterController {
 		
 		System.out.println(mb.getAccount());
 		
-		memberBackService.insert(mb);
+		mbServic.insert(mb);
 		return "redirect:member/backLogin";
 
 	}

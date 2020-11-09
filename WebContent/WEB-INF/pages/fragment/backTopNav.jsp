@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>	
 	<header><a href='<c:url value="/backStageEntry"/>' >後台資料維護系統</a>
-		<div><a href='#'>登出</a></div>
+		<div><a href='<c:url value="/member/memberBackLogout"/>'>登出</a></div>
 	</header>
 		<nav id="navbar1">
 			<div><a href='<c:url value="/member/backup/Memberback.jsp"/>'>會員資料</a></div>
