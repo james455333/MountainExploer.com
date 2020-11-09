@@ -21,15 +21,9 @@
 </head>
 <body>
 
-	<div>
+	<div id="container1">
 		<!-- 引入共同頁首 -->
 		<jsp:include page="../../fragment/backTopNav.jsp"></jsp:include>
-
-
-
-	</div>
-	<!-- 查詢列 -->
-	<div>
 		<form action="<c:url value='/productBackStage/backFCSearch' />"
 			method="get">
 			<div>
@@ -65,7 +59,7 @@
 	</div>
 
 	<!-- 呈現畫面 -->
-	<div>
+	<div id="mainContainer">
 		<!-- 顯示頁面 -->
 
 		<!-- 顯示資料 -->

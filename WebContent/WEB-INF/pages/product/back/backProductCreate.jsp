@@ -43,7 +43,7 @@
 				</div>
 				<div>
 					<label for="stock">* 庫存 : &nbsp&nbsp</label>			
-					<input type="text" name="scName" required>
+					<input type="text" name="stock" required>
 				</div>
 				<div>
 					<label for="productImg">* 產品圖檔案 : &nbsp&nbsp</label>			
