@@ -6,21 +6,28 @@
 <head>
 <meta charset="UTF-8">
 <title>Update Member's Info</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+  <link rel="stylesheet" href='<c:url value="/backstage/css/backStage.css"/>'> 
 </head>
 <body>
+	<c:if test="${ !empty msg}">
+		<script type="text/javascript" charset="UTF-8">
+			alert("${msg.success}")
+		</script>
+	</c:if>
+	<c:if test="${ !empty error}">
+		<script type="text/javascript" charset="UTF-8">
+			alert("${error}")
+		</script>
+	</c:if>
 	<h2>更新會員資料</h2>
 	<form action="<c:url value='/memberBack/memberUpdate'/>" method="post">
-		<c:if test="${ !empty msg}">
-			<script type="text/javascript" charset="UTF-8">
-				alert("${msg.success}")
-			</script>
-		</c:if>
-		<c:if test="${ !empty msg}">
-			<script type="text/javascript" charset="UTF-8">
-				alert("${msg.error}")
-			</script>
-		</c:if>
-		<div>
+		<div id="container1">
 			<table>
 			<c:forEach var="info" items="${mbList}">
 				<tr>

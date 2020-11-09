@@ -6,6 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Member Back List</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+  <link rel="stylesheet" href='<c:url value="/backstage/css/backStage.css"/>'> 
 </head>
 <body>
 	<h2>會員資料檢索</h2>
@@ -30,10 +37,10 @@
 			<input type="reset" id="reset" name="reset" value="清除"/>
 		</div>
 	</form>
-		<div>
-			<table>
+		<div id="container1">
+			<table style="width:100%;border:3px solid white">
 			<c:forEach var="info" items="${mbList}">
-				<tr>
+				<tr style="width:auto;border:3px solid white">
 					<th>會員編號</th>
 					<th>會員帳號</th>
 <!-- 						<th>會員密碼</th> -->
@@ -46,7 +53,7 @@
 					<th>會員身分組</th>
 					<th>註冊時間</th>
 				</tr>
-				<tr>
+				<tr style="width:auto;border:3px solid white">
 					<td>${info.seqno}</td>
 					<td>${info.account}</td>
 <%-- 						<td>${mbList.password}</td> --%>

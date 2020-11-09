@@ -58,9 +58,9 @@ public class MemberBackUpdateController {
 			
 			miService.update(miUpdate);
 			msg.put("success", "會員資料修改成功");
+			return "member/backUpdate";
 		} else {
-			msg.put("error", "會員資料修改失敗");
-			
+			redAttr.addFlashAttribute("error", "會員資料修改失敗");
 		}
 		
 		return "member/memberBackSelectList";
