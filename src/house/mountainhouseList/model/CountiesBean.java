@@ -1,5 +1,6 @@
 package house.mountainhouseList.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -31,7 +32,7 @@ public class CountiesBean {
 	private AreaBean area;
 	
 	@OneToMany(fetch = FetchType.LAZY,mappedBy = "counties",cascade = CascadeType.ALL)
-	private Set<CampInfoBean> camp;
+	private Set<CampInfoBean> camp ;
 	
 	
 	public String getName() {
@@ -58,6 +59,7 @@ public class CountiesBean {
 	public void setCamp(Set<CampInfoBean> camp) {
 		this.camp = camp;
 	}
+	
 	
 	
 }

@@ -1,5 +1,6 @@
 package house.mountainhouseList.DAO;
 
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import house.mountainhouseList.model.AreaBean;
+import house.mountainhouseList.model.CountiesBean;
 
 @Repository
 public class AreaBeanDAO {
@@ -43,7 +45,10 @@ public class AreaBeanDAO {
 			List<AreaBean> list = query.list();
 			
 			return list;
-		}
+			}
+			
+			
+		
 		
 		
 		
