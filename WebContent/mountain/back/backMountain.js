@@ -4,19 +4,26 @@ $(function(){
 	var page = 1;
 	if(typeof showData === 'undefined') var showData = 3;
 	var totalPage = 0;
+	//統一網域名稱設置
+	var homeUrl = "/MountainExploer.com/backstage/mountain/search";
+	
+	
 	//	預設頁面
 	$(window).on("load", function(){
+		//查找資料庫路線總筆數
 		$.ajax({
-			url:"/MountainExploer.com/backstage/search/totalData",
+			url: homeUrl+"/totalData",
 			method : "GET",
 			success:function(data){
 				var totalData = data;
 				totalPage = Math.ceil(totalData/showData);
+				$("#totalData").html(data)
 				/*console.log("totalData : " + totalData)
 				console.log("totalPage : " + totalPage)*/
 				
+				// 預設顯示資料
 				$.ajax({
-					url : "/MountainExploer.com/backstage/search/all?page="+page+"&showData="+showData,
+					url : homeUrl+"/all?page="+page+"&showData="+showData,
 					method : "GET",
 			 		dataType: 'json',
 			  		success:function(data){
@@ -37,7 +44,7 @@ $(function(){
 				})
 				//	國家公園列表設置
 				$.ajax({
-					url : "/MountainExploer.com/backstage/search/navNP",
+					url : homeUrl + "/navNP",
 					method : "GET",
 			 		dataType: 'json',
 			  		success:function(result){
@@ -50,7 +57,7 @@ $(function(){
 						console.log(firstNP)
 						// 路線列表預設為第一筆顯示之國家公園
 						$.ajax({
-							url : "/MountainExploer.com/backstage/search/navRT?nationalPark="+firstNP,
+							url : homeUrl + "/navRT?nationalPark=" + firstNP,
 							method : "GET",
 							dataType : "json",
 							success:function(data){
@@ -60,16 +67,18 @@ $(function(){
 						})
 					}
 				})
-				
+				//設置頁面控制按鈕點擊方法
 				$("#pageController").on("click","input",function(){
 					var page = Number($(this).attr("name"));
 					console.log("page Before Click : " + page)
 					$.ajax({
-						url : "/MountainExploer.com/backstage/search/all?page="+page+"&showData="+showData,
+						url : homeUrl + "/all?page="+page+"&showData="+showData,
 						method : "GET",
 				 		dataType: 'json',
 				  		success:function(data){
+							//變換顯示之資料
 							insertTable(data);
+							//設定按鈕
 							setPageController(page)
 						}
 					})
@@ -85,7 +94,7 @@ $(function(){
 		var npID = $("#nPSelect").val();
 		//console.log("npID : "  + npID)
 		$.ajax({
-		url : "/MountainExploer.com/backstage/search/navRT?nationalPark="+npID,
+		url : homeUrl + "/navRT?nationalPark="+npID,
 		method : "GET",
 		dataType: 'json',
 		success:function(data){
@@ -106,33 +115,73 @@ $(function(){
 	// 國家公園查詢
 	$(".npSubmit").on("click",function(){
 		page = 1;
-		console.log("show : " + showData + "\tpage : " + page)
+		//console.log("show : " + showData + "\tpage : " + page)
 		let npID = $("#nPSelect").val();
-		console.log(npID);
+		//console.log(npID);
 		$.ajax({
-			url:"/MountainExploer.com/backstage/search/totalData?nationalPark="+npID,
+			url: homeUrl+ "/totalData?nationalPark="+npID,
 			method : "GET",
 			success:function(data){
 				totalData = data;
-				console.log("np query TotalData : " + data )
+				$("#totalData").html(data)
+				//console.log("np query TotalData : " + data )
 				totalPage = Math.ceil(totalData/showData);
-				console.log("np query TotalPage : " + totalPage)
+				//console.log("np query TotalPage : " + totalPage)
 				$.ajax({
-					url : "/MountainExploer.com/backstage/search/navNP?nationalPark=" + npID+"&showData="+showData ,
+					url : homeUrl + "/navNP?nationalPark=" + npID+"&showData="+showData ,
 					method : "GET",
 					dataType : "json",
 					success : function(data){
 						
 						insertTable(data);
-						$("#")
 						setPageController(page)
 					}
 					
 				})
-				}
+				$("#pageController").off("click","input")
+				$("#pageController").on("click","input",function(){
+					var page = Number($(this).attr("name"));
+					//console.log("page Before Click : " + page)
+					$.ajax({
+					url : homeUrl + "/navNP?nationalPark=" + npID+"&showData="+showData+"&page="+page ,
+					method : "GET",
+					dataType : "json",
+					success : function(data){
+						
+						insertTable(data);
+						setPageController(page)
+					}
+					
+					})
+				})
+			}
 		})
 		
 		
+	})
+	
+	// 路線單筆查詢
+	$(".rtSubmit").on("click",function(){
+		var routeID = $(".route").val()
+		//console.log("routeID = " + routeID)
+		$.ajax({
+			url : homeUrl + "/navRT?route="+routeID,
+			method : "GET",
+			dataTpye : "json",
+			success : function(data){
+				$("#pageNo").html(1 + ' / ' +1)
+				$("#pageController").find("input").attr("disabled",true)
+				$("#totalData").html(1)
+				insertTable(data);
+			}
+		})
+		
+	})
+	
+	//更換顯示
+	$("#changeShowData").on("click",function(){
+		showData = $("#showData").val();
+		console.log(showData);
 	})
 	
 	//查詢結果回覆新增表格
@@ -145,24 +194,24 @@ $(function(){
 			  		"<td><div class='ajaxSmallDiv'>" + data[i].name + "</div></td>"+
 			  		"<td><div class='ajaxSmallDiv'>" + data[i].npName + "</div></td>"+
 					"<td>"+
-						'<img src="/MountainExploer.com/backstage/search/images?seqno='+ data[i].seqno+'" class="routeImg" >'+
-						'<img src="/MountainExploer.com/backstage/search/images?seqno='+ data[i].seqno+'" class="extendImg" >'+
+						'<img src="/MountainExploer.com/backstage/mountain/search/images?seqno='+ data[i].seqno+'" class="routeImg" >'+
+						'<img src="/MountainExploer.com/backstage/mountain/search/images?seqno='+ data[i].seqno+'" class="extendImg" >'+
 					"</td>"+
 			  		"<td><div class='ajaxBigDiv'>" + data[i].description + "</div></td>" +
 			  		"<td><div class='ajaxBigDiv'>" + data[i].advice + "</div></td>" +
 			  		"<td><div class='ajaxBigDiv'>" + data[i].traffic + "</div></td>" +
 					"<td>" +
 						"<div>" +
-							"<form  action='/MountainExploer.com/backstage/update'>" +
+							"<form  action='" +homeUrl+"/updateDataPage'>" +
 								'<input type="hidden" name="seqno" value="' + data[i].seqno + '" readonly>' +
 						    	'<input type="submit" value="修改">' +
 							'</form>' +
 						"</div>"+
 						"<div>"+
-							"<form class='hiddenForm' action='/MountainExploer.com/backstage/delete'>"+
+							"<form id='deleteForm'class='hiddenForm' action='/MountainExploer.com/backsatage/mountain/deleteData'>"+
 								'<input type="hidden" name="seqno" value="' + data[i].seqno + '" readonly>' +
 							'</form>' +
-							'<input type="button" class="deleteButton" value="刪除">' +
+							'<input class="deleteButton" type="button"  value="刪除">' +
 						"</div>"+
 					"</td>"+
 				"</tr>"
@@ -189,18 +238,8 @@ $(function(){
 	}
 	
 	
-	// 路線單筆查詢
-	$(".rtSubmit").on("click",function(){
-		
-		
-	})
-	
-	
-	// 頁面轉換
-	
-	
 		//招出刪除確認
-	$(".deleteButton").on("click",function(){
+	$(".table").on("click",".deleteButton",function(){
 		
 		
 		let routeID = $(this).siblings().val()

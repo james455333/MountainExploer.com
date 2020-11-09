@@ -77,7 +77,7 @@
 		<!-- 控制列 -->
 		<div id="controller">
 			<div>
-				<a href='<c:url value="/mountainBackStage/createDataPage"/>'>新增資料</a>	
+				<a href='<c:url value="/backstage/mountain/createDataEntry"/>'>新增資料</a>	
 			</div>
 			<div>
 				<span>目前查詢資料總筆數 : </span>
@@ -99,7 +99,7 @@
 							</c:choose>
 						</c:forEach>
 					</select>
-					<input type="button" value="更改顯示" id="changeShowData">
+					<input type="button" value="更改顯示(尚未實作AJAX作法)" id="changeShowData">
 				</form>
 			</div>
 		

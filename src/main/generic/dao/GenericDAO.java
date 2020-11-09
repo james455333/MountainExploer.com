@@ -20,7 +20,6 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 	private SessionFactory sessionFactory;
 	
 	public GenericDAO() {
-		System.out.println("set GenericDAO");
 	}
 	
 	@Override
@@ -38,7 +37,6 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 					.setFirstResult(startPosition)
 					.setMaxResults(showdata)
 					.getResultList();
-		System.out.println("result size : " + list.size());
 		return list;
 	}
 	

@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import main.generic.service.GenericService;
 import mountain.model.route.RouteBasic;
@@ -18,7 +19,7 @@ public class BackPageEntryController {
 	
 	//前往查詢頁面
 	@RequestMapping("/retrieveEntry")
-	public String retrievePage() {
+	public String retrievePage(RedirectAttributes redirectAttributes,Model model) {
 		
 		return "mountain/back/backMountain";
 	}

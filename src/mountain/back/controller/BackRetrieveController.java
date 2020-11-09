@@ -34,7 +34,7 @@ import mountain.model.route.NationalPark;
 import mountain.model.route.RouteBasic;
 import mountain.model.route.RouteInfo;
 import mountain.service.RouteBasicServiceInterface;
-@RequestMapping(path = "/backstage/search")
+@RequestMapping(path = "/backstage/mountain/search")
 @Controller
 public class BackRetrieveController {
 
@@ -136,36 +136,97 @@ public class BackRetrieveController {
 		return result;
 	}
 	
-	// 路線導覽列
+	// 路線導覽列及查詢
 	@GetMapping(value = "/navRT", produces = {"application/json;charset=UTF-8"})
 	@ResponseBody
 	public List<MountainBean> rtInfoSelectList(
 			@RequestParam( name = "nationalPark" , required = false) Integer npID,
-			@RequestParam( name = "route" , required = false) Integer routeID) throws IOException, SQLException{
+			@RequestParam( name = "route" , required = false) Integer routeID,
+			@RequestParam(name = "page", required = false)Integer page) throws IOException, SQLException{
 		List<RouteBasic> selectList = new ArrayList<RouteBasic>();
 		List<MountainBean> result = null;
-		if (routeID == null) {
-			
-			nPService.save(new NationalPark());
-			NationalPark select = nPService.select(npID);
-			Set<RouteBasic> routeBasic = select.getRouteBasic();
-			Iterator<RouteBasic> rtBasicItr = routeBasic.iterator();
-			
-			while (rtBasicItr.hasNext()) {
-				selectList.add(rtBasicItr.next());
+		if (routeID != null ) {
+			//查詢特定路線
+			if(page == null ) {
+				page = 1 ;
 			}
-			
+			rtBasicService.save(new RouteBasic());
+			RouteBasic select = rtBasicService.select(routeID);
+			selectList.add(select);
 			result = RetrieveFunction.getMountainBeanList(selectList);
-			
 			return result ;
-			
 		}
 		
 		
+		//導覽列路線列表返回
+		nPService.save(new NationalPark());
+		NationalPark select = nPService.select(npID);
+		Set<RouteBasic> routeBasic = select.getRouteBasic();
+		Iterator<RouteBasic> rtBasicItr = routeBasic.iterator();
+		
+		while (rtBasicItr.hasNext()) {
+			selectList.add(rtBasicItr.next());
+		}
+		
+		result = RetrieveFunction.getMountainBeanList(selectList);
 		return result;
 	}
 	
+	// 顯示特定圖片
+		@RequestMapping(path = "/images", method = RequestMethod.GET)
+		@ResponseBody
+		public ResponseEntity<byte[]> showImage(@RequestParam(name = "seqno") String seqno) {
+			System.out.println("圖片輸入開始");
+			rtInfoService.save(new RouteInfo());
+			AbstractService<RouteInfo> rInfoService = rtInfoService;
+			Integer rbPK = Integer.valueOf(seqno);
+			RouteInfo result = rInfoService.select(rbPK);
+			byte[] imgBytes = result.getImgUrl();
+			HttpHeaders headers = new HttpHeaders();
+			headers.setContentType(MediaType.IMAGE_JPEG);
+
+			return new ResponseEntity<byte[]>(imgBytes, headers, HttpStatus.OK);
+
+		}
+		
+		//顯示修改頁面資料
+		@GetMapping(path = "/updateDataPage")
+		public String updatePage(@RequestParam(name = "seqno") String seqno, Model model) {
+			
+			Map<String, String> errors = new HashMap<String, String>();
+			model.addAttribute("errors", errors);
+			List<NationalPark> all = null;
+			int defaultNP = 0;
+			List<MountainBean> rtResult = null;
+			try {
+				
+			nPService.save(new NationalPark());
+			all = RetrieveFunction.getAll(nPService);
+			
+			defaultNP = RetrieveFunction.defaultNPID(seqno,all);
+			
+			rtResult = RetrieveFunction.getRTResult(seqno, all);
+			
+			} catch (IOException e) {
+				errors.put("msg", "發生IO錯誤 : " + e.getMessage());
+				e.printStackTrace();
+			} catch (SQLException e) {
+				errors.put("msg", "發生SQL錯誤 : " + e.getMessage() + "\nSQLStatus : " + e.getSQLState());
+			} catch (Exception e) {
+				errors.put("msg", "發生不知名錯誤");
+				e.printStackTrace();
+			}
+			if (!errors.isEmpty()) {
+				return "forward:/backstage/mountain/retrieveEntry";
+			}
+			
+			model.addAttribute("npBean", all);
+			model.addAttribute("defaultNP", defaultNP);
+			model.addAttribute("mainBean", rtResult.get(0));
+			return "forward:/backstage/mountain/updateDataEntry";
+		}
 	
+	/*
 	// 總查詢
 	@SuppressWarnings("unchecked")
 	@RequestMapping(path = "/mainPage", method = RequestMethod.GET)
@@ -392,63 +453,8 @@ public class BackRetrieveController {
 		return "forward:/mountainBackStage/retrievePage";
 	}
 	
-	//顯示修改頁面資料
-	@RequestMapping(path = "/mountainBackStage/updateDataPage", method = RequestMethod.GET)
-	public String updatePage(@RequestParam(name = "seqno") String seqno, Model model) {
-		
-		Map<String, String> errors = new HashMap<String, String>();
-		model.addAttribute("errors", errors);
-		List<NationalPark> all = null;
-		int defaultNP = 0;
-		List<MountainBean> rtResult = null;
-		try {
-			
-		nPService.save(new NationalPark());
-		all = RetrieveFunction.getAll(nPService);
-		
-		defaultNP = RetrieveFunction.defaultNPID(seqno,all);
-		
-		rtResult = RetrieveFunction.getRTResult(seqno, all);
-		
-		} catch (IOException e) {
-			errors.put("msg", "發生IO錯誤 : " + e.getMessage());
-			e.printStackTrace();
-		} catch (SQLException e) {
-			errors.put("msg", "發生SQL錯誤 : " + e.getMessage() + "\nSQLStatus : " + e.getSQLState());
-		} catch (Exception e) {
-			errors.put("msg", "發生不知名錯誤");
-			e.printStackTrace();
-		}
-		if (!errors.isEmpty()) {
-			return "forward:/mountainBackStage/mainPage";
-		}
-		
-		model.addAttribute("npBean", all);
-		model.addAttribute("defaultNP", defaultNP);
-		model.addAttribute("mainBean", rtResult.get(0));
-		return "forward:/mountainBackStage/updateDataEntry";
-	}
 	
 	
+	*/
 	
-	
-	// 顯示特定圖片
-	@RequestMapping(path = "/images", method = RequestMethod.GET)
-	@ResponseBody
-	public ResponseEntity<byte[]> showImage(@RequestParam(name = "seqno") String seqno) {
-		System.out.println("圖片輸入開始");
-		rtInfoService.save(new RouteInfo());
-		AbstractService<RouteInfo> rInfoService = rtInfoService;
-		Integer rbPK = Integer.valueOf(seqno);
-		RouteInfo result = rInfoService.select(rbPK);
-		byte[] imgBytes = result.getImgUrl();
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.IMAGE_JPEG);
-
-		return new ResponseEntity<byte[]>(imgBytes, headers, HttpStatus.OK);
-
-	}
-
-
-
 }

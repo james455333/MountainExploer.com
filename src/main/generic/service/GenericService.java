@@ -17,7 +17,6 @@ public class GenericService<T extends GenericTypeObject> implements AbstractServ
 	private GenericDAO<T> genericDAO;
 	
 	public GenericService() {
-		System.out.println("set GenericService");
 	}
 	
 	@Override

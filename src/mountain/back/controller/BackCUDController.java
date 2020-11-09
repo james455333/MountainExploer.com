@@ -22,6 +22,7 @@ import mountain.model.route.RouteBasic;
 import mountain.model.route.RouteInfo;
 
 @Controller
+@RequestMapping("/backsatage/mountain")
 public class BackCUDController {
 	
 	@Autowired
@@ -32,8 +33,8 @@ public class BackCUDController {
 	private GenericService<RouteInfo> rtInfoService;
 	
 	// 資料刪除
-	@RequestMapping(path = "/mountainBackStage/deleteData" , method = RequestMethod.GET)
-	public String deleteDate(RedirectAttributes rdAttr,@RequestParam(name = "deleteID") String deleteID) {
+	@RequestMapping(path = "/deleteData" , method = RequestMethod.GET)
+	public String deleteDate(RedirectAttributes rdAttr,@RequestParam(name = "seqno") String deleteID) {
 //		System.out.println("=================================");
 //		System.out.println("deletID : " + deleteID);
 		
@@ -50,10 +51,10 @@ public class BackCUDController {
 				rdAttr.addFlashAttribute("result", "刪除失敗");
 			}
 		}
-		return "redirect:/mountainBackStage/mainPage";
+		return "redirect:/backstage/mountain/retrieveEntry";
 	}
 	// 資料修改
-	@RequestMapping(path = "/mountainBackStage/updateData", method = RequestMethod.POST)
+	@RequestMapping(path = "/updateData", method = RequestMethod.POST)
 	public String updateData(@RequestParam Map<String,String> allParams,@RequestParam(name = "routeImg") MultipartFile multipartFile,RedirectAttributes redirectAttributes) throws IllegalStateException, IOException {
 //		System.out.println("file status : " + multipartFile.isEmpty());
 		
@@ -124,12 +125,15 @@ public class BackCUDController {
 		
 		if (errors.isEmpty()) {
 			redirectAttributes.addFlashAttribute("result", "修改成功");
+		}else {
+			errors.put("msg", "修改失敗");
+			return "redirect:/backStageEntry";
 		}
-		return "redirect:/mountainBackStage/mainPage";
+		return "redirect:/backstage/mountain/retrieveEntry";
 	}
 	
 	//資料新增
-	@RequestMapping(path = "/mountainBackStage/createMountainData", method = RequestMethod.POST)
+	@RequestMapping(path = "/createMountainData", method = RequestMethod.POST)
 	public String createData(RedirectAttributes redirectAttributes,@RequestParam Map<String,String> allParams, @RequestParam(name = "routeImg") MultipartFile multipartFile) throws IllegalStateException, IOException {
 		Map<String, String> errors = new HashMap<String,String>();
 		redirectAttributes.addFlashAttribute("errors", errors);
@@ -142,11 +146,11 @@ public class BackCUDController {
 		}
 		if (!errors.isEmpty()) {
 			redirectAttributes.addFlashAttribute("result", "新增失敗");
-			return "redirect:/mountainBackStage/mainPage";
+			return "redirect:/backStageEntry";
 		}
 		redirectAttributes.addFlashAttribute("result", "新增成功");
 		
-		return "redirect:/mountainBackStage/mainPage";
+		return "redirect:/backstage/mountain/retrieveEntry";
 	}
 	
 	
@@ -183,23 +187,23 @@ public class BackCUDController {
 		npService.save(new NationalPark());
 		NationalPark npCheck = npService.select(allParams.get("npName"));
 		if (npCheck==null) {
-			System.out.println("準備自國家公園表格新增資料");
-			System.out.println("=============================");
+//			System.out.println("準備自國家公園表格新增資料");
+//			System.out.println("=============================");
 			npService.save(new NationalPark());
 			npService.insert(nationalPark);
 		}else {
 			rtInfoService.save(new RouteInfo());
 			RouteInfo rtInfoCheck = rtInfoService.select(allParams.get("routeName"));
 			if (rtInfoCheck==null) {
-				System.out.println("準備自路線表格新增資料");
-				System.out.println("=============================");
+//				System.out.println("準備自路線表格新增資料");
+//				System.out.println("=============================");
 				routeBasic.setNational_park(npCheck);
 				rtBasicService.save(new RouteBasic());
 				rtBasicService.insert(routeBasic);
 			}else {
-				System.out.println("準備新增錯誤訊息");
+//				System.out.println("準備新增錯誤訊息");
 				errors.put("mag", "國家公園名稱與路線名稱同時重複，新增失敗");
-				System.out.println("=============================");
+//				System.out.println("=============================");
 			}
 		}
 		
