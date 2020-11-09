@@ -9,10 +9,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import member.back.model.MemberBasicBackService;
 
 @Controller
+@SessionAttributes(names = {"LoginOK"})
 public class MemberBackLoginController {
 	
 	@Autowired
@@ -44,6 +47,7 @@ public class MemberBackLoginController {
 		}
 		
 		if("EEIT124".equalsIgnoreCase(account) && "test123".equalsIgnoreCase(password)) {
+			m.addAttribute("LoginOK", account);
 			return "backStage";
 		}
 		
@@ -55,6 +59,15 @@ public class MemberBackLoginController {
 		
 		errors.put("msg", "Your UserName or Password is not correct.");
 		return "member/backLogin";
+	}
+	
+	
+	@RequestMapping(path = "/member/memberBackLogout", method = RequestMethod.GET)
+	public String processLogout(SessionStatus status) {
+		status.setComplete();
+		return "member/backLogin";
+		
+		
 	}
 	
 
