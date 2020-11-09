@@ -17,17 +17,21 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name = "camp_img")
 @Component
-public class Camp_Img_Bean {
+public class CampImgBean {
+	
 	@Id @Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 	@Column(name = "CAMP_IMG")
 	private byte[] img;
+	
 	@Transient
 	private int campinfoid;
+	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "CAMPINFO_ID")
-	private Camp_Info_Bean campid;
+	private CampInfoBean campid;
 	
 	
 	public int getId() {
@@ -48,10 +52,10 @@ public class Camp_Img_Bean {
 	public void setCampinfoid(int campinfoid) {
 		this.campinfoid = campinfoid;
 	}
-	public Camp_Info_Bean getCampid() {
+	public CampInfoBean getCampid() {
 		return campid;
 	}
-	public void setCampid(Camp_Info_Bean campid) {
+	public void setCampid(CampInfoBean campid) {
 		this.campid = campid;
 	}
 	

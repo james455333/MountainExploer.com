@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import house.mountainhouseList.model.Area_Bean;
+import house.mountainhouseList.model.AreaBean;
 
 @Repository
 public class AreaBeanDAO {
@@ -24,31 +24,31 @@ public class AreaBeanDAO {
 			return sessionFactory.getCurrentSession();
 		}
 		
-		public Area_Bean select(String areaname) {
-			return getSession().get(Area_Bean.class, areaname);
+		public AreaBean select(String areaname) {
+			return getSession().get(AreaBean.class, areaname);
 			
 		}
 		
 		
 		
-		public List<Area_Bean> selectAllArea() {
-			Query<Area_Bean> query = getSession().createQuery("From Area_Bean",Area_Bean.class);
-			List<Area_Bean> list = query.list();
+		public List<AreaBean> selectAllArea() {
+			Query<AreaBean> query = getSession().createQuery("From AreaBean",AreaBean.class);
+			List<AreaBean> list = query.list();
 			return list;
 		}
 		
-		public List<Area_Bean> selectArea(String area){
-			String originString = " From Area_Bean where name like '%"+ area+"%'";
-			Query<Area_Bean> query = getSession().createQuery(originString,Area_Bean.class);					
-			List<Area_Bean> list = query.list();
+		public List<AreaBean> selectArea(String area){
+			String originString = " From AreaBean where name like '%"+ area+"%'";
+			Query<AreaBean> query = getSession().createQuery(originString,AreaBean.class);					
+			List<AreaBean> list = query.list();
 			
 			return list;
 		}
 		
 		
 		
-		public Area_Bean insertArea(Area_Bean Abean) {
-			Area_Bean result = getSession().get(Area_Bean.class,Abean.getName());
+		public AreaBean insertArea(AreaBean Abean) {
+			AreaBean result = getSession().get(AreaBean.class,Abean.getName());
 			
 			if (result == null) {
 				getSession().save(Abean);
@@ -58,14 +58,14 @@ public class AreaBeanDAO {
 			return null;
 		}
 		
-		public Area_Bean update( Area_Bean ABean) {
+		public AreaBean update( AreaBean ABean) {
 
 			getSession().update(ABean);
 			return ABean;
 		}
 
-		public Area_Bean deleteCamp(String area) {
-			Area_Bean ABean = getSession().get(Area_Bean.class, area);
+		public AreaBean deleteCamp(String area) {
+			AreaBean ABean = getSession().get(AreaBean.class, area);
 			
 			if (ABean!=null) {
 				getSession().delete(ABean);

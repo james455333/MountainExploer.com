@@ -18,17 +18,20 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name = "counties")
 @Component
-public class Counties_Bean {
+public class CountiesBean {
 	@Id
 	@Column(name = "NAME")
 	private String name;
+	
 	@Transient
 	private String areaname;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "AREA_NAME")
-	private Area_Bean area;
+	private AreaBean area;
+	
 	@OneToMany(fetch = FetchType.LAZY,mappedBy = "counties",cascade = CascadeType.ALL)
-	private Set<Camp_Info_Bean> camp;
+	private Set<CampInfoBean> camp;
 	
 	
 	public String getName() {
@@ -43,16 +46,16 @@ public class Counties_Bean {
 	public void setAreaname(String areaname) {
 		this.areaname = areaname;
 	}
-	public Area_Bean getArea() {
+	public AreaBean getArea() {
 		return area;
 	}
-	public void setArea(Area_Bean area) {
+	public void setArea(AreaBean area) {
 		this.area = area;
 	}
-	public Set<Camp_Info_Bean> getCamp() {
+	public Set<CampInfoBean> getCamp() {
 		return camp;
 	}
-	public void setCamp(Set<Camp_Info_Bean> camp) {
+	public void setCamp(Set<CampInfoBean> camp) {
 		this.camp = camp;
 	}
 	

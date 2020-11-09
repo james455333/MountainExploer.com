@@ -11,10 +11,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import house.mountainhouseList.DAO.Interface.ICampImgBeanService;
-import house.mountainhouseList.model.Camp_Img_Bean;
+import house.mountainhouseList.model.CampImgBean;
 
 @Repository
-public class Camp_ImgBeanDAO implements ICampImgBeanService {
+public class CampImgBeanDAO implements ICampImgBeanService {
 		@Autowired
 		@Qualifier("sessionFactory")
 		private SessionFactory sessionFactory;
@@ -26,26 +26,25 @@ public class Camp_ImgBeanDAO implements ICampImgBeanService {
 		}
 		
 		@Override
-		public Camp_Img_Bean select(int campid) {
-			return getSession().get(Camp_Img_Bean.class, campid);
+		public CampImgBean select(int campid) {
+			return getSession().get(CampImgBean.class, campid);
 			
 		}
 			
 		
 		@Override
-		public List<Camp_Img_Bean> selectAll() {
-			Query<Camp_Img_Bean> query = getSession().createQuery("From Camp_Img_Bean",Camp_Img_Bean.class);
-			List<Camp_Img_Bean> list = query.list();
+		public List<CampImgBean> selectAll() {
+			Query<CampImgBean> query = getSession().createQuery("From CampImgBean",CampImgBean.class);
+			List<CampImgBean> list = query.list();
 			return list;
 		}
 		
 		
 		
 		@Override
-		public Camp_Img_Bean insertCamp(Camp_Img_Bean Imgbean) {
-			Camp_Img_Bean result = getSession().get(Camp_Img_Bean.class,Imgbean.getId());
+		public CampImgBean insertCamp(CampImgBean Imgbean) {
 			
-			if (result == null) {
+			if (Imgbean != null) {
 				getSession().save(Imgbean);
 				return Imgbean;
 				
@@ -54,15 +53,15 @@ public class Camp_ImgBeanDAO implements ICampImgBeanService {
 		}
 		
 		@Override
-		public Camp_Img_Bean update( Camp_Img_Bean Imgbean) {
+		public CampImgBean update( CampImgBean Imgbean) {
 
 			getSession().update(Imgbean);
 			return Imgbean;
 		}
 
 		@Override
-		public Camp_Img_Bean deleteCamp(int Imgid) {
-			Camp_Img_Bean Imgbean = getSession().get(Camp_Img_Bean.class, Imgid);
+		public CampImgBean deleteCamp(int Imgid) {
+			CampImgBean Imgbean = getSession().get(CampImgBean.class, Imgid);
 			
 			if (Imgbean!=null) {
 				getSession().delete(Imgbean);

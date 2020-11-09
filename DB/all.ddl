@@ -1,5 +1,5 @@
 -- 產生者Oracle SQL Developer Data Modeler 20.2.0.167.1538
--- 於:2020-11-06 20:54:44 TST
+-- 於:2020-11-08 15:13:34 TST
 -- 位置:Oracle Database 12cR2
 -- 類型:Oracle Database 12cR2
 
@@ -129,7 +129,7 @@ LOGGING;
 ALTER TABLE activity_sideresp ADD CONSTRAINT activity_sideresp_pk PRIMARY KEY ( seqno );
 
 CREATE TABLE area (
-    name VARCHAR2(50) NOT NULL
+    name VARCHAR2(100) NOT NULL
 )
 LOGGING;
 
@@ -148,15 +148,15 @@ CREATE TABLE camp_info (
     campbasic_id   NUMBER(5) NOT NULL,
     name           NVARCHAR2(150),
     url            BLOB,
-    counties_name  VARCHAR2(50) NOT NULL
+    counties_name  VARCHAR2(100) NOT NULL
 )
 LOGGING;
 
 ALTER TABLE camp_info ADD CONSTRAINT camp_pk PRIMARY KEY ( campbasic_id );
 
 CREATE TABLE counties (
-    name       VARCHAR2(50) NOT NULL,
-    area_name  VARCHAR2(50) NOT NULL
+    name       VARCHAR2(100) NOT NULL,
+    area_name  VARCHAR2(100) NOT NULL
 )
 LOGGING;
 

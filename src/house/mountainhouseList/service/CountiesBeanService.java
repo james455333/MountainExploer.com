@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import house.mountainhouseList.DAO.CountiesBeanDAO;
 import house.mountainhouseList.DAO.Interface.ICountiesBeanService;
-import house.mountainhouseList.model.Counties_Bean;
+import house.mountainhouseList.model.CountiesBean;
 
 @Service
 public class CountiesBeanService implements ICountiesBeanService {
@@ -16,33 +16,38 @@ public class CountiesBeanService implements ICountiesBeanService {
 	private CountiesBeanDAO counDAO;
 	
 	@Override
-	public List<Counties_Bean> selectAllCounties() {
+	public List<CountiesBean> selectAllCounties() {
  
 		return counDAO.selectAllCounties();
 	}
 
 	@Override
-	public List<Counties_Bean> selectCounties(String counties) {
+	public List<CountiesBean> selectCounties(String counties) {
  
 		return counDAO.selectCounties(counties);
 	}
 
 	@Override
-	public Counties_Bean insertCounties(Counties_Bean counbean) {
+	public CountiesBean insertCounties(CountiesBean counbean) {
  
 		return counDAO.insertCounties(counbean);
 	}
 
 	@Override
-	public Counties_Bean updateCounties(Counties_Bean counbean) {
+	public CountiesBean updateCounties(CountiesBean counbean) {
  
 		return counDAO.updateCounties(counbean);
 	}
 
 	@Override
-	public Counties_Bean deleteCounties(String counties) {
+	public CountiesBean deleteCounties(String counties) {
  
 		return counDAO.deleteCounties(counties);
+	}
+
+	@Override
+	public CountiesBean select(String counties) {
+		return counDAO.select(counties);
 	}
 
 }

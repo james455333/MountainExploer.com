@@ -5,41 +5,41 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import house.mountainhouseList.DAO.Camp_ImgBeanDAO;
+import house.mountainhouseList.DAO.CampImgBeanDAO;
 import house.mountainhouseList.DAO.Interface.ICampImgBeanService;
-import house.mountainhouseList.model.Camp_Img_Bean;
+import house.mountainhouseList.model.CampImgBean;
 
 @Service
-public class Camp_Img_BeanService implements ICampImgBeanService {
+public class CampImgBeanService implements ICampImgBeanService {
 	@Autowired
-	private Camp_ImgBeanDAO ImgDAO;
+	private CampImgBeanDAO ImgDAO;
 	
 	@Override
-	public Camp_Img_Bean select(int campid) {
+	public CampImgBean select(int campid) {
  
 		return ImgDAO.select(campid);
 	}
 
 	@Override
-	public List<Camp_Img_Bean> selectAll() {
+	public List<CampImgBean> selectAll() {
  
 		return ImgDAO.selectAll();
 	}
 
 	@Override
-	public Camp_Img_Bean insertCamp(Camp_Img_Bean Imgbean) {
+	public CampImgBean insertCamp(CampImgBean Imgbean) {
  
 		return ImgDAO.insertCamp(Imgbean);
 	}
 
 	@Override
-	public Camp_Img_Bean update(Camp_Img_Bean Imgbean) {
+	public CampImgBean update(CampImgBean Imgbean) {
  
 		return ImgDAO.update(Imgbean);
 	}
 
 	@Override
-	public Camp_Img_Bean deleteCamp(int Imgid) {
+	public CampImgBean deleteCamp(int Imgid) {
  
 		return ImgDAO.deleteCamp(Imgid);
 	}

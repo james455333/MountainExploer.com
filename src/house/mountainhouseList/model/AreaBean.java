@@ -15,12 +15,12 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name = "area")
 @Component
-public class Area_Bean {
+public class AreaBean {
 	@Id
 	@Column(name = "NAME")
 	private String name;
 	@OneToMany(fetch = FetchType.LAZY,mappedBy = "area",cascade = CascadeType.ALL)
-	private Set<Counties_Bean> counties;
+	private Set<CountiesBean> counties;
 	
 	public String getName() {
 		return name;
@@ -28,10 +28,10 @@ public class Area_Bean {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Set<Counties_Bean> getCounties() {
+	public Set<CountiesBean> getCounties() {
 		return counties;
 	}
-	public void setCounties(Set<Counties_Bean> counties) {
+	public void setCounties(Set<CountiesBean> counties) {
 		this.counties = counties;
 	}
 	

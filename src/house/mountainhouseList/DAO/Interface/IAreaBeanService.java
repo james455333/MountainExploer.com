@@ -2,14 +2,14 @@ package house.mountainhouseList.DAO.Interface;
 
 import java.util.List;
 
-import house.mountainhouseList.model.Area_Bean;
+import house.mountainhouseList.model.AreaBean;
 
 public interface IAreaBeanService {
 	
-	public Area_Bean select(String areaname);
-	public List<Area_Bean> selectAllArea();
-	public List<Area_Bean> selectArea(String area);
-	public Area_Bean insertArea(Area_Bean Abean);
-	public Area_Bean update( Area_Bean ABean);
-	public Area_Bean deleteCamp(String area);
+	public AreaBean select(String areaname);
+	public List<AreaBean> selectAllArea();
+	public List<AreaBean> selectArea(String area);
+	public AreaBean insertArea(AreaBean Abean);
+	public AreaBean update( AreaBean ABean);
+	public AreaBean deleteCamp(String area);
 }

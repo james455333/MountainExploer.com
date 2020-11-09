@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import house.mountainhouseList.DAO.CampInfoBeanDAO;
 import house.mountainhouseList.DAO.Interface.ICampInfoBeanService;
-import house.mountainhouseList.model.Camp_Info_Bean;
+import house.mountainhouseList.model.CampInfoBean;
 
 @Service
 public class CampInfoBeanService implements ICampInfoBeanService {
@@ -15,43 +15,43 @@ public class CampInfoBeanService implements ICampInfoBeanService {
 	private CampInfoBeanDAO cDao;
 	
 	@Override
-	public Camp_Info_Bean select(int campid) {
+	public CampInfoBean select(int campid) {
  
 		return cDao.select(campid);
 	}
 
 	@Override
-	public List<Camp_Info_Bean> selectcampid(int campid) {
+	public List<CampInfoBean> selectcampid(int campid) {
  
 		return cDao.selectcampid(campid);
 	}
 
 	@Override
-	public List<Camp_Info_Bean> selectAllCamp() {
+	public List<CampInfoBean> selectAllCamp() {
  
 		return cDao.selectAllCamp();
 	}
 
 	@Override
-	public List<Camp_Info_Bean> selectCampName(String campname) {
+	public List<CampInfoBean> selectCampName(String campname) {
  
 		return cDao.selectCampName(campname);
 	}
 
 	@Override
-	public Camp_Info_Bean insertCamp(Camp_Info_Bean bean) {
+	public CampInfoBean insertCamp(CampInfoBean bean) {
  
 		return cDao.insertCamp(bean);
 	}
 
 	@Override
-	public Camp_Info_Bean update(Camp_Info_Bean cBean) {
+	public CampInfoBean update(CampInfoBean cBean) {
  
 		return cDao.update(cBean);
 	}
 
 	@Override
-	public Camp_Info_Bean deleteCamp(int campid) {
+	public CampInfoBean deleteCamp(int campid) {
  
 		return cDao.deleteCamp(campid);
 	}

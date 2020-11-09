@@ -1,6 +1,8 @@
 package house.mountainhouseList.model;
 
 
+import java.io.UnsupportedEncodingException;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,24 +24,37 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name = "camp_info")
 @Component
-public class Camp_Info_Bean {
+public class CampInfoBean {
 
 	@Id @Column(name = "CAMPBASIC_ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int campbasicid;
+	
 	@Column(name = "NAME")
 	private String name;
+	
 	@Column(name = "URL")
-	private String url;
+	private byte[] url;
+	
 	@Transient
 	private String countiesname;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "COUNTIES_NAME")
-	private Counties_Bean counties;
+	private CountiesBean counties;
+	
 	@OneToOne(fetch = FetchType.LAZY,mappedBy = "campid",cascade = CascadeType.ALL)
-	private Camp_Img_Bean campimgid;
+	private CampImgBean campimgid;
 	
 	
+	
+	
+	public String getUrl() throws UnsupportedEncodingException {
+		return new String(url, "UTF-8");
+	}
+	public void setUrl(byte[] url) {
+		this.url = url;
+	}
 	public int getCampbasicid() {
 		return campbasicid;
 	}
@@ -52,17 +67,10 @@ public class Camp_Info_Bean {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getUrl() {
-		return url;
-	}
-	public void setUrl(String url) {
-		this.url = url;
-	}
-	
-	public Camp_Img_Bean getCampimgid() {
+	public CampImgBean getCampimgid() {
 		return campimgid;
 	}
-	public void setCampimgid(Camp_Img_Bean campimgid) {
+	public void setCampimgid(CampImgBean campimgid) {
 		this.campimgid = campimgid;
 	}
 	public String getCountiesname() {
@@ -71,10 +79,10 @@ public class Camp_Info_Bean {
 	public void setCountiesname(String countiesname) {
 		this.countiesname = countiesname;
 	}
-	public Counties_Bean getCounties() {
+	public CountiesBean getCounties() {
 		return counties;
 	}
-	public void setCounties(Counties_Bean counties) {
+	public void setCounties(CountiesBean counties) {
 		this.counties = counties;
 	}
 	

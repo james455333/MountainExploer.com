@@ -2,22 +2,22 @@ package house.mountainhouseList.DAO.Interface;
 
 import java.util.List;
 
-import house.mountainhouseList.model.Camp_Info_Bean;
+import house.mountainhouseList.model.CampInfoBean;
 
 public interface ICampInfoBeanService {
 
-	Camp_Info_Bean select(int campid);
+	CampInfoBean select(int campid);
 
-	List<Camp_Info_Bean> selectcampid(int campid);
+	List<CampInfoBean> selectcampid(int campid);
 
-	List<Camp_Info_Bean> selectAllCamp();
+	List<CampInfoBean> selectAllCamp();
 
-	List<Camp_Info_Bean> selectCampName(String campname);
+	List<CampInfoBean> selectCampName(String campname);
 
-	Camp_Info_Bean insertCamp(Camp_Info_Bean bean);
+	CampInfoBean insertCamp(CampInfoBean bean);
 
-	Camp_Info_Bean update(Camp_Info_Bean cBean);
+	CampInfoBean update(CampInfoBean cBean);
 
-	Camp_Info_Bean deleteCamp(int campid);
+	CampInfoBean deleteCamp(int campid);
 
 }

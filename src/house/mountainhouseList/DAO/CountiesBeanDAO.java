@@ -6,13 +6,14 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.hibernate.sql.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import house.mountainhouseList.DAO.Interface.ICountiesBeanService;
-import house.mountainhouseList.model.Counties_Bean;
+import house.mountainhouseList.model.CountiesBean;
 
 @Repository
 public class CountiesBeanDAO implements ICountiesBeanService {
@@ -25,23 +26,26 @@ public class CountiesBeanDAO implements ICountiesBeanService {
 		private Session getSession() {
 			return sessionFactory.getCurrentSession();
 		}
-	
+		
+		public CountiesBean select(String counties) {
+			return getSession().get(CountiesBean.class, counties);
+		}
 		
 		
 		@Override
-		public List<Counties_Bean> selectAllCounties() {
-			Query<Counties_Bean> query = getSession().createQuery("From Counties_Bean",Counties_Bean.class);
-			List<Counties_Bean> list = query.list();
+		public List<CountiesBean> selectAllCounties() {
+			Query<CountiesBean> query = getSession().createQuery("From CountiesBean",CountiesBean.class);
+			List<CountiesBean> list = query.list();
 			return list;
 		}
 		
 		
 		
 		@Override
-		public List<Counties_Bean> selectCounties(String counties){
-			String originString = " From Counties_Bean where name like '%"+ counties+"%'";
-			Query<Counties_Bean> query = getSession().createQuery(originString,Counties_Bean.class);
-			List<Counties_Bean> list = query.list();
+		public List<CountiesBean> selectCounties(String counties){
+			String originString = " From CountiesBean where name like '%"+ counties+"%'";
+			Query<CountiesBean> query = getSession().createQuery(originString,CountiesBean.class);
+			List<CountiesBean> list = query.list();
 			return list;
 			
 		}
@@ -49,8 +53,8 @@ public class CountiesBeanDAO implements ICountiesBeanService {
 		
 		
 		@Override
-		public Counties_Bean insertCounties(Counties_Bean counbean) {
-			Counties_Bean result = getSession().get(Counties_Bean.class,counbean.getName());
+		public CountiesBean insertCounties(CountiesBean counbean) {
+			CountiesBean result = getSession().get(CountiesBean.class,counbean.getName());
 			
 			if (result == null) {
 				getSession().save(counbean);
@@ -61,15 +65,15 @@ public class CountiesBeanDAO implements ICountiesBeanService {
 		}
 		
 		@Override
-		public Counties_Bean updateCounties( Counties_Bean counbean) {
+		public CountiesBean updateCounties( CountiesBean counbean) {
 
 			getSession().update(counbean);
 			return counbean;
 		}
 
 		@Override
-		public Counties_Bean deleteCounties(String counties) {
-			Counties_Bean counbean = getSession().get(Counties_Bean.class, counties);
+		public CountiesBean deleteCounties(String counties) {
+			CountiesBean counbean = getSession().get(CountiesBean.class, counties);
 			
 			if (counbean!=null) {
 				getSession().delete(counbean);

@@ -2,18 +2,20 @@ package house.mountainhouseList.DAO.Interface;
 
 import java.util.List;
 
-import house.mountainhouseList.model.Counties_Bean;
+import house.mountainhouseList.model.CountiesBean;
 
 public interface ICountiesBeanService {
 
-	List<Counties_Bean> selectAllCounties();
+	List<CountiesBean> selectAllCounties();
 
-	List<Counties_Bean> selectCounties(String counties);
+	List<CountiesBean> selectCounties(String counties);
 
-	Counties_Bean insertCounties(Counties_Bean counbean);
+	CountiesBean insertCounties(CountiesBean counbean);
 
-	Counties_Bean updateCounties(Counties_Bean counbean);
+	CountiesBean updateCounties(CountiesBean counbean);
 
-	Counties_Bean deleteCounties(String counties);
+	CountiesBean deleteCounties(String counties);
+	
+	CountiesBean select(String counties);
 
 }
