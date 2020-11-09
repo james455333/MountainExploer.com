@@ -17,7 +17,6 @@ import member.back.model.MemberBasicBackService;
 import member.back.model.MemberInfoBackService;
 import member.model.MemberBasic;
 import member.model.MemberInfo;
-import member.model.MemberStatus;
 
 
 @Controller
