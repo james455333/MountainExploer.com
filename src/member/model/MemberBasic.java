@@ -1,8 +1,6 @@
 package member.model;
 
 import java.sql.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,10 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+import mountain.GenericObject.GenericMountainObject;
 
 @Entity
 @Table(name = "MEMBER_BASIC")
@@ -26,7 +25,7 @@ public class MemberBasic {
 	private String account;
 	private String name;
 	private String email;
-	private int member_status_id;
+	private int statusId;
 	private Date reg_Date;
 	private String password;
 	private MemberInfo memberInfo;
@@ -36,17 +35,15 @@ public class MemberBasic {
 		
 	}
 	
-	public MemberBasic(int seqno, String account, String name, String email, int member_status_id, 
-			Date reg_Date) {
-		
-		this.seqno = seqno;
-		this.account = account;
-		this.name = name;
-		this.email = email;
-		this.member_status_id = member_status_id;
-		this.reg_Date = reg_Date;
-		
-	}
+//	public MemberBasic(int seqno, String account, String name, String email, int statusId,
+//			String password) {
+//		this.seqno = seqno;
+//		this.account = account;
+//		this.name = name;
+//		this.email = email;
+//		this.statusId = statusId;
+//		
+//	}
 
 	
 	@Id @Column(name = "SEQNO")
@@ -64,7 +61,7 @@ public class MemberBasic {
 	public String getAccount() {
 		return account;
 	}
-
+	
 	public void setAccount(String account) {
 		this.account = account;
 	}
@@ -91,12 +88,12 @@ public class MemberBasic {
 
 	
 	@Transient
-	public int getMember_status_id() {
-		return member_status_id;
+	public int getStatusId() {
+		return statusId;
 	}
 
-	public void setMember_status_id(int member_status_id) {
-		this.member_status_id = member_status_id;
+	public void setStatusId(int statusId) {
+		this.statusId = statusId;
 	}
 
 	
@@ -132,7 +129,7 @@ public class MemberBasic {
 	
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn
+	@JoinColumn(name = "MEMBER_STATUS_ID", referencedColumnName = "SEQNO")
 	public MemberStatus getMemberStatus() {
 		return memberStatus;
 	}

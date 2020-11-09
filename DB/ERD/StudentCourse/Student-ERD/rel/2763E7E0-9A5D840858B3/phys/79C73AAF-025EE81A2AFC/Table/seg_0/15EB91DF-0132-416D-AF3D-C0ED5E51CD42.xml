@@ -1,0 +1,60 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="JOBS" directorySegmentName="seg_0" id="15EB91DF-0132-416D-AF3D-C0ED5E51CD42">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:57 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<schemaObject>00CBA762-16BD-C9B5-7B36-660BBDF0E784</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>BB0F7A2A-D426-769F-385E-3A64C0887EB3</segment>
+<tableSpace>5078818F-4BEB-4BFB-99EB-2A95D9469108</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="JOB_ID" id="1C8B0002-3926-7EB9-7F6F-C41666BEB01C">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:58 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="JOB_TITLE" id="8B8F09D7-DA2B-78D6-CF0F-C1D7EF378D47">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:58 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="MAX_SALARY" id="975E39E0-8579-D8F9-594E-22CDE0DF8DC3">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:58 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="MIN_SALARY" id="D1FF9715-C694-F800-1224-8400F0FFD8A6">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:58 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="JOB_ID_PK" id="7D01C1E9-629D-FAB2-2113-2F7CD940FA54">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:58 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<schemaObject>00CBA762-16BD-C9B5-7B36-660BBDF0E784</schemaObject>
+<segment>87670531-1ED2-1C64-536D-6556E47DDA11</segment>
+<tableSpace>5078818F-4BEB-4BFB-99EB-2A95D9469108</tableSpace>
+</IndexProxy>
+</indexProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="JOB_ID_PK" id="E34A69E9-9E7F-CE1B-89FB-EC09DF2237DF">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:59 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<segment>87670531-1ED2-1C64-536D-6556E47DDA11</segment>
+<tableSpace>5078818F-4BEB-4BFB-99EB-2A95D9469108</tableSpace>
+<existingIndex>7D01C1E9-629D-FAB2-2113-2F7CD940FA54</existingIndex>
+<indexSegment>87670531-1ED2-1C64-536D-6556E47DDA11</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>
