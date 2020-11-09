@@ -1,5 +1,6 @@
 package house.back.controller;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
@@ -44,6 +45,8 @@ public class CampServletAction {
 		
 		List<CampInfoBean> list = campService.selectAllCamp();
 		
+		
+		
 		m.addAttribute("camp_all", list);
 		return "house/back/backCamp";
 	}
@@ -51,8 +54,9 @@ public class CampServletAction {
 	public String selectArea(@RequestParam(name = "selectarea")String area , Model m) {
 		
 		List<AreaBean> list = areaService.selectArea(area);
-		
+		List<CountiesBean> list2 = countiesService.selectAllCounties();
 		m.addAttribute("camp_area" , list);
+		m.addAttribute("camp_counties",list2);
 		return "house/back/backCamp";
 		
 	}
