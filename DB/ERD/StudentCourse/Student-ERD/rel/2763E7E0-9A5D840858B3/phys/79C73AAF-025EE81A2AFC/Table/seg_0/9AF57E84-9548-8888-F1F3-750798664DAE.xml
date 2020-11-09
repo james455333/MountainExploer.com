@@ -1,0 +1,113 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="JOB_HISTORY" directorySegmentName="seg_0" id="9AF57E84-9548-8888-F1F3-750798664DAE">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:57 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<schemaObject>00CBA762-16BD-C9B5-7B36-660BBDF0E784</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>BB0F7A2A-D426-769F-385E-3A64C0887EB3</segment>
+<tableSpace>5078818F-4BEB-4BFB-99EB-2A95D9469108</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="JOB_ID" id="55A59AD7-3901-0F28-DB61-11E097A5D210">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:58 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="END_DATE" id="6BE95E4D-A8D9-6B58-B793-CA5314D09CDF">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:58 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="START_DATE" id="AE9D9C08-F262-BEDD-7514-2A2ED2E648C2">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:58 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DEPARTMENT_ID" id="B3F5A62B-59AB-35C4-CCC5-9A522ABBF5CA">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:58 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="EMPLOYEE_ID" id="C5F3D7EB-EFBE-CF72-ACA3-7D7A4FB51074">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:58 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="JHIST_EMPLOYEE_IX" id="31CB6139-C8E5-23BC-8799-3F1AE42D23FD">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:58 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<schemaObject>00CBA762-16BD-C9B5-7B36-660BBDF0E784</schemaObject>
+<segment>87670531-1ED2-1C64-536D-6556E47DDA11</segment>
+<tableSpace>5078818F-4BEB-4BFB-99EB-2A95D9469108</tableSpace>
+</IndexProxy>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="JHIST_JOB_IX" id="48BF6304-E167-E3F1-BBC6-CA6F801541D3">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:58 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<schemaObject>00CBA762-16BD-C9B5-7B36-660BBDF0E784</schemaObject>
+<segment>87670531-1ED2-1C64-536D-6556E47DDA11</segment>
+<tableSpace>5078818F-4BEB-4BFB-99EB-2A95D9469108</tableSpace>
+</IndexProxy>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="JHIST_DEPARTMENT_IX" id="7274A4B5-E507-DC82-37CB-3E2D3BCA06D4">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:58 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<schemaObject>00CBA762-16BD-C9B5-7B36-660BBDF0E784</schemaObject>
+<segment>87670531-1ED2-1C64-536D-6556E47DDA11</segment>
+<tableSpace>5078818F-4BEB-4BFB-99EB-2A95D9469108</tableSpace>
+</IndexProxy>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="JHIST_EMP_ID_ST_DATE_PK" id="AC628E2F-CF42-28B2-7640-E21ACDF57F8E">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:58 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<schemaObject>00CBA762-16BD-C9B5-7B36-660BBDF0E784</schemaObject>
+<segment>87670531-1ED2-1C64-536D-6556E47DDA11</segment>
+<tableSpace>5078818F-4BEB-4BFB-99EB-2A95D9469108</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="JHIST_DEPT_FK" id="1E7EAD24-C598-75DA-E0BF-AC5A276C0460">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:14:01 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="JHIST_JOB_FK" id="8F004417-63FA-4154-13E1-05F54F42A924">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:14:01 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="JHIST_EMP_FK" id="F5399B66-F42D-2AB7-4250-CA5950C4325E">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:14:01 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="JHIST_EMP_ID_ST_DATE_PK" id="A035E086-5BC4-DA22-851F-53D21EB37AEB">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:59 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<segment>87670531-1ED2-1C64-536D-6556E47DDA11</segment>
+<tableSpace>5078818F-4BEB-4BFB-99EB-2A95D9469108</tableSpace>
+<existingIndex>AC628E2F-CF42-28B2-7640-E21ACDF57F8E</existingIndex>
+<indexSegment>87670531-1ED2-1C64-536D-6556E47DDA11</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+<tableCheckConstraints itemClass="oracle.dbtools.crest.model.design.storage.oracle.TableCheckConstraintOracle">
+<TableCheckConstraint name="JHIST_DATE_INTERVAL" id="A0B48375-D2DD-B3D2-2B1A-8D3FD96C1C9E">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:14:00 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+</TableCheckConstraint>
+</tableCheckConstraints>
+</TableProxyOraclev12c>
