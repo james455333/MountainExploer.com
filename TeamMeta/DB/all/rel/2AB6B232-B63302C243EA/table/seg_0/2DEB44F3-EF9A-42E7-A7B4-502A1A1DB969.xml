@@ -19,10 +19,25 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementGenerateAlways>true</autoIncrementGenerateAlways>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementGenerateTrigger>false</autoIncrementGenerateTrigger>
+</Column>
+<Column name="counties_name" id="B87F2F2C-E364-EFF6-B885-3FB4F718D3BF">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-09 09:00:53 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>9D46FF11-7CDA-240B-FB7B-E6BE7A7AFC7E</domain>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="F691BD72-AF91-01AC-55D5-D87F3C52E39A" referredColumn="8F4D0422-4D91-0250-D87C-3869781438A5"/>
+<colAssociation fkAssociation="1951DA29-A82D-99D3-57F9-F4017781C177" referredColumn="364B43F2-35C3-550C-4AE6-D032D48FC828"/>
 </associations>
 </Column>
 <Column name="name" id="10A576FA-424E-A24A-D5D6-7B84BE5C4662">
@@ -35,19 +50,6 @@
 <use>0</use>
 <logicalDatatype>LOGDT037</logicalDatatype>
 <domain>E9193C42-BBD2-F8B5-5FC6-09DD148AAEF0</domain>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="location" id="06C5B6E0-CFFE-0AD3-E07A-D9B6073E4B9C">
-<sourceDDLFile>all.ddl</sourceDDLFile>
-<createdBy>Student</createdBy>
-<createdTime>2020-10-23 13:41:05 UTC</createdTime>
-<ownerDesignName>all</ownerDesignName>
-<importedID>3E07FB6E-4F9F-ABF2-D0FA-A9C27E3771BE</importedID>
-<nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<domain>9D46FF11-7CDA-240B-FB7B-E6BE7A7AFC7E</domain>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
@@ -79,14 +81,14 @@
 <colUsage columnID="0C1675DF-C629-CE0C-D7B6-62AC5301A66A"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="5FB0286D-EF56-5B7F-1E25-3BE6D002E371" name="camp_campv1_fk">
+<ind_PK_UK id="A4EDFF79-ADE2-C20D-DA33-D1906747091A" name="camp_info_counties_FK">
 <createdBy>Student</createdBy>
-<createdTime>2020-10-23 13:41:06 UTC</createdTime>
+<createdTime>2020-11-09 09:00:53 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="0C1675DF-C629-CE0C-D7B6-62AC5301A66A"/>
+<colUsage columnID="B87F2F2C-E364-EFF6-B885-3FB4F718D3BF"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

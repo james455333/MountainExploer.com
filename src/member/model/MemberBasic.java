@@ -15,8 +15,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import mountain.GenericObject.GenericMountainObject;
-
 @Entity
 @Table(name = "MEMBER_BASIC")
 public class MemberBasic {
