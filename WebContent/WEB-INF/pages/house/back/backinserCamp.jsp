@@ -67,12 +67,12 @@
 				<tbody>
 				  <tr>  
 				   
-				  	<form action="<c:url value='/mountainCampBack/insertCamp'></c:url>"method='post'>
-				      <td><input type="text" name="insercamp_area" size="10" value="高雄市"></td>
-				      <td><input type="text" name="insercamp_counties" size="10" value="前鎮區"></td>
+				  	<form action="<c:url value='/mountainHouseCampBack/insertCamp'></c:url>"method='post'>
+				      <td><input type="text" name="insercamp_city" size="10" value="高雄市"></td>
+				      <td><input type="text" name="insercamp_town" size="10" value="前鎮區"></td>
 				      <td><input type="text" name="insercamp_name" size="20" value="小小露營區"></td>
 				      <td><input type="text" name="insercamp_desc" size="50" value="https://evshhips.pixnet.net/blog"></td>
-				      <td><input type="submit"  value="新增"></td>
+				      <td><input type="submit" value="新增"></td>
 					</form>	    
 				   
 				    </tr>

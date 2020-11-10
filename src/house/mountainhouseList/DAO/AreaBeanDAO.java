@@ -53,11 +53,12 @@ public class AreaBeanDAO {
 		
 		
 		public AreaBean insertArea(AreaBean Abean) {
-			AreaBean result = getSession().get(AreaBean.class, Abean.getName());
+			AreaBean result = getSession().get(AreaBean.class,Abean.getName());
 			
 			if (result == null) {
 				getSession().save(Abean);
 				return Abean;
+				
 			}
 			return null;
 		}

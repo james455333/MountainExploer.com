@@ -120,7 +120,7 @@ public class ImportHouseCamp {
 				AreaBean queryArea = areaService.select(areaName);
 				if (queryArea!=null) {
 					countiesbean.setArea(queryArea);
-					CountiesBean querycounties = countiesService.select(countiesName);
+					CountiesBean querycounties =   countiesService.select(countiesName);
 					if (querycounties!=null) {
 						campbean.setCounties(querycounties);
 						CampInfoBean inserCamp = campService.insertCamp(campbean);		
