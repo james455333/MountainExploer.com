@@ -1,7 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<StructuredTypeProxyOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StructuredTypeProxyOraclev10g" name="SDO_GEOMETRY" directorySegmentName="seg_0" id="47E390DE-0671-C4B1-8428-0F45CBEE18F8">
-<createdBy>Student</createdBy>
-<createdTime>2020-08-05 08:13:57 UTC</createdTime>
-<ownerDesignName>Student-ERD</ownerDesignName>
-<owner>MDSYS</owner>
-</StructuredTypeProxyOraclev10g>
