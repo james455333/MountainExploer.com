@@ -208,7 +208,7 @@ $(function(){
 							'</form>' +
 						"</div>"+
 						"<div>"+
-							"<form id='deleteForm'class='hiddenForm' action='/MountainExploer.com/backsatage/mountain/deleteData'>"+
+							"<form class='hiddenForm' action='/MountainExploer.com/backsatage/mountain/deleteData'>"+
 								'<input type="hidden" name="seqno" value="' + data[i].seqno + '" readonly>' +
 							'</form>' +
 							'<input class="deleteButton" type="button"  value="刪除">' +
@@ -242,7 +242,9 @@ $(function(){
 	$(".table").on("click",".deleteButton",function(){
 		
 		
-		let routeID = $(this).siblings().val()
+		let routeID = $(this).siblings().val();
+		let formObj = $(this).siblings("form")
+		console.log(formObj);
 		//console.log(routeID)
 		swal({
 	    title: `路線編號 : ${routeID}`,
@@ -264,7 +266,7 @@ $(function(){
 		
 	  }).then((value) => {
 			if(value){
-		   		$("#deleteForm").submit();
+		   		formObj.submit();
 			}
 	    	
 	  });

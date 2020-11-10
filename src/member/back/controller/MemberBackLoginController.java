@@ -11,12 +11,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import member.back.model.MemberBasicBackService;
 
 @Controller
-@SessionAttributes(names = {"LoginOK"})
+@SessionAttributes(names = {"LoginOK","beforeCheckURL"})
 public class MemberBackLoginController {
+	
+	private static String beforeCheckURL;
 	
 	@Autowired
 	private MemberBasicBackService mbServic;
@@ -28,12 +31,19 @@ public class MemberBackLoginController {
 	
 	
 	@RequestMapping(path = "/member/memberBackLogin", method = RequestMethod.POST)
-	public String processCheckIdPassword(@RequestParam(name = "account")String account, @RequestParam(name = "password")String password, Model m) {
+	public String processCheckIdPassword(
+			@RequestParam(name = "account")String account, 
+			@RequestParam(name = "password")String password, 
+			Model m,
+			RedirectAttributes redAttr) {
 		System.out.println("account：" + account);
 		System.out.println("password：" + password);
 		Map<String, String> errors = new HashMap<String, String>();
 		m.addAttribute("errors", errors);
-		
+		if (m.getAttribute("beforeCheckURL") != null) {
+			beforeCheckURL = (String)m.getAttribute("beforeCheckURL");
+			System.out.println("beforeCheckURL : " + beforeCheckURL);
+		}
 		if(account == null || account.length() == 0) {
 			errors.put("account", "Account is required.");
 		}
@@ -49,6 +59,10 @@ public class MemberBackLoginController {
 		if("EEIT124".equalsIgnoreCase(account) && "test123".equalsIgnoreCase(password)) {
 			m.addAttribute("LoginOK", account);
 			m.addAttribute("result", "登入成功");
+			if (beforeCheckURL != null) {
+				redAttr.addFlashAttribute("result", "登入成功");
+				return "redirect:/"+beforeCheckURL;
+			}
 			return "backStage";
 		}
 		
