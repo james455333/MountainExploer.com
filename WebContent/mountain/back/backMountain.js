@@ -3,6 +3,7 @@ $(function(){
 	//頁面參數
 	var page = 1;
 	if(typeof showData === 'undefined') var showData = 3;
+	console.log("123")
 	var totalPage = 0;
 	//統一網域名稱設置
 	var homeUrl = "/MountainExploer.com/backstage/mountain/search";
@@ -89,7 +90,7 @@ $(function(){
 		})
 		
 	})
-	//國家公園列表Change觸發切換路線
+	//	國家公園列表Change觸發切換路線
 	$("#nPSelect").on("change",function(){
 		var npID = $("#nPSelect").val();
 		//console.log("npID : "  + npID)

@@ -11,14 +11,20 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script src="/MountainExploer.com/mountain/test/testAct.js" ></script>
 
+<style type="text/css">
+	#showActList td{
+		border: 1px solid red;
+	}
+</style>
 
 </head>
 <body>
 	<h2>測試活動及報名系統</h2>
 	<hr>
 	<h3>新增活動</h3>
-	<form>
+	<form action="#" id="newActForm">
 		<table>
 			<tr>
 				<td>
@@ -43,6 +49,8 @@
 					<label>活動價格</label>
 					<input type="text" name="price" required>
 				</td>
+			</tr>
+			<tr>
 				<td>
 					<label>活動開始日期 ~ 活動結束日期</label>
 					<input type="text" name="StEndDate" required>
@@ -53,27 +61,33 @@
 				</td>
 				<td>
 					<label>活動報名人數上限</label>
-					<input type="text" name="TopReg" readonly="readonly">
+					<input type="text" name="TopReg" >
 				</td>
 				<td>
 					<label>活動報名截止日</label>
-					<input>
+					<input type="text" name="RegEndDate">
+				</td>
+				<td>
+					<label>備註</label>
+					<textarea name="note"></textarea>
 				</td>
 				
 			<tr>
 		</table>
+		<hr>
+		<input type="submit" value="新增活動">
+		<input type="reset" value="重置">
 	</form>
 	<hr>
 	<h3>活動顯示</h3>
-	<table>
+	<table  id="showActList">
 		<thead>
 			<tr>
-				<td>活動編號</td>
-				<td>活動名稱 / 活動天數</td>
 				<td>活動預覽圖</td>
-				<td>活動價格</td>
-				<td>活動開始日期 / 活動結束日期</td>
-				<td>目前報名人數 / 報名人數上限</td>
+				<td>活動名稱 / 活動天數 / 活動價格 / 活動開始~ 結束日期</td>
+				<td>發布時間 / 默認排序 </td>
+				<td>目前人數 / 人數上限</td>
+				<td>報名截止日</td>
 			</tr>
 		</thead>
 		<tbody>

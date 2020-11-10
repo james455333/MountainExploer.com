@@ -10,10 +10,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/mountain/test")
 public class TestPageEntryController {
 	
-	private String mountainAct = "mountain/test/"; 
+	private String mountainActFolder = "mountain/test/";
+	
+	
 	@GetMapping("/ActEntry")
 	public String ActIndexEntry(Model model, RedirectAttributes redrAttr) {
-		return mountainAct+"testActList";
+		return mountainActFolder+"testActList";
 	}
 	
 }
