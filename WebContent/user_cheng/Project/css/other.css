@@ -110,6 +110,7 @@ header {
     text-align: center;
     line-height: 400px;
     background-color: slategrey;
+    overflow: scroll;
 }
 
 .div_li3 {

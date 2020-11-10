@@ -91,9 +91,18 @@ document.getElementById("demo6").addEventListener("click", function () {
   if (willDelete) {
     swal("刪除成功!","需加第二個雙引號才能把第一個雙引號變為title,皆可以為空字串",
     {icon: "success",}
-    );
-  } else {
-    swal("取消!", "123!", "success");
+    )
+    .then(function () {
+      window.location.href = 'http://google.com'//回個人資料頁面
+  })
+    ;
+  }
+   else {
+    swal("取消!", "123!", "success")
+    .then(function () {
+      window.location.href = '../index.html'//回個人資料頁面
+  })
+    ;
   }
 });
 });
@@ -106,8 +115,8 @@ document.getElementById("修改確認demo").addEventListener("click", function (
     text: "確認更改！",
     icon: "warning",
     showCancelButton: "true",
-    // buttons: true,
-    // confirmButtonColor: "#DD6B55",
+    buttons: true,
+    confirmButtonColor: "#DD6B55",
     confirmButtonText: "修改",
     cancelButtonText: "取消",
     closeOnConfirm: false
