@@ -1,17 +1,17 @@
 * {
     margin: 0;
     padding: 0;
+    /* min-width: 600px; */
 }
 
 .container1 {
-    /* position: relative; */
-    /* width: 1440px; */
     width: auto;
     height: 2880px;
     text-align: center;
     margin: 0px auto;
-    border: 5px blue solid;
-    /* overflow: auto; */
+    /* border: 5px blue solid; */
+    overflow: auto;
+    min-width: 600px;
 }
 
 .p_i_name {
@@ -112,7 +112,7 @@ header {
     width: 100%;
     /* height: 2880px; */
     overflow: auto;
-    border: 5px red solid;
+    /* border: 5px red solid; */
     /* position:relative; */
 }
 
@@ -126,10 +126,12 @@ header {
     margin-left: 5px;
     margin-right: 5px;
     /* position:absolute; */
+    /* box-sizing: border-box; */
 }
 
 .div_li3 {
     width: 200px;
+    /* width: auto; */
     height: 1770px;
     text-align: center;
     line-height: 400px;
@@ -143,8 +145,9 @@ header {
 .div_li2 {
     margin-left: 215px;
     margin-right: 215px;
-    width: 1450px;
-    height:1770px;
+    /* width: 1450px; */
+    width: auto;
+    height: 1770px;
     text-align: center;
     line-height: 15px;
     background-color: slategrey;
@@ -155,8 +158,10 @@ header {
     clear: both;
     background-color: grey;
     height: 120px;
+    width: 100%;
     text-align: center;
-    line-height: 80px;
+    /* line-height: 80px; */
+    
 }
 
 .c001 {
