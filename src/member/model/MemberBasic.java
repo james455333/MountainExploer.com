@@ -15,8 +15,11 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.springframework.stereotype.Component;
+
 @Entity
 @Table(name = "MEMBER_BASIC")
+@Component
 public class MemberBasic {
 
 	private int seqno;
