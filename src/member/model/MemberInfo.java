@@ -33,8 +33,8 @@ public class MemberInfo {
 	private String phone;
 	private String gender;
 	private String climb_ex;
-	private byte[] per_img;
-	private byte[] other;	
+	private Clob per_img;
+	private Blob other;	
 	private MemberBasic memberBasic;
 	
 
@@ -43,7 +43,7 @@ public class MemberInfo {
 	}
 	
 	public MemberInfo(int member_basic_id, Date birthday, String neck_name, 
-			String phone, String gender, String climb_ex, byte[] per_img, byte[] other) {
+			String phone, String gender, String climb_ex, Clob per_img, Blob other) {
 		
 		this.member_basic_id = member_basic_id;
 		this.birthday = birthday;
@@ -120,21 +120,21 @@ public class MemberInfo {
 
 	
 	@Column(name = "PER_IMG")
-	public byte[] getPer_img() {
+	public Clob getPer_img() {
 		return per_img;
 	}
 
-	public void setPer_img(byte[] per_img) {
+	public void setPer_img(Clob per_img) {
 		this.per_img = per_img;
 	}
 
 	
 	@Column(name = "OTHER")
-	public byte[] getOther() {
+	public Blob getOther() {
 		return other;
 	}
 
-	public void setOther(byte[] other) {
+	public void setOther(Blob other) {
 		this.other = other;
 	}
 
@@ -144,8 +144,6 @@ public class MemberInfo {
 	public MemberBasic getMemberBasic() {
 		return memberBasic;
 	}
-
-	
 
 	public void setMemberBasic(MemberBasic memberBasic) {
 		this.memberBasic = memberBasic;

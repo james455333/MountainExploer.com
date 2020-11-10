@@ -73,7 +73,7 @@ public class ImportHouseCamp {
 			redAttr.addFlashAttribute("result",  "資料輸入成功");		
 		}
 		redAttr.addFlashAttribute("errors", errors);
-		return "redirect:/backStageEntry";
+		return "redirect:/backStage";
 	}
 	
 	private void improDataToDB(MultipartFile multipartFile) throws IOException {

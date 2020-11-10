@@ -75,17 +75,17 @@
 .hidden{
 	display : none;
 }
-#updateForm{
+.newDataForm{
 	position : relative;
-	height : 90%;
-	top : 15px;
+	height : 75%;
+	top : 5.5%;
 	width : 75%;
 	left : 12.5%;
 	border : 5px ridge #400040;
 	background-color: #e1ffb0;
 	overflow: auto; 
 }
-#updateForm div{
+.newDataForm div{
 	margin: 2%;
 	width : auto;
 	height : auto;
@@ -95,19 +95,15 @@ textarea{
 	padding : 5px;
 }
 #new_confirm{
-	position: fixed;
+	position: absolute;
 	width : 100%;
-	background-color : #ffffff;
 	bottom: 0%;
 	display : inline-flex;
     align-items:center;
     justify-content:center;
 }
 #new_confirm div{
-	width : 25%;
-	display : inline-flex;
-    align-items:center;
-    justify-content:center;
+	width : 10%;
 }
 
 .extendImg{
@@ -186,20 +182,4 @@ textarea{
     justify-content:center;
     
 }
-.ajaxBigDiv{
-	width: 150px;
-	height: 150px;
-	overflow: auto;
-}
-.ajaxSmallDiv{
-	width : 50px;
-	height : 150px;
-	overflow: auto;
-}
-.routeImg{
-	width: 50px;
-	height: 50px;
-}
-.hiddenForm{
-	display: none;
-}
+

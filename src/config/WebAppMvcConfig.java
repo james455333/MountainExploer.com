@@ -1,26 +1,33 @@
 package config;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 
 @Configuration
 @EnableWebMvc
-@ComponentScan( {"house","member","mountain","product","config","main"})
+@ComponentScan( {"house","member","mountain","product","config","mainController"})
 public class WebAppMvcConfig implements WebMvcConfigurer  {
 	
 	//初始啟動
 	@Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-		System.out.println("congigure Start");
+		System.out.println("test3");
     	configurer.enable();
-    	System.out.println("Configure Success");
     }
 	
 	
@@ -36,11 +43,11 @@ public class WebAppMvcConfig implements WebMvcConfigurer  {
 	}
 	
 	//設置讀取特定路徑的真實路徑
-//	@Override
-//	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//		registry.addResourceHandler("/images/**").addResourceLocations("/WEB-INF/resources/images/");
-////		System.out.println("test2");
-//	}
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/images/**").addResourceLocations("/WEB-INF/resources/images/");
+//		System.out.println("test2");
+	}
 	
 	
 	

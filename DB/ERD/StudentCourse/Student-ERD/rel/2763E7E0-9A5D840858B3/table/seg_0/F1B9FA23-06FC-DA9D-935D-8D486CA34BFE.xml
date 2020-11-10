@@ -1,0 +1,72 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F1B9FA23-06FC-DA9D-935D-8D486CA34BFE" schemaObject="00CBA762-16BD-C9B5-7B36-660BBDF0E784" name="REGIONS">
+<sourceConnName>HR</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>REGIONS</sourceObjName>
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:57 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="REGION_ID" id="90788987-3697-ED4A-9EB9-C108B3E54379">
+<sourceConnName>HR</sourceConnName>
+<sourceObjSchema>REGIONS</sourceObjSchema>
+<sourceObjName>REGION_ID</sourceObjName>
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:58 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<notNullConstraintName>REGION_ID_NN</notNullConstraintName>
+</Column>
+<Column name="REGION_NAME" id="EA782790-8F6D-28E1-5012-E7366A0130D9">
+<sourceConnName>HR</sourceConnName>
+<sourceObjSchema>REGIONS</sourceObjSchema>
+<sourceObjName>REGION_NAME</sourceObjName>
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:58 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>25 BYTE</dataTypeSize>
+<ownDataTypeParameters>25 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A75B6CF2-A8CC-18B4-92B3-60DC327C1944" name="REG_ID_PK">
+<sourceConnName>HR</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>REG_ID_PK</sourceObjName>
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:59 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="90788987-3697-ED4A-9EB9-C108B3E54379"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9F48DCD5-4C17-2DD2-D4B9-632CD3FD8BD6" schemaObject="00CBA762-16BD-C9B5-7B36-660BBDF0E784" name="REG_ID_PK">
+<sourceConnName>HR</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>REG_ID_PK</sourceObjName>
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 08:13:58 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="90788987-3697-ED4A-9EB9-C108B3E54379"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

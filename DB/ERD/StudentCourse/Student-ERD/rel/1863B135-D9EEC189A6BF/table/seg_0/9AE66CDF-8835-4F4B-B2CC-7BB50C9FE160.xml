@@ -1,0 +1,122 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9AE66CDF-8835-4F4B-B2CC-7BB50C9FE160" name="REGISTRATION">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 07:15:19 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<ordsAlias>table_5</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="st_no" id="3CF08D7C-BDA7-0B93-FFA9-084550B1E68B">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 07:17:15 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="course_no" id="A55506A7-DFBA-83CA-0D2B-44FEA888B317">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 07:17:15 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="semester" id="A22CA451-A0F1-3DE3-7C24-ED5674CB42A5">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 07:17:15 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="score" id="ED212554-4D6B-230C-4FBF-8E607A0A23C6">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 07:17:15 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="STUDENT_st_no" id="655B4EF0-C8C7-AA5F-8FA3-069A92E6BFEA">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 07:37:35 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BF1982AF-9F4A-C635-680D-946587B2D598" referredColumn="FA2CC05F-E3BD-E3E8-AC3D-5C86DD08C48B"/>
+</associations>
+</Column>
+<Column name="COURSE_course_no" id="E1DDA5D2-577E-A89F-A5CB-F213796197F3">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 07:37:56 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A5D4E031-C5A3-5362-3448-7B57511C569E" referredColumn="C0E782F8-00E2-1DD2-282F-A2154CDCED49"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E907C8A2-C405-E902-5DEB-437AF631AF08" name="REGISTRATION_PK">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 07:17:15 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3CF08D7C-BDA7-0B93-FFA9-084550B1E68B"/>
+<colUsage columnID="A55506A7-DFBA-83CA-0D2B-44FEA888B317"/>
+<colUsage columnID="A22CA451-A0F1-3DE3-7C24-ED5674CB42A5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8AEE5948-ECE4-0CE0-44C0-384F3CBC0273" name="REGISTRATION_STUDENT_FK">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 07:37:35 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="655B4EF0-C8C7-AA5F-8FA3-069A92E6BFEA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="366B6669-C1FA-D895-27EA-B7EA77C60A39" name="REGISTRATION_COURSE_FK">
+<createdBy>Student</createdBy>
+<createdTime>2020-08-05 07:37:56 UTC</createdTime>
+<ownerDesignName>Student-ERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E1DDA5D2-577E-A89F-A5CB-F213796197F3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

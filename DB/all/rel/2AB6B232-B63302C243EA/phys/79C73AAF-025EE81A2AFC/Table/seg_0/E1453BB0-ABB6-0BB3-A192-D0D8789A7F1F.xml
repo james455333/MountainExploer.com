@@ -1,0 +1,43 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="camp_img" directorySegmentName="seg_0" id="E1453BB0-ABB6-0BB3-A192-D0D8789A7F1F">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-05 11:31:32 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="camp_info_campbasic_id" id="1E6282C5-144C-E71C-E6C0-5980967A789F">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-05 11:32:28 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="camp_img" id="CBD8A006-9D68-C13B-46EC-903EE0D3B21B">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-05 11:32:03 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="id" id="E9160C3C-661A-584C-384C-C89B8030571B">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-05 11:32:03 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="camp_img_camp_info_FK" id="6B3FFF35-B0C2-7BB1-5E45-64BA81415B42">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-05 11:32:28 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="camp_img_PK" id="2E87B682-4FA0-A214-5FB4-0EB9889DBCD2">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-05 11:32:03 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

@@ -17,9 +17,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -31,11 +34,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import main.generic.service.GenericService;
 import mountain.MountainGlobal;
-import mountain.model.route.NationalPark;
-import mountain.model.route.RouteBasic;
-import mountain.model.route.RouteInfo;
+import mountain.mountainList.model.NationalPark;
+import mountain.mountainList.model.RouteBasic;
+import mountain.mountainList.model.RouteInfo;
+import mountain.mountainList.service.NationalParkHibernateService;
+import mountain.mountainList.service.RouteBasicHibernateService;
 
 @Controller
 public class ImportDataController {
@@ -43,9 +47,9 @@ public class ImportDataController {
 	private static String RouteImgTitle = "RouteMapTemp";
 
 	@Autowired
-	private GenericService<NationalPark> npService;
+	private NationalParkHibernateService npService;
 	@Autowired
-	private GenericService<RouteBasic> rBService;
+	private RouteBasicHibernateService rBService;
 	@Autowired
 	@Qualifier("sessionFactory")
 	private SessionFactory sessionFactory;
@@ -56,17 +60,17 @@ public class ImportDataController {
 		
 		
 		//創造images資料夾
+		
 		File file = new File(MountainGlobal.ImgDownloadPath);
 		if (file.mkdirs()) {
 			System.out.println("資料夾創建成功，路徑 : " + MountainGlobal.ImgDownloadPath);
 		}else {
-			System.out.println("資料夾創建失敗或資料夾已存在");
+			System.out.println("資料夾創建失敗");
 		} 
-		//	解析傳入檔案(CSV)
 		try {
 			importDataToDB(multipartFile);
 		} catch (Exception e) {
-			e.printStackTrace();
+			
 			errors.put("msg", "資料輸入過程發生錯誤" );
 		}
 		if (errors.isEmpty()) {
@@ -78,6 +82,7 @@ public class ImportDataController {
 
 	private void importDataToDB (MultipartFile multipartFile)throws Exception {
 		int importCounter = 0;
+		Session session = sessionFactory.getCurrentSession();
 
 		try (InputStream is1 = multipartFile.getInputStream();
 				InputStreamReader isr = new InputStreamReader(is1, MountainGlobal.CHARSET);
@@ -101,27 +106,12 @@ public class ImportDataController {
 				RouteInfo rIBean = new RouteInfo();
 
 				rIBean.setName(name);
-				if (!description.isEmpty()) {
-					byte[] bytesDescp = description.getBytes(MountainGlobal.CHARSET);
-					rIBean.setDescription(bytesDescp);
-				}else {
-					byte[] bytesDescp = "尚無資料".getBytes(MountainGlobal.CHARSET);
-					rIBean.setDescription(bytesDescp);
-				}
-				if (!advice.isEmpty()) {
-					byte[] bytesAdvice = advice.getBytes(MountainGlobal.CHARSET);
-					rIBean.setAdvice(bytesAdvice);
-				}else {
-					byte[] bytesAdvice = "尚無資料".getBytes(MountainGlobal.CHARSET);
-					rIBean.setAdvice(bytesAdvice);
-				}
-				if (!traffic.isEmpty()) {
-					byte[] bytesTra = traffic.getBytes(MountainGlobal.CHARSET);
-					rIBean.setTraffic(bytesTra);
-				}else {
-					byte[] bytesTra = "尚無資料".getBytes(MountainGlobal.CHARSET);
-					rIBean.setTraffic(bytesTra);
-				}
+				byte[] bytesDescp = description.getBytes(MountainGlobal.CHARSET);
+				rIBean.setDescription(bytesDescp);
+				byte[] bytesAdvice = advice.getBytes(MountainGlobal.CHARSET);
+				rIBean.setAdvice(bytesAdvice);
+				byte[] bytesTra = traffic.getBytes(MountainGlobal.CHARSET);
+				rIBean.setTraffic(bytesTra);
 				byte[] bytesImg = getURLtoBytes(imgURL);
 				rIBean.setImgUrl(bytesImg);
 
@@ -131,11 +121,10 @@ public class ImportDataController {
 				npBean.setRouteBasic(rBBeanSet);
 				rBBean.setRouteInfo(rIBean);
 				rIBean.setRoute_basic(rBBean);
-				npService.save(npBean);
+
 				NationalPark queryNP = npService.select(npName);
 				if (queryNP != null) {
 
-					rBService.save(rBBean);
 					rBBean.setNational_park(queryNP);
 					RouteBasic insertRB = rBService.insert(rBBean);
 					if (insertRB == null) {
