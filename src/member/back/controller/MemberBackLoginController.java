@@ -9,14 +9,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
-import member.back.model.MemberBackService;
+import member.back.model.MemberBasicBackService;
 
 @Controller
+@SessionAttributes(names = {"LoginOK"})
 public class MemberBackLoginController {
 	
 	@Autowired
-	private MemberBackService memberBackService;
+	private MemberBasicBackService mbServic;
 	
 	@RequestMapping(path = "/member/memberBackLoginEntry", method = RequestMethod.GET)
 	public String processBackLogin() {
@@ -43,18 +46,29 @@ public class MemberBackLoginController {
 			return "member/backLogin";
 		}
 		
-//		if("Areis".equalsIgnoreCase(account) && "test123".equalsIgnoreCase(password)) {
+		if("EEIT124".equalsIgnoreCase(account) && "test123".equalsIgnoreCase(password)) {
+			m.addAttribute("LoginOK", account);
+			m.addAttribute("result", "登入成功");
+			return "backStage";
+		}
+		
+		
+//		boolean mbCheck = mbServic.checkLogin(account, password);
+//		if(mbCheck) {
 //			return "member/memberBackSelectList";
 //		}
 		
-		
-		boolean mbCheck = memberBackService.checkLogin(account, password);
-		if(mbCheck) {
-			return "member/memberBackSelectList";
-		}
-		
 		errors.put("msg", "Your UserName or Password is not correct.");
 		return "member/backLogin";
+	}
+	
+	
+	@RequestMapping(path = "/member/memberBackLogout", method = RequestMethod.GET)
+	public String processLogout(SessionStatus status) {
+		status.setComplete();
+		return "member/backLogin";
+		
+		
 	}
 	
 

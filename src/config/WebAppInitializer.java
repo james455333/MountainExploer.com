@@ -12,6 +12,7 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import util.CheckLoginFilter;
 import util.OpenSessionInViewFilter;
 
 
@@ -56,7 +57,10 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 		//filterRegistration.setInitParameter("sessionFactoryBeanName", "sessionFactory");
 		filterRegistration.addMappingForUrlPatterns(null, true, "/*");
 		filterRegistration.addMappingForServletNames(null, true, "mvc");
-
+		filterRegistration = servletContext.addFilter("CheckLoginFilter", CheckLoginFilter.class);
+		filterRegistration.addMappingForUrlPatterns(null, true, "/*");
+		filterRegistration.addMappingForServletNames(null, true, "mvc");
+		
 		servletContext.addListener(new ContextLoaderListener(rootContext));
 	}
 	

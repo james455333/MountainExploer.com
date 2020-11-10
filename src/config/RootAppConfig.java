@@ -56,8 +56,9 @@ public class RootAppConfig {
 	public LocalSessionFactoryBean sessionFactory() throws IllegalArgumentException, NamingException {
 		LocalSessionFactoryBean factory = new LocalSessionFactoryBean();
 		factory.setDataSource(dataSource());
-		factory.setPackagesToScan(new String[] { "house","member","mountain","product","config","mainController" });
+		factory.setPackagesToScan(new String[] { "house","member","mountain","product","config","main" });
 		factory.setHibernateProperties(additionalProperties());
+		System.out.println("set SessionFactory");
 		return factory;
 	}
 	
