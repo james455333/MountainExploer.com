@@ -1,0 +1,43 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="camp_img" directorySegmentName="seg_0" id="DAD5279F-4DBE-B550-C3B7-FA804F1E8B45">
+<createdBy>Japan</createdBy>
+<createdTime>2020-11-09 14:47:07 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="camp_img" id="2B0728E2-0293-2920-1E19-43A594375B00">
+<createdBy>Japan</createdBy>
+<createdTime>2020-11-09 14:48:01 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="campinfo_id" id="5B782B22-0D17-6385-8486-01FCD72B58B2">
+<createdBy>Japan</createdBy>
+<createdTime>2020-11-09 14:48:07 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="id" id="CAB6C5D3-B361-FD2E-E3D3-D2149027F546">
+<createdBy>Japan</createdBy>
+<createdTime>2020-11-09 14:48:01 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="camp_img_camp_info_FK" id="1EB60E31-C807-720F-88D9-438A9DD3F349">
+<createdBy>Japan</createdBy>
+<createdTime>2020-11-09 14:48:07 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="camp_img_PK" id="25C50C34-B587-C872-210E-4E5BB9C3D805">
+<createdBy>Japan</createdBy>
+<createdTime>2020-11-09 14:48:01 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>
