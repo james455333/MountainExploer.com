@@ -1,22 +1,19 @@
 package house.back.controller;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import house.CampGlobal;
+
 import house.mountainhouseList.model.AreaBean;
 import house.mountainhouseList.model.CampInfoBean;
 import house.mountainhouseList.model.CountiesBean;
@@ -80,65 +77,34 @@ public class CampServletAction {
 		
 	}
 	
-	@RequestMapping(path = "/insertCamp", method = RequestMethod.POST)
-	public String insertCamp(CampInfoBean campBean,AreaBean areaBean , CountiesBean countiesBean, Model m,String id,
-			Set<CountiesBean> countiesbeanSet,Set<CampInfoBean> campbeanSet,
-			@RequestParam(name = "insercamp_area") String area,
-			@RequestParam(name = "insercamp_counties") String counties,
-			@RequestParam(name = "insercamp_name") String name,
-			@RequestParam(name = "insercamp_desc") String desc
-			) throws UnsupportedEncodingException   {
-		
-		System.out.println("111111");
-			areaBean.setName(area);
-			areaBean.setCounties(countiesbeanSet);
-			
-			
-			countiesBean.setName(counties);
-			countiesBean.setAreaname(area);
-			countiesBean.setArea(areaBean);
-			countiesbeanSet.add(countiesBean);
-						
-			
-			campBean.setName(name);
-			byte[] bytedesc = desc.getBytes(CampGlobal.CHARSET);
-			campBean.setUrl(bytedesc);
-			campBean.setCounties(countiesBean);
-			campbeanSet.add(campBean);
-			System.out.println("新增");
-			AreaBean queryArea = areaService.select(area);
-			if (queryArea!=null) {
-				countiesBean.setArea(queryArea);
-				CountiesBean querycounties = countiesService.select(counties);
-				if (querycounties!=null) {
-					System.out.println("縣市有");
-					campBean.setCounties(querycounties);
-					 campService.insertCamp(campBean);
-				}
-				
-				else {
-					 countiesService.insertCounties(countiesBean);
-				
-				}
-				}else {
-					 areaService.insertArea(areaBean);
-				}
-			
-			
-		
-		
-		return "house/back/backCamp";
-	}
-	
-	@RequestMapping(path = "/deleteCamp", method = RequestMethod.POST)
-	public String deleteCamp(@RequestParam(name = "deletecamp")String campid, Model m) {
-		
-		int deletecampid = Integer.parseInt(campid);
-		campService.deleteCamp(deletecampid);
-		return "house/back/backCamp";
-
-	}
-//	@RequestMapping(path = "/updateCamp",method = RequestMethod.GET)
+//	@RequestMapping(path = "/mountainCampBack/insertCamp", method = RequestMethod.POST)
+//	public String insertCamp(CampBean bean , Model m,String id,
+//			@RequestParam(name = "insercamp_city") String city,
+//			@RequestParam(name = "insercamp_town") String town,
+//			@RequestParam(name = "insercamp_name") String name,
+//			@RequestParam(name = "insercamp_desc") String desc
+//			) {
+//		bean.setCity(city);
+//		bean.setCamptown(town);
+//		bean.setCampname(name);
+//		bean.setCampdesc(desc);
+//
+//		campBeanService.insertCamp(bean);
+//		int campid = Integer.parseInt(id);
+//		List<CampBean> list = campBeanService.selectcampid(campid);
+//		m.addAttribute("lookinser",list);
+//		return "house/back/backCamp";
+//	}
+//	
+//	@RequestMapping(path = "/mountainCampBack/deleteCamp", method = RequestMethod.POST)
+//	public String deleteCamp(@RequestParam(name = "deletecamp")String campid, Model m) {
+//		
+//		int deletecampid = Integer.parseInt(campid);
+//		campBeanService.deleteCamp(deletecampid);
+//		return "house/back/backCamp";
+//
+//	}
+//	@RequestMapping(path = "/mountainCampBack/updateCamp",method = RequestMethod.GET)
 //	public String update(CampBean cBean, Model m, 
 //			@RequestParam(name = "updatacamp_id") String id,
 //			@RequestParam(name = "updatecamp_city") String city,
@@ -160,11 +126,11 @@ public class CampServletAction {
 ////		System.out.println(list);
 //		return "house/back/backCamp";
 //	}
-	@RequestMapping(path = "/inserjump", method = RequestMethod.GET)
-	public String jumpinser() {
-		return "house/back/backinserCamp";
-	}
-//	@RequestMapping(path = "/updatejump", method = RequestMethod.GET)
+//	@RequestMapping(path = "/mountainCampBack/inserjump", method = RequestMethod.GET)
+//	public String jumpinser() {
+//		return "house/back/backinserCamp";
+//	}
+//	@RequestMapping(path = "/mountainCampBack/updatejump", method = RequestMethod.GET)
 //	public String jumpupdate(@RequestParam(name = "jumpupdate")String id, Model m) {
 //			int campid = Integer.parseInt(id);
 //		List<CampBean> list = campBeanService.selectcampid(campid);

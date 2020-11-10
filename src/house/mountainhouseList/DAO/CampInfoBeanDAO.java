@@ -57,15 +57,8 @@ public class CampInfoBeanDAO implements ICampInfoBeanService {
 	public CampInfoBean insertCamp(CampInfoBean bean) {
 		System.out.println("beanID : " + bean.getCampbasicid());
 		System.out.println("beanName : " + bean.getName());
-		
-		
-			getSession().save(bean);
-			return bean;
-			
-		
-		
-		
-		
+		getSession().save(bean);
+		return bean;
 	}
 
 	@Override
