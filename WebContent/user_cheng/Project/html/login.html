@@ -15,7 +15,7 @@
 <body>
     <div class="count1">
         <div class="count1_img">
-            <img src="../images/mountain1.png">
+            <img src="../images/logo1.png">
             <hr>
             <h1 class="font">岳進者，不要logo，可能改成輪播</h1>
             <!-- <a class="font">岳進者</a> -->
@@ -23,7 +23,7 @@
     </div>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light zline">
-            <a class="navbar-brand" href="#"><img src="../images/mountain1.png" height="30%" width="30%"></a>
+            <a class="navbar-brand" href="#"><img src="../images/logo1.png" height="30%" width="30%"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -86,9 +86,11 @@
         <div class="div_li2">
             <!-- 每頁不同的內容從這裡開始 -->
 
-            <a>上傳頭像</a>
+            <div class="upLoadImg">
+                <img id="output" />
+            </div>
             <input type="file" accept="image/*" onchange="loadFile(event)">
-            <img id="output" />
+
             <script>
                 var loadFile = function (event) {
                     var output = document.getElementById('output');
@@ -98,6 +100,9 @@
                     }
                 };
             </script>
+
+            <br>
+            <a>上傳頭像</a>
             <!-- 參考資料 https://stackoverflow.com/questions/4459379/preview-an-image-before-it-is-uploaded-->
             <!-- https://progressbar.tw/posts/47 -->
             <!-- 每頁不同的內容到這裡結束 -->
@@ -112,7 +117,7 @@
         <button id="demo4">多重選項&提醒視窗demo4</button>
         <button id="demo5">Demo5</button>
         <button id="demo6">Demo6</button>
-        
+
 
 
     </footer>

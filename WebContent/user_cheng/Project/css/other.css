@@ -34,12 +34,12 @@ header {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
 
-/* .hideUp header {
-    top: -60px;
-} */
+.hideUp header {
+    top: -8px;
+}
 
 .bgi {
-    background-image: url(../images/001+.jpg);
+    background-image: url(../images/BGI.jpg);
     background-attachment: scroll;
 }
 
@@ -48,8 +48,8 @@ header {
     column-rule: 3px double gray;
     width: auto;
     padding: 30px;
-    margin: 10px auto;
-    background-image: url(../images/945952.jpg);
+    margin: 56px auto 10px auto;
+    background-image: url(../images/BGI.jpg);
     background-attachment: fixed;
     /*背景附著*/
     background-repeat: no-repeat;
@@ -87,46 +87,58 @@ header {
 }
 
 .div_ul {
+    text-align: center;
     box-sizing: border-box;
-    width: 1900px;
-    margin: 0 auto;
-    font-size: 13px;
+    width: 1440px;
+    overflow: auto;
+    margin:  0px auto;/* div置中 */
 }
 
 .div_li1 {
-    width: 350px;
-    height: 400px;
+    background-color: lightblue;
+    width: 200px;
+    height: 1800px;
     text-align: center;
     line-height: 400px;
     float: left;
-    background-color: lightblue;
-    background-color: ;
-}
-
-.div_li2 {
-    margin-left: 120px;
-    margin-right: 120px;
-    height: 400px;
-    text-align: center;
-    line-height: 400px;
-    background-color: slategrey;
-    overflow: scroll;
 }
 
 .div_li3 {
-    width: 350px;
-    height: 400px;
+    background-color: lightblue;
+    width: 200px;
+    height: 1800px;
     text-align: center;
     line-height: 400px;
     float: right;
-    ;
-    background-color: lightblue;
+}
+
+.div_li2 {
+    background-color: slategrey;
+    margin-left: 200px;
+    margin-right: 200px;
+    height: 1800px;
+    text-align: center;
 }
 
 #footer {
     clear: both;
-    background-color: lightgoldenrodyellow;
-    height: 100px;
+    background-color: grey;
+    height: 120px;
+    width: 1440px;
     text-align: center;
-    line-height: 80px;
+    margin:0px auto;
+}
+
+.upLoadImg {
+    border: 5px solid #666;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 0px auto;
+    background-image: url(../images/預設頭像.png);
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
 }
