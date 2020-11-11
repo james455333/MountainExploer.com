@@ -47,7 +47,7 @@ header {
     column-count: 3;
     column-rule: 3px double gray;
     width: auto;
-    padding: 30px;
+    padding: 100px;
     margin: 56px auto 10px auto;
     background-image: url(../images/BGI.jpg);
     background-attachment: fixed;
@@ -91,7 +91,8 @@ header {
     box-sizing: border-box;
     width: 1440px;
     overflow: auto;
-    margin:  0px auto;/* div置中 */
+    margin: 0px auto;
+    /* div置中 */
 }
 
 .div_li1 {
@@ -126,7 +127,7 @@ header {
     height: 120px;
     width: 1440px;
     text-align: center;
-    margin:0px auto;
+    margin: 0px auto;
 }
 
 .upLoadImg {
@@ -141,4 +142,30 @@ header {
 img {
     max-width: 100%;
     max-height: 100%;
+}
+
+.導覽列表 {
+    width: 1440px;
+    height: 60px;
+    /* background: linear-gradient(0deg, #a8edea, #fed6e3); */
+    background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
+    /* background-color: rgb(222, 184, 135); */
+    text-align: center;
+    font-size: 30px;
+    /* display: flex; */
+}
+
+.second_nav {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    color: inherit; /* 移除超連結顏色 */
+    text-decoration: none;  /* 移除超連結底線 */
+    text-align: center;/*水平置中*/
+    line-height: 60px;/*垂直置中 大小依據當前div而定*/
+}
+.second_nav li a:hover{ /*控制second_nav中li裡的a標籤*/
+        text-decoration: none;/*移除連結底線*/
+    color:rgba(76, 69, 69, 0.397);   
+    /* background: linear-gradient(0deg, #a8edea, #fed6e3); */
 }
