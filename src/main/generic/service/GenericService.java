@@ -65,4 +65,12 @@ public class GenericService<T extends GenericTypeObject> implements AbstractServ
 	public int countWith(Integer id, String coulmnName) {
 		return genericDAO.countWith(id, coulmnName);
 	}
+	
+	public List<T> selectAllwithFK(Integer id, String FK){
+		return genericDAO.selectAllwithFK(id, FK);
+	}
+	
+	public List<T> selectAllwithFK(String search, String FK){
+		return genericDAO.selectAllwithFK(search, FK);
+	}
 }

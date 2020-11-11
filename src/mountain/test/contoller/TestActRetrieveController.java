@@ -66,18 +66,23 @@ public class TestActRetrieveController {
 		return actBeans;
 	}
 	
-//	@GetMapping(path = "/images")
-//	@ResponseBody
-//	public ResponseEntity<byte[]> showImage(@RequestParam(name = "seqno") String seqno) {
-//		System.out.println("圖片輸入開始");
-//		Integer rbPK = Integer.valueOf(seqno);
-//		genericService.save(actImage);
-//		byte[] imgBytes = result.getImgUrl();
-//		HttpHeaders headers = new HttpHeaders();
-//		headers.setContentType(MediaType.IMAGE_JPEG);
-//
-//		return new ResponseEntity<byte[]>(imgBytes, headers, HttpStatus.OK);
-//
-//	}
+	@GetMapping(path = "/images")
+	@ResponseBody
+	public List<ResponseEntity<byte[]>> showImage(@RequestParam(name = "actID") Integer actID) {
+		System.out.println("圖片輸入開始");
+		List<ResponseEntity<byte[]>> result = new ArrayList<ResponseEntity<byte[]>>();
+		genericService.save(actImage);
+		List<GenericTypeObject> imgList = genericService.selectAllwithFK(actID, "ACTIVITY_BASIC_SEQNO");
+		for (GenericTypeObject genericTypeObject : imgList) {
+			ActImage actImage = (ActImage) genericTypeObject;
+			byte[] imgBytes = actImage.getImg();
+			HttpHeaders headers = new HttpHeaders();
+			headers.setContentType(MediaType.IMAGE_JPEG);
+			result.add(new ResponseEntity<byte[]>(imgBytes, headers, HttpStatus.OK));
+		}
+
+		return result;
+
+	}
 
 }

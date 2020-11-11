@@ -15,6 +15,7 @@ public class TestPageEntryController {
 	
 	@GetMapping("/ActEntry")
 	public String ActIndexEntry(Model model, RedirectAttributes redrAttr) {
+		
 		return mountainActFolder+"testActList";
 	}
 	

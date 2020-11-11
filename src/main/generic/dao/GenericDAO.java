@@ -19,6 +19,9 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	private Integer page;
+	private Integer showData;
+	
 	public GenericDAO() {
 	}
 	
@@ -151,5 +154,36 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 		long result = (Long) query.uniqueResult();
 		return (int) result;
 	}
+	
+	public List<T> selectAllwithFK(Integer id, String FK){
+		Session session = sessionFactory.getCurrentSession();
+		
+		String hql ="From " + entity.getClass().getName() + " where " + FK + " = " + id ;
+		Query query = session.createQuery(hql);
+		List<T> result = query.setReadOnly(true).getResultList();
+		
+		return result;
+		
+	}
 
+	public List<T> selectAllwithFK(String search, String FK){
+		Session session = sessionFactory.getCurrentSession();
+		
+		if (page == null) {
+			page = 1;
+		}
+		if (showData == null) {
+			showData = 3;
+		}
+		int startPosition = (page-1) * showData;
+		String hql ="From " + entity.getClass().getName() + " where " + FK + " like '" +  search + "'";
+		Query query = session.createQuery(hql);
+		List<T> result = query.setFirstResult(startPosition)
+								.setMaxResults(showData)
+								.setReadOnly(true)
+								.getResultList();
+		
+		return result;
+		
+	}
 }

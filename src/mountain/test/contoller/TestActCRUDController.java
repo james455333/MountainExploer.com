@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import main.generic.service.GenericService;
 import member.back.model.MemberBasicBackService;
@@ -41,7 +43,7 @@ public class TestActCRUDController {
 	private MemberBasicBackService memberBasicService;
 	
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-	
+	//new Activity
 	@PostMapping( path = "/newAct", produces = {"application/json;charset=UTF-8"})
 	@ResponseBody
 	public Map<String, String> newAct(@RequestParam Map<String,String> allParams) throws ParseException, UnsupportedEncodingException {
@@ -103,6 +105,18 @@ public class TestActCRUDController {
 		return result;
 	}
 	
+	//new ActImg
+	public List<String> newActImg(
+			@RequestParam(name = "imgfiles", required = false) MultipartFile[] files){
+		if (files != null) {
+			for (MultipartFile multipartFile : files) {
+				
+			}
+		}
+		
+		return null;
+	}
+	
 	//test價格輸入格式
 	@GetMapping(path = "/priceTest", produces = {"application/json;charset=UTF-8"})
 	@ResponseBody
@@ -161,6 +175,7 @@ public class TestActCRUDController {
 		result.put("correct","correct");
 		return result;
 	}
+	//test Title
 	@GetMapping(path = "/titleTest", produces = {"application/json;charset=UTF-8"})
 	@ResponseBody
 	public Map<String, String> titleTest(
