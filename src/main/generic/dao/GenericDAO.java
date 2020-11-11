@@ -133,12 +133,23 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 		
 		Session session = sessionFactory.getCurrentSession();
 		
-		String hql = "Select count(*)"+" From " + entity.getClass().getName();
+		String hql = "Select count(*) From " + entity.getClass().getName();
 		
 		Query query = session.createQuery(hql);
 		long uniqueResult = (Long) query.uniqueResult();
 		
 		return (int)uniqueResult;
+	}
+
+	@Override
+	public int countWith(Integer id, String coulmnName) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		String hql = "Select count(*) From " +entity.getClass().getName() + " where " + coulmnName + " = " + id;
+		
+		Query query = session.createQuery(hql);
+		long result = (Long) query.uniqueResult();
+		return (int) result;
 	}
 
 }

@@ -21,6 +21,9 @@
 	#showActList td{
 		border: 1px solid red;
 	}
+	table tr{
+		margin-top: 10px;
+	}
 </style>
 
 </head>
@@ -28,8 +31,8 @@
 	<h2>測試活動及報名系統</h2>
 	<hr>
 	<h3>新增活動</h3>
-	<form action="/MountainExploer.com/mountain/test/newAct" id="newActForm" method="post">
-		<table>
+	
+		<table id="newAct">
 			<tr>
 				<td>
 					<label>會員編號</label>
@@ -47,17 +50,24 @@
 				</td>
 				<td>
 					<label>活動名稱</label>
+					<hr>
+					<label> 1. 不得為空 2. 包含空格、中、英文不得超過15字 3.不得含有特殊字元及空格，如:!@#$%^&... </label>
 					<input type="text" name="title" required>
+					<span></span>
 				</td>
 				<td>
 					<label>活動價格</label>
 					<input type="text" name="price" required>
+					<span></span>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<label>活動開始日期 ~ 活動結束日期 (開始日期最晚必須於兩個禮拜(21日)後)</label>
+					<label>活動開始日期 ~ 活動結束日期</label>
+					<hr>
+					<label> (開始日期最晚必須於兩個禮拜(21日)後)</label>
 					<input type="text" name="StEndDate" required readonly>
+					<span></span>
 				</td>
 				<td>
 					<label>活動天數</label>
@@ -66,6 +76,7 @@
 				<td>
 					<label>活動報名人數上限</label>
 					<input type="text" name="TopReg" required>
+					<span></span>
 				</td>
 				<td>
 					<label>活動報名截止日(最晚必須為活動開始前7日)</label>
@@ -79,9 +90,8 @@
 			<tr>
 		</table>
 		<hr>
-		<input type="submit" value="新增活動">
-		<input type="reset" value="重置">
-	</form>
+		<input type="button" value="新增活動" id="newActButton">
+		<span></span>
 	<hr>
 	<h3>活動顯示</h3>
 	<table  id="showActList">

@@ -49,11 +49,6 @@
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
 </ColumnProxy>
-<ColumnProxy name="reg_now" id="793072E2-6CF8-581F-7C27-26A9DB7CAC6B">
-<createdBy>Student</createdBy>
-<createdTime>2020-10-23 13:41:05 UTC</createdTime>
-<ownerDesignName>all</ownerDesignName>
-</ColumnProxy>
 <ColumnProxy name="reg_top" id="8A2E93AC-A9B1-ED43-12BF-13D5A4E7780F">
 <createdBy>Student</createdBy>
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>

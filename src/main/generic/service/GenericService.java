@@ -60,4 +60,9 @@ public class GenericService<T extends GenericTypeObject> implements AbstractServ
 	public int getAllData(T entity) {
 		return genericDAO.getAllData(entity);
 	}
+
+	@Override
+	public int countWith(Integer id, String coulmnName) {
+		return genericDAO.countWith(id, coulmnName);
+	}
 }

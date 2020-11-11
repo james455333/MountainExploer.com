@@ -1,7 +1,8 @@
 $(function(){
 	var npFunctionURL = "/MountainExploer.com/backstage/mountain/search";
-	
-	
+	var actHomeURL = "/MountainExploer.com/mountain/test";
+	var checkEmpty = true;
+	var checkError = true;
 	$(window).on("load",function(){
 		
 		//	國家公園列表設置
@@ -98,6 +99,7 @@ $(function(){
 	        "firstDay": 1
 	    },
 		"startDate": limitStartDate,
+		"endDate" : limitStartDate,
 	    "minDate": limitStartDate,
 	    "opens": "center"
 		}, function(start, end, label) {
@@ -164,12 +166,121 @@ $(function(){
 			    "showCustomRangeLabel": false,
 			    "startDate": new Date(),
 				}, function(start, end, label) {
-				  console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
 				});
 	});
+	//新增活動
+	$("#newActButton").on("click",function(){
+		var inputs = $("#newAct").find("input")
+		for(let i =0 ; i < inputs.length ; i++ ){
+			let j = inputs[i].value;
+			if( j.length <= 0){
+				checkEmpty = false;
+				break;	
+			}
+			checkEmpty = true;
+		}
+		console.log("chekcError : " + checkError)
+		if(checkError && checkEmpty){
+			$.ajax({
+				url : actHomeURL + "/newAct",
+				method : "POST",
+				data : {
+							memberID : $("input[name='memberID']").val(),
+							routeID : $("select[name='routeID']").val(),
+							title : $("input[name='title']").val(),
+							price : $('input[name="price"]').val(),
+							StEndDate : $("input[name='StEndDate']").val(),
+							totalDay : $("input[name='totalDay']").val(),
+							TopReg : $("input[name='TopReg']").val(),
+							RegEndDate : $("input[name='RegEndDate']").val(),
+							note : $("input[name='note']").val()
+						},
+				dataType : "json",
+				success : function(data){
+					swal({
+						title: data.success,
+			    		icon: "success"
+					})
+				},
+				error : function(data){
+					swal("Oops! 出現錯誤了")
+				},
+			
+			})
+		}else{
+			swal("尚未填寫完成或有錯誤填寫")
+		}
+		
+		
+	})
+	
+	//檢查名稱輸入
+	$("input[name='title']").on("blur",function(){
+		let selectObj = $("input[name='title']")
+		$.ajax({
+			url : actHomeURL + "/titleTest",
+			method : "GET",
+			data : {title : $(this).val()},
+			dataType : "json",
+			success : function(data){
+				check(data,selectObj)
+			}
+		})
+		
+	})
 	
 	
+	// 檢查價格輸入
+	$("input[name='price']").on("blur",function(){
+		let selectObj = $("input[name='price']")
+		$.ajax({
+			url : actHomeURL + "/priceTest",
+			method : "GET",
+			data :	{price : $(this).val()},
+			dataType : "json",
+			success : function(data){
+				check(data,selectObj)
+			}
+		})
+		
+	})
 	
+	//檢查開始及結束日期輸入
+	$("input[name='StEndDate']").on("blur",function(){
+		let selectObj = $("input[name='StEndDate']")
+		$.ajax({
+			url : actHomeURL + "/seDateTest",
+			method : "GET",
+			data :	{StEndDate : $(this).val()},
+			dataType : "json",
+			success : function(data){
+				check(data,selectObj)
+			}
+		})
+		
+	})
+	//檢查報名人數上限輸入
+	$("input[name='TopReg']").on("blur",function(){
+		let selectObj = $("input[name='TopReg']")
+		$.ajax({
+			url : actHomeURL + "/topRegTest",
+			method : "GET",
+			data :	{TopReg : $(this).val()},
+			dataType : "json",
+			success : function(data){
+				check(data,selectObj)
+			}
+		})
+		
+	})
+	
+	function check(data,selectObj){
+		if(data.hasOwnProperty("error")){
+					selectObj.siblings("span").html(data.error);
+				}else{
+					selectObj.siblings("span").html("<img src='../images/check.png'>")
+				}
+	}
 	
 	
 })

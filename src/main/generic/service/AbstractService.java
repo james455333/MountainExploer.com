@@ -13,6 +13,8 @@ public interface AbstractService<T extends GenericTypeObject> {
 	T select(Integer id);
 
 	T select(String name);
+	
+	int countWith(Integer id,String coulmnName);
 
 	List<T> selectAll();
 

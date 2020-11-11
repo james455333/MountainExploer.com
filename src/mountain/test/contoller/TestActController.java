@@ -2,36 +2,27 @@ package mountain.test.contoller;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Type;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.apache.commons.codec.binary.Base64;
-import org.hibernate.proxy.HibernateProxy;
-import org.hibernate.proxy.HibernateProxyHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-
-import main.HibernateProxyTypeAdapter;
 import main.generic.dao.GenericDAO;
+import main.generic.service.AbstractService;
 import member.model.MemberBasic;
 import mountain.function.RetrieveFunction;
 import mountain.model.activity.ActivityBasic;
@@ -81,7 +72,6 @@ public class TestActController {
 		actInfo.setPrice(1500);
 		actInfo.setTotalDay("4天3夜");
 		actInfo.setNote("測試NOTE".getBytes("UTF-8"));
-		actInfo.setRegNow(0);
 		actInfo.setRegTop(10);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		Date startDate = sdf.parse("2020/12/01");
@@ -147,4 +137,7 @@ public class TestActController {
 		return testList;
 		
 	}
+	
+	
+	
 }

@@ -70,4 +70,10 @@ public class ActBean {
 	public void setPostDate(String postDate) {
 		this.postDate = postDate;
 	}
+	public int getNowReg() {
+		return nowReg;
+	}
+	public void setNowReg(int nowReg) {
+		this.nowReg = nowReg;
+	}
 }

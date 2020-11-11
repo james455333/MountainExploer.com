@@ -45,11 +45,8 @@ public class ActivityInfo extends GenericTypeObject {
 	private String totalDay;
 	@Column(name="note")
 	private byte[] note;
-	@Column(name = "REG_NOW")
-	private Integer regNow;
 	@Column(name = "REG_TOP")
 	private Integer regTop;
-	
 	@Basic
 	@Column(name = "START_DATE")
 	@Temporal(TemporalType.DATE)
@@ -143,12 +140,7 @@ public class ActivityInfo extends GenericTypeObject {
 	public void setPostDate(java.util.Date postDate) {
 		this.postDate = postDate;
 	}
-	public Integer getRegNow() {
-		return regNow;
-	}
-	public void setRegNow(Integer regNow) {
-		this.regNow = regNow;
-	}
+
 	
 	
 	

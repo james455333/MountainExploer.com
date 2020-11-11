@@ -2,16 +2,27 @@ package mountain.function;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import main.generic.model.GenericTypeObject;
+import main.generic.service.AbstractService;
+import main.generic.service.GenericService;
+import member.model.MemberBasic;
+import mountain.model.activity.ActBean;
+import mountain.model.activity.ActivityBasic;
+import mountain.model.activity.ActivityInfo;
+import mountain.model.activity.Registry.ActRegistry;
 import mountain.model.route.MountainBean;
 import mountain.model.route.NationalPark;
 import mountain.model.route.RouteBasic;
 import mountain.model.route.RouteInfo;
 
 public class TransFuction {
+	
+	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 	
 	public static String bytesToString(byte[] bytes) throws IOException, SQLException {
 		if (bytes == null ) {
@@ -147,6 +158,47 @@ public class TransFuction {
 		}
 
 		return mainBeans;
+	}
+
+	public static List<ActBean> transToActBeans(List<GenericTypeObject> actInfoList,
+			GenericService<GenericTypeObject> genericService) {
+		
+		List<ActBean> actBeans = new ArrayList<ActBean>();
+		
+		
+		for (GenericTypeObject gto : actInfoList) {
+			ActBean actBean = new ActBean();
+			
+			ActivityInfo actInfo = (ActivityInfo) gto;
+			ActivityBasic actBasic = actInfo.getActBasic();
+			MemberBasic memberBasic = actBasic.getMemberBasic();
+			Integer actID = actInfo.getId();
+			
+			//set ID
+			actBean.setActID(actID);
+			//set Title
+			actBean.setTitle(actInfo.getTitle());
+			//set price
+			actBean.setPrice("$" + actInfo.getPrice());
+			//set startDate
+			actBean.setStartDate(sdf.format(actInfo.getStartDate()));
+			//set EndDate
+			actBean.setEndDate(sdf.format(actInfo.getEndDate()));
+			//set NowReg
+			genericService.save(new ActRegistry());
+			int countResult = genericService.countWith(actID, "ACTIVITY_BASIC_SEQNO");
+			actBean.setNowReg(countResult);
+			//set TopReg
+			actBean.setTopReg(actInfo.getRegTop());
+			//set RegEndDate
+			actBean.setRegEndDate(sdf.format(actInfo.getRegEndDate()));
+			//set PostDate
+			actBean.setPostDate(sdf.format(actInfo.getPostDate()));
+			
+			actBeans.add(actBean);
+		}
+		
+		return actBeans;
 	}
 	
 	

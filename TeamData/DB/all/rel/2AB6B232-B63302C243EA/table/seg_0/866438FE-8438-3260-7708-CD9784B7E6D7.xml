@@ -15,9 +15,10 @@
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
 <importedID>FDAA77EA-0A18-F893-B959-BD64D1EF96B6</importedID>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<domain>57B577AF-1919-EE54-9C07-01B34C5E5B7A</domain>
+<dataTypePrecision>5</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
@@ -30,9 +31,10 @@
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
 <importedID>A4DEC65D-675B-314C-F71E-D2645E1B452C</importedID>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<domain>B1D1D522-99A4-8943-7517-3922D03DE61D</domain>
+<dataTypePrecision>4</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
@@ -85,18 +87,6 @@
 <use>0</use>
 <logicalDatatype>LOGDT029</logicalDatatype>
 <domain>57AAEB89-ADE1-5295-799E-308DE467A9B3</domain>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="reg_now" id="793072E2-6CF8-581F-7C27-26A9DB7CAC6B">
-<sourceDDLFile>all.ddl</sourceDDLFile>
-<createdBy>Student</createdBy>
-<createdTime>2020-10-23 13:41:05 UTC</createdTime>
-<ownerDesignName>all</ownerDesignName>
-<importedID>B2AE78B0-1F9A-886A-6E67-985305B616AF</importedID>
-<use>0</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<domain>57B577AF-1919-EE54-9C07-01B34C5E5B7A</domain>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>

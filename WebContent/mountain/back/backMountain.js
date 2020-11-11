@@ -279,8 +279,7 @@ $(function(){
 		swal({
 			title: result,
 		    icon: "success"
-		}
-		);
+		});
 	}
 	
 	//招出錯誤訊息
