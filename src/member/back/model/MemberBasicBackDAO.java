@@ -37,6 +37,21 @@ public class MemberBasicBackDAO {
 	}
 	
 	
+	//驗證帳號是否重複
+	public boolean checkAnt(String account) {
+		Session session = sessionFactory.getCurrentSession();
+		Query<MemberBasic> query = session.createQuery("From MemberBasic where account = ?0", MemberBasic.class);
+		query.setParameter(0, account);
+		
+		MemberBasic qBean = query.uniqueResult();
+		
+		if(qBean != null) {
+			return true;
+		}
+		return false;
+	}
+	
+	
 	
 	//註冊
 	public MemberBasic insert(MemberBasic mb) {

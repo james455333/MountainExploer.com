@@ -17,6 +17,10 @@ public class MemberBasicBackService {
 		return mbDAO.checkLogin(account, password);
 	}
 	
+	public boolean checkAnt(String account) {
+		return mbDAO.checkAnt(account);
+	}
+	
 	public MemberBasic insert(MemberBasic mb) {
 		return mbDAO.insert(mb);
 	}

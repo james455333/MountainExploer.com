@@ -2,33 +2,36 @@ package member.model;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class MemberService {
 	
-	private MemberDAO memberDao;
+	@Autowired
+	private MemberDAO mbDao;
 	
 	public MemberBasic insert(MemberBasic mb) {
-		return memberDao.insert(mb);
+		return mbDao.insert(mb);
 	}
 	
 	public MemberBasic checkPassword(String account, String password) {
-		return memberDao.checkPassword(account, password);
+		return mbDao.checkPassword(account, password);
 	}
 	
-	public List<MemberBasic> listInfo() {
-		return memberDao.listInfo();
+	public boolean checkAnt(String account) {
+		return mbDao.checkAnt(account);
 	}
 	
-	public List<MemberInfo> listMbInfo(){
-		return memberDao.listMbInfo();
+	public List<MemberBasic> listInfo(){
+		return mbDao.listInfo();
 	}
 	
 	public MemberBasic updateData(int seqno, MemberBasic mb) {
-		return memberDao.updateData(seqno, mb);
+		return mbDao.updateData(seqno, mb);
 	}
-	
-	public MemberInfo updateInfo(int member_basic_id, MemberInfo mI) {
-		return memberDao.updateInfo(member_basic_id, mI);
-	}
-	
 
+	public MemberInfo updateInfo(int member_basic_id, MemberInfo mI) {
+		return mbDao.updateInfo(member_basic_id, mI);
+	}
 }

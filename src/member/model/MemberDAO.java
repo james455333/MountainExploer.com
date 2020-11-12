@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 
+
 @Repository("memberDao")
 public class MemberDAO {
 	
@@ -30,6 +31,23 @@ public class MemberDAO {
 		}
 		return null;
 	}
+	
+	
+	//Check account is Exist
+	public boolean checkAnt(String account) {
+		Session session = sessionFactory.getCurrentSession();
+		Query<MemberBasic> query = session.createQuery("From MemberBasic where account = ?0", MemberBasic.class);
+		query.setParameter(0, account);
+		
+		MemberBasic qBean = query.uniqueResult();
+		
+		if(qBean != null) {
+			return true;
+		}
+		return false;
+	}
+	
+	
 	
 	
 	//Login Check Password
