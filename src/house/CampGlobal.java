@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class CampGlobal {
 
-	public static final String ImgDownloadPath="C:\\MountainHouseCamp\\Camp_Img\\";
+	public static final String ImgDownloadPath="C:\\MountainExploer\\mountain\\images\\";
 	public static final String CHARSET = "UTF-8";
 
 	

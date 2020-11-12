@@ -31,8 +31,7 @@ public class CampInfoBeanDAO implements ICampInfoBeanService {
 
 	@Override
 	public List<CampInfoBean> selectcampid(int campid) {
-		Query<CampInfoBean> query = getSession().createQuery("From CampInfoBean where campbasicid=" + campid,
-				CampInfoBean.class);
+		Query<CampInfoBean> query = getSession().createQuery("From CampInfoBean where campbasicid=" + campid, CampInfoBean.class);
 		List<CampInfoBean> list = query.list();
 		return list;
 	}
@@ -55,8 +54,8 @@ public class CampInfoBeanDAO implements ICampInfoBeanService {
 
 	@Override
 	public CampInfoBean insertCamp(CampInfoBean bean) {
-		System.out.println("beanID : " + bean.getCampbasicid());
-		System.out.println("beanName : " + bean.getName());
+//		System.out.println("beanID : " + bean.getCampbasicid());
+//		System.out.println("beanName : " + bean.getName());
 		
 		
 			getSession().save(bean);

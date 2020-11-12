@@ -1,6 +1,8 @@
 package house.mountainhouseList.model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -59,6 +61,7 @@ public class CountiesBean {
 	public void setCamp(Set<CampInfoBean> camp) {
 		this.camp = camp;
 	}
+	
 	
 	
 	

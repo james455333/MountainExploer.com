@@ -80,9 +80,8 @@ public class ImportHouseCamp {
 		int importCounter = 0;
 		Session session = sessionFactory.getCurrentSession();
 		
-//		File file = new File("C:\\MountainHouseCamp\\Camp_Img\\Camp1.csv");
 		try(InputStream is1 = multipartFile.getInputStream();
-				InputStreamReader isr = new InputStreamReader(is1, MountainGlobal.CHARSET);
+				InputStreamReader isr = new InputStreamReader(is1, CampGlobal.CHARSET);
 				BufferedReader br = new BufferedReader(isr);) {
 			CSVParser parser = CSVFormat.EXCEL.withHeader().parse(br);
 			System.out.println("File load Succsess");

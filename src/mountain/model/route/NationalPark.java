@@ -15,6 +15,7 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+import house.mountainhouseList.model.HouseInfoBean;
 import main.generic.model.GenericTypeObject;
 
 @Entity
@@ -35,8 +36,10 @@ public class NationalPark extends GenericTypeObject implements Serializable {
 	private String name;
 	@OneToMany(fetch = FetchType.LAZY , mappedBy = "national_park" , cascade = CascadeType.ALL)
 	private Set<RouteBasic> routeBasic;
+	
 	@Override
 	public Integer getId() {
+		
 		return id;
 	}
 	@Override
@@ -57,7 +60,11 @@ public class NationalPark extends GenericTypeObject implements Serializable {
 	public void setRouteBasic(Set<RouteBasic> routeBasic) {
 		this.routeBasic = routeBasic;
 	}
-	
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
+	
 	
 }
