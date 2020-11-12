@@ -81,10 +81,12 @@
             <nav>
                 <ul class="second_nav">
                     <li><a href="#">第二導覽列1</a></li>
-                    
+
                     <li><a href="#">第二導覽列2</a></li>
 
                     <li><a href="#">第二導覽列3</a></li>
+
+                    <li><a href="#">第二導覽列4</a></li>
                 </ul>
             </nav>
         </div>
@@ -96,26 +98,72 @@
         </div>
         <div class="div_li2">
             <!-- 每頁不同的內容從這裡開始 -->
+            <div class="searchBar">
+                <nav>
+                    <ul class="third_nav">
+                        <li>居住地:
+                            <select>
+                                <option name="nothing" selected disabled>請選擇縣市</option>
+                                <option value="值2">aa</option>
+                                <option value="值3">bb</option>
+                            </select></li>
 
-            <div class="upLoadImg">
-                <img id="output" src="../images/預設頭像.png"/>
+                        <li>預設1:
+                            <select>
+                                <option name="nothing" selected disabled>選擇提示1</option>
+                                <option value="值2">aa</option>
+                                <option value="值3">bb</option>
+                            </select></li>
+
+                        <li>預設2:
+                            <select>
+                                <option name="nothing" selected disabled>選擇提示2</option>
+                                <option value="值2">aa</option>
+                                <option value="值3">bb</option>
+                            </select></li>
+                        <li>預設3:
+                            <select>
+                                <option name="nothing" selected disabled>選擇提示2</option>
+                                <option value="值2">aa</option>
+                                <option value="值3">bb</option>
+                            </select></li>
+
+                    </ul>
+                </nav>
+                <div class="search">
+                    搜尋：<input type="search" class="light-table-filter" data-table="order-table" placeholder="請輸入關鍵字">
+                </div>
+
             </div>
-            <input type="file" accept="image/*" onchange="loadFile(event)">
 
-            <script>
-                var loadFile = function (event) {
-                    var output = document.getElementById('output');
-                    output.src = URL.createObjectURL(event.target.files[0]);
-                    output.onload = function () {
-                        URL.revokeObjectURL(output.src) // free memory
-                    }
-                };
-            </script>
-
-            <br>
-            <a>上傳頭像</a>
-            <!-- 參考資料 https://stackoverflow.com/questions/4459379/preview-an-image-before-it-is-uploaded-->
-            <!-- https://progressbar.tw/posts/47 -->
+            <div class="table">
+                <table class="order-table">
+                    <thead>
+                        <tr>
+                            <th>飯店名</th>
+                            <th>房型</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>飯店1</td>
+                            <td>房型a</td>
+                        </tr>
+                        <tr>
+                            <td>飯店2</td>
+                            <td>房型b</td>
+                        </tr>
+                        <tr>
+                            <td>飯店3</td>
+                            <td>房型c</td>
+                        </tr>
+                        <tr>
+                            <td>飯店4</td>
+                            <td>房型d</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             <!-- 每頁不同的內容到這裡結束 -->
         </div>
     </div>
@@ -133,6 +181,8 @@
 
     </footer>
 </body>
+<script src="../js/upLoadImg.js"></script><!-- 上傳頭像 -->
+<script src="../js/table.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>

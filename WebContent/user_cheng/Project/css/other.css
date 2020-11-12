@@ -1,3 +1,14 @@
+.navbar-nav>li>a, .navbar-brand {
+    padding-top: 35px !important;
+    padding-bottom: 0 !important;
+    height: 100px;
+}
+
+.navbar {
+    min-height: 30px !important;
+    z-index: 50;
+}
+
 .p_information_td {
     padding: 40% 30% 40% 30%;
 }
@@ -32,10 +43,11 @@ header {
     box-sizing: border-box;
     transition: top 0.4s ease-in-out;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    z-index: 999;
 }
 
 .hideUp header {
-    top: -8px;
+    top: -20px;
 }
 
 .bgi {
@@ -48,7 +60,7 @@ header {
     column-rule: 3px double gray;
     width: auto;
     padding: 100px;
-    margin: 56px auto 10px auto;
+    margin: 116px auto 10px auto;
     background-image: url(../images/BGI.jpg);
     background-attachment: fixed;
     /*背景附著*/
@@ -118,7 +130,9 @@ header {
     margin-left: 200px;
     margin-right: 200px;
     height: 1800px;
+    width: 1040px;
     text-align: center;
+    z-index: 1;
 }
 
 #footer {
@@ -139,11 +153,10 @@ header {
 }
 
 #output {
-    
     /* background-image: url(../images/預設頭像.png); */
-   width: 100%;
-   height: 100%;
-   border: 5px solid #666;
+    width: 100%;
+    height: 100%;
+    border: 5px solid #666;
     width: 200px;
     height: 200px;
     border-radius: 50%;
@@ -165,14 +178,73 @@ header {
     list-style: none;
     display: flex;
     justify-content: center;
-    color: inherit; /* 移除超連結顏色 */
-    text-decoration: none;  /* 移除超連結底線 */
-    text-align: center;/*水平置中*/
-    line-height: 60px;/*垂直置中 大小依據當前div而定*/
+    color: inherit;
+    /* 移除超連結顏色 */
+    text-decoration: none;
+    /* 移除超連結底線 */
+    text-align: center;
+    /*水平置中*/
+    line-height: 60px;
+    /*垂直置中 大小依據當前div而定*/
+    /* float: left; */
 }
-.second_nav li a:hover{ /*控制second_nav中li裡的a標籤*/
-        text-decoration: none;/*移除連結底線*/
-        font-size: 130%;
-    color:rgba(76, 69, 69, 0.397);   
-    /* background: linear-gradient(0deg, #a8edea, #fed6e3); */
+.third_nav{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    line-height: 79px;
+    float: left;
+    position: relative;
+    overflow: hidden;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    /*文字間格*/
+    padding: 0px 20px;
+    float: left;
+}
+
+.second_nav li a:hover {
+    /* 控制second_nav中li裡的a標籤 */
+    text-decoration: none;
+    /* 移除連結底線 */
+    font-size: 110%;
+    color: rgba(76, 69, 69, 0.397);
+    border-radius: 25px;
+    overflow: hidden;
+    transition: all 0.3s linear;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    background: linear-gradient(0deg, #a8edea, #fed6e3);
+    /* background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%); */
+}
+
+.searchBar {
+    height: 79px;
+    width: 1000px;
+    position: relative;
+    /*依據父元素找到絕對位置*/
+    top: 30px;
+    left: 20px;
+    background: linear-gradient(#fef0c9, #fedf84);
+    border: 1px solid #fe9669;
+}
+
+
+
+
+.search {
+    float: right;
+    position: relative;
+    top: 24.5px;
+    right: 20px;
+}
+.table{
+    
 }
