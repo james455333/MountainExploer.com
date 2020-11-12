@@ -243,8 +243,17 @@ nav li {
     float: right;
     position: relative;
     top: 24.5px;
-    right: 20px;
+    right: 25px;
 }
-.table{
+.table1{
+    position: relative;
+    top: 100px;
+    width: 1000px;
+    border: 5px solid black;
+    margin: 0px auto;
+}
+.imgSearch{
+    cursor: pointer;
+    position: relative;
     
 }
