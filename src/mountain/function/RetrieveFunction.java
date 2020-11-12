@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import main.generic.service.AbstractService;
+import main.generic.service.InterfaceService;
 import main.generic.service.GenericService;
 import mountain.model.route.MountainBean;
 import mountain.model.route.NationalPark;
@@ -55,7 +55,7 @@ public class RetrieveFunction {
 	
 	//全數查詢
 	public static List<NationalPark> getAll(GenericService<NationalPark> nPHibService){
-		AbstractService<NationalPark> nParkService= nPHibService;
+		InterfaceService<NationalPark> nParkService= nPHibService;
 		
 		return nParkService.selectAll();
 	}

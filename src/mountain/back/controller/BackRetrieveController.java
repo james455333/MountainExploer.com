@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -23,11 +21,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import main.generic.service.AbstractService;
+import main.generic.model.GenericTypeObject;
 import main.generic.service.GenericService;
-import mountain.function.PageFunction;
+import main.generic.service.InterfaceService;
 import mountain.function.RetrieveFunction;
 import mountain.model.route.MountainBean;
 import mountain.model.route.NationalPark;
@@ -41,13 +38,16 @@ public class BackRetrieveController {
 //	private int showData = 5;
 
 	@Autowired
-	private GenericService<RouteInfo> rtInfoService;
+	private GenericService<GenericTypeObject> genericService ;
 	@Autowired
-	private GenericService<RouteBasic> rtBasicService;
+	private RouteBasic routeBasic;
 	@Autowired
-	private GenericService<NationalPark> nPService;
+	private NationalPark nationPark;
 	@Autowired
 	private RouteBasicServiceInterface rbSpecialService;
+	@Autowired
+	private RouteInfo routeInfo;
+	
 	
 	// 預設查詢 總查詢
 	@GetMapping(value = "/all", produces = {"application/json;charset=UTF-8"})
@@ -56,6 +56,7 @@ public class BackRetrieveController {
 			@RequestParam(name = "page", required = false)Integer page,
 			@RequestParam(name = "showData", required = false)Integer showData) throws IOException, SQLException{
 		
+		System.out.println("select All : active");
 		List<MountainBean> allBeans = null;
 		
 		if (page ==null) {
@@ -65,9 +66,14 @@ public class BackRetrieveController {
 		if (showData == null) {
 			showData = 3;
 		}
-		
-		rtBasicService.save(new RouteBasic());
-		List<RouteBasic> rtBasicList = rtBasicService.selectWithPage(page, showData);
+		InterfaceService<GenericTypeObject> service= genericService;
+		service.save(new RouteBasic());
+		List<GenericTypeObject> selectWithPage = service.selectWithPage(page, showData);
+		List<RouteBasic> returnBasics = new ArrayList<RouteBasic>();
+		for (GenericTypeObject genericTypeObject : selectWithPage) {
+			returnBasics.add((RouteBasic)genericTypeObject);
+		}
+		List<RouteBasic> rtBasicList = returnBasics;
 		allBeans = RetrieveFunction.getMountainBeanList(rtBasicList);
 		
 		return allBeans;
@@ -80,22 +86,23 @@ public class BackRetrieveController {
 			@RequestParam(name = "nationalPark", required = false) String npID,
 			@RequestParam(name = "routeID", required = false) String routeID) {
 		Integer totalData = null;
+		InterfaceService<GenericTypeObject> service= genericService;
 		
 		if (npID == null && routeID == null) {
-			rtBasicService.save(new RouteBasic());
-			totalData = rtBasicService.getAllData(new RouteBasic());
-			System.out.println("totalData : " + totalData);
+			service.save(routeBasic);
+			totalData = service.getAllData(routeBasic);
+//			System.out.println("totalData : " + totalData);
 			return totalData;
 		}else if (routeID == null && npID != null) {
-			nPService.save(new NationalPark());
-			NationalPark npBean = nPService.select(Integer.parseInt(npID));
+			service.save(nationPark);
+			NationalPark npBean = (NationalPark)service.select(Integer.parseInt(npID));
 			Set<RouteBasic> routeBasicSet = npBean.getRouteBasic();
-			System.out.println("totalData : " + totalData);
+//			System.out.println("totalData : " + totalData);
 			totalData = routeBasicSet.size();
 			return totalData;
 		}else if (npID == null && routeID != null) {
 			totalData = 1;
-			System.out.println("totalData : " + totalData);
+//			System.out.println("totalData : " + totalData);
 			return totalData;
 		}
 		
@@ -110,11 +117,16 @@ public class BackRetrieveController {
 			@RequestParam(name = "page", required = false)Integer page,
 			@RequestParam(name = "showData", required = false)Integer showData) throws IOException, SQLException{
 		List<MountainBean> result = new ArrayList<MountainBean>();
-		List<NationalPark> npList = new ArrayList<NationalPark>();
+		InterfaceService<GenericTypeObject> service= genericService;
+		
 		if (npID == null ) {
-			nPService.save(new NationalPark());
-			List<NationalPark> before = nPService.selectAll();
-			for (NationalPark nationalPark : before) {
+			service.save(new NationalPark());
+			List<GenericTypeObject> before = service.selectAll();
+			List<NationalPark> returnList = new ArrayList<NationalPark>();
+			for (GenericTypeObject genericTypeObject : before) {
+				returnList.add((NationalPark)genericTypeObject);
+			}
+			for (NationalPark nationalPark : returnList) {
 				MountainBean mountainBean = new MountainBean();
 				mountainBean.setSeqno(nationalPark.getId());
 				mountainBean.setNpName(nationalPark.getName());
@@ -145,13 +157,14 @@ public class BackRetrieveController {
 			@RequestParam(name = "page", required = false)Integer page) throws IOException, SQLException{
 		List<RouteBasic> selectList = new ArrayList<RouteBasic>();
 		List<MountainBean> result = null;
+		InterfaceService<GenericTypeObject> service= genericService;
 		if (routeID != null ) {
 			//查詢特定路線
 			if(page == null ) {
 				page = 1 ;
 			}
-			rtBasicService.save(new RouteBasic());
-			RouteBasic select = rtBasicService.select(routeID);
+			service.save(routeBasic);
+			RouteBasic select = (RouteBasic) service.select(routeID);
 			selectList.add(select);
 			result = RetrieveFunction.getMountainBeanList(selectList);
 			return result ;
@@ -159,8 +172,8 @@ public class BackRetrieveController {
 		
 		
 		//導覽列路線列表返回
-		nPService.save(new NationalPark());
-		NationalPark select = nPService.select(npID);
+		service.save(nationPark);
+		NationalPark select = (NationalPark) service.select(npID);
 		Set<RouteBasic> routeBasic = select.getRouteBasic();
 		Iterator<RouteBasic> rtBasicItr = routeBasic.iterator();
 		
@@ -176,11 +189,10 @@ public class BackRetrieveController {
 		@RequestMapping(path = "/images", method = RequestMethod.GET)
 		@ResponseBody
 		public ResponseEntity<byte[]> showImage(@RequestParam(name = "seqno") String seqno) {
-			System.out.println("圖片輸入開始");
-			rtInfoService.save(new RouteInfo());
-			AbstractService<RouteInfo> rInfoService = rtInfoService;
+			InterfaceService<GenericTypeObject> service= genericService;
+			service.save(routeInfo);
 			Integer rbPK = Integer.valueOf(seqno);
-			RouteInfo result = rInfoService.select(rbPK);
+			RouteInfo result = (RouteInfo)service.select(rbPK);
 			byte[] imgBytes = result.getImgUrl();
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.IMAGE_JPEG);
@@ -195,17 +207,20 @@ public class BackRetrieveController {
 			
 			Map<String, String> errors = new HashMap<String, String>();
 			model.addAttribute("errors", errors);
-			List<NationalPark> all = null;
+			List<NationalPark> all = new ArrayList<NationalPark>();
 			int defaultNP = 0;
 			List<MountainBean> rtResult = null;
 			try {
+				InterfaceService<GenericTypeObject> abstractService = genericService;
+				abstractService.save(nationPark);
+				List<GenericTypeObject> returnAll = abstractService.selectAll();
+				for (GenericTypeObject genericTypeObject : returnAll) {
+					all.add( (NationalPark)genericTypeObject);
+				}
 				
-			nPService.save(new NationalPark());
-			all = RetrieveFunction.getAll(nPService);
-			
-			defaultNP = RetrieveFunction.defaultNPID(seqno,all);
-			
-			rtResult = RetrieveFunction.getRTResult(seqno, all);
+				defaultNP = RetrieveFunction.defaultNPID(seqno,all);
+				
+				rtResult = RetrieveFunction.getRTResult(seqno, all);
 			
 			} catch (IOException e) {
 				errors.put("msg", "發生IO錯誤 : " + e.getMessage());

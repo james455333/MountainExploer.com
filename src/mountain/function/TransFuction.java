@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import main.generic.model.GenericTypeObject;
-import main.generic.service.AbstractService;
+import main.generic.service.InterfaceService;
 import main.generic.service.GenericService;
 import member.model.MemberBasic;
 import mountain.model.activity.ActBean;

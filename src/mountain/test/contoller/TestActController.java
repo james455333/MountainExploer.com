@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import main.generic.dao.GenericDAO;
-import main.generic.service.AbstractService;
+import main.generic.service.InterfaceService;
 import member.model.MemberBasic;
 import mountain.function.RetrieveFunction;
 import mountain.model.activity.ActivityBasic;

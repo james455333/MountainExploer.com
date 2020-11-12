@@ -1,5 +1,6 @@
 package main.generic.dao;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,14 +14,29 @@ import main.generic.model.GenericTypeObject;
 
 @Repository
 @SuppressWarnings("unchecked")
-public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
+public class GenericDAO<T extends GenericTypeObject> implements InterfaceDAO<T> {
 
 	private T entity;
 	@Autowired
 	private SessionFactory sessionFactory;
 	
 	private Integer page;
+	public Integer getPage() {
+		return page;
+	}
+
+	public void setPage(Integer page) {
+		this.page = page;
+	}
+
 	private Integer showData;
+	public Integer getShowData() {
+		return showData;
+	}
+
+	public void setShowData(Integer showData) {
+		this.showData = showData;
+	}
 	
 	public GenericDAO() {
 	}
@@ -86,6 +102,7 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 	public T insert(T entity) {
 
 		Session session = sessionFactory.getCurrentSession();
+		session.evict(entity);
 		session.save(entity);
 		return entity;
 
@@ -154,7 +171,7 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 		long result = (Long) query.uniqueResult();
 		return (int) result;
 	}
-	
+	@Override
 	public List<T> selectAllwithFK(Integer id, String FK){
 		Session session = sessionFactory.getCurrentSession();
 		
@@ -165,7 +182,7 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 		return result;
 		
 	}
-
+	@Override
 	public List<T> selectAllwithFK(String search, String FK){
 		Session session = sessionFactory.getCurrentSession();
 		

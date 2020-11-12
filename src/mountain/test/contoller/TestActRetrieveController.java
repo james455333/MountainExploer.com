@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import main.generic.model.GenericTypeObject;
-import main.generic.service.AbstractService;
+import main.generic.service.InterfaceService;
 import main.generic.service.GenericService;
 import member.back.model.MemberBasicBackService;
 import member.model.MemberBasic;

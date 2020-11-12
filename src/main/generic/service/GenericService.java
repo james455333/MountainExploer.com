@@ -11,12 +11,30 @@ import main.generic.model.GenericTypeObject;
 
 
 @Service
-public class GenericService<T extends GenericTypeObject> implements AbstractService<T> {
+public class GenericService<T extends GenericTypeObject> implements InterfaceService<T> {
 	
 	@Autowired
 	private GenericDAO<T> genericDAO;
 	
 	public GenericService() {
+	}
+	
+	private Integer page;
+	public Integer getPage() {
+		return page;
+	}
+
+	public void setPage(Integer page) {
+		this.page = page;
+	}
+
+	private Integer showData;
+	public Integer getShowData() {
+		return showData;
+	}
+
+	public void setShowData(Integer showData) {
+		this.showData = showData;
 	}
 	
 	@Override
@@ -65,11 +83,11 @@ public class GenericService<T extends GenericTypeObject> implements AbstractServ
 	public int countWith(Integer id, String coulmnName) {
 		return genericDAO.countWith(id, coulmnName);
 	}
-	
+	@Override
 	public List<T> selectAllwithFK(Integer id, String FK){
 		return genericDAO.selectAllwithFK(id, FK);
 	}
-	
+	@Override
 	public List<T> selectAllwithFK(String search, String FK){
 		return genericDAO.selectAllwithFK(search, FK);
 	}

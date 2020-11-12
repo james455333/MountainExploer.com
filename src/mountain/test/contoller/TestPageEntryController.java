@@ -19,4 +19,9 @@ public class TestPageEntryController {
 		return mountainActFolder+"testActList";
 	}
 	
+	@GetMapping("/TestMultiImage")
+	public String multiImageEntry() {
+		return mountainActFolder+"testMultiImage";
+	}
+	
 }

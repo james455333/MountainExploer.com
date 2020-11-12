@@ -33,6 +33,7 @@ activity_regitry  seq_act_reg		4000000~4999999		+1			7		10
 act_reg_info 	  seq_reg_info		40000000~49999999	+1			8		10
 activity_response seq_act_resp		40000000~4999999	+1			8		10
 activity_sideresp seq_side_resp		40000000~4999999	+1			8		10
+act_img seq_side_resp		40000000~4999999	+1			8		10
 ----------------------------------------------------------------------
 
 *shoppingMall*	  

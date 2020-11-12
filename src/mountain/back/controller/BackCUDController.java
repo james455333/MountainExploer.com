@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import main.generic.service.AbstractService;
+import main.generic.service.InterfaceService;
 import main.generic.service.GenericService;
 import mountain.MountainGlobal;
 import mountain.model.route.NationalPark;
@@ -24,7 +26,8 @@ import mountain.model.route.RouteInfo;
 @Controller
 @RequestMapping("/backsatage/mountain")
 public class BackCUDController {
-	
+	@Autowired
+	private HttpServletRequest request;
 	@Autowired
 	private GenericService<NationalPark> npService;
 	@Autowired
@@ -40,7 +43,7 @@ public class BackCUDController {
 		
 		if (deleteID !=null && !deleteID.isEmpty()) {
 			int rbID = Integer.parseInt(deleteID.replaceAll("[\\D]", ""));
-			AbstractService<RouteBasic> rtBasicService =this.rtBasicService;
+			InterfaceService<RouteBasic> rtBasicService =this.rtBasicService;
 			rtBasicService.save(new RouteBasic());
 			boolean check = rtBasicService.delete(rbID);
 			System.out.println("=================================");
@@ -61,9 +64,9 @@ public class BackCUDController {
 		Map<String, String> errors = new HashMap<String, String>();
 		redirectAttributes.addFlashAttribute("errors", errors);
 
-		AbstractService<NationalPark> npService = this.npService;
-		AbstractService<RouteBasic> rtBasicService = this.rtBasicService;
-		AbstractService<RouteInfo> rtInfoService = this.rtInfoService;
+		InterfaceService<NationalPark> npService = this.npService;
+		InterfaceService<RouteBasic> rtBasicService = this.rtBasicService;
+		InterfaceService<RouteInfo> rtInfoService = this.rtInfoService;
 	
 		// 判斷是否路線編號為空
 		if (allParams.get("routeNum") != null && !allParams.get("routeNum").isEmpty()) {
@@ -98,7 +101,7 @@ public class BackCUDController {
 				}
 
 				if (multipartFile != null && !multipartFile.isEmpty()) {
-					byte[] newImgBytes = MountainGlobal.downloadImage(multipartFile);
+					byte[] newImgBytes = MountainGlobal.downloadImage(multipartFile,request);
 					rtInfo.setImgUrl(newImgBytes);
 				}
 				// 判斷國家公園名稱是否有更改
@@ -158,9 +161,9 @@ public class BackCUDController {
 		NationalPark nationalPark = new NationalPark();
 		RouteBasic routeBasic = new RouteBasic();
 		RouteInfo routeInfo = new RouteInfo();
-		AbstractService<NationalPark> npService = this.npService;
-		AbstractService<RouteBasic> rtBasicService = this.rtBasicService;
-		AbstractService<RouteInfo> rtInfoService = this.rtInfoService;
+		InterfaceService<NationalPark> npService = this.npService;
+		InterfaceService<RouteBasic> rtBasicService = this.rtBasicService;
+		InterfaceService<RouteInfo> rtInfoService = this.rtInfoService;
 		
 		nationalPark.setName(allParams.get("npName"));
 		
@@ -169,7 +172,7 @@ public class BackCUDController {
 		byte[] despBytes = allParams.get("routeDesp").getBytes("UTF-8");
 		routeInfo.setDescription(despBytes);
 		
-		byte[] imageBytes = MountainGlobal.downloadImage(multipartFile);
+		byte[] imageBytes = MountainGlobal.downloadImage(multipartFile,request);
 		routeInfo.setImgUrl(imageBytes);
 		
 		byte[] advBytes = allParams.get("routeAdvice").getBytes("UTF-8");

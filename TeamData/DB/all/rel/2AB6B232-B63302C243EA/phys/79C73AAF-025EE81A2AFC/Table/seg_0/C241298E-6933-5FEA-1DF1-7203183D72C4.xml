@@ -13,6 +13,12 @@
 <createdBy>Student</createdBy>
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
+<autoIncrementDDL>IDENTITY_CLAUSE</autoIncrementDDL>
+</ColumnProxy>
+<ColumnProxy name="img_name" id="80B48653-7429-F1BF-3097-8AB5253B56A5">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-12 13:46:43 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
 </ColumnProxy>
 <ColumnProxy name="activity_basic_seqno" id="94F4FF6F-F70F-CE1D-EF09-13D8995D148C">
 <createdBy>Student</createdBy>

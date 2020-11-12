@@ -1,12 +1,16 @@
 package mountain.test.contoller;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,16 +21,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import main.generic.model.GenericTypeObject;
 import main.generic.service.GenericService;
+import main.generic.service.InterfaceService;
 import member.back.model.MemberBasicBackService;
 import member.model.MemberBasic;
+import mountain.MountainGlobal;
+import mountain.model.activity.ActImage;
 import mountain.model.activity.ActivityBasic;
 import mountain.model.activity.ActivityInfo;
 import mountain.model.route.RouteBasic;
 
 @Controller
-@RequestMapping("/mountain/test")
+@RequestMapping("/mountain/test/crud")
 public class TestActCRUDController {
+	@Autowired 
+	HttpServletRequest request;
 	@Autowired
 	private ActivityBasic actBasic;
 	@Autowired
@@ -36,9 +46,9 @@ public class TestActCRUDController {
 	@Autowired
 	private RouteBasic rtBasic;
 	@Autowired
-	private GenericService<RouteBasic> rtBasicService;
+	private ActImage actImage;
 	@Autowired
-	private GenericService<ActivityBasic> actBasicService;
+	private GenericService<GenericTypeObject> service;
 	@Autowired
 	private MemberBasicBackService memberBasicService;
 	
@@ -46,9 +56,12 @@ public class TestActCRUDController {
 	//new Activity
 	@PostMapping( path = "/newAct", produces = {"application/json;charset=UTF-8"})
 	@ResponseBody
-	public Map<String, String> newAct(@RequestParam Map<String,String> allParams) throws ParseException, UnsupportedEncodingException {
+	public Map<String, String> newAct(
+			@RequestParam Map<String,String> allParams) throws ParseException, UnsupportedEncodingException {
 		
 		Map<String, String> result = new HashMap<String, String>();
+		
+		InterfaceService<GenericTypeObject> service = this.service;
 		
 		//set會員編號及基本活動
 		memberBasic = memberBasicService.select(Integer.parseInt(allParams.get("memberID")));
@@ -58,8 +71,8 @@ public class TestActCRUDController {
 		//set 活動詳細資訊
 		//set 名稱
 		//set 路線編號
-		rtBasicService.save(rtBasic);
-		rtBasic = rtBasicService.select(Integer.parseInt(allParams.get("routeID")));
+		service.save(rtBasic);
+		rtBasic = (RouteBasic) service.select(Integer.parseInt(allParams.get("routeID")));
 		actInfo.setActBasic(actBasic);
 //		System.out.println("========================");
 //		System.out.println("RouteBasic ID : " + );
@@ -91,30 +104,44 @@ public class TestActCRUDController {
 		}
 		//set 發布日期
 		actInfo.setPostDate(new Date());
-		
 		//insert
+		
 		try {
-			actBasicService.save(actBasic);
-			actBasicService.insert(actBasic);
+			service.save(actBasic);
+			actBasic = (ActivityBasic)service.insert(actBasic);
 		} catch (Exception e) {
 			throw new RuntimeException("發生錯誤");
 		}
 		
 		result.put("success", "新增成功");
-		
+		result.put("actID", String.valueOf(actBasic.getSeqno()));
 		return result;
 	}
 	
 	//new ActImg
+	@PostMapping("/newImg")
 	public List<String> newActImg(
-			@RequestParam(name = "imgfiles", required = false) MultipartFile[] files){
-		if (files != null) {
-			for (MultipartFile multipartFile : files) {
-				
-			}
+			@RequestParam(name = "files", required = false) MultipartFile[] files,
+			@RequestParam(name = "actID", required = false) Integer actID) throws IllegalStateException, IOException{
+		System.out.println("New Image Start");
+		List<String> result = new ArrayList<String>();
+		InterfaceService<GenericTypeObject> service = this.service;
+		
+		for (MultipartFile multipartFile : files) {
+			
+			System.out.println("file_name : " + multipartFile.getOriginalFilename());
+			byte[] imgeBytes = MountainGlobal.downloadImage(multipartFile, request);
+			actBasic.setSeqno(40031);
+			actImage.setActivityBasic(actBasic);
+			actImage.setName(multipartFile.getOriginalFilename());
+			actImage.setImg(imgeBytes);
+			service.save(actImage);
+			service.insert(actImage);
 		}
 		
-		return null;
+		result.add("圖片新增成功");
+		
+		return result;
 	}
 	
 	//test價格輸入格式
