@@ -1,6 +1,8 @@
 package house.back.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -57,39 +59,61 @@ public class CampServletAction {
 	public String selectArea(@RequestParam(name = "selectarea")String area , Model m) {
 		
 		List<AreaBean> list = areaService.selectArea(area);
-		List<CountiesBean> list2 = countiesService.selectAllCounties();
-		m.addAttribute("camp_area" , list);
-		m.addAttribute("camp_counties",list2);
+		
+		ArrayList<CampInfoBean> list1= new ArrayList<CampInfoBean>();
+		
+		for(AreaBean a:list) {
+			
+			for(CountiesBean b:a.getCounties()) {				
+				
+				for(CampInfoBean c:b.getCamp()) {
+					list1.add((CampInfoBean) c);
+				}				
+			}						
+		}
+		System.out.println("");
+		m.addAttribute("camp_area" , list1);
+		
 		return "house/back/backCamp";
 		
 	}
 	@PostMapping("/selectCounties")
 	public String selectCounties(@RequestParam(name = "selectcounties")String counties , Model m) {
 		List<CountiesBean> list = countiesService.selectCounties(counties);
-		m.addAttribute("camp_counties" , list);
+		ArrayList<CampInfoBean> list2 = new ArrayList<CampInfoBean>();
+		for (CountiesBean countiesBean : list) {
+			for (CampInfoBean campInfoBean : countiesBean.getCamp()) {
+				list2.add(campInfoBean);
+			}
+		}
+		
+		m.addAttribute("camp_counties" , list2);
 		return "house/back/backCamp";
 		
 		
 	}
-	@PostMapping("/selectCamp")
+	@GetMapping("/selectCamp")
 	public String selectCampName(@RequestParam(name = "selectcampname")String campname , Model m) {
 		
 		List<CampInfoBean> list = campService.selectCampName(campname);
 		m.addAttribute("camp_campname", list);
 		return "house/back/backCamp";
 		
-	}
+	}	
 	
-	@RequestMapping(path = "/insertCamp", method = RequestMethod.POST)
-	public String insertCamp(CampInfoBean campBean,AreaBean areaBean , CountiesBean countiesBean, Model m,String id,
-			Set<CountiesBean> countiesbeanSet,Set<CampInfoBean> campbeanSet,
+	
+	@RequestMapping(path = "/insertCamp", method = RequestMethod.GET)
+	public String insertCamp(CampInfoBean campBean,AreaBean areaBean , CountiesBean countiesBean, Model m,
+			 String id,			
 			@RequestParam(name = "insercamp_area") String area,
 			@RequestParam(name = "insercamp_counties") String counties,
 			@RequestParam(name = "insercamp_name") String name,
-			@RequestParam(name = "insercamp_desc") String desc
+			@RequestParam(name = "insercamp_desc") byte[] desc
 			) throws UnsupportedEncodingException   {
 		
 		System.out.println("111111");
+		Set<CountiesBean> countiesbeanSet = new HashSet<CountiesBean>();
+		Set<CampInfoBean> campbeanSet = new HashSet<CampInfoBean>();
 			areaBean.setName(area);
 			areaBean.setCounties(countiesbeanSet);
 			
@@ -97,12 +121,13 @@ public class CampServletAction {
 			countiesBean.setName(counties);
 			countiesBean.setAreaname(area);
 			countiesBean.setArea(areaBean);
+			countiesBean.setCamp(campbeanSet);
 			countiesbeanSet.add(countiesBean);
-						
-			
+					
+
 			campBean.setName(name);
-			byte[] bytedesc = desc.getBytes(CampGlobal.CHARSET);
-			campBean.setUrl(bytedesc);
+//			byte[] bytedesc = desc.getBytes(CampGlobal.CHARSET);
+			campBean.setUrl(desc);
 			campBean.setCounties(countiesBean);
 			campbeanSet.add(campBean);
 			System.out.println("新增");
@@ -124,53 +149,87 @@ public class CampServletAction {
 					 areaService.insertArea(areaBean);
 				}
 			
-			
-		
-		
+
 		return "house/back/backCamp";
 	}
 	
 	@RequestMapping(path = "/deleteCamp", method = RequestMethod.POST)
 	public String deleteCamp(@RequestParam(name = "deletecamp")String campid, Model m) {
-		
 		int deletecampid = Integer.parseInt(campid);
+		System.out.println("刪除" + campid);
 		campService.deleteCamp(deletecampid);
 		return "house/back/backCamp";
 
 	}
-//	@RequestMapping(path = "/updateCamp",method = RequestMethod.GET)
-//	public String update(CampBean cBean, Model m, 
-//			@RequestParam(name = "updatacamp_id") String id,
-//			@RequestParam(name = "updatecamp_city") String city,
-//			@RequestParam(name = "updatecamp_town") String town,
-//			@RequestParam(name = "updatecamp_name") String name,
-//			@RequestParam(name = "updatecamp_desc") String desc
-//			) {
-//		int campid = Integer.parseInt(id);
-//		cBean.setCampid(campid);
-//		cBean.setCity(city);
-//		cBean.setCamptown(town);
-//		cBean.setCampname(name);
-//		cBean.setCampdesc(desc);
-//		campBeanService.update(cBean);
-////		System.out.println(cBean);
-//		
-//		List<CampBean> list = campBeanService.selectcampid(campid);
-//		m.addAttribute("lookupdate",list);
-////		System.out.println(list);
-//		return "house/back/backCamp";
-//	}
+	@RequestMapping(path = "/updateCamp",method = RequestMethod.GET)
+	public String update(CampInfoBean campBean,AreaBean areaBean,CountiesBean countiesBean, Model m, 
+			@RequestParam(name = "updatacamp_id") String id,
+			@RequestParam(name = "updatecamp_city") String area,
+			@RequestParam(name = "updatecamp_town") String counties,
+			@RequestParam(name = "updatecamp_name") String name,
+			@RequestParam(name = "updatecamp_desc") byte[] desc
+			) {
+		Set<CountiesBean> countiesSet = new HashSet<CountiesBean>();
+		Set<CampInfoBean> campSet = new HashSet<CampInfoBean>();
+		areaBean.setName(area);
+		areaBean.setCounties(countiesSet);
+		
+		countiesBean.setName(counties);
+		countiesBean.setAreaname(area);
+		countiesBean.setArea(areaBean);
+		countiesBean.setCamp(campSet);
+		countiesSet.add(countiesBean);
+		
+		
+		int campid = Integer.parseInt(id);
+		campBean.setCampbasicid(campid);
+		campBean.setName(name);
+		campBean.setUrl(desc);
+		campBean.setCountiesname(counties);
+		campBean.setCounties(countiesBean);
+		campSet.add(campBean);
+		
+		AreaBean areaQuery = areaService.select(area);
+		if (areaQuery!=null) {
+			countiesBean.setArea(areaQuery);
+			CountiesBean countiesQuery = countiesService.select(counties);
+			if (countiesQuery!=null) {
+				campBean.setCounties(countiesQuery);
+				campService.update(campBean);
+			
+		}else {
+			countiesService.updateCounties(countiesBean);
+		}
+		}else {
+			areaService.update(areaBean);
+		}
+			
+		
+		
+		
+		List<CampInfoBean> list = campService.selectcampid(campid);
+		m.addAttribute("lookupdate",list);
+		System.out.println(list);
+		return "house/back/backCamp";
+	}
 	@RequestMapping(path = "/inserjump", method = RequestMethod.GET)
 	public String jumpinser() {
 		return "house/back/backinserCamp";
 	}
-//	@RequestMapping(path = "/updatejump", method = RequestMethod.GET)
-//	public String jumpupdate(@RequestParam(name = "jumpupdate")String id, Model m) {
-//			int campid = Integer.parseInt(id);
-//		List<CampBean> list = campBeanService.selectcampid(campid);
-//				m.addAttribute("jumpupdatename",list);
-//				System.out.println("list" + list);
-//		return "house/back/backupdateCamp";
+	@RequestMapping(path = "/updatejump", method = RequestMethod.GET)
+	public String jumpupdate(@RequestParam(name = "jumpupdate") String id, Model m) {
+			int campid = Integer.parseInt(id);
+		List<CampInfoBean> list = campService.selectcampid(campid);
+				m.addAttribute("jumpupdatename",list);
+		return "house/back/backupdateCamp";
+	}
+//	@GetMapping("/selectcampid")
+//	public String selectCampId(@RequestParam(name = "selectcampid") String id , Model m) {
+//		
+//		int campid = Integer.parseInt(id);
+//		List<CampInfoBean> list = campService.selectcampid(campid);
+//		m.addAttribute("campid",list);
+//		return "house/back/backCamp";
 //	}
 	
 }

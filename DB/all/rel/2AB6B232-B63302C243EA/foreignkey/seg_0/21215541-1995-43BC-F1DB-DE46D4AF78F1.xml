@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="21215541-1995-43BC-F1DB-DE46D4AF78F1" containerWithKeyObject="2DEB44F3-EF9A-42E7-A7B4-502A1A1DB969" localFKIndex="575AB21E-07F2-A043-9CCD-2541946409DC" name="camp_info_counties_FK">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-06 12:53:03 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<referredTableLongName>counties</referredTableLongName>
+<deleteRule>CASCADE</deleteRule>
+<referredTableID>D50F20F0-6A9B-204A-D3AF-84445F3DA447</referredTableID>
+<keyObject>36F43F6A-9D26-DB4B-205E-20DB6F54CB4D</keyObject>
+<referredKeyID>36F43F6A-9D26-DB4B-205E-20DB6F54CB4D</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>name</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
