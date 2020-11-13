@@ -5,6 +5,22 @@ $(function(){
 	var actHomeURL = "/MountainExploer.com/mountain/test";
 	
 	$(window).on("load",function(){
+		//	預設顯示
+		$.ajax({
+			url : actHomeURL + "/search/ajaxShow",
+			method : "GET",
+			data : {
+				page : 1,
+				showData : 3
+			},
+			dataType : "json",
+			success : function(data){
+				insertTable(data);
+			},
+			error : function(data){
+				
+			}
+		})
 		//	國家公園列表設置
 				$.ajax({
 					url : npFunctionURL+"/navNP",
@@ -20,8 +36,12 @@ $(function(){
 						//console.log(firstNP)
 						// 路線列表預設為第一筆顯示之國家公園
 						$.ajax({
-							url : npFunctionURL+"/navRT?nationalPark=" + firstNP,
+							url : npFunctionURL+"/navRT",
 							method : "GET",
+							data : {
+								nationalPark : firstNP
+							},
+							
 							dataType : "json",
 							success:function(data){
 								//console.log(data)
@@ -61,7 +81,7 @@ $(function(){
 		console.log("checkEmpty :" + checkEmpty)
 		if(checkError && checkEmpty){
 			$.ajax({
-				url : actHomeURL + "/newAct",
+				url : actHomeURL + "/crud/newAct",
 				method : "POST",
 				data : {
 							memberID : $("input[name='memberID']").val(),
@@ -76,27 +96,12 @@ $(function(){
 						},
 				dataType : "json",
 				success : function(data){
-					swal({
-						title: data.success,
-			    		icon: "success"
-					})
-					var fd = new FormData();
+					$("#imgForm").submit();
 					
-					/*if($("input[name="files"]").val() != null){
-						$.ajax({
-							url : actHomeURL+"/newImg",
-							method : "PSOT",
-							date : {
-								"actID" : data.actID,
-								"files" : $("input[name="files"]").val()
-							},
-							datetype : 
-						})
-						
-					}*/
+				
 				},
 				error : function(data){
-					swal("Oops! 出現錯誤了")
+					swal("Oops! 出現錯誤囉", "文章資料出現錯誤", "errors")
 				},
 			
 			})
@@ -125,7 +130,7 @@ $(function(){
 					$(".npSubmit").attr("disabled",true)
 				}
 				
-				}
+			}
 		})
 	})
 	
@@ -133,7 +138,7 @@ $(function(){
 	$("input[name='title']").on("blur",function(){
 		let selectObj = $("input[name='title']")
 		$.ajax({
-			url : actHomeURL + "/titleTest",
+			url : actHomeURL + "/crud/titleTest",
 			method : "GET",
 			data : {title : $(this).val()},
 			dataType : "json",
@@ -149,7 +154,7 @@ $(function(){
 	$("input[name='price']").on("blur",function(){
 		let selectObj = $("input[name='price']")
 		$.ajax({
-			url : actHomeURL + "/priceTest",
+			url : actHomeURL + "/crud/priceTest",
 			method : "GET",
 			data :	{price : $(this).val()},
 			dataType : "json",
@@ -164,7 +169,7 @@ $(function(){
 	$("input[name='StEndDate']").on("blur",function(){
 		let selectObj = $("input[name='StEndDate']")
 		$.ajax({
-			url : actHomeURL + "/seDateTest",
+			url : actHomeURL + "/crud/setDateTest",
 			method : "GET",
 			data :	{StEndDate : $(this).val()},
 			dataType : "json",
@@ -178,7 +183,7 @@ $(function(){
 	$("input[name='TopReg']").on("blur",function(){
 		let selectObj = $("input[name='TopReg']")
 		$.ajax({
-			url : actHomeURL + "/topRegTest",
+			url : actHomeURL + "/crud/topRegTest",
 			method : "GET",
 			data :	{TopReg : $(this).val()},
 			dataType : "json",
@@ -186,6 +191,15 @@ $(function(){
 				check(data,selectObj)
 			}
 		})
+		
+	})
+	//限制圖片上傳個數<5
+	$("input[type='file']").on("change",function(){
+		let countFile = $(this).get(0).files.length 
+		if ( countFile > 5){
+			$(this).val("");
+			swal("上傳圖片不得大於五張", "請重新選擇", "error");
+		}
 		
 	})
 	
@@ -198,5 +212,81 @@ $(function(){
 			selectObj.siblings(".correctSpan").html("<img src='../images/check.png'>")
 		}
 	}
+	
+	$("#imgForm").submit(function(e){
+		
+		$.ajax({
+			url: actHomeURL+"/crud/newImg",
+	    	type: 'POST',
+	     	data: new FormData( this ),
+	     	processData: false,
+	     	contentType: false,
+			success : function(data){
+				swal({
+						title: "新增成功",
+			    		icon: "success"
+					})
+			},
+			error : function(data){
+				if(data != null){
+					swal("Oops! 出現錯誤囉", "活動資料新增成功，但圖片上傳失敗。\n錯誤原因 : \n"+data, "error")
+					
+				}else{
+					swal("Oops! 出現錯誤囉", "活動資料新增成功，但圖片上傳失敗。\n請到'活動管理->編輯活動圖片'重新上傳", "error")
+				}
+			}
+		 });
+   		e.preventDefault();
+	})
+	
+	//顯示插入
+	function insertTable(data){
+		for(let i in data){
+			$("#showActList").append(
+				"<tbody>" +
+					"<tr>" +
+						"<td>" +
+							"<img class='showImage' src='" + actHomeURL +"/search/images?actID=" + data[i].actID +"'>" +
+							"<img class='extendImage' src='" + actHomeURL +"/search/images?actID=" + data[i].actID +"'>" +
+						"</td>" +
+						"<td>" +
+							data[i].title + " / " + data[i].price + " / " + data[i].totalDay + " / " + data[i].startDate + " ~ " + data[i].endDate +
+						"</td>" +
+						"<td>" +
+							data[i].postDate + " / " + data[i].authorName +
+						"</td>" +
+						"<td>" +
+							data[i].nowReg + " / " + data[i].topReg +
+						"</td>" +
+						"<td>" +
+							data[i].regEndDate +
+						"</td>" +
+					"</tr>" +
+				"</tbody>"
+			)
+			
+		}
+		
+	}
+	//滑鼠移動呈現放大圖片
+	$("#showActList").on("mouseenter",".showImage",function(e){
+		//console.log($(this).attr("src"))
+		var elm = $(this);
+		console.log($(this))
+		var x = e.pageX - elm.offset().left;
+	    var y = e.pageY - elm.offset().top;
+		//var x = event.clientX + $("body").scrollLeft();
+		//var x = event.clientX;
+		//console.log( 'x : ' + event.clientX)
+		//var y = event.clientY + $("body").scrollTop(); 
+		//var y = event.clientY; 
+		//console.log( 'y : ' + event.clientY)
+		$(this).siblings().show();
+		
+		
+	}).on("mouseleave",".showImage",function(){
+		$(this).siblings().hide();
+	})
+	
 	
 })	

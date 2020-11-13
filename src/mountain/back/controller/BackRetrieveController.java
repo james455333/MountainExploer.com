@@ -120,7 +120,7 @@ public class BackRetrieveController {
 		InterfaceService<GenericTypeObject> service= genericService;
 		
 		if (npID == null ) {
-			service.save(new NationalPark());
+			service.save(nationPark);
 			List<GenericTypeObject> before = service.selectAll();
 			List<NationalPark> returnList = new ArrayList<NationalPark>();
 			for (GenericTypeObject genericTypeObject : before) {

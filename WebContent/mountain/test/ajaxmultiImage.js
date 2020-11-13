@@ -2,7 +2,6 @@
 $(function(){
 	
 	var actHomeURL = "/MountainExploer.com/mountain/test/crud";
-	console.log( actHomeURL+"/newImg")
 	$("#imgForm").submit(function(e){
 		
 		$.ajax({
@@ -10,7 +9,13 @@ $(function(){
 	    	type: 'POST',
 	     	data: new FormData( this ),
 	     	processData: false,
-	     	contentType: false
+	     	contentType: false,
+			success : function(data){
+				
+			},
+			error : function(data){
+				
+			}
 		 });
    		e.preventDefault();
 	})

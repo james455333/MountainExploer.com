@@ -37,7 +37,7 @@ public class BackCUDController {
 	
 	// 資料刪除
 	@RequestMapping(path = "/deleteData" , method = RequestMethod.GET)
-	public String deleteDate(RedirectAttributes rdAttr,@RequestParam(name = "seqno") String deleteID) {
+	public String deleteDate(RedirectAttributes rdAttr, @RequestParam(name = "seqno") String deleteID) {
 //		System.out.println("=================================");
 //		System.out.println("deletID : " + deleteID);
 		
@@ -58,7 +58,10 @@ public class BackCUDController {
 	}
 	// 資料修改
 	@RequestMapping(path = "/updateData", method = RequestMethod.POST)
-	public String updateData(@RequestParam Map<String,String> allParams,@RequestParam(name = "routeImg") MultipartFile multipartFile,RedirectAttributes redirectAttributes) throws IllegalStateException, IOException {
+	public String updateData(
+			@RequestParam Map<String,String> allParams, 
+			@RequestParam(name = "routeImg") MultipartFile multipartFile, 
+			RedirectAttributes redirectAttributes) throws IllegalStateException,IOException {
 //		System.out.println("file status : " + multipartFile.isEmpty());
 		
 		Map<String, String> errors = new HashMap<String, String>();

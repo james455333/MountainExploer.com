@@ -25,6 +25,17 @@
 	#newAct td{
 		border : 1px solid gray;
 	}
+	.showImage{
+		width : 50px;
+		height : 50px;
+	}
+	.extendImage{
+		position: absolute;
+		hegith : 300px;
+		width : 300px;
+		display: none;
+		z-index: 10;
+	}
 </style>
 
 </head>
@@ -93,13 +104,16 @@
 			<tr>
 			<tr>
 				<td>
-					<input type="file" name="files" >
+					<form enctype="multipart/form-data" id="imgForm">
+						<label>圖片上傳 : (每個活動最多五張圖)</label>
+						<input type="file" name="files" multiple accept="image/*">
+					</form>
 				</td>
 			</tr>
 			
 		</table>
 		<hr>
-		<input type="submit" value="新增活動" id="newActButton">
+		<input type="submit" value="新增活動" id="newActButton" >
 	<hr>
 	<h3>活動顯示</h3>
 	<table  id="showActList">
@@ -112,9 +126,7 @@
 				<td>報名截止日</td>
 			</tr>
 		</thead>
-		<tbody>
 		
-		</tbody>
 	
 	</table>
 

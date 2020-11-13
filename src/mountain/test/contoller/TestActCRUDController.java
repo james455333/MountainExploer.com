@@ -126,16 +126,19 @@ public class TestActCRUDController {
 		System.out.println("New Image Start");
 		List<String> result = new ArrayList<String>();
 		InterfaceService<GenericTypeObject> service = this.service;
-		
+		service.save(actImage);
+		int actImageNum = service.countWith(actID, "ACTIVITY_BASIC_SEQNO");
+		if (actImageNum >= 5 || (actImageNum + files.length)>5) {
+			throw new RuntimeException("目前有" + files.length + "張圖,每個活動最多不可上傳超過五張圖片");
+		}
 		for (MultipartFile multipartFile : files) {
-			
 			System.out.println("file_name : " + multipartFile.getOriginalFilename());
 			byte[] imgeBytes = MountainGlobal.downloadImage(multipartFile, request);
 			actBasic.setSeqno(40031);
 			actImage.setActivityBasic(actBasic);
 			actImage.setName(multipartFile.getOriginalFilename());
 			actImage.setImg(imgeBytes);
-			service.save(actImage);
+			
 			service.insert(actImage);
 		}
 		
@@ -164,7 +167,7 @@ public class TestActCRUDController {
 		return result;
 	}
 	//test 開始及結束日期
-	@GetMapping(path = "/seDateTest", produces = {"application/json;charset=UTF-8"})
+	@GetMapping(path = "/setDateTest", produces = {"application/json;charset=UTF-8"})
 	@ResponseBody
 	public Map<String, String> seDateTest(
 			@RequestParam("StEndDate") String stEndDate) throws ParseException{

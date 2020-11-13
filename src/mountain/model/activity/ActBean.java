@@ -1,10 +1,12 @@
 package mountain.model.activity;
 
 import java.util.Date;
+import java.util.List;
 
 public class ActBean {
 	
 	private int actID;
+	private String authorName;
 	private String title;
 	private String totalDay;
 	private String price;
@@ -14,8 +16,14 @@ public class ActBean {
 	private int topReg;
 	private String regEndDate;
 	private String postDate;
+	private List<String> tag;
 	
-	
+	public List<String> getTag() {
+		return tag;
+	}
+	public void setTag(List<String> tag) {
+		this.tag = tag;
+	}
 	public int getActID() {
 		return actID;
 	}
@@ -75,5 +83,11 @@ public class ActBean {
 	}
 	public void setNowReg(int nowReg) {
 		this.nowReg = nowReg;
+	}
+	public String getAuthorName() {
+		return authorName;
+	}
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
 	}
 }

@@ -194,6 +194,11 @@ public class TransFuction {
 			actBean.setRegEndDate(sdf.format(actInfo.getRegEndDate()));
 			//set PostDate
 			actBean.setPostDate(sdf.format(actInfo.getPostDate()));
+			//set AuthorName
+			actBean.setAuthorName(memberBasic.getName());
+			//set Tag
+			List<String> tag = new ArrayList<String>();
+			new TagSelector(actInfo).getTagResult();
 			
 			actBeans.add(actBean);
 		}
