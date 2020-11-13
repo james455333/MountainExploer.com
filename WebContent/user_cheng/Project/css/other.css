@@ -108,7 +108,7 @@ header {
 }
 
 .div_li1 {
-    background-color:rgb(208, 243, 255);
+    background-color: rgb(208, 243, 255);
     width: 200px;
     height: 1800px;
     text-align: center;
@@ -199,15 +199,29 @@ header {
     overflow: hidden;
 }
 
+.thirdSelect {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    /* line-height: 79px; */
+    float: left;
+    position: relative;
+}
+
 nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
-nav li {
-    /*文字間格*/
+.li1 {
     padding: 0px 20px;
+    float: left;
+}
+
+.li2 {
+    /* 文字間格 */
+    padding: 20px 10px;
     float: left;
 }
 
@@ -246,7 +260,7 @@ nav li {
 
 /* 以下table.css */
 
-.table1-div {
+.secDivContent {
     position: relative;
     top: 100px;
     width: 1000px;
