@@ -22,7 +22,7 @@ public class MemberRegisterController {
 	
 	@RequestMapping(path = "/member/memberRegisterEntry", method = RequestMethod.GET)
 	public String processRegisterEntry() {
-		return "member/Register";
+		return "member/register";
 	}
 	
 	
