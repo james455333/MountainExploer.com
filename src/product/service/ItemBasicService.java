@@ -28,7 +28,7 @@ public class ItemBasicService {
 		
 		return itemBasicDao.selectName(name);
 	}
-	public ItemBasic selectNo(Long no) {
+	public ItemBasic selectNo(Integer no) {
 		
 		return itemBasicDao.selectNo(no);
 	}

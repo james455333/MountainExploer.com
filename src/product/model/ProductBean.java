@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ProductBean {
-	private Long seqno;
+	private Integer seqno;
 	private String name;
 	private String firstClass;
 	private String secondClass;
@@ -13,10 +13,10 @@ public class ProductBean {
 	private Integer price;
 	private Integer stock;
 	
-	public Long getSeqno() {
+	public Integer getSeqno() {
 		return seqno;
 	}
-	public void setSeqno(long seqno) {
+	public void setSeqno(Integer seqno) {
 		this.seqno = seqno;
 	}
 	public String getName() {

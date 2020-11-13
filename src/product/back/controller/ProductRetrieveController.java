@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import product.back.function.RetrieveFunction;
 import product.model.FirstClass;
+import product.model.ItemBasic;
 import product.model.ItemInfo;
 import product.model.ProductBean;
 import product.model.SecondClass;
@@ -132,14 +133,13 @@ public class ProductRetrieveController {
 	@RequestMapping(path = "/productBackStage/updateDataPage", method = RequestMethod.GET)
 	public String updatePage(@RequestParam(name = "seqno") String seqno, Model model) {
 		
-		List<ItemInfo> all = null;
-//		List<ProductBean> productBeans = null;
 		int itemBasicSeqno = Integer.parseInt(seqno);
 		
-		ItemInfo result = itemInfoService.selectNo(itemBasicSeqno);
+		ItemInfo itemInfo = itemInfoService.selectNo(itemBasicSeqno);
+		ItemBasic itemBasic = itemBasicService.selectNo(itemBasicSeqno);
 		
-		
-		model.addAttribute("result", result);
+		model.addAttribute("itemInfo", itemInfo);
+		model.addAttribute("itemBasic", itemBasic);
 		return "forward:/productBackStage/updateDataEntry";
 	}
 

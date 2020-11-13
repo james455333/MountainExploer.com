@@ -43,7 +43,7 @@ public class ItemBasicDAO {
 		return null;
 	}
 	
-	public ItemBasic selectNo(Long no) {
+	public ItemBasic selectNo(Integer no) {
 		Session session = sessionFactory.getCurrentSession();
 
 		String hql = "From ItemBasic  where SEQNO like '" + no + "'";

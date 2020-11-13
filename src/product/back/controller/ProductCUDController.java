@@ -26,7 +26,6 @@ import product.service.SecondClassService;
 
 @Controller
 public class ProductCUDController {
-
 	@Autowired
 	private FirstClassService firstClassService;
 	@Autowired
@@ -58,23 +57,23 @@ public class ProductCUDController {
 	
 	@RequestMapping(path = "/productBackStage/updateData", method = RequestMethod.POST)
 	public String updateData(Model m,
-			@RequestParam(name = "itemBNo") String itemBNo,
+			@RequestParam(name = "itemBasicSeqno") String itemBasicSeqno,
 			@RequestParam(name = "name") String name,
 			@RequestParam(name = "type") String type,
 			@RequestParam(name = "price") String price,
 			@RequestParam(name = "stock") String stock,
 			@RequestParam(name = "productImg") MultipartFile multipartFile) throws IllegalStateException, IOException {
 		
-		long seqLong = Long.parseLong(itemBNo);
-		ItemInfo itemInfo = itemInfoService.selectNo(seqLong);
-		ItemBasic itemBasic =itemBasicService.selectNo(seqLong) ;
+		Integer seqInt = Integer.parseInt(itemBasicSeqno);
+		ItemInfo itemInfo = itemInfoService.selectNo(seqInt);
+		ItemBasic itemBasic =itemBasicService.selectNo(seqInt) ;
 
 		itemBasic.setName(name);
 		itemInfo.setType(type);
 		Integer priceNum1 = Integer.parseInt(price);
 		itemInfo.setPrice(priceNum1);
 		Integer stockNum = Integer.parseInt(stock);
-		itemInfo.setPrice(stockNum);
+		itemInfo.setStock(stockNum);
 		
 		byte[] imageBytes = TransFuction.downloadImage(multipartFile);
 		itemInfo.setImg(imageBytes);
@@ -115,15 +114,11 @@ public class ProductCUDController {
 
 	private void insertDataToDB(Map<String, String> allParams, MultipartFile multipartFile)
 			throws IllegalStateException, IOException {
-		
-		FirstClass firstClass = new FirstClass();
 		SecondClass secondClass = new SecondClass();
 		ItemBasic itemBasic = new ItemBasic();
 		ItemInfo itemInfo = new ItemInfo();
-		
+		secondClass.setId(Integer.valueOf(allParams.get("scName")));
 		itemBasic.setName(allParams.get("name"));
-		firstClass.setName(allParams.get("fcName"));
-		secondClass.setName(allParams.get("scName"));
 		itemInfo.setType(allParams.get("type"));
 		int priceNum = Integer.parseInt(allParams.get("price"));
 		itemInfo.setPrice(priceNum);
@@ -141,18 +136,8 @@ public class ProductCUDController {
 		itemBasic.setSecondClass(secondClass);
 		itemBasic.setItemInfo(itemInfo);
 		
-		Set<SecondClass> secondClassSet = new HashSet<SecondClass>();
-		secondClassSet.add(secondClass);
-		firstClass.setSecondClasses(secondClassSet);
-
-		Set<ItemBasic> itemBasicSet = new HashSet<ItemBasic>();
-		itemBasicSet.add(itemBasic);
-		secondClass.setItemBasics(itemBasicSet);
-		secondClass.setFirstClass(firstClass);
 		
 		itemBasicService.insert(itemBasic);
-		firstClassService.insert(firstClass);
-		secondClassService.insert(secondClass);
 		itemInfoService.insert(itemInfo);
 		
 		}

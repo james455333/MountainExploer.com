@@ -92,9 +92,11 @@
 						<td>${productBean.secondClass}</td>
 						<td><img style="width: 50px; height: 50px;"
 							src="<c:url value='/productBackStage/images?seqno=${productBean.seqno}' />"
-							class="routeImg" name="rtImg${vs.index})"> <img
+							class="routeImg" name="rtImg${vs.index})"> 
+							<img
 							src="<c:url value='/productBackStage/images?seqno=${productBean.seqno}' />"
-							class="extendImg" name="rtImg${vs.index})"></td>
+							class="extendImg" name="rtImg${vs.index})">
+							</td>
 						<td><div style="width: 150px; height: 150px; overflow: auto;">${productBean.price}</div></td>
 						<td><div style="width: 150px; height: 150px; overflow: auto;">${productBean.stock}</div></td>
 						<td>

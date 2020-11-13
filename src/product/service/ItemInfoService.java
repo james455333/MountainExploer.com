@@ -21,7 +21,7 @@ public class ItemInfoService {
 
 		return itemInfoDao.insert(bean);
 	}
-	public ItemInfo selectNo(long l) {
+	public ItemInfo selectNo(Integer l) {
 		
 		return itemInfoDao.selectNo(l);
 	}

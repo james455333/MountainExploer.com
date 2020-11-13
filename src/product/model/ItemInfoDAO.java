@@ -49,7 +49,7 @@ public class ItemInfoDAO {
 	}
 
 	// 查詢
-	public ItemInfo selectNo(long l) {
+	public ItemInfo selectNo(Integer l) {
 		Session session = sessionFactory.getCurrentSession();
 
 		ItemInfo result = (ItemInfo) session.get(ItemInfo.class, l);

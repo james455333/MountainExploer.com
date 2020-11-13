@@ -21,18 +21,18 @@ public class ItemInfo {
 	@GenericGenerator(name = "generator", strategy = "foreign", parameters = @Parameter(name="property", value = "itemBasic"))
 	@Id @Column(name = "ITEM_BASIC_SEQNO")
 	@GeneratedValue(generator = "generator")
-	private int itemBasicSeqno;
+	private Integer itemBasicSeqno;
 
 	@Column(name = "TYPE")
 	private String type;
 	@Column(name = "PRICE")
-	private int price;
+	private Integer price;
 	@Column(name = "IMG")
 	private byte[] img;
 	@Column(name = "DESCRIPTION")
 	private byte[] description;
 	@Column( name = "STOCK")
-	private int stock;
+	private Integer stock;
 	@OneToOne(fetch = FetchType.LAZY )
 	@PrimaryKeyJoinColumn
 	private ItemBasic itemBasic;
@@ -42,7 +42,7 @@ public class ItemInfo {
 	public int getItemBasicSeqno() {
 		return itemBasicSeqno;
 	}
-	public void setItemBasicSeqno(int itemBasicSeqno) {
+	public void setItemBasicSeqno(Integer itemBasicSeqno) {
 		this.itemBasicSeqno = itemBasicSeqno;
 	}
 
@@ -56,7 +56,7 @@ public class ItemInfo {
 	public int getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 
@@ -77,7 +77,7 @@ public class ItemInfo {
 	public int getStock() {
 		return stock;
 	}
-	public void setStock(int stock) {
+	public void setStock(Integer stock) {
 		this.stock = stock;
 	}
 

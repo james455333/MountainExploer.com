@@ -24,30 +24,30 @@
 		<form action='<c:url value="/productBackStage/updateData"/>'
 			class="newDataForm" enctype="multipart/form-data" method="post">
 			<div>
-				<c:if test="${ !empty result }">
+<%-- 				<c:if test="${ !empty result }"> --%>
 					<div>
-						<label for="itemBNo">編號 : &nbsp&nbsp(無法更改)</label> <input
-							type="text" name="itemBNo" value="${result.itemBNo}" readonly>
+						<label for="itemBasicSeqno">編號 : &nbsp&nbsp(無法更改)</label> <input
+							type="text" name="itemBasicSeqno" value="${itemInfo.itemBasicSeqno}" readonly>
 					</div>
 					<div>
 						<label for="name"> 產品名稱: (必填)&nbsp</label> <input type="text"
-							name="name" value="${result.name}" required>
+							name="name" value="${itemBasic.name}" required>
 					</div>
 					<div>
 						<label for="type"> 型號: (必填)&nbsp</label> <input type="text"
-							name="type" value="${result.type}" required>
+							name="type" value="${itemInfo.type}" required>
 					</div>
 					<div>
 						<label for="price"> 價格: (必填)&nbsp</label> <input type="text"
-							name="price" value="${result.price}" required>
+							name="price" value="${itemInfo.price}" required>
 					</div>
 					<div>
 						<label for="stock"> 庫存量 : &nbsp(必填)&nbsp</label> <input
-							type="text" name="stock" value="${result.stock}" required>
+							type="text" name="stock" value="${itemInfo.stock}" required>
 					</div>
 					<div>
 						<img style="width: 50px; height: 50px;"
-							src="<c:url value='/productBackStage/images?seqno=${productBean.seqno}' />"	>
+							src="<c:url value='/productBackStage/images?seqno=${itemInfo.itemBasicSeqno}' />"	>
 						<br> 
 				
 					</div>
@@ -57,7 +57,7 @@
 						<input type="file" name="productImg" accept="image/*">
 					</div>
 
-				</c:if>
+<%-- 				</c:if> --%>
 			</div>
 			<div>
 				<div>

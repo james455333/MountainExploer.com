@@ -78,7 +78,7 @@ public class FirstClassDAO {
 			}
 //			return result;
 //=======
-			String hql = "From first_class  where Name like '" + firstClassName + "'";
+			String hql = "FirstClass  where Name like '" + firstClassName + "'";
 //			String hql = "From"+ FirstClass.class.getName() +" where Name like '" + firstClassName + "'";
 
 			Query<FirstClass> query = session.createQuery(hql, FirstClass.class);

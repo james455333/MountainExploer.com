@@ -21,18 +21,39 @@
 				<div>
 				* 為必填項目
 				</div>
+				
+				
+			<div>
+				<span>主類別 :&nbsp</span> <select name="fcName">
+					<c:forEach var="fcBean" items="${fcBean}" varStatus="vs">
+						<option value="${fcBean.id}">${fcBean.name}</option>
+					</c:forEach>
+				</select>
+			</div>
+		
+		
+			<div >
+				<span>次分類 :&nbsp</span> <select name="scName">
+					<c:forEach var="scBean" items="${scBean}" varStatus="vsRT">
+						<option value="${scBean.id}">${scBean.name}</option>
+					</c:forEach>
+				</select>
+			</div>
+			
+		
+				
 				<div>
 					<label for="name">* 產品名稱: &nbsp&nbsp</label>			
 					<input type="text" name="name" required>
 				</div>
 				<div>
-					<label for="fcName">* 主類別名稱 : &nbsp&nbsp</label>			
-					<input type="text" name="fcName" required>
-				</div>
-				<div>
-					<label for="scName">* 次類別名稱 : &nbsp&nbsp</label>			
-					<input type="text" name="scName" required>
-				</div>
+<!-- 					<label for="fcName">* 主類別名稱 : &nbsp&nbsp</label>			 -->
+<!-- 					<input type="text" name="fcName" required> -->
+<!-- 				</div> -->
+<!-- 				<div> -->
+<!-- 					<label for="scName">* 次類別名稱 : &nbsp&nbsp</label>			 -->
+<!-- 					<input type="text" name="scName" required> -->
+<!-- 				</div> -->
 				<div>
 					<label for="type">* 型號 : &nbsp&nbsp</label>			
 					<input type="text" name="type" required>
