@@ -264,6 +264,7 @@ nav ul {
     position: relative;
     top: 100px;
     width: 1000px;
+    height: 1600px;
     margin: 0px auto;
     border: 5px solid black;
 }
@@ -331,4 +332,36 @@ tbody tr:hover {
     text-size-adjust: 100%;
     width: 500px;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.forImage {
+    border: 5px solid rgb(95, 26, 26);
+    width: 980px;
+    height: 300px;
+    position: relative;
+    margin: 5px auto;
+}
+
+.forImagesImg {
+    object-fit:scale-down;
+    width: 970px;
+    height: 285px;
+    margin: 1px auto;
+}
+
+.forText {
+    border: 5px solid rgb(95, 26, 26);
+    width: 488px;
+    height: 1275px;
+    position: relative;
+    margin-left: 5px;
+}
+
+.forFrom {
+    border: 5px solid rgb(95, 26, 26);
+    width: 488px;
+    height: 1275px;
+    position: relative;
+    float: right;
+    margin-right: 5px;
 }
