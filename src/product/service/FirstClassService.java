@@ -1,12 +1,17 @@
 package product.service;
 
+<<<<<<< HEAD
 import java.util.List;
 
+=======
+import org.hibernate.Session;
+import org.hibernate.query.Query;
+>>>>>>> parent of 7515c1d... 123
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import product.dao.FirstClassDAO;
 import product.model.FirstClass;
+import product.model.FirstClassDAO;
 
 @Service("firstClassService")
 public class FirstClassService {
@@ -27,7 +32,6 @@ public class FirstClassService {
 
 
 	public FirstClass select(String firstClassName) {
-		System.out.println("select(String) Service Start");
 		return firstClassDao.select(firstClassName);
 	}
 	

@@ -1,4 +1,4 @@
-package product.dao;
+package product.model;
 
 import java.util.List;
 
@@ -8,15 +8,19 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
+<<<<<<< HEAD:src/product/dao/ItemInfoDAO.java
 
 import product.model.ItemInfo;
 
+=======
+>>>>>>> parent of 7515c1d... 123:src/product/model/ItemInfoDAO.java
 @Repository("itemInfoDao")
 public class ItemInfoDAO {
 
 	@Autowired
 	@Qualifier("sessionFactory")
 	private SessionFactory sessionFactory;
+<<<<<<< HEAD:src/product/dao/ItemInfoDAO.java
 
 	public void save(ItemInfo itemInfo) {
 		Session session = sessionFactory.getCurrentSession();
@@ -30,6 +34,18 @@ public class ItemInfoDAO {
 
 		if (bean != null) {
 			session.save(bean);
+=======
+	
+	//新增
+		public ItemInfo insert(ItemInfo bean) {
+			
+			Session session = sessionFactory.getCurrentSession();
+			
+			if (bean !=null) {
+				session.save(bean);
+			}
+			return bean;
+>>>>>>> parent of 7515c1d... 123:src/product/model/ItemInfoDAO.java
 		}
 		return bean;
 	}

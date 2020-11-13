@@ -5,8 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+<<<<<<< HEAD
 import product.dao.ItemInfoDAO;
+=======
+>>>>>>> parent of 7515c1d... 123
 import product.model.ItemInfo;
+import product.model.ItemInfoDAO;
 
 @Service("itemInfoService")
 public class ItemInfoService {
@@ -15,10 +19,6 @@ public class ItemInfoService {
 
 	public ItemInfoService(ItemInfoDAO itemInfoDao) {
 		this.itemInfoDao = itemInfoDao;
-	}
-	
-	public void save(ItemInfo itemInfo) {
-		itemInfoDao.save(itemInfo);
 	}
 	
 	public ItemInfo insert(ItemInfo bean) {

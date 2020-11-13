@@ -21,10 +21,9 @@ import javax.persistence.Transient;
 @Entity
 @Table(name = "second_class")
 public class SecondClass {
-	@Id
-	@Column(name = "SEQNO")
+	@Id@Column(name = "SEQNO")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private int id;
 	
 	@Column(name = "name")
 	private String name;
@@ -39,10 +38,10 @@ public class SecondClass {
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "secondClass")
 	private Set<ItemBasic> itemBasics =new HashSet<ItemBasic>();
 	
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	

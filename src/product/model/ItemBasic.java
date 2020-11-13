@@ -17,29 +17,28 @@ import javax.persistence.Transient;
 @Entity
 @Table(name = "item_basic")
 public class ItemBasic {
-	@Id 
-	@Column(name = "SEQNO")
+	@Id @Column(name = "SEQNO")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer seqno;
+	private long seqno;
 	
 	@Column(name = "NAME")
 	private String name;
 	
 	@Transient
-	private Integer secondClassId;
+	private int secondClassId;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "SECOND_CLASS_ID" ,referencedColumnName = "SEQNO")
 	private SecondClass secondClass;
 	
-	@OneToOne(fetch = FetchType.EAGER, mappedBy = "itemBasic", cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "itemBasic", cascade = CascadeType.ALL)
 	private ItemInfo itemInfo;
 	
 	
-	public Integer getSeqno() {
+	public long getSeqno() {
 		return seqno;
 	}
-	public void setSeqno(Integer seqno) {
+	public void setSeqno(long seqno) {
 		this.seqno = seqno;
 	}
 	
@@ -50,10 +49,10 @@ public class ItemBasic {
 		this.name = name;
 	}
 	
-	public Integer getSecondClassId() {
+	public int getSecondClassId() {
 		return secondClassId;
 	}
-	public void setSecondClassId(Integer secondClassId) {
+	public void setSecondClassId(int secondClassId) {
 		this.secondClassId = secondClassId;
 	}
 

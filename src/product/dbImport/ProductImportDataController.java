@@ -29,13 +29,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+<<<<<<< HEAD
+=======
+import main.generic.service.GenericService;
+import mountain.MountainGlobal;
+import mountain.model.NationalPark;
+import mountain.model.RouteBasic;
+import mountain.model.RouteInfo;
+>>>>>>> parent of 7515c1d... 123
 import product.model.FirstClass;
+import product.model.FirstClassDAO;
 import product.model.ItemBasic;
+import product.model.ItemBasicDAO;
 import product.model.ItemInfo;
+import product.model.ItemInfoDAO;
 import product.model.SecondClass;
+import product.model.SecondClassDAO;
 import product.service.FirstClassService;
 import product.service.ItemBasicService;
-import product.service.ItemInfoService;
 import product.service.SecondClassService;
 
 @Controller
@@ -51,9 +62,6 @@ public class ProductImportDataController {
 	private SecondClassService secondClassService;
 	@Autowired
 	private ItemBasicService itemBasicService;
-	@Autowired
-	private ItemInfoService itemInfoService;
-	
 
 
 	@RequestMapping(path = "/fileuploadEnrty.controller", method = RequestMethod.GET)
@@ -93,9 +101,6 @@ public class ProductImportDataController {
 //	@Autowired
 	private void importDataToDB(MultipartFile multipartFile) throws Exception {
 		int importCounter = 0;
-		FirstClassService firstClassService = this.firstClassService;
-		SecondClassService secondClassService = this.secondClassService;
-		ItemBasicService itemBasicService = this.itemBasicService;
 
 		try (InputStream is1 = multipartFile.getInputStream();
 				InputStreamReader isr = new InputStreamReader(is1, CHARSET);
@@ -121,18 +126,15 @@ public class ProductImportDataController {
 				
 				//	放入firstClass 
 				firstClass.setName(csvRecord.get("FIRST_CLASS_NAME"));
-				System.out.println("firstClass_name : " + firstClass.getName());
+				System.out.println(firstClass.getName());
+				System.out.println(FirstClass.class.getName());
 				//	放入secondeClass
 				secondClass.setName(csvRecord.get("SECOND_CLASS"));
-				System.out.println("secondName : " + secondClass.getName());
 				//	放入itemBasic
 				itemBasic.setName(csvRecord.get("NAME"));
-				System.out.println("itemB Name : " + itemBasic.getName());
 				//	放入itemInfo
 				itemInfo.setType(csvRecord.get("TYPE"));
-				System.out.println("Item Info Type : " + itemInfo.getType());
 				itemInfo.setPrice(Integer.parseInt(csvRecord.get("PRICE")));
-				System.out.println("ItemInfo Price : " + itemInfo.getPrice() + "Price.class" + itemInfo.getPrice().getClass());
 				int stockNum = 100;
 				itemInfo.setStock(stockNum);
 				
@@ -141,11 +143,8 @@ public class ProductImportDataController {
 				byte[] bytesImg = getURLtoBytes(csvRecord.get("IMG_URL"));
 				itemInfo.setImg(bytesImg);
 				
-				//	放入物件
-				itemInfo.setItemBasic(itemBasic);
-				itemBasic.setSecondClass(secondClass);
-				itemBasic.setItemInfo(itemInfo);
 				
+				//	放入物件
 				Set<SecondClass> secondClassSet = new HashSet<SecondClass>();
 				secondClassSet.add(secondClass);
 				firstClass.setSecondClasses(secondClassSet);
@@ -153,37 +152,29 @@ public class ProductImportDataController {
 				Set<ItemBasic> itemBasicSet = new HashSet<ItemBasic>();
 				itemBasicSet.add(itemBasic);
 				secondClass.setItemBasics(itemBasicSet);
-				secondClass.setFirstClass(firstClass);
+				
+				itemBasic.setItemInfo(itemInfo);
+//				itemInfo.setItemBasic(itemBasic);
 				
 				
-			
-				
+//				firstClassDAO.insert(firstClass);
 				//	條件判斷
 				
 				// 先用DAO判斷有無FirstClass_name重複存在
-				System.out.println("========================");
-				System.out.println("start Insert");
-				System.out.println("========================");
-				FirstClass checkFirstClass = firstClassService.select(firstClass.getName());
+					FirstClass checkFirstClass = firstClassService.select(firstClass.getName());
 				if (checkFirstClass != null) {
-					System.out.println("========================");
-					System.out.println("firstClass not null");
 					
 					// 再判斷 secondClass有無重複
 					SecondClass checkSecond = secondClassService.select(secondClass.getName());
 					if (checkSecond!=null) {
 						// insert(itemBasic)
-						itemBasic.setSecondClass(checkSecond);
 						itemBasicService.insert(itemBasic);
 						System.out.println("第" + (++importCounter) +  "筆，完成 :　" + itemBasic.getName() );
 					}else {
-						secondClass.setFirstClass(checkFirstClass);
 						secondClassService.insert(secondClass);
 						System.out.println("第" + (++importCounter) +  "筆，完成 :　" + secondClass.getName() + " : " + itemBasic.getName() );
 					}
 				}else {
-					System.out.println("========================");
-					System.out.println("firstCalss null");
 					firstClassService.insert(firstClass);
 					System.out.println("第" + (++importCounter) +  "筆，完成 :　" + firstClass.getName() + secondClass.getName() + " : " + itemBasic.getName() );
 				}

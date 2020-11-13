@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,7 +40,7 @@ public class ProductCUDController {
 
 	// 資料刪除
 	@RequestMapping(path = "/productBackStage/deleteData", method = RequestMethod.GET)
-	public String deleteDate(@RequestParam(name = "deleteID") String deleteID) {
+	public String deleteDate(@RequestParam(name = "deleteID") String deleteID, Model m) {
 		
 		System.out.println("deletID : " + deleteID);
 
