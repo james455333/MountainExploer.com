@@ -23,13 +23,13 @@
 				</div>
 				
 				
-			<div>
-				<span>主類別 :&nbsp</span> <select name="fcName">
-					<c:forEach var="fcBean" items="${fcBean}" varStatus="vs">
-						<option value="${fcBean.id}">${fcBean.name}</option>
-					</c:forEach>
-				</select>
-			</div>
+<!-- 			<div> -->
+<!-- 				<span>主類別 :&nbsp</span> <select name="fcName"> -->
+<%-- 					<c:forEach var="fcBean" items="${fcBean}" varStatus="vs"> --%>
+<%-- 						<option value="${fcBean.id}">${fcBean.name}</option> --%>
+<%-- 					</c:forEach> --%>
+<!-- 				</select> -->
+<!-- 			</div> -->
 		
 		
 			<div >
