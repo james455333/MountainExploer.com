@@ -58,7 +58,7 @@
 					<div>
 						<label for="routeImg">修改圖上傳 : &nbsp&nbsp</label>
 						<div style="display: none;"></div>
-						<input type="file" name="productImg"  accept="image/*" >
+						<input type="file" name="routeImg"  accept="image/*" >
 					</div>
 					<div >
 						<label for="routeDesp">路線介紹 : &nbsp&nbsp</label>			

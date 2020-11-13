@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import mountain.MountainGlobal;
+import product.back.function.TransFuction;
 import product.model.FirstClass;
 import product.model.ItemBasic;
 import product.model.ItemInfo;
@@ -55,23 +55,53 @@ public class ProductCUDController {
 	}
 
 	// 資料修改
+	
 	@RequestMapping(path = "/productBackStage/updateData", method = RequestMethod.POST)
-	public String updateData(@RequestParam Map<String, String> allParams) throws IllegalStateException, IOException {
+	public String updateData(Model m,
+			@RequestParam(name = "itemBNo") String itemBNo,
+			@RequestParam(name = "name") String name,
+			@RequestParam(name = "type") String type,
+			@RequestParam(name = "price") String price,
+			@RequestParam(name = "stock") String stock,
+			@RequestParam(name = "productImg") MultipartFile multipartFile) throws IllegalStateException, IOException {
+		
+		long seqLong = Long.parseLong(itemBNo);
+		ItemInfo itemInfo = itemInfoService.selectNo(seqLong);
+		ItemBasic itemBasic =itemBasicService.selectNo(seqLong) ;
 
-		if (allParams.get("seqno") != null && !allParams.get("seqno").isEmpty()) {
-			int seqNum = Integer.parseInt(allParams.get("seqno"));
-			ItemInfo iiInfo = itemInfoService.selectNo(seqNum);
-
-			// 判斷指定修改資料是否存在
-			int stockNum = Integer.parseInt(allParams.get("stock"));
-			if (iiInfo != null) {
-				itemInfoService.update(seqNum, seqNum);
-
-			}
-
-		}
+		itemBasic.setName(name);
+		itemInfo.setType(type);
+		Integer priceNum1 = Integer.parseInt(price);
+		itemInfo.setPrice(priceNum1);
+		Integer stockNum = Integer.parseInt(stock);
+		itemInfo.setPrice(stockNum);
+		
+		byte[] imageBytes = TransFuction.downloadImage(multipartFile);
+		itemInfo.setImg(imageBytes);
+		itemInfoService.update(itemInfo);
+		itemBasicService.update(itemBasic);
+		
 		return "redirect:/productBackStage/mainPage";
 	}
+	
+	
+//	@RequestMapping(path = "/productBackStage/updateData", method = RequestMethod.POST)
+//	public String updateData(@RequestParam Map<String, String> allParams) throws IllegalStateException, IOException {
+//
+//		if (allParams.get("seqno") != null && !allParams.get("seqno").isEmpty()) {
+//			int seqNum = Integer.parseInt(allParams.get("seqno"));
+//			ItemInfo iiInfo = itemInfoService.selectNo(seqNum);
+//
+//			// 判斷指定修改資料是否存在
+//			int stockNum = Integer.parseInt(allParams.get("stock"));
+//			if (iiInfo != null) {
+//				itemInfoService.update(seqNum, seqNum);
+//
+//			}
+//
+//		}
+//		return "redirect:/productBackStage/mainPage";
+//	}
 
 	// 資料新增
 	@RequestMapping(path = "/productBackStage/createProductData", method = RequestMethod.POST)
@@ -103,7 +133,7 @@ public class ProductCUDController {
 		byte[] despBytes = allParams.get("description").getBytes("UTF-8");
 		itemInfo.setDescription(despBytes);
 
-		byte[] imageBytes = MountainGlobal.downloadImage(multipartFile);
+		byte[] imageBytes = TransFuction.downloadImage(multipartFile);
 		itemInfo.setImg(imageBytes);
 
 		
@@ -122,7 +152,9 @@ public class ProductCUDController {
 		
 		itemBasicService.insert(itemBasic);
 		firstClassService.insert(firstClass);
-		itemBasicService.insert(itemBasic);
+		secondClassService.insert(secondClass);
+		itemInfoService.insert(itemInfo);
+		
 		}
 
 

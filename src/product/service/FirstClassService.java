@@ -1,12 +1,7 @@
 package product.service;
 
-<<<<<<< HEAD
 import java.util.List;
 
-=======
-import org.hibernate.Session;
-import org.hibernate.query.Query;
->>>>>>> parent of 7515c1d... 123
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

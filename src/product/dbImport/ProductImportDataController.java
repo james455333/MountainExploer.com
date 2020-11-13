@@ -29,22 +29,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-<<<<<<< HEAD
-=======
-import main.generic.service.GenericService;
-import mountain.MountainGlobal;
-import mountain.model.NationalPark;
-import mountain.model.RouteBasic;
-import mountain.model.RouteInfo;
->>>>>>> parent of 7515c1d... 123
+//import mountain.model.NationalPark;
+//import mountain.model.RouteBasic;
+//import mountain.model.RouteInfo;
+//>>>>>>> parent of 7515c1d... 123
 import product.model.FirstClass;
-import product.model.FirstClassDAO;
 import product.model.ItemBasic;
-import product.model.ItemBasicDAO;
 import product.model.ItemInfo;
-import product.model.ItemInfoDAO;
 import product.model.SecondClass;
-import product.model.SecondClassDAO;
 import product.service.FirstClassService;
 import product.service.ItemBasicService;
 import product.service.SecondClassService;
