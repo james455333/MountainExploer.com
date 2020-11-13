@@ -2,7 +2,7 @@ package mountain.model.route;
 
 import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 public class MountainBean {
 	private int seqno;
 	private String name ;
