@@ -9,12 +9,13 @@
     <link rel="stylesheet" href="../css/font.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
 </head>
 
 <body>
     <div class="count1">
         <div class="count1_img">
-            <img src="../images/mountain1.png">
+            <img src="../images/logo1.png">
             <hr>
             <h1 class="font">岳進者，不要logo，可能改成輪播</h1>
             <!-- <a class="font">岳進者</a> -->
@@ -22,7 +23,7 @@
     </div>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light zline">
-            <a class="navbar-brand" href="#"><img src="../images/mountain1.png" height="30%" width="30%"></a>
+            <a class="navbar-brand" href="#"><img src="../images/logo1.png" height="30%" width="30%"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -84,12 +85,19 @@
         </div>
         <div class="div_li2">
             <!-- 每頁不同的內容從這裡開始 -->
+            <div class="secDivContent">
+                   <!--上傳影像div開始-->
+                <div class="upLoadImg">
+                    <img id="output" src="../images/預設頭像.png" />
+                </div>
+                <input type="file" accept="image/*" onchange="loadFile(event)">
 
-
-            <!-- 每頁不同的內容到這裡結束 -->
+                <br>
+                <a>上傳頭像</a>
+            </div>  <!--上傳影像div結束-->
         </div>
     </div>
-    
+
     <footer id="footer">
         <a>全站導覽</a>
         <button id="demo1">確認demo1</button>
@@ -97,10 +105,13 @@
         <button id="demo3">確認提醒demo3</button>
         <button id="demo4">多重選項&提醒視窗demo4</button>
         <button id="demo5">Demo5</button>
-        
-        
+        <button id="demo6">Demo6</button>
+
+
+
     </footer>
 </body>
+<script src="../js/upLoadImg.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
@@ -111,7 +122,9 @@
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
 <script src="../js/topBar.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><!--sweet alert-->
-<script src="../js/sweetalert.js"></script><!--sweet alert-->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!--sweet alert-->
+<script src="../js/sweetalert.js"></script>
+<!--sweet alert-->
 
 </html>

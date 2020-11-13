@@ -28,9 +28,5 @@ window.addEventListener('scroll', function () {
     lastScrollY = st;
     });
     
-    // $(function(){
-    //     $("#navbarDropdown").click(function() {
-    //         $("#div").slideDown(500);
-    //     });
-    // });
+
    
