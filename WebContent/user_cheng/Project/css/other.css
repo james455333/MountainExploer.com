@@ -159,7 +159,7 @@ header {
     border: 5px solid #666;
     width: 200px;
     height: 200px;
-    border-radius: 50%;
+    border-radius:50%;
     margin: 0px auto;
 }
 
@@ -351,7 +351,7 @@ tbody tr:hover {
 
 .forText {
     border: 5px solid rgb(95, 26, 26);
-    width: 488px;
+    width: 638px;
     height: 1275px;
     position: relative;
     margin-left: 5px;
@@ -359,7 +359,7 @@ tbody tr:hover {
 
 .forFrom {
     border: 5px solid rgb(95, 26, 26);
-    width: 488px;
+    width: 338px;
     height: 1275px;
     position: relative;
     float: right;
