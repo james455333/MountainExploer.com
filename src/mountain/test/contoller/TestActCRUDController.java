@@ -66,6 +66,7 @@ public class TestActCRUDController {
 		
 		//set會員編號及基本活動
 		memberBasic = memberBasicService.select(Integer.parseInt(allParams.get("memberID")));
+		actBasic.setSeqno(null);
 		actBasic.setMemberBasic(memberBasic);
 		actBasic.setActInfo(actInfo);
 		
@@ -116,7 +117,9 @@ public class TestActCRUDController {
 		} catch (Exception e) {
 			throw new RuntimeException("發生錯誤");
 		}
-		
+		System.out.println( "===========================================");
+		System.out.println( "actID :　" + String.valueOf(actBasic.getSeqno()) );
+		System.out.println( "===========================================");
 		result.put("success", "新增成功");
 		result.put("actID", String.valueOf(actBasic.getSeqno()));
 		return result;
@@ -138,7 +141,7 @@ public class TestActCRUDController {
 		for (MultipartFile multipartFile : files) {
 			System.out.println("file_name : " + multipartFile.getOriginalFilename());
 			byte[] imgeBytes = MountainGlobal.downloadImage(multipartFile, request);
-			actBasic.setSeqno(40031);
+			actBasic.setSeqno(actID);
 			actImage.setActivityBasic(actBasic);
 			actImage.setName(multipartFile.getOriginalFilename());
 			actImage.setImg(imgeBytes);

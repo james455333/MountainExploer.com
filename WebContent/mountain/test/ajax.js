@@ -96,13 +96,13 @@ $(function(){
 						},
 				dataType : "json",
 				success : function(data){
-					let actID = data.actID;
+					var actID = data.actID;
+					console.log(actID)
+					imgSubmit(actID)
 					$("#imgForm").submit();
-					
-				
 				},
 				error : function(data){
-					swal("Oops! 出現錯誤囉", "文章資料出現錯誤", "errors")
+					swal("Oops! 出現錯誤囉", "新增活動出現錯誤", "errors")
 				},
 			
 			})
@@ -213,35 +213,36 @@ $(function(){
 			selectObj.siblings(".correctSpan").html("<img src='../images/check.png'>")
 		}
 	}
-	
-	$("#imgForm").submit(function(e){
-		
-		$.ajax({
-			url: actHomeURL+"/crud/newImg",
-	    	type: 'POST',
-	     	data: { 
-				files : new FormData( this ),
-				actID : actID
+	function imgSubmit(actID){
+		$("#imgForm").submit(function(e){
+			$.ajax({
+				url: actHomeURL+"/crud/newImg",
+		    	type: 'POST',
+		     	data: { 
+					"files" : new FormData( this ),
+					"actID" : actID
+					},
+		     	processData: false,
+		     	contentType: false,
+				success : function(data){
+					swal({
+							title: "新增成功",
+				    		icon: "success"
+						})
 				},
-	     	processData: false,
-	     	contentType: false,
-			success : function(data){
-				swal({
-						title: "新增成功",
-			    		icon: "success"
-					})
-			},
-			error : function(data){
-				if(data != null){
-					swal("Oops! 出現錯誤囉", "活動資料新增成功，但圖片上傳失敗。\n錯誤原因 : \n"+data, "error")
-					
-				}else{
-					swal("Oops! 出現錯誤囉", "活動資料新增成功，但圖片上傳失敗。\n請到'活動管理->編輯活動圖片'重新上傳", "error")
+				error : function(data){
+					if(data != null){
+						swal("Oops! 出現錯誤囉", "活動資料新增成功，但圖片上傳失敗。\n錯誤原因 : \n"+data, "error")
+						
+					}else{
+						swal("Oops! 出現錯誤囉", "活動資料新增成功，但圖片上傳失敗。\n請到'活動管理->編輯活動圖片'重新上傳", "error")
+					}
 				}
-			}
-		 });
-   		e.preventDefault();
-	})
+			 });
+	   		e.preventDefault();
+		})
+	}
+	
 	
 	//顯示插入
 	function insertTable(data){
