@@ -2,6 +2,7 @@ package mountain.model.activity;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 public class ActBean {
 	
@@ -16,12 +17,12 @@ public class ActBean {
 	private int topReg;
 	private String regEndDate;
 	private String postDate;
-	private List<String> tag;
+	private Map<Integer, Boolean> tag;
 	
-	public List<String> getTag() {
+	public Map<Integer, Boolean> getTag() {
 		return tag;
 	}
-	public void setTag(List<String> tag) {
+	public void setTag(Map<Integer, Boolean> tag) {
 		this.tag = tag;
 	}
 	public int getActID() {

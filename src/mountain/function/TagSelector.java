@@ -38,12 +38,12 @@ public class TagSelector {
 		regEndTime = activityInfo.getRegEndDate().getTime();
 		nowTime = new Date().getTime();
 		passDay = (int) Math.ceil( ( (postTime - nowTime)*1.0 ) / MountainGlobal.ONEDAY);
-		regLeftDay = (int) Math.ceil( (regEndTime - nowTime)*0.1 / MountainGlobal.ONEDAY );
+		regLeftDay = (int) Math.ceil( (regEndTime - nowTime)*1.0 / MountainGlobal.ONEDAY );
 		nowReg = actBean.getNowReg();
 		topReg = actBean.getTopReg();
 	}
 	
-	public static Map<Integer, Boolean> getTagResult() {
+	public  Map<Integer, Boolean> getTagResult() {
 		setTagResult();
 		return result;
 	}
@@ -126,7 +126,7 @@ public class TagSelector {
 		if ( regLeftDay <= 7 ) {
 			result.put(regClzEnd, true);
 		}else {
-			result.put(regClzEnd, true);
+			result.put(regClzEnd, false);
 		}
 	}
 

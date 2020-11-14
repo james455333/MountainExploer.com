@@ -1,5 +1,6 @@
 package mountain.test.contoller;
 
+import java.io.Console;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
@@ -68,16 +69,16 @@ public class TestActCRUDController {
 		actBasic.setMemberBasic(memberBasic);
 		actBasic.setActInfo(actInfo);
 		
-		//set 活動詳細資訊
-		//set 名稱
-		//set 路線編號
-		service.save(rtBasic);
-		rtBasic = (RouteBasic) service.select(Integer.parseInt(allParams.get("routeID")));
-		actInfo.setActBasic(actBasic);
 //		System.out.println("========================");
 //		System.out.println("RouteBasic ID : " + );
 //		System.out.println("========================");
+		//set 活動詳細資訊
+		actInfo.setActBasic(actBasic);
+		//set 名稱
 		actInfo.setTitle(allParams.get("title"));
+		//set 路線編號
+		service.save(rtBasic);
+		rtBasic = (RouteBasic) service.select(Integer.parseInt(allParams.get("routeID")));
 		actInfo.setRtBasic(rtBasic);
 		//set 價格
 		String price = allParams.get("price");
@@ -90,6 +91,9 @@ public class TestActCRUDController {
 		actInfo.setEndDate(sdf.parse(endDate));
 		//set 總天數
 		actInfo.setTotalDay(allParams.get("totalDay"));
+		System.out.println("========================");
+		System.out.println(" totalDay : " + allParams.get("totalDay"));
+		System.out.println("========================");
 		//set 報名人數上限
 		actInfo.setRegTop(Integer.parseInt(allParams.get("TopReg")));
 		//set 報名截止日

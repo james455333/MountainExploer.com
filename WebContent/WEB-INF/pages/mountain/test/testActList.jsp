@@ -36,6 +36,20 @@
 		display: none;
 		z-index: 10;
 	}
+	.tagContainer{
+		display : inline-flex;
+   		align-items:center;
+    	justify-content:center;
+	}
+	.actTag{
+		font-size: 50%;
+		color : blue;
+	}
+	.regTag{
+		font-size: 50%;
+		color : red;
+	}
+	
 </style>
 
 </head>

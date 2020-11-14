@@ -68,7 +68,7 @@ $(function(){
 		}
 		
 		var errorArray = $("#newAct").find(".errorSpan")
-		console.log(errorArray)
+		//console.log(errorArray)
 		for(let i = 0 ; i < errorArray.length ; i++){
 			let j = $("#newAct").find(".errorSpan").eq(i).html();
 			console.log("No."+i+" : " + j)
@@ -77,8 +77,8 @@ $(function(){
 				checkError = false;
 			}
 		}
-		console.log("checkError :" + checkError)
-		console.log("checkEmpty :" + checkEmpty)
+		//console.log("checkError :" + checkError)
+		//console.log("checkEmpty :" + checkEmpty)
 		if(checkError && checkEmpty){
 			$.ajax({
 				url : actHomeURL + "/crud/newAct",
@@ -96,6 +96,7 @@ $(function(){
 						},
 				dataType : "json",
 				success : function(data){
+					let actID = data.actID;
 					$("#imgForm").submit();
 					
 				
@@ -218,7 +219,10 @@ $(function(){
 		$.ajax({
 			url: actHomeURL+"/crud/newImg",
 	    	type: 'POST',
-	     	data: new FormData( this ),
+	     	data: { 
+				files : new FormData( this ),
+				actID : actID
+				},
 	     	processData: false,
 	     	contentType: false,
 			success : function(data){
@@ -250,7 +254,7 @@ $(function(){
 							"<img class='extendImage' src='" + actHomeURL +"/search/images?actID=" + data[i].actID +"'>" +
 						"</td>" +
 						"<td>" +
-							data[i].title + " / " + data[i].price + " / " + data[i].totalDay + " / " + data[i].startDate + " ~ " + data[i].endDate +
+							setTag(data[i].tag) + data[i].title + " / " + data[i].price + " / " + data[i].totalDay + " / " + data[i].startDate + " ~ " + data[i].endDate +
 						"</td>" +
 						"<td>" +
 							data[i].postDate + " / " + data[i].authorName +
@@ -272,7 +276,7 @@ $(function(){
 	$("#showActList").on("mouseenter",".showImage",function(e){
 		//console.log($(this).attr("src"))
 		var elm = $(this);
-		console.log($(this))
+	//	console.log($(this))
 		var x = e.pageX - elm.offset().left;
 	    var y = e.pageY - elm.offset().top;
 		//var x = event.clientX + $("body").scrollLeft();
@@ -288,5 +292,58 @@ $(function(){
 		$(this).siblings().hide();
 	})
 	
-	
+		
 })	
+function setTag(tag){
+		let result = "<div class='tagContainer'>";
+		console.log(tag[3])
+		if( !tag[3] ){
+			
+			if( tag[1] ){
+				result += ("<div class='actTag'>")
+				result += ("新活動")	
+				result += ("</div>")	
+			}
+			if( tag[2] ){
+				result += ("<div class='actTag'>")
+				result += ("熱門活動")	
+				result += ("</div>")
+			}
+			if( !tag[4] ){
+				if( !tag[5] ){
+					if( tag[6] ){
+						result += ("<div class='regTag'>")
+						result += ("尚可報名")	
+						result += ("</div>")
+					}
+					if( tag[7] ){
+						result += ("<div class='regTag'>")
+						result += ("報名將截止")	
+						result += ("</div>")
+					}
+					if( tag[8] ){
+						result += ("<div class='regTag'>")
+						result += ("報名將滿")	
+						result += ("</div>")
+					}
+				}else{
+				result += ("<div class='regTag'>")
+				result += ("報名已滿")	
+				result += ("</div>")
+				}
+			}else{
+				result += ("<div class='regTag'>")
+				result += ("報名截止")	
+				result += ("</div>")
+			}
+			
+		}else{
+			result += ("<div class='actTag'>")	
+			result += ("歷史活動")	
+			result += ("</div>")	
+		}
+		
+		result += ("</div>");
+	//	console.log( result )
+		return result;
+	}

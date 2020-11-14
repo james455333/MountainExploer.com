@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import main.generic.model.GenericTypeObject;
 import main.generic.service.InterfaceService;
@@ -122,6 +123,8 @@ public class TransFuction {
 				mountainBean.setNpName(nPName);
 //				System.out.println("國家公園名 : " +nPName );
 				showList.add(mountainBean);
+				
+				
 			}
 		}
 		return showList;
@@ -196,10 +199,11 @@ public class TransFuction {
 			actBean.setPostDate(sdf.format(actInfo.getPostDate()));
 			//set AuthorName
 			actBean.setAuthorName(memberBasic.getName());
+			//set TotalDay
+			actBean.setTotalDay(actInfo.getTotalDay());
 			//set Tag
-			List<String> tag = new ArrayList<String>();
-			new TagSelector(actInfo).getTagResult();
-			
+			Map<Integer, Boolean> tagResult = new TagSelector(actInfo,actBean).getTagResult();
+			actBean.setTag(tagResult);
 			actBeans.add(actBean);
 		}
 		
