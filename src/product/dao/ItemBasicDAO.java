@@ -1,4 +1,4 @@
-package product.model;
+package product.dao;
 
 import java.util.List;
 
@@ -8,6 +8,8 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
+
+import product.model.ItemBasic;
 
 @Repository("itemBasicDao")
 public class ItemBasicDAO {

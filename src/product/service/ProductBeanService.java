@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import product.dao.ProductBeanDAO;
 import product.model.ProductBean;
-import product.model.ProductBeanDAO;
 
 @Service("productBeanService")
 public class ProductBeanService {
@@ -18,6 +18,17 @@ public class ProductBeanService {
 //	}
 	public List<ProductBean> selectAll() {
 		return productBeanDao.selectAll();
+	}
+	public List<ProductBean> selectWithPage(Integer page, Integer showdata) {
+		return productBeanDao.selectWithPage(page, showdata);
+	}
+
+	public int getAllData(ProductBean entity) {
+		return productBeanDao.getAllData(entity);
+	}
+
+	public int countWith(Integer id, String coulmnName) {
+		return productBeanDao.countWith(id, coulmnName);
 	}
 	
 }

@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import product.dao.ItemInfoDAO;
 import product.model.ItemInfo;
-import product.model.ItemInfoDAO;
 
 @Service("itemInfoService")
 public class ItemInfoService {

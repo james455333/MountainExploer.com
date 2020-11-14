@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import product.dao.FirstClassDAO;
 import product.model.FirstClass;
-import product.model.FirstClassDAO;
 
 @Service("firstClassService")
 public class FirstClassService {

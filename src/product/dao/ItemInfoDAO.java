@@ -1,4 +1,4 @@
-package product.model;
+package product.dao;
 
 import java.util.List;
 
@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 //<<<<<<< HEAD:src/product/dao/ItemInfoDAO.java
+
+import product.model.ItemInfo;
 
 //=======
 //>>>>>>> parent of 7515c1d... 123:src/product/model/ItemInfoDAO.java
