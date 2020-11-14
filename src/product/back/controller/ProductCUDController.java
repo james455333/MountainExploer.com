@@ -25,7 +25,7 @@ import product.service.SecondClassService;
 
 @Controller
 public class ProductCUDController {
-
+	
 	@Autowired
 	private FirstClassService firstClassService;
 	@Autowired

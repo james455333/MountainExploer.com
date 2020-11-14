@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[3.9.13.202006180736-RELEASE]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<enableImports><![CDATA[false]]></enableImports>
+	<configs>
+		<config>java:mountain.model.activity.ActImage</config>
+		<config>java:mountain.model.activity.ActivityBasic</config>
+		<config>java:mountain.model.activity.ActivityHistory</config>
+		<config>java:mountain.model.activity.ActivityInfo</config>
+		<config>java:mountain.model.activity.Registry.ActRegInfo</config>
+		<config>java:mountain.model.activity.Registry.ActRegistry</config>
+		<config>java:mountain.model.activity.response.ActResponse</config>
+		<config>java:mountain.model.activity.response.ActSideResponse</config>
+		<config>java:house.mountainhouseList.model.AreaBean</config>
+		<config>java:house.mountainhouseList.model.CampImgBean</config>
+		<config>java:house.mountainhouseList.model.CampInfoBean</config>
+		<config>java:house.mountainhouseList.model.CountiesBean</config>
+		<config>java:main.generic.model.GenericTypeObject</config>
+		<config>java:product.model.ItemInfo</config>
+		<config>java:member.model.MemberBasic</config>
+		<config>java:mountain.model.route.MountainBean</config>
+		<config>java:mountain.model.route.NationalPark</config>
+		<config>java:product.model.ProductBean</config>
+		<config>java:config.RootAppConfig</config>
+		<config>java:mountain.model.route.RouteBasic</config>
+		<config>java:mountain.model.route.RouteInfo</config>
+		<config>java:config.WebAppMvcConfig</config>
+	</configs>
+	<autoconfigs>
+	</autoconfigs>
+	<configSets>
+	</configSets>
+</beansProjectDescription>

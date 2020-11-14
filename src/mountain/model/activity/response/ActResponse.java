@@ -46,9 +46,8 @@ public class ActResponse extends GenericTypeObject {
 	@Column(name = "PRIVATETAG")
 	private Character privateTag;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "actResponse",cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "actResponse", cascade = CascadeType.ALL)
 	private Set<ActSideResponse> actSideResponse;
-	
 	public Integer getSeqno() {
 		return seqno;
 	}

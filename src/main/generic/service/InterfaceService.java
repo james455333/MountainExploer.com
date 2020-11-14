@@ -1,12 +1,12 @@
-package main.generic.dao;
+package main.generic.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import main.generic.model.GenericTypeObject;
-@Repository
-public interface AbstractDAO<T extends GenericTypeObject> {
+@Service
+public interface InterfaceService<T extends GenericTypeObject> {
 
 	void save(T entity);
 
@@ -24,8 +24,11 @@ public interface AbstractDAO<T extends GenericTypeObject> {
 
 	boolean delete(Integer id);
 	
-	List<T> selectWithPage(int page, int showdata);
+	List<T> selectWithPage(Integer page, Integer showdata);
 	
 	int getAllData(T entity);
 
+	List<T> selectAllwithFK(Integer id, String FK);
+
+	List<T> selectAllwithFK(String search, String FK);
 }

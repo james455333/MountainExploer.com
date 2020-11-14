@@ -1,5 +1,6 @@
 package main.generic.dao;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,11 +14,29 @@ import main.generic.model.GenericTypeObject;
 
 @Repository
 @SuppressWarnings("unchecked")
-public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
+public class GenericDAO<T extends GenericTypeObject> implements InterfaceDAO<T> {
 
 	private T entity;
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	private Integer page;
+	public Integer getPage() {
+		return page;
+	}
+
+	public void setPage(Integer page) {
+		this.page = page;
+	}
+
+	private Integer showData;
+	public Integer getShowData() {
+		return showData;
+	}
+
+	public void setShowData(Integer showData) {
+		this.showData = showData;
+	}
 	
 	public GenericDAO() {
 	}
@@ -83,6 +102,7 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 	public T insert(T entity) {
 
 		Session session = sessionFactory.getCurrentSession();
+		session.evict(entity);
 		session.save(entity);
 		return entity;
 
@@ -151,5 +171,40 @@ public class GenericDAO<T extends GenericTypeObject> implements AbstractDAO<T> {
 		long result = (Long) query.uniqueResult();
 		return (int) result;
 	}
-
+	@Override
+	public List<T> selectAllwithFK(Integer id, String FK){
+		Session session = sessionFactory.getCurrentSession();
+		
+		String hql ="From " + entity.getClass().getName() + " where " + FK + " = " + id ;
+		Query query = session.createQuery(hql);
+		List<T> result = query.setReadOnly(true).getResultList();
+		
+		return result;
+		
+	}
+	@Override
+	public List<T> selectAllwithFK(String search, String FK){
+		Session session = sessionFactory.getCurrentSession();
+		
+		if (page == null) {
+			page = 1;
+		}
+		if (showData == null) {
+			showData = 3;
+		}
+		int startPosition = (page-1) * showData;
+		String hql ="From " + entity.getClass().getName() + " where " + FK + " like '" +  search + "'";
+		Query query = session.createQuery(hql);
+		List<T> result = query.setFirstResult(startPosition)
+								.setMaxResults(showData)
+								.setReadOnly(true)
+								.getResultList();
+		
+		return result;
+		
+	}
+	public void evict(T entity) {
+		Session session = sessionFactory.getCurrentSession();
+		session.evict(entity);
+	}
 }

@@ -16,14 +16,40 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 <script src="/MountainExploer.com/mountain/test/testAct.js" ></script>
+<script src="/MountainExploer.com/mountain/test/ajax.js" ></script>
 
 <style type="text/css">
 	#showActList td{
 		border: 1px solid red;
 	}
-	table tr{
-		margin-top: 10px;
+	#newAct td{
+		border : 1px solid gray;
 	}
+	.showImage{
+		width : 50px;
+		height : 50px;
+	}
+	.extendImage{
+		position: absolute;
+		hegith : 300px;
+		width : 300px;
+		display: none;
+		z-index: 10;
+	}
+	.tagContainer{
+		display : inline-flex;
+   		align-items:center;
+    	justify-content:center;
+	}
+	.actTag{
+		font-size: 50%;
+		color : blue;
+	}
+	.regTag{
+		font-size: 50%;
+		color : red;
+	}
+	
 </style>
 
 </head>
@@ -31,7 +57,6 @@
 	<h2>測試活動及報名系統</h2>
 	<hr>
 	<h3>新增活動</h3>
-	
 		<table id="newAct">
 			<tr>
 				<td>
@@ -53,12 +78,14 @@
 					<hr>
 					<label> 1. 不得為空 2. 包含空格、中、英文不得超過15字 3.不得含有特殊字元及空格，如:!@#$%^&... </label>
 					<input type="text" name="title" required>
-					<span></span>
+					<span class="correctSpan"></span>
+					<span class="errorSpan"></span>
 				</td>
 				<td>
 					<label>活動價格</label>
 					<input type="text" name="price" required>
-					<span></span>
+					<span class="correctSpan"></span>
+					<span class="errorSpan"></span>
 				</td>
 			</tr>
 			<tr>
@@ -67,7 +94,8 @@
 					<hr>
 					<label> (開始日期最晚必須於兩個禮拜(21日)後)</label>
 					<input type="text" name="StEndDate" required readonly>
-					<span></span>
+					<span class="correctSpan"></span>
+					<span class="errorSpan"></span>
 				</td>
 				<td>
 					<label>活動天數</label>
@@ -76,7 +104,8 @@
 				<td>
 					<label>活動報名人數上限</label>
 					<input type="text" name="TopReg" required>
-					<span></span>
+					<span class="correctSpan"></span>
+					<span class="errorSpan"></span>
 				</td>
 				<td>
 					<label>活動報名截止日(最晚必須為活動開始前7日)</label>
@@ -86,12 +115,19 @@
 					<label>備註</label>
 					<textarea name="note"></textarea>
 				</td>
-				
 			<tr>
+			<tr>
+				<td>
+					<form enctype="multipart/form-data" id="imgForm">
+						<label>圖片上傳 : (每個活動最多五張圖)</label>
+						<input type="file" name="files" multiple accept="image/*">
+					</form>
+				</td>
+			</tr>
+			
 		</table>
 		<hr>
-		<input type="button" value="新增活動" id="newActButton">
-		<span></span>
+		<input type="submit" value="新增活動" id="newActButton" >
 	<hr>
 	<h3>活動顯示</h3>
 	<table  id="showActList">
@@ -104,9 +140,7 @@
 				<td>報名截止日</td>
 			</tr>
 		</thead>
-		<tbody>
 		
-		</tbody>
 	
 	</table>
 

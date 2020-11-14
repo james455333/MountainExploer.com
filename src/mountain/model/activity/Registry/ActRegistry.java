@@ -49,7 +49,7 @@ public class ActRegistry extends GenericTypeObject {
 	@Column(name = "DECLINE_REASON")
 	private byte[] declineReson;
 	
-	@OneToMany(fetch = FetchType.LAZY,mappedBy = "actRegistry",cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "actRegistry", cascade = CascadeType.ALL)
 	private Set<ActRegInfo> actRegInfo;
 	
 	@Override
