@@ -15,7 +15,7 @@
             padding: 1px;
         }
     </style>
-    <script src="js/includejsp.js"></script>
+
 </head>
 
 
@@ -39,7 +39,61 @@
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent" include-html="forinclude/include.html"></div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">首頁 <span class="sr-only">(current)</span></a>
+                        </li>
+                        <!-- topBar依各自需求增加刪除 -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="html/login.html">註冊/登入</a>
+                        </li>
+                        <li class="nav-item dropdown" data-text="商城">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                商城
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">內容一</a>
+                                <a class="dropdown-item" href="#">內容二</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">我的購物車</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown" data-text="百戰百岳">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                百戰百岳
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="html/1_百戰百岳.html">百戰百岳</a>
+                                <a class="dropdown-item" href="html/1_路線.html">自訂路線</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="html/1_活動管理&紀錄.html">活動管理&紀錄</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                住宿資訊
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="html/2_camping.html">全台露營地點</a>
+                                <a class="dropdown-item" href="html/2_camping.html">山中小屋</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Disabled</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="全站搜尋" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜尋</button>
+
+                    </form>
+                </div>
             </nav>
 
 
@@ -79,7 +133,10 @@
 
                         </div>
                     </div>
+
                 </div>
+
+
                 <!-- 每頁不同的內容到這裡結束 -->
             </div>
         </div>
@@ -105,6 +162,5 @@
 
     </div>
 </body>
-<script>includeHTML();</script>
 
 </html>
