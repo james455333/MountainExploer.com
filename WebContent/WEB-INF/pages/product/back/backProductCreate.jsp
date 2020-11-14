@@ -33,7 +33,7 @@
 		
 		
 			<div >
-				<span>次分類 :&nbsp</span> <select name="scName">
+				<span>*次分類 :&nbsp</span> <select name="scName">
 					<c:forEach var="scBean" items="${scBean}" varStatus="vsRT">
 						<option value="${scBean.id}">${scBean.name}</option>
 					</c:forEach>
