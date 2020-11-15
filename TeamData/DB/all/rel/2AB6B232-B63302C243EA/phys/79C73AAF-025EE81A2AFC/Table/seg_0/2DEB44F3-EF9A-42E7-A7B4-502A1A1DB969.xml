@@ -13,6 +13,7 @@
 <createdBy>Student</createdBy>
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
+<autoIncrementDDL>IDENTITY_CLAUSE</autoIncrementDDL>
 </ColumnProxy>
 <ColumnProxy name="name" id="10A576FA-424E-A24A-D5D6-7B84BE5C4662">
 <createdBy>Student</createdBy>
