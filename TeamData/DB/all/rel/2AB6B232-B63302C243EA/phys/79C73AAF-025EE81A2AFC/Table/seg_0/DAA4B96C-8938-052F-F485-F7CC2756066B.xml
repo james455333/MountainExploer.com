@@ -18,6 +18,7 @@
 <createdBy>Student</createdBy>
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
+<autoIncrementDDL>IDENTITY_CLAUSE</autoIncrementDDL>
 </ColumnProxy>
 <ColumnProxy name="national_park_seqno" id="69450B20-1528-4DC5-D69B-1A732F41552F">
 <createdBy>Student</createdBy>
