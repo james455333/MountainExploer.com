@@ -32,7 +32,6 @@ import house.mountainhouseList.model.HouseInfoBean;
 import house.mountainhouseList.service.HouseInfoBeanService;
 import house.mountainhouseList.service.NationalParkService;
 import main.generic.model.GenericTypeObject;
-import main.generic.service.AbstractService;
 import main.generic.service.GenericService;
 import mountain.MountainGlobal;
 import mountain.model.route.NationalPark;

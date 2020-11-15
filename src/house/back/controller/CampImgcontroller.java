@@ -14,6 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -54,10 +55,10 @@ public class CampImgcontroller {
 //				fileName = bean1.getName();
 //			}
 //			break;
-//		}
-//		if (is == null) {
-//			fileName = "NoImage.png";
-//			is = servletContext.getResourceAsStream("/images/" + fileName);
+		}
+		if (is == null) {
+			fileName = "NoImage.png";
+			is = servletContext.getResourceAsStream("/images/" + fileName);
 		}
 
 		byte[] bytes = null;

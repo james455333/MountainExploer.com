@@ -69,7 +69,11 @@
 				  <tr>  
 				   
 				  	<form action="<c:url value='/mountainHouseBack/inserHouse'></c:url>"method='post'>
-				      <td><input type="text" name="inser_park" size="20" value="雪霸國家公園"></td>
+				      <td><select name="inser_park" >
+				      <option value="玉山國家公園">玉山國家公園</option>
+					  <option value="太魯閣國家公園">太魯閣國家公園</option>
+					  <option value="雪霸國家公園">雪霸國家公園</option>
+				      </select></td>
 				      <td><input type="text" name="inser_house" size="20" value="大大小屋"></td>
 				      <td><input type="text" name="inser_bed" size="20" value="10"></td>
 				      <td><input type="text" name="inser_camp" size="20" value="20"></td>

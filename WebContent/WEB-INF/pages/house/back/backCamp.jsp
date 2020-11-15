@@ -91,8 +91,8 @@
 							<td>${i.counties.name}</td>
 							<td>${i.name}</td>
 							<td><a href="${i.url}">${i.url}</a></td>
-							<img height="80" width="80"
-							src=<c:url value="CampImageServlet?id=${i.campimgid.img}&type=PRODUCT"/>>
+							<td><img height="80" width="80"
+							src=<c:url value="CampImageServlet?id=${i.campimgid.img}&type=PRODUCT"/>></td>
 							<td>${i.campimgid.img}</td>
 							
 						</tr>
