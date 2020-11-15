@@ -54,31 +54,11 @@ $(function(){
 	})
 	//新增活動
 	$("#newActButton").on("click",function(){
-		var checkEmpty = true;
-		var checkError = true;
-		var inputs = $("#newAct").find("input")
-		for(let i =0 ; i < inputs.length ; i++ ){
-			let j = inputs[i].value;
-			if( j.length <= 0){
-				console.log("No."+i+" : " + j)
-				checkEmpty = false;
-				break;	
-			}
-			checkEmpty = true;
-		}
-		
-		var errorArray = $("#newAct").find(".errorSpan")
-		//console.log(errorArray)
-		for(let i = 0 ; i < errorArray.length ; i++){
-			let j = $("#newAct").find(".errorSpan").eq(i).html();
-			console.log("No."+i+" : " + j)
-			if(j.length > 0){
-				console.log("No."+i+" : " + j.length)
-				checkError = false;
-			}
-		}
-		//console.log("checkError :" + checkError)
-		//console.log("checkEmpty :" + checkEmpty)
+		checkEmpty = true;
+		checkError = true;
+		checkBefore()
+		console.log("checkError :" + checkError)
+		console.log("checkEmpty :" + checkEmpty)
 		if(checkError && checkEmpty){
 			$.ajax({
 				url : actHomeURL + "/crud/newAct",
@@ -97,17 +77,20 @@ $(function(){
 				dataType : "json",
 				success : function(data){
 					let actID = data.actID;
+					$("#imgForm").find("input[name='actID']").val(actID)
 					$("#imgForm").submit();
-					
-				
 				},
 				error : function(data){
-					swal("Oops! 出現錯誤囉", "文章資料出現錯誤", "errors")
+					swal("Oops! 出現錯誤囉", "新增活動出現錯誤", "error")
 				},
 			
 			})
 		}else{
-			swal("尚未填寫完成或有錯誤填寫")
+			swal({
+				title : "尚未填寫完成或有錯誤填寫",
+				icon : "warning",
+				button : "重返填寫"
+				})
 		}
 		
 		
@@ -213,35 +196,30 @@ $(function(){
 			selectObj.siblings(".correctSpan").html("<img src='../images/check.png'>")
 		}
 	}
-	
 	$("#imgForm").submit(function(e){
-		
 		$.ajax({
-			url: actHomeURL+"/crud/newImg",
-	    	type: 'POST',
-	     	data: { 
-				files : new FormData( this ),
-				actID : actID
-				},
-	     	processData: false,
-	     	contentType: false,
-			success : function(data){
+			url: "/MountainExploer.com/mountain/test/crud/newImg",
+		    type: 'POST',
+		    data:  new FormData( this ),
+		    processData: false,
+		    contentType: false,
+			success : function(){
 				swal({
-						title: "新增成功",
-			    		icon: "success"
+					title: "新增成功",
+				    icon: "success"
 					})
-			},
+				},
 			error : function(data){
 				if(data != null){
-					swal("Oops! 出現錯誤囉", "活動資料新增成功，但圖片上傳失敗。\n錯誤原因 : \n"+data, "error")
-					
+					swal("Oops! 出現錯誤囉", "活動資料新增成功，但圖片上傳失敗。\n錯誤原因 : \n"+data, "error")	
 				}else{
 					swal("Oops! 出現錯誤囉", "活動資料新增成功，但圖片上傳失敗。\n請到'活動管理->編輯活動圖片'重新上傳", "error")
+					}
 				}
-			}
-		 });
-   		e.preventDefault();
-	})
+			 });
+	   		e.preventDefault();
+		})
+	
 	
 	//顯示插入
 	function insertTable(data){
@@ -291,6 +269,31 @@ $(function(){
 	}).on("mouseleave",".showImage",function(){
 		$(this).siblings().hide();
 	})
+	
+	function checkBefore(){
+		var inputs = $("#newAct").find("input")
+			for(let i =0 ; i < inputs.length ; i++ ){
+				let j = inputs[i].value;
+				if( j.length <= 0){
+					console.log("No."+i+" : " + j)
+					checkEmpty = false;
+					break;	
+				}
+			}
+			
+			var errorArray = $("#newAct").find(".errorSpan")
+			//console.log(errorArray)
+			for(let i = 0 ; i < errorArray.length ; i++){
+				let j = $("#newAct").find(".errorSpan").eq(i).html();
+				console.log("No."+i+" : " + j)
+				if(j.length > 0){
+					console.log("No."+i+" : " + j.length)
+					checkError = false;
+				}
+			}
+			console.log("checkError :" + checkError)
+			console.log("checkEmpty :" + checkEmpty)
+	}
 	
 		
 })	
@@ -347,3 +350,4 @@ function setTag(tag){
 	//	console.log( result )
 		return result;
 	}
+

@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>活動測試網頁</title>
-<link rel="shortcut icon" type="image/png" href="<c:url value="/favicon.ico"/>"/>
+<link rel="shortcut icon" type="image/png" href="/MountainExploer.com/favicon.ico" />
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
@@ -120,6 +120,7 @@
 				<td>
 					<form enctype="multipart/form-data" id="imgForm">
 						<label>圖片上傳 : (每個活動最多五張圖)</label>
+						<input type="text" name="actID" style="display:none;" value='1'>
 						<input type="file" name="files" multiple accept="image/*">
 					</form>
 				</td>

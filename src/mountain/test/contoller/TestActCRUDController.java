@@ -1,6 +1,5 @@
 package mountain.test.contoller;
 
-import java.io.Console;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
@@ -12,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.swing.Spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.databind.ser.BeanPropertyWriter;
 
 import main.generic.model.GenericTypeObject;
 import main.generic.service.GenericService;
@@ -64,14 +66,12 @@ public class TestActCRUDController {
 		
 		InterfaceService<GenericTypeObject> service = this.service;
 		
-		//set會員編號及基本活動
+		//set 會員編號及基本活動
 		memberBasic = memberBasicService.select(Integer.parseInt(allParams.get("memberID")));
+		actBasic.setSeqno(null);
 		actBasic.setMemberBasic(memberBasic);
+		ActivityInfo actInfo = new ActivityInfo();
 		actBasic.setActInfo(actInfo);
-		
-//		System.out.println("========================");
-//		System.out.println("RouteBasic ID : " + );
-//		System.out.println("========================");
 		//set 活動詳細資訊
 		actInfo.setActBasic(actBasic);
 		//set 名稱
@@ -91,9 +91,9 @@ public class TestActCRUDController {
 		actInfo.setEndDate(sdf.parse(endDate));
 		//set 總天數
 		actInfo.setTotalDay(allParams.get("totalDay"));
-		System.out.println("========================");
-		System.out.println(" totalDay : " + allParams.get("totalDay"));
-		System.out.println("========================");
+//		System.out.println("========================");
+//		System.out.println(" totalDay : " + allParams.get("totalDay"));
+//		System.out.println("========================");
 		//set 報名人數上限
 		actInfo.setRegTop(Integer.parseInt(allParams.get("TopReg")));
 		//set 報名截止日
@@ -116,7 +116,6 @@ public class TestActCRUDController {
 		} catch (Exception e) {
 			throw new RuntimeException("發生錯誤");
 		}
-		
 		result.put("success", "新增成功");
 		result.put("actID", String.valueOf(actBasic.getSeqno()));
 		return result;
@@ -124,21 +123,23 @@ public class TestActCRUDController {
 	
 	//new ActImg
 	@PostMapping("/newImg")
+	@ResponseBody
 	public List<String> newActImg(
 			@RequestParam(name = "files", required = false) MultipartFile[] files,
-			@RequestParam(name = "actID", required = false) Integer actID) throws IllegalStateException, IOException{
+			@RequestParam(name = "actID") Integer actID) throws IllegalStateException, IOException{
 		System.out.println("New Image Start");
 		List<String> result = new ArrayList<String>();
 		InterfaceService<GenericTypeObject> service = this.service;
 		service.save(actImage);
 		int actImageNum = service.countWith(actID, "ACTIVITY_BASIC_SEQNO");
 		if (actImageNum >= 5 || (actImageNum + files.length)>5) {
+			System.out.println("Img can't sotre more than 5");
 			throw new RuntimeException("目前有" + files.length + "張圖,每個活動最多不可上傳超過五張圖片");
 		}
 		for (MultipartFile multipartFile : files) {
 			System.out.println("file_name : " + multipartFile.getOriginalFilename());
 			byte[] imgeBytes = MountainGlobal.downloadImage(multipartFile, request);
-			actBasic.setSeqno(40031);
+			actBasic.setSeqno(actID);
 			actImage.setActivityBasic(actBasic);
 			actImage.setName(multipartFile.getOriginalFilename());
 			actImage.setImg(imgeBytes);
