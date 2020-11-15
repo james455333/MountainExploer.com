@@ -1,11 +1,16 @@
 package house.back.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +22,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import house.CampGlobal;
 import house.mountainhouseList.model.AreaBean;
+import house.mountainhouseList.model.CampImgBean;
 import house.mountainhouseList.model.CampInfoBean;
 import house.mountainhouseList.model.CountiesBean;
 import house.mountainhouseList.service.AreaBeanService;
@@ -38,9 +45,11 @@ public class CampServletAction {
 	@Autowired
 	private CountiesBeanService countiesService;
 	@Autowired
-	private CampImgBeanService ImgService;
+	private CampImgBeanService campImgService;
 	@Autowired
 	private SessionFactory sessionfactory;
+	@Autowired
+	private HttpServletRequest httprequest;
 	
 	
 	
@@ -102,16 +111,50 @@ public class CampServletAction {
 	}	
 	
 	
-	@RequestMapping(path = "/insertCamp", method = RequestMethod.GET)
+	@RequestMapping(path = "/insertCamp", method = RequestMethod.POST)
 	public String insertCamp(CampInfoBean campBean,AreaBean areaBean , CountiesBean countiesBean, Model m,
-			 String id,			
+			 String id,	CampImgBean campimgBean,		
 			@RequestParam(name = "insercamp_area") String area,
 			@RequestParam(name = "insercamp_counties") String counties,
 			@RequestParam(name = "insercamp_name") String name,
-			@RequestParam(name = "insercamp_desc") byte[] desc
-			) throws UnsupportedEncodingException   {
+			@RequestParam(name = "insercamp_desc") byte[] desc,
+		 	@RequestParam(name = "mFile") MultipartFile mFile
+			) throws IllegalStateException, IOException   {
 		
-		System.out.println("111111");
+		String fileName = mFile.getOriginalFilename();
+		String fileTramDirPath = httprequest.getSession().getServletContext().getRealPath("/")+"UploadTempDir\\";
+		System.out.println("fileName" + fileName);
+		System.out.println("fileTramDirPath" + fileTramDirPath);
+		
+//		File dirPath = new File(fileTramDirPath);
+//		
+//		if (!dirPath.exists()) {
+//			boolean status = dirPath.mkdirs();
+//			System.out.println("status" + status);
+//		}
+		
+		String fileSavePath = fileTramDirPath + fileName;
+		File saveFile = new File(fileSavePath);
+		mFile.transferTo(saveFile);
+		
+		 if (fileName!=null && fileName.length()!=0) {
+				try {
+					campimgBean.setName(fileName);
+					FileInputStream is1 = new FileInputStream(fileSavePath);
+					byte[] img = new byte[is1.available()];
+					is1.read(img);
+					is1.close();
+					campimgBean.setImg(img);;
+					
+					System.out.println("img" + campimgBean.getId());
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		
+		
+		
 		Set<CountiesBean> countiesbeanSet = new HashSet<CountiesBean>();
 		Set<CampInfoBean> campbeanSet = new HashSet<CampInfoBean>();
 			areaBean.setName(area);
@@ -123,8 +166,10 @@ public class CampServletAction {
 			countiesBean.setArea(areaBean);
 			countiesBean.setCamp(campbeanSet);
 			countiesbeanSet.add(countiesBean);
-					
-
+			
+			
+			campBean.setCampimgid(campimgBean);
+			campimgBean.setCampid(campBean);
 			campBean.setName(name);
 //			byte[] bytedesc = desc.getBytes(CampGlobal.CHARSET);
 			campBean.setUrl(desc);
@@ -139,6 +184,7 @@ public class CampServletAction {
 					System.out.println("縣市有");
 					campBean.setCounties(querycounties);
 					 campService.insertCamp(campBean);
+					 campImgService.insertCamp(campimgBean);
 				}
 				
 				else {
@@ -150,7 +196,7 @@ public class CampServletAction {
 				}
 			
 
-		return "house/back/backCamp";
+		return "redirect:/mountainCampBack/selectAll";
 	}
 	
 	@RequestMapping(path = "/deleteCamp", method = RequestMethod.POST)

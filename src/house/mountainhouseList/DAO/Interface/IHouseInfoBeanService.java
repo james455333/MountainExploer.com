@@ -19,5 +19,6 @@ public interface IHouseInfoBeanService {
 	HouseInfoBean updateHouse(HouseInfoBean Bean);
 
 	HouseInfoBean deleteHouse(int houseid);
-
+	
+	List<HouseInfoBean> selectNationalPark(Integer parkid);
 }
