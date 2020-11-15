@@ -74,6 +74,14 @@ header {
     opacity: 0.8;
     z-index: 0;
 }
+.count1_1 {
+    border: 5px solid rgb(70, 64, 64);
+    width: 1440px;
+    height: 400px;
+    text-align: center;
+    line-height: 400px;
+    margin: 0 auto;
+}
 
 .count2 {
     column-count: 3;
@@ -136,8 +144,16 @@ header {
     -webkit-animation-delay: 10s;
     animation-delay: 10s;
 }
+.count2>a:nth-child(2) {
+    -webkit-animation-delay: 5s;
+    animation-delay: 5s;
+}
+.count2>a:nth-child(1) {
+    -webkit-animation-delay:0s;
+    animation-delay: 0s;
+}
 
-.coverflow:hover>a {
+.count2:hover>a {
     -webkit-animation-play-state: paused;
     animation-play-state: paused;
 }
@@ -215,9 +231,9 @@ header {
 }
 
 .upLoadImg {
-    /* border: 5px solid #666; */
-    width: 200px;
-    height: 200px;
+    border: 5px solid #666;
+    width: 210px;
+    height: 210px;
     /* border-radius: 50%; */
     margin: 0px auto;
 }
@@ -226,13 +242,22 @@ header {
     /* background-image: url(../images/預設頭像.png); */
     width: 100%;
     height: 100%;
-    border: 5px solid #666;
+    border: 3px solid red;
     width: 200px;
     height: 200px;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     margin: 0px auto;
 }
-
+#output1
+{
+    width: 100%;
+    height: 100%;
+    border: 5px solid #666;
+    width: 1887px;
+    height: 300px;
+    
+    margin: 0px auto;
+}
 .導覽列表 {
     width: 1440px;
     height: 60px;
