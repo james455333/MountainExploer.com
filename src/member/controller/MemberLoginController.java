@@ -27,7 +27,7 @@ public class MemberLoginController {
 	
 	@RequestMapping(path = "/member/memberLoginEntry", method = RequestMethod.GET)
 	public String processLoginEntry() {
-		return "member/Login";
+		return "member/login";
 	}
 	
 	@RequestMapping(path = "/member/memberLogin", method = RequestMethod.POST)
@@ -57,30 +57,30 @@ public class MemberLoginController {
 		}
 		
 		if(errors != null && !errors.isEmpty()) {
-			return "member/Login";
+			return "member/login";
 		}
 		
 		if(account != null && password != null && errors.isEmpty()) {
 			MemberBasic mb = mbService.checkPassword(account, password);
 			if(mb != null) {
-				m.addAttribute("LoginOK", account);
+				m.addAttribute("LoginOK", mb);
 				m.addAttribute("result", "登入成功");
-				return "redirect:/member/memberInfo";
+				return "member/memberInfo";
 			} else {
 				errors.put("msg", "帳號或密碼錯誤");
-				return "member/Login";
+				return "member/login";
 			}
 		}
 		
 		errors.put("msg", "帳號或密碼錯誤");
-		return "member/Login";
+		return "member/login";
 		
 	}
 	
 	
 	public String processLogout(SessionStatus status) {
 		status.setComplete();
-		return "member/Login";
+		return "member/login";
 	}
 	
 	
