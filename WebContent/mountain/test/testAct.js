@@ -166,7 +166,53 @@ $(function(){
 					});
 			})
 	});
-	
+	$("input[name='actInfo.endDate']").daterangepicker({
+				"singleDatePicker": true,
+			    "showDropdowns": true,
+			    "minYear": 2010,
+				"maxYear": 2099,
+				"maxSpan": {
+					"days": 30
+				},
+			    "locale": {
+			        "format": "YYYY/MM/DD",
+			        "separator": " - ",
+			        "applyLabel": "確認",
+			        "cancelLabel": "取消",
+			        "fromLabel": "自",
+			        "toLabel": "到",
+			        "customRangeLabel": "Custom",
+			        "weekLabel": "W",
+			         "daysOfWeek": [
+			            "日",
+			            "一",
+			            "二",
+			            "三",
+			            "四",
+			            "五",
+			            "六"
+			        ],
+			        "monthNames": [
+			            "一月",
+			            "二月",
+			            "三月",
+			            "四月",
+			            "五月",
+			            "六月",
+			            "七月",
+			            "八月",
+			            "九月",
+			            "十月",
+			            "十一月",
+			            "十二月"
+			        ],
+			        "firstDay": 1
+			    },
+				"startDate": limitStartDate,
+				"endDate" : limitStartDate,
+			    "minDate": limitStartDate,
+			    "opens": "center"
+			});
 	
 	
 	
