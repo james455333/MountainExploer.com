@@ -29,6 +29,8 @@ public class CampImgBeanDAO implements ICampImgBeanService {
 		
 		@Override
 		public CampImgBean select(int campid) {
+			
+			
 			return getSession().get(CampImgBean.class, campid);
 			
 		}

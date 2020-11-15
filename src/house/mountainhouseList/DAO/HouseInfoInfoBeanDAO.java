@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import house.mountainhouseList.DAO.Interface.IHouseInfoBeanService;
 import house.mountainhouseList.model.HouseInfoBean;
 
@@ -36,6 +37,13 @@ public class HouseInfoInfoBeanDAO implements IHouseInfoBeanService  {
 		Query<HouseInfoBean> query = getSession().createQuery("From HouseInfoBean where housebasicid=" + houseid, HouseInfoBean.class);
 		List<HouseInfoBean> list = query.list();
 		return list;
+	}
+	@Override
+	public List<HouseInfoBean> selectNationalPark(Integer parkid){
+		Query<HouseInfoBean> query = getSession().createQuery("From HouseInfoBean where nationalPark=" + parkid,HouseInfoBean.class);
+		List<HouseInfoBean> list = query.list();
+		return list;
+		
 	}
 
 	

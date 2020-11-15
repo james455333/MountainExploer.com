@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="BIG5">
-<title>後台資料維護系統/山岳資料</title>
+<title>後台資料維護系統/露營地修改</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href='<c:url value="/backstage/css/backStage.css"/>'> 
 <link rel="stylesheet" href='<c:url value="/housecamp/css/back/backhousecamp.css"/>' >
@@ -69,8 +69,8 @@
 				<tr>  
 				 <div>				 
 				  	<form  action="<c:url value='/mountainCampBack/updateCamp'></c:url>"method="get">	
- 				    	<td>${l.counties.area.name}	</td>	  
-				    	<td>${l.counties.name} 	</td>
+ 				    	<td><input type="hidden" name="updatecamp_city" size="10" value="${l.counties.area.name}">${l.counties.area.name}	</td>	  
+				    	<td><input type="hidden" name="updatecamp_town" size="10" value="${l.counties.name}">${l.counties.name} 	</td>
 				    	<td><input type="text" name="updatecamp_name" size="20" value="${l.name}"> 	</td>
 				    	<td><input type="text" name="updatecamp_desc" size="50" value="${l.url}"> 	</td>
 				    	<td><input type="hidden" name="updatacamp_id" size="10" value="${l.campbasicid}">	</td> 			    		
