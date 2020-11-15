@@ -5,26 +5,27 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class MountainGlobal {
 	
 	public static final String ImgDownloadPath = "C:\\MountainExploer\\mountain\\images\\";
 	public static final String CHARSET = "UTF-8";
-	
-	public static byte[] downloadImage(MultipartFile multipartFile) throws IllegalStateException, IOException{
+	public static final long ONEDAY = (60*60*24)*1000 ; 
+	public static byte[] downloadImage(MultipartFile multipartFile,HttpServletRequest request) throws IllegalStateException, IOException{
 		String originalFilename = multipartFile.getOriginalFilename()+"";
-		String localDirPath = MountainGlobal.ImgDownloadPath + "temp\\";
-		File dirpath = new File(localDirPath);
-		if (dirpath.exists()) {
-			dirpath.mkdirs();
-			System.out.println("暫存資料夾創立成功");
-		}else {
-			System.out.println("暫存資料夾已存在");
+//		String fileTempDirPath = request.getServletContext().getRealPath("/") + "UploadTemp\\";
+		File dirPath = new File(ImgDownloadPath);
+		if (!dirPath.exists()) {
+			boolean status = dirPath.mkdirs();
+			System.out.println("status : " + status);
 		}
-		
-		String savePath = localDirPath+originalFilename;
+		String savePath = ImgDownloadPath+originalFilename;
+		System.out.println("sava path : " + savePath );
 		File saveFile = new File(savePath);
+		saveFile.delete();
 		multipartFile.transferTo(saveFile);
 		System.out.println("下載檔案 : " + originalFilename + "成功");
 		
@@ -38,7 +39,7 @@ public class MountainGlobal {
 		
 	}
 	
-	private static byte[] fileToByte(String savePath) {
+	private static byte[] fileToByte(String savePath) throws FileNotFoundException, IOException {
 		byte[] holder = null;
 		
 		try (
@@ -47,13 +48,7 @@ public class MountainGlobal {
 			holder = new byte[fis.available()];
 			fis.read(holder);
 			
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		} 
 		
 		
 		return holder;

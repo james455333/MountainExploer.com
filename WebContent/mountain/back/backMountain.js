@@ -284,7 +284,7 @@ $(function(){
 	
 	//招出錯誤訊息
 	if(errors!=null){
-		swal("Oops! 出現錯誤了", errors,"errors")
+		swal("Oops! 出現錯誤了", errors,"error")
 	}
 	
 	$("#deleteCancel").on("click",function(){

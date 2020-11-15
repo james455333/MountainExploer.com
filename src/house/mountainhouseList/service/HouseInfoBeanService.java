@@ -53,4 +53,10 @@ public class HouseInfoBeanService implements IHouseInfoBeanService {
 		return  hDAO.deleteHouse(houseid);
 	}
 
+	@Override
+	public List<HouseInfoBean> selectNationalPark(Integer parkid) {
+		
+		return hDAO.selectNationalPark(parkid);
+	}
+
 }

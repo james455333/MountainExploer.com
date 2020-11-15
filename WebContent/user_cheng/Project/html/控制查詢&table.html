@@ -30,58 +30,14 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="../index.html">首頁 <span class="sr-only">(current)</span></a>
-                    </li>
-                    <!-- topBar依各自需求增加刪除開始 -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">註冊/登入</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            商城
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">內容一</a>
-                            <a class="dropdown-item" href="#">內容二</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">我的購物車</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            住宿資訊
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">內容一</a>
-                            <a class="dropdown-item" href="#">內容二</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
-                    </li>
-                </ul>
-                <!-- topBar依各自需求增加刪除結束 -->
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="全站搜尋" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜尋</button>
-
-                </form>
-            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" include-html="../forinclude/include.html"></div>
         </nav>
-
-
     </header>
     <div class="div_ul">
         <div class="導覽列表">
             <nav>
                 <ul class="second_nav">
+                    <!-- 更改內容從這邊開始 -->
                     <li class="li1"><a href="#">第二導覽列1</a></li>
 
                     <li class="li1"><a href="#">第二導覽列2</a></li>
@@ -89,6 +45,7 @@
                     <li class="li1"><a href="#">第二導覽列3</a></li>
 
                     <li class="li1"><a href="#">第二導覽列4</a></li>
+                    <!-- 更改內容到這邊結束 -->
                 </ul>
             </nav>
         </div>
@@ -103,6 +60,7 @@
             <div class="searchBar">
                 <nav>
                     <ul class="third_nav">
+                        <!-- 控制列表內容從這邊開始 -->
                         <li>居住地:
                             <select>
                                 <option name="nothing" selected disabled>請選擇縣市</option>
@@ -123,7 +81,7 @@
                                 <option value="值2">aa</option>
                                 <option value="值3">bb</option>
                             </select></li>
-
+                        <!-- 控制列表內容到這邊結束 -->
                     </ul>
                 </nav>
                 <div class="search">
@@ -138,14 +96,17 @@
                 <table class="order-table">
                     <thead class="order-table-th">
                         <tr>
+                            <!-- thead更改從這邊開始 -->
                             <th scope="col">飯店名</th>
                             <th scope="col">房型</th>
                             <th scope="col">其他1</th>
                             <th scope="col">其他2</th>
+                              <!-- thead更改到這邊結束 -->
                         </tr>
                     </thead>
 
                     <tbody class="order-table-tb">
+                        <!-- tbody更改從這邊開始 -->
                         <tr>
                             <td>飯店1</td>
                             <td>房型a</td>
@@ -179,6 +140,7 @@
                             <td>房型c</td>
                             <td>飯店1</td>
                         </tr>
+                        <!-- tbody更改到這邊結束 -->
                     </tbody>
 
                 </table>
@@ -202,13 +164,12 @@
                         </li>
                     </ul>
                 </nav>
-                共?筆，本頁顯示1-10筆
             </div>
 
 
 
 
-            <!-- 每頁不同的內容到這裡結束 -->
+            <!-- 每頁不同的內容到這邊結束 -->
         </div>
     </div>
 

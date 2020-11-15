@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="BIG5">
-<title>後台資料維護系統/營地新增</title>
+<title>後台資料維護系統/山中小屋新增</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href='<c:url value="/backstage/css/backStage.css"/>'> 
 <link rel="stylesheet" href='<c:url value="/housecamp/css/back/backhousecamp.css"/>' >
@@ -58,57 +58,32 @@
 			<table class="table">
 				<thead class="thead-light">
 					<tr class="a_titleName">
-						<th scope="col"><span class="tr_title"></span></th>
-						<th scope="col"><span class="tr_title">縣市</span></th>
-						<th scope="col"><span class="tr_title">鄉鎮</span></th>
-						<th scope="col"><span class="tr_title">營地名稱</span></th>
-						<th scope="col"><span class="tr_title">網址</span></th>
-						<th scope="col"><span class="tr_title">照片</span></th>
-						<th scope="col"><span class="tr_title"></span></th>
+						<th scope="col"><span class="tr_title">國家公園</span></th>
+						<th scope="col"><span class="tr_title">山屋名稱</span></th>
+						<th scope="col"><span class="tr_title">山屋床位</span></th>
+						<th scope="col"><span class="tr_title">山屋營地位</span></th>
+						<th scope="col"><span class="tr_title">高度 / 海拔</span></th>
 					</tr>
 				</thead>
 				<tbody>
 				  <tr>  
-				   <div>
-				  	<form action="<c:url value='/mountainCampBack/insertCamp'></c:url>"method='post' enctype="multipart/form-data">			 
-					  <td><input type="hidden" name="insercamp_id" size="10"></td>				      
-				      <td><input type="text" name="insercamp_area" size="10" value="高雄市"></td>
-				      <td><input type="text" name="insercamp_counties" size="10" value="前鎮區"></td>
-				      <td><input type="text" name="insercamp_name" size="20" value="小小露營區"></td>
-				      <td><input type="text" name="insercamp_desc" size="50" value="https://evshhips.pixnet.net/blog"></td>
-				      <td><img id="blah" src="#" alt="your image" />		       
-				      <input type="file" name="mFile" id="imgInp" size="25" accept="image/*">
-				      </td>
+				   
+				  	<form action="<c:url value='/mountainHouseBack/inserHouse'></c:url>"method='post'>
+				      <td><input type="text" name="inser_park" size="20" value="雪霸國家公園"></td>
+				      <td><input type="text" name="inser_house" size="20" value="大大小屋"></td>
+				      <td><input type="text" name="inser_bed" size="20" value="10"></td>
+				      <td><input type="text" name="inser_camp" size="20" value="20"></td>
+				      <td><input type="text" name="inser_height" size="20" value="330M"></td>
 				      <td><input type="submit"  value="新增"></td>
 					</form>	    
-				   </div>
+				   
 				    </tr>
 			</table>
 		</div>
 		
 	</div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script>
-function readURL(input) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-    
-    reader.onload = function(e) {
-      $('#blah').attr('src', e.target.result);
-    }
-    
-    reader.readAsDataURL(input.files[0]); // convert to base64 string
-  }
-}
-
-$("#imgInp").change(function() {
-  readURL(this);
-});
-</script>
 
 </body>
-	
-	
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>

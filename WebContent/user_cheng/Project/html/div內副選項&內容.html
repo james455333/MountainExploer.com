@@ -30,53 +30,8 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="../index.html">首頁 <span class="sr-only">(current)</span></a>
-                    </li>
-                    <!-- topBar依各自需求增加刪除開始 -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">註冊/登入</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            商城
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">內容一</a>
-                            <a class="dropdown-item" href="#">內容二</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">我的購物車</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            住宿資訊
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">內容一</a>
-                            <a class="dropdown-item" href="#">內容二</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
-                    </li>
-                </ul>
-                <!-- topBar依各自需求增加刪除結束 -->
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="全站搜尋" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜尋</button>
-
-                </form>
-            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" include-html="../forinclude/include.html"></div>
         </nav>
-
-
     </header>
     <div class="div_ul">
         <div class="導覽列表">
@@ -103,18 +58,22 @@
             <div class="searchBar">
                 <nav>
                     <ul class="thirdSelect">
+                        <!-- 副選項按鈕從這邊新增開始 -->
                         <li class="li2"><button type="button" class="btn btn-outline-danger">按鈕1</button></li>
                         <li class="li2"><button type="button" class="btn btn-outline-secondary">按鈕2</button></li>
                         <li class="li2"><button type="button" class="btn btn-outline-dark">黑按鈕</button></li>
-                        <li class="li2"><button type="button" class="btn btn-outline-success">Success</button></li>
-                        <li class="li2"><button type="button" class="btn btn-outline-warning">Warning</button></li>
-                        <li class="li2"><button type="button" class="btn btn-outline-info">Info</button></li>
-                        <li class="li2"><button type="button" class="btn btn-outline-light">Light</button></li>
+                        <li class="li2"><button type="button" class="btn btn-outline-success">綠色</button></li>
+                        <li class="li2"><button type="button" class="btn btn-outline-warning">黃色</button></li>
+                        <li class="li2"><button type="button" class="btn btn-outline-info">寶藍</button></li>
+                        <li class="li2"><button type="button" class="btn btn-outline-light">白</button></li>
+                        <!-- 副選項按鈕到這邊新增結束 -->
                     </ul>
                 </nav>
             </div>
             <div class="secDivContent">
+                <!-- div2放置內容從這邊開始 -->
                 <a>內容1</a>
+                <!-- div2放置內容到這邊結束 -->
             </div>
 
 
