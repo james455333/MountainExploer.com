@@ -11,18 +11,19 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.swing.Spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-
-import com.fasterxml.jackson.databind.ser.BeanPropertyWriter;
 
 import main.generic.model.GenericTypeObject;
 import main.generic.service.GenericService;
@@ -56,65 +57,36 @@ public class TestActCRUDController {
 	private MemberBasicBackService memberBasicService;
 	
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+	
+	
+	@InitBinder
+	public void allowEmptyDateBinding( WebDataBinder binder )
+		{
+		    // Custom String Editor. tell spring to set empty values as null instead of empty string.
+		    binder.registerCustomEditor( String.class, new StringTrimmerEditor( true ));
+												
+		    //Custom Date Editor
+												
+		    SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy/MM/dd");
+		    simpleDateFormat.setLenient(false);
+		    binder.registerCustomEditor( Date.class, new CustomDateEditor( simpleDateFormat,false));	   
+		}
+	
+	
 	//new Activity
-	@PostMapping( path = "/newAct", produces = {"application/json;charset=UTF-8"})
+	@PostMapping("/newAct")
 	@ResponseBody
-	public Map<String, String> newAct(
-			@RequestParam Map<String,String> allParams) throws ParseException, UnsupportedEncodingException {
+	public Map<String, String> newAct(ActivityBasic actBasic) throws Exception {
 		
 		Map<String, String> result = new HashMap<String, String>();
-		
+//		actBasic.getActInfo().setActBasic(actBasic);
 		InterfaceService<GenericTypeObject> service = this.service;
-		
-		//set 會員編號及基本活動
-		memberBasic = memberBasicService.select(Integer.parseInt(allParams.get("memberID")));
-		actBasic.setSeqno(null);
-		actBasic.setMemberBasic(memberBasic);
-		ActivityInfo actInfo = new ActivityInfo();
-		actBasic.setActInfo(actInfo);
-		//set 活動詳細資訊
-		actInfo.setActBasic(actBasic);
-		//set 名稱
-		actInfo.setTitle(allParams.get("title"));
-		//set 路線編號
-		service.save(rtBasic);
-		rtBasic = (RouteBasic) service.select(Integer.parseInt(allParams.get("routeID")));
-		actInfo.setRtBasic(rtBasic);
-		//set 價格
-		String price = allParams.get("price");
-		actInfo.setPrice(Integer.parseInt(price));
-		//set 開始及結束日期
-		String stEndDate = allParams.get("StEndDate");
-		String startDate = stEndDate.substring(0,stEndDate.indexOf("-")).trim();
-		String endDate = stEndDate.substring(stEndDate.indexOf("-")+1).trim();
-		actInfo.setStartDate(sdf.parse(startDate));
-		actInfo.setEndDate(sdf.parse(endDate));
-		//set 總天數
-		actInfo.setTotalDay(allParams.get("totalDay"));
-//		System.out.println("========================");
-//		System.out.println(" totalDay : " + allParams.get("totalDay"));
-//		System.out.println("========================");
-		//set 報名人數上限
-		actInfo.setRegTop(Integer.parseInt(allParams.get("TopReg")));
-		//set 報名截止日
-		String regEndDate = allParams.get("RegEndDate");
-		actInfo.setRegEndDate(sdf.parse(regEndDate));
-		//set 備註
-		if (allParams.get("note")!=null) {
-			byte[] noteBytes = allParams.get("note").getBytes("UTF-8");
-			actInfo.setNote(noteBytes);
-		}else {
-			actInfo.setNote("尚無備註".getBytes("UTF-8"));
-		}
-		//set 發布日期
-		actInfo.setPostDate(new Date());
-		//insert
-		
 		try {
 			service.save(actBasic);
 			actBasic = (ActivityBasic)service.insert(actBasic);
 		} catch (Exception e) {
-			throw new RuntimeException("發生錯誤");
+			e.printStackTrace();
+			result.put("error", "發生錯誤，請聯絡管理員");
 		}
 		result.put("success", "新增成功");
 		result.put("actID", String.valueOf(actBasic.getSeqno()));

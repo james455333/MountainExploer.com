@@ -57,11 +57,12 @@
 	<h2>測試活動及報名系統</h2>
 	<hr>
 	<h3>新增活動</h3>
+	<form enctype="multipart/form-data" id="newActForm">
 		<table id="newAct">
 			<tr>
 				<td>
 					<label>會員編號</label>
-					<input type="text" name="memberID" required>
+					<input type="text" name="memberBasic.seqno" required>
 				</td>
 				<td>
 					<label>國家公園名稱</label>
@@ -70,65 +71,72 @@
 				</td>
 				<td>
 					<label>路線名稱</label>
-					<select class="route" name="routeID">
+					<select class="route" name="actInfo.rtBasic.id">
 					</select>
 				</td>
 				<td>
 					<label>活動名稱</label>
 					<hr>
 					<label> 1. 不得為空 2. 包含空格、中、英文不得超過15字 3.不得含有特殊字元及空格，如:!@#$%^&... </label>
-					<input type="text" name="title" required>
+					<input type="text" name="actInfo.title" required>
 					<span class="correctSpan"></span>
 					<span class="errorSpan"></span>
 				</td>
 				<td>
 					<label>活動價格</label>
-					<input type="text" name="price" required>
+					<input type="text" name="actInfo.price" required>
 					<span class="correctSpan"></span>
 					<span class="errorSpan"></span>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<label>活動開始日期 ~ 活動結束日期</label>
+					<label>活動開始日期</label>
 					<hr>
-					<label> (開始日期最晚必須於兩個禮拜(21日)後)</label>
-					<input type="text" name="StEndDate" required readonly>
-					<span class="correctSpan"></span>
-					<span class="errorSpan"></span>
+					<label> (開始日期最晚必須於21日後)</label>
+					<input type="text" name="actInfo.startDate" required readonly>
+				</td>
+				<td>
+					<label> 活動結束日期</label>
+					<hr>
+					<label> (開始日期最晚必須於21日後)</label>
+					<input type="text" name="actInfo.endDate" required readonly>
 				</td>
 				<td>
 					<label>活動天數</label>
-					<input type="text" name="totalDay" readonly="readonly" id="totalDay">
+					<input type="text" name="actInfo.totalDay" readonly="readonly" id="totalDay">
 				</td>
 				<td>
 					<label>活動報名人數上限</label>
-					<input type="text" name="TopReg" required>
+					<input type="text" name="actInfo.regTop" required>
 					<span class="correctSpan"></span>
 					<span class="errorSpan"></span>
 				</td>
 				<td>
 					<label>活動報名截止日(最晚必須為活動開始前7日)</label>
-					<input type="text" name="RegEndDate" readonly="readonly" required>
+					<input type="text" name="actInfo.regEndDate" readonly required>
 				</td>
 				<td>
 					<label>備註</label>
-					<textarea name="note"></textarea>
+					<textarea name="actInfo.note"></textarea>
 				</td>
 			<tr>
 			<tr>
 				<td>
-					<form enctype="multipart/form-data" id="imgForm">
+					
+				</td>
+			</tr>
+			<tr>
+			</tr>
+		</table>
+	</form>
+	<form enctype="multipart/form-data" id="imgForm">
 						<label>圖片上傳 : (每個活動最多五張圖)</label>
 						<input type="text" name="actID" style="display:none;" value='1'>
 						<input type="file" name="files" multiple accept="image/*">
-					</form>
-				</td>
-			</tr>
-			
-		</table>
+	</form>
+	<input type="button" value="新增活動" id="newActButton" >
 		<hr>
-		<input type="submit" value="新增活動" id="newActButton" >
 	<hr>
 	<h3>活動顯示</h3>
 	<table  id="showActList">

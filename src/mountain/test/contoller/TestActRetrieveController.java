@@ -47,6 +47,11 @@ public class TestActRetrieveController {
 	@Autowired
 	private SystemImage sysImage;
 	
+	
+	
+	
+	
+	
 	@GetMapping("/ajaxShow")
 	@ResponseBody
 	public List<ActBean> showActBeans(
@@ -95,5 +100,6 @@ public class TestActRetrieveController {
 		return result.get(0);
 
 	}
+	
 
 }
