@@ -18,6 +18,11 @@ public class TestPageEntryController {
 		
 		return mountainActFolder+"testActList";
 	}
+	@GetMapping("/actPage")
+	public String ActDetailEntry(Model model, RedirectAttributes redrAttr) {
+		
+		return mountainActFolder+"ActDetail";
+	}
 	
 	@GetMapping("/TestMultiImage")
 	public String multiImageEntry() {

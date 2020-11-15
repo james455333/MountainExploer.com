@@ -120,6 +120,7 @@
 				<td>
 					<form enctype="multipart/form-data" id="imgForm">
 						<label>圖片上傳 : (每個活動最多五張圖)</label>
+						<input type="text" name="actID" style="display:none;" value='1'>
 						<input type="file" name="files" multiple accept="image/*">
 					</form>
 				</td>
