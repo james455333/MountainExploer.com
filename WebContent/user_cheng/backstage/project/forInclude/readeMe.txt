@@ -1,0 +1,2 @@
+從forInclude裡面找到自己的html檔
+直接把範例改成各自需要的div數量
