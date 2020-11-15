@@ -1,5 +1,6 @@
 package member.controller;
 
+import java.io.InputStream;
 import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import member.model.MemberService;
 
@@ -44,11 +46,12 @@ public class MemberRegisterController {
 	@RequestMapping(path = "/member/memberRegister", method = RequestMethod.POST)
 	public String processRegister(
 			@RequestParam(name = "account")String account,
-			@RequestParam(name = "password")String password,
+			@RequestParam(name = "pwd")String password,
+			@RequestParam(name = "name")String name,
 			@RequestParam(name = "email")String email,
 			@RequestParam(name = "statusId")int statusId,
 			@RequestParam(name = "regDate")Date regDate,
-			Model m
+			RedirectAttributes redAttr
 			) {
 		System.out.println(account);
 		System.out.println(password);

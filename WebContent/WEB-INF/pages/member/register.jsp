@@ -41,8 +41,12 @@
                     <input type="radio" name="statusId" value="130">登山嚮導
                 </div>
                 <div>
-                    <input type="button" class="rgtime" value="註冊時間">
-                    <p id="tmsp"></p>
+                	<label>註冊時間：</label>
+                	<span class="regDate" name="regDate"></span>
+                </div>
+                <div>
+                	<input type="submit" id="submit" name="submit" value="送出">
+                	<input type="reset" id="reset" name="reset" value="清除">
                 </div>
             </fieldset>
         </form>
