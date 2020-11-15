@@ -110,6 +110,45 @@ document.getElementById("demo6").addEventListener("click", function () {
 
 
 
+//demo7
+document.getElementById("demo7").addEventListener("click", function () {
+  swal({
+  title: "確認刪除?",
+  text: "刪除將無法復原!",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,//按鈕不要紅底直接註解此行
+  
+})
+.then((willDelete) => {
+  if (willDelete) { swal({
+    title: "Confirm your transaction",
+     html:true,
+    showSpinner: true,
+    showCancelButton: true,
+     confirmButtonColor: "#DD6B55",
+    confirmButtonText: "Send",
+   closeOnConfirm: false
+},function () {
+   $.ajax({
+type: "post",
+ url: remoteUrl,
+ data: largeParams,
+success: function (data) { }
+}).done(function (data) {
+ swal("Thank you for your order", data, "success");
+}).error(function (data) {
+swal("Oops", "We couldn't connect to the server!", "error");
+});
+});
+  }
+   
+});
+});
+
+
+
+
 
 
 
