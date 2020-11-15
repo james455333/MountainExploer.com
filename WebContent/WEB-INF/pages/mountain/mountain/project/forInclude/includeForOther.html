@@ -1,0 +1,47 @@
+<ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+        <a class="nav-link" href="../index.html">首頁 <span class="sr-only">(current)</span></a>
+    </li>
+    <!-- topBar依各自需求增加刪除開始 -->
+
+    <!-- 範例格式 -->
+    <!-- 無下拉選單 
+                                         <li class="nav-item">
+                                                 <a class="nav-link" href="#">註冊/登入</a>
+                                         </li>
+                     -->
+
+
+    <!-- 有下拉選單
+                                        <li class="nav-item dropdown">
+                                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    標題輸入在此
+                                                 </a>
+                                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                      <a class="dropdown-item" href="#">標題副選項輸入在此</a>
+                                                      <div class="dropdown-divider"></div>   //備註:分隔線
+                                                 </div>
+                                         </li>
+                     -->
+
+
+    <!-- 登入 -->
+    <li class="nav-item" include-html="../forinclude/login.html"></li>
+    <!-- 百戰百岳 -->
+    <li class="nav-item dropdown" include-html="../forinclude/mountain.html">
+           </li>
+    <!-- 住宿 -->
+    <li class="nav-item dropdown" include-html="../forinclude/house.html">
+    <!-- 商城 -->
+    <li class="nav-item dropdown" include-html="../forinclude/shop.html"></li>
+    <!-- 會員資料 -->
+    <li class="nav-item dropdown" include-html="../forinclude/member.html"></li>
+
+</ul>
+<!-- topBar依各自需求增加刪除結束 -->
+<form class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" placeholder="全站搜尋" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜尋</button>
+
+</form>

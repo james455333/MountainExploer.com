@@ -1,0 +1,462 @@
+.navbar-nav>li>a, .navbar-brand {
+    padding-top: 35px !important;
+    padding-bottom: 0 !important;
+    height: 100px;
+}
+
+.navbar {
+    min-height: 30px !important;
+    z-index: 50;
+}
+
+.p_information_td {
+    padding: 40% 30% 40% 30%;
+}
+
+.p_i_image {
+    text-align: left;
+}
+
+#p_i_content {
+    text-align: center;
+}
+
+/*---------下拉選單滑入展開---------*/
+
+.dropdown-menu li:hover .sub-menu {
+    visibility: visible;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* -------下拉選單滑入展開 ---------*/
+
+header {
+    background-color: #fff;
+    padding: 0px 0px;
+    height: 48px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    transition: top 0.4s ease-in-out;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+}
+
+.hideUp header {
+    top: -20px;
+}
+
+.bgi {
+    background-image: url(../images/BGI.jpg);
+    background-attachment: scroll;
+}
+
+.count1 {
+    column-count: 3;
+    column-rule: 3px double gray;
+    width: auto;
+    padding: 100px;
+    margin: 116px auto 10px auto;
+    background-image: url(../images/BGI.jpg);
+    background-attachment: fixed;
+    /*背景附著*/
+    background-repeat: no-repeat;
+    /*重複背景*/
+    background-position: bottom;
+    /*背景位置*/
+    background-size: cover;
+    /*背景尺寸*/
+    display: flex;
+    opacity: 0.8;
+    z-index: 0;
+}
+.count1_1 {
+    border: 5px solid rgb(70, 64, 64);
+    width: 1440px;
+    height: 400px;
+    text-align: center;
+    line-height: 400px;
+    margin: 0 auto;
+}
+
+.count2 {
+    column-count: 3;
+    column-rule: 3px double gray;
+    width: auto;
+    padding: 100px;
+    margin: 116px auto 10px auto;
+    display: flex;
+    opacity: 0.8;
+    z-index: 0;
+    position: relative;
+}
+
+.count2>a {
+    display: block;
+    position: relative;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -webkit-animation: silder 15s linear infinite;
+    animation: silder 15s linear infinite;
+}
+
+.count2>a>img {
+    max-width: 100%;
+}
+
+@-webkit-keyframes silder {
+    3% {
+        opacity: 1;
+        filter: alpha(opacity=100);
+    }
+    27% {
+        opacity: 1;
+        filter: alpha(opacity=100);
+    }
+    30% {
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+}
+
+@keyframes silder {
+    3% {
+        opacity: 1;
+        filter: alpha(opacity=100);
+    }
+    27% {
+        opacity: 1;
+        filter: alpha(opacity=100);
+    }
+    30% {
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+}
+
+.count2>a:nth-child(3) {
+    -webkit-animation-delay: 10s;
+    animation-delay: 10s;
+}
+.count2>a:nth-child(2) {
+    -webkit-animation-delay: 5s;
+    animation-delay: 5s;
+}
+.count2>a:nth-child(1) {
+    -webkit-animation-delay:0s;
+    animation-delay: 0s;
+}
+
+.count2:hover>a {
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;
+}
+
+
+
+
+.count1_img {
+    margin: auto;
+    text-align: center;
+    /* border-top: px; */
+}
+
+.zline {
+    z-index: 99;
+}
+
+.top_bar_a {
+    color: ivory;
+    text-align: center;
+}
+
+.p_information_td dl dd:hover {
+    color: #f9fd04;
+}
+
+.font1 {
+    color: lightcyan;
+}
+
+.div_ul {
+    text-align: center;
+    box-sizing: border-box;
+    width: 1440px;
+    overflow: auto;
+    margin: 0px auto;
+    /* div置中 */
+}
+
+.div_li1 {
+    background-color: rgb(208, 243, 255);
+    width: 200px;
+    height: 1800px;
+    text-align: center;
+    line-height: 400px;
+    float: left;
+}
+
+.div_li3 {
+    background-color: rgb(208, 243, 255);
+    width: 200px;
+    height: 1800px;
+    text-align: center;
+    line-height: 400px;
+    float: right;
+}
+
+.div_li2 {
+    background-color: rgb(243, 248, 194);
+    margin-left: 200px;
+    margin-right: 200px;
+    height: 1800px;
+    width: 1040px;
+    text-align: center;
+    z-index: 1;
+}
+
+#footer {
+    clear: both;
+    background-color: grey;
+    height: 120px;
+    width: 1440px;
+    text-align: center;
+    margin: 0px auto;
+}
+
+.upLoadImg {
+    border: 5px solid #666;
+    width: 210px;
+    height: 210px;
+    /* border-radius: 50%; */
+    margin: 0px auto;
+}
+
+#output {
+    /* background-image: url(../images/預設頭像.png); */
+    width: 100%;
+    height: 100%;
+    border: 3px solid red;
+    width: 200px;
+    height: 200px;
+    /* border-radius: 50%; */
+    margin: 0px auto;
+}
+#output1
+{
+    width: 100%;
+    height: 100%;
+    border: 5px solid #666;
+    width: 1887px;
+    height: 300px;
+    
+    margin: 0px auto;
+}
+.導覽列表 {
+    width: 1440px;
+    height: 60px;
+    /* background: linear-gradient(0deg, #a8edea, #fed6e3); */
+    background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
+    /* background-color: rgb(222, 184, 135); */
+    text-align: center;
+    font-size: 30px;
+    /* display: flex; */
+}
+
+.second_nav {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    color: inherit;
+    /* 移除超連結顏色 */
+    text-decoration: none;
+    /* 移除超連結底線 */
+    text-align: center;
+    /*水平置中*/
+    line-height: 60px;
+    /*垂直置中 大小依據當前div而定*/
+    /* float: left; */
+}
+
+.third_nav {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    line-height: 79px;
+    float: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.thirdSelect {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    /* line-height: 79px; */
+    float: left;
+    position: relative;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.li1 {
+    padding: 0px 20px;
+    float: left;
+}
+
+.li2 {
+    /* 文字間格 */
+    padding: 20px 10px;
+    float: left;
+}
+
+.second_nav li a:hover {
+    /* 控制second_nav中li裡的a標籤 */
+    text-decoration: none;
+    /* 移除連結底線 */
+    font-size: 110%;
+    color: rgba(76, 69, 69, 0.397);
+    border-radius: 25px;
+    overflow: hidden;
+    transition: all 0.3s linear;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    background: linear-gradient(0deg, #a8edea, #fed6e3);
+    /* background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%); */
+}
+
+.searchBar {
+    height: 79px;
+    width: 1000px;
+    position: relative;
+    /*依據父元素找到絕對位置*/
+    top: 30px;
+    left: 20px;
+    background: linear-gradient(#fef0c9, #fedf84);
+    border: 1px solid #fe9669;
+}
+
+.search {
+    float: right;
+    position: relative;
+    top: 24.5px;
+    right: 25px;
+}
+
+/* 以下table.css */
+
+.secDivContent {
+    position: relative;
+    top: 100px;
+    width: 1000px;
+    height: 1600px;
+    margin: 0px auto;
+    border: 5px solid black;
+}
+
+.order-table {
+    table-layout: fixed;
+    width: 900px;
+    margin: 15px auto;
+    border: 5px solid rgb(70, 64, 64);
+    border-collapse: collapse;
+    overflow: hidden;
+}
+
+.order-table-th {
+    font-size: 30px;
+}
+
+.order-table-tb {
+    font-size: 25px;
+    overflow: hidden;
+}
+
+tr:nth-child(even) {
+    background: rgb(204, 204, 204)
+}
+
+tr:nth-child(odd) {
+    background-color: #808080;
+}
+
+tr {
+    border: 2px solid rgb(0, 0, 0);
+}
+
+tbody tr:hover {
+    background-color: #bde6ee;
+}
+
+/*以上table.css*/
+
+.imgSearch {
+    cursor: pointer;
+    position: relative;
+}
+
+/*頁面控制*/
+
+.pageControl {
+    border: 1px solid black;
+    box-sizing: border-box;
+    color: rgb(70, 70, 70);
+    display: block;
+    font-family: 微軟正黑體, Verdana, Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-stretch: 100%;
+    font-weight: 400;
+    height: 30px;
+    line-height: normal;
+    margin: 5px auto;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    text-align: center;
+    text-size-adjust: 100%;
+    width: 500px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.forImage {
+    border: 5px solid rgb(95, 26, 26);
+    width: 980px;
+    height: 300px;
+    position: relative;
+    margin: 5px auto;
+}
+
+.forImagesImg {
+    object-fit: scale-down;
+    width: 970px;
+    height: 285px;
+    margin: 1px auto;
+}
+
+.forText {
+    border: 5px solid rgb(95, 26, 26);
+    width: 638px;
+    height: 1275px;
+    position: relative;
+    margin-left: 5px;
+}
+
+.forFrom {
+    border: 5px solid rgb(95, 26, 26);
+    width: 338px;
+    height: 1275px;
+    position: relative;
+    float: right;
+    margin-right: 5px;
+}

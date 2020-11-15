@@ -13,5 +13,9 @@ public class PageEntryController {
 	public String BackStageEntry(Model model) {
 		return "backStage";
 	}
+	@RequestMapping(path = "/" , method = RequestMethod.GET)
+	public String IndexEntry(Model model) {
+		return "index";
+	}
 	
 }
