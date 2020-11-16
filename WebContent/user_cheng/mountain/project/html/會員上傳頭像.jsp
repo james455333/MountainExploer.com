@@ -1,13 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="zh-tw">
-
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>岳進者</title>
     <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
     <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
-       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
@@ -23,7 +24,7 @@
         <div class="count1_img">
             <img src="/MountainExploer.com/images/logo1.png">
             <hr>
-            <h1 class="font">可能改成輪播</h1>
+            <h1 class="font">岳進者，不要logo，可能改成輪播</h1>
             <!-- <a class="font">岳進者</a> -->
         </div>
     </div>
@@ -38,19 +39,6 @@
         </nav>
     </header>
     <div class="div_ul">
-        <div class="secNavbar">
-            <nav>
-                <ul class="second_nav">
-                    <li class="li1"><a href="#">第二導覽列1</a></li>
-
-                    <li class="li1"><a href="#">第二導覽列2</a></li>
-
-                    <li class="li1"><a href="#">第二導覽列3</a></li>
-
-                    <li class="li1"><a href="#">第二導覽列4</a></li>
-                </ul>
-            </nav>
-        </div>
         <div class="div_li1">
             <a>保留區</a>
         </div>
@@ -59,30 +47,21 @@
         </div>
         <div class="div_li2">
             <!-- 每頁不同的內容從這裡開始 -->
-            <div class="searchBar">
-                <nav>
-                    <ul class="thirdSelect">
-                        <!-- 副選項按鈕從這邊新增開始 -->
-                        <li class="li2"><button type="button" class="btn btn-outline-danger" id="demo6">按鈕1</button></li>
-                        <li class="li2"><button type="button" class="btn btn-outline-secondary">按鈕2</button></li>
-                        <li class="li2"><button type="button" class="btn btn-outline-dark">黑按鈕</button></li>
-                        <li class="li2"><button type="button" class="btn btn-outline-success">綠色</button></li>
-                        <li class="li2"><button type="button" class="btn btn-outline-warning">黃色</button></li>
-                        <li class="li2"><button type="button" class="btn btn-outline-info">寶藍</button></li>
-                        <li class="li2"><button type="button" class="btn btn-outline-light">白</button></li>
-                        <!-- 副選項按鈕到這邊新增結束 -->
-                    </ul>
-                </nav>
-            </div>
             <div class="secDivContent">
-                <!-- div2放置內容從這邊開始 -->
-                <a>內容1</a>
-                <!-- div2放置內容到這邊結束 -->
-            </div>
+                
+                   <!--上傳影像div開始-->
+                <div class="upLoadImg">
+                    <img id="output" src="/MountainExploer.com/images/預設頭像.png" />
+                </div>
+                <input type="file" accept="image/*" onchange="loadFile(event)">
 
-
-            <!-- 每頁不同的內容到這裡結束 -->
+                <br>
+                <a>上傳頭像</a>
+                <!--上傳影像div結束-->
+            </div> 
+            <!-- 每頁不同內容到這邊結束 -->
         </div>
+        
     </div>
 
     <footer id="footer">
@@ -93,6 +72,7 @@
         <button id="demo4">多重選項&提醒視窗demo4</button>
         <button id="demo5">Demo5</button>
         <button id="demo6">Demo6</button>
+        <button id="demo7">Demo7</button>
 
 
 
@@ -103,5 +83,4 @@
 <script src="/MountainExploer.com/js/topBar.js"></script>
 <script src="/MountainExploer.com/js/sweetalert.js"></script><!--sweet alert-->
 <script src="/MountainExploer.com/js/includejsp.js"></script>
-
 </html>
