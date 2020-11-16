@@ -68,7 +68,7 @@ public class CheckLoginFilter implements Filter{
 			System.out.println("not login yet, redirect to loginPage" );
 			beforeCheckURL = req.getRequestURI().substring(req.getContextPath().length());
 			session.setAttribute("beforeCheckURL", beforeCheckURL);
-			resp.sendRedirect(req.getContextPath()+"/member/memberBackLoginEntry");
+			resp.sendRedirect(req.getContextPath()+"/member/memberLoginEntry");
 			return;
 		}else {
 			//已登入，繼續

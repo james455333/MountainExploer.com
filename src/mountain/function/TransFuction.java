@@ -204,8 +204,25 @@ public class TransFuction {
 			//set Tag
 			Map<Integer, Boolean> tagResult = new TagSelector(actInfo,actBean).getTagResult();
 			actBean.setTag(tagResult);
+			System.out.println("================================");
+			System.out.println("tagList ID outside : " + tagResult.hashCode());
+			System.out.println("tagList ID inside  : " + actBean.getTag().hashCode());
+			System.out.println("actID : " + actBean.getActID());
+			System.out.println("regEndTag : " + actBean.getTag().get(4));
+			System.out.println("================================");
 			actBeans.add(actBean);
 		}
+		
+		System.out.println("after Beans");
+		System.out.println("================================");
+		for (ActBean actBean : actBeans) {
+			System.out.println("================================");
+			System.out.println("tagList ID : " + actBean.getTag().hashCode());
+			System.out.println("actID : " + actBean.getActID());
+			System.out.println("regEndTag : " + actBean.getTag().get(4));
+			System.out.println("================================");
+		}
+		
 		
 		return actBeans;
 	}

@@ -60,6 +60,8 @@ $(function(){
 		console.log("checkError :" + checkError)
 		console.log("checkEmpty :" + checkEmpty)
 		if(checkError && checkEmpty){
+			let today = new Date();
+			$("input[name='postDate']").val(new Date())
 			$("#newActForm").submit();
 		}else{
 			swal({

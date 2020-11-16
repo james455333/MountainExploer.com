@@ -18,8 +18,6 @@ public class TagSelector {
 	private static int nowReg;
 	private static int topReg;
 	private static int regLeftDay;
-	private static Map<Integer, Boolean> result = new HashMap<Integer, Boolean>();
-	
 	private static int newAct = 1;
 	private static int hotAct = 2;
 	private static int oldAct = 3;
@@ -41,35 +39,38 @@ public class TagSelector {
 		regLeftDay = (int) Math.ceil( (regEndTime - nowTime)*1.0 / MountainGlobal.ONEDAY );
 		nowReg = actBean.getNowReg();
 		topReg = actBean.getTopReg();
+		
 	}
 	
 	public  Map<Integer, Boolean> getTagResult() {
-		setTagResult();
+		Map<Integer, Boolean> result = new HashMap<Integer, Boolean>();
+		setTagResult(result);
 		return result;
 	}
 
 
 
-	private static void setTagResult() {
-		setActTag();
-		setRegTag();
+	private static void setTagResult(Map<Integer, Boolean> result) {
+		setActTag(result);
+		setRegTag(result);
 	}
 	
-	private static void setActTag() {
-		setOldAct();
-		setHotAct();
-		setNewAct();
+	private static void setActTag(Map<Integer, Boolean> result) {
+		setOldAct(result);
+		setHotAct(result);
+		setNewAct(result);
 	}
 	
-	private static void setRegTag() {
-		setRegEnd();
-		setRegClzEnd();
-		setRegFull();
-		setRegClzFull();
-		setRegAvl();
+	private static void setRegTag(Map<Integer, Boolean> result) {
+		setRegEnd(result);
+		setRegClzEnd(result);
+		setRegFull(result);
+		setRegClzFull(result);
+		setRegAvl(result);
 	}
 
-	private static void setOldAct() {
+	private static void setOldAct(Map<Integer, Boolean> result) {
+		
 		if (endTime < nowTime) {
 			result.put(oldAct, true);
 		}else {
@@ -77,7 +78,7 @@ public class TagSelector {
 		}
 	}
 
-	private static void setNewAct() {
+	private static void setNewAct(Map<Integer, Boolean> result) {
 		
 		if (passDay <= 7) {
 			result.put(newAct, true);
@@ -86,7 +87,7 @@ public class TagSelector {
 		}
 	}
 	
-	private static void setHotAct() {
+	private static void setHotAct(Map<Integer, Boolean> result) {
 		
 		if (passDay <= 14 && nowReg >= (topReg/2)) {
 			result.put(hotAct, true);
@@ -98,15 +99,21 @@ public class TagSelector {
 	
 	}
 	
-	private static void setRegEnd() {
+	private static void setRegEnd(Map<Integer, Boolean> result) {
+//		System.out.println("=============================");
+//		System.out.println("now Time : \t" + nowTime);
+//		System.out.println("regEnd Time : \t" + regEndTime);
+//		System.out.println("status : " + (nowTime >= regEndTime));
+//		System.out.println("=============================");
 		if (nowTime >= regEndTime) {
 			result.put(regEnd, true);
+			System.out.println("RegEnd : " + regEnd + "\t status : " + result.get(regEnd));
 		}else {
 			result.put(regEnd, false);
 		}
 	}
 	
-	private static void setRegFull() {
+	private static void setRegFull(Map<Integer, Boolean> result) {
 		if (nowReg >= topReg) {
 			result.put(regFull, true);
 		}else {
@@ -114,7 +121,7 @@ public class TagSelector {
 		}
 	}
 	
-	private static void setRegAvl() {
+	private static void setRegAvl(Map<Integer, Boolean> result) {
 		if (nowReg < topReg) {
 			result.put(regAvl, true);
 		}else {
@@ -122,7 +129,7 @@ public class TagSelector {
 		}
 	}
 	
-	private static void setRegClzEnd() {
+	private static void setRegClzEnd(Map<Integer, Boolean> result) {
 		if ( regLeftDay <= 7 ) {
 			result.put(regClzEnd, true);
 		}else {
@@ -130,7 +137,7 @@ public class TagSelector {
 		}
 	}
 
-	private static void setRegClzFull() {
+	private static void setRegClzFull(Map<Integer, Boolean> result) {
 		if ( nowReg >= (topReg*3/4) ) {
 			result.put(regClzFull, true);
 		}else {

@@ -92,6 +92,7 @@
 				<td>
 					<label>活動報名截止日(最晚必須為活動開始前7日)</label>
 					<input type="text" name="actInfo.regEndDate" readonly required>
+					<input type="text" name="actInfo.postDate" value="1" readonly >
 				</td>
 				<td>
 					<label>備註</label>

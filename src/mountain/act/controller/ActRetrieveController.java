@@ -2,6 +2,7 @@ package mountain.act.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -60,15 +61,33 @@ public class ActRetrieveController {
 		List<ActBean> actBeans = new ArrayList<ActBean>();
 		
 		if (page == null) {
+			System.out.println("=====================================");
+			System.out.println("page = " + page);
 			page = 1 ;
 		}
+		System.out.println("=====================================");
+		System.out.println("page = " + page);
 		if (showData == null) {
-			showData = 3 ;
+			System.out.println("=====================================");
+			System.out.println("showData = " + showData);
+			showData = 15 ;
 		}
+		System.out.println("=====================================");
+		System.out.println("page = " + showData);
 		
 		genericService.save(actInfo);
 		List<GenericTypeObject> actInfoList = genericService.selectWithPage(page, showData);
 		actBeans = TransFuction.transToActBeans(actInfoList,genericService);
+		
+		for (ActBean actBean : actBeans) {
+			Map<Integer, Boolean> tag = actBean.getTag();
+			System.out.println("=========================");
+			System.out.println("actID : " + actBean.getActID());
+			for (int i = 0; i < tag.size(); i++) {
+				System.out.print("tag " + i + " : " + tag.get(i) + "\t");
+			}
+			System.out.println("\n=========================");
+		}
 		
 		
 		return actBeans;
