@@ -16,8 +16,21 @@
     display: flex;
     opacity: 0.8;
     z-index: 0;
-}.count1_img {
+}
+
+.count1_img {
     margin: auto;
     text-align: center;
     /* border-top: px; */
+}
+
+.navbar-nav>li>a, .navbar-brand {
+    padding-top: 35px !important;
+    padding-bottom: 0 !important;
+    height: 100px;
+}
+
+.navbar {
+    min-height: 30px !important;
+    z-index: 50;
 }

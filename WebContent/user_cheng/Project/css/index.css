@@ -88,21 +88,6 @@ header {
     z-index: 99;
 }
 
-.top_bar_a {
-    color: ivory;
-    text-align: center;
-}
-
-.mh1 {
-    position: relative;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    transition: all 0.5s linear;
-}
-
-.商城:hover {
-    border-radius: 25px;
-    transition: all 0.5s linear;
-}
 
 .div_ul {
     text-align: center;

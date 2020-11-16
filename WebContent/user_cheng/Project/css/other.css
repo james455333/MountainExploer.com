@@ -50,6 +50,9 @@ header {
     top: -20px;
 }
 
+
+
+/* ?? */
 .bgi {
     background-image: url(../images/BGI.jpg);
     background-attachment: scroll;
@@ -176,9 +179,7 @@ header {
     text-align: center;
 }
 
-.p_information_td dl dd:hover {
-    color: #f9fd04;
-}
+
 
 .font1 {
     color: lightcyan;
@@ -258,7 +259,7 @@ header {
     
     margin: 0px auto;
 }
-.導覽列表 {
+.secNavbar {
     width: 1440px;
     height: 60px;
     /* background: linear-gradient(0deg, #a8edea, #fed6e3); */
