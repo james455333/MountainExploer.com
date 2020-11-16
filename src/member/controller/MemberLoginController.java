@@ -63,7 +63,9 @@ public class MemberLoginController {
 		if(account != null && password != null && errors.isEmpty()) {
 			MemberBasic mb = mbService.checkPassword(account, password);
 			if(mb != null) {
-				m.addAttribute("LoginOK", mb);
+				int seqno = mb.getSeqno();
+				m.addAttribute("Member", mb);
+				m.addAttribute("LoginOK", seqno);
 				m.addAttribute("result", "登入成功");
 				return "member/memberInfo";
 			} else {

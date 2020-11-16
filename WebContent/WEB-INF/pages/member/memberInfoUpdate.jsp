@@ -15,20 +15,20 @@
 				<legend>修改個人資料</legend>
 				<div style="display:none">
 					<label>會員編號</label>
-					<span name="seqno">${LoginOK.seqno}</span><br/>
+					<span name="seqno">${Member.seqno}</span><br/>
 				</div>
 				<div>
 					<label>密碼：</label>
-					<input type="password" id="pwd" name="pwd" value="${LoginOK.password}">
+					<input type="password" id="pwd" name="pwd" value="${Member.password}">
 					<span class="pwdsp"></span><br/>
 				</div>
 				<div>
 					<label>暱稱：</label>
-					<input type="text" id="ncName" name="ncName" value="${LoginOK.memberInfo.neck_name}"><br/>
+					<input type="text" id="ncName" name="ncName" value="${Member.memberInfo.neck_name}"><br/>
 				</div>
 				<div>
 					<label>姓名：</label>
-					<input type="text" id="name" name="name" value="${LoginOK.name}">
+					<input type="text" id="name" name="name" value="${Member.name}">
 					<span class="nmsp"></span><br/>
 				</div>
 				<div>
@@ -39,26 +39,26 @@
 				</div>
 				<div>
 					<label>生日：</label>
-					<input type="text" id="birDate" name="birDate" value="${LoginOK.memberInfo.birthday}">
+					<input type="text" id="birDate" name="birDate" value="${Member.memberInfo.birthday}">
 					<span class="brsp"></span><br/>
 				</div>
 				<div>
 					<label>手機號碼：</label>
-					<input type="text" id="phone" name="phone" value="${LoginOK.memberInfo.phone}">
+					<input type="text" id="phone" name="phone" value="${Member.memberInfo.phone}">
 					<span class="phsp"></span><br/>
 				</div>
 				<div>
 					<label>Email：</label>
-					<input type="email" id="email" name="email" value="${LoginOK.email}">
+					<input type="email" id="email" name="email" value="${Member.email}">
 					<span class="emsp"></span><br/>
 				</div>
 				<div>
 					<label>登山經驗：</label>
-					<input type="text" id="exp" name="exp" value="${LoginOK.memberInfo.climb_ex}"><br/>
+					<input type="text" id="exp" name="exp" value="${Member.memberInfo.climb_ex}"><br/>
 				</div>
 				<div>
 					<label>個人簡介：</label>
-					<input type="text" id="other" name="other" value="${LoginOK.memberInfo.other}"><br/>
+					<input type="text" id="other" name="other" value="${Member.memberInfo.other}"><br/>
 				</div>
 			</fieldset>
 		</form>

@@ -6,18 +6,18 @@
 <head>
 <meta charset="UTF-8">
 <title>會員認證資料</title>
-<script src="//code.jquery.com/jquery-3.5.1.js"></script>
+
 </head>
 <body>
 	<div>
 		<form action="<c:url value="/member/memberFirstInfoInsert" />" method="POST">
 			<fieldset>
-				<legend>${LoginOK.name}的認證資料</legend>
+				<legend>${Member.name}的認證資料</legend>
 				<div style="display:none">
 					<label>會員編號：</label>
-					<span name="seqno">${LoginOK.seqno}</span><br/>
+					<span name="seqno">${Member.seqno}</span><br/>
 					<label>身分組ID：</label>
-					<span>${LoginOK.statusId}</span>
+					<span>${Member.statusId}</span>
 				</div>
 				<div>
 					<label>暱稱：</label>
@@ -50,6 +50,8 @@
 			</fieldset>
 		</form>
 	</div>
+	
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script src="memberFirst.js"></script>
 
 </body>

@@ -52,7 +52,7 @@
         </form>
     </div>
     
-    <script src="//code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script src="register.js"></script>
 </body>
 </html>

@@ -97,11 +97,41 @@ public class MemberUpdateController {
 									@RequestParam(name = "pwd")String password,
 									@RequestParam(name = "ncName")String ncName,
 									@RequestParam(name = "name")String name,
+									@RequestParam(name = "birDate")String birDate,
+									@RequestParam(name = "phone")String phone,
+									@RequestParam(name = "email")String email,
+									@RequestParam(name = "exp")String exp,
+									@RequestParam(name = "other")String other,
+									Model m
 									) {
+		Map<String, String> errors = new HashMap<String, String>();
+		MemberBasic mb = new MemberBasic();
+		MemberInfo mbInfo = new MemberInfo();
 		
+		mb.setPassword(password);
+		mb.setName(name);
+		mb.setEmail(email);
 		
+		mbInfo.setNeck_name(ncName);
+		mbInfo.setBirthday(java.sql.Date.valueOf(birDate));
+		mbInfo.setPhone(phone);
+		mbInfo.setClimb_ex(exp);
 		
-		return "";
+		byte[] byteOther = other.getBytes();
+		mbInfo.setOther(byteOther);
+		
+		MemberInfo queryIN = mbInfoService.select(seqno);
+		if(queryIN != null) {
+			MemberInfo insertIN = mbInfoService.insert(mbInfo);
+			m.addAttribute("LoginOK", insertIN);
+			return "member/memberInfo";
+		}else {
+			errors.put("msg", "請填入修改資料");
+//			return "member/memberInfoUpdate";
+		}
+		return "member/memberInfoUpdate";
 	}
+
+	
 
 }
