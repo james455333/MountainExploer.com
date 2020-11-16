@@ -15,31 +15,21 @@ import product.model.FirstClass;
 @Repository("firstClassDao")
 public class FirstClassDAO {
 
-//<<<<<<< HEAD:src/product/dao/FirstClassDAO.java
-//	@Autowired
-//	private SessionFactory sessionFactory;
 
-	// 新增FirstClass
-//=======
 	@Autowired @Qualifier("sessionFactory")
 	private SessionFactory sessionFactory;
 	
-//	public FirstClassDAO(Session session) {
-//		Session session = sessionFactory.getCurrentSession();
-//	}
 
 		
 	
 	
 	//新增FirstClass
-//>>>>>>> parent of 7515c1d... 123:src/product/model/FirstClassDAO.java
 	public FirstClass insert(FirstClass bean) {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(bean);
 		return bean;
 	}
 
-//<<<<<<< HEAD:src/product/dao/FirstClassDAO.java
 	// 查詢firstClassId
 	public FirstClass selectId(Integer firstClassId) {
 		Session session = sessionFactory.getCurrentSession();
@@ -78,8 +68,6 @@ public class FirstClassDAO {
 			if (result!=null) {
 				result.setName(firstClassName);
 			}
-//			return result;
-//=======
 			String hql = "FirstClass  where Name like '" + firstClassName + "'";
 //			String hql = "From"+ FirstClass.class.getName() +" where Name like '" + firstClassName + "'";
 
@@ -91,7 +79,6 @@ public class FirstClassDAO {
 				return uniqueResult;
 			}
 			return null;
-//>>>>>>> parent of 7515c1d... 123:src/product/model/FirstClassDAO.java
 		}
 	// 刪除
 //		public boolean delete(String firstClassName) {

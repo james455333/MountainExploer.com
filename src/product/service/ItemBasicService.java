@@ -1,5 +1,6 @@
 package product.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import product.dao.ItemBasicDAO;
 import product.model.ItemBasic;
 import product.model.ItemInfo;
+import product.model.ProductBean;
 @Service("itemBasicService")
 public class ItemBasicService {
 	@Autowired
@@ -42,5 +44,22 @@ public class ItemBasicService {
 	
 	public ItemBasic update(ItemBasic bean) {
 		return itemBasicDao.update(bean);
+	}
+	
+	
+	public List<ItemBasic> selectWithPage(Integer page, Integer showdata) {
+		return itemBasicDao.selectWithPage(page, showdata);
+	}
+
+	public int getAllData(ItemBasic itemBasic) {
+		return itemBasicDao.getAllData(itemBasic);
+	}
+
+	public int countWith(Integer id, String coulmnName) {
+		return itemBasicDao.countWith(id, coulmnName);
+	}
+	
+	public List<ItemBasic> scIDsetPage(int page, int showdata, int scID) {
+		return itemBasicDao.scIDsetPage(page, showdata, scID);
 	}
 }

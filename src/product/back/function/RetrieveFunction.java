@@ -6,21 +6,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import product.model.FirstClass;
+import product.model.ItemBasic;
 import product.model.ProductBean;
 import product.model.SecondClass;
-import product.service.FirstClassService;
-import product.service.SecondClassService;
 
 public class RetrieveFunction {
 	
 	
-	//全數查詢
-	public static List<FirstClass> getAll(FirstClassService firstClassService){
-		return firstClassService.selectAll();
+	//設置顯示Bean
+	public static List<ProductBean> getProductBeanList(List<ItemBasic> list) throws IOException, SQLException{
+		
+		List<ProductBean> productBeans = null;
+		
+		productBeans = sortProductBeans(TransFuction.transItemBasic(list));
+		
+		System.out.println("productBeans Size : " + productBeans.size());
+		
+		return productBeans;
+		
 	}
-	public static List<SecondClass> getAll(SecondClassService secondClassService){
-		return secondClassService.selectAll();
-	}
+	
 
 	// 設置主類別查詢結果主畫面顯示Bean
 	public static List<ProductBean> getFCResult(String seqno,List<FirstClass> all) throws IOException, SQLException {

@@ -19,6 +19,39 @@ import product.model.ProductBean;
 import product.model.SecondClass;
 
 public class TransFuction {
+	
+	public static List<ProductBean> transItemBasic(List<ItemBasic> list) throws IOException, SQLException {
+		List<ProductBean> productBeans = new ArrayList<ProductBean>();
+		for (ItemBasic itemBasic : list) {
+			ProductBean productBean = new ProductBean();
+			
+			ItemInfo itemInfo = itemBasic.getItemInfo();
+			SecondClass secondClass = itemBasic.getSecondClass();
+			FirstClass firstClass = secondClass.getFirstClass();
+			
+			
+			productBean.setSeqno(itemBasic.getSeqno());
+			productBean.setName(itemBasic.getName());
+			productBean.setType(itemInfo.getType());
+			productBean.setPrice(itemInfo.getPrice());
+			productBean.setStock(itemInfo.getStock());
+
+			String description = bytesToString(itemInfo.getDescription());
+			productBean.setDescription(description);
+			
+			String firstClassName = firstClass.getName();
+			productBean.setFirstClass(firstClassName);
+			String secondClassName = secondClass.getName();
+			productBean.setSecondClass(secondClassName);
+			
+			productBeans.add(productBean);
+		}
+		
+		
+		return productBeans;
+	}
+	
+	
 
 	// 轉換次類別查詢為顯示用BeanList
 	public static List<ProductBean> transToSCBean(List<SecondClass> all, int seqnum) throws IOException, SQLException {

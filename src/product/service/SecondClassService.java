@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import product.dao.SecondClassDAO;
+import product.model.FirstClass;
 import product.model.SecondClass;
 
 @Service("secondClassService")
@@ -21,6 +22,10 @@ public class SecondClassService {
 
 	public SecondClass insert(SecondClass bean) {
 		return secondClassDao.insert(bean);
+	}
+	
+	public SecondClass selectId(Integer secondClassId) {
+		return secondClassDao.selectId(secondClassId);
 	}
 
 	public SecondClass select(String secondClassName) {

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import product.model.FirstClass;
 import product.model.SecondClass;
 
 @Repository("secondClassDao")
@@ -18,12 +19,16 @@ public class SecondClassDAO {
 	@Qualifier("sessionFactory")
 	private SessionFactory sessionFactory;
 
-//<<<<<<< HEAD:src/product/dao/SecondClassDAO.java
 	// 新增
 	public SecondClass insert(SecondClass bean) {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(bean);
 		return bean;
+	}
+	// 查詢secondClassId
+	public SecondClass selectId(Integer secondClassId) {
+		Session session = sessionFactory.getCurrentSession();
+		return session.get(SecondClass.class, secondClassId);
 	}
 
 	// 查詢
@@ -31,11 +36,6 @@ public class SecondClassDAO {
 		Session session = sessionFactory.getCurrentSession();
 
 		String hql = "From SecondClass  where Name like '" + secondClassName + "'";
-//=======
-//			String hql = "From second_class  where Name like '" + secondClassName + "'";
-
-//			Query<SecondClass> query = session.createQuery(hql, SecondClass.class);
-//>>>>>>> parent of 7515c1d... 123:src/product/model/SecondClassDAO.java
 
 		Query<SecondClass> query = session.createQuery(hql, SecondClass.class);
 		System.out.println("Start SecondClass Query");

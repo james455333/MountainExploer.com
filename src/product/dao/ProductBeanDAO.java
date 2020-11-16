@@ -28,7 +28,6 @@ public class ProductBeanDAO {
 		return list;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public List<ProductBean> selectWithPage(int page, int showdata) {
 		Session session = sessionFactory.getCurrentSession();
 		int startPosition = (page-1) * showdata;
