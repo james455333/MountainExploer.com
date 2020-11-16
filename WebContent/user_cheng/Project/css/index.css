@@ -154,3 +154,6 @@ header {
     overflow: hidden;
     /* width: 255px; */
 }
+#p_i_content {
+    text-align: center;
+}
