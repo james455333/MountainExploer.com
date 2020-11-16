@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>會員認證資料</title>
+<script src="//code.jquery.com/jquery-3.5.1.js"></script>
 </head>
 <body>
 	<div>
@@ -49,6 +50,7 @@
 			</fieldset>
 		</form>
 	</div>
+	<script src="memberFirst.js"></script>
 
 </body>
 </html>

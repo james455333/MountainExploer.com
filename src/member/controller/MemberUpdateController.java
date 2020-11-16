@@ -93,7 +93,11 @@ public class MemberUpdateController {
 	
 	
 	@RequestMapping(path = "/member/memberInfoUpdate", method = RequestMethod.POST)
-	public String processInfoUpdate() {
+	public String processInfoUpdate(@RequestParam(name = "seqno")int seqno,
+									@RequestParam(name = "pwd")String password,
+									@RequestParam(name = "ncName")String ncName,
+									@RequestParam(name = "name")String name,
+									) {
 		
 		
 		
