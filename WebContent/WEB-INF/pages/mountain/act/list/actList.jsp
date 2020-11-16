@@ -122,7 +122,7 @@
                             <a href="#">‹上一頁</a>
                         </li>
                         <li class="li1">
-                            <a>目前頁</a>
+                            <a href="#"></a>
                         </li>
                         <li class="li1">
                             <a href="#">下一頁›</a>

@@ -164,7 +164,7 @@ public class TransFuction {
 	}
 
 	public static List<ActBean> transToActBeans(List<GenericTypeObject> actInfoList,
-			GenericService<GenericTypeObject> genericService) {
+			InterfaceService<GenericTypeObject> service) {
 		
 		List<ActBean> actBeans = new ArrayList<ActBean>();
 		
@@ -188,8 +188,8 @@ public class TransFuction {
 			//set EndDate
 			actBean.setEndDate(sdf.format(actInfo.getEndDate()));
 			//set NowReg
-			genericService.save(new ActRegistry());
-			int countResult = genericService.countWith(actID, "ACTIVITY_BASIC_SEQNO");
+			service.save(new ActRegistry());
+			int countResult = service.countWith(actID, "ACTIVITY_BASIC_SEQNO");
 			actBean.setNowReg(countResult);
 			//set TopReg
 			actBean.setTopReg(actInfo.getRegTop());
@@ -204,26 +204,8 @@ public class TransFuction {
 			//set Tag
 			Map<Integer, Boolean> tagResult = new TagSelector(actInfo,actBean).getTagResult();
 			actBean.setTag(tagResult);
-			System.out.println("================================");
-			System.out.println("tagList ID outside : " + tagResult.hashCode());
-			System.out.println("tagList ID inside  : " + actBean.getTag().hashCode());
-			System.out.println("actID : " + actBean.getActID());
-			System.out.println("regEndTag : " + actBean.getTag().get(4));
-			System.out.println("================================");
 			actBeans.add(actBean);
 		}
-		
-		System.out.println("after Beans");
-		System.out.println("================================");
-		for (ActBean actBean : actBeans) {
-			System.out.println("================================");
-			System.out.println("tagList ID : " + actBean.getTag().hashCode());
-			System.out.println("actID : " + actBean.getActID());
-			System.out.println("regEndTag : " + actBean.getTag().get(4));
-			System.out.println("================================");
-		}
-		
-		
 		return actBeans;
 	}
 	

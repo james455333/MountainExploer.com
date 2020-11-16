@@ -31,4 +31,6 @@ public interface InterfaceService<T extends GenericTypeObject> {
 	List<T> selectAllwithFK(Integer id, String FK);
 
 	List<T> selectAllwithFK(String search, String FK);
+	
+	List<T> getwithHQL(String hql, Integer page, Integer showData);
 }

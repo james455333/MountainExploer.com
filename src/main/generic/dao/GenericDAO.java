@@ -204,4 +204,25 @@ public class GenericDAO<T extends GenericTypeObject> implements InterfaceDAO<T> 
 		
 	}
 	
+	public List<T> getwithHQL(String hql, Integer page, Integer showData){
+		if (page == null) {
+			page = 1;
+		}
+		if (showData == null) {
+			showData = 3;
+		}
+		int startPosition = (page-1) * showData;
+		Session session = sessionFactory.getCurrentSession();
+		Query<T> query = session.createQuery(hql);
+		List<T> result = query.setFirstResult(startPosition)
+			.setMaxResults(showData)
+			.setReadOnly(true)
+			.getResultList();
+		
+		
+		return result;
+		
+		
+	}
+	
 }

@@ -102,7 +102,7 @@ $(function(){
 		$.ajax({
 			url : actHomeURL + "/crud/titleTest",
 			method : "GET",
-			data : {title : $(this).val()},
+			data : { title : $(this).val() },
 			dataType : "json",
 			success : function(data){
 				check(data,selectObj)
