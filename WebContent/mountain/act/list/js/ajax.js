@@ -3,29 +3,79 @@ $(function(){
 	
 	var npFunctionURL = "/MountainExploer.com/backstage/mountain/search";
 	var actHomeURL = "/MountainExploer.com/mountain/act";
-	
+	var mountainShare = "/MountainExploer.com/mountain/public";
+	var page, showData, totalPage, totalData;
 	$(window).on("load",function(){
-		//	預設顯示
+		
 		$.ajax({
-			url : actHomeURL + "/search/ajaxShow",
-			method : "GET",
-			/*data : {
-				page : 1,
-				showData : 10
-			},*/
-			dataType : "json",
+			url : mountainShare + "/act/totalAct",
+			mehod : "GET",
 			success : function(data){
-				insertTable(data);
+				//	頁面控制配置
+				totalData = data;
+				if(typeof page == 'undefined'){
+					page = 1
+				}
+				if(typeof showData == 'undefined'){
+					showData = 10
+				}
+				totalPage = Math.ceil(totalData*1.0 / showData )
+				
+				
+				//	預設顯示
+				//設置頁面控制按鈕點擊方法
+				$(".pageControl").on("click","a",function(e){
+					e.preventDefault();
+					var page = Number($(this).attr("name"));
+					console.log("page Before Click : " + page)
+					$.ajax({
+						url : homeUrl + "/all?page="+page+"&showData="+showData,
+						method : "GET",
+				 		dataType: 'json',
+				  		success:function(data){
+							//變換顯示之資料
+							insertTable(data);
+							//設定按鈕
+							setPageController(page)
+						}
+					})
+					
+				})
+				var pageArray = $(".pageControl").find("a")
+				console.log( pageArray )
+				$(".pageControl").find("a").eq(2).html("目前 " + page + ' / ' +totalPage + " 頁")
+				if(page != 1){
+					$(".pageControl").find("a").eq(0).attr("href",1).css("display","block")
+					$(".pageControl").find("a").eq(1).attr("href",Number(page)-1).css("display","block")
+				}else{
+					$(".pageControl").find("a").eq(0).css("display","none")
+					$(".pageControl").find("a").eq(1).css("display","none")
+				}
+				if(page<totalPage){
+					console.log(page)
+					$(".pageControl").find("a").eq(3).attr("href",(Number(page)+1)).css("display","block")
+					$(".pageControl").find("a").eq(4).attr("href",totalPage).css("display","block")
+				}else{
+					$(".pageControl").find("a").eq(3).css("display","none")
+					$(".pageControl").find("a").eq(4).css("display","none")
+				}
+				
+				
+				
 			},
 			error : function(data){
 				
 			}
+			
 		})
+		
 	})
 	
 	//顯示插入
 	function insertTable(data){
+		console.log(data)
 		for(let i in data){
+//			$(".order-table").find("thead").siblings().remove()
 			$(".order-table").append(
 				"<tbody  class='order-table-tb'>" +
 					"<tr>" +
@@ -34,7 +84,7 @@ $(function(){
 							"<img class='extendImage' src='" + actHomeURL +"/search/images?actID=" + data[i].actID +"'>" +
 						"</td>" +
 						"<td>" +
-							setTag(data[i].tag) + data[i].title + " / " + data[i].price + " / " + data[i].totalDay + " / " + data[i].startDate + " ~ " + data[i].endDate +
+							setTag(data[i].tag) + "<br>" + "<a class='ctDeatil' href='#'>" + data[i].title + "</a>" + "<br>" + data[i].totalDay + " / " + data[i].price  +
 						"</td>" +
 						"<td>" +
 							data[i].postDate + " / <br>" + data[i].authorName +
@@ -81,7 +131,7 @@ $(function(){
 			for(let i =0 ; i < inputs.length ; i++ ){
 				let j = inputs[i].value;
 				if( j.length <= 0){
-					console.log("No."+i+" : " + j)
+				//	console.log("No."+i+" : " + j)
 					checkEmpty = false;
 					break;	
 				}
@@ -91,21 +141,61 @@ $(function(){
 			//console.log(errorArray)
 			for(let i = 0 ; i < errorArray.length ; i++){
 				let j = $("#newAct").find(".errorSpan").eq(i).html();
-				console.log("No."+i+" : " + j)
+			//	console.log("No."+i+" : " + j)
 				if(j.length > 0){
-					console.log("No."+i+" : " + j.length)
+				//	console.log("No."+i+" : " + j.length)
 					checkError = false;
 				}
 			}
-			console.log("checkError :" + checkError)
-			console.log("checkEmpty :" + checkEmpty)
+		//	console.log("checkError :" + checkError)
+		//	console.log("checkEmpty :" + checkEmpty)
 	}
 	
+	function setPageController(page){
+		var pageArray = $(".pageControl").find("a")
+		console.log( pageArray )
+		$(".pageControl").find("a").eq(2).html("目前 " + page + ' / ' +totalPage + " 頁")
+		if(page != 1){
+			$(".pageControl").find("a").eq(0).attr("href",1).css("display","block")
+			$(".pageControl").find("a").eq(1).attr("href",Number(page)-1).css("display","block")
+		}else{
+			$(".pageControl").find("a").eq(0).css("display","none")
+			$(".pageControl").find("a").eq(1).css("display","none")
+		}
+		if(page<totalPage){
+			console.log(page)
+			$(".pageControl").find("a").eq(3).attr("href",(Number(page)+1)).css("display","block")
+			$(".pageControl").find("a").eq(4).attr("href",totalPage).css("display","block")
+		}else{
+			$(".pageControl").find("a").eq(3).css("display","none")
+			$(".pageControl").find("a").eq(4).css("display","none")
+		}	
+	}
+	
+	function setData(page,showData){
+		$.ajax({
+			url : actHomeURL + "/search/ajaxShow",
+			method : "GET",
+			data : {
+				page : page,
+				showData : showData
+				},
+			dataType : "json",
+			success : function(data){
+				insertTable(data);
+				},
+			error : function(data){
+						
+				}
+			})
+	}
 		
-})	
+})
+
+	
 function setTag(tag){
 		let result = "<div class='tagContainer'>";
-		console.log(tag[3])
+	//	console.log(tag[3])
 		if( !tag[3] ){
 			
 			if( tag[1] ){

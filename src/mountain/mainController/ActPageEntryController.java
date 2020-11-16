@@ -1,4 +1,4 @@
-package mountain.pageController;
+package mountain.mainController;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

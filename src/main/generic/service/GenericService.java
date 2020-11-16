@@ -91,4 +91,9 @@ public class GenericService<T extends GenericTypeObject> implements InterfaceSer
 	public List<T> selectAllwithFK(String search, String FK){
 		return genericDAO.selectAllwithFK(search, FK);
 	}
+
+	@Override
+	public List<T> getwithHQL(String hql, Integer page, Integer showData) {
+		return genericDAO.getwithHQL(hql, page, showData);
+	}
 }

@@ -42,7 +42,7 @@ public class ActRetrieveController {
 	@Autowired
 	private ActRegistry actReg;
 	@Autowired
-	private GenericService<GenericTypeObject> genericService;
+	private GenericService<GenericTypeObject> service;
 	@Autowired
 	private MemberBasicBackService memberBasicService;
 	@Autowired
@@ -60,34 +60,20 @@ public class ActRetrieveController {
 			@RequestParam(name = "showData", required = false) Integer showData){
 		List<ActBean> actBeans = new ArrayList<ActBean>();
 		
+		InterfaceService<GenericTypeObject> service = this.service;
+		
 		if (page == null) {
-			System.out.println("=====================================");
-			System.out.println("page = " + page);
 			page = 1 ;
 		}
-		System.out.println("=====================================");
-		System.out.println("page = " + page);
 		if (showData == null) {
-			System.out.println("=====================================");
-			System.out.println("showData = " + showData);
 			showData = 15 ;
 		}
-		System.out.println("=====================================");
-		System.out.println("page = " + showData);
 		
-		genericService.save(actInfo);
-		List<GenericTypeObject> actInfoList = genericService.selectWithPage(page, showData);
-		actBeans = TransFuction.transToActBeans(actInfoList,genericService);
-		
-		for (ActBean actBean : actBeans) {
-			Map<Integer, Boolean> tag = actBean.getTag();
-			System.out.println("=========================");
-			System.out.println("actID : " + actBean.getActID());
-			for (int i = 0; i < tag.size(); i++) {
-				System.out.print("tag " + i + " : " + tag.get(i) + "\t");
-			}
-			System.out.println("\n=========================");
-		}
+		service.save(actInfo);
+//		List<GenericTypeObject> actInfoList = service.selectWithPage(page, showData);
+		String hql = "From ActivityInfo a order by a.id";
+		List<GenericTypeObject> actInfoList = service.getwithHQL(hql, page, showData);
+		actBeans = TransFuction.transToActBeans(actInfoList,service);
 		
 		
 		return actBeans;
@@ -98,8 +84,9 @@ public class ActRetrieveController {
 	public ResponseEntity<byte[]> showImage(@RequestParam(name = "actID") Integer actID) {
 //		System.out.println("圖片輸入開始");
 		List<ResponseEntity<byte[]>> result = new ArrayList<ResponseEntity<byte[]>>();
-		genericService.save(actImage);
-		List<GenericTypeObject> imgList = genericService.selectAllwithFK(actID, "ACTIVITY_BASIC_SEQNO");
+		InterfaceService<GenericTypeObject> service = this.service;
+		service.save(actImage);
+		List<GenericTypeObject> imgList = service.selectAllwithFK(actID, "ACTIVITY_BASIC_SEQNO");
 		for (GenericTypeObject genericTypeObject : imgList) {
 			ActImage actImage = (ActImage) genericTypeObject;
 			byte[] imgBytes = actImage.getImg();
@@ -108,9 +95,8 @@ public class ActRetrieveController {
 			result.add(new ResponseEntity<byte[]>(imgBytes, headers, HttpStatus.OK));
 		}
 		if (result.isEmpty()) {
-			System.out.println("result empty");
-			genericService.save(sysImage);
-			sysImage = (SystemImage) genericService.select("defaultImage");
+			service.save(sysImage);
+			sysImage = (SystemImage) service.select("defaultImage");
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.IMAGE_JPEG);
 			return new ResponseEntity<byte[]>(sysImage.getImage(), headers, HttpStatus.OK);
