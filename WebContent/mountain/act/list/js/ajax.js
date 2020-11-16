@@ -9,10 +9,10 @@ $(function(){
 		$.ajax({
 			url : actHomeURL + "/search/ajaxShow",
 			method : "GET",
-			data : {
+			/*data : {
 				page : 1,
-				showData : 3
-			},
+				showData : 10
+			},*/
 			dataType : "json",
 			success : function(data){
 				insertTable(data);
@@ -37,7 +37,7 @@ $(function(){
 							setTag(data[i].tag) + data[i].title + " / " + data[i].price + " / " + data[i].totalDay + " / " + data[i].startDate + " ~ " + data[i].endDate +
 						"</td>" +
 						"<td>" +
-							data[i].postDate + " / " + data[i].authorName +
+							data[i].postDate + " / <br>" + data[i].authorName +
 						"</td>" +
 						"<td>" +
 							data[i].nowReg + " / " + data[i].topReg +
@@ -45,6 +45,10 @@ $(function(){
 						"<td>" +
 							data[i].regEndDate +
 						"</td>" +
+						"<td>" +
+							
+						"</td>" +
+						
 					"</tr>" +
 				"</tbody>"
 			)
@@ -53,7 +57,7 @@ $(function(){
 		
 	}
 	//滑鼠移動呈現放大圖片
-	$("#showActList").on("mouseenter",".showImage",function(e){
+	$(".order-table").on("mouseenter",".showImage",function(e){
 		//console.log($(this).attr("src"))
 		var elm = $(this);
 	//	console.log($(this))

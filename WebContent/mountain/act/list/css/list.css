@@ -2,6 +2,9 @@
 	thead th{
 		font-size : 10px;
 	}
+	tbody td{
+		font-size : 15px;
+	}
 	.showImage{
 		width : 50px;
 		height : 50px;

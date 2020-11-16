@@ -1,4 +1,4 @@
-package mountain.controller;
+package mountain.pageController;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,7 +8,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @RequestMapping("/mountain")
 @Controller
-public class MountainPageEntryController {
+public class ActPageEntryController {
 	
 	
 	//預設主頁 -- 活動列表
