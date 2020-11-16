@@ -203,8 +203,5 @@ public class GenericDAO<T extends GenericTypeObject> implements InterfaceDAO<T> 
 		return result;
 		
 	}
-	public void evict(T entity) {
-		Session session = sessionFactory.getCurrentSession();
-		session.evict(entity);
-	}
+	
 }

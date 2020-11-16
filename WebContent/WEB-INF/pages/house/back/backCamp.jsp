@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="BIG5">
-<title>後台資料維護系統/山岳資料</title>
+<title>後台資料維護系統/露營地資料</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -78,7 +78,7 @@
 						<th scope="col"><span class="tr_title">鄉鎮</span></th>
 						<th scope="col"><span class="tr_title">營地名稱</span></th>
 						<th scope="col"><span class="tr_title">網址</span></th>
-
+						<th scope="col"><span class="tr_title">照片</span></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -91,7 +91,10 @@
 							<td>${i.counties.name}</td>
 							<td>${i.name}</td>
 							<td><a href="${i.url}">${i.url}</a></td>
-
+							<img height="80" width="80"
+							src=<c:url value="CampImageServlet?id=${i.campimgid.img}&type=PRODUCT"/>>
+							<td>${i.campimgid.img}</td>
+							
 						</tr>
 					</c:forEach>
 					<!-- 查詢縣市 -->
@@ -129,7 +132,7 @@
 								<form
 									action="<c:url value='/mountainCampBack/deleteCamp'></c:url>"
 									name="form1" method='post'>
-									<input type="text" name="deletecamp" value="${l.campbasicid}">
+									<input type="hidden" name="deletecamp" value="${l.campbasicid}">
 									<input type="button" value="刪除"
 										onclick="if(confirm('確認要刪除嗎？')) this.form.submit();">
 								</form>
@@ -155,15 +158,7 @@
 						</tr>
 					</c:forEach>
 
-					<c:forEach var="n" items="${lookinser}">
-						<tr>
-							<td>${n.campbasicid}</td>
-							<td>${n.counties.area.name}</td>
-							<td>${n.counties.name}</td>
-							<td>${n.name}</td>
-							<td><a href="${n.url}">${n.url}</a></td>
-						</tr>
-					</c:forEach>
+					
 			</table>
 		</div>
 

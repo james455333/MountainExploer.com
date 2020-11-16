@@ -20,7 +20,16 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>5</dataTypePrecision>
 <ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementGenerateAlways>true</autoIncrementGenerateAlways>
+<autoIncrementStartWith>20000</autoIncrementStartWith>
+<autoIncrementMinValue>20000</autoIncrementMinValue>
+<autoIncrementMaxValue>25999</autoIncrementMaxValue>
 <autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementDisableCache>false</autoIncrementDisableCache>
+<autoIncrementCache>5</autoIncrementCache>
+<autoIncrementGenerateTrigger>false</autoIncrementGenerateTrigger>
 </Column>
 <Column name="name" id="10A576FA-424E-A24A-D5D6-7B84BE5C4662">
 <sourceDDLFile>all.ddl</sourceDDLFile>

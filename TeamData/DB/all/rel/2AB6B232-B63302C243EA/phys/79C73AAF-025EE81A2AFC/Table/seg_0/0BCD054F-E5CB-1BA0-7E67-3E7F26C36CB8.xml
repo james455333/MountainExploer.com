@@ -1,0 +1,31 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="systemImage" directorySegmentName="seg_0" id="0BCD054F-E5CB-1BA0-7E67-3E7F26C36CB8">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-13 09:40:53 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="image" id="118A91C0-0AC6-0EC2-4EC0-9237356A1BC9">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-13 09:41:35 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="name" id="94501161-4BCA-8311-C901-A03D78201064">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-13 09:41:35 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="systemImage_PK" id="22BDF369-16D5-4C16-0365-F6786AFC8A62">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-13 09:41:35 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

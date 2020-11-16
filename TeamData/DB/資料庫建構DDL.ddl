@@ -1,5 +1,5 @@
 -- 產生者Oracle SQL Developer Data Modeler 20.2.0.167.1538
--- 於:2020-11-09 22:50:28 TST
+-- 於:2020-11-15 17:30:23 TST
 -- 位置:Oracle Database 12cR2
 -- 類型:Oracle Database 12cR2
 
@@ -10,7 +10,10 @@
 -- predefined type, no DDL - XMLTYPE
 
 CREATE TABLE act_img (
-    seqno                 NUMBER(7) NOT NULL,
+    seqno                 NUMBER(8)
+        GENERATED ALWAYS AS IDENTITY ( START WITH 40000000 MINVALUE 40000000 MAXVALUE 49999999 CACHE 5 ORDER )
+    NOT NULL,
+    img_name              NVARCHAR2(250) NOT NULL,
     img                   BLOB,
     activity_basic_seqno  NUMBER(5) NOT NULL
 )
@@ -55,7 +58,6 @@ CREATE TABLE activity_info (
     price                 NUMBER(5) NOT NULL,
     totalday              NVARCHAR2(150) NOT NULL,
     note                  BLOB,
-    reg_now               NUMBER(5) NOT NULL,
     reg_top               NUMBER(5) NOT NULL,
     start_date            DATE NOT NULL,
     end_date              DATE NOT NULL,
@@ -136,7 +138,9 @@ LOGGING;
 ALTER TABLE area ADD CONSTRAINT area_table_pk PRIMARY KEY ( name );
 
 CREATE TABLE camp_img (
-    id           NUMBER(5) NOT NULL,
+    id           NUMBER(10)
+        GENERATED ALWAYS AS IDENTITY ( START WITH 1 NOCACHE ORDER )
+    NOT NULL,
     camp_img     BLOB,
     campinfo_id  NUMBER(5) NOT NULL
 )
@@ -145,7 +149,9 @@ LOGGING;
 ALTER TABLE camp_img ADD CONSTRAINT camp_img_pk PRIMARY KEY ( id );
 
 CREATE TABLE camp_info (
-    campbasic_id   NUMBER(5) NOT NULL,
+    campbasic_id   NUMBER(5)
+        GENERATED ALWAYS AS IDENTITY ( START WITH 20000 MINVALUE 20000 MAXVALUE 25999 CACHE 5 ORDER )
+    NOT NULL,
     name           NVARCHAR2(150),
     url            BLOB,
     counties_name  VARCHAR2(50) NOT NULL
@@ -172,8 +178,22 @@ LOGGING;
 
 ALTER TABLE first_class ADD CONSTRAINT first_class_pk PRIMARY KEY ( seqno );
 
+CREATE TABLE house_img (
+    id                         NUMBER(10)
+        GENERATED ALWAYS AS IDENTITY ( START WITH 1 CACHE 5 ORDER )
+    NOT NULL,
+    house_image                BLOB,
+    house_image_name           NVARCHAR2(250),
+    house_info_house_basic_id  NUMBER NOT NULL
+)
+LOGGING;
+
+ALTER TABLE house_img ADD CONSTRAINT house_img_pk PRIMARY KEY ( id );
+
 CREATE TABLE house_info (
-    house_basic_id       NUMBER(5) NOT NULL,
+    house_basic_id       NUMBER
+        GENERATED ALWAYS AS IDENTITY ( START WITH 26000 MINVALUE 26000 MAXVALUE 29999 CACHE 5 ORDER )
+    NOT NULL,
     name                 NVARCHAR2(150) NOT NULL,
     bed                  NUMBER(3),
     camp                 NUMBER(3),
@@ -357,6 +377,14 @@ LOGGING;
 
 ALTER TABLE shopping_member_dtail ADD CONSTRAINT shopping_member_dtail_pk PRIMARY KEY ( member_basic_id );
 
+CREATE TABLE systemimage (
+    name   VARCHAR2(250) NOT NULL,
+    image  BLOB
+)
+LOGGING;
+
+ALTER TABLE systemimage ADD CONSTRAINT systemimage_pk PRIMARY KEY ( name );
+
 ALTER TABLE act_img
     ADD CONSTRAINT act_img_activity_basic_fk FOREIGN KEY ( activity_basic_seqno )
         REFERENCES activity_basic ( seqno )
@@ -441,6 +469,12 @@ ALTER TABLE counties
             ON DELETE CASCADE
     NOT DEFERRABLE;
 
+ALTER TABLE house_img
+    ADD CONSTRAINT house_img_house_info_fk FOREIGN KEY ( house_info_house_basic_id )
+        REFERENCES house_info ( house_basic_id )
+            ON DELETE CASCADE
+    NOT DEFERRABLE;
+
 ALTER TABLE house_info
     ADD CONSTRAINT house_info_national_park_fk FOREIGN KEY ( national_park_seqno )
         REFERENCES national_park ( seqno )
@@ -511,15 +545,13 @@ ALTER TABLE shopping_member_dtail
             ON DELETE CASCADE
     NOT DEFERRABLE;
 
-CREATE SEQUENCE camp_img_id_seq START WITH 1 NOCACHE ORDER;
-
 
 
 -- Oracle SQL Developer Data Modeler 摘要報表:
 -- 
--- CREATE TABLE                            26
+-- CREATE TABLE                            28
 -- CREATE INDEX                             4
--- ALTER TABLE                             53
+-- ALTER TABLE                             56
 -- CREATE VIEW                              0
 -- ALTER VIEW                               0
 -- CREATE PACKAGE                           0
@@ -539,7 +571,7 @@ CREATE SEQUENCE camp_img_id_seq START WITH 1 NOCACHE ORDER;
 -- CREATE DISK GROUP                        0
 -- CREATE ROLE                              0
 -- CREATE ROLLBACK SEGMENT                  0
--- CREATE SEQUENCE                          1
+-- CREATE SEQUENCE                          0
 -- CREATE MATERIALIZED VIEW                 0
 -- CREATE MATERIALIZED VIEW LOG             0
 -- CREATE SYNONYM                           0
