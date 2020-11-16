@@ -13,8 +13,10 @@
 			<fieldset>
 				<legend>${LoginOK.name}的認證資料</legend>
 				<div style="display:none">
-					<label>帳號：</label>
-					<span name="account">${LoginOK.account}</span><br/>
+					<label>會員編號：</label>
+					<span name="seqno">${LoginOK.seqno}</span><br/>
+					<label>身分組ID：</label>
+					<span>${LoginOK.statusId}</span>
 				</div>
 				<div>
 					<label>暱稱：</label>
