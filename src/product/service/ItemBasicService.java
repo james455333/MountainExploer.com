@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import product.dao.ItemBasicDAO;
 import product.model.ItemBasic;
+import product.model.ItemInfo;
 @Service("itemBasicService")
 public class ItemBasicService {
 	@Autowired
@@ -23,9 +24,13 @@ public class ItemBasicService {
 		return itemBasicDao.insert(bean);
 	}
 
-	public ItemBasic select(String name) {
+	public ItemBasic selectName(String name) {
 		
-		return itemBasicDao.select(name);
+		return itemBasicDao.selectName(name);
+	}
+	public ItemBasic selectNo(Integer no) {
+		
+		return itemBasicDao.selectNo(no);
 	}
 	public List<ItemBasic> selectAll(){
 		return itemBasicDao.selectAll();
@@ -33,5 +38,9 @@ public class ItemBasicService {
 	
 	public boolean delete(Integer seqno) {
 		return itemBasicDao.delete(seqno);
+	}
+	
+	public ItemBasic update(ItemBasic bean) {
+		return itemBasicDao.update(bean);
 	}
 }

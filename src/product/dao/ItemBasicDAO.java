@@ -22,7 +22,7 @@ public class ItemBasicDAO {
 	public ItemBasic insert(ItemBasic bean) {
 
 		Session session = sessionFactory.getCurrentSession();
-		System.out.println("start basic insert");
+
 		if (bean != null) {
 			session.save(bean);
 		}
@@ -30,13 +30,27 @@ public class ItemBasicDAO {
 	}
 
 	// 查詢
-	public ItemBasic select(String name) {
+	public ItemBasic selectName(String name) {
 		Session session = sessionFactory.getCurrentSession();
 
-		String hql = "From ItemBasic where Name like '" + name + "'";
+		String hql = "From ItemBasic  where Name like '" + name + "'";
 
 		Query<ItemBasic> query = session.createQuery(hql, ItemBasic.class);
-		System.out.println("Start ItemBasic Query" );
+
+		ItemBasic uniqueResult = query.uniqueResult();
+
+		if (uniqueResult != null) {
+			return uniqueResult;
+		}
+		return null;
+	}
+	
+	public ItemBasic selectNo(Integer no) {
+		Session session = sessionFactory.getCurrentSession();
+
+		String hql = "From ItemBasic  where SEQNO like '" + no + "'";
+
+		Query<ItemBasic> query = session.createQuery(hql, ItemBasic.class);
 
 		ItemBasic uniqueResult = query.uniqueResult();
 
@@ -53,6 +67,11 @@ public class ItemBasicDAO {
 		return list;
 	}
 // 修改
+	public ItemBasic update(ItemBasic itemBasic) {
+		Session session = sessionFactory.getCurrentSession();
+		session.update(itemBasic);
+		return itemBasic;
+	}
 
 // 刪除
 	public boolean delete(Integer seqno) {

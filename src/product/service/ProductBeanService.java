@@ -13,11 +13,22 @@ public class ProductBeanService {
 	@Autowired
 	private ProductBeanDAO productBeanDao;
 
-	public ProductBeanService(ProductBeanDAO productBeanDao) {
-		this.productBeanDao = productBeanDao;
-	}
+//	public ProductBeanService(ProductBeanDAO productBeanDao) {
+//		this.productBeanDao = productBeanDao;
+//	}
 	public List<ProductBean> selectAll() {
 		return productBeanDao.selectAll();
+	}
+	public List<ProductBean> selectWithPage(Integer page, Integer showdata) {
+		return productBeanDao.selectWithPage(page, showdata);
+	}
+
+	public int getAllData(ProductBean entity) {
+		return productBeanDao.getAllData(entity);
+	}
+
+	public int countWith(Integer id, String coulmnName) {
+		return productBeanDao.countWith(id, coulmnName);
 	}
 	
 }

@@ -27,7 +27,6 @@ public class FirstClassService {
 
 
 	public FirstClass select(String firstClassName) {
-		System.out.println("select(String) Service Start");
 		return firstClassDao.select(firstClassName);
 	}
 	

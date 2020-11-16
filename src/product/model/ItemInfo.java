@@ -1,5 +1,7 @@
 package product.model;
 
+import java.sql.Blob;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,20 +10,18 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
-import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name = "item_info")
-@Component
 public class ItemInfo {
 	@GenericGenerator(name = "generator", strategy = "foreign", parameters = @Parameter(name="property", value = "itemBasic"))
-	@Id 
-	@Column(name = "ITEM_BASIC_SEQNO")
+	@Id @Column(name = "ITEM_BASIC_SEQNO")
 	@GeneratedValue(generator = "generator")
-	private Integer itemBNo;
+	private Integer itemBasicSeqno;
 
 	@Column(name = "TYPE")
 	private String type;
@@ -33,13 +33,18 @@ public class ItemInfo {
 	private byte[] description;
 	@Column( name = "STOCK")
 	private Integer stock;
-	@OneToOne(fetch = FetchType.EAGER )
+	@OneToOne(fetch = FetchType.LAZY )
 	@PrimaryKeyJoinColumn
 	private ItemBasic itemBasic;
 	
 	
 	
-	
+	public int getItemBasicSeqno() {
+		return itemBasicSeqno;
+	}
+	public void setItemBasicSeqno(Integer itemBasicSeqno) {
+		this.itemBasicSeqno = itemBasicSeqno;
+	}
 
 	public String getType() {
 		return type;
@@ -48,7 +53,7 @@ public class ItemInfo {
 		this.type = type;
 	}
 
-	public Integer getPrice() {
+	public int getPrice() {
 		return price;
 	}
 	public void setPrice(Integer price) {
@@ -69,7 +74,7 @@ public class ItemInfo {
 		this.description = description;
 	}
 	
-	public Integer getStock() {
+	public int getStock() {
 		return stock;
 	}
 	public void setStock(Integer stock) {
@@ -81,12 +86,6 @@ public class ItemInfo {
 	}
 	public void setItemBasic(ItemBasic itemBasic) {
 		this.itemBasic = itemBasic;
-	}
-	public Integer getItemBNo() {
-		return itemBNo;
-	}
-	public void setItemBNo(Integer itemBNo) {
-		this.itemBNo = itemBNo;
 	}
 
 	

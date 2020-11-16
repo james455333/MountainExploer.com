@@ -2,6 +2,7 @@ package product.back.function;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import product.model.FirstClass;
@@ -26,7 +27,7 @@ public class RetrieveFunction {
 		System.out.println("seqno : " + seqno);
 		int seqnum = Integer.parseInt(seqno);
 
-		return TransFuction.transToFCBean(all,seqnum);
+		return sortProductBeans(TransFuction.transToFCBean(all,seqnum));
 
 	}
 
@@ -36,7 +37,7 @@ public class RetrieveFunction {
 //		System.out.println("seqno : " + seqno);
 		int seqnum = Integer.parseInt(seqno);
 		
-		return TransFuction.transToSCBean(all, seqnum);
+		return sortProductBeans(TransFuction.transToSCBean(all, seqnum));
 		
 	}
 
@@ -46,7 +47,7 @@ public class RetrieveFunction {
 		
 		List<ProductBean> mainBeans = null;
 
-		mainBeans = TransFuction.transToMainBean(all);
+		mainBeans = sortProductBeans(TransFuction.transToMainBean(all));
 
 		return mainBeans;
 	}
@@ -55,24 +56,24 @@ public class RetrieveFunction {
 	
 
 	// 整理主要顯示LIST順序
-//	public static List<MountainBean> sortMountainBeans(List<MountainBean> beforeOrder) {
-//		List<MountainBean> afterOrder = new ArrayList<MountainBean>();
-//		afterOrder.add(beforeOrder.get(0));
-//		for (MountainBean mountainBean : beforeOrder) {
-//			int beforeNum = mountainBean.getSeqno();
-//			for (int i = 0; i < afterOrder.size(); i++) {
-//				int afterNum = afterOrder.get(i).getSeqno();
-//				if (beforeNum < afterNum && !afterOrder.contains(mountainBean)) {
-//					afterOrder.add(i, mountainBean);
-//					break;
-//				} else if (i == afterOrder.size() - 1 && !afterOrder.contains(mountainBean)) {
-//					afterOrder.add(mountainBean);
-//					break;
-//				}
-//			}
-//		}
-//		return afterOrder;
-//	}
+	public static List<ProductBean> sortProductBeans(List<ProductBean> beforeOrder) {
+		List<ProductBean> afterOrder = new ArrayList<ProductBean>();
+		afterOrder.add(beforeOrder.get(0));
+		for (ProductBean productBean : beforeOrder) {
+			long beforeNum = productBean.getSeqno();
+			for (int i = 0; i < afterOrder.size(); i++) {
+				long afterNum = afterOrder.get(i).getSeqno();
+				if (beforeNum < afterNum && !afterOrder.contains(productBean)) {
+					afterOrder.add(i, productBean);
+					break;
+				} else if (i == afterOrder.size() - 1 && !afterOrder.contains(productBean)) {
+					afterOrder.add(productBean);
+					break;
+				}
+			}
+		}
+		return afterOrder;
+	}
 	
 	
 	//	返回指定ID

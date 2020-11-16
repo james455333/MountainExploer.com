@@ -17,25 +17,21 @@ public class ItemInfoService {
 		this.itemInfoDao = itemInfoDao;
 	}
 	
-	public void save(ItemInfo itemInfo) {
-		itemInfoDao.save(itemInfo);
-	}
-	
 	public ItemInfo insert(ItemInfo bean) {
 
 		return itemInfoDao.insert(bean);
 	}
-	public ItemInfo selectNo(Integer itemBasicSeqno) {
+	public ItemInfo selectNo(Integer l) {
 		
-		return itemInfoDao.selectNo(itemBasicSeqno);
+		return itemInfoDao.selectNo(l);
 	}
 	
 	public List<ItemInfo> selectAll() {
 		return itemInfoDao.selectAll();
 	}
 
-	public ItemInfo update(Integer seqno, Integer stock) {
-		return itemInfoDao.update(seqno,stock);
+	public ItemInfo update(ItemInfo bean) {
+		return itemInfoDao.update(bean);
 	}
 
 }

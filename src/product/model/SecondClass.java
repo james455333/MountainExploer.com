@@ -21,8 +21,7 @@ import javax.persistence.Transient;
 @Entity
 @Table(name = "second_class")
 public class SecondClass {
-	@Id
-	@Column(name = "SEQNO")
+	@Id@Column(name = "SEQNO")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
