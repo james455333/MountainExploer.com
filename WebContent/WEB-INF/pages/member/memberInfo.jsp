@@ -33,7 +33,7 @@
 					<span>${LoginOK.memberInfo.birthday}</span><br/>
 				</div>
 				<div>
-					<label>電話：</label>
+					<label>手機號碼：</label>
 					<span>${LoginOK.memberInfo.phone}</span><br/>
 				</div>
 				<div>

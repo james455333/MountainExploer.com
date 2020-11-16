@@ -1,53 +1,3 @@
-//驗證帳號
-$(".account").on("blur", function(){
-    let AntVal = $.trim($(".account").val());
-    let AntValLen = AntVal.length;
-    let flag = false;
-
-    if(AntVal == ""){
-        $(".Antsp").html("<font color='red'>請輸入帳號</font>");
-    }else if(AntValLen >= 6){
-        let re = new RegExp(/[A-Za-z]+[0-9]/);
-        let re2 = new RegExp(/[0-9]+[A-Za-z]/);
-        if(AntVal.match(re)){
-            flag = true;
-        }else if(AntVal.match(re2)){
-            flag = true;
-        }else{
-            flag = false;
-        }
-        if(flag){
-            $(".Antsp").html("<font color='green'>正確</font>");
-        }else{
-            $(".Antsp").html("<font color='red'>帳號長度必須包含英文字母和數字</font>");
-        }
-    }else{
-        $(".Antsp").html("<font color='red'>帳號長度至少6個字元</font>");
-    }
-});
-
-
-//比對帳號
-$("#chkAnt").on("click", function(){
-    var userAnt = $.trim($("#account").val());
-
-    $.ajax({
-        method:"GET",
-        url:"/MountainExploer.com/member/checkAnt",
-        data:{account:userAnt},
-        dataType:"json",
-        complete:function(msg){
-            console.log(msg);
-            if(eval("(" + msg.responseText + ")")){
-                $("#chksp").html("<font color='red'>帳號已經存在</font>")
-            } else{
-                $("#chksp").html("<font color='green'>帳號可以使用</font>");
-            }
-        }
-    })
-});
-
-
 //驗證密碼
 $(".pwd").on("blur", function(){
     let PwdVal = $.trim($(".pwd").val());
@@ -66,7 +16,7 @@ $(".pwd").on("blur", function(){
         }else{
             flag = false;
         }
-        
+
         if(flag){
             $(".pwdsp").html("<font color='green'>正確</font>");
         }else{
@@ -75,19 +25,19 @@ $(".pwd").on("blur", function(){
     }else{
         $(".pwdsp").html("<font color='red'>密碼長度至少8個字元</font>");
     }
-});
+})
 
 
 //驗證姓名
 $(".name").on("blur", function(){
     let NmVal = $.trim($(".name").val());
-    let NmValLen = NmVal.length;
+    let NmeValLen = NmVal.length;
     let flag = false;
 
     if(NmVal == ""){
         $(".nmsp").html("<font color='red'>請輸入姓名</font>");
-    }else if(NmValLen >= 2){
-        for(let i = 0; i < NmValLen; i++){
+    }else if(NmeValLen >= 2){
+        for(let i = 0; i < NmeValLen; i++){
             let ch = NmVal.charCodeAt(i);
             if(ch >= 0x4e00 && ch <= 0x9fff){
                 flag = true;
@@ -104,6 +54,53 @@ $(".name").on("blur", function(){
         }
     }else{
         $(".nmsp").html("<font color='red'>姓名長度至少2個中文字元</font>");
+    }   
+})
+
+
+//驗證生日
+$(".birDate").on("blur", function(){
+    let BrVal = $.trim($(".birDate").val());
+    let re = new RegExp(/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/);
+    let flag = false;
+
+    if(BrVal.match(re)){
+        flag = true;
+    }else{
+        flag = false;
+    }
+
+    if(flag){
+        $(".brsp").html("<font color='green'>正確</font>");
+    }else{
+        $(".brsp").html("<font color='red'>日期格式不正確</font>");
+    }
+})
+
+
+//驗證電話
+$(".phone").on("blur", function(){
+    let PhVal = $.trim($(".phone").val());
+    let PhValLen = PhVal.length;
+    let flag = false;
+
+    if(PhVal == ""){
+        $(".phsp").html("<font color='red'>請輸入手機號碼</font>");
+    }else if(PhValLen == 10){
+        let re = new RegExp(/^[09]{2}\d{8}$/);
+        if(PhVal.match(re)){
+            flag = true;
+        }else{
+            flag = false;
+        }
+
+        if(flag){
+            $(".phsp").html("<font color='green'>正確</font>");
+        }else{
+            $(".phsp").html("<font color='red'>手機號碼格式不正確</font>");
+        }
+    }else{
+        $(".phsp").html("<font color='red'>手機號碼應包含10個數字字元</font>");
     }
 })
 
@@ -127,17 +124,7 @@ $(".email").on("blur", function(){
         if(flag){
             $(".emsp").html("<font color='green'>正確</font>");
         }else{
-            $(".emsp").html("<font color='red'>電子郵件格式不正確</font>")
+            $(".emsp").html("<font color='red'>電子郵件格式不正確</font>");
         }
     }
-})
-
-
-//顯示註冊
-$(function(){
-    var myDate = new Date();
-    var t = myDate.toLocaleDateString();
-
-    $("regDate").text(t);
-    $("regDate").load("register.jsp");
 })

@@ -31,6 +31,12 @@
 				<div>
 					<label>生日：</label>
 					<input type="text" id="birDate" name="birDate" placeholder="YYYY-MM-DD">
+					<span class="brsp"></span><br/>
+				</div>
+				<div>
+					<label>手機號碼：</label>
+					<input type="text" id="phone" name="phone" placeholder="09xxxxxxxx">
+					<span class="phsp"></span><br/>
 				</div>
 				<div>
 					<label>登山經驗</label>
