@@ -53,7 +53,7 @@ public class MemberDAO {
 	//Login Check Password
 	public MemberBasic checkPassword(String account, String password) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = "From Member_Basic where account = ?0 and password = ?1";
+		String hql = "From MemberBasic where account = ?0 and password = ?1";
 		Query<MemberBasic> query = session.createQuery(hql, MemberBasic.class);
 		query.setParameter(0, account);
 		query.setParameter(1, password);
@@ -70,7 +70,7 @@ public class MemberDAO {
 	//After login success return Member's info
 	public List<MemberBasic> listInfo(){
 		Session session = sessionFactory.getCurrentSession();
-		Query<MemberBasic> query = session.createQuery("From Member_Basic", MemberBasic.class);
+		Query<MemberBasic> query = session.createQuery("From MemberBasic", MemberBasic.class);
 		List<MemberBasic> list = query.list();
 		
 		return list;
@@ -79,7 +79,7 @@ public class MemberDAO {
 	
 	public List<MemberInfo> listMbInfo(){
 		Session session = sessionFactory.getCurrentSession();
-		Query<MemberInfo> query = session.createQuery("From Member_Info", MemberInfo.class);
+		Query<MemberInfo> query = session.createQuery("From MemberInfo", MemberInfo.class);
 		List<MemberInfo> list = query.list();
 		
 		return list;

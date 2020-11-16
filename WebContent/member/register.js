@@ -128,6 +128,11 @@ $(".email").on("blur", function(){
 })
 
 
-$(".rgtime").on("click", function(){
-    
+
+$(function(){
+    var myDate = new Date();
+    var t = myDate.toLocaleDateString();
+
+    $("regDate").text(t);
+    $("regDate").load("register.jsp");
 })
