@@ -57,9 +57,9 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 		//filterRegistration.setInitParameter("sessionFactoryBeanName", "sessionFactory");
 		filterRegistration.addMappingForUrlPatterns(null, true, "/*");
 		filterRegistration.addMappingForServletNames(null, true, "mvc");
-//		filterRegistration = servletContext.addFilter("CheckLoginFilter", CheckLoginFilter.class);
-//		filterRegistration.addMappingForUrlPatterns(null, true, "/*");
-//		filterRegistration.addMappingForServletNames(null, true, "mvc");
+		filterRegistration = servletContext.addFilter("CheckLoginFilter", CheckLoginFilter.class);
+		filterRegistration.addMappingForUrlPatterns(null, true, "/*");
+		filterRegistration.addMappingForServletNames(null, true, "mvc");
 		
 		servletContext.addListener(new ContextLoaderListener(rootContext));
 	}

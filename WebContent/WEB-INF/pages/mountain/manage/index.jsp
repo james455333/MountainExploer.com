@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <!DOCTYPE html>
 <html lang="zh-tw">
 
@@ -41,18 +40,19 @@
         </nav>
     </header>
     <div class="div_ul">
-        <div class="導覽列表">
+        <!-- <div class="導覽列表">
             <nav>
                 <ul class="second_nav">
-                    <li class="li1"><a href="#">活動列表</a></li>
+                    <li class="li1"><a href="#">第二導覽列1</a></li>
 
-                    <li class="li1"><a href="#">活動管理</a></li>
+                    <li class="li1"><a href="#">第二導覽列2</a></li>
 
-                    <li class="li1"><a href="#">路線介紹</a></li>
+                    <li class="li1"><a href="#">第二導覽列3</a></li>
 
+                    <li class="li1"><a href="#">第二導覽列4</a></li>
                 </ul>
             </nav>
-        </div>
+        </div> -->
         <div class="div_li1">
             <a>保留區</a>
         </div>

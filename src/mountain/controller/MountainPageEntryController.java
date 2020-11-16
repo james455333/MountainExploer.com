@@ -11,11 +11,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class MountainPageEntryController {
 	
 	
-	//功能主頁
+	//預設主頁 -- 活動列表
 	@GetMapping("/list")
 	public String enterMountainIndex(Model model, RedirectAttributes redAttr) {
-		
-		return "/mountain/act/actList";
+		return "/mountain/act/list/actList";
 	}
 	
 	//活動管理頁
@@ -28,10 +27,28 @@ public class MountainPageEntryController {
 	public String enterRoute() {
 		return "/mountain/route/routeList";
 	}
+	
 	//活動詳情	
-	@GetMapping("/list/act")
+	@GetMapping("/act")
 	public String enterActDetail(Model model, RedirectAttributes redAttr) {
 		return "/mountain/act/actDetail";
+	}
+	
+	//新增活動頁面
+	@GetMapping("/manage/new")
+	public String enterNewActivity(Model model, RedirectAttributes redAttr) {
+		return "";
+	}
+	//修改活動頁面
+	@GetMapping("/manage/edite")
+	public String enterEditeActivity(Model model, RedirectAttributes redAttr) {
+		return "";
+	}
+	
+	//報名活動頁面
+	@GetMapping("/reg")
+	public String enterRegistry(Model model, RedirectAttributes redAttr) {
+		return "";
 	}
 	
 

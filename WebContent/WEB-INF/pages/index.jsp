@@ -96,6 +96,9 @@
         </footer>
 
     </div>
+    <script type="text/javascript">
+		checklogin = "${sessionScope.LoginOK}"
+	</script>
     <script src="/MountainExploer.com/js/topBar.js"></script>
 
 </body>

@@ -1,0 +1,28 @@
+@charset "UTF-8";
+	thead th{
+		font-size : 10px;
+	}
+	.showImage{
+		width : 50px;
+		height : 50px;
+	}
+	.extendImage{
+		position: absolute;
+		hegith : 300px;
+		width : 300px;
+		display: none;
+		z-index: 10;
+	}
+	.tagContainer{
+		display : inline-flex;
+   		align-items:center;
+    	justify-content:center;
+	}
+	.actTag{
+		font-size: 50%;
+		color : blue;
+	}
+	.regTag{
+		font-size: 50%;
+		color : red;
+	}

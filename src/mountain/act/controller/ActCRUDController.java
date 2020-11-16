@@ -1,4 +1,4 @@
-package mountain.test.contoller;
+package mountain.act.controller;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -38,23 +38,15 @@ import mountain.model.route.RouteBasic;
 
 @Controller
 @RequestMapping("/mountain/test/crud")
-public class TestActCRUDController {
+public class ActCRUDController {
 	@Autowired 
 	HttpServletRequest request;
 	@Autowired
 	private ActivityBasic actBasic;
 	@Autowired
-	private ActivityInfo actInfo;
-	@Autowired
-	private MemberBasic memberBasic;
-	@Autowired
-	private RouteBasic rtBasic;
-	@Autowired
 	private ActImage actImage;
 	@Autowired
 	private GenericService<GenericTypeObject> service;
-	@Autowired
-	private MemberBasicBackService memberBasicService;
 	
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 	

@@ -19,7 +19,7 @@ import member.back.model.MemberBasicBackService;
 @SessionAttributes(names = {"LoginOK","beforeCheckURL"})
 public class MemberBackLoginController {
 	
-	private static String beforeCheckURL;
+
 	
 	@Autowired
 	private MemberBasicBackService mbServic;
@@ -36,6 +36,7 @@ public class MemberBackLoginController {
 			@RequestParam(name = "password")String password, 
 			Model m,
 			RedirectAttributes redAttr) {
+		String beforeCheckURL = null;
 		System.out.println("account：" + account);
 		System.out.println("password：" + password);
 		Map<String, String> errors = new HashMap<String, String>();
@@ -61,7 +62,7 @@ public class MemberBackLoginController {
 			m.addAttribute("result", "登入成功");
 			if (beforeCheckURL != null) {
 				redAttr.addFlashAttribute("result", "登入成功");
-				return "redirect:/"+beforeCheckURL;
+				return "redirect:"+beforeCheckURL;
 			}
 			return "backStage";
 		}

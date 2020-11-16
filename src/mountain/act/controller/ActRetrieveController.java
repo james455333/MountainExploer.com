@@ -1,4 +1,4 @@
-package mountain.test.contoller;
+package mountain.act.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +28,8 @@ import mountain.model.activity.ActivityInfo;
 import mountain.model.activity.Registry.ActRegistry;
 import mountain.model.route.RouteInfo;
 @Controller
-@RequestMapping("/mountain/test/search")
-public class TestActRetrieveController {
+@RequestMapping("/mountain/act/search")
+public class ActRetrieveController {
 	@Autowired
 	private ActivityInfo actInfo;
 	@Autowired

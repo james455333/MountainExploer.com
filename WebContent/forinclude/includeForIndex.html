@@ -2,32 +2,8 @@
     <li class="nav-item active">
         <a class="nav-link" href="/MountainExploer.com/">首頁 <span class="sr-only">(current)</span></a>
     </li>
-    <!-- topBar依各自需求增加刪除開始 -->
-
-    <!-- 範例格式 -->
-    <!-- 無下拉選單 
-                                         <li class="nav-item">
-                                                 <a class="nav-link" href="#">註冊/登入</a>
-                                         </li>
-                     -->
-
-
-    <!-- 有下拉選單
-                                        <li class="nav-item dropdown">
-                                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    標題輸入在此
-                                                 </a>
-                                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                      <a class="dropdown-item" href="#">標題副選項輸入在此</a>
-                                                      <div class="dropdown-divider"></div>   //備註:分隔線
-                                                 </div>
-                                         </li>
-                     -->
-
-
     <!-- 登入 -->
-    <li class="nav-item" include-html="/MountainExploer.com/forinclude/login.html"></li>
+    <li class="nav-item" include-html="/MountainExploer.com/loginCheck"></li>
     <!-- 百戰百岳 -->
     <li class="nav-item dropdown" include-html="/MountainExploer.com/forinclude/mountain.html">
            </li>
@@ -37,6 +13,9 @@
     <li class="nav-item dropdown" include-html="/MountainExploer.com/forinclude/shop.html"></li>
     <!-- 會員資料 -->
     <li class="nav-item dropdown" include-html="/MountainExploer.com/forinclude/member.html"></li>
+    <!-- 登出 -->
+
+
 
 </ul>
 <!-- topBar依各自需求增加刪除結束 -->
