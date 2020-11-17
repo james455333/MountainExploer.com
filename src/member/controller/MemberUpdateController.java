@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import member.model.MemberBasic;
 import member.model.MemberInfo;
@@ -17,6 +18,7 @@ import member.model.MemberService;
 
 
 @Controller
+//@SessionAttributes(names = {"Member", "LoginOK"})
 public class MemberUpdateController {
 	
 	@Autowired
@@ -25,23 +27,17 @@ public class MemberUpdateController {
 	@Autowired
 	private MemberInfoService mbInfoService;
 	
-	@RequestMapping(path = "/member/memberInfoEntry", method = RequestMethod.GET)
-	public String processUpdateInfoEntry1() {
-		return "member/memberInfoUpdate";
-	}
+//	@RequestMapping(path = "/member/memberInfoUpdateEntry1", method = RequestMethod.GET)
+//	public String processUpdateInfoEntry1() {
+//		return "member/memberInfoUpdate";
+//	}
 	
-	@RequestMapping(path = "/member/memberInfoUpdateEntry", method = RequestMethod.POST)
-	public String processUpdateInfoEntry2(@RequestParam(name = "submit")String submit) {
-		if(submit != null) {
-			return "member/memberInfoUpdate";			
-		}
-		return "member/memberInfo";
-	}
 	
-	@RequestMapping(path = "/member/memberFirstInfoFirstEntry", method = RequestMethod.GET)
+	@RequestMapping(path = "/member/memberFirstInfoEntry", method = RequestMethod.GET)
 	public String processUpdateInfoEntry3() {
-		return "member/memberFirst";
+		return "member/memberFirstInfo";
 	}
+	
 	
 	@RequestMapping(path = "/member/memberFirstInfoInsert", method = RequestMethod.POST)
 	public String processInfoInsert(@RequestParam(name = "seqno")int seqno,
@@ -76,6 +72,7 @@ public class MemberUpdateController {
 					mb.setStatusId(120);
 					mbService.updateData(seqno, mb);
 					System.out.println("認證成功，開通嚮導功能");
+					m.addAttribute("Member", mb);
 					m.addAttribute("result", "認證成功，開通嚮導功能");
 					return "member/mebmerInfo";
 				}else {
@@ -94,14 +91,14 @@ public class MemberUpdateController {
 	
 	@RequestMapping(path = "/member/memberInfoUpdate", method = RequestMethod.POST)
 	public String processInfoUpdate(@RequestParam(name = "seqno")int seqno,
-									@RequestParam(name = "pwd")String password,
-									@RequestParam(name = "ncName")String ncName,
+									@RequestParam(name = "password")String password,
+									@RequestParam(name = "memberInfo.neck_name")String ncName,
 									@RequestParam(name = "name")String name,
-									@RequestParam(name = "birDate")String birDate,
-									@RequestParam(name = "phone")String phone,
+									@RequestParam(name = "memberInfo.birthday")String birDate,
+									@RequestParam(name = "memberInfo.phone")String phone,
 									@RequestParam(name = "email")String email,
-									@RequestParam(name = "exp")String exp,
-									@RequestParam(name = "other")String other,
+									@RequestParam(name = "memberInfo.climb_ex")String exp,
+									@RequestParam(name = "memberInfo.other")String other,
 									Model m
 									) {
 		Map<String, String> errors = new HashMap<String, String>();
@@ -122,8 +119,8 @@ public class MemberUpdateController {
 		
 		MemberInfo queryIN = mbInfoService.select(seqno);
 		if(queryIN != null) {
-			MemberInfo insertIN = mbInfoService.insert(mbInfo);
-			m.addAttribute("LoginOK", insertIN);
+			mbInfoService.insert(mbInfo);
+			m.addAttribute("Member", mb);
 			return "member/memberInfo";
 		}else {
 			errors.put("msg", "請填入修改資料");

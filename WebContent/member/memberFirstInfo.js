@@ -1,20 +1,36 @@
+//驗證暱稱
+$(".ncName").on("blur", function(){
+    let NcVal = $.trim($(".ncName").val());
+    
+    if(NcVal == ""){
+        $(".ncsp").html("<font color='red'>請輸入暱稱</font>");
+    }else{
+        $(".ncsp").html("");
+    }
+})
+
+
 //驗證生日
 $(".birDate").on("blur", function(){
     let BrVal = $.trim($(".birDate").val());
     let re = new RegExp(/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/);
     let flag = false;
 
-    if(BrVal.match(re)){
-        flag = true;
+    if(BrVal !== ""){
+        if(BrVal.match(re)){
+            flag = true;
+        }else{
+            flag = false;
+        }
+    
+        if(flag){
+            $(".brsp").html("<font color='green'>正確</font>");
+        }else{
+            $(".brsp").html("<font color='red'>日期格式不正確</font>");
+        }
     }else{
-        flag = false;
-    }
-
-    if(flag){
-        $(".brsp").html("<font color='green'>正確</font>");
-    }else{
-        $(".brsp").html("<font color='red'>日期格式不正確</font>");
-    }
+        $(".brsp").html("<font color='red'>請輸入生日日期</font>");
+    }    
 })
 
 // /^([0-9]{2})-([0-9]{2})-([0-9]{4})$/
@@ -49,3 +65,15 @@ $(".phone").on("blur", function(){
 
 
 // /^[09]{2}\d{8}$/
+
+
+//驗證登山經驗
+$(".exp").on("blur", function(){
+    let ExpVal = $.trim($(".expsp").val());
+
+    if(ExpVal == ""){
+        $(".expsp").html("<font color='red'>請輸入登山經驗</font>");
+    }else{
+        $(".expsp").html("");
+    }
+})

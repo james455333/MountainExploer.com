@@ -21,7 +21,8 @@
 				</div>
 				<div>
 					<label>暱稱：</label>
-					<input type="text" id="ncName" name="ncName" placeholder="請輸入暱稱">
+					<input type="text" id="ncName" class="ncName" name="ncName" placeholder="請輸入暱稱">
+					<span class="ncsp"></span>
 				</div>
 				<div>
 					<label>性別：</label>
@@ -31,17 +32,18 @@
 				</div>
 				<div>
 					<label>生日：</label>
-					<input type="text" id="birDate" name="birDate" placeholder="YYYY-MM-DD">
+					<input type="text" id="birDate" class="birDate" name="birDate" placeholder="YYYY-MM-DD">
 					<span class="brsp"></span><br/>
 				</div>
 				<div>
 					<label>手機號碼：</label>
-					<input type="text" id="phone" name="phone" placeholder="09xxxxxxxx">
+					<input type="text" id="phone" class="phone" name="phone" placeholder="09xxxxxxxx">
 					<span class="phsp"></span><br/>
 				</div>
 				<div>
 					<label>登山經驗</label>
-					<input type="text" id="exp" name="exp" placeholder="請輸入登山經驗">
+					<input type="text" id="exp" class="exp" name="exp" placeholder="請輸入登山經驗">
+					<span class="expsp"></span>
 				</div>
 				<div>
 					<input type="submit" id="submit" name="submit" value="送出">
@@ -52,7 +54,7 @@
 	</div>
 	
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-	<script src="memberFirst.js"></script>
+	<script src="memberFirstInfo.js"></script>
 
 </body>
 </html>
