@@ -3,8 +3,11 @@ $(function(){
 	
 	var npFunctionURL = "/MountainExploer.com/backstage/mountain/search";
 	var actHomeURL = "/MountainExploer.com/mountain/act";
+	var actEnterURL = "/MountainExploer.com/mountain/list?";
 	var mountainShare = "/MountainExploer.com/mountain/public";
-	var page, showData, totalPage, totalData;
+	var totalPage, totalData;
+	var showData = 20;
+	console.log(page)
 	$(window).on("load",function(){
 		
 		$.ajax({
@@ -13,54 +16,8 @@ $(function(){
 			success : function(data){
 				//	頁面控制配置
 				totalData = data;
-				if(typeof page == 'undefined'){
-					page = 1
-				}
-				if(typeof showData == 'undefined'){
-					showData = 10
-				}
 				totalPage = Math.ceil(totalData*1.0 / showData )
-				
-				
-				//	預設顯示
-				//設置頁面控制按鈕點擊方法
-				$(".pageControl").on("click","a",function(e){
-					e.preventDefault();
-					var page = Number($(this).attr("name"));
-					console.log("page Before Click : " + page)
-					$.ajax({
-						url : homeUrl + "/all?page="+page+"&showData="+showData,
-						method : "GET",
-				 		dataType: 'json',
-				  		success:function(data){
-							//變換顯示之資料
-							insertTable(data);
-							//設定按鈕
-							setPageController(page)
-						}
-					})
-					
-				})
-				var pageArray = $(".pageControl").find("a")
-				console.log( pageArray )
-				$(".pageControl").find("a").eq(2).html("目前 " + page + ' / ' +totalPage + " 頁")
-				if(page != 1){
-					$(".pageControl").find("a").eq(0).attr("href",1).css("display","block")
-					$(".pageControl").find("a").eq(1).attr("href",Number(page)-1).css("display","block")
-				}else{
-					$(".pageControl").find("a").eq(0).css("display","none")
-					$(".pageControl").find("a").eq(1).css("display","none")
-				}
-				if(page<totalPage){
-					console.log(page)
-					$(".pageControl").find("a").eq(3).attr("href",(Number(page)+1)).css("display","block")
-					$(".pageControl").find("a").eq(4).attr("href",totalPage).css("display","block")
-				}else{
-					$(".pageControl").find("a").eq(3).css("display","none")
-					$(".pageControl").find("a").eq(4).css("display","none")
-				}
-				
-				
+				activeMainAjax(page,showData);
 				
 			},
 			error : function(data){
@@ -70,12 +27,28 @@ $(function(){
 		})
 		
 	})
+	function activeMainAjax(page,showData){
+		$.ajax({
+			url : actHomeURL + "/search/ajaxShow",
+			method : "GET",
+			dataType: 'json',
+			data : {
+				page : page,
+				showData : showData
+			},
+			success:function(data){
+				//變換顯示之資料
+				insertTable(data);
+				//設定按鈕
+				setPageController(page)
+			}
+		})
+	}
 	
 	//顯示插入
 	function insertTable(data){
-		console.log(data)
+		$(".order-table").find("thead").siblings().remove()
 		for(let i in data){
-//			$(".order-table").find("thead").siblings().remove()
 			$(".order-table").append(
 				"<tbody  class='order-table-tb'>" +
 					"<tr>" +
@@ -153,42 +126,31 @@ $(function(){
 	
 	function setPageController(page){
 		var pageArray = $(".pageControl").find("a")
-		console.log( pageArray )
+//		console.log( pageArray )
 		$(".pageControl").find("a").eq(2).html("目前 " + page + ' / ' +totalPage + " 頁")
-		if(page != 1){
-			$(".pageControl").find("a").eq(0).attr("href",1).css("display","block")
-			$(".pageControl").find("a").eq(1).attr("href",Number(page)-1).css("display","block")
-		}else{
-			$(".pageControl").find("a").eq(0).css("display","none")
-			$(".pageControl").find("a").eq(1).css("display","none")
-		}
-		if(page<totalPage){
-			console.log(page)
-			$(".pageControl").find("a").eq(3).attr("href",(Number(page)+1)).css("display","block")
-			$(".pageControl").find("a").eq(4).attr("href",totalPage).css("display","block")
-		}else{
-			$(".pageControl").find("a").eq(3).css("display","none")
-			$(".pageControl").find("a").eq(4).css("display","none")
-		}	
+				if(page != 1){
+					let first = actEnterURL + "page=1"
+					let previous = actEnterURL + "page=" + ( Number(page) - 1 ) ;
+					$(".pageControl").find("a").eq(0).attr("href",first).css("display","block")
+					$(".pageControl").find("a").eq(1).attr("href",previous).css("display","block")
+				}else{
+					$(".pageControl").find("a").eq(0).css("display","none")
+					$(".pageControl").find("a").eq(1).css("display","none")
+				}
+				if(page<totalPage){
+					console.log(page)
+					let next = actEnterURL +"page=" + ( Number(page) + 1 ) ;
+					let final = actEnterURL + "page=" + ( Number(totalPage));
+					console.log(next)
+					$(".pageControl").find("a").eq(3).attr("href",next).css("display","block")
+					$(".pageControl").find("a").eq(4).attr("href",final).css("display","block")
+				}else{
+					$(".pageControl").find("a").eq(3).css("display","none")
+					$(".pageControl").find("a").eq(4).css("display","none")
+				}
 	}
 	
-	function setData(page,showData){
-		$.ajax({
-			url : actHomeURL + "/search/ajaxShow",
-			method : "GET",
-			data : {
-				page : page,
-				showData : showData
-				},
-			dataType : "json",
-			success : function(data){
-				insertTable(data);
-				},
-			error : function(data){
-						
-				}
-			})
-	}
+	
 		
 })
 

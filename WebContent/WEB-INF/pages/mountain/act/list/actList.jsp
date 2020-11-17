@@ -20,7 +20,10 @@
     <script src="<c:url value='/mountain/act/list/js/ajax.js' />"></script>
 </head>
 
+
 <body>
+
+
     <div class="count1">
         <div class="count1_img">
             <img src="/MountainExploer.com/images/logo1.png">
@@ -150,8 +153,10 @@
 
     </footer>
 </body>
+<!-- 設置頁面參數 -->
 <script type="text/javascript">
 	checklogin = "${sessionScope.LoginOK}"
+	page = ${page}
 </script>
 <script src="/MountainExploer.com/js/upLoadImg.js"></script><!-- 上傳頭像 -->
 <script src="/MountainExploer.com/js/table.js"></script>

@@ -1,4 +1,4 @@
-package mountain.act.controller;
+package mountain.controller.act;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,29 +48,15 @@ public class ActRetrieveController {
 	@Autowired
 	private SystemImage sysImage;
 	
-	
-	
-	
-	
-	
 	@GetMapping("/ajaxShow")
 	@ResponseBody
 	public List<ActBean> showActBeans(
-			@RequestParam(name = "page", required = false) Integer page,
-			@RequestParam(name = "showData", required = false) Integer showData){
+			@RequestParam(name = "page", required = false) Integer page){
 		List<ActBean> actBeans = new ArrayList<ActBean>();
-		
+		int showData =20 ;
 		InterfaceService<GenericTypeObject> service = this.service;
-		
-		if (page == null) {
-			page = 1 ;
-		}
-		if (showData == null) {
-			showData = 15 ;
-		}
-		
+		System.out.println("page : " + page + " showData : " + showData);
 		service.save(actInfo);
-//		List<GenericTypeObject> actInfoList = service.selectWithPage(page, showData);
 		String hql = "From ActivityInfo a order by a.id";
 		List<GenericTypeObject> actInfoList = service.getwithHQL(hql, page, showData);
 		actBeans = TransFuction.transToActBeans(actInfoList,service);

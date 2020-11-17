@@ -1,4 +1,4 @@
-package mountain.act.controller;
+package mountain.controller.act;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;

@@ -1,4 +1,4 @@
-package mountain.back.controller;
+package mountain.controller.back;
 
 import java.io.IOException;
 import java.util.HashMap;
