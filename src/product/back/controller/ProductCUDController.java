@@ -25,6 +25,7 @@ import product.service.ProductBeanService;
 import product.service.SecondClassService;
 
 @Controller
+@RequestMapping("/backsatage/product")
 public class ProductCUDController {
 	@Autowired
 	private FirstClassService firstClassService;
@@ -38,7 +39,7 @@ public class ProductCUDController {
 	private ProductBeanService productBeanService;
 
 	// 資料刪除
-	@RequestMapping(path = "/productBackStage/deleteData", method = RequestMethod.GET)
+	@RequestMapping(path = "/deleteData", method = RequestMethod.GET)
 	public String deleteDate(@RequestParam(name = "deleteID") String deleteID, Model m) {
 		
 		System.out.println("deletID : " + deleteID);
@@ -49,13 +50,13 @@ public class ProductCUDController {
 			System.out.println("Delete Status : " + check);
 		
 		
-		return "redirect:/productBackStage/mainPage";
+		return "redirect:/backstage/product/retrievePage";
 
 	}
 
 	// 資料修改
 	
-	@RequestMapping(path = "/productBackStage/updateData", method = RequestMethod.POST)
+	@RequestMapping(path = "/updateData", method = RequestMethod.POST)
 	public String updateData(Model m,
 			@RequestParam(name = "itemBasicSeqno") String itemBasicSeqno,
 			@RequestParam(name = "name") String name,
@@ -80,7 +81,7 @@ public class ProductCUDController {
 		itemInfoService.update(itemInfo);
 		itemBasicService.update(itemBasic);
 		
-		return "redirect:/productBackStage/mainPage";
+		return "redirect:/backstage/product/retrievePage";
 	}
 	
 	
@@ -103,13 +104,13 @@ public class ProductCUDController {
 //	}
 
 	// 資料新增
-	@RequestMapping(path = "/productBackStage/createProductData", method = RequestMethod.POST)
+	@RequestMapping(path = "/createProductData", method = RequestMethod.POST)
 	public String createData(@RequestParam Map<String, String> allParams,
 			@RequestParam(name = "productImg") MultipartFile multipartFile) throws IllegalStateException, IOException {
 		
 			insertDataToDB(allParams, multipartFile);
 		
-		return "redirect:/productBackStage/mainPage";
+		return "redirect:/backstage/product/retrievePage";
 	}
 
 	private void insertDataToDB(Map<String, String> allParams, MultipartFile multipartFile)
