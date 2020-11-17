@@ -32,49 +32,115 @@ import mountain.model.route.RouteInfo;
 @RequestMapping("/mountain/act/search")
 public class ActRetrieveController {
 	@Autowired
-	private ActivityInfo actInfo;
-	@Autowired
-	private ActImage actImage;
-	@Autowired
-	private MemberBasic memberBasic;
-	@Autowired
-	private RouteInfo rtInfo;
-	@Autowired
-	private ActRegistry actReg;
-	@Autowired
 	private GenericService<GenericTypeObject> service;
 	@Autowired
 	private MemberBasicBackService memberBasicService;
-	@Autowired
-	private SystemImage sysImage;
+	
+	private int showData =20 ;
+	
+	
+	
 	
 	@GetMapping("/ajaxShow")
 	@ResponseBody
-	public List<ActBean> showActBeans(
+	public List<ActBean> showActBeans(ActivityInfo actInfo,
 			@RequestParam(name = "page", required = false) Integer page){
 		List<ActBean> actBeans = new ArrayList<ActBean>();
-		int showData =20 ;
+		
 		InterfaceService<GenericTypeObject> service = this.service;
-		System.out.println("page : " + page + " showData : " + showData);
 		service.save(actInfo);
 		String hql = "From ActivityInfo a order by a.id";
 		List<GenericTypeObject> actInfoList = service.getwithHQL(hql, page, showData);
 		actBeans = TransFuction.transToActBeans(actInfoList,service);
 		
+		return actBeans;
+	}
+	@GetMapping("/aTagAjaxShow")
+	@ResponseBody
+	public List<ActBean> aTagActBeans(ActivityInfo actInfo,@RequestParam Map<String, String> allParam){
+		List<ActBean> actBeans = new ArrayList<ActBean>();
 		
+		InterfaceService<GenericTypeObject> service = this.service;
+		service.save(actInfo);
+		String hql = "From ActivityInfo";
+		int showData = Integer.parseInt(allParam.get("showData"));
+		int i = 1;
+		while(actBeans.size() < 20 && i < showData) {
+			int aTag = Integer.parseInt(allParam.get("aTag") );
+			List<GenericTypeObject> actInfoList = service.getwithHQL(hql, i++, 1);
+			List<ActBean> returnBeans = TransFuction.transToActBeans(actInfoList,service);
+			for (ActBean actBean : returnBeans) {
+				if (actBean.getTag().get(aTag)) {
+					actBeans.add(actBean);
+				}
+			}
+		}
+		return actBeans;
+	}
+	@GetMapping("/tagAjaxShow")
+	@ResponseBody
+	public List<ActBean> rTagActBeans(ActivityInfo actInfo,@RequestParam Map<String, String> allParam){
+		List<ActBean> actBeans = new ArrayList<ActBean>();
+		
+		InterfaceService<GenericTypeObject> service = this.service;
+		service.save(actInfo);
+		String hql = null;
+		int i = 1;
+		int tag = Integer.parseInt(allParam.get("tag") );
+		if (tag == 2) {
+			System.out.println("enter 2 ");
+			hql = "From ActivityInfo ai, ActRegistry ar where ai.id = ar.activityBasic.id group by ai.id";
+		}
+		tagParseHql(tag,hql);
+		System.out.println("============" + hql);
+		List<GenericTypeObject> actInfoList = service.getwithHQL(hql, 1, 10);
+		actBeans = TransFuction.transToActBeans(actInfoList,service);
+		
+		
+		
+		return actBeans;
+	}
+	
+	
+	
+	private void tagParseHql(int tag, String hql) {
+		
+		if (tag == 2) {
+			System.out.println("enter 2 ");
+			hql = "From ActivityInfo ai, ActRegistry ar where ai.id = ar.activityBasic.id group by ";
+		}
+		
+		
+		
+	}
+	@GetMapping("/searchAjaxShow")
+	@ResponseBody
+	public List<ActBean> searchActBeans(ActivityInfo actInfo,@RequestParam Map<String, String> allParam){
+		List<ActBean> actBeans = new ArrayList<ActBean>();
+		
+		InterfaceService<GenericTypeObject> service = this.service;
+		service.save(actInfo);
+		if (allParam.get("search")!=null) {
+			String search =allParam.get("search");
+			String hql = "From ActivityInfo where Title like '%" + search + "%'" ;
+			List<GenericTypeObject> actInfoList = service.getwithHQL(hql, Integer.parseInt(allParam.get("page")), showData);
+			actBeans = TransFuction.transToActBeans(actInfoList,service);
+		}
 		return actBeans;
 	}
 	
 	@GetMapping(path = "/images")
 	@ResponseBody
-	public ResponseEntity<byte[]> showImage(@RequestParam(name = "actID") Integer actID) {
+	public ResponseEntity<byte[]> showImage(@RequestParam(name = "actID") Integer actID, ActImage actImage, SystemImage sysImage) {
 //		System.out.println("圖片輸入開始");
 		List<ResponseEntity<byte[]>> result = new ArrayList<ResponseEntity<byte[]>>();
 		InterfaceService<GenericTypeObject> service = this.service;
 		service.save(actImage);
-		List<GenericTypeObject> imgList = service.selectAllwithFK(actID, "ACTIVITY_BASIC_SEQNO");
+		String hql = "From ActImage where activityBasic = " + actID + " order by seqno";
+		List<GenericTypeObject> imgList = service.getwithHQL(hql, 1, showData);
+//		List<GenericTypeObject> imgList = service.selectAllwithFK(actID, "ACTIVITY_BASIC_SEQNO");
 		for (GenericTypeObject genericTypeObject : imgList) {
-			ActImage actImage = (ActImage) genericTypeObject;
+			actImage = (ActImage) genericTypeObject;
 			byte[] imgBytes = actImage.getImg();
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.IMAGE_JPEG);

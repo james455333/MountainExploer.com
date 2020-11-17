@@ -63,39 +63,45 @@
         </div>
         <div class="div_li2">
             <!-- 每頁不同的內容從這裡開始 -->
-        	<div class="searchBar">
-                <nav>
-                    <ul class="third_nav">
-                        <!-- 控制列表內容從這邊開始 -->
-                        <li>活動標籤:
-                            <select name="actTag">
-                                <option value="0" selected disabled>請選擇活動標籤</option>
-                                <option value="0">不指定</option>
-                                <option value="1">新活動</option>
-                                <option value="2">熱門活動</option>
-                                <option value="3">歷史活動</option>
-                            </select></li>
+            
+	            
+	        	<div class="searchBar">
+	                <nav>
+	                    <ul class="third_nav">
+	                        <!-- 控制列表內容從這邊開始 -->
+	                        <li>活動標籤:
+	                            <select name="aTag">
+	                                <option value="0" selected disabled>請選擇活動標籤</option>
+	                                <option value="0">不指定</option>
+	                                <option value="1">新活動</option>
+	                                <option value="2">熱門活動</option>
+	                                <option value="3">歷史活動</option>
+	                            </select></li>
+	
+	                        <li>報名標籤:
+	                            <select name="rTag">
+	                                <option value="0" selected disabled>請選擇報名標籤</option>
+	                                <option value="0">不指定</option>
+	                                <option value="6">尚可報名</option>
+	                                <option value="8">報名將滿</option>
+	                                <option value="7">報名將截止</option>
+	                                <option value="5">報名已滿</option>
+	                                <option value="4">報名截止</option>
+	                               	
+	                            </select></li>
+	                        <!-- 控制列表內容到這邊結束 -->
+	                    </ul>
+	                </nav> 
+	                <form action="list" id="m-sr-form">
+		                <div class="search">
+		                	<input type="hidden" name="page" value="1" readonly>
+            				<input type="hidden" name="od" value="2" readonly>
+		                	搜尋：<input name="search" type="search" class="light-table-filter" data-table="order-table" placeholder="請輸入活動名稱">
+		                    <button><img class=imgSearch src="/MountainExploer.com/images/放大鏡.png" alt="" width="35px"></button>
+		        		</div>
+		            </form>
+	            </div>
 
-                        <li>報名標籤:
-                            <select name="regTag">
-                                <option value="0" selected disabled>請選擇報名標籤</option>
-                                <option value="0">不指定</option>
-                                <option value="1">尚可報名</option>
-                                <option value="2">報名將滿</option>
-                                <option value="3">報名將截止</option>
-                                <option value="4">報名已滿</option>
-                                <option value="5">報名截止</option>
-                               	
-                            </select></li>
-                        <!-- 控制列表內容到這邊結束 -->
-                    </ul>
-                </nav>
-                <div class="search">
-                    搜尋：<input type="search" class="light-table-filter" data-table="order-table" placeholder="請輸入關鍵字">
-                    <button><img class=imgSearch src="/MountainExploer.com/images/放大鏡.png" alt="" width="35px"></button>
-                </div>
-
-            </div>
 
             <div class="secDivContent">
                 <!--table-->
@@ -157,6 +163,7 @@
 <script type="text/javascript">
 	checklogin = "${sessionScope.LoginOK}"
 	page = ${page}
+	od = ${order}
 </script>
 <script src="/MountainExploer.com/js/upLoadImg.js"></script><!-- 上傳頭像 -->
 <script src="/MountainExploer.com/js/table.js"></script>

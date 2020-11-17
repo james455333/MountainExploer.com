@@ -89,7 +89,7 @@ public class TagSelector {
 	
 	private static void setHotAct(Map<Integer, Boolean> result) {
 		
-		if (passDay <= 14 && nowReg >= (topReg/2)) {
+		if (passDay >= 14 && nowReg >= (topReg/2)) {
 			result.put(hotAct, true);
 		}else if (regLeftDay <= 7 && nowReg >= (topReg*3/4)) {
 			result.put(hotAct, true);

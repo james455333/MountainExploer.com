@@ -3,13 +3,25 @@ $(function(){
 	
 	var npFunctionURL = "/MountainExploer.com/backstage/mountain/search";
 	var actHomeURL = "/MountainExploer.com/mountain/act";
-	var actEnterURL = "/MountainExploer.com/mountain/list?";
+	var actEnterURL = "/MountainExploer.com/mountain/list?od=1&";
 	var mountainShare = "/MountainExploer.com/mountain/public";
 	var totalPage, totalData;
 	var showData = 20;
 	console.log(page)
+	console.log(od)
 	$(window).on("load",function(){
+		if(od ==1){
+			showDefault();
+		}
 		
+		
+	})
+	
+	$(".search").find("button").on("click",function(){
+		$("#m-sr-form").submit();
+	})
+	
+	function showDefault(){
 		$.ajax({
 			url : mountainShare + "/act/totalAct",
 			mehod : "GET",
@@ -18,15 +30,12 @@ $(function(){
 				totalData = data;
 				totalPage = Math.ceil(totalData*1.0 / showData )
 				activeMainAjax(page,showData);
-				
 			},
 			error : function(data){
-				
 			}
-			
 		})
-		
-	})
+	}
+	
 	function activeMainAjax(page,showData){
 		$.ajax({
 			url : actHomeURL + "/search/ajaxShow",
@@ -40,7 +49,7 @@ $(function(){
 				//變換顯示之資料
 				insertTable(data);
 				//設定按鈕
-				setPageController(page)
+				setPageController(page,od)
 			}
 		})
 	}
@@ -124,30 +133,37 @@ $(function(){
 		//	console.log("checkEmpty :" + checkEmpty)
 	}
 	
-	function setPageController(page){
+	function setPageController(page,od){
 		var pageArray = $(".pageControl").find("a")
+		
 //		console.log( pageArray )
+		let url ;
+		if(od ==1){
+			url = actEnterURL
+		}
+		
 		$(".pageControl").find("a").eq(2).html("目前 " + page + ' / ' +totalPage + " 頁")
-				if(page != 1){
-					let first = actEnterURL + "page=1"
-					let previous = actEnterURL + "page=" + ( Number(page) - 1 ) ;
-					$(".pageControl").find("a").eq(0).attr("href",first).css("display","block")
-					$(".pageControl").find("a").eq(1).attr("href",previous).css("display","block")
-				}else{
-					$(".pageControl").find("a").eq(0).css("display","none")
-					$(".pageControl").find("a").eq(1).css("display","none")
-				}
-				if(page<totalPage){
-					console.log(page)
-					let next = actEnterURL +"page=" + ( Number(page) + 1 ) ;
-					let final = actEnterURL + "page=" + ( Number(totalPage));
-					console.log(next)
-					$(".pageControl").find("a").eq(3).attr("href",next).css("display","block")
-					$(".pageControl").find("a").eq(4).attr("href",final).css("display","block")
-				}else{
-					$(".pageControl").find("a").eq(3).css("display","none")
-					$(".pageControl").find("a").eq(4).css("display","none")
-				}
+				
+			if(page != 1){
+				let first = url + "page=1"
+				let previous = url + "page=" + ( Number(page) - 1 ) ;
+				$(".pageControl").find("a").eq(0).attr("href",first).css("display","block")
+				$(".pageControl").find("a").eq(1).attr("href",previous).css("display","block")
+			}else{
+				$(".pageControl").find("a").eq(0).css("display","none")
+				$(".pageControl").find("a").eq(1).css("display","none")
+			}
+			if(page<totalPage){
+				console.log(page)
+				let next = url +"page=" + ( Number(page) + 1 ) ;
+				let final = url + "page=" + ( Number(totalPage));
+				console.log(next)
+				$(".pageControl").find("a").eq(3).attr("href",next).css("display","block")
+				$(".pageControl").find("a").eq(4).attr("href",final).css("display","block")
+			}else{
+				$(".pageControl").find("a").eq(3).css("display","none")
+				$(".pageControl").find("a").eq(4).css("display","none")
+			}
 	}
 	
 	

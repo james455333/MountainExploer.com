@@ -16,8 +16,10 @@ public class ActPageEntryController {
 	@GetMapping("/list")
 	public String enterMountainIndex(
 			@RequestParam("page") Integer page,
+			@RequestParam("od") Integer order,
 			Model model, RedirectAttributes redAttr) {
 		model.addAttribute("page", page);
+		model.addAttribute("order", order);
 		return "/mountain/act/list/actList";
 	}
 	

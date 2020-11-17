@@ -18,6 +18,8 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import main.generic.model.GenericTypeObject;
 import mountain.model.activity.Registry.ActRegistry;
 import mountain.model.route.RouteBasic;
