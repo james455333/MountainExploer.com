@@ -91,7 +91,6 @@ public class ItemBasicDAO {
 		Session session = sessionFactory.getCurrentSession();
 		int startPosition = (page-1) * showdata;
 		List<ItemBasic> list = new ArrayList<ItemBasic>();
-//		String hql = "From " + entity.getClass().getName() ;
 		String hql = "From ItemBasic";
 		list = session.createQuery(hql)
 					.setReadOnly(true)
@@ -108,7 +107,6 @@ public class ItemBasicDAO {
 
 		Session session = sessionFactory.getCurrentSession();
 
-//		String hql = "Select count(*) From " + entity.getClass().getName();
 		String hql = "Select count(*) From ItemBasic" ;
 
 		Query query = session.createQuery(hql);
@@ -134,7 +132,6 @@ public class ItemBasicDAO {
 		Session session = sessionFactory.getCurrentSession();
 		int startPosition = (page-1) * showdata;
 		List<ItemBasic> list = new ArrayList<ItemBasic>();
-//		String hql = "From RouteBasic where NATIONAL_PARK_ID =" + npID; 
 		String hql = "From ItemBasic where SECOND_CLASS_ID =" + scID; 
 		list = session.createQuery(hql,ItemBasic.class)
 					.setReadOnly(true)

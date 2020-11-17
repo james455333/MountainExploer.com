@@ -39,4 +39,8 @@ public class SecondClassService {
 		return secondClassDao.update(secondClassName);
 	}
 	
+	public List<SecondClass> withHql(String hql){
+		return secondClassDao.withHql(hql);
+	}
+	
 }

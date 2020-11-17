@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>後台資料維護系統/山岳資料/[新增]]</title>
+<title>後台資料維護系統/商品資料/[新增]]</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href='<c:url value="/backstage/css/backStage.css"/>'> 
 </head>
@@ -16,8 +16,7 @@
 		
 	
 		
-		<form action='<c:url value="/productBackStage/createProductData"/>'  enctype="multipart/form-data" method="post">
-			<div >
+		<form action='<c:url value="/backstage/product/createProductData"/>'  enctype="multipart/form-data" method="post">
 				<div>
 				* 為必填項目
 				</div>
@@ -97,7 +96,7 @@
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
-	<script type="text/javascript" charset="UTF-8" src='<c:url value="/mountain/back/backMountain.js"/>'></script>
+	<script type="text/javascript" charset="UTF-8" src='<c:url value="/product/back/backProductMountain.js"/>'></script>
 	<script>
 		$(function(){
 			$("#backPreviousPage").on("click",function(){

@@ -74,4 +74,18 @@ public class SecondClassDAO {
 //			}
 //			return false;
 //		}
+	
+	
+	public List<SecondClass> withHql(String hql){
+		Session session = sessionFactory.getCurrentSession();
+		
+		Query<SecondClass> query = session.createQuery(hql,SecondClass.class);
+		
+		List<SecondClass> list = query.list();
+		
+		return list;
+	}
+	
+	
+	
 }

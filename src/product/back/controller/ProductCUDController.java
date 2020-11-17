@@ -25,7 +25,7 @@ import product.service.ProductBeanService;
 import product.service.SecondClassService;
 
 @Controller
-@RequestMapping("/backsatage/product")
+@RequestMapping("/backstage/product")
 public class ProductCUDController {
 	@Autowired
 	private FirstClassService firstClassService;
@@ -40,7 +40,7 @@ public class ProductCUDController {
 
 	// 資料刪除
 	@RequestMapping(path = "/deleteData", method = RequestMethod.GET)
-	public String deleteDate(@RequestParam(name = "deleteID") String deleteID, Model m) {
+	public String deleteDate(@RequestParam(name = "seqno") String deleteID, Model m) {
 		
 		System.out.println("deletID : " + deleteID);
 

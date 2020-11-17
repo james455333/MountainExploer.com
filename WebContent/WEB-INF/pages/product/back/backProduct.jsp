@@ -69,7 +69,7 @@
 		</div>
 	</div>
 	<div>
-		<a href='<c:url value="/productBackStage/createDataPage"/>'>新增一筆資料</a>
+		<a href='<c:url value="/backstage/product/createDataPage"/>'>新增一筆資料</a>
 
 	</div>
 

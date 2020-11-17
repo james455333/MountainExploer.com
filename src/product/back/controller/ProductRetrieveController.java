@@ -43,8 +43,6 @@ public class ProductRetrieveController {
 	private ItemBasicService itemBasicService;
 	@Autowired
 	private ItemInfoService itemInfoService;
-//	@Autowired
-//	private ProductBeanService productBeanService;
 
 	// 總查詢
 //	@RequestMapping(path = "/productBackStage/mainPage", method = RequestMethod.GET)
@@ -72,7 +70,7 @@ public class ProductRetrieveController {
 	public List<ProductBean> selectAll(Model model, @RequestParam(name = "page", required = false) Integer page,
 			@RequestParam(name = "showData", required = false) Integer showData) throws IOException, SQLException {
 
-		System.out.println("select All : active");
+//		System.out.println("select All : active");
 
 		if (page == null) {
 			page = 1;
@@ -158,8 +156,8 @@ public class ProductRetrieveController {
 			@RequestParam(name = "showData", required = false) Integer showData) throws IOException, SQLException {
 
 		List<ProductBean> result = new ArrayList<ProductBean>();
-		
-		if (fcID == null ) {
+
+		if (fcID == null) {
 //			List<GenericTypeObject> before = service.selectAll();
 			List<FirstClass> before = firstClassService.selectAll();
 //			List<NationalPark> returnList = new ArrayList<NationalPark>();
@@ -178,8 +176,7 @@ public class ProductRetrieveController {
 			}
 			return result;
 		}
-		
-		
+
 		if (page == null) {
 			page = 1;
 		}
@@ -200,12 +197,12 @@ public class ProductRetrieveController {
 //
 //				ItemBasic itemBasic = iterator2.next();
 
-				List<ItemBasic> itemBasicList = itemBasicService.scIDsetPage(page, showData, scID);
-				List<ProductBean> productBeanList = RetrieveFunction.getProductBeanList(itemBasicList);
+			List<ItemBasic> itemBasicList = itemBasicService.scIDsetPage(page, showData, scID);
+			List<ProductBean> productBeanList = RetrieveFunction.getProductBeanList(itemBasicList);
 
-				return productBeanList;
+			return productBeanList;
 
-			}
+		}
 //		}
 		return result;
 	}
@@ -236,41 +233,42 @@ public class ProductRetrieveController {
 //		return "forward:/productBackStage/retrievePage";
 //
 //	}
+	// 次類別列表
 	@GetMapping(value = "/navSC", produces = { "application/json;charset=UTF-8" })
+	@ResponseBody
+	public List<SecondClass> scSelectList(@RequestParam("first") Integer first) throws IOException, SQLException {
+		List<SecondClass> result = new ArrayList<SecondClass>();
+		String hql = "From SecondClass where firstClass = " + first;
+
+		result = secondClassService.withHql(hql);
+
+//		for (SecondClass secondClass : result) {
+//			FirstClass firstClass = secondClass.getFirstClass();
+//		}
+
+		return result;
+
+	}
+
+	// 次類別分業資料
+	@GetMapping(value = "/scSelect", produces = { "application/json;charset=UTF-8" })
 	@ResponseBody
 	public List<ProductBean> scSelectList(@RequestParam(name = "secondclass", required = false) Integer scID,
 			@RequestParam(name = "page", required = false) Integer page,
 			@RequestParam(name = "showData", required = false) Integer showData) throws IOException, SQLException {
-		List<ProductBean> result = new ArrayList<ProductBean>();
 
-		if (scID == null) {
-			List<SecondClass> before = secondClassService.selectAll();
-			List<SecondClass> returnList = new ArrayList<SecondClass>();
+//		List<ProductBean> result = new ArrayList<ProductBean>();
 
-			for (SecondClass secondClass : before) {
-				returnList.add(secondClass);
-			}
-			for (SecondClass secondClass : returnList) {
-				ProductBean productBean = new ProductBean();
-				productBean.setSeqno(secondClass.getId());
-				productBean.setName(secondClass.getName());
-				result.add(productBean);
-			}
-			return result;
-		}
 		if (page == null) {
 			page = 1;
 		}
-		System.out.println("page : " + page);
 		if (showData == null) {
 			showData = 10;
 		}
-		
-		List<ItemBasic> itemBasicList = itemBasicService.scIDsetPage(page, showData, scID);
-		List<ProductBean> productBeanList = RetrieveFunction.getProductBeanList(itemBasicList);
+		List<ItemBasic> scIDsetPage = itemBasicService.scIDsetPage(page, showData, scID);
+		List<ProductBean> productBeanList = RetrieveFunction.getProductBeanList(scIDsetPage);
 
 		return productBeanList;
-		
 
 	}
 

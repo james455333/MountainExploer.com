@@ -2,12 +2,11 @@
 $(function(){
 	//頁面參數
 	var page = 1;
-	if(typeof showData === 'undefined') var showData = 10;
+	if(typeof showData === 'undefined') var showData = 30;
 	console.log("123")
 	var totalPage = 0;
 	//統一網域名稱設置
 	var homeUrl = "/MountainExploer.com/backstage/product/search";
-	
 	
 	//	預設頁面
 	$(window).on("load", function(){
@@ -55,17 +54,10 @@ $(function(){
 							
 						}
 //						let firstFC = $("fcSelect").find("option").eq(0).val()
-//						console.log(firstFC)
+						let firstFC = $("select[name='firstclass']").find("option").eq(0).val()
+						console.log(firstFC)
 //						// 次類別列表預設為第一筆顯示主類別
-//						$.ajax({
-//							url : homeUrl + "/navSC?firstclass=" + firstFC,
-//							method : "GET",
-//							dataType : "json",
-//							success:function(data){
-//								//console.log(data)
-//								for(let i in data) $(".secon").append("<option value='" + data[i].seqno + "'>" + data[i].name +"</option>")
-//							}
-//						})
+						navSC(firstFC);
 					}
 				})
 				//設置頁面控制按鈕點擊方法
@@ -90,28 +82,29 @@ $(function(){
 		})
 		
 	})
-	//	國家公園列表Change觸發切換路線
-//	$("#nPSelect").on("change",function(){
-//		var npID = $("#nPSelect").val();
-//		//console.log("npID : "  + npID)
-//		$.ajax({
-//		url : homeUrl + "/navRT?nationalPark="+npID,
-//		method : "GET",
-//		dataType: 'json',
-//		success:function(data){
-//			//console.log(data)
-//			$(".route").empty()
-//			if(data.length != 0){
-//				for(let i in data) 
-//					$(".route").append("<option value='" + data[i].seqno + "'>" + data[i].name +"</option>")
-//			}else{
-//				$(".rtSubmit").attr("disabled",true)
-//				$(".npSubmit").attr("disabled",true)
-//			}
-//			
-//			}
-//		})
-//	})
+	//	主類別列表Change觸發切換路線
+	$("#fcSelect").on("change",function(){
+		var firstSC = $("#fcSelect").val();
+		$(".scSelect").empty();
+		console.log(firstSC)
+		navSC(firstSC);
+	})
+	
+	function navSC(firstFC){
+		
+		$.ajax({
+			url : homeUrl + "/navSC",
+			method : "GET",
+			dataType : "json",
+			data : {
+				first : firstFC
+			},
+			success:function(data){
+				//console.log(data)
+				for(let i in data) $(".scSelect").append("<option value='" + data[i].id + "'>" + data[i].name +"</option>")
+			}			
+		})
+	}
 	
 	// 主類別查詢
 	$(".fcSubmit").on("click",function(){
@@ -165,8 +158,8 @@ $(function(){
 	$(".scSubmit").on("click",function(){
 		page = 1;
 		//console.log("show : " + showData + "\tpage : " + page)
-		let scID = $("#scSelect").val();
-		//console.log(scID);
+		let scID = $(".scSelect").val();
+		console.log(scID);
 		$.ajax({
 			url: homeUrl+ "/totalData?secondclass="+scID,
 			method : "GET",
@@ -177,7 +170,7 @@ $(function(){
 				totalPage = Math.ceil(totalData/showData);
 				//console.log("fc query TotalPage : " + totalPage)
 				$.ajax({
-					url : homeUrl + "/navSC?secondclass=" + scID+"&showData="+showData ,
+					url : homeUrl + "/scSelect?secondclass=" + scID+"&showData="+showData ,
 					method : "GET",
 					dataType : "json",
 					success : function(data){
@@ -192,7 +185,7 @@ $(function(){
 					var page = Number($(this).attr("name"));
 					//console.log("page Before Click : " + page)
 					$.ajax({
-					url : homeUrl + "/navSC?secondclass=" + scID+"&showData="+showData+"&page="+page ,
+					url : homeUrl + "/scSelect?secondclass=" + scID+"&showData="+showData+"&page="+page ,
 					method : "GET",
 					dataType : "json",
 					success : function(data){
@@ -228,19 +221,19 @@ $(function(){
 			  		"<td><div >" + data[i].firstClass + "</div></td>"+
 			  		"<td><div >" + data[i].secondClass + "</div></td>"+
 					"<td>"+
-						'<img src="/MountainExploer.com/backstage/product/search/images?seqno='+ data[i].seqno+'" class="productImg" >'+
+						'<img style="width: 50px; height: 50px;" src="/MountainExploer.com/backstage/product/search/images?seqno='+ data[i].seqno+'" class="productImg" >'+
 					"</td>"+
 			  		"<td><div >" + data[i].price + "</div></td>" +
 			  		"<td><div >" + data[i].stock + "</div></td>" +
 					"<td>" +
 						"<div>" +
-							"<form  action='/MountainExploer.com/backstage/product/updateData'>" +
+							"<form  action='" +homeUrl+"/updateDataPage'>" +
 								'<input type="hidden" name="seqno" value="' + data[i].seqno + '" readonly>' +
 						    	'<input type="submit" value="修改">' +
 							'</form>' +
 						"</div>"+
 						"<div>"+
-							"<form class='hiddenForm' action='/MountainExploer.com/backsatage/product/deleteData'>"+
+							"<form class='hiddenForm' action='/MountainExploer.com/backstage/product/deleteData'>"+
 								'<input type="hidden" name="seqno" value="' + data[i].seqno + '" readonly>' +
 							'</form>' +
 							'<input class="deleteButton" type="button"  value="刪除">' +

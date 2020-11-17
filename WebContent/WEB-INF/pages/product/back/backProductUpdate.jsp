@@ -5,13 +5,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>後台資料維護系統/山岳資料/[修改]]</title>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href='<c:url value="/backstage/css/backStage.css"/>'>
-<link rel="stylesheet"
-	href='<c:url value="/mountain/back/backMountain.css"/>'>
+<title>後台資料維護系統/商品資料/[修改]]</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href='<c:url value="/backstage/css/backStage.css"/>'> 
+<link rel="stylesheet" href='<c:url value="/mountain/back/backMountain.css"/>' >
+<link rel="shortcut icon" type="image/png" href="<c:url value="/favicon.ico"/>"/>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script type="text/javascript" charset="UTF-8" src='<c:url value="/product/back/backProduct.js"/>'></script>
 </head>
 <body>
 	<div id="container1">
@@ -21,7 +24,7 @@
 		<%-- <c:forEach var="peakName" items="${mountainBean}" varStatus="vs">
 		</c:forEach> --%>
 
-		<form action='<c:url value="/productBackStage/updateData"/>'
+		<form action='<c:url value="/backstage/product/updateData"/>'
 			class="newDataForm" enctype="multipart/form-data" method="post">
 			<div>
 <%-- 				<c:if test="${ !empty result }"> --%>
@@ -47,7 +50,8 @@
 					</div>
 					<div>
 						<img style="width: 50px; height: 50px;"
-							src="<c:url value='/productBackStage/images?seqno=${itemInfo.itemBasicSeqno}' />"	>
+<%-- 							src="<c:url value='/productBackStage/images?seqno=${itemInfo.itemBasicSeqno}' />"	> --%>
+							 src="/MountainExploer.com/backstage/product/search/images?seqno=${itemInfo.itemBasicSeqno}' />"	>
 						<br> 
 				
 					</div>
@@ -76,13 +80,7 @@
 
 
 </body>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
-<script type="text/javascript" charset="UTF-8"
-	src='<c:url value="/product/back/backProduct.js"/>'></script>
+
 <script>
 	$(function() {
 		$("#backPreviousPage").on("click", function() {
