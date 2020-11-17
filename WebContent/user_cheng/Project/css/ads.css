@@ -121,11 +121,8 @@
 
 /* 滑入停止 */
 
-/* .coverflow:hover>a {
+.coverflow:hover>a {
     -webkit-animation-play-state: paused;
     animation-play-state: paused;
-} */
+}
 
-/* border-radius: 50%; */
-
-/* margin: 0px auto; */
