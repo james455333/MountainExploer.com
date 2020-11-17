@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
+    <link rel="stylesheet" href="../css/other.css">
     <style>
         .coverflow {
             width: 1430px;
@@ -21,12 +21,38 @@
             left: 0;
             opacity: 0;
             filter: alpha(opacity=0);
-            /* 當圖片數量增加，影片長度需更改，變為5s圖片數量 */
+            /* 當圖片數量增加，影片長度需更改，變為5s*圖片數量 */
             -webkit-animation: silder 15s linear infinite;
             animation: silder 15s linear infinite;
         }
 
         .coverflow>a>img {
+            max-width: 100%;
+        }
+
+
+        .coverflow1 {
+            width: 1430px;
+            height: 350px;
+            position: absolute;
+            margin-top: 10px;
+            margin-left: 670px;
+        }
+
+        .coverflow1>a {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            /* 當圖片數量增加，影片長度需更改，變為5s圖片數量 */
+            -webkit-animation: silder 15s linear infinite;
+            animation: silder 15s linear infinite;
+
+        }
+
+        .coverflow1>a>img {
             max-width: 100%;
         }
 
@@ -85,6 +111,24 @@
 
         }
 
+        .coverflow1>a:nth-child(3) {
+            -webkit-animation-delay: 10s;
+            animation-delay: 10.5s;
+
+        }
+
+        .coverflow1>a:nth-child(2) {
+            -webkit-animation-delay: 5s;
+            animation-delay: 5.5s;
+
+        }
+
+        .coverflow1>a:nth-child(1) {
+            -webkit-animation-delay: 0s;
+            animation-delay: 0.5s;
+
+        }
+
         /* 滑入停止 */
         /* .coverflow:hover>a {
             -webkit-animation-play-state: paused;
@@ -93,7 +137,6 @@
 
         /* border-radius: 50%; */
         /* margin: 0px auto; */
-        
     </style>
 </head>
 
@@ -101,20 +144,22 @@
     <div class="count1_1">
 
         <div class="coverflow">
-            <a href="#"><img id="output1" src="/MountainExploer.com/images/BGI.jpg"></a>
-            <a href="#"><img id="output1" src="/MountainExploer.com/images/亮的.jpg"></a>
-            <a href="#"><img id="output1" src="/MountainExploer.com/images/橋山.jpg"></a>
+            <a href="#"><img id="output1" src="../images/BGI.jpg"></a>
+            <a href="#"><img id="output1" src="../images/亮的.jpg"></a>
+            <a href="#"><img id="output1" src="../images/橋山.jpg"></a>
         </div>
-        <div class="coverflow" style="">
-            <a href="#"><img src="/MountainExploer.com/images/logo.png"></a>
-            <a href="#"><img src="/MountainExploer.com/images/logo.png"></a>
-            <a href="#"><img src="/MountainExploer.com/images//logo.png"></a>
+        <div class="coverflow1" style="">
+            <a href="#"><img src="../images/logo1.png"></a>
+            <a href="#"><img src="../images/logo1.png"></a>
+            <a href="#"><img src="../images/logo1.png"></a>
         </div>
     </div>
 </body>
-<script src="/MountainExploer.com/js/upLoadImg.js"></script><!-- 上傳頭像 -->
-<script src="/MountainExploer.com/js/table.js"></script>
+<script src="../js/upLoadImg.js"></script><!-- 上傳頭像 -->
+<script src="../js/table.js"></script>
 <script src="/MountainExploer.com/js/topBar.js"></script>
-<script src="/MountainExploer.com/js/sweetalert.js"></script><!--sweet alert-->
-<script src="/MountainExploer.com/js/includejsp.js"></script>
+<script src="../js/sweetalert.js"></script>
+<!--sweet alert-->
+<script src="../js/includejsp.js"></script>
+
 </html>
