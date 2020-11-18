@@ -20,7 +20,7 @@ import member.model.MemberService;
 @SessionAttributes(names = {"LoginOK", "beforeCheckURL"})
 public class MemberLoginController {
 
-//	private static String beforeCheckURL;
+	private static String beforeCheckURL;
 	
 	@Autowired
 	private MemberService mbService;
@@ -43,10 +43,10 @@ public class MemberLoginController {
 		Map<String, String> errors = new HashMap<String, String>();
 		m.addAttribute("errors", errors);
 		
-//		if(m.getAttribute("beforeCheckURL") != null) {
-//			beforeCheckURL = (String)m.getAttribute("beforeCheckURL");
-//			System.out.println("beforeCheckURL : " + beforeCheckURL);
-//		}
+		if(m.getAttribute("beforeCheckURL") != null) {
+			beforeCheckURL = (String)m.getAttribute("beforeCheckURL");
+			System.out.println("beforeCheckURL : " + beforeCheckURL);
+		}
 		
 		if(account == null || account.length() == 0) {
 			errors.put("account", "請輸入帳號");
@@ -63,7 +63,9 @@ public class MemberLoginController {
 		if(account != null && password != null && errors.isEmpty()) {
 			MemberBasic mb = mbService.checkPassword(account, password);
 			if(mb != null) {
-				m.addAttribute("LoginOK", mb);
+				int seqno = mb.getSeqno();
+				m.addAttribute("Member", mb);
+				m.addAttribute("LoginOK", seqno);
 				m.addAttribute("result", "登入成功");
 				return "member/memberInfo";
 			} else {
