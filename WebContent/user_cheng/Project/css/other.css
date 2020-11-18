@@ -140,6 +140,16 @@ header {
 	margin: 0px auto;
 }
 
+.fix {
+	/*此為網頁右方快捷鍵 可直接在任何地方直接加入<div class="fix"><a href="#"><img src="../images/arror.png" alt="" style=" width:60px; height:60px;"></a>
+	</div>標籤*/
+	width: 60px;
+	height: 60px;
+	position: fixed;
+	top: 350px;
+	right: 5px;
+}
+
 /* 會員上傳頭像標籤 */
 
 .upLoadImg {
@@ -171,6 +181,7 @@ header {
 	font-size: 30px;
 	/* display: flex; */
 }
+
 
 .second_nav {
 	list-style: none;
@@ -396,4 +407,3 @@ tbody tr:hover {
 	float: left;
 	font-size: 15px;
 }
-

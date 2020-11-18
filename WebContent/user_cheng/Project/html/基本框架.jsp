@@ -61,8 +61,13 @@
             <a>保留區</a>
         </div>
         <div class="div_li2">
+<div>
+    <div>登入</div>
+    <div>註冊</div>
+</div>
             <!-- 每頁不同的內容從這裡開始 -->
 
+            
             <!-- 每頁不同的內容到這裡結束 -->
         </div>
     </div>
@@ -75,6 +80,7 @@
         <button id="demo4">多重選項&提醒視窗demo4</button>
         <button id="demo5">Demo5</button>
         <button id="demo6">Demo6</button>
+        <button id="button7"><a href=""><img src="/MountainExploer.com/images/personal/user.png" alt="" style="width: 30px;" id="logInButton"></a></button>
 
 
 

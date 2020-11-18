@@ -80,7 +80,7 @@ document.getElementById("demo5").addEventListener("click", function () {
 // demo6 再次確認提醒
 document.getElementById("demo6").addEventListener("click", function () {
   swal({
-  title: "確認刪除?",
+  title: '確認刪除?',
   text: "刪除將無法復原!",
   icon: "warning",
   buttons: true,
@@ -106,6 +106,7 @@ document.getElementById("demo6").addEventListener("click", function () {
   }
 });
 });
+
 
 
 
