@@ -15,29 +15,29 @@
                 <legend>請輸入以下資訊：</legend>
                 <div>
                     <label>帳號：</label>
-                    <input type="text" id="account" class="account" name="account" placeholder="請輸入帳號" autocomplete="off"/>
+                    <input type="text" id="account" class="account" name="account" placeholder="請輸入帳號" autocomplete="off" required="required"/>
                     <span id="Antsp" class="Antsp"></span><br/>
                     <input type="button" id="chkAnt" value="檢查帳號">
                     <span id="chksp"></span><br/>
                 </div>
                 <div>
                     <label>密碼：</label>
-                    <input type="password" class="pwd" name="pwd" placeholder="請輸入密碼">
+                    <input type="password" class="pwd" name="pwd" placeholder="請輸入密碼" required="required">
                     <span class="pwdsp"></span><br/>
                 </div>
                 <div>
                 	<label>密碼驗證：</label>
-                	<input type="password" class="chkPwd" placeholder="請再次輸入密碼">
+                	<input type="password" class="chkPwd" placeholder="請再次輸入密碼" required="required">
                 	<span class="chksp"></span><br/>
                 </div>
                 <div>
                     <label>姓名：</label>
-                    <input type="text" class="name" name="name" placeholder="請輸入姓名" autocomplete="off">
+                    <input type="text" class="name" name="name" placeholder="請輸入姓名" autocomplete="off" required="required">
                     <span class="nmsp"></span><br/>
                 </div>
                 <div>
                     <label>Email：</label>
-                    <input type="email" class="email" name="email" placeholder="請輸入電子郵件">
+                    <input type="email" class="email" name="email" placeholder="請輸入電子郵件" required="required">
                     <span class="emsp"></span><br/>
                 </div>
                 <div>

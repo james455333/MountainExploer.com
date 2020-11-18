@@ -31,11 +31,8 @@ public class MemberService {
 		return mbDao.listInfo();
 	}
 	
-	public MemberBasic updateData(int seqno, MemberBasic mb) {
-		return mbDao.updateData(seqno, mb);
+	public MemberBasic updateData(MemberBasic mb) {
+		return mbDao.updateData(mb);
 	}
 
-	public MemberInfo updateInfo(int member_basic_id, MemberInfo mI) {
-		return mbDao.updateInfo(member_basic_id, mI);
-	}
 }

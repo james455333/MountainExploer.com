@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
+import member.MemberGlobal;
 import member.model.MemberBasic;
 
 @Controller
@@ -25,6 +25,13 @@ public class MemberInfoController {
 		
 		System.out.println("seqno:" + mb.getSeqno());
 		System.out.println("ncName:" + mb.getMemberInfo().getNeck_name());
+		
+//		String key = MemberGlobal.KEY;
+		
+//		String password = mb.getPassword();
+//		password = MemberGlobal.decryptString(key, password);
+//		System.out.println("======================解密:" + password);
+		
 		m.addAttribute("Member", mb);
 		return "member/memberInfoUpdate";
 		
