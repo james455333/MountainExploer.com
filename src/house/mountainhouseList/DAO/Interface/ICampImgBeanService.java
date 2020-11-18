@@ -6,7 +6,7 @@ import house.mountainhouseList.model.CampImgBean;
 
 public interface ICampImgBeanService {
 
-	CampImgBean select(int campid);
+	CampImgBean select(int campimgid);
 
 	List<CampImgBean> selectAll();
 

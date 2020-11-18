@@ -1,7 +1,7 @@
--- ²£¥ÍªÌOracle SQL Developer Data Modeler 20.2.0.167.1538
--- ©ó:2020-11-15 17:30:23 TST
--- ¦ì¸m:Oracle Database 12cR2
--- Ãş«¬:Oracle Database 12cR2
+-- ç”¢ç”Ÿè€…Oracle SQL Developer Data Modeler 20.2.0.167.1538
+-- æ–¼:2020-11-15 14:54:27 TST
+-- ä½ç½®:Oracle Database 12cR2
+-- é¡å‹:Oracle Database 12cR2
 
 
 
@@ -547,7 +547,7 @@ ALTER TABLE shopping_member_dtail
 
 
 
--- Oracle SQL Developer Data Modeler ºK­n³øªí:
+-- Oracle SQL Developer Data Modeler æ‘˜è¦å ±è¡¨:
 -- 
 -- CREATE TABLE                            28
 -- CREATE INDEX                             4

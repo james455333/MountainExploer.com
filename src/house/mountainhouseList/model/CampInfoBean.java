@@ -44,7 +44,7 @@ public class CampInfoBean {
 	@JoinColumn(name = "COUNTIES_NAME")
 	private CountiesBean counties;
 	
-	@OneToOne(fetch = FetchType.LAZY,mappedBy = "campid",cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY , mappedBy = "campid",cascade = CascadeType.ALL)
 	private CampImgBean campimgid;
 	
 	

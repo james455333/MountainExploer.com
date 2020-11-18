@@ -23,8 +23,11 @@ public class HouseImgBean {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "HOUSE_IMG")
+	@Column(name = "HOUSE_IMAGE")
 	private byte[] img;
+	
+	@Column(name = "HOUSE_IMAGE_NAME")
+	private String name;
 	
 	@Transient
 	private Integer housebasicid;
@@ -65,6 +68,14 @@ public class HouseImgBean {
 
 	public void setHouseid(HouseInfoBean houseid) {
 		this.houseid = houseid;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }
