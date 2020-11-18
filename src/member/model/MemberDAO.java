@@ -48,8 +48,6 @@ public class MemberDAO {
 	}
 	
 	
-	
-	
 	//Login Check Password
 	public MemberBasic checkPassword(String account, String password) {
 		Session session = sessionFactory.getCurrentSession();
@@ -64,6 +62,17 @@ public class MemberDAO {
 			return qBean;
 		}
 		return null;
+	}
+	
+	
+	//Select MemberInfo
+	public MemberBasic select(int seqno) {
+		Session session = sessionFactory.getCurrentSession();
+		Query<MemberBasic> query = session.createQuery("From MemberBasic where seqno = ?0", MemberBasic.class);
+		
+		MemberBasic mb = query.uniqueResult();
+		
+		return mb;
 	}
 	
 	

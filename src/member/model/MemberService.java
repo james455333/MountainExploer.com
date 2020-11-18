@@ -19,6 +19,10 @@ public class MemberService {
 		return mbDao.checkPassword(account, password);
 	}
 	
+	public MemberBasic select(int seqno) {
+		return mbDao.select(seqno);
+	}
+	
 	public boolean checkAnt(String account) {
 		return mbDao.checkAnt(account);
 	}
