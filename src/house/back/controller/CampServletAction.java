@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -56,10 +58,7 @@ public class CampServletAction {
 	@RequestMapping(path = "/selectAll", method = RequestMethod.GET)
 //	@RequestMapping(path = "/mountainCampBack/selectAll", method = RequestMethod.GET)
 	public String selectAll(Model m) {
-		
 		List<CampInfoBean> list = campService.selectAllCamp();
-		
-		
 		
 		m.addAttribute("camp_all", list);
 		return "house/back/backCamp";
@@ -123,19 +122,19 @@ public class CampServletAction {
 		
 		String fileName = mFile.getOriginalFilename();
 		String fileTramDirPath = httprequest.getSession().getServletContext().getRealPath("/")+"UploadTempDir\\";
-		System.out.println("fileName" + fileName);
-		System.out.println("fileTramDirPath" + fileTramDirPath);
 		
-//		File dirPath = new File(fileTramDirPath);
-//		
-//		if (!dirPath.exists()) {
-//			boolean status = dirPath.mkdirs();
-//			System.out.println("status" + status);
-//		}
+		
+		File dirPath = new File(fileTramDirPath);
+		
+		if (!dirPath.exists()) {
+			boolean status = dirPath.mkdirs();
+			System.out.println("status" + status);
+		}
 		
 		String fileSavePath = fileTramDirPath + fileName;
 		File saveFile = new File(fileSavePath);
 		mFile.transferTo(saveFile);
+		
 		
 		 if (fileName!=null && fileName.length()!=0) {
 				try {
@@ -204,17 +203,41 @@ public class CampServletAction {
 		int deletecampid = Integer.parseInt(campid);
 		System.out.println("刪除" + campid);
 		campService.deleteCamp(deletecampid);
+
 		return "house/back/backCamp";
 
 	}
-	@RequestMapping(path = "/updateCamp",method = RequestMethod.GET)
-	public String update(CampInfoBean campBean,AreaBean areaBean,CountiesBean countiesBean, Model m, 
+	
+	//@RequestParam("files")
+	@RequestMapping(path = "/updateCamp",method = RequestMethod.POST)
+	public String update(CampInfoBean campBean,Model m,AreaBean areaBean,CountiesBean countiesBean,
+			 MultipartFile mFile,
 			@RequestParam(name = "updatacamp_id") String id,
 			@RequestParam(name = "updatecamp_city") String area,
 			@RequestParam(name = "updatecamp_town") String counties,
 			@RequestParam(name = "updatecamp_name") String name,
 			@RequestParam(name = "updatecamp_desc") byte[] desc
-			) {
+			) throws IllegalStateException, IOException {
+		
+//		String fileName = mFile.getOriginalFilename();
+//		String fileTramDirPath = httprequest.getSession().getServletContext().getRealPath("/")+"UploadTempDir\\";
+//		
+//		
+//		File dirPath = new File(fileTramDirPath);
+//		
+//		if (!dirPath.exists()) {
+//			boolean status = dirPath.mkdirs();
+//			
+//		}
+//		
+//		String fileSavePath = fileTramDirPath + fileName;
+//		File saveFile = new File(fileSavePath);
+//		mFile.transferTo(saveFile);
+		
+		
+		
+//		CampImgBean campimgBean = campBean.getCampimgid();
+//		CountiesBean countiesBean = campBean.getCounties();
 		Set<CountiesBean> countiesSet = new HashSet<CountiesBean>();
 		Set<CampInfoBean> campSet = new HashSet<CampInfoBean>();
 		areaBean.setName(area);
@@ -235,29 +258,51 @@ public class CampServletAction {
 		campBean.setCounties(countiesBean);
 		campSet.add(campBean);
 		
+//		campBean.setCampimgid(campimgBean);
+//		CampImgBean campimgQuery = campImgService.select(campimgBean.getId());
+//		if (fileName!=null && fileName.length()!=0) {
+//			try {
+//				campimgQuery.setName(fileName);
+//				FileInputStream is1 = new FileInputStream(fileSavePath);
+//				byte[] img = new byte[is1.available()];
+//				is1.read(img);
+//				is1.close();
+//				campimgBean.setImg(img);
+//				campimgBean.setId(campimgQuery.getId());
+//				campimgBean.setCampid(campBean);
+//				campimgBean.setCampinfoid(campid);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//			campImgService.update(campimgBean);
+//		}
+		
+
 		AreaBean areaQuery = areaService.select(area);
 		if (areaQuery!=null) {
 			countiesBean.setArea(areaQuery);
 			CountiesBean countiesQuery = countiesService.select(counties);
-			if (countiesQuery!=null) {
+//			countiesService.updateCounties(countiesQuery);
+			if (countiesQuery!=null ) {
+				
 				campBean.setCounties(countiesQuery);
+				
 				campService.update(campBean);
 			
-		}else {
-			countiesService.updateCounties(countiesBean);
-		}
-		}else {
-			areaService.update(areaBean);
+			}
+				else {
+					countiesService.updateCounties(countiesBean);
+				}	
+		
 		}
 			
-		
-		
 		
 		List<CampInfoBean> list = campService.selectcampid(campid);
 		m.addAttribute("lookupdate",list);
-		System.out.println(list);
 		return "house/back/backCamp";
 	}
+	
+	
 	@RequestMapping(path = "/inserjump", method = RequestMethod.GET)
 	public String jumpinser() {
 		return "house/back/backinserCamp";

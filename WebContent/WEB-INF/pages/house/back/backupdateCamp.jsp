@@ -58,24 +58,34 @@
 			<table class="table">
 				<thead class="thead-light">
 					<tr class="a_titleName">
+						
+						<th scope="col"><span class="tr_title"></span></th>
 						<th scope="col"><span class="tr_title">縣市</span></th>
 						<th scope="col"><span class="tr_title">鄉鎮</span></th>
 						<th scope="col"><span class="tr_title">營地名稱</span></th>
 						<th scope="col"><span class="tr_title">網址</span></th>
+						<th scope="col"><span class="tr_title">更新圖片</span></th>
+						<th scope="col"><span class="tr_title">原本圖片</span></th>
+						<th scope="col"><span class="tr_title"></span></th>
 					</tr>
 				</thead>
 				<tbody>
 				  <c:forEach var="l" items="${jumpupdatename}"> 
 				<tr>  
 				 <div>				 
-				  	<form  action="<c:url value='/mountainCampBack/updateCamp'></c:url>"method="get">	
+				  	<form  action="<c:url value='/mountainCampBack/updateCamp'></c:url>"method="post" enctype="multipart/form-data">	
+				    	<td><input type="hidden" name="updatacamp_id" size="10" value="${l.campbasicid}">	</td> 			    		
  				    	<td><input type="hidden" name="updatecamp_city" size="10" value="${l.counties.area.name}">${l.counties.area.name}	</td>	  
-				    	<td><input type="hidden" name="updatecamp_town" size="10" value="${l.counties.name}">${l.counties.name} 	</td>
+				    	<td><input type="text" name="updatecamp_town" size="10" value="${l.counties.name}">	</td>
 				    	<td><input type="text" name="updatecamp_name" size="20" value="${l.name}"> 	</td>
 				    	<td><input type="text" name="updatecamp_desc" size="50" value="${l.url}"> 	</td>
-				    	<td><input type="hidden" name="updatacamp_id" size="10" value="${l.campbasicid}">	</td> 			    		
+<!-- 				    	<td><img id="blah" src="#" alt="更新圖片" />		        -->
+<!-- 				     		<input type="file" name="files" id="imgInp" size="25" accept="image/*"> </td>  -->
 				    	<td><input type="submit"  value="修改"></td>
 				    </form>
+				      	<td><img height="100" width="100"
+							src="<c:url value='/mountainCampBack/showimg?imgid=${l.campimgid.id}'/>">
+				      </td>
 				 </div>
 				</tr> 
 				    	</c:forEach> 
@@ -83,7 +93,24 @@
 		</div>
 		
 	</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script>
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    
+    reader.onload = function(e) {
+      $('#blah').attr('src', e.target.result);
+    }
+    
+    reader.readAsDataURL(input.files[0]); // convert to base64 string
+  }
+}
 
+$("#imgInp").change(function() {
+  readURL(this);
+});
+</script>
 </body>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>

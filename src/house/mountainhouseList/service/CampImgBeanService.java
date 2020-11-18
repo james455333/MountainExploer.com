@@ -15,9 +15,9 @@ public class CampImgBeanService implements ICampImgBeanService {
 	private CampImgBeanDAO ImgDAO;
 	
 	@Override
-	public CampImgBean select(int campid) {
+	public CampImgBean select(int campimgid) {
  
-		return ImgDAO.select(campid);
+		return ImgDAO.select(campimgid);
 	}
 
 	@Override

@@ -28,12 +28,13 @@ public class CampImgBeanDAO implements ICampImgBeanService {
 		}
 		
 		@Override
-		public CampImgBean select(int campid) {
+		public CampImgBean select(int campimgid) {
 			
 			
-			return getSession().get(CampImgBean.class, campid);
+			return getSession().get(CampImgBean.class, campimgid);
 			
 		}
+		
 			
 		
 		
@@ -59,9 +60,14 @@ public class CampImgBeanDAO implements ICampImgBeanService {
 		
 		@Override
 		public CampImgBean update( CampImgBean Imgbean) {
-
+			
+			if (Imgbean !=null) {
 			getSession().update(Imgbean);
+			getSession().save(Imgbean);
 			return Imgbean;
+			}
+			return null;
+			
 		}
 
 		@Override

@@ -60,11 +60,7 @@ public class CampInfoBeanDAO implements ICampInfoBeanService {
 		
 			getSession().save(bean);
 			return bean;
-			
-		
-		
-		
-		
+					
 	}
 
 	@Override
