@@ -61,12 +61,11 @@ public class CampImgBeanDAO implements ICampImgBeanService {
 		@Override
 		public CampImgBean update( CampImgBean Imgbean) {
 			
-			if (Imgbean !=null) {
-			getSession().update(Imgbean);
-			getSession().save(Imgbean);
+			
+			getSession().saveOrUpdate(Imgbean);
+
 			return Imgbean;
-			}
-			return null;
+			
 			
 		}
 

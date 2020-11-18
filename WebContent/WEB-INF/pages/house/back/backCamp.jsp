@@ -93,8 +93,8 @@
 							<td>${i.counties.name}</td>
 							<td>${i.name}</td>
 							<td><a href="${i.url}">${i.url}</a></td>
-<!-- 							<td><img height="100" width="100" -->
-<%-- 							src="<c:url value='/mountainCampBack/showimg?imgid=${i.campimgid.id}'/>"></td> --%>
+							<td><img height="100" width="100"
+							src="<c:url value='/mountainCampBack/showimg?imgid=${i.campimgid.id}'/>"></td>
 							<td>
 								<form
 									action="<c:url value='/mountainCampBack/deleteCamp'></c:url>"
@@ -215,9 +215,7 @@
 							<td>${m.name}</td>
 							<td><a href="${m.url}">${m.url}</a></td>
 							<td><img height="100" width="100"
-							src="<c:url value='/mountainCampBack/showimg?imgid=${m.campimgid.id}'/>"></td>
-							
-							
+							src="<c:url value='/mountainCampBack/showimg?imgid=${m.campimgid.id}'/>"></td>													
 						</tr>
 					</c:forEach>
 

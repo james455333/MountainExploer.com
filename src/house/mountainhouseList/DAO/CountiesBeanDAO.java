@@ -28,7 +28,10 @@ public class CountiesBeanDAO implements ICountiesBeanService {
 		}
 		
 		public CountiesBean select(String counties) {
-			return getSession().get(CountiesBean.class, counties);
+//			String origString = "From CountiesBean where name like" + counties;
+//			Query<CountiesBean> query = getSession().createQuery(origString, CountiesBean.class);
+//			CountiesBean list = query.uniqueResult();
+			return getSession().get(CountiesBean.class , counties);
 		}
 		
 		
