@@ -1,5 +1,5 @@
 -- 產生者Oracle SQL Developer Data Modeler 20.2.0.167.1538
--- 於:2020-11-15 17:30:23 TST
+-- 於:2020-11-18 09:22:18 TST
 -- 位置:Oracle Database 12cR2
 -- 類型:Oracle Database 12cR2
 
@@ -88,15 +88,15 @@ CREATE TABLE activity_registry_info (
         GENERATED ALWAYS AS IDENTITY ( START WITH 40000000 MINVALUE 40000000 MAXVALUE 49999999 CYCLE CACHE 10 ORDER )
     NOT NULL,
     activity_registry_seqno  NUMBER(7) NOT NULL,
-    name                     NVARCHAR2(1) NOT NULL,
-    birthday                 DATE NOT NULL,
-    personal_id              VARCHAR2(20) NOT NULL,
-    contact_cellphone        VARCHAR2(20) NOT NULL,
-    contact_phone            VARCHAR2(50) NOT NULL,
+    name                     NVARCHAR2(1),
+    birthday                 DATE,
+    personal_id              VARCHAR2(20),
+    contact_cellphone        VARCHAR2(20),
+    contact_phone            VARCHAR2(50),
     contact_email            VARCHAR2(100),
-    emg_contact_name         NVARCHAR2(150) NOT NULL,
-    emg_contact_cellphone    VARCHAR2(20) NOT NULL,
-    emg_contact_phone        VARCHAR2(50) NOT NULL
+    emg_contact_name         NVARCHAR2(150),
+    emg_contact_cellphone    VARCHAR2(20),
+    emg_contact_phone        VARCHAR2(50)
 )
 LOGGING;
 

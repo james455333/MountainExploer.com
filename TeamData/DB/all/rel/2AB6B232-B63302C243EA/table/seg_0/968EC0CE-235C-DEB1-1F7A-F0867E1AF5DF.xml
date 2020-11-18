@@ -52,6 +52,7 @@
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
 <importedID>B80434BF-1ECE-134F-D63D-82F263ABFB80</importedID>
+<nullsAllowed>true</nullsAllowed>
 <use>0</use>
 <logicalDatatype>LOGDT037</logicalDatatype>
 <domain>914A738E-C53C-867B-5DDD-3907BF129AF1</domain>
@@ -64,6 +65,7 @@
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
 <importedID>1BDCA60D-8BFB-09C1-2B91-D9CF5698C40F</importedID>
+<nullsAllowed>true</nullsAllowed>
 <use>0</use>
 <logicalDatatype>LOGDT007</logicalDatatype>
 <domain>510DFE1A-9D4B-BC4F-55FE-2DF450A92059</domain>
@@ -76,6 +78,7 @@
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
 <importedID>89F8CC36-B9FC-13E7-9691-D7048ED8A13C</importedID>
+<nullsAllowed>true</nullsAllowed>
 <use>0</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <domain>2C45A144-3AC3-1C5E-4DC7-42D9E20FB884</domain>
@@ -88,6 +91,7 @@
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
 <importedID>79AD73E5-82B4-DBFB-BBAB-01104908B5FC</importedID>
+<nullsAllowed>true</nullsAllowed>
 <use>0</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <domain>2C45A144-3AC3-1C5E-4DC7-42D9E20FB884</domain>
@@ -100,6 +104,7 @@
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
 <importedID>24AF1181-C715-FFD6-2AF7-613BDB8BEE2C</importedID>
+<nullsAllowed>true</nullsAllowed>
 <use>0</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <domain>9D46FF11-7CDA-240B-FB7B-E6BE7A7AFC7E</domain>
@@ -125,6 +130,7 @@
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
 <importedID>EC60E6DC-9654-4F22-48BB-A7944BABE490</importedID>
+<nullsAllowed>true</nullsAllowed>
 <use>0</use>
 <logicalDatatype>LOGDT037</logicalDatatype>
 <domain>E9193C42-BBD2-F8B5-5FC6-09DD148AAEF0</domain>
@@ -137,6 +143,7 @@
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
 <importedID>E2290797-09FC-2432-A3D2-E555688552BE</importedID>
+<nullsAllowed>true</nullsAllowed>
 <use>0</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <domain>2C45A144-3AC3-1C5E-4DC7-42D9E20FB884</domain>
@@ -149,6 +156,7 @@
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
 <importedID>8FF7BE51-419C-72F1-0343-C233D7110B61</importedID>
+<nullsAllowed>true</nullsAllowed>
 <use>0</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <domain>9D46FF11-7CDA-240B-FB7B-E6BE7A7AFC7E</domain>

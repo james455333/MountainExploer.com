@@ -46,7 +46,7 @@
         <div class="導覽列表">
             <nav>
                 <ul class="second_nav">
-                    <li class="li1"><a href="#">活動列表</a></li>
+                    <li class="li1"><a href="/MountainExploer.com/mountain/list?page=1&od=1">活動列表</a></li>
 
                     <li class="li1"><a href="#">活動管理</a></li>
 
@@ -72,7 +72,6 @@
 	                        <li>活動標籤:
 	                            <select name="aTag">
 	                                <option value="0" selected disabled>請選擇活動標籤</option>
-	                                <option value="0">不指定</option>
 	                                <option value="1">新活動</option>
 	                                <option value="2">熱門活動</option>
 	                                <option value="3">歷史活動</option>
@@ -80,8 +79,7 @@
 	
 	                        <li>報名標籤:
 	                            <select name="rTag">
-	                                <option value="0" selected disabled>請選擇報名標籤</option>
-	                                <option value="0">不指定</option>
+	                                <option value="0" selected disabled >請選擇報名標籤</option>
 	                                <option value="6">尚可報名</option>
 	                                <option value="8">報名將滿</option>
 	                                <option value="7">報名將截止</option>
@@ -89,14 +87,15 @@
 	                                <option value="4">報名截止</option>
 	                               	
 	                            </select></li>
+	                         <li>本次查詢總筆數 : </li>
 	                        <!-- 控制列表內容到這邊結束 -->
 	                    </ul>
 	                </nav> 
 	                <form action="list" id="m-sr-form">
 		                <div class="search">
 		                	<input type="hidden" name="page" value="1" readonly>
-            				<input type="hidden" name="od" value="2" readonly>
-		                	搜尋：<input name="search" type="search" class="light-table-filter" data-table="order-table" placeholder="請輸入活動名稱">
+            				<input type="hidden" name="od" value="3" readonly>
+		                	搜尋：<input name="search" type="search" class="light-table-filter" placeholder="請輸入活動名稱">
 		                    <button><img class=imgSearch src="/MountainExploer.com/images/放大鏡.png" alt="" width="35px"></button>
 		        		</div>
 		            </form>
@@ -114,7 +113,7 @@
                             <th scope="col">發布時間 / 默認排序</th>
                             <th scope="col">目前人數 / 人數上限</th>
                             <th scope="col">報名截止日</th>
-                            <th scope="col">最新回應</th>
+<!--                             <th scope="col">最新回應</th> -->
                               <!-- thead更改到這邊結束 -->
                         </tr>
                     </thead>
@@ -155,16 +154,9 @@
         <button id="demo5">Demo5</button>
         <button id="demo6">Demo6</button>
 
-
-
     </footer>
 </body>
 <!-- 設置頁面參數 -->
-<script type="text/javascript">
-	checklogin = "${sessionScope.LoginOK}"
-	page = ${page}
-	od = ${order}
-</script>
 <script src="/MountainExploer.com/js/upLoadImg.js"></script><!-- 上傳頭像 -->
 <script src="/MountainExploer.com/js/table.js"></script>
 <!--sweet alert-->

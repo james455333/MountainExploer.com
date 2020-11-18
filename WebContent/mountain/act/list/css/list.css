@@ -25,7 +25,21 @@
 		font-size: 50%;
 		color : blue;
 	}
+	.actTag a:link{
+		color : blue;
+	}
+	.actTag a:visited{
+		color : blue;
+		
+	}
 	.regTag{
 		font-size: 50%;
 		color : red;
 	}
+	.regTag a:link{
+		color : red;
+	}
+	.regTag a:visited{
+		color : red;
+	}
+	

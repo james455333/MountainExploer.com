@@ -12,8 +12,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import main.generic.model.GenericTypeObject;
 import member.model.MemberBasic;
@@ -26,8 +29,10 @@ public class ActSideResponse extends GenericTypeObject{
 	@Column(name = "SEQNO")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer seqno;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ACTIVITY_RESPONSE_SEQNO")
+	@JsonIgnore
 	private ActResponse actResponse;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "MEMBER_BASIC_ID")
@@ -77,6 +82,14 @@ public class ActSideResponse extends GenericTypeObject{
 	}
 	public void setPrivateTag(Character privateTag) {
 		this.privateTag = privateTag;
+	}
+	@Transient
+	public Integer getActRespSeqno() {
+		return actResponse.getSeqno();
+	}
+	@Transient
+	public Integer getMemberBasicSeqno() {
+		return memberBasic.getSeqno();
 	}
 	
 }

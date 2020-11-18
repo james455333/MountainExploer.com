@@ -14,12 +14,8 @@ public class ActPageEntryController {
 	
 	//預設主頁 -- 活動列表
 	@GetMapping("/list")
-	public String enterMountainIndex(
-			@RequestParam("page") Integer page,
-			@RequestParam("od") Integer order,
-			Model model, RedirectAttributes redAttr) {
-		model.addAttribute("page", page);
-		model.addAttribute("order", order);
+	public String enterMountainIndex(Model model, RedirectAttributes redAttr) {
+
 		return "/mountain/act/list/actList";
 	}
 	
@@ -35,9 +31,9 @@ public class ActPageEntryController {
 	}
 	
 	//活動詳情	
-	@GetMapping("/act")
+	@GetMapping("/act/detail")
 	public String enterActDetail(Model model, RedirectAttributes redAttr) {
-		return "/mountain/act/actDetail";
+		return "/mountain/act/detail/actDetail";
 	}
 	
 	//新增活動頁面

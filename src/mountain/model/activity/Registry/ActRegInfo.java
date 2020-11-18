@@ -9,8 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import main.generic.model.GenericTypeObject;
 
@@ -24,6 +27,7 @@ public class ActRegInfo extends GenericTypeObject{
 	private Integer seqno;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ACTIVITY_REGISTRY_SEQNO")
+	@JsonIgnore
 	private ActRegistry actRegistry;
 	@Column(name = "NAME")
 	private String name;
@@ -106,7 +110,9 @@ public class ActRegInfo extends GenericTypeObject{
 	public void setEmgPhone(String emgPhone) {
 		this.emgPhone = emgPhone;
 	}
-	
-	
+	@Transient
+	public Integer getActRegSeqno() {
+		return actRegistry.getSeqno();
+	}
 	
 }

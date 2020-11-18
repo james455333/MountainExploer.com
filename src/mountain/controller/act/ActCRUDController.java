@@ -38,7 +38,7 @@ import mountain.model.activity.ActivityInfo;
 import mountain.model.route.RouteBasic;
 
 @Controller
-@RequestMapping("/mountain/test/crud")
+@RequestMapping("/mountain/act/crud")
 public class ActCRUDController {
 	@Autowired 
 	HttpServletRequest request;

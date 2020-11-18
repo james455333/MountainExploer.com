@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
@@ -89,5 +90,13 @@ public class ActResponse extends GenericTypeObject {
 	}
 	public void setActSideResponse(Set<ActSideResponse> actSideResponse) {
 		this.actSideResponse = actSideResponse;
+	}
+	@Transient
+	public Integer getActBasicSeqno() {
+		return activityBasic.getSeqno();
+	}
+	@Transient
+	public Integer getMemberBasicSeqno() {
+		return memberBasic.getSeqno();
 	}
 }

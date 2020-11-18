@@ -9,8 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import main.generic.model.GenericTypeObject;
 
@@ -25,11 +28,11 @@ public class ActImage extends GenericTypeObject{
 	private Integer seqno;
 	@Column(name = "img_name")
 	private String name;
-	
 	@Column(name = "IMG")
 	private byte[] img;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ACTIVITY_BASIC_SEQNO")
+	@JsonIgnore
 	private ActivityBasic activityBasic;
 	
 	@Override
@@ -59,6 +62,10 @@ public class ActImage extends GenericTypeObject{
 	}
 	public void setActivityBasic(ActivityBasic activityBasic) {
 		this.activityBasic = activityBasic;
+	}
+	@Transient
+	public Integer getActBasic() {
+		return activityBasic.getSeqno();
 	}
 
 }

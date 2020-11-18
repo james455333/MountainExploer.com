@@ -1,5 +1,6 @@
 package mountain.function;
 
+import java.io.Console;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +13,7 @@ public class TagSelector {
 	
 	private static long nowTime;
 	private static long postTime;
-	private static long endTime;
+	private static long startTime;
 	private static long regEndTime;
 	private static int passDay;
 	private static int nowReg;
@@ -31,7 +32,7 @@ public class TagSelector {
 	
 	@SuppressWarnings("static-access")
 	public TagSelector(ActivityInfo activityInfo, ActBean actBean) {
-		endTime = activityInfo.getEndDate().getTime();
+		startTime = activityInfo.getStartDate().getTime();
 		postTime = activityInfo.getPostDate().getTime();
 		regEndTime = activityInfo.getRegEndDate().getTime();
 		nowTime = new Date().getTime();
@@ -71,7 +72,7 @@ public class TagSelector {
 
 	private static void setOldAct(Map<Integer, Boolean> result) {
 		
-		if (endTime < nowTime) {
+		if (startTime < nowTime) {
 			result.put(oldAct, true);
 		}else {
 			result.put(oldAct, false);
@@ -89,7 +90,7 @@ public class TagSelector {
 	
 	private static void setHotAct(Map<Integer, Boolean> result) {
 		
-		if (passDay >= 14 && nowReg >= (topReg/2)) {
+		if (nowReg >= (topReg/2)) {
 			result.put(hotAct, true);
 		}else if (regLeftDay <= 7 && nowReg >= (topReg*3/4)) {
 			result.put(hotAct, true);
