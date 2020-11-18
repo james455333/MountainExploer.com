@@ -13,15 +13,15 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 import org.springframework.stereotype.Component;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import main.generic.model.GenericTypeObject;
-import mountain.model.activity.Registry.ActRegistry;
 import mountain.model.route.RouteBasic;
 
 @Entity
@@ -33,8 +33,10 @@ public class ActivityInfo extends GenericTypeObject {
 	@GenericGenerator(name = "actBasicG1", strategy = "foreign", parameters = @Parameter(name = "property", value = "actBasic"))
 	@GeneratedValue(generator = "actBasicG1")
 	private Integer id;
+	
 	@OneToOne(fetch = FetchType.LAZY)
 	@PrimaryKeyJoinColumn
+	@JsonIgnore
 	private ActivityBasic actBasic;
 	@ManyToOne
 	@JoinColumn(name = "ROUTE_BASIC_ID")
@@ -142,8 +144,9 @@ public class ActivityInfo extends GenericTypeObject {
 	public void setPostDate(java.util.Date postDate) {
 		this.postDate = postDate;
 	}
-
-	
-	
+	@Transient
+	public Integer getActBasicSeqno() {
+		return actBasic.getSeqno();
+	}
 	
 }

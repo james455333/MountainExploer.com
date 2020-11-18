@@ -2,9 +2,12 @@ package mountain.controller.act;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
+import org.apache.catalina.webresources.FileResourceSet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -21,11 +24,18 @@ import main.generic.service.GenericService;
 import main.generic.service.InterfaceService;
 import main.model.SystemImage;
 import member.back.model.MemberBasicBackService;
+import member.model.MemberBasic;
 import mountain.MountainGlobal;
 import mountain.function.TransFuction;
 import mountain.model.activity.ActBean;
 import mountain.model.activity.ActImage;
 import mountain.model.activity.ActivityInfo;
+import mountain.model.activity.response.ActResponse;
+import product.dao.FirstClassDAO;
+import product.model.FirstClass;
+import product.model.ItemBasic;
+import product.model.SecondClass;
+import product.service.FirstClassService;
 @Controller
 @RequestMapping("/mountain/act/search")
 public class ActRetrieveController {
@@ -38,7 +48,7 @@ public class ActRetrieveController {
 	
 	
 	
-	
+	/* 普通查詢 */
 	@GetMapping("/defaultAS")
 	@ResponseBody
 	public Map<Object ,Object> showActBeans(ActivityInfo actInfo,
@@ -52,7 +62,7 @@ public class ActRetrieveController {
 		service.save(actInfo);
 		
 		// 設定hql語法
-		String hql = "From ActivityInfo where sysdate < startDate order by id";
+		String hql = "From ActivityInfo where sysdate < startDate order by postDate";
 		
 		// 得到hql總數
 		String all = "select count(*) " + hql;
@@ -71,6 +81,7 @@ public class ActRetrieveController {
 		return resultMap;
 	}
 	
+	/* 標籤查詢 */
 	@GetMapping("/tagAS")
 	@ResponseBody
 	public Map<Object ,Object> rTagActBeans(ActivityInfo actInfo,@RequestParam Map<String, String> allParam){
@@ -104,65 +115,76 @@ public class ActRetrieveController {
 		resultMap.put("totalPage", totalPage);
 		resultMap.put("page", page);
 		resultMap.put("actBeans", actBeans);
+		
+		return resultMap;
+		
+	}
+	
+	
+	/* 名稱查詢 */
+	@GetMapping("/searchAS")
+	@ResponseBody
+	public Map<Object ,Object> searchActBeans(ActivityInfo actInfo,@RequestParam Map<String, String> allParam){
+		//	回傳物件
+		Map<Object ,Object> resultMap = new HashMap<Object, Object>();
+		List<ActBean> actBeans = new ArrayList<ActBean>();
+		int totalData = 0;
+		int page = 1;
+		int totalPage = 1;
+		//	設定service
+		InterfaceService<GenericTypeObject> service = this.service;
+		service.save(actInfo);
+		
+		//	得到查詢結果
+		if( allParam.get("page") != null) {
+			page = Integer.parseInt(allParam.get("page")) ;
+		}else {
+			page = 1;
+		}
+		if (allParam.get("search")!=null) {
+			String search =allParam.get("search");
+			System.out.println("================"+search);
+			String hql = "From ActivityInfo where Title like '%" + search + "%'"
+					+" order by postDate" ;
+			
+			
+			String allHql = "Select count(*) ".concat(hql);
+			totalData = service.countWithHql(allHql);
+			totalPage = (int) Math.ceil( totalData*1.0 / showData  );
+			List<GenericTypeObject> actInfoList = service.getwithHQL(hql, page, showData);
+			actBeans = TransFuction.transToActBeans(actInfoList,service);
+		}
+		
+		resultMap.put("totalData", totalData);
+		resultMap.put("totalPage", totalPage);
+		resultMap.put("page", page);
+		resultMap.put("actBeans", actBeans);
+		
 		return resultMap;
 	}
 	
-	
-	
-	private String tagParseHql(int tag, String hql) {
-		if ( tag == 1 ) {
-			hql = "From ActivityInfo where sysdate < startDate and (postDate+7) >　sysdate order by actBasic";
-		}else if ( tag == 2 ) {
-			System.out.println("enter 2 ");
-			hql = "From ActivityInfo ai where sysdate < startDate and ( ai.regTop / 2 ) <= "
-					+ "( Select count(*) From ActRegInfo where actRegistry in " 
-					+ " (select seqno From ActRegistry ar where activityBasic = ai.id) )"
-					+ "order by ai.id";
-		}else if ( tag == 3 ) {
-			hql = "From ActivityInfo where startDate < sysdate order by actBasic"; 
-		}else if ( tag == 4 ) {
-			hql = "From ActivityInfo where sysdate < startDate and regEndDate < sysdate order by actBasic";
-		}else if ( tag == 5 ) {
-			hql = "From ActivityInfo ai where sysdate < startDate and ai.regTop <= "
-					+ "( Select count(*) From ActRegInfo where actRegistry in " 
-					+ " (select seqno From ActRegistry ar where activityBasic = ai.id) )"
-					+ "order by ai.id";
-		}else if ( tag == 6 ) {
-			hql = "From ActivityInfo ai where sysdate < startDate and ai.regTop > "
-					+ "( Select count(*) From ActRegInfo where actRegistry in " 
-					+ " (select seqno From ActRegistry ar where activityBasic = ai.id) )"
-					+ "order by ai.id";
-		}else if ( tag == 7 ) {
-			hql = "From ActivityInfo where sysdate < startDate and 7 > (regEndDate - sysdate)";
-		}else if ( tag == 8 ) {
-			hql = "From ActivityInfo ai where sysdate < startDate and ai.regTop > "
-					+ "( Select count(*) From ActRegInfo where actRegistry in " 
-					+ " (select seqno From ActRegistry ar where activityBasic = ai.id) )"
-					+ " and (ai.regTop * 3 / 4 ) <  "
-					+ "( Select count(*) From ActRegInfo where actRegistry in " 
-					+ " (select seqno From ActRegistry ar where activityBasic = ai.id) )"
-					+ "order by ai.id";
-		}
-		
-		return hql;
-		
-	}
-	@GetMapping("/searchAjaxShow")
+	/* 活動詳情頁 */
+	@GetMapping(path = "/detail")
 	@ResponseBody
-	public List<ActBean> searchActBeans(ActivityInfo actInfo,@RequestParam Map<String, String> allParam){
-		List<ActBean> actBeans = new ArrayList<ActBean>();
+	public Map<Object, Object> showActDetail(MemberBasic memberBasic, ActivityInfo actInfo, ActResponse actResponse,
+			@RequestParam("actID") Integer actID){
+//		回傳物件
+			Map<Object ,Object> resultMap = new HashMap<Object, Object>();
+			List<ActBean> actBeans = new ArrayList<ActBean>();
+			List<ActResponse> respBeans = new ArrayList<ActResponse>();
+			Map<Object ,Object> actRespMap = new HashMap<Object, Object>();
+			
+			
+			
+			actRespMap.put("respBeans", respBeans);
+			
+			
+			resultMap.put("actBeans", actBeans);
+			resultMap.put("actRespBeans", actRespMap);
+			return resultMap;
 		
-		InterfaceService<GenericTypeObject> service = this.service;
-		service.save(actInfo);
-		if (allParam.get("search")!=null) {
-			String search =allParam.get("search");
-			String hql = "From ActivityInfo where Title like '%" + search + "%'" ;
-			List<GenericTypeObject> actInfoList = service.getwithHQL(hql, Integer.parseInt(allParam.get("page")), showData);
-			actBeans = TransFuction.transToActBeans(actInfoList,service);
-		}
-		return actBeans;
 	}
-	
+	/* 圖片顯示 */
 	@GetMapping(path = "/images")
 	@ResponseBody
 	public ResponseEntity<byte[]> showImage(@RequestParam(name = "actID") Integer actID, ActImage actImage, SystemImage sysImage) {
@@ -172,7 +194,6 @@ public class ActRetrieveController {
 		service.save(actImage);
 		String hql = "From ActImage where activityBasic = " + actID + " order by seqno";
 		List<GenericTypeObject> imgList = service.getwithHQL(hql, 1, showData);
-//		List<GenericTypeObject> imgList = service.selectAllwithFK(actID, "ACTIVITY_BASIC_SEQNO");
 		for (GenericTypeObject genericTypeObject : imgList) {
 			actImage = (ActImage) genericTypeObject;
 			byte[] imgBytes = actImage.getImg();
@@ -190,6 +211,48 @@ public class ActRetrieveController {
 
 		return result.get(0);
 
+	}
+	
+	/* 標籤查詢-->編寫HQL */
+	private String tagParseHql(int tag, String hql) {
+		if ( tag == 1 ) {
+			hql = "From ActivityInfo where sysdate < startDate and (postDate+7) >　sysdate order by actBasic";
+		}else if ( tag == 2 ) {
+			System.out.println("enter 2 ");
+			hql = "From ActivityInfo ai where sysdate < startDate and ( ai.regTop / 2 ) <= "
+					+ "( Select count(*) From ActRegInfo where actRegistry in " 
+					+ " (select seqno From ActRegistry ar where activityBasic = ai.id) )"
+					+ "order by ai.id";
+		}else if ( tag == 3 ) {
+			hql = "From ActivityInfo where startDate < sysdate order by actBasic"; 
+		}else if ( tag == 4 ) {
+			hql = "From ActivityInfo where sysdate < startDate and regEndDate < sysdate order by actBasic";
+		}else if ( tag == 5 ) {
+			hql = "From ActivityInfo ai where sysdate < startDate and ai.regEndDate > sysdate"
+					+ " and ai.regTop <= "
+					+ "( Select count(*) From ActRegInfo where actRegistry in " 
+					+ " (select seqno From ActRegistry ar where activityBasic = ai.id) )"
+					+ "order by ai.id";
+		}else if ( tag == 6 ) {
+			hql = "From ActivityInfo ai where sysdate < startDate and ai.regEndDate > sysdate" 
+					+ " and ai.regTop > "
+					+ "( Select count(*) From ActRegInfo where actRegistry in " 
+					+ " (select seqno From ActRegistry ar where activityBasic = ai.id) )"
+					+ "order by ai.id";
+		}else if ( tag == 7 ) {
+			hql = "From ActivityInfo where sysdate < startDate and 7 > (regEndDate - sysdate)";
+		}else if ( tag == 8 ) {
+			hql = "From ActivityInfo ai where sysdate < startDate and ai.regEndDate > sysdate and ai.regTop > "
+					+ "( Select count(*) From ActRegInfo where actRegistry in " 
+					+ " (select seqno From ActRegistry ar where activityBasic = ai.id) )"
+					+ " and (ai.regTop * 3 / 4 ) <  "
+					+ "( Select count(*) From ActRegInfo where actRegistry in " 
+					+ " (select seqno From ActRegistry ar where activityBasic = ai.id) )"
+					+ "order by ai.id";
+		}
+		
+		return hql;
+		
 	}
 	
 

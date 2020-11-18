@@ -17,8 +17,11 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import main.generic.model.GenericTypeObject;
 import member.model.MemberBasic;
@@ -34,9 +37,11 @@ public class ActRegistry extends GenericTypeObject {
 	private Integer seqno;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ACTIVITY_BASIC_SEQNO")
+	@JsonIgnore
 	private ActivityBasic activityBasic;
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "MEMBER_BASIC_ID")
+	@JsonIgnore
 	private MemberBasic memberBasic;
 	@Basic
 	@Column(name = "REG_DATE")
@@ -101,6 +106,14 @@ public class ActRegistry extends GenericTypeObject {
 	}
 	public void setActRegInfo(Set<ActRegInfo> actRegInfo) {
 		this.actRegInfo = actRegInfo;
+	}
+	@Transient
+	public int getActBasicSeqno() {
+		return activityBasic.getSeqno();
+	}
+	@Transient
+	public int getMemberBasicID() {
+		return memberBasic.getSeqno();
 	}
 
 }

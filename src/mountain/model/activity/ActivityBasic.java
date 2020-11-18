@@ -11,8 +11,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import main.generic.model.GenericTypeObject;
 import member.model.MemberBasic;
@@ -39,6 +42,7 @@ public class ActivityBasic extends GenericTypeObject{
 	}
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "member_basic_id", referencedColumnName = "seqno")
+	@JsonIgnore
 	public MemberBasic getMemberBasic() {
 		return memberBasic;
 	}
@@ -51,6 +55,14 @@ public class ActivityBasic extends GenericTypeObject{
 	}
 	public void setActInfo(ActivityInfo actInfo) {
 		this.actInfo = actInfo;
+	}
+	@Transient
+	public Integer getMemberBasicID() {
+		return memberBasic.getSeqno();
+	}
+	@Transient
+	public Integer getActInSeqno() {
+		return actInfo.getId();
 	}
 	
 }
