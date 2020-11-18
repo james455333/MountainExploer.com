@@ -28,6 +28,7 @@ public class CampInfoBeanDAO implements ICampInfoBeanService {
 		return getSession().get(CampInfoBean.class, campid);
 
 	}
+	
 
 	@Override
 	public List<CampInfoBean> selectcampid(int campid) {
@@ -80,6 +81,12 @@ public class CampInfoBeanDAO implements ICampInfoBeanService {
 		}
 		return cBean;
 
+	}
+	
+	public List<CampInfoBean> selectWithHql(String hql){
+		Query<CampInfoBean> query = getSession().createQuery(hql,CampInfoBean.class);
+		List<CampInfoBean> list = query.list();
+		return list;
 	}
 
 }

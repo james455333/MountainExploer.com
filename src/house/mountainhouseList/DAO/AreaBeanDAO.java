@@ -27,7 +27,10 @@ public class AreaBeanDAO {
 		}
 		
 		public AreaBean select(String areaname) {
-			return getSession().get(AreaBean.class, areaname);
+//			String origString = "From AreaBean where name like" + areaname;
+//			Query<AreaBean> query = getSession().createQuery(origString , AreaBean.class);
+//			AreaBean list = query.uniqueResult();
+			return getSession().get( AreaBean.class , areaname);
 			
 		}
 		

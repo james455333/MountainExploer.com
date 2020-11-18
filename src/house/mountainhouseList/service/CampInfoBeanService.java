@@ -55,5 +55,9 @@ public class CampInfoBeanService implements ICampInfoBeanService {
  
 		return cDao.deleteCamp(campid);
 	}
+	
+	public List<CampInfoBean> selectWithHql(String hql){
+		return cDao.selectWithHql(hql);
+	}
 
 }

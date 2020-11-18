@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="BIG5">
+<meta charset="UTF-8">
 <title>後台資料維護系統/露營地修改</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href='<c:url value="/backstage/css/backStage.css"/>'> 
@@ -79,8 +79,9 @@
 				    	<td><input type="text" name="updatecamp_town" size="10" value="${l.counties.name}">	</td>
 				    	<td><input type="text" name="updatecamp_name" size="20" value="${l.name}"> 	</td>
 				    	<td><input type="text" name="updatecamp_desc" size="50" value="${l.url}"> 	</td>
-<!-- 				    	<td><img id="blah" src="#" alt="更新圖片" />		        -->
-<!-- 				     		<input type="file" name="files" id="imgInp" size="25" accept="image/*"> </td>  -->
+				    	<td><img id="blah" src="#" alt="更新圖片" />		       
+				     		<input type="file" name="files" id="imgInp" size="25" accept="image/*">${l.campimgid.id}</td>
+				     		 <input type="hidden" name="hotelnumber" value="${l.campimgid.id}">
 				    	<td><input type="submit"  value="修改"></td>
 				    </form>
 				      	<td><img height="100" width="100"
