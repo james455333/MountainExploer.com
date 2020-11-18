@@ -74,7 +74,7 @@
 	</div>
 
 	<div>
-		<span>查詢資料總筆數 : </span> <span id="totalData"> </span>
+		<span>資料筆數 : </span> <span id="totalData"> </span>
 	</div>
 
 	<!-- 呈現畫面 -->

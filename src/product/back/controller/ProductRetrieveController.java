@@ -77,7 +77,7 @@ public class ProductRetrieveController {
 		}
 		System.out.println("page : " + page);
 		if (showData == null) {
-			showData = 10;
+			showData = 30;
 		}
 		List<ItemBasic> selectWithPage = itemBasicService.selectWithPage(page, showData);
 		List<ItemBasic> returnItemBasics = new ArrayList<ItemBasic>();
@@ -182,7 +182,7 @@ public class ProductRetrieveController {
 		}
 		System.out.println("page : " + page);
 		if (showData == null) {
-			showData = 10;
+			showData = 30;
 		}
 
 		FirstClass firstClass = firstClassService.selectId(fcID);
@@ -263,7 +263,7 @@ public class ProductRetrieveController {
 			page = 1;
 		}
 		if (showData == null) {
-			showData = 10;
+			showData = 30;
 		}
 		List<ItemBasic> scIDsetPage = itemBasicService.scIDsetPage(page, showData, scID);
 		List<ProductBean> productBeanList = RetrieveFunction.getProductBeanList(scIDsetPage);
