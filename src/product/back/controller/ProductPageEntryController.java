@@ -20,8 +20,8 @@ public class ProductPageEntryController {
 	private FirstClassService firstClassService;
 	@Autowired
 	private SecondClassService secondClassService;
+	
 	//前往查詢頁面
-//	@RequestMapping(path = "/productBackStage/retrievePage")
 	@RequestMapping(path = "/retrievePage")
 	public String retrievePage(Model model) {
 		return "product/back/backProduct";

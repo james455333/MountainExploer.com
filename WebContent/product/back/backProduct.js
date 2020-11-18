@@ -234,9 +234,9 @@ $(function(){
 						"</div>"+
 						"<div>"+
 							"<form class='hiddenForm' action='/MountainExploer.com/backstage/product/deleteData'>"+
-								'<input type="hidden" name="seqno" value="' + data[i].seqno + '" readonly>' +
-							'</form>' +
+							'<input  type="hidden" name="seqno" value="' + data[i].seqno + '" readonly>' +
 							'<input class="deleteButton" type="button"  value="刪除">' +
+							'</form>' +
 						"</div>"+
 					"</td>"+
 				"</tr>"
@@ -270,7 +270,7 @@ $(function(){
 		let productID = $(this).siblings().val();
 		let formObj = $(this).siblings("form")
 		console.log(formObj);
-		//console.log(productID)
+		console.log(productID)
 		swal({
 	    title: `商品編號 : ${productID}`,
 	    text: "請注意，本操作將刪除本筆資料而無法回復。\n\n\n\n\t確定要執行本操作?",

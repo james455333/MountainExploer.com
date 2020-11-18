@@ -2,13 +2,10 @@ package product.service;
 
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import product.dao.SecondClassDAO;
-import product.model.FirstClass;
 import product.model.SecondClass;
 
 @Service("secondClassService")

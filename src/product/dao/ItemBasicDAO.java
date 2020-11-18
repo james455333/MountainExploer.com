@@ -118,7 +118,6 @@ public class ItemBasicDAO {
 	public int countWith(Integer id, String coulmnName) {
 		Session session = sessionFactory.getCurrentSession();
 
-//		String hql = "Select count(*) From " + entity.getClass().getName() + " where " + coulmnName + " = " + id;
 		String hql = "Select count(*) From ItemBasic"  + " where " + coulmnName + " = " + id;
 
 		Query query = session.createQuery(hql);

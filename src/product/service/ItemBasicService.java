@@ -1,17 +1,12 @@
 package product.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import product.dao.ItemBasicDAO;
 import product.model.ItemBasic;
-import product.model.ItemInfo;
-import product.model.ProductBean;
 @Service("itemBasicService")
 public class ItemBasicService {
 	@Autowired

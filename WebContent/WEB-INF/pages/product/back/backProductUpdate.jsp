@@ -51,7 +51,7 @@
 					<div>
 						<img style="width: 50px; height: 50px;"
 <%-- 							src="<c:url value='/productBackStage/images?seqno=${itemInfo.itemBasicSeqno}' />"	> --%>
-							 src="/MountainExploer.com/backstage/product/search/images?seqno=${itemInfo.itemBasicSeqno}' />"	>
+							src="<c:url value='/backstage/product/search/images?seqno=${itemInfo.itemBasicSeqno}' />"	>
 						<br> 
 				
 					</div>

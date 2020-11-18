@@ -45,32 +45,11 @@ public class ProductRetrieveController {
 	private ItemInfoService itemInfoService;
 
 	// 總查詢
-//	@RequestMapping(path = "/productBackStage/mainPage", method = RequestMethod.GET)
-//	public String pageEntry(Model model) throws IOException, SQLException {
-//		
-//		List<ProductBean> productBeans = null;
-//		List<FirstClass> firstClassBeans = null;
-//		List<SecondClass> secondClassBeans = null;
-//
-//		secondClassBeans = secondClassService.selectAll();
-//		firstClassBeans = firstClassService.selectAll();
-//		
-//		List<ProductBean> mainBean = RetrieveFunction.getMainBean(firstClassBeans);
-//		productBeans = mainBean;
-//		
-//		model.addAttribute("fcBean", firstClassBeans);
-//		model.addAttribute("scBean", secondClassBeans);
-//		model.addAttribute("productBean", productBeans);
-//
-//		return "forward:/productBackStage/retrievePage";
-//	}
-	// 總查詢
 	@GetMapping(value = "/all", produces = { "application/json;charset=UTF-8" })
 	@ResponseBody
 	public List<ProductBean> selectAll(Model model, @RequestParam(name = "page", required = false) Integer page,
 			@RequestParam(name = "showData", required = false) Integer showData) throws IOException, SQLException {
 
-//		System.out.println("select All : active");
 
 		if (page == null) {
 			page = 1;
@@ -98,7 +77,6 @@ public class ProductRetrieveController {
 			@RequestParam(name = "secondclass", required = false) String secondclassID) {
 		Integer totalData = null;
 		ItemBasic itemBasic = new ItemBasic();
-//			InterfaceService<GenericTypeObject> service= genericService;
 		if (firstclassID == null && secondclassID == null) {
 			totalData = itemBasicService.getAllData(itemBasic);
 			System.out.println("totalData : " + totalData);
@@ -123,31 +101,6 @@ public class ProductRetrieveController {
 	}
 
 	// 主類別查詢
-//	@RequestMapping(path = "/productBackStage/backFCSearch", method = RequestMethod.GET)
-//	public String processFCSearch(Model model, @RequestParam(name = "firstclass") String seqno,
-//			HttpServletRequest request, RedirectAttributes redrAttr) throws Exception, SQLException {
-//		// 前端主畫面物件
-//		List<ProductBean> productBeans = null;
-//		List<FirstClass> firstClassBeans = null;
-//		List<SecondClass> secondClassBeans = null;
-//
-//		// 得到導覽列Bean
-//
-//		secondClassBeans = secondClassService.selectAll();
-//		firstClassBeans = firstClassService.selectAll();
-//
-//		// 得到查詢結果
-//
-//		productBeans = RetrieveFunction.getFCResult(seqno, firstClassBeans);
-//
-//		// 設置model
-//		model.addAttribute("fcBean", firstClassBeans);
-//		model.addAttribute("scBean", secondClassBeans);
-//		model.addAttribute("productBean", productBeans);
-//
-//		return "forward:/productBackStage/retrievePage";
-//
-//	}
 
 	@GetMapping(value = "/navFC", produces = { "application/json;charset=UTF-8" })
 	@ResponseBody
@@ -158,18 +111,13 @@ public class ProductRetrieveController {
 		List<ProductBean> result = new ArrayList<ProductBean>();
 
 		if (fcID == null) {
-//			List<GenericTypeObject> before = service.selectAll();
 			List<FirstClass> before = firstClassService.selectAll();
-//			List<NationalPark> returnList = new ArrayList<NationalPark>();
 			List<FirstClass> returnList = new ArrayList<FirstClass>();
 			for (FirstClass firstClass : before) {
 				returnList.add(firstClass);
 			}
 			for (FirstClass firstClass : returnList) {
-//				MountainBean mountainBean = new MountainBean();
 				ProductBean productBean = new ProductBean();
-//				mountainBean.setSeqno(nationalPark.getId());
-//				mountainBean.setNpName(nationalPark.getName());
 				productBean.setSeqno(firstClass.getId());
 				productBean.setName(firstClass.getName());
 				result.add(productBean);
@@ -192,10 +140,6 @@ public class ProductRetrieveController {
 		while (iterator.hasNext()) {
 			SecondClass secondClass = (SecondClass) iterator.next();
 			Integer scID = secondClass.getId();
-//			Iterator<ItemBasic> iterator2 = secondClass.getItemBasics().iterator();
-//			while (iterator2.hasNext()) {
-//
-//				ItemBasic itemBasic = iterator2.next();
 
 			List<ItemBasic> itemBasicList = itemBasicService.scIDsetPage(page, showData, scID);
 			List<ProductBean> productBeanList = RetrieveFunction.getProductBeanList(itemBasicList);
@@ -203,36 +147,9 @@ public class ProductRetrieveController {
 			return productBeanList;
 
 		}
-//		}
 		return result;
 	}
 
-	// 次類別查詢
-//	@RequestMapping(path = "/productBackStage/backSCSearch", method = RequestMethod.GET)
-//	public String processSCSearch(Model model, @RequestParam(name = "secondclass") String seqno,
-//			HttpServletRequest request, RedirectAttributes redrAttr) throws Exception, SQLException {
-//		// 前端主畫面物件
-//		List<ProductBean> productBeans = null;
-//		List<FirstClass> firstClassBeans = null;
-//		List<SecondClass> secondClassBeans = null;
-//
-//		// 得到導覽列Bean
-//
-//		secondClassBeans = secondClassService.selectAll();
-//		firstClassBeans = firstClassService.selectAll();
-//
-//		// 得到查詢結果
-//
-//		productBeans = RetrieveFunction.getSCResult(seqno, secondClassBeans);
-//
-//		// 設置model
-//		model.addAttribute("fcBean", firstClassBeans);
-//		model.addAttribute("scBean", secondClassBeans);
-//		model.addAttribute("productBean", productBeans);
-//
-//		return "forward:/productBackStage/retrievePage";
-//
-//	}
 	// 次類別列表
 	@GetMapping(value = "/navSC", produces = { "application/json;charset=UTF-8" })
 	@ResponseBody
@@ -250,7 +167,7 @@ public class ProductRetrieveController {
 
 	}
 
-	// 次類別分業資料
+	// 次類別分頁資料
 	@GetMapping(value = "/scSelect", produces = { "application/json;charset=UTF-8" })
 	@ResponseBody
 	public List<ProductBean> scSelectList(@RequestParam(name = "secondclass", required = false) Integer scID,
