@@ -7,6 +7,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -83,7 +86,7 @@ public class ImportMemberDataController {
 	}
 
 
-	private void importDataToDB(MultipartFile multipartFile) throws IOException {
+	private void importDataToDB(MultipartFile multipartFile) throws IOException, ParseException {
 		int importCounter = 0;
 		Session session = sessionFactory.getCurrentSession();
 		
@@ -106,6 +109,9 @@ public class ImportMemberDataController {
 				String regDate = csvRecord.get("regDate");
 				String imgURL = csvRecord.get("imgURL");
 				
+				password = MemberGlobal.getSHA1Endocing(MemberGlobal.encryptString(password));
+				System.out.println("======================加密:" + password);
+				
 				MemberBasic mb = new MemberBasic();
 				MemberStatus mbStat = new MemberStatus();
 				MemberInfo mbInfo = new MemberInfo();
@@ -114,7 +120,11 @@ public class ImportMemberDataController {
 				mb.setPassword(password);
 				mb.setName(name);
 				mb.setEmail(email);
-				mb.setReg_Date(java.sql.Date.valueOf(regDate));
+				
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				java.util.Date parse = sdf.parse(regDate);
+				Date sqldate = new Date(parse.getTime());
+				mb.setReg_Date(sqldate);
 				
 				mbInfo.setNeck_name(neckName);
 				
