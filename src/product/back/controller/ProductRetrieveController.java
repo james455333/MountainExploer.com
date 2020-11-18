@@ -85,14 +85,27 @@ public class ProductRetrieveController {
 		//指定FirsrtClass商品數
 		} else if (secondclassID == null && firstclassID != null) {
 			
+			
+			
 			FirstClass fcBean = firstClassService.selectId(Integer.parseInt(firstclassID));
 			Set<SecondClass> secondClassSet = fcBean.getSecondClasses();
-			for (SecondClass secondClass : secondClassSet) {
-				
-				Integer id = secondClass.getId();
-				int countWith = itemBasicService.countWith(id, "secondClass");
-				totalData =  totalData + countWith;
+			Iterator<SecondClass> iterator = secondClassSet.iterator();
+			while (iterator.hasNext()) {
+				SecondClass secondClass = (SecondClass) iterator.next();
+//				SecondClass next = iterator.next();
+				Set<ItemBasic> itemBasics = secondClass.getItemBasics();
+				int size = itemBasics.size();
+					System.out.println(size);
+				totalData =  size;
+				System.out.println(totalData);
+			
 			}
+//			for (SecondClass secondClass : secondClassSet) {
+				
+//				Integer id = secondClass.getId();
+//				int countWith = itemBasicService.countWith(id, "secondClass");
+//				totalData =  totalData + countWith;
+//			}
 			
 //			totalData = secondClassSet.size();
 //			System.out.println("totalData : " + totalData);
