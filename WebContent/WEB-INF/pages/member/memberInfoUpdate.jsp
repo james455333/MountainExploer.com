@@ -15,7 +15,7 @@
 				<legend>修改個人資料</legend>
 				<div style="display:none">
 					<label>會員編號</label>
-					<input type="hidden" name="seqno">${Member.seqno}
+					<input type="hidden" name="seqno" value="${Member.seqno}">
 				</div>
 				<div>
 					<label>密碼：</label>

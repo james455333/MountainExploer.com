@@ -47,7 +47,7 @@
 				<div>
 					<label>手機號碼：</label>
 					<span>${Member.memberInfo.phone}</span><br/>
-<%-- 					<input type="hidden" name="memberInfo.phone" value="${Member.memberInfo.phone}"> --%>
+					<input type="hidden" name="memberInfo.phone" value="${Member.memberInfo.phone}">
 				</div>
 				<div>
 					<label>登山經驗：</label>
