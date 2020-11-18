@@ -1,5 +1,6 @@
 package member.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.CascadeType;
@@ -20,8 +21,12 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name = "MEMBER_BASIC")
 @Component
-public class MemberBasic {
+public class MemberBasic implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7415079451157288531L;
 	private int seqno;
 	private String account;
 	private String name;
@@ -129,7 +134,7 @@ public class MemberBasic {
 	
 	
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "MEMBER_STATUS_ID", referencedColumnName = "SEQNO")
 	public MemberStatus getMemberStatus() {
 		return memberStatus;

@@ -1,0 +1,24 @@
+{
+	page : ,
+	totalData :	,
+	totalPage : ,
+	actBean :	{...},
+	respList : [...
+					{...
+						actResp :	{...
+										actSideResponse :	{...
+																memberBasic	:	{
+																					...
+																					memberInfo :	{...}
+																					memberStatus :	{...}
+																				}
+															}
+										memberBasic	:	{...
+															memberInfo :	{...}
+															memberStatus :	{...}
+														}
+									},
+					},
+					*5
+    		    ]
+}

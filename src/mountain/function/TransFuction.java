@@ -213,11 +213,45 @@ public class TransFuction {
 		return actBeans;
 	}
 	
-	
-
-
-	
+	public static ActBean transToActBean(ActivityInfo actInfo, InterfaceService<GenericTypeObject> service){
+		ActBean actBean = new ActBean();
 		
-	
+		ActivityBasic actBasic = actInfo.getActBasic();
+		MemberBasic memberBasic = actBasic.getMemberBasic();
+		Integer actID = actInfo.getId();
+		
+		//set ID
+		actBean.setActID(actID);
+		//set Title
+		actBean.setTitle(actInfo.getTitle());
+		//set price
+		actBean.setPrice("$" + actInfo.getPrice());
+		//set startDate
+		actBean.setStartDate(sdf.format(actInfo.getStartDate()));
+		//set EndDate
+		actBean.setEndDate(sdf.format(actInfo.getEndDate()));
+		//set NowReg
+		service.save(new ActRegInfo());
+		String hql = "Select count(*) From ActRegInfo ari where ari.actRegistry in (From ActRegistry ar where ACTIVITY_BASIC_SEQNO = "+ actID + ")";
+		int countResult = service.countWithHql(hql);
+		actBean.setNowReg(countResult);
+		//set TopReg
+		actBean.setTopReg(actInfo.getRegTop());
+		//set RegEndDate
+		actBean.setRegEndDate(sdf.format(actInfo.getRegEndDate()));
+		//set PostDate
+		actBean.setPostDate(sdf.format(actInfo.getPostDate()));
+		//set AuthorName
+		actBean.setAuthorName(memberBasic.getName());
+		//set TotalDay
+		actBean.setTotalDay(actInfo.getTotalDay());
+		//set Tag
+		Map<Integer, Boolean> tagResult = new TagSelector(actInfo,actBean).getTagResult();
+		actBean.setTag(tagResult);
+		
+		
+		return actBean;
+	}
+
 
 }

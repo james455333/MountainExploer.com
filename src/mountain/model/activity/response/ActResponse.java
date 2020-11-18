@@ -20,6 +20,9 @@ import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import main.generic.model.GenericTypeObject;
 import member.model.MemberBasic;
 import mountain.model.activity.ActivityBasic;
@@ -34,9 +37,11 @@ public class ActResponse extends GenericTypeObject {
 	private Integer seqno;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ACTIVITY_BASIC_SEQNO")
+	@JsonIgnore
 	private	ActivityBasic activityBasic;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "MEMBER_BASIC_ID")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) 
 	private MemberBasic memberBasic;
 	@Column(name = "MESSAGE")
 	private byte[] message;

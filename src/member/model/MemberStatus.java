@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "MEMBER_STATUS")
 public class MemberStatus {
@@ -26,7 +28,6 @@ public class MemberStatus {
 	public MemberStatus() {
 		
 	}
-	
 	public MemberStatus(int seqno, String name) {
 		this.seqno = seqno;
 		this.name = name;
@@ -55,6 +56,7 @@ public class MemberStatus {
 
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "memberStatus", cascade = CascadeType.ALL)
+	@JsonIgnore
 	public Set<MemberBasic> getMemberBasic() {
 		return memberBasic;
 	}

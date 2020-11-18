@@ -17,6 +17,7 @@ import javax.persistence.Transient;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import main.generic.model.GenericTypeObject;
 import member.model.MemberBasic;
@@ -36,6 +37,7 @@ public class ActSideResponse extends GenericTypeObject{
 	private ActResponse actResponse;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "MEMBER_BASIC_ID")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private MemberBasic memberBasic;
 	@Column(name = "MESSAGE")
 	private byte[] message;

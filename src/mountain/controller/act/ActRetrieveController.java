@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.catalina.webresources.FileResourceSet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -18,6 +17,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.Gson;
 
 import main.generic.model.GenericTypeObject;
 import main.generic.service.GenericService;
@@ -31,11 +32,7 @@ import mountain.model.activity.ActBean;
 import mountain.model.activity.ActImage;
 import mountain.model.activity.ActivityInfo;
 import mountain.model.activity.response.ActResponse;
-import product.dao.FirstClassDAO;
-import product.model.FirstClass;
-import product.model.ItemBasic;
-import product.model.SecondClass;
-import product.service.FirstClassService;
+import mountain.model.activity.response.ActSideResponse;
 @Controller
 @RequestMapping("/mountain/act/search")
 public class ActRetrieveController {
@@ -45,7 +42,7 @@ public class ActRetrieveController {
 	private MemberBasicBackService memberBasicService;
 	
 	private int showData = MountainGlobal.actDS ;
-	
+	private int respShowData = MountainGlobal.actRpDS;
 	
 	
 	/* 普通查詢 */
@@ -166,21 +163,60 @@ public class ActRetrieveController {
 	/* 活動詳情頁 */
 	@GetMapping(path = "/detail")
 	@ResponseBody
-	public Map<Object, Object> showActDetail(MemberBasic memberBasic, ActivityInfo actInfo, ActResponse actResponse,
-			@RequestParam("actID") Integer actID){
-//		回傳物件
+	public Map<Object, Object> showActDetail(
+			MemberBasic memberBasic, 
+			ActivityInfo actInfo, 
+			ActResponse actResponse,
+			ActSideResponse actSideResp,
+			@RequestParam Map<String, String> allParam){
+			//	回傳物件
 			Map<Object ,Object> resultMap = new HashMap<Object, Object>();
-			List<ActBean> actBeans = new ArrayList<ActBean>();
-			List<ActResponse> respBeans = new ArrayList<ActResponse>();
-			Map<Object ,Object> actRespMap = new HashMap<Object, Object>();
+			int actID = 0;
+			int page = 1;
+			int totalPage = 1;
+			int totalData = 0;
 			
+			//	得到參數 set Page
+			actID = Integer.parseInt(allParam.get("actID"));
+			page = Integer.parseInt(allParam.get("page"));
 			
+			//	設定service
+			InterfaceService<GenericTypeObject> service = this.service;
+			service.save(actInfo);
 			
-			actRespMap.put("respBeans", respBeans);
+			//	set actBean
+			actInfo = (ActivityInfo)service.select(actID);
+			ActBean actBean = TransFuction.transToActBean(actInfo, service);
+			resultMap.put("actBean", actBean);
+			//	set memberBasic
+			memberBasic = actInfo.getActBasic().getMemberBasic();
+			resultMap.put("mbID", memberBasic.getSeqno());
+			// set totalData, totalPage
+			service.save(actResponse);
+			totalData = service.countWithHql("Select count(*) From ActResponse where activityBasic = " + actID);
+			totalPage = (int) Math.ceil( totalData*1.0 / respShowData  );
 			
+			// set RespList
+			List<Map<String, Object>> respList = new ArrayList<Map<String, Object>>();
+			String respHql = "From ActResponse where activityBasic = " + actID;
+			List<GenericTypeObject> returnRespBeans = service.getwithHQL(respHql, page, respShowData);
+			System.out.println("================returnRespBeans size :" + returnRespBeans.size());
+			for (GenericTypeObject genericTypeObject : returnRespBeans) {
+				// Set acRespMap in respList 
+				Map<String ,Object> actRespMap = new HashMap<String, Object>();
+				// Set actResp in acRespMap
+				ActResponse actResp = (ActResponse) genericTypeObject;
+				actRespMap.put("actResp", actResp);
+				// Set respMB in acRespMap
+				MemberBasic respMB = actResp.getMemberBasic();
+				
+				respList.add(actRespMap);
+			}
 			
-			resultMap.put("actBeans", actBeans);
-			resultMap.put("actRespBeans", actRespMap);
+			resultMap.put("page", page);
+			resultMap.put("totalPage", totalPage);
+			resultMap.put("totalData", totalData);
+			resultMap.put("respList", respList);
 			return resultMap;
 		
 	}
