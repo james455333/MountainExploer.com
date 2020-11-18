@@ -54,20 +54,20 @@ public class MemberRegisterController {
 	
 	@RequestMapping(path = "/member/memberRegister", method = RequestMethod.POST)
 	public String processRegister(
-			@RequestParam(name="submit", required = false)String submit,
+			@RequestParam(name="submit")String submit,
 			@RequestParam(name = "account")String account,
 			@RequestParam(name = "pwd")String password,
 			@RequestParam(name = "name")String name,
 			@RequestParam(name = "email")String email,
 			@RequestParam(name = "statusId")int statusId,
-			@RequestParam(name = "regDate")String regDate,
+			@RequestParam(name = "regDate", required = false)String regDate,
 			RedirectAttributes redAttr
 			) throws ParseException {
 		System.out.println("user input:" + account);
 		System.out.println("user input:" + password);
-		System.out.println("======================REGDATE : " + regDate);
+//		System.out.println("======================REGDATE : " + regDate);
 		password = MemberGlobal.getSHA1Endocing(MemberGlobal.encryptString(password));
-		System.out.println("加密:" + password);
+		System.out.println("======================加密:" + password);
 		
 		if(submit != null) {
 			System.out.println(account);
@@ -78,6 +78,8 @@ public class MemberRegisterController {
 			mb.setPassword(password);
 			mb.setName(name);
 			mb.setEmail(email);
+			
+			//String Data(sql)轉型
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 			java.util.Date parse = sdf.parse(regDate);
 			Date sqldate = new Date(parse.getTime());

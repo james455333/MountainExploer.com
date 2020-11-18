@@ -65,15 +65,3 @@ $(".phone").on("blur", function(){
 
 
 // /^[09]{2}\d{8}$/
-
-
-//驗證登山經驗
-$(".exp").on("blur", function(){
-    let ExpVal = $.trim($(".expsp").val());
-
-    if(ExpVal == ""){
-        $(".expsp").html("<font color='red'>請輸入登山經驗</font>");
-    }else{
-        $(".expsp").html("");
-    }
-})

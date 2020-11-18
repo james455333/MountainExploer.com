@@ -99,33 +99,18 @@ public class MemberDAO {
 	
 	
 	//Update Member's info
-	public MemberBasic updateData(int seqno, MemberBasic mb) {
+	public MemberBasic updateData(MemberBasic mb) {
 		Session session = sessionFactory.getCurrentSession();
-		MemberBasic result = session.get(MemberBasic.class, seqno);
+		MemberBasic result = session.get(MemberBasic.class, mb.getSeqno());
 		if(result != null) {
-			result.setAccount(mb.getAccount());
-			result.setName(mb.getName());
-			result.setEmail(mb.getEmail());
-			result.setPassword(mb.getPassword());
+			session.update(mb);
+			return result;
 		}
-		return result;
+		return null;
 	}
 	
 	
-	public MemberInfo updateInfo(int member_basic_id, MemberInfo mI) {
-		Session session = sessionFactory.getCurrentSession();
-		MemberInfo result = session.get(MemberInfo.class, member_basic_id);
-		if(result != null) {
-			result.setBirthday(mI.getBirthday());
-			result.setNeck_name(mI.getNeck_name());
-			result.setPhone(mI.getPhone());
-			result.setGender(mI.getGender());
-			result.setClimb_ex(mI.getClimb_ex());
-			result.setPer_img(mI.getPer_img());
-			result.setOther(mI.getOther());
-		}
-		return result;
-	}
+	
 
 	
 

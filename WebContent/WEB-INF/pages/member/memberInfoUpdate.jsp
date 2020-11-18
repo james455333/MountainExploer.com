@@ -19,16 +19,21 @@
 				</div>
 				<div>
 					<label>密碼：</label>
-					<input type="password" id="pwd" class="pwd" name="password" value="${Member.password}">
+					<input type="password" id="pwd" class="pwd" name="password" value="${Member.password}" required="required">
 					<span class="pwdsp"></span><br/>
 				</div>
 				<div>
+					<label>密碼驗證：</label>
+					<input type="password" class="chkPwd" placeholder="請再次輸入密碼" required="required">
+					<span class="chksp"></span><br/>
+				</div>
+				<div>
 					<label>暱稱：</label>
-					<input type="text" id="ncName" class="ncName" name="memberInfo.neck_name" value="${Member.memberInfo.neck_name}"><br/>
+					<input type="text" id="ncName" class="ncName" name="memberInfo.neck_name" value="${Member.memberInfo.neck_name}" required="required"><br/>
 				</div>
 				<div>
 					<label>姓名：</label>
-					<input type="text" id="name" class="name" name="name" value="${Member.name}">
+					<input type="text" id="name" class="name" name="name" value="${Member.name}" required="required">
 					<span class="nmsp"></span><br/>
 				</div>
 				<div>
@@ -44,17 +49,17 @@
 				</div>
 				<div>
 					<label>手機號碼：</label>
-					<input type="text" id="phone" class="phone" name="memberInfo.phone" value="${Member.memberInfo.phone}">
+					<input type="text" id="phone" class="phone" name="memberInfo.phone" value="${Member.memberInfo.phone}" required="required">
 					<span class="phsp"></span><br/>
 				</div>
 				<div>
 					<label>Email：</label>
-					<input type="email" id="email" class="email" name="email" value="${Member.email}">
+					<input type="email" id="email" class="email" name="email" value="${Member.email}" required="required">
 					<span class="emsp"></span><br/>
 				</div>
 				<div>
 					<label>登山經驗：</label>
-					<input type="text" id="exp" class="exp" name="memberInfo.climb_ex" value="${Member.memberInfo.climb_ex}"><br/>
+					<input type="text" id="exp" class="exp" name="memberInfo.climb_ex" value="${Member.memberInfo.climb_ex}" required="required"><br/>
 				</div>
 				<div>
 					<label>個人簡介：</label>

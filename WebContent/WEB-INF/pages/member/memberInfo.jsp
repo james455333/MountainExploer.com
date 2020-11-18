@@ -52,7 +52,7 @@
 				<div>
 					<label>登山經驗：</label>
 					<span>${Member.memberInfo.climb_ex}</span><br/>
-<%-- 					<input type="hidden" name="memberInfo.climb_ex" value="${Member.memberInfo.climb_ex}"> --%>
+					<input type="hidden" name="memberInfo.climb_ex" value="${Member.memberInfo.climb_ex}">
 				</div>
 				<div>
 					<label>身分組：</label>
