@@ -3,6 +3,7 @@ package product.back.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -90,16 +91,24 @@ public class ProductRetrieveController {
 			FirstClass fcBean = firstClassService.selectId(Integer.parseInt(firstclassID));
 			Set<SecondClass> secondClassSet = fcBean.getSecondClasses();
 			Iterator<SecondClass> iterator = secondClassSet.iterator();
+			Set<ItemBasic> itemBasicSet =  new HashSet<ItemBasic>();
 			while (iterator.hasNext()) {
-				SecondClass secondClass = (SecondClass) iterator.next();
+				for (SecondClass secondClass : secondClassSet) {
+					Set<ItemBasic> itemBasics = secondClass.getItemBasics();
+					for (ItemBasic itemBasic2 : itemBasicSet) {
+						itemBasicSet.add(itemBasic2);
+					}
+//					int size = itemBasics.size();
+//					totalData =  totalData+size;
+					
+				}
+			}
+				totalData = itemBasicSet.size();
+//				SecondClass secondClass = (SecondClass) iterator.next();
 //				SecondClass next = iterator.next();
-				Set<ItemBasic> itemBasics = secondClass.getItemBasics();
-				int size = itemBasics.size();
-					System.out.println(size);
-				totalData =  size;
+//					System.out.println(size);
 				System.out.println(totalData);
 			
-			}
 //			for (SecondClass secondClass : secondClassSet) {
 				
 //				Integer id = secondClass.getId();
