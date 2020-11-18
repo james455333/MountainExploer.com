@@ -1,5 +1,6 @@
-package mountain.act.controller;
+package mountain.controller.act;
 
+import java.io.Console;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
@@ -69,9 +70,11 @@ public class ActCRUDController {
 	@PostMapping("/newAct")
 	@ResponseBody
 	public Map<String, String> newAct(ActivityBasic actBasic) throws Exception {
-		
+		System.out.println("New Activity");
+		System.out.println("New Activity");
+		System.out.println("New Activity");
 		Map<String, String> result = new HashMap<String, String>();
-//		actBasic.getActInfo().setActBasic(actBasic);
+		actBasic.getActInfo().setActBasic(actBasic);
 		InterfaceService<GenericTypeObject> service = this.service;
 		try {
 			service.save(actBasic);
@@ -79,6 +82,7 @@ public class ActCRUDController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			result.put("error", "發生錯誤，請聯絡管理員");
+			return result;
 		}
 		result.put("success", "新增成功");
 		result.put("actID", String.valueOf(actBasic.getSeqno()));

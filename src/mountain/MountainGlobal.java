@@ -14,6 +14,9 @@ public class MountainGlobal {
 	public static final String ImgDownloadPath = "C:\\MountainExploer\\mountain\\images\\";
 	public static final String CHARSET = "UTF-8";
 	public static final long ONEDAY = (60*60*24)*1000 ; 
+	public static int actDS = 20 ;  
+	
+	
 	public static byte[] downloadImage(MultipartFile multipartFile,HttpServletRequest request) throws IllegalStateException, IOException{
 		String originalFilename = multipartFile.getOriginalFilename()+"";
 //		String fileTempDirPath = request.getServletContext().getRealPath("/") + "UploadTemp\\";
