@@ -18,7 +18,6 @@ import product.model.SecondClass;
 import product.service.FirstClassService;
 import product.service.ItemBasicService;
 import product.service.ItemInfoService;
-import product.service.ProductBeanService;
 import product.service.SecondClassService;
 
 @Controller

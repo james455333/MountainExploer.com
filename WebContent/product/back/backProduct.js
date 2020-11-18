@@ -235,8 +235,8 @@ $(function(){
 						"<div>"+
 							"<form class='hiddenForm' action='/MountainExploer.com/backstage/product/deleteData'>"+
 							'<input  type="hidden" name="seqno" value="' + data[i].seqno + '" readonly>' +
-							'<input class="deleteButton" type="button"  value="刪除">' +
 							'</form>' +
+							'<input class="deleteButton" type="button"  value="刪除">' +
 						"</div>"+
 					"</td>"+
 				"</tr>"

@@ -73,21 +73,33 @@ public class ProductRetrieveController {
 	// 查找全部資料訊息
 	@GetMapping("/totalData")
 	@ResponseBody
-	public int setTotalData(@RequestParam(name = "firstclass", required = false) String firstclassID,
+	public Integer setTotalData(@RequestParam(name = "firstclass", required = false) String firstclassID,
 			@RequestParam(name = "secondclass", required = false) String secondclassID) {
 		Integer totalData = null;
 		ItemBasic itemBasic = new ItemBasic();
+		//總商品數
 		if (firstclassID == null && secondclassID == null) {
 			totalData = itemBasicService.getAllData(itemBasic);
 			System.out.println("totalData : " + totalData);
 			return totalData;
+		//指定FirsrtClass商品數
 		} else if (secondclassID == null && firstclassID != null) {
+			
 			FirstClass fcBean = firstClassService.selectId(Integer.parseInt(firstclassID));
 			Set<SecondClass> secondClassSet = fcBean.getSecondClasses();
-			totalData = secondClassSet.size();
-
-			System.out.println("totalData : " + totalData);
+			for (SecondClass secondClass : secondClassSet) {
+				
+				Integer id = secondClass.getId();
+				int countWith = itemBasicService.countWith(id, "secondClass");
+				totalData =  totalData + countWith;
+			}
+			
+//			totalData = secondClassSet.size();
+//			System.out.println("totalData : " + totalData);
 			return totalData;
+	
+
+		//指定SecondClass商品數
 		} else if (firstclassID == null && secondclassID != null) {
 			SecondClass scBean = secondClassService.selectId(Integer.parseInt(secondclassID));
 			Set<ItemBasic> itemBasicSet = scBean.getItemBasics();
@@ -100,6 +112,9 @@ public class ProductRetrieveController {
 		return (int) totalData;
 	}
 
+	
+	
+	
 	// 主類別查詢
 
 	@GetMapping(value = "/navFC", produces = { "application/json;charset=UTF-8" })

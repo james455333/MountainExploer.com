@@ -115,7 +115,7 @@ public class ItemBasicDAO {
 		return (int) uniqueResult;
 	}
 
-	public int countWith(Integer id, String coulmnName) {
+	public Integer countWith(Integer id, String coulmnName) {
 		Session session = sessionFactory.getCurrentSession();
 
 		String hql = "Select count(*) From ItemBasic"  + " where " + coulmnName + " = " + id;
