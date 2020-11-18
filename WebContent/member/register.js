@@ -77,6 +77,31 @@ $(".pwd").on("blur", function(){
     }
 });
 
+//比對密碼
+$(".chkPwd").on("blur", function(){
+    let ChkPwdVal = $.trim($(".chkPwd").val());
+    let PwdVal = $.trim($(".pwd").val());
+    let flag = false;
+
+    if(ChkPwdVal == ""){
+        $(".chksp").html("<font color='red'>請再次輸入密碼</font>");
+    }else if(ChkPwdVal != ""){
+        if(ChkPwdVal == PwdVal){
+            flag = true;
+        }else{
+            flag = false;
+        }
+
+        if(flag){
+            $(".chksp").html("<font color='green'>正確</font>");
+        }else{
+            $(".chksp").html("<font color='red'>密碼不相符</font>");
+        }
+    }else{
+        $(".chksp").html("<font color='red'>密碼驗證必須與先前輸入之密碼相同</font>");
+    }
+})
+
 
 //驗證姓名
 $(".name").on("blur", function(){
@@ -133,11 +158,11 @@ $(".email").on("blur", function(){
 })
 
 
-//顯示註冊
+//顯示註冊時間
 $(function(){
     var myDate = new Date();
     var t = myDate.toLocaleDateString();
 
-    $("regDate").text(t);
-    $("regDate").load("register.jsp");
+    $("#regDate").val(t);
+    $("#regDate").load("register.jsp");
 })

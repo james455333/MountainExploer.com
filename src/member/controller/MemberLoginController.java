@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import member.MemberGlobal;
 import member.model.MemberBasic;
 import member.model.MemberService;
 
@@ -40,6 +41,10 @@ public class MemberLoginController {
 		System.out.println(account);
 		System.out.println(password);
 		
+		password = MemberGlobal.getSHA1Endocing(MemberGlobal.encryptString(password));
+		System.out.println("加密:" + password);
+		
+		
 		Map<String, String> errors = new HashMap<String, String>();
 		m.addAttribute("errors", errors);
 		
@@ -63,16 +68,20 @@ public class MemberLoginController {
 		if(account != null && password != null && errors.isEmpty()) {
 			MemberBasic mb = mbService.checkPassword(account, password);
 			if(mb != null) {
-				int seqno = mb.getSeqno();
-				m.addAttribute("Member", mb);
-
-				String NullPwd = null;
-				MemberBasic mbNoPwd = mbService.select(seqno);
-				mbNoPwd.setPassword(NullPwd);
-				m.addAttribute("MemberBasic", mbNoPwd);
-				
-				m.addAttribute("result", "登入成功");
-				return "member/memberInfo";
+				if(mb.getMemberStatus().getSeqno() == 100 || mb.getMemberStatus().getSeqno() == 120) {
+	//				int seqno = mb.getSeqno();
+					m.addAttribute("Member", mb);
+	//				m.addAttribute("MemberBasic", mbNoPwd);
+					m.addAttribute("result", "登入成功");
+					return "member/memberInfo";
+				}else if(mb.getMemberStatus().getSeqno() == 110 || mb.getMemberStatus().getSeqno() == 130) {
+					m.addAttribute("Member", mb);
+					m.addAttribute("result", "初次登入成功");
+					return "member/memberFirstInfo";
+				}else {
+					System.out.println("身分組權限不足");
+					return "member/login";
+				}
 			} else {
 				errors.put("msg", "帳號或密碼錯誤");
 				return "member/login";

@@ -1,7 +1,8 @@
 package member.controller;
 
-import java.io.InputStream;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import member.MemberGlobal;
 import member.model.MemberBasic;
 import member.model.MemberService;
 import member.model.MemberStatus;
@@ -52,17 +54,20 @@ public class MemberRegisterController {
 	
 	@RequestMapping(path = "/member/memberRegister", method = RequestMethod.POST)
 	public String processRegister(
-			@RequestParam(name="submit")String submit,
+			@RequestParam(name="submit", required = false)String submit,
 			@RequestParam(name = "account")String account,
 			@RequestParam(name = "pwd")String password,
 			@RequestParam(name = "name")String name,
 			@RequestParam(name = "email")String email,
 			@RequestParam(name = "statusId")int statusId,
-			@RequestParam(name = "regDate")Date regDate,
+			@RequestParam(name = "regDate")String regDate,
 			RedirectAttributes redAttr
-			) {
-		System.out.println(account);
-		System.out.println(password);
+			) throws ParseException {
+		System.out.println("user input:" + account);
+		System.out.println("user input:" + password);
+		System.out.println("======================REGDATE : " + regDate);
+		password = MemberGlobal.getSHA1Endocing(MemberGlobal.encryptString(password));
+		System.out.println("加密:" + password);
 		
 		if(submit != null) {
 			System.out.println(account);
@@ -73,7 +78,10 @@ public class MemberRegisterController {
 			mb.setPassword(password);
 			mb.setName(name);
 			mb.setEmail(email);
-			mb.setReg_Date(regDate);
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+			java.util.Date parse = sdf.parse(regDate);
+			Date sqldate = new Date(parse.getTime());
+			mb.setReg_Date(sqldate);
 			
 			Set<MemberBasic> mbSet = new HashSet<MemberBasic>();
 			mbSet.add(mb);
@@ -91,7 +99,7 @@ public class MemberRegisterController {
 				} else {
 					System.out.println(mb.getAccount() + "註冊成功");
 					redAttr.addFlashAttribute("result", "註冊成功");
-					return "redirect:/member/login";
+					return "member/login";
 				}
 			} else {
 				System.out.println(statusId);

@@ -26,6 +26,11 @@
                     <span class="pwdsp"></span><br/>
                 </div>
                 <div>
+                	<label>密碼驗證：</label>
+                	<input type="password" class="chkPwd" placeholder="請再次輸入密碼">
+                	<span class="chksp"></span><br/>
+                </div>
+                <div>
                     <label>姓名：</label>
                     <input type="text" class="name" name="name" placeholder="請輸入姓名" autocomplete="off">
                     <span class="nmsp"></span><br/>
@@ -42,7 +47,9 @@
                 </div>
                 <div>
                 	<label>註冊時間：</label>
-                	<span class="regDate" name="regDate"></span>
+                	<input type="text" class="regDate" id="regDate" name="regDate" readonly>
+<!--                 	<span id="dtsp"></span> -->
+                	
                 </div>
                 <div>
                 	<input type="submit" id="submit" name="submit" value="送出">
