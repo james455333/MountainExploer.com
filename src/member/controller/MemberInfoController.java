@@ -23,7 +23,8 @@ public class MemberInfoController {
 	@RequestMapping(path = "/member/memberInfoUpdateChange", method = RequestMethod.POST)
 	public String processInfoUpdateEntry(@ModelAttribute("Member")MemberBasic mb, Model m) {
 		
-		System.out.println("info:" + mb.getMemberInfo().getNeck_name());
+		System.out.println("seqno:" + mb.getSeqno());
+		System.out.println("ncName:" + mb.getMemberInfo().getNeck_name());
 		m.addAttribute("Member", mb);
 		return "member/memberInfoUpdate";
 		

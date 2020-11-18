@@ -17,7 +17,7 @@ import member.model.MemberBasic;
 import member.model.MemberService;
 
 @Controller
-@SessionAttributes(names = {"LoginOK", "beforeCheckURL"})
+@SessionAttributes(names = {"MemberBasic", "beforeCheckURL"})
 public class MemberLoginController {
 
 	private static String beforeCheckURL;
@@ -65,7 +65,12 @@ public class MemberLoginController {
 			if(mb != null) {
 				int seqno = mb.getSeqno();
 				m.addAttribute("Member", mb);
-				m.addAttribute("LoginOK", seqno);
+
+				String NullPwd = null;
+				MemberBasic mbNoPwd = mbService.select(seqno);
+				mbNoPwd.setPassword(NullPwd);
+				m.addAttribute("MemberBasic", mbNoPwd);
+				
 				m.addAttribute("result", "登入成功");
 				return "member/memberInfo";
 			} else {
