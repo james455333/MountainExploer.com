@@ -96,4 +96,8 @@ public class GenericService<T extends GenericTypeObject> implements InterfaceSer
 	public List<T> getwithHQL(String hql, Integer page, Integer showData) {
 		return genericDAO.getwithHQL(hql, page, showData);
 	}
+	@Override
+	public int countWithHql(String hql) {
+		return genericDAO.countWithHql(hql);
+	}
 }

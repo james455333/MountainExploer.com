@@ -54,6 +54,7 @@ $(function(){
 	})
 	//新增活動
 	$("#newActButton").on("click",function(){
+		console.log("click button")
 		checkEmpty = true;
 		checkError = true;
 		checkBefore()
@@ -61,7 +62,7 @@ $(function(){
 		console.log("checkEmpty :" + checkEmpty)
 		if(checkError && checkEmpty){
 			let today = new Date();
-			$("input[name='postDate']").val(new Date())
+			$("input[name='actInfo.postDate']").val(today)
 			$("#newActForm").submit();
 		}else{
 			swal({
@@ -211,11 +212,11 @@ $(function(){
 					$("#imgForm").find("input[name='actID']").val(actID)
 					$("#imgForm").submit();
 				}else{
-					swal("Oops! 出現錯誤囉", "新增活動出現錯誤", "error")
+					swal("Oops! 出現錯誤囉", data.error, "error")
 				}
 			},
 			error : function(data){
-				swal("Oops! 出現錯誤囉", "新增活動出現錯誤", "error")
+				swal("Oops! 出現錯誤囉", "送出命令出現錯誤", "error")
 			},
 			
 		})

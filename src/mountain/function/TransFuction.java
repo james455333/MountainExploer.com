@@ -8,6 +8,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.hql.internal.ast.HqlASTFactory;
+
 import main.generic.model.GenericTypeObject;
 import main.generic.service.InterfaceService;
 import main.generic.service.GenericService;
@@ -15,6 +17,7 @@ import member.model.MemberBasic;
 import mountain.model.activity.ActBean;
 import mountain.model.activity.ActivityBasic;
 import mountain.model.activity.ActivityInfo;
+import mountain.model.activity.Registry.ActRegInfo;
 import mountain.model.activity.Registry.ActRegistry;
 import mountain.model.route.MountainBean;
 import mountain.model.route.NationalPark;
@@ -188,8 +191,9 @@ public class TransFuction {
 			//set EndDate
 			actBean.setEndDate(sdf.format(actInfo.getEndDate()));
 			//set NowReg
-			service.save(new ActRegistry());
-			int countResult = service.countWith(actID, "ACTIVITY_BASIC_SEQNO");
+			service.save(new ActRegInfo());
+			String hql = "Select count(*) From ActRegInfo ari where ari.actRegistry in (From ActRegistry ar where ACTIVITY_BASIC_SEQNO = "+ actID + ")";
+			int countResult = service.countWithHql(hql);
 			actBean.setNowReg(countResult);
 			//set TopReg
 			actBean.setTopReg(actInfo.getRegTop());

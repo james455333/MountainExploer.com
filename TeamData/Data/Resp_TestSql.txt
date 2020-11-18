@@ -1,0 +1,601 @@
+
+--資料列 1
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40000,1000000,utl_raw.cast_to_raw('test01'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 2
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40001,1000001,utl_raw.cast_to_raw('test02'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 3
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40002,1000002,utl_raw.cast_to_raw('test03'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 4
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40010,1000003,utl_raw.cast_to_raw('test04'),,to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 5                                                                                                                  
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40011,1000004,utl_raw.cast_to_raw('test05'),,to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 6                                                                                                                  
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40012,1000005,utl_raw.cast_to_raw('test06'),,to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 7                                                                                                                  
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40013,1000006,utl_raw.cast_to_raw('test07'),,to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 8
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40014,1000007,utl_raw.cast_to_raw('test08'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 9                                                                                                                  
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40020,1000008,utl_raw.cast_to_raw('test09'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 10                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40021,1000009,utl_raw.cast_to_raw('test10'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 11                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40022,1000000,utl_raw.cast_to_raw('test11'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 12                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40023,1000001,utl_raw.cast_to_raw('test12'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 13                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40024,1000002,utl_raw.cast_to_raw('test13'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 14                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40025,1000003,utl_raw.cast_to_raw('test14'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 15                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40026,1000004,utl_raw.cast_to_raw('test15'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 16                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40027,1000005,utl_raw.cast_to_raw('test16'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 17                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40028,1000006,utl_raw.cast_to_raw('test17'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 18                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40029,1000007,utl_raw.cast_to_raw('test18'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 19                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40030,1000008,utl_raw.cast_to_raw('test19'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 20                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40031,1000009,utl_raw.cast_to_raw('test20'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 21                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40032,1000000,utl_raw.cast_to_raw('test21'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 22                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40033,1000001,utl_raw.cast_to_raw('test22'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 23                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40034,1000002,utl_raw.cast_to_raw('test23'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 24                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40035,1000003,utl_raw.cast_to_raw('test24'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 25                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40036,1000004,utl_raw.cast_to_raw('test25'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 26                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40037,1000005,utl_raw.cast_to_raw('test26'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 27                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40038,1000006,utl_raw.cast_to_raw('test27'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 28                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40039,1000007,utl_raw.cast_to_raw('test28'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 29                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40040,1000008,utl_raw.cast_to_raw('test29'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 30                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40041,1000009,utl_raw.cast_to_raw('test30'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 31                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40042,1000000,utl_raw.cast_to_raw('test31'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 32                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40043,1000001,utl_raw.cast_to_raw('test32'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 33                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40114,1000002,utl_raw.cast_to_raw('test33'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 34                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40115,1000003,utl_raw.cast_to_raw('test34'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 35                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40116,1000004,utl_raw.cast_to_raw('test35'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 36                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40117,1000005,utl_raw.cast_to_raw('test36'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 37                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40118,1000006,utl_raw.cast_to_raw('test37'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 38                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40119,1000007,utl_raw.cast_to_raw('test38'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 39                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40120,1000008,utl_raw.cast_to_raw('test39'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 40                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40121,1000009,utl_raw.cast_to_raw('test40'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 41                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40122,1000000,utl_raw.cast_to_raw('test41'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 42                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40123,1000001,utl_raw.cast_to_raw('test42'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 43                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40124,1000002,utl_raw.cast_to_raw('test43'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 44                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40125,1000003,utl_raw.cast_to_raw('test44'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 45                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40126,1000004,utl_raw.cast_to_raw('test45'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 46                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40127,1000005,utl_raw.cast_to_raw('test46'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 47                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40128,1000006,utl_raw.cast_to_raw('test47'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 48                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40129,1000007,utl_raw.cast_to_raw('test48'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 49                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40130,1000008,utl_raw.cast_to_raw('test49'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 50                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40131,1000009,utl_raw.cast_to_raw('test50'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 51                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40132,1000000,utl_raw.cast_to_raw('test51'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 52                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40133,1000001,utl_raw.cast_to_raw('test52'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 53                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40134,1000002,utl_raw.cast_to_raw('test53'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 54                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40135,1000003,utl_raw.cast_to_raw('test54'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 55                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40136,1000004,utl_raw.cast_to_raw('test55'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 56                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40137,1000005,utl_raw.cast_to_raw('test56'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 57                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40138,1000006,utl_raw.cast_to_raw('test57'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 58                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40139,1000007,utl_raw.cast_to_raw('test58'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 59                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40140,1000008,utl_raw.cast_to_raw('test59'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 60                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40141,1000009,utl_raw.cast_to_raw('test60'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 61                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40142,1000000,utl_raw.cast_to_raw('test61'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 62                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40143,1000001,utl_raw.cast_to_raw('test62'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 63                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40144,1000002,utl_raw.cast_to_raw('test63'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 64                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40145,1000003,utl_raw.cast_to_raw('test64'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 65                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40146,1000004,utl_raw.cast_to_raw('test65'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 66                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40147,1000005,utl_raw.cast_to_raw('test66'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 67                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40148,1000006,utl_raw.cast_to_raw('test67'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 68                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40149,1000007,utl_raw.cast_to_raw('test68'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 69                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40150,1000008,utl_raw.cast_to_raw('test69'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 70                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40151,1000009,utl_raw.cast_to_raw('test70'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 71                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40152,1000000,utl_raw.cast_to_raw('test71'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 72                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40153,1000001,utl_raw.cast_to_raw('test72'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 73                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40154,1000002,utl_raw.cast_to_raw('test73'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 74                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40155,1000003,utl_raw.cast_to_raw('test74'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 75                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40156,1000004,utl_raw.cast_to_raw('test75'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 76                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40157,1000005,utl_raw.cast_to_raw('test76'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 77                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40158,1000006,utl_raw.cast_to_raw('test77'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 78                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40159,1000007,utl_raw.cast_to_raw('test78'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 79                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40160,1000008,utl_raw.cast_to_raw('test79'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 80                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40161,1000009,utl_raw.cast_to_raw('test80'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 81                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40162,1000000,utl_raw.cast_to_raw('test81'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 82                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40163,1000001,utl_raw.cast_to_raw('test82'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 83                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40164,1000002,utl_raw.cast_to_raw('test83'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 84                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40165,1000003,utl_raw.cast_to_raw('test84'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 85                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40166,1000004,utl_raw.cast_to_raw('test85'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 86                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40167,1000005,utl_raw.cast_to_raw('test86'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 87                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40168,1000006,utl_raw.cast_to_raw('test87'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 88                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40169,1000007,utl_raw.cast_to_raw('test88'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 89                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40170,1000008,utl_raw.cast_to_raw('test89'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 90                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40171,1000009,utl_raw.cast_to_raw('test90'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 91                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40172,1000000,utl_raw.cast_to_raw('test91'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 92                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40173,1000001,utl_raw.cast_to_raw('test92'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 93                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40174,1000002,utl_raw.cast_to_raw('test93'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 94                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40175,1000003,utl_raw.cast_to_raw('test94'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 95                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40176,1000004,utl_raw.cast_to_raw('test95'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 96                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40177,1000005,utl_raw.cast_to_raw('test96'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 97                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40178,1000006,utl_raw.cast_to_raw('test97'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 98                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40179,1000007,utl_raw.cast_to_raw('test98'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 99                                                                                                                 
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40180,1000008,utl_raw.cast_to_raw('test99'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 100
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40181,1000009,utl_raw.cast_to_raw('test100'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 101
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40000,1000000,utl_raw.cast_to_raw('test101'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 102
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40001,1000001,utl_raw.cast_to_raw('test102'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 103
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40002,1000002,utl_raw.cast_to_raw('test103'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 104
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40010,1000003,utl_raw.cast_to_raw('test104'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 105
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40011,1000004,utl_raw.cast_to_raw('test105'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 106
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40012,1000005,utl_raw.cast_to_raw('test106'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 107
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40013,1000006,utl_raw.cast_to_raw('test107'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 108
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40014,1000007,utl_raw.cast_to_raw('test108'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 109
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40020,1000008,utl_raw.cast_to_raw('test109'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 110
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40021,1000009,utl_raw.cast_to_raw('test110'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 111
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40022,1000000,utl_raw.cast_to_raw('test111'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 112
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40023,1000001,utl_raw.cast_to_raw('test112'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 113
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40024,1000002,utl_raw.cast_to_raw('test113'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 114
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40025,1000003,utl_raw.cast_to_raw('test114'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 115
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40026,1000004,utl_raw.cast_to_raw('test115'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 116
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40027,1000005,utl_raw.cast_to_raw('test116'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 117
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40028,1000006,utl_raw.cast_to_raw('test117'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 118
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40029,1000007,utl_raw.cast_to_raw('test118'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 119
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40030,1000008,utl_raw.cast_to_raw('test119'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 120
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40031,1000009,utl_raw.cast_to_raw('test120'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 121
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40032,1000000,utl_raw.cast_to_raw('test121'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 122
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40033,1000001,utl_raw.cast_to_raw('test122'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 123
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40034,1000002,utl_raw.cast_to_raw('test123'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 124
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40035,1000003,utl_raw.cast_to_raw('test124'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 125
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40036,1000004,utl_raw.cast_to_raw('test125'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 126
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40037,1000005,utl_raw.cast_to_raw('test126'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 127
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40038,1000006,utl_raw.cast_to_raw('test127'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 128
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40039,1000007,utl_raw.cast_to_raw('test128'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 129
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40040,1000008,utl_raw.cast_to_raw('test129'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 130
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40041,1000009,utl_raw.cast_to_raw('test130'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 131
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40042,1000000,utl_raw.cast_to_raw('test131'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 132
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40043,1000001,utl_raw.cast_to_raw('test132'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 133
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40114,1000002,utl_raw.cast_to_raw('test133'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 134
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40115,1000003,utl_raw.cast_to_raw('test134'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 135
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40116,1000004,utl_raw.cast_to_raw('test135'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 136
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40117,1000005,utl_raw.cast_to_raw('test136'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 137
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40118,1000006,utl_raw.cast_to_raw('test137'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 138
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40119,1000007,utl_raw.cast_to_raw('test138'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 139
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40120,1000008,utl_raw.cast_to_raw('test139'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 140
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40121,1000009,utl_raw.cast_to_raw('test140'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 141
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40122,1000000,utl_raw.cast_to_raw('test141'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 142
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40123,1000001,utl_raw.cast_to_raw('test142'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 143
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40124,1000002,utl_raw.cast_to_raw('test143'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 144
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40125,1000003,utl_raw.cast_to_raw('test144'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 145
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40126,1000004,utl_raw.cast_to_raw('test145'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 146
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40127,1000005,utl_raw.cast_to_raw('test146'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 147
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40128,1000006,utl_raw.cast_to_raw('test147'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 148
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40129,1000007,utl_raw.cast_to_raw('test148'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 149
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40130,1000008,utl_raw.cast_to_raw('test149'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 150
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40131,1000009,utl_raw.cast_to_raw('test150'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 151
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40132,1000000,utl_raw.cast_to_raw('test151'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 152
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40133,1000001,utl_raw.cast_to_raw('test152'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 153
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40134,1000002,utl_raw.cast_to_raw('test153'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 154
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40135,1000003,utl_raw.cast_to_raw('test154'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 155
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40136,1000004,utl_raw.cast_to_raw('test155'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 156
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40137,1000005,utl_raw.cast_to_raw('test156'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 157
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40138,1000006,utl_raw.cast_to_raw('test157'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 158
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40139,1000007,utl_raw.cast_to_raw('test158'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 159
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40140,1000008,utl_raw.cast_to_raw('test159'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 160
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40141,1000009,utl_raw.cast_to_raw('test160'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 161
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40142,1000000,utl_raw.cast_to_raw('test161'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 162
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40143,1000001,utl_raw.cast_to_raw('test162'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 163
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40144,1000002,utl_raw.cast_to_raw('test163'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 164
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40145,1000003,utl_raw.cast_to_raw('test164'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 165
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40146,1000004,utl_raw.cast_to_raw('test165'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 166
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40147,1000005,utl_raw.cast_to_raw('test166'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 167
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40148,1000006,utl_raw.cast_to_raw('test167'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 168
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40149,1000007,utl_raw.cast_to_raw('test168'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 169
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40150,1000008,utl_raw.cast_to_raw('test169'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 170
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40151,1000009,utl_raw.cast_to_raw('test170'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 171
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40152,1000000,utl_raw.cast_to_raw('test171'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 172
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40153,1000001,utl_raw.cast_to_raw('test172'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 173
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40154,1000002,utl_raw.cast_to_raw('test173'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 174
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40155,1000003,utl_raw.cast_to_raw('test174'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 175
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40156,1000004,utl_raw.cast_to_raw('test175'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 176
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40157,1000005,utl_raw.cast_to_raw('test176'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 177
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40158,1000006,utl_raw.cast_to_raw('test177'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 178
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40159,1000007,utl_raw.cast_to_raw('test178'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 179
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40160,1000008,utl_raw.cast_to_raw('test179'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 180
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40161,1000009,utl_raw.cast_to_raw('test180'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 181
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40162,1000000,utl_raw.cast_to_raw('test181'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 182
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40163,1000001,utl_raw.cast_to_raw('test182'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 183
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40164,1000002,utl_raw.cast_to_raw('test183'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 184
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40165,1000003,utl_raw.cast_to_raw('test184'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 185
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40166,1000004,utl_raw.cast_to_raw('test185'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 186
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40167,1000005,utl_raw.cast_to_raw('test186'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 187
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40168,1000006,utl_raw.cast_to_raw('test187'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 188
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40169,1000007,utl_raw.cast_to_raw('test188'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 189
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40170,1000008,utl_raw.cast_to_raw('test189'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 190
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40171,1000009,utl_raw.cast_to_raw('test190'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 191
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40172,1000000,utl_raw.cast_to_raw('test191'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 192
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40173,1000001,utl_raw.cast_to_raw('test192'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 193
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40174,1000002,utl_raw.cast_to_raw('test193'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 194
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40175,1000003,utl_raw.cast_to_raw('test194'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 195
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40176,1000004,utl_raw.cast_to_raw('test195'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 196
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40177,1000005,utl_raw.cast_to_raw('test196'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 197
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40178,1000006,utl_raw.cast_to_raw('test197'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 198
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40179,1000007,utl_raw.cast_to_raw('test198'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 199
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40180,1000008,utl_raw.cast_to_raw('test199'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 200
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40181,1000009,utl_raw.cast_to_raw('test200'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 201
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40000,1000000,utl_raw.cast_to_raw('test201'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 202
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40001,1000001,utl_raw.cast_to_raw('test202'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 203
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40002,1000002,utl_raw.cast_to_raw('test203'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 204
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40010,1000003,utl_raw.cast_to_raw('test204'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 205
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40011,1000004,utl_raw.cast_to_raw('test205'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 206
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40012,1000005,utl_raw.cast_to_raw('test206'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 207
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40013,1000006,utl_raw.cast_to_raw('test207'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 208
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40014,1000007,utl_raw.cast_to_raw('test208'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 209
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40020,1000008,utl_raw.cast_to_raw('test209'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 210
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40021,1000009,utl_raw.cast_to_raw('test210'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 211
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40022,1000000,utl_raw.cast_to_raw('test211'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 212
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40023,1000001,utl_raw.cast_to_raw('test212'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 213
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40024,1000002,utl_raw.cast_to_raw('test213'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 214
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40025,1000003,utl_raw.cast_to_raw('test214'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 215
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40026,1000004,utl_raw.cast_to_raw('test215'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 216
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40027,1000005,utl_raw.cast_to_raw('test216'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 217
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40028,1000006,utl_raw.cast_to_raw('test217'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 218
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40029,1000007,utl_raw.cast_to_raw('test218'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 219
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40030,1000008,utl_raw.cast_to_raw('test219'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 220
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40031,1000009,utl_raw.cast_to_raw('test220'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 221
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40032,1000000,utl_raw.cast_to_raw('test221'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 222
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40033,1000001,utl_raw.cast_to_raw('test222'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 223
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40034,1000002,utl_raw.cast_to_raw('test223'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 224
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40035,1000003,utl_raw.cast_to_raw('test224'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 225
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40036,1000004,utl_raw.cast_to_raw('test225'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 226
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40037,1000005,utl_raw.cast_to_raw('test226'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 227
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40038,1000006,utl_raw.cast_to_raw('test227'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 228
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40039,1000007,utl_raw.cast_to_raw('test228'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 229
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40040,1000008,utl_raw.cast_to_raw('test229'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 230
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40041,1000009,utl_raw.cast_to_raw('test230'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 231
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40042,1000000,utl_raw.cast_to_raw('test231'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 232
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40043,1000001,utl_raw.cast_to_raw('test232'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 233
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40114,1000002,utl_raw.cast_to_raw('test233'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 234
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40115,1000003,utl_raw.cast_to_raw('test234'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 235
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40116,1000004,utl_raw.cast_to_raw('test235'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 236
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40117,1000005,utl_raw.cast_to_raw('test236'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 237
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40118,1000006,utl_raw.cast_to_raw('test237'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 238
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40119,1000007,utl_raw.cast_to_raw('test238'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 239
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40120,1000008,utl_raw.cast_to_raw('test239'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 240
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40121,1000009,utl_raw.cast_to_raw('test240'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 241
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40122,1000000,utl_raw.cast_to_raw('test241'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 242
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40123,1000001,utl_raw.cast_to_raw('test242'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 243
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40124,1000002,utl_raw.cast_to_raw('test243'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 244
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40125,1000003,utl_raw.cast_to_raw('test244'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 245
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40126,1000004,utl_raw.cast_to_raw('test245'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 246
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40127,1000005,utl_raw.cast_to_raw('test246'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 247
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40128,1000006,utl_raw.cast_to_raw('test247'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 248
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40129,1000007,utl_raw.cast_to_raw('test248'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 249
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40130,1000008,utl_raw.cast_to_raw('test249'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 250
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40131,1000009,utl_raw.cast_to_raw('test250'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 251
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40132,1000000,utl_raw.cast_to_raw('test251'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 252
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40133,1000001,utl_raw.cast_to_raw('test252'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 253
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40134,1000002,utl_raw.cast_to_raw('test253'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 254
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40135,1000003,utl_raw.cast_to_raw('test254'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 255
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40136,1000004,utl_raw.cast_to_raw('test255'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 256
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40137,1000005,utl_raw.cast_to_raw('test256'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 257
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40138,1000006,utl_raw.cast_to_raw('test257'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 258
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40139,1000007,utl_raw.cast_to_raw('test258'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 259
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40140,1000008,utl_raw.cast_to_raw('test259'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 260
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40141,1000009,utl_raw.cast_to_raw('test260'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 261
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40142,1000000,utl_raw.cast_to_raw('test261'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 262
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40143,1000001,utl_raw.cast_to_raw('test262'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 263
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40144,1000002,utl_raw.cast_to_raw('test263'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 264
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40145,1000003,utl_raw.cast_to_raw('test264'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 265
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40146,1000004,utl_raw.cast_to_raw('test265'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 266
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40147,1000005,utl_raw.cast_to_raw('test266'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 267
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40148,1000006,utl_raw.cast_to_raw('test267'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 268
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40149,1000007,utl_raw.cast_to_raw('test268'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 269
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40150,1000008,utl_raw.cast_to_raw('test269'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 270
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40151,1000009,utl_raw.cast_to_raw('test270'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 271
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40152,1000000,utl_raw.cast_to_raw('test271'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 272
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40153,1000001,utl_raw.cast_to_raw('test272'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 273
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40154,1000002,utl_raw.cast_to_raw('test273'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 274
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40155,1000003,utl_raw.cast_to_raw('test274'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 275
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40156,1000004,utl_raw.cast_to_raw('test275'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 276
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40157,1000005,utl_raw.cast_to_raw('test276'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 277
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40158,1000006,utl_raw.cast_to_raw('test277'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 278
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40159,1000007,utl_raw.cast_to_raw('test278'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 279
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40160,1000008,utl_raw.cast_to_raw('test279'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 280
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40161,1000009,utl_raw.cast_to_raw('test280'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 281
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40162,1000000,utl_raw.cast_to_raw('test281'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 282
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40163,1000001,utl_raw.cast_to_raw('test282'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 283
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40164,1000002,utl_raw.cast_to_raw('test283'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 284
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40165,1000003,utl_raw.cast_to_raw('test284'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 285
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40166,1000004,utl_raw.cast_to_raw('test285'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 286
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40167,1000005,utl_raw.cast_to_raw('test286'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 287
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40168,1000006,utl_raw.cast_to_raw('test287'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 288
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40169,1000007,utl_raw.cast_to_raw('test288'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 289
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40170,1000008,utl_raw.cast_to_raw('test289'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 290
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40171,1000009,utl_raw.cast_to_raw('test290'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 291
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40172,1000000,utl_raw.cast_to_raw('test291'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 292
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40173,1000001,utl_raw.cast_to_raw('test292'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 293
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40174,1000002,utl_raw.cast_to_raw('test293'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 294
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40175,1000003,utl_raw.cast_to_raw('test294'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 295
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40176,1000004,utl_raw.cast_to_raw('test295'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 296
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40177,1000005,utl_raw.cast_to_raw('test296'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 297
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40178,1000006,utl_raw.cast_to_raw('test297'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 298
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40179,1000007,utl_raw.cast_to_raw('test298'),to_date('18-11月-20', 'DD-MON-RR'),'y');
+--資料列 299
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40180,1000008,utl_raw.cast_to_raw('test299'),to_date('18-11月-20', 'DD-MON-RR'),'');
+--資料列 300
+INSERT INTO ACTIVITY_RESPONSE (ACTIVITY_BASIC_SEQNO, MEMBER_BASIC_ID, MESSAGE, POST_DATE, PRIVATETAG) VALUES (40181,1000009,utl_raw.cast_to_raw('test300'),to_date('18-11月-20', 'DD-MON-RR'),'');
