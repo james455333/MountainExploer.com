@@ -45,11 +45,10 @@
                     <input type="radio" name="statusId" value="110">一般會員
                     <input type="radio" name="statusId" value="130">登山嚮導
                 </div>
-                <div>
+                <div style="display:none">
                 	<label>註冊時間：</label>
                 	<input type="text" class="regDate" id="regDate" name="regDate" readonly>
 <!--                 	<span id="dtsp"></span> -->
-                	
                 </div>
                 <div>
                 	<input type="submit" id="submit" name="submit" value="送出">

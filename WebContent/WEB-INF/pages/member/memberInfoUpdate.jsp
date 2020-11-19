@@ -17,11 +17,11 @@
 					<label>會員編號</label>
 					<input type="hidden" name="seqno" value="${Member.seqno}">
 				</div>
-				<div>
-					<label>密碼：</label>
-					<input type="password" id="pwd" class="pwd" name="password" value="${Member.password}" required="required">
-					<span class="pwdsp"></span><br/>
-				</div>
+<!-- 				<div> -->
+<!-- 					<label>密碼：</label> -->
+<%-- 					<input type="password" id="pwd" class="pwd" name="password" value="${Member.password}" required="required"> --%>
+<!-- 					<span class="pwdsp"></span><br/> -->
+<!-- 				</div> -->
 				<div>
 					<label>密碼驗證：</label>
 					<input type="password" class="chkPwd" placeholder="請再次輸入密碼" required="required">

@@ -100,6 +100,7 @@ public class MemberUpdateController {
 			}else if(queryMb.getMemberStatus().getSeqno() == 130) {
 				MemberStatus mbStId = mbStService.select(120);
 				queryMb.setMemberStatus(mbStId);
+				mbService.updateData(queryMb);
 				
 				System.out.println("================身分組更新：" + queryMb.getMemberStatus().getSeqno());
 				
@@ -112,6 +113,9 @@ public class MemberUpdateController {
 				
 				return "member/memberInfo";
 			}
+		} else {
+			errors.put("errors", "找不到會員基本資料");
+			System.out.println("找不到會員基本資料");
 		}	
 		return "member/login";
 	}
@@ -119,7 +123,6 @@ public class MemberUpdateController {
 	
 	@RequestMapping(path = "/member/memberInfoUpdate", method = RequestMethod.POST)
 	public String processInfoUpdate(@RequestParam(name = "seqno")int seqno,
-									@RequestParam(name = "password")String password,
 									@RequestParam(name = "memberInfo.neck_name")String ncName,
 									@RequestParam(name = "name")String name,
 									@RequestParam(name = "memberInfo.birthday", required = false)String birDate,
@@ -132,12 +135,6 @@ public class MemberUpdateController {
 		Map<String, String> errors = new HashMap<String, String>();
 		MemberBasic mb = new MemberBasic();
 		MemberInfo mbInfo = new MemberInfo();
-		
-		
-		password = MemberGlobal.getSHA1Endocing(MemberGlobal.encryptString(password));
-		System.out.println("======================加密:" + password);
-		
-		mb.setPassword(password);
 
 		mb.setName(name);
 		mb.setEmail(email);
@@ -156,9 +153,41 @@ public class MemberUpdateController {
 		byte[] byteOther = other.getBytes();
 		mbInfo.setOther(byteOther);
 		
-		MemberBasic qeury = mbService.select(seqno);
+		mb.setMemberInfo(mbInfo);
+		mbInfo.setMemberBasic(mb);
+		
+		MemberBasic queryMb = mbService.select(seqno);
+		if(queryMb != null) {
+			System.out.println("================帳號:" + queryMb.getAccount());
+			MemberBasic updateMb = mbService.updateData(mb);
+			m.addAttribute("Member", updateMb);
+			m.addAttribute("result", "會員資料更新成功");
+			System.out.println("會員資料更新成功");
+			return "member/memberInfo";
+		} else {
+			errors.put("errors", "會員資料更新失敗");
+			System.out.println("會員資料更新失敗");
+		}
 		
 		return "member/memberInfoUpdate";
+	}
+	
+	
+	@RequestMapping(path = "/member/memberPwdChangeEntry", method = RequestMethod.GET)
+	public String processUpdatePwdEntry() {
+		return "member/memberPwdChange";
+	}
+	
+	
+	@RequestMapping(path = "/member/memberPwdChange", method = RequestMethod.POST)
+	public String processUpdatePwd(@RequestParam(name = "seqno")int seqno,
+								   @RequestParam(name = "password")String password,
+								   @RequestParam(name = "updatePwd")String updatePwd,
+								   Model m) {
+		
+		
+		
+		return "member/memberInfo";
 	}
 
 	

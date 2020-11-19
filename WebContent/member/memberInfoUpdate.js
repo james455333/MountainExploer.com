@@ -1,33 +1,3 @@
-//驗證密碼
-$(".pwd").on("blur", function(){
-    let PwdVal = $.trim($(".pwd").val());
-    let PwdValLen = PwdVal.length;
-    let flag = false;
-
-    if(PwdVal == ""){
-        $(".pwdsp").html("<font color='red'>請輸入密碼</font>");
-    }else if(PwdValLen >= 8){
-        let re = new RegExp(/[A-Za-z]+[0-9]/);
-        let re2 = new RegExp(/[0-9]+[A-Za-z]/);
-        if(PwdVal.match(re)){
-            flag = true;
-        }else if(PwdVal.match(re2)){
-            flag = true;
-        }else{
-            flag = false;
-        }
-
-        if(flag){
-            $(".pwdsp").html("<font color='green'>正確</font>");
-        }else{
-            $(".pwdsp").html("<font color='red'>密碼必須包含英文字母與數字</font>");
-        }
-    }else{
-        $(".pwdsp").html("<font color='red'>密碼長度至少8個字元</font>");
-    }
-})
-
-
 //驗證姓名
 $(".name").on("blur", function(){
     let NmVal = $.trim($(".name").val());
