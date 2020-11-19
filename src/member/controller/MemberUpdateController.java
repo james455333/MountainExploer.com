@@ -9,6 +9,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -53,6 +54,7 @@ public class MemberUpdateController {
 									@RequestParam(name = "memberInfo.neck_name")String ncName,
 									@RequestParam(name = "memberInfo.gender")String gender,
 									@RequestParam(name = "memberInfo.birthday", required = false)String birDate,
+									@RequestParam(name = "memberInfo.phone")String phone,
 									@RequestParam(name = "memberInfo.climb_ex")String exp,
 									Model m) throws ParseException {
 		Map<String, String> errors = new HashMap<String, String>();
@@ -71,6 +73,7 @@ public class MemberUpdateController {
 		Date sqldate = new Date(parse.getTime());
 		mbInfo.setBirthday(sqldate);
 		
+		mbInfo.setPhone(phone);
 		mbInfo.setClimb_ex(exp);
 		
 		MemberBasic queryMb = mbService.select(seqno);
@@ -121,7 +124,7 @@ public class MemberUpdateController {
 	}
 	
 	
-	@RequestMapping(path = "/member/memberInfoUpdate", method = RequestMethod.POST)
+	@RequestMapping(path = "/member/memberInfoUpdateAction", method = RequestMethod.POST)
 	public String processInfoUpdate(@RequestParam(name = "seqno")int seqno,
 									@RequestParam(name = "memberInfo.neck_name")String ncName,
 									@RequestParam(name = "name")String name,
@@ -142,7 +145,7 @@ public class MemberUpdateController {
 		mbInfo.setNeck_name(ncName);
 		
 		//String Data(sql)轉型
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		java.util.Date parse = sdf.parse(birDate);
 		Date sqldate = new Date(parse.getTime());
 		mbInfo.setBirthday(sqldate);
@@ -160,7 +163,12 @@ public class MemberUpdateController {
 		if(queryMb != null) {
 			System.out.println("================帳號:" + queryMb.getAccount());
 			MemberBasic updateMb = mbService.updateData(mb);
-			m.addAttribute("Member", updateMb);
+			mbInfo.setMemberBasic(updateMb);
+			
+			MemberInfo updateIN = mbInfoService.update(mbInfo);
+			
+			
+//			m.addAttribute("Member", );
 			m.addAttribute("result", "會員資料更新成功");
 			System.out.println("會員資料更新成功");
 			return "member/memberInfo";
@@ -179,13 +187,36 @@ public class MemberUpdateController {
 	}
 	
 	
-	@RequestMapping(path = "/member/memberPwdChange", method = RequestMethod.POST)
+	@RequestMapping(path = "/member/memberPwdChangeAction", method = RequestMethod.POST)
 	public String processUpdatePwd(@RequestParam(name = "seqno")int seqno,
 								   @RequestParam(name = "password")String password,
 								   @RequestParam(name = "updatePwd")String updatePwd,
 								   Model m) {
+		Map<String, String> errors = new HashMap<String, String>();
+//		MemberBasic mb = new MemberBasic();
 		
+		System.out.println("=============user seqno:" + seqno);
 		
+		password = MemberGlobal.getSHA1Endocing(MemberGlobal.encryptString(password));
+		System.out.println("==================加密1：" + password);
+		
+		updatePwd = MemberGlobal.getSHA1Endocing(MemberGlobal.encryptString(updatePwd));
+		System.out.println("==================加密1：" + updatePwd);
+		
+		MemberBasic queryMb = mbService.select(seqno);
+		if(queryMb != null) {
+			if(queryMb.getPassword().equals(password)) {
+				queryMb.setPassword(updatePwd);
+				MemberBasic updateMb = mbService.updateData(queryMb);
+				m.addAttribute("Member", updateMb);
+				m.addAttribute("result", "密碼修改成功");
+				System.out.println("密碼修改成功");
+				return "member/memberInfo";
+			}else {
+				errors.put("errors", "舊密碼不正確，修改失敗");
+				System.out.println("舊密碼不正確，修改失敗");
+			}
+		}
 		
 		return "member/memberInfo";
 	}

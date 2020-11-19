@@ -9,7 +9,8 @@
 </head>
 <body>
 	<div>
-		<form>
+		<form action="<c:url value='/member/memberPwdChangeAction'/>" method="POST">
+		
 			<fieldset>
 				<legend>修改密碼</legend>
 				<div style="display:none">
@@ -36,6 +37,8 @@
 			</fieldset>
 		</form>
 	</div>
-
+	
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script type="text/javascript" src="/MountainExploer.com/member/memberPwdChange.js"></script>
 </body>
 </html>

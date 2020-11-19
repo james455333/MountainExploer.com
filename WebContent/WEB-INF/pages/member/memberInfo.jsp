@@ -50,6 +50,11 @@
 					<input type="hidden" name="memberInfo.phone" value="${Member.memberInfo.phone}">
 				</div>
 				<div>
+					<label>Email：</label>
+					<span>${Member.email}</span>
+					<input type="hidden" name="email" value="${Member.email}">
+				</div>
+				<div>
 					<label>登山經驗：</label>
 					<span>${Member.memberInfo.climb_ex}</span><br/>
 					<input type="hidden" name="memberInfo.climb_ex" value="${Member.memberInfo.climb_ex}">
