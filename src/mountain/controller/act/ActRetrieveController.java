@@ -13,10 +13,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.google.gson.Gson;
 
@@ -35,6 +37,7 @@ import mountain.model.activity.response.ActResponse;
 import mountain.model.activity.response.ActSideResponse;
 @Controller
 @RequestMapping("/mountain/act/search")
+@SessionAttributes({"mb"})
 public class ActRetrieveController {
 	@Autowired
 	private GenericService<GenericTypeObject> service;
@@ -168,6 +171,7 @@ public class ActRetrieveController {
 			ActivityInfo actInfo, 
 			ActResponse actResponse,
 			ActSideResponse actSideResp,
+			Model model,
 			@RequestParam Map<String, String> allParam){
 			//	回傳物件
 			Map<Object ,Object> resultMap = new HashMap<Object, Object>();
@@ -188,9 +192,6 @@ public class ActRetrieveController {
 			actInfo = (ActivityInfo)service.select(actID);
 			ActBean actBean = TransFuction.transToActBean(actInfo, service);
 			resultMap.put("actBean", actBean);
-			//	set memberBasic
-			memberBasic = actInfo.getActBasic().getMemberBasic();
-			resultMap.put("mbID", memberBasic.getSeqno());
 			// set totalData, totalPage
 			service.save(actResponse);
 			totalData = service.countWithHql("Select count(*) From ActResponse where activityBasic = " + actID);
@@ -209,10 +210,14 @@ public class ActRetrieveController {
 				actRespMap.put("actResp", actResp);
 				// Set respMB in acRespMap
 				MemberBasic respMB = actResp.getMemberBasic();
-				
 				respList.add(actRespMap);
 			}
 			
+			if (model.getAttribute("mb")!=null) {
+				resultMap.put("login", true);
+			}else {
+				resultMap.put("login", false);
+			}
 			resultMap.put("page", page);
 			resultMap.put("totalPage", totalPage);
 			resultMap.put("totalData", totalData);

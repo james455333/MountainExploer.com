@@ -1,24 +1,68 @@
 {
-	page : ,
-	totalData :	,
-	totalPage : ,
-	actBean :	{...},
-	respList : [...
-					{...
-						actResp :	{...
-										actSideResponse :	{...
+	page : int,
+	totalData :	int,
+	totalPage : int,
+	login : boolean,
+	actBean :	{
+					actID : int,
+					authorName : string,
+					title : String,
+					totalDay : String,
+					price : String,
+					startDate : String,
+					endDate : String,
+					nowReg : int,
+					topReg : int,
+					regEndDate : String,
+					postDate : String,
+					tag :	{
+								1 : boolean, 2 : boolean ..., 8 : boolean
+							}
+				},
+	respList : [ (Multiple, Max : 5)
+					{
+						actResp :	{
+										seqno : int,
+										message : byte[],
+										postDate : long(Date),
+										privateTag : null or notNull,
+										actSideResponse :	{
+																seqno : long,
+																message : byte[],
+																postDate : long(Date),
+																privateTag : null or notNull,
+																actRespSeqno : long
 																memberBasic	:	{
-																					...
-																					memberInfo :	{...}
-																					memberStatus :	{...}
+																					seqno : int,
+																					name : String,
+																					reg_Date : long,
+																					email : String,
+																					memberInfo :	{
+																										neck_name : String,
+																									    pre_img : byte[]
+																									}
+																					memberStatus :	{
+																										seqno : int,
+																										name : String
+																									}
 																				}
 															}
-										memberBasic	:	{...
-															memberInfo :	{...}
-															memberStatus :	{...}
+										memberBasic	:	{	
+															seqno : int,
+															name : String,
+															reg_Date : long,
+															email : String,
+															memberInfo :	{
+																				neck_name : String,
+																				pre_img : byte[]
+																			}
+															memberStatus :	{
+																				seqno : int,
+																				name : String
+																			}
 														}
 									},
 					},
-					*5
+					
     		    ]
 }
