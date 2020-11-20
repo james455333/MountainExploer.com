@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>sign</title>
+    
     <style>
         body {
             text-align: center;
-            background-color: burlywood;
+            /* background-color: burlywood; */
         }
         .signform {
             font-family: 標楷體;
             position: fixed;
-            background-color: white;
-            top: 20%;
-            left: 30%;
+            background-color: rgb(182, 255, 167);
+            top: 50%;
+            left: 50%;
+            margin:-100px 0 0 -150px; 
             width: 500px;
             height: 400px;
             border-radius: 1em;
@@ -123,6 +125,16 @@
         </div>
 </div>
 <script>
+$(function () {
+    $("#displaysign").click(function () {
+               $( ".signform" ).dialog({
+    //   height: 180,
+    //   modal: true
+    });
+    });
+});
+
+
     $(function ()
 {
         $('.change a').click(function ()
@@ -139,11 +151,11 @@ function signclose() {
     document.getElementById('signform').style.display="none"
     document.getElementById('registerform').style.display="none"
 }
-function loading() {
-    document.getElementById('registerloading').style.display=""
-}
-</script>
+// function loading() {
+//     document.getElementById('registerloading').style.display=""
+// }
+// </script>
 </body>
-<script src="./jquery-3.2.1.min.js"></script>
-<script src="./signformchange.js"></script>
+<!-- <script src="./jquery-3.2.1.min.js"></script> -->
+<!-- <script src="./signformchange.js"></script> -->
 </html>
