@@ -1,7 +1,6 @@
 package product.model;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -12,14 +11,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "second_class")
+@JsonIgnoreProperties(value = {"itemBasics","firstClass"})
 public class SecondClass {
 	@Id@Column(name = "SEQNO")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

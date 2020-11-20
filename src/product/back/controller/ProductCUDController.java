@@ -1,9 +1,7 @@
 package product.back.controller;
 
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,17 +12,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import product.back.function.TransFuction;
-import product.model.FirstClass;
 import product.model.ItemBasic;
 import product.model.ItemInfo;
 import product.model.SecondClass;
 import product.service.FirstClassService;
 import product.service.ItemBasicService;
 import product.service.ItemInfoService;
-import product.service.ProductBeanService;
 import product.service.SecondClassService;
 
 @Controller
+@RequestMapping("/backstage/product")
 public class ProductCUDController {
 	@Autowired
 	private FirstClassService firstClassService;
@@ -34,35 +31,33 @@ public class ProductCUDController {
 	private ItemBasicService itemBasicService;
 	@Autowired
 	private ItemInfoService itemInfoService;
-	@Autowired
-	private ProductBeanService productBeanService;
 
 	// 資料刪除
-	@RequestMapping(path = "/productBackStage/deleteData", method = RequestMethod.GET)
-	public String deleteDate(@RequestParam(name = "deleteID") String deleteID, Model m) {
+	@RequestMapping(path = "/deleteData", method = RequestMethod.GET)
+	public String deleteDate(@RequestParam(name = "seqno") String deleteID, Model m) {
 		
 		System.out.println("deletID : " + deleteID);
 
 		
 			int ibID = Integer.parseInt(deleteID);
 			boolean check = itemBasicService.delete(ibID);
-			System.out.println("Delete Status : " + check);
+//			System.out.println("Delete Status : " + check);
 		
 		
-		return "redirect:/productBackStage/mainPage";
+		return "redirect:/backstage/product/retrievePage";
 
 	}
 
 	// 資料修改
 	
-	@RequestMapping(path = "/productBackStage/updateData", method = RequestMethod.POST)
+	@RequestMapping(path = "/updateData", method = RequestMethod.POST)
 	public String updateData(Model m,
-			@RequestParam(name = "itemBasicSeqno") String itemBasicSeqno,
-			@RequestParam(name = "name") String name,
-			@RequestParam(name = "type") String type,
-			@RequestParam(name = "price") String price,
-			@RequestParam(name = "stock") String stock,
-			@RequestParam(name = "productImg") MultipartFile multipartFile) throws IllegalStateException, IOException {
+			@RequestParam(name = "itemBasicSeqno", required = false) String itemBasicSeqno,
+			@RequestParam(name = "name", required = false) String name,
+			@RequestParam(name = "type", required = false) String type,
+			@RequestParam(name = "price", required = false) String price,
+			@RequestParam(name = "stock", required = false) String stock,
+			@RequestParam(name = "productImg", required = false) MultipartFile multipartFile) throws IllegalStateException, IOException {
 		
 		Integer seqInt = Integer.parseInt(itemBasicSeqno);
 		ItemInfo itemInfo = itemInfoService.selectNo(seqInt);
@@ -80,36 +75,19 @@ public class ProductCUDController {
 		itemInfoService.update(itemInfo);
 		itemBasicService.update(itemBasic);
 		
-		return "redirect:/productBackStage/mainPage";
+		return "redirect:/backstage/product/retrievePage";
 	}
 	
 	
-//	@RequestMapping(path = "/productBackStage/updateData", method = RequestMethod.POST)
-//	public String updateData(@RequestParam Map<String, String> allParams) throws IllegalStateException, IOException {
-//
-//		if (allParams.get("seqno") != null && !allParams.get("seqno").isEmpty()) {
-//			int seqNum = Integer.parseInt(allParams.get("seqno"));
-//			ItemInfo iiInfo = itemInfoService.selectNo(seqNum);
-//
-//			// 判斷指定修改資料是否存在
-//			int stockNum = Integer.parseInt(allParams.get("stock"));
-//			if (iiInfo != null) {
-//				itemInfoService.update(seqNum, seqNum);
-//
-//			}
-//
-//		}
-//		return "redirect:/productBackStage/mainPage";
-//	}
 
 	// 資料新增
-	@RequestMapping(path = "/productBackStage/createProductData", method = RequestMethod.POST)
+	@RequestMapping(path = "/createProductData", method = RequestMethod.POST)
 	public String createData(@RequestParam Map<String, String> allParams,
 			@RequestParam(name = "productImg") MultipartFile multipartFile) throws IllegalStateException, IOException {
 		
 			insertDataToDB(allParams, multipartFile);
 		
-		return "redirect:/productBackStage/mainPage";
+		return "redirect:/backstage/product/retrievePage";
 	}
 
 	private void insertDataToDB(Map<String, String> allParams, MultipartFile multipartFile)

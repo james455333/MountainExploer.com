@@ -12,7 +12,7 @@ import product.model.FirstClass;
 import product.model.SecondClass;
 import product.service.FirstClassService;
 import product.service.SecondClassService;
-
+@RequestMapping("/backstage/product")
 @Controller
 public class ProductPageEntryController {
 	
@@ -20,15 +20,16 @@ public class ProductPageEntryController {
 	private FirstClassService firstClassService;
 	@Autowired
 	private SecondClassService secondClassService;
+	
 	//前往查詢頁面
-	@RequestMapping(path = "/productBackStage/retrievePage")
+	@RequestMapping(path = "/retrievePage")
 	public String retrievePage(Model model) {
 		return "product/back/backProduct";
 	}
 	
 	
 	//前往新增頁面
-	@RequestMapping(path = "/productBackStage/createDataPage", method = RequestMethod.GET)
+	@RequestMapping(path = "/createDataPage", method = RequestMethod.GET)
 	public String createPage(Model model) {
 		
 		List<FirstClass> firstClassBeans = null;
@@ -44,7 +45,7 @@ public class ProductPageEntryController {
 	}
 	
 	//前往修改頁面
-	@RequestMapping(path = "/productBackStage/updateDataEntry", method = RequestMethod.GET)
+	@RequestMapping(path = "/updateDataEntry", method = RequestMethod.GET)
 	public String updatePage(Model model) {
 
 		return "product/back/backProductUpdate";

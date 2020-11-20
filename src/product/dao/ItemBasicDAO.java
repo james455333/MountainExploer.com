@@ -1,5 +1,6 @@
 package product.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import mountain.model.route.RouteBasic;
 import product.model.ItemBasic;
 
 @Repository("itemBasicDao")
@@ -83,4 +85,60 @@ public class ItemBasicDAO {
 		}
 		return false;
 	}
+	
+	//
+	public List<ItemBasic> selectWithPage(int page, int showdata) {
+		Session session = sessionFactory.getCurrentSession();
+		int startPosition = (page-1) * showdata;
+		List<ItemBasic> list = new ArrayList<ItemBasic>();
+		String hql = "From ItemBasic";
+		list = session.createQuery(hql)
+					.setReadOnly(true)
+					.setFirstResult(startPosition)
+					.setMaxResults(showdata)
+					.getResultList();
+		return list;
+	}
+	
+	
+	
+
+	public int getAllData(ItemBasic itemBasic) {
+
+		Session session = sessionFactory.getCurrentSession();
+
+		String hql = "Select count(*) From ItemBasic" ;
+
+		Query query = session.createQuery(hql);
+		long uniqueResult = (Long) query.uniqueResult();
+
+		return (int) uniqueResult;
+	}
+
+	public Integer countWith(Integer id, String coulmnName) {
+		Session session = sessionFactory.getCurrentSession();
+
+		String hql = "Select count(*) From ItemBasic"  + " where " + coulmnName + " = " + id;
+
+		Query query = session.createQuery(hql);
+		long result = (Long) query.uniqueResult();
+		return (int) result;
+	}
+	
+	
+	
+	public List<ItemBasic> scIDsetPage(int page, int showdata, int scID) {
+		Session session = sessionFactory.getCurrentSession();
+		int startPosition = (page-1) * showdata;
+		List<ItemBasic> list = new ArrayList<ItemBasic>();
+		String hql = "From ItemBasic where SECOND_CLASS_ID =" + scID; 
+		list = session.createQuery(hql,ItemBasic.class)
+					.setReadOnly(true)
+					.setFirstResult(startPosition)
+					.setMaxResults(showdata)
+					.getResultList();
+		System.out.println("result size : " + list.size());
+		return list;
+	}
+
 }

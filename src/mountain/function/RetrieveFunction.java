@@ -54,11 +54,11 @@ public class RetrieveFunction {
 		}
 	
 	//全數查詢
-	public static List<NationalPark> getAll(GenericService<NationalPark> nPHibService){
-		InterfaceService<NationalPark> nParkService= nPHibService;
-		
-		return nParkService.selectAll();
-	}
+//	public static List<NationalPark> getAll(GenericService<NationalPark> nPHibService){
+//		InterfaceService<NationalPark> nParkService= nPHibService;
+//		
+//		return nParkService.selectAll();
+//	}
 
 	// 設置國家公園查詢結果主畫面顯示Bean
 	public static List<MountainBean> getNPResult(String seqno,List<NationalPark> all) throws IOException, SQLException {

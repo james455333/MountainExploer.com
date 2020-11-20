@@ -6,51 +6,56 @@ import java.util.ArrayList;
 import java.util.List;
 
 import product.model.FirstClass;
+import product.model.ItemBasic;
 import product.model.ProductBean;
 import product.model.SecondClass;
-import product.service.FirstClassService;
-import product.service.SecondClassService;
 
 public class RetrieveFunction {
 	
 	
-	//全數查詢
-	public static List<FirstClass> getAll(FirstClassService firstClassService){
-		return firstClassService.selectAll();
+	//設置顯示Bean
+	public static List<ProductBean> getProductBeanList(List<ItemBasic> list) throws IOException, SQLException{
+		
+		List<ProductBean> productBeans = null;
+		
+		productBeans = sortProductBeans(TransFuction.transItemBasic(list));
+		
+		System.out.println("productBeans Size : " + productBeans.size());
+		
+		return productBeans;
+		
 	}
-	public static List<SecondClass> getAll(SecondClassService secondClassService){
-		return secondClassService.selectAll();
-	}
+	
 
 	// 設置主類別查詢結果主畫面顯示Bean
-	public static List<ProductBean> getFCResult(String seqno,List<FirstClass> all) throws IOException, SQLException {
-		System.out.println("seqno : " + seqno);
-		int seqnum = Integer.parseInt(seqno);
-
-		return sortProductBeans(TransFuction.transToFCBean(all,seqnum));
-
-	}
+//	public static List<ProductBean> getFCResult(String seqno,List<FirstClass> all) throws IOException, SQLException {
+//		System.out.println("seqno : " + seqno);
+//		int seqnum = Integer.parseInt(seqno);
+//
+//		return sortProductBeans(TransFuction.transToFCBean(all,seqnum));
+//
+//	}
 
 	// 設置次類別查詢主畫面顯示Bean
-	public static List<ProductBean> getSCResult(String seqno, List<SecondClass> all)
-			throws IOException, SQLException {
+//	public static List<ProductBean> getSCResult(String seqno, List<SecondClass> all)
+//			throws IOException, SQLException {
 //		System.out.println("seqno : " + seqno);
-		int seqnum = Integer.parseInt(seqno);
-		
-		return sortProductBeans(TransFuction.transToSCBean(all, seqnum));
-		
-	}
+//		int seqnum = Integer.parseInt(seqno);
+//		
+//		return sortProductBeans(TransFuction.transToSCBean(all, seqnum));
+//		
+//	}
 
 	// 設置總查詢主畫面顯示Bean
-	public static List<ProductBean> getMainBean(List<FirstClass> all)
-			throws IOException, SQLException {
-		
-		List<ProductBean> mainBeans = null;
-
-		mainBeans = sortProductBeans(TransFuction.transToMainBean(all));
-
-		return mainBeans;
-	}
+//	public static List<ProductBean> getMainBean(List<FirstClass> all)
+//			throws IOException, SQLException {
+//		
+//		List<ProductBean> mainBeans = null;
+//
+//		mainBeans = sortProductBeans(TransFuction.transToMainBean(all));
+//
+//		return mainBeans;
+//	}
 	
 	
 	
@@ -76,21 +81,4 @@ public class RetrieveFunction {
 	}
 	
 	
-	//	返回指定ID
-//	public static int defaultNPID(String seqno, List<NationalPark> all) {
-//		
-//		int seqnum = Integer.parseInt(seqno);
-//		
-//		for (NationalPark nationalPark : all) {
-//			Iterator<RouteBasic> iterator = nationalPark.getRouteBasic().iterator();
-//			while (iterator.hasNext()) {
-//				RouteBasic routeBasic = iterator.next();
-//				if (routeBasic.getId() == seqnum ) {
-//					return nationalPark.getId();
-//				}
-//			}
-//		}
-//		return 0;
-//	}
-//
 }

@@ -12,6 +12,7 @@ public class ProductBean {
 	private String imgUrl;
 	private Integer price;
 	private Integer stock;
+	private String description;
 	
 	public Integer getSeqno() {
 		return seqno;
@@ -60,6 +61,12 @@ public class ProductBean {
 	}
 	public void setStock(Integer stock) {
 		this.stock = stock;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	

@@ -2,8 +2,6 @@ package product.service;
 
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +20,10 @@ public class SecondClassService {
 	public SecondClass insert(SecondClass bean) {
 		return secondClassDao.insert(bean);
 	}
+	
+	public SecondClass selectId(Integer secondClassId) {
+		return secondClassDao.selectId(secondClassId);
+	}
 
 	public SecondClass select(String secondClassName) {
 		return secondClassDao.select(secondClassName);
@@ -32,6 +34,10 @@ public class SecondClassService {
 	
 	public SecondClass update(String secondClassName) {
 		return secondClassDao.update(secondClassName);
+	}
+	
+	public List<SecondClass> withHql(String hql){
+		return secondClassDao.withHql(hql);
 	}
 	
 }

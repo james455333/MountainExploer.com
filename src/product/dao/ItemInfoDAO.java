@@ -12,15 +12,12 @@ import org.springframework.stereotype.Repository;
 
 import product.model.ItemInfo;
 
-//=======
-//>>>>>>> parent of 7515c1d... 123:src/product/model/ItemInfoDAO.java
 @Repository("itemInfoDao")
 public class ItemInfoDAO {
 
 	@Autowired
 	@Qualifier("sessionFactory")
 	private SessionFactory sessionFactory;
-//<<<<<<< HEAD:src/product/dao/ItemInfoDAO.java
 
 	public void save(ItemInfo itemInfo) {
 		Session session = sessionFactory.getCurrentSession();
@@ -34,18 +31,7 @@ public class ItemInfoDAO {
 
 		if (bean != null) {
 			session.save(bean);
-//=======
 	
-	//新增
-//		public ItemInfo insert(ItemInfo bean) {
-//			
-//			Session session = sessionFactory.getCurrentSession();
-//			
-//			if (bean !=null) {
-//				session.save(bean);
-//			}
-//			return bean;
-//>>>>>>> parent of 7515c1d... 123:src/product/model/ItemInfoDAO.java
 		}
 		return bean;
 	}
@@ -67,15 +53,6 @@ public class ItemInfoDAO {
 		return list;
 	}
 
-	// 修改(庫存)
-//	public ItemInfo update(Integer seqno, Integer stock) {
-//		Session session = sessionFactory.getCurrentSession();
-//		ItemInfo result = session.get(ItemInfo.class, seqno);
-//		if (result != null) {
-//			result.setStock(stock);
-//		}
-//		return result;
-//	}
 	// 修改
 	public ItemInfo update(ItemInfo itemInfo) {
 		Session session = sessionFactory.getCurrentSession();
@@ -92,8 +69,6 @@ public class ItemInfoDAO {
 //			return false;
 //		}
 //
-//	byte[] b1 = new byte[1];
-//	String s1 = new String(b1,"UTF-8");
 	
 	
 	
