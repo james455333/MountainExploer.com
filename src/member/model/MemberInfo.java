@@ -23,6 +23,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "MEMBER_INFO")
 public class MemberInfo {
@@ -41,7 +43,7 @@ public class MemberInfo {
 	public MemberInfo() {
 		
 	}
-	
+	@JsonIgnore
 	public MemberInfo(int member_basic_id, Date birthday, String neck_name, 
 			String phone, String gender, String climb_ex, byte[] per_img, byte[] other) {
 		
@@ -141,6 +143,7 @@ public class MemberInfo {
 	
 	@OneToOne (fetch = FetchType.LAZY)
 	@PrimaryKeyJoinColumn
+	@JsonIgnore
 	public MemberBasic getMemberBasic() {
 		return memberBasic;
 	}

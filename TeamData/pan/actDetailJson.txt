@@ -1,0 +1,106 @@
+{
+	page : int,
+	totalData :	int,
+	totalPage : int,
+	images :	[
+					{
+						seqno : int,
+						name : String,
+						defaultImage : null or int
+					}
+	]
+	tagMap :	{
+				1 : boolean, 2 : boolean ..., 8 : boolean
+	},
+	login : null or MemberBasicactBasic,
+	actBasic :	{
+					seqno : int,
+					memberBasic :	{
+										seqno : int,
+										name : String,
+										reg_Date : long,
+										email : String,
+										memberInfo : {
+														neck_name : String,
+														pre_img : byte[]
+										},
+										memberStatus : {
+														seqno : int,
+														name : String
+										}
+					},
+					actInfo :	{
+									id: int,
+									title : String,
+									totalDay : String,
+									price : int,
+									startDate : Date,
+									endDate : Date,
+									regTop : int,
+									regEndDate : Date,
+									postDate : Date,
+									changeDate : Date,
+									hiedTag : null or int,
+									note : String,
+									rtBasic: {
+												id: 3022,
+									            routeInfo : 	{
+																	id : int,
+																	name : String,
+												                    desp : String,
+												                    traf : String,
+																	adv : String	
+												}
+									},
+					},
+					
+	},
+	respList : [ (Multiple, Max : 5)
+					{
+						actResp :	{
+										seqno : int,
+										msg : byte[],
+										postDate : long(Date),
+										privateTag : null or notNull,
+										hideTag : null or notNull(int),
+										actSideResponse :	[
+																seqno : long,
+																msg : byte[],
+																postDate : long(Date),
+																privateTag : null or notNull,
+																actRespSeqno : long
+																hideTag : null or notNull(int),
+																memberBasic	:	{
+																					seqno : int,
+																					name : String,
+																					reg_Date : long,
+																					email : String,
+																					memberInfo :	{
+																										neck_name : String,
+																									    pre_img : byte[]
+																					},
+																					memberStatus :	{
+																										seqno : int,
+																										name : String
+																					}
+																}
+										],
+										memberBasic	:	{	
+															seqno : int,
+															name : String,
+															reg_Date : long,
+															email : String,
+															memberInfo :	{
+																				neck_name : String,
+																				pre_img : byte[]
+															},
+															memberStatus :	{
+																				seqno : int,
+																				name : String
+															}
+										}
+						},
+					},
+					
+    ]
+}

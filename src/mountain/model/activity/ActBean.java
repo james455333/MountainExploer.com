@@ -1,20 +1,30 @@
 package mountain.model.activity;
 
+import java.util.Date;
 import java.util.Map;
 
+import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import member.model.MemberBasic;
+@Component
 public class ActBean {
 	
-	private int actID;
-	private String authorName;
+	private Integer actID;
+	private MemberBasic memberBasic;
 	private String title;
 	private String totalDay;
 	private String price;
-	private String startDate;
-	private String endDate;
-	private int nowReg;
-	private int topReg;
-	private String regEndDate;
-	private String postDate;
+	private Date startDate;
+	private Date endDate;
+	private Integer nowReg;
+	private Integer topReg;
+	private Date regEndDate;
+	private Date postDate;
+	private Date changeDate;
+	private Integer hideTag; 
+	
 	private Map<Integer, Boolean> tag;
 	
 	public Map<Integer, Boolean> getTag() {
@@ -23,10 +33,10 @@ public class ActBean {
 	public void setTag(Map<Integer, Boolean> tag) {
 		this.tag = tag;
 	}
-	public int getActID() {
+	public Integer getActID() {
 		return actID;
 	}
-	public void setActID(int actID) {
+	public void setActID(Integer actID) {
 		this.actID = actID;
 	}
 	public String getTitle() {
@@ -47,46 +57,59 @@ public class ActBean {
 	public void setPrice(String price) {
 		this.price = price;
 	}
-	public String getStartDate() {
+	public Date getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(String startDate) {
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
-	public String getEndDate() {
+	public Date getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(String endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
-	public int getTopReg() {
+	public Integer getTopReg() {
 		return topReg;
 	}
-	public void setTopReg(int topReg) {
+	public void setTopReg(Integer topReg) {
 		this.topReg = topReg;
 	}
-	public String getRegEndDate() {
+	public Date getRegEndDate() {
 		return regEndDate;
 	}
-	public void setRegEndDate(String regEndDate) {
+	public void setRegEndDate(Date regEndDate) {
 		this.regEndDate = regEndDate;
 	}
-	public String getPostDate() {
+	public Date getPostDate() {
 		return postDate;
 	}
-	public void setPostDate(String postDate) {
+	public void setPostDate(Date postDate) {
 		this.postDate = postDate;
 	}
-	public int getNowReg() {
+	public Integer getNowReg() {
 		return nowReg;
 	}
-	public void setNowReg(int nowReg) {
+	public void setNowReg(Integer nowReg) {
 		this.nowReg = nowReg;
 	}
-	public String getAuthorName() {
-		return authorName;
+	
+	public MemberBasic getMemberBasic() {
+		return memberBasic;
 	}
-	public void setAuthorName(String authorName) {
-		this.authorName = authorName;
+	public void setMemberBasic(MemberBasic memberBasic) {
+		this.memberBasic = memberBasic;
+	}
+	public Date getChangeDate() {
+		return changeDate;
+	}
+	public void setChangeDate(Date changeDate) {
+		this.changeDate = changeDate;
+	}
+	public Integer getHideTag() {
+		return hideTag;
+	}
+	public void setHideTag(Integer hideTag) {
+		this.hideTag = hideTag;
 	}
 }

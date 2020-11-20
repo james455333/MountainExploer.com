@@ -52,6 +52,7 @@
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
 <importedID>43AC9136-CA4B-AAB6-6529-DA7BA6FA04FB</importedID>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>7</dataTypePrecision>
@@ -80,10 +81,11 @@
 <ownerDesignName>all</ownerDesignName>
 <importedID>5035E0B4-7968-81E9-D071-9131462E2787</importedID>
 <nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<domain>081F619A-8F22-E694-AFE4-AB27C754FE38</domain>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="confirm" id="D5B0AC68-CF42-2922-9D73-3317DECDBF7D">
@@ -93,10 +95,11 @@
 <ownerDesignName>all</ownerDesignName>
 <importedID>59AE00D8-719F-F881-4B54-F86E21F4A63E</importedID>
 <nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<domain>081F619A-8F22-E694-AFE4-AB27C754FE38</domain>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="deny_reson" id="5D5FD081-49BB-DBC2-91F6-A963838E5DA5">
@@ -109,6 +112,29 @@
 <use>0</use>
 <logicalDatatype>LOGDT029</logicalDatatype>
 <domain>57AAEB89-ADE1-5295-799E-308DE467A9B3</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="canceltag" id="614388BE-3ED3-7DAD-6755-2766EB658A3E">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-20 03:23:20 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cancel_reason" id="285DFD5A-E78A-9EFF-B241-7C54884CCDBC">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-20 03:23:20 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT029</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>

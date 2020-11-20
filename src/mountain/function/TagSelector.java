@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import main.generic.model.GenericTypeObject;
+import main.generic.service.InterfaceService;
 import mountain.MountainGlobal;
 import mountain.model.activity.ActBean;
 import mountain.model.activity.ActivityInfo;
@@ -31,15 +33,17 @@ public class TagSelector {
 	
 	
 	@SuppressWarnings("static-access")
-	public TagSelector(ActivityInfo activityInfo, ActBean actBean) {
+	public TagSelector(ActivityInfo activityInfo,InterfaceService<GenericTypeObject> service) {
 		startTime = activityInfo.getStartDate().getTime();
 		postTime = activityInfo.getPostDate().getTime();
 		regEndTime = activityInfo.getRegEndDate().getTime();
 		nowTime = new Date().getTime();
 		passDay = (int) Math.ceil( ( (postTime - nowTime)*1.0 ) / MountainGlobal.ONEDAY);
 		regLeftDay = (int) Math.ceil( (regEndTime - nowTime)*1.0 / MountainGlobal.ONEDAY );
-		nowReg = actBean.getNowReg();
-		topReg = actBean.getTopReg();
+		service.save(activityInfo);
+		String hql = "Select count(*) From ActRegInfo ari where ari.actRegistry in (From ActRegistry ar where ACTIVITY_BASIC_SEQNO = "+ activityInfo.getId() + ")";
+		nowReg = service.countWithHql(hql);
+		topReg = activityInfo.getRegTop();
 		
 	}
 	

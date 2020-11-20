@@ -28,16 +28,14 @@ public class NationalPark extends GenericTypeObject implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id
-	@Column(name = "SEQNO")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(name = "NAME", unique = true)
 	private String name;
-	@OneToMany(fetch = FetchType.LAZY , mappedBy = "national_park" , cascade = CascadeType.ALL)
 	private Set<RouteBasic> routeBasic;
 	
 	@Override
+	@Id
+	@Column(name = "SEQNO")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getId() {
 		
 		return id;
@@ -47,6 +45,7 @@ public class NationalPark extends GenericTypeObject implements Serializable {
 		this.id = id;
 	}
 	@Override
+	@Column(name = "NAME", unique = true)
 	public String getName() {
 		return name;
 	}
@@ -54,6 +53,7 @@ public class NationalPark extends GenericTypeObject implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+	@OneToMany(fetch = FetchType.LAZY , mappedBy = "national_park" , cascade = CascadeType.ALL)
 	public Set<RouteBasic> getRouteBasic() {
 		return routeBasic;
 	}

@@ -8,8 +8,6 @@ $(function(){
 	var urlNow = new URL(window.location.href)
 	if(urlNow.searchParams.has("page")){
 		page = urlNow.searchParams.get("page");
-		console.log(typeof page)
-		console.log(page)
 	}else{
 		page = 1;
 	}
