@@ -93,7 +93,11 @@
 			</fieldset>
 		</form>
 	</div>
-	
+	<div>
+		<form action="" method="GET">
+			<input type="submit" id="chgPwd" name="chgPwd" value="更改密碼">		
+		</form>	
+	</div>	
 
 </body>
 </html>
