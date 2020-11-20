@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>對話框</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+  <script>
+ 
+  $(function () {
+    $("#a00001").click(function () {
+               $( "#dialog-modal" ).dialog({
+      height: 180,
+      modal: true
+    });
+    });
+});
+  </script>
+</head>
+<body>
+<button id="a00001">123</button>
+<div id="dialog-modal" title="對話框">
+  <p>測試</p>
+</div>
+ 
+<p>測試點不了我</p>
+ 
+ 
+</body>
+</html>
