@@ -15,15 +15,11 @@ import product.model.FirstClass;
 @Repository("firstClassDao")
 public class FirstClassDAO {
 
-
-	@Autowired @Qualifier("sessionFactory")
+	@Autowired
+	@Qualifier("sessionFactory")
 	private SessionFactory sessionFactory;
-	
 
-		
-	
-	
-	//新增FirstClass
+	// 新增FirstClass
 	public FirstClass insert(FirstClass bean) {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(bean);
@@ -61,25 +57,27 @@ public class FirstClassDAO {
 		List<FirstClass> list = query.list();
 		return list;
 	}
+
 	// 修改
-		public FirstClass update(String firstClassName) {
-			Session session = sessionFactory.getCurrentSession();
-			FirstClass result = session.get(FirstClass.class, firstClassName);
-			if (result!=null) {
-				result.setName(firstClassName);
-			}
-			String hql = "FirstClass  where Name like '" + firstClassName + "'";
+	public FirstClass update(String firstClassName) {
+		Session session = sessionFactory.getCurrentSession();
+		FirstClass result = session.get(FirstClass.class, firstClassName);
+		if (result != null) {
+			result.setName(firstClassName);
+		}
+		String hql = "FirstClass  where Name like '" + firstClassName + "'";
 //			String hql = "From"+ FirstClass.class.getName() +" where Name like '" + firstClassName + "'";
 
-			Query<FirstClass> query = session.createQuery(hql, FirstClass.class);
+		Query<FirstClass> query = session.createQuery(hql, FirstClass.class);
 
-			FirstClass uniqueResult = query.uniqueResult();
+		FirstClass uniqueResult = query.uniqueResult();
 
-			if (uniqueResult != null) {
-				return uniqueResult;
-			}
-			return null;
+		if (uniqueResult != null) {
+			return uniqueResult;
 		}
+		return null;
+	}
+
 	// 刪除
 //		public boolean delete(String firstClassName) {
 //			Session session = sessionFactory.getCurrentSession();
@@ -90,6 +88,29 @@ public class FirstClassDAO {
 //			}
 //			return false;
 //		}
-	
+	public List<FirstClass> getwithHQL(String hql, Integer page, Integer showData) {
+		if (page == null) {
+			page = 1;
+		}
+		if (showData == null) {
+			showData = 3;
+		}
+		int startPosition = (page - 1) * showData;
+		Session session = sessionFactory.getCurrentSession();
+		Query<FirstClass> query = session.createQuery(hql);
+		List<FirstClass> result = query.setFirstResult(startPosition).setMaxResults(showData).setReadOnly(true).getResultList();
+
+		return result;
+
+	}
+
+	public int countWithHql(String hql) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery(hql);
+
+		long result = (Long) query.uniqueResult();
+
+		return (int) result;
+	}
 
 }

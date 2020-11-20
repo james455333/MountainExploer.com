@@ -140,5 +140,40 @@ public class ItemBasicDAO {
 		System.out.println("result size : " + list.size());
 		return list;
 	}
-
+	
+	
+	public List<ItemBasic> getwithHQL(String hql, Integer page, Integer showData){
+		if (page == null) {
+			page = 1;
+		}
+		if (showData == null) {
+			showData = 3;
+		}
+		int startPosition = (page-1) * showData;
+		Session session = sessionFactory.getCurrentSession();
+		Query<ItemBasic> query = session.createQuery(hql);
+		List<ItemBasic> result = query.setFirstResult(startPosition)
+			.setMaxResults(showData)
+			.setReadOnly(true)
+			.getResultList();
+		
+		
+		return result;
+		
+		
+	}
+	
+	
+	public int countWithHql(String hql) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery(hql);
+		
+		long result = (Long)query.uniqueResult();
+		
+		return (int) result;
+	}
+	
+	
+	
 }
+

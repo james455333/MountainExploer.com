@@ -87,38 +87,22 @@ public class ProductRetrieveController {
 		} else if (secondclassID == null && firstclassID != null) {
 			
 			
+			String hql = "from ItemBasic where secondClass.id in (select id from SecondClass sc where sc.firstClass ="+firstclassID+") order by seqno";
+			Integer countWithHql = itemBasicService.countWithHql(hql);
+			return countWithHql;
 			
-			FirstClass fcBean = firstClassService.selectId(Integer.parseInt(firstclassID));
-			Set<SecondClass> secondClassSet = fcBean.getSecondClasses();
-			Iterator<SecondClass> iterator = secondClassSet.iterator();
-			Set<ItemBasic> itemBasicSet =  new HashSet<ItemBasic>();
-			while (iterator.hasNext()) {
-				for (SecondClass secondClass : secondClassSet) {
-					Set<ItemBasic> itemBasics = secondClass.getItemBasics();
-					for (ItemBasic itemBasic2 : itemBasicSet) {
-						itemBasicSet.add(itemBasic2);
-					}
-//					int size = itemBasics.size();
-//					totalData =  totalData+size;
-					
-				}
-			}
-				totalData = itemBasicSet.size();
-//				SecondClass secondClass = (SecondClass) iterator.next();
+//			FirstClass fcBean = firstClassService.selectId(Integer.parseInt(firstclassID));
+//			Set<SecondClass> secondClassSet = fcBean.getSecondClasses();
+//			Iterator<SecondClass> iterator = secondClassSet.iterator();
+//			while (iterator.hasNext()) {
 //				SecondClass next = iterator.next();
-//					System.out.println(size);
-				System.out.println(totalData);
-			
-//			for (SecondClass secondClass : secondClassSet) {
-				
-//				Integer id = secondClass.getId();
-//				int countWith = itemBasicService.countWith(id, "secondClass");
-//				totalData =  totalData + countWith;
-//			}
-			
-//			totalData = secondClassSet.size();
-//			System.out.println("totalData : " + totalData);
-			return totalData;
+//				Set<ItemBasic> itemBasics = next.getItemBasics();
+//				int size = itemBasics.size();
+//				totalData =  totalData+size;
+//				}
+//				System.out.println(totalData);
+//			
+//			return totalData;
 	
 
 		//指定SecondClass商品數

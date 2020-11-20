@@ -2,6 +2,8 @@ package product.service;
 
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,5 +38,13 @@ public class FirstClassService {
 
 	public FirstClass update(String firstClassName) {
 		return firstClassDao.update(firstClassName);
+	}
+	public List<FirstClass> getwithHQL(String hql, Integer page, Integer showData) {
+		return firstClassDao.getwithHQL(hql, page, showData);
+
+	}
+
+	public int countWithHql(String hql) {
+		return (int) firstClassDao.countWithHql(hql);
 	}
 }
