@@ -77,11 +77,15 @@
 	<div>
 	<span>價格區間 : </span>
 		<form>
+		let array = $(".classsname")
+		for(){
+		 	let a = array[i].attr("id")
+		}
 		 <input type="radio" name="radioGroup" id="radioA" value="1" checked="checked"/><label>0-1000元</label> 
           <input type="radio" name="radioGroup" id="radioB" value="2"/><label>1001-2000元</label>
           <input type="radio" name="radioGroup" id="radioC" value="3"/><label>2001-3000元</label>
           <input type="radio" name="radioGroup" id="radioC" value="4"/><label>3000元以上</label>
-		 <button type="submit" class="priceSubmitButton">Submit</button>
+		 <button type="submit" class="priceSubmitButton">價格區間查詢</button>
 		</form>
 	</div>
 

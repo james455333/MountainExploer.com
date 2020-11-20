@@ -209,7 +209,7 @@ $(function(){
 		let scale = $(".scSelect").val();
 		console.log(scale);
 		$.ajax({
-			url: homeUrl+ "/totalData?secondclass="+scID,
+			url: homeUrl+ "/searchPrice",
 			method : "GET",
 			success:function(data){
 				totalData = data;

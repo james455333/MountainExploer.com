@@ -93,7 +93,7 @@ public class ProductRetrieveController {
 		} else if (secondclassID == null && firstclassID != null) {
 
 //			String hql = "from ItemBasic where secondClass.id in (select id from SecondClass sc where sc.firstClassId ="+firstclassID+") order by seqno";
-			String hql = "from ItemBasic where secondClass.id in (select id from SecondClass sc where sc.firstClass = "
+			String hql = "Select count(*) from ItemBasic where secondClass.id in (select id from SecondClass sc where sc.firstClass = "
 					+ firstclassID + ") order by seqno";
 			Integer countWithHql = itemBasicService.countWithHql(hql);
 			System.out.println("-----------------------");
@@ -293,33 +293,16 @@ public class ProductRetrieveController {
 		return transItemBasic;
 
 	}
-	// 價格區間查詢
+	// 價格區間查詢筆數
 	@GetMapping("/searchPrice")
 	@ResponseBody
-	public Map<Object ,Object> searchPrice(@RequestParam Map<String, String> allParam) throws Exception, SQLException{
-		//	回傳物件
-		Map<Object ,Object> resultMap = new HashMap<Object, Object>();
-		List<ProductBean> productBeans = new ArrayList<ProductBean>();
-		Integer scale =null;
+	public Integer searchPrice(@RequestParam(name = "radioGroup", required = false) Integer scale){
+
 		Integer totalData = 0;
-		Integer page = 1;
-		Integer showData = 30;
 		Integer max = null;
 		Integer min = null;
 		
-		//	得到查詢結果
-		if( allParam.get("page") != null) {
-			page = Integer.parseInt(allParam.get("page")) ;
-		}else {
-			page = 1;
-		}
-		if( allParam.get("showData") != null) {
-			showData = Integer.parseInt(allParam.get("showData")) ;
-		}else {
-			showData = 30;
-		}
-		if (allParam.get("radioGroup")!=null) {
-			scale = Integer.parseInt(allParam.get("radioGroup")) ;
+		if (scale!=null) {
 			switch (scale) {
 			
 			case 1:
@@ -338,14 +321,9 @@ public class ProductRetrieveController {
 				max=1000000;
 				min=3000;
 				break;
-//			default:
-//				break;
 			}
 			String hql = "from ItemBasic where itemInfo.price > " + min + " and itemInfo.price < " + max
 					+ " order by itemInfo.price";
-			List<ItemBasic> getwithHQL = itemBasicService.getwithHQL(hql, page, showData);
-			List<ProductBean> transItemBasic = TransFuction.transItemBasic(getwithHQL);
-			productBeans = transItemBasic;
 			
 			Integer countWithHql = itemBasicService.countWithHql(hql);
 			totalData = countWithHql;
@@ -353,12 +331,7 @@ public class ProductRetrieveController {
 			
 		}
 		
-		resultMap.put("totalData", totalData);
-		resultMap.put("page", page);
-		resultMap.put("showData", showData);
-		resultMap.put("productBeans", productBeans);
-		
-		return resultMap;
+		return totalData;
 	}
 
 }
