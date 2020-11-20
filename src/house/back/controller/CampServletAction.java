@@ -266,7 +266,7 @@ public class CampServletAction {
 			}
 
 		}
-
+		campBean.setCampimgid(imgQuery);
 		CountiesBean countiesQuery = countiesService.select(counties);
 
 		if (countiesQuery.getName() != campBean.getCountiesname()) {
@@ -308,5 +308,11 @@ public class CampServletAction {
 //		m.addAttribute("campid",list);
 //		return "house/back/backCamp";
 //	}
+	
+//	@GetMapping("/jumptestajax")
+//	public String jumpajax() {
+//		return "house/back/testajax";
+//	}
+	
 
 }
