@@ -125,6 +125,7 @@
 											<i></i>
 											<!-- 會有預設內容，可更改 -->
 										</div>
+										
 										<!-- 會員偵測 -->
 										<div class="d_member_check">
 											<div class="memberLocker">
@@ -140,32 +141,36 @@
 <!-- 												<img alt="" src=""> -->
 <!-- 											</div> -->
 											<!-- 備註 -->
-											<div class="d_note">
+											<div class="d_noteInfo">
+												<div>
+													
+												</div>
 											</div>
 											<!-- 報名鈕 -->
 											<div class="goReg">
 												
-												<a href="">前往本活動之報名頁面</a>
+												<a href=""></a>
 											</div>
-											<!-- 留言 複數 -->
-<!-- 											<div class="d_sr"> -->
-												<!-- 留言者 -->
-<!-- 												<div class="d_sr_img"> -->
-													<!-- 留言者頭像 -->
-<!-- 													<a href=""> -->
-<!-- 														<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGqmpjgWstfG3p9qOmG8r2AsddLtXOjYfhCg&usqp=CAU"> -->
-<!-- 													</a> -->
-<!-- 												</div> -->
-												<!-- 留言內容 -->
-<!-- 												<div class="d_sr_text"> -->
-													<!-- 留言者暱稱 -->
-<!-- 													<a style="padding: 0" href=""></a> -->
-<!-- 													<span></span> -->
-													<!-- 測試留言者內容 -->
-<!-- 													<span>發表於 : </span> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
+											
 										</div>
+										<!-- 留言 複數 -->
+											<div class="d_sr">
+												<!-- 留言者 -->
+												<div class="d_sr_img">
+													<!-- 留言者頭像 -->
+													<a href="">
+														<img src="">
+													</a>
+												</div>
+												<!-- 留言內容 -->
+												<div class="d_sr_text">
+													<!-- 留言者暱稱 -->
+													<a style="padding: 0" href=""></a>
+													<span></span>
+													<!-- 測試留言者內容 -->
+													<span>發表於 : </span>
+												</div>
+											</div>
 									</div>
 								
 								</td>
@@ -179,6 +184,7 @@
 						</tbody>
 					</table>
 				</div>
+					
             	
             	
             	<nav class="pageControl">

@@ -15,7 +15,7 @@
 .actPost {
 	position: relative;
 	width: 100%;
-	border: 1px solid black;
+	border-bottom: 1px solid black;
 }
 
 .memberTD {
@@ -46,7 +46,7 @@
 
 .d_time {
 	width: auto;
-	border: 1px solid blue;
+	border-bottom: 1px solid blue;
 	text-align: left;
 }
 
@@ -78,6 +78,7 @@
 
 .d_sr {
 	clear: left;
+	display : none;
 }
 
 .d_sr_img {
@@ -152,4 +153,17 @@
 
 .goReg a:visited {
 	color: red;
+}
+.d_noteInfo{
+	text-align: left;
+	padding : 10px;
+	vertical-align: top;
+}
+.actModel{
+	display: none;
+} 
+.hideResp{
+	color : white;
+	font-size : 25px;
+	font-style: italic,oblique;
 }

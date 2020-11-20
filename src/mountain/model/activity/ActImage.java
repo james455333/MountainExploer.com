@@ -28,6 +28,7 @@ public class ActImage extends GenericTypeObject{
 	private byte[] img;
 	private ActivityBasic activityBasic;
 	private Integer defaultImage;
+	private Integer hidetag;
 	
 	@Override
 	@Id
@@ -72,6 +73,13 @@ public class ActImage extends GenericTypeObject{
 	}
 	public void setDefaultImage(Integer defaultImage) {
 		this.defaultImage = defaultImage;
+	}
+	@Column(name = "HIDETAG")
+	public Integer getHidetag() {
+		return hidetag;
+	}
+	public void setHidetag(Integer hidetag) {
+		this.hidetag = hidetag;
 	}
 
 }

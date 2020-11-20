@@ -1,5 +1,6 @@
 package mountain.model.activity.Registry;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Set;
 
 import javax.persistence.Basic;
@@ -25,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import main.generic.model.GenericTypeObject;
 import member.model.MemberBasic;
+import mountain.MountainGlobal;
 import mountain.model.activity.ActivityBasic;
 
 @Entity
@@ -40,7 +42,29 @@ public class ActRegistry extends GenericTypeObject {
 	private Integer confirm;
 	private byte[] declineReson;
 	private Set<ActRegInfo> actRegInfo;
+	private Integer cancelTag;
+	private byte[] cancelReason;
 	
+	@Column(name = "CANCEL_TAG")
+	public Integer getCancelTag() {
+		return cancelTag;
+	}
+	public void setCancelTag(Integer cancelTag) {
+		this.cancelTag = cancelTag;
+	}
+	@Column(name = "CANCEL_REASON")
+	@JsonIgnore
+	public byte[] getCancelReason() {
+		return cancelReason;
+	}
+	@Transient
+	public String getCancelRes() throws UnsupportedEncodingException {
+		if(cancelReason != null) return new String(cancelReason,MountainGlobal.CHARSET);
+		return null;
+	}
+	public void setCancelReason(byte[] cancelReason) {
+		this.cancelReason = cancelReason;
+	}
 	@Override
 	@Id
 	@Column(name = "SEQNO")
@@ -94,8 +118,16 @@ public class ActRegistry extends GenericTypeObject {
 		this.confirm = confirm;
 	}
 	@Column(name = "DECLINE_REASON")
+	@JsonIgnore
 	public byte[] getDeclineReson() {
 		return declineReson;
+	}
+	@Transient
+	public String getDelnReason() throws UnsupportedEncodingException {
+		if (declineReson!=null) {
+			return new String(declineReson, MountainGlobal.CHARSET);
+		}
+		return null;
 	}
 	public void setDeclineReson(byte[] declineReson) {
 		this.declineReson = declineReson;

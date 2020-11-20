@@ -59,15 +59,17 @@
 					{
 						actResp :	{
 										seqno : int,
-										message : byte[],
+										msg : byte[],
 										postDate : long(Date),
 										privateTag : null or notNull,
-										actSideResponse :	{
+										hideTag : null or notNull(int),
+										actSideResponse :	[
 																seqno : long,
-																message : byte[],
+																msg : byte[],
 																postDate : long(Date),
 																privateTag : null or notNull,
 																actRespSeqno : long
+																hideTag : null or notNull(int),
 																memberBasic	:	{
 																					seqno : int,
 																					name : String,
@@ -82,7 +84,7 @@
 																										name : String
 																					}
 																}
-										},
+										],
 										memberBasic	:	{	
 															seqno : int,
 															name : String,

@@ -1,5 +1,7 @@
 package mountain.model.activity.response;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import main.generic.model.GenericTypeObject;
 import member.model.MemberBasic;
+import mountain.MountainGlobal;
 
 @Entity
 @Table(name = "activity_sideresp")
@@ -66,8 +69,16 @@ public class ActSideResponse extends GenericTypeObject{
 		this.memberBasic = memberBasic;
 	}
 	@Column(name = "MESSAGE")
+	@JsonIgnore
 	public byte[] getMessage() {
 		return message;
+	}
+	@Transient
+	public String getMsg() throws UnsupportedEncodingException {
+		if (message != null) return new String(message, MountainGlobal.CHARSET);
+		return "";
+		
+		
 	}
 	public void setMessage(byte[] message) {
 		this.message = message;

@@ -63,7 +63,10 @@ public class RouteInfo extends GenericTypeObject implements Serializable{
 	}
 	@Transient
 	public String getDesp() throws UnsupportedEncodingException {
-		return new String(description, MountainGlobal.CHARSET);
+		if (description!=null) {
+			return new String(description, MountainGlobal.CHARSET);
+		}
+		return "尚無資料";
 	}
 	public void setDescription(byte[] description) {
 		this.description = description;
@@ -75,7 +78,10 @@ public class RouteInfo extends GenericTypeObject implements Serializable{
 	}
 	@Transient
 	public String getTraf() throws UnsupportedEncodingException {
-		return new String(traffic, MountainGlobal.CHARSET);
+		if (traffic != null) {
+			return new String(traffic, MountainGlobal.CHARSET);
+		}
+		return "尚無資料";
 	}
 	public void setTraffic(byte[] traffic) {
 		this.traffic = traffic;
@@ -95,7 +101,10 @@ public class RouteInfo extends GenericTypeObject implements Serializable{
 	}
 	@Transient
 	public String getAdv() throws UnsupportedEncodingException {
-		return new String(advice, MountainGlobal.CHARSET);
+		if (advice != null) {
+			return new String(advice, MountainGlobal.CHARSET);
+		}
+		return "尚無資料";
 	}
 	public void setAdvice(byte[] advice) {
 		this.advice = advice;

@@ -1,5 +1,7 @@
 package mountain.model.activity;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +15,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
@@ -21,6 +24,7 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import main.generic.model.GenericTypeObject;
+import mountain.MountainGlobal;
 import mountain.model.route.RouteBasic;
 
 @Entity
@@ -94,8 +98,17 @@ public class ActivityInfo extends GenericTypeObject {
 		this.totalDay = totalDay;
 	}
 	@Column(name="note")
+	@JsonIgnore
 	public byte[] getNote() {
 		return note;
+	}
+	@Transient
+	public String getAddInfo() throws UnsupportedEncodingException {
+		if (note != null) {
+			return new String(note, MountainGlobal.CHARSET);
+		}else {
+			return "";
+		}
 	}
 	public void setNote(byte[] note) {
 		this.note = note;

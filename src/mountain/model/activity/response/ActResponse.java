@@ -1,5 +1,6 @@
 package mountain.model.activity.response;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Set;
 
 import javax.persistence.Basic;
@@ -25,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import main.generic.model.GenericTypeObject;
 import member.model.MemberBasic;
+import mountain.MountainGlobal;
 import mountain.model.activity.ActivityBasic;
 
 @Entity
@@ -40,6 +42,7 @@ public class ActResponse extends GenericTypeObject {
 	private Integer privateTag;
 	private Set<ActSideResponse> actSideResponse;
 	private Integer hideTag;
+	private java.util.Date changeDate;
 	
 	@Id
 	@Column(name = "SEQNO")
@@ -69,8 +72,14 @@ public class ActResponse extends GenericTypeObject {
 		this.memberBasic = memberBasic;
 	}
 	@Column(name = "MESSAGE")
+	@JsonIgnore
 	public byte[] getMessage() {
 		return message;
+	}
+	@Transient
+	public String getMsg() throws UnsupportedEncodingException {
+		if (message != null) return new String(message, MountainGlobal.CHARSET);
+		return "";
 	}
 	public void setMessage(byte[] message) {
 		this.message = message;
@@ -104,5 +113,14 @@ public class ActResponse extends GenericTypeObject {
 	}
 	public void setHideTag(Integer hideTag) {
 		this.hideTag = hideTag;
+	}
+	@Basic
+	@Column(name = "CHANGE_DATE")
+	@Temporal(TemporalType.DATE)
+	public java.util.Date getChangeDate() {
+		return changeDate;
+	}
+	public void setChangeDate(java.util.Date changeDate) {
+		this.changeDate = changeDate;
 	}
 }

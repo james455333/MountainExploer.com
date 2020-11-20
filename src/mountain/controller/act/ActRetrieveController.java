@@ -37,7 +37,7 @@ import mountain.model.activity.response.ActResponse;
 import mountain.model.activity.response.ActSideResponse;
 @Controller
 @RequestMapping("/mountain/act/search")
-@SessionAttributes({"mb"})
+@SessionAttributes({"Member"})
 public class ActRetrieveController {
 	@Autowired
 	private GenericService<GenericTypeObject> service;
@@ -200,6 +200,10 @@ public class ActRetrieveController {
 			service.save(actResponse);
 			totalData = service.countWithHql("Select count(*) From ActResponse where activityBasic = " + actID);
 			totalPage = (int) Math.ceil( totalData*1.0 / respShowData  );
+			if(page > totalPage) {
+				page = 1;
+			}
+			
 			
 			// set RespList
 			List<Map<String, Object>> respList = new ArrayList<Map<String, Object>>();
