@@ -26,28 +26,19 @@ import member.model.MemberBasic;
 @Table(name = "activity_sideresp")
 @Component
 public class ActSideResponse extends GenericTypeObject{
+	
+	private Integer seqno;
+	private ActResponse actResponse;
+	private MemberBasic memberBasic;
+	private byte[] message;
+	private java.util.Date postDate;
+	private Integer privateTag;
+	private Integer hideTag;
+	
+	@Override
 	@Id
 	@Column(name = "SEQNO")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer seqno;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ACTIVITY_RESPONSE_SEQNO")
-	@JsonIgnore
-	private ActResponse actResponse;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "MEMBER_BASIC_ID")
-	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-	private MemberBasic memberBasic;
-	@Column(name = "MESSAGE")
-	private byte[] message;
-	@Basic
-	@Column(name = "POST_DATE")
-	@Temporal(TemporalType.DATE)
-	private java.util.Date postDate;
-	@Column(name = "PRIVATETAG")
-	private Character privateTag;
-	@Override
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -55,43 +46,54 @@ public class ActSideResponse extends GenericTypeObject{
 	public void setSeqno(Integer seqno) {
 		this.seqno = seqno;
 	}
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ACTIVITY_RESPONSE_SEQNO")
+	@JsonIgnore
 	public ActResponse getActResponse() {
 		return actResponse;
 	}
+	
 	public void setActResponse(ActResponse actResponse) {
 		this.actResponse = actResponse;
 	}
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "MEMBER_BASIC_ID")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	public MemberBasic getMemberBasic() {
 		return memberBasic;
 	}
 	public void setMemberBasic(MemberBasic memberBasic) {
 		this.memberBasic = memberBasic;
 	}
+	@Column(name = "MESSAGE")
 	public byte[] getMessage() {
 		return message;
 	}
 	public void setMessage(byte[] message) {
 		this.message = message;
 	}
+	@Basic
+	@Column(name = "POST_DATE")
+	@Temporal(TemporalType.DATE)
 	public java.util.Date getPostDate() {
 		return postDate;
 	}
 	public void setPostDate(java.util.Date postDate) {
 		this.postDate = postDate;
 	}
-	public Character getPrivateTag() {
+	@Column(name = "PRIVATETAG")
+	public Integer getPrivateTag() {
 		return privateTag;
 	}
-	public void setPrivateTag(Character privateTag) {
+	public void setPrivateTag(Integer privateTag) {
 		this.privateTag = privateTag;
 	}
-	@Transient
-	public Integer getActRespSeqno() {
-		return actResponse.getSeqno();
+	@Column(name = "HIDETAG")
+	public Integer getHideTag() {
+		return hideTag;
 	}
-	@Transient
-	public Integer getMemberBasicSeqno() {
-		return memberBasic.getSeqno();
+	public void setHideTag(Integer hideTag) {
+		this.hideTag = hideTag;
 	}
 	
 }

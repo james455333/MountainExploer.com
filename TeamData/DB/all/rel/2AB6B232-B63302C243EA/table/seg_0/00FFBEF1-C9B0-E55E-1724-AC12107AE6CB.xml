@@ -52,6 +52,7 @@
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
 <importedID>FCB1D42D-F74B-22D5-B170-4EDA1B0792B6</importedID>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>7</dataTypePrecision>
@@ -92,10 +93,23 @@
 <ownerDesignName>all</ownerDesignName>
 <importedID>E36C3266-92FD-3D82-4ACA-A637666F1817</importedID>
 <nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<domain>081F619A-8F22-E694-AFE4-AB27C754FE38</domain>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="hidetag" id="2309D64E-9128-915D-02AA-AF407FBB02DC">
+<createdBy>Japan</createdBy>
+<createdTime>2020-11-19 16:37:52 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>

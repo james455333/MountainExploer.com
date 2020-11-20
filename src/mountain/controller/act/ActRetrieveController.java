@@ -2,12 +2,11 @@ package mountain.controller.act;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -20,8 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.google.gson.Gson;
-
 import main.generic.model.GenericTypeObject;
 import main.generic.service.GenericService;
 import main.generic.service.InterfaceService;
@@ -29,10 +26,13 @@ import main.model.SystemImage;
 import member.back.model.MemberBasicBackService;
 import member.model.MemberBasic;
 import mountain.MountainGlobal;
+import mountain.function.TagSelector;
 import mountain.function.TransFuction;
 import mountain.model.activity.ActBean;
 import mountain.model.activity.ActImage;
+import mountain.model.activity.ActivityBasic;
 import mountain.model.activity.ActivityInfo;
+import mountain.model.activity.Registry.ActRegInfo;
 import mountain.model.activity.response.ActResponse;
 import mountain.model.activity.response.ActSideResponse;
 @Controller
@@ -168,7 +168,7 @@ public class ActRetrieveController {
 	@ResponseBody
 	public Map<Object, Object> showActDetail(
 			MemberBasic memberBasic, 
-			ActivityInfo actInfo, 
+			ActivityBasic actBasic, 
 			ActResponse actResponse,
 			ActSideResponse actSideResp,
 			Model model,
@@ -186,12 +186,16 @@ public class ActRetrieveController {
 			
 			//	設定service
 			InterfaceService<GenericTypeObject> service = this.service;
-			service.save(actInfo);
+			service.save(actBasic);
 			
 			//	set actBean
-			actInfo = (ActivityInfo)service.select(actID);
-			ActBean actBean = TransFuction.transToActBean(actInfo, service);
-			resultMap.put("actBean", actBean);
+			actBasic = (ActivityBasic)service.select(actID);
+			resultMap.put("actBasic", actBasic);
+			service.save(new ActRegInfo());
+			String hql = "Select count(*) From ActRegInfo ari where ari.actRegistry in (From ActRegistry ar where ACTIVITY_BASIC_SEQNO = "+ actID + ")";
+			int nowReg = service.countWithHql(hql);
+			resultMap.put("nowReg", nowReg);
+			
 			// set totalData, totalPage
 			service.save(actResponse);
 			totalData = service.countWithHql("Select count(*) From ActResponse where activityBasic = " + actID);
@@ -201,7 +205,7 @@ public class ActRetrieveController {
 			List<Map<String, Object>> respList = new ArrayList<Map<String, Object>>();
 			String respHql = "From ActResponse where activityBasic = " + actID;
 			List<GenericTypeObject> returnRespBeans = service.getwithHQL(respHql, page, respShowData);
-			System.out.println("================returnRespBeans size :" + returnRespBeans.size());
+//			System.out.println("================returnRespBeans size :" + returnRespBeans.size());
 			for (GenericTypeObject genericTypeObject : returnRespBeans) {
 				// Set acRespMap in respList 
 				Map<String ,Object> actRespMap = new HashMap<String, Object>();
@@ -209,45 +213,66 @@ public class ActRetrieveController {
 				ActResponse actResp = (ActResponse) genericTypeObject;
 				actRespMap.put("actResp", actResp);
 				// Set respMB in acRespMap
-				MemberBasic respMB = actResp.getMemberBasic();
 				respList.add(actRespMap);
 			}
 			
-			if (model.getAttribute("mb")!=null) {
-				resultMap.put("login", true);
+			if (model.getAttribute("Member")!=null) {
+				resultMap.put("login", model.getAttribute("Member"));
 			}else {
-				resultMap.put("login", false);
+				resultMap.put("login", null);
 			}
+			
+			Map<Integer, Boolean> tagMap = new TagSelector(actBasic.getActInfo(), service).getTagResult();
+			service.save(new ActImage());
+			String hqlImage = "From ActImage where activityBasic = " + actID;
+			List<GenericTypeObject> getwithHQL = service.getwithHQL(hqlImage, 1, 5);
+			List<ActImage> imgSeqList = new ArrayList<ActImage>();
+			for (GenericTypeObject gto : getwithHQL) {
+				imgSeqList.add( (ActImage)gto );
+			}
+			
+			
 			resultMap.put("page", page);
+			resultMap.put("tagMap", tagMap );
 			resultMap.put("totalPage", totalPage);
 			resultMap.put("totalData", totalData);
 			resultMap.put("respList", respList);
+			resultMap.put("images", imgSeqList);
 			return resultMap;
 		
 	}
 	/* 圖片顯示 */
 	@GetMapping(path = "/images")
 	@ResponseBody
-	public ResponseEntity<byte[]> showImage(@RequestParam(name = "actID") Integer actID, ActImage actImage, SystemImage sysImage) {
+	public ResponseEntity<byte[]> showImage(
+			ActImage actImage, 
+			SystemImage sysImage,
+			@RequestParam(name = "seqno", required = false) Integer seqno,
+			@RequestParam(name = "actID", required = false) Integer actID,
+			@RequestParam(name = "defImage", required = false)Integer defImage) { 
 //		System.out.println("圖片輸入開始");
 		List<ResponseEntity<byte[]>> result = new ArrayList<ResponseEntity<byte[]>>();
 		InterfaceService<GenericTypeObject> service = this.service;
 		service.save(actImage);
-		String hql = "From ActImage where activityBasic = " + actID + " order by seqno";
-		List<GenericTypeObject> imgList = service.getwithHQL(hql, 1, showData);
-		for (GenericTypeObject genericTypeObject : imgList) {
-			actImage = (ActImage) genericTypeObject;
-			byte[] imgBytes = actImage.getImg();
-			HttpHeaders headers = new HttpHeaders();
-			headers.setContentType(MediaType.IMAGE_JPEG);
-			result.add(new ResponseEntity<byte[]>(imgBytes, headers, HttpStatus.OK));
+		String hql = "From ActImage where seqno = " + seqno ;
+		if (defImage != null && actID != null) {
+			hql = "From ActImage where activityBasic = " + actID + " and defaultImage is not null";
 		}
-		if (result.isEmpty()) {
+		List<GenericTypeObject> imgList = service.getwithHQL(hql, 1, 1);
+		if ( !imgList.isEmpty() ) {
+			for (GenericTypeObject genericTypeObject : imgList) {
+				actImage = (ActImage) genericTypeObject;
+				byte[] imgBytes = actImage.getImg();
+				HttpHeaders headers = new HttpHeaders();
+				headers.setContentType(MediaType.IMAGE_JPEG);
+				result.add(new ResponseEntity<byte[]>(imgBytes, headers, HttpStatus.OK));
+			}
+		}else{
 			service.save(sysImage);
 			sysImage = (SystemImage) service.select("defaultmountain");
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.IMAGE_JPEG);
-			return new ResponseEntity<byte[]>(sysImage.getImage(), headers, HttpStatus.OK);
+			result.add(new ResponseEntity<byte[]>(sysImage.getImage(), headers, HttpStatus.OK));
 		}
 
 		return result.get(0);

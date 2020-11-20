@@ -22,20 +22,17 @@ import main.generic.model.GenericTypeObject;
 @Component
 public class ActImage extends GenericTypeObject{
 	
+	
+	private Integer seqno;
+	private String name;
+	private byte[] img;
+	private ActivityBasic activityBasic;
+	private Integer defaultImage;
+	
+	@Override
 	@Id
 	@Column(name = "SEQNO")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer seqno;
-	@Column(name = "img_name")
-	private String name;
-	@Column(name = "IMG")
-	private byte[] img;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ACTIVITY_BASIC_SEQNO")
-	@JsonIgnore
-	private ActivityBasic activityBasic;
-	
-	@Override
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -44,6 +41,7 @@ public class ActImage extends GenericTypeObject{
 		this.seqno = seqno;
 	}
 	@Override
+	@Column(name = "img_name")
 	public String getName() {
 		return name;
 	}
@@ -51,21 +49,29 @@ public class ActImage extends GenericTypeObject{
 	public void setName(String name) {
 		this.name = name;
 	}
+	@Column(name = "IMG")
+	@JsonIgnore
 	public byte[] getImg() {
 		return img;
 	}
 	public void setImg(byte[] img) {
 		this.img = img;
 	}
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ACTIVITY_BASIC_SEQNO")
+	@JsonIgnore
 	public ActivityBasic getActivityBasic() {
 		return activityBasic;
 	}
 	public void setActivityBasic(ActivityBasic activityBasic) {
 		this.activityBasic = activityBasic;
 	}
-	@Transient
-	public Integer getActBasic() {
-		return activityBasic.getSeqno();
+	@Column(name = "DEFAULTIMAGE")
+	public Integer getDefaultImage() {
+		return defaultImage;
+	}
+	public void setDefaultImage(Integer defaultImage) {
+		this.defaultImage = defaultImage;
 	}
 
 }

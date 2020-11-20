@@ -2,23 +2,18 @@ package mountain.function;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.hibernate.hql.internal.ast.HqlASTFactory;
-
 import main.generic.model.GenericTypeObject;
 import main.generic.service.InterfaceService;
-import main.generic.service.GenericService;
 import member.model.MemberBasic;
 import mountain.model.activity.ActBean;
 import mountain.model.activity.ActivityBasic;
 import mountain.model.activity.ActivityInfo;
 import mountain.model.activity.Registry.ActRegInfo;
-import mountain.model.activity.Registry.ActRegistry;
 import mountain.model.route.MountainBean;
 import mountain.model.route.NationalPark;
 import mountain.model.route.RouteBasic;
@@ -26,7 +21,6 @@ import mountain.model.route.RouteInfo;
 
 public class TransFuction {
 	
-	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 	
 	public static String bytesToString(byte[] bytes) throws IOException, SQLException {
 		if (bytes == null ) {
@@ -187,27 +181,31 @@ public class TransFuction {
 			//set price
 			actBean.setPrice("$" + actInfo.getPrice());
 			//set startDate
-			actBean.setStartDate(sdf.format(actInfo.getStartDate()));
+			actBean.setStartDate(actInfo.getStartDate());
 			//set EndDate
-			actBean.setEndDate(sdf.format(actInfo.getEndDate()));
+			actBean.setEndDate(actInfo.getEndDate());
 			//set NowReg
 			service.save(new ActRegInfo());
-			String hql = "Select count(*) From ActRegInfo ari where ari.actRegistry in (From ActRegistry ar where ACTIVITY_BASIC_SEQNO = "+ actID + ")";
+			String hql = "Select count(*) From ActRegInfo ari "
+					+ "where ari.actRegistry in (From ActRegistry ar where ACTIVITY_BASIC_SEQNO = "+ actID 
+					+ "and ar.deniedtag is null)";
 			int countResult = service.countWithHql(hql);
 			actBean.setNowReg(countResult);
 			//set TopReg
 			actBean.setTopReg(actInfo.getRegTop());
 			//set RegEndDate
-			actBean.setRegEndDate(sdf.format(actInfo.getRegEndDate()));
+			actBean.setRegEndDate(actInfo.getRegEndDate());
 			//set PostDate
-			actBean.setPostDate(sdf.format(actInfo.getPostDate()));
+			actBean.setPostDate(actInfo.getPostDate());
 			//set AuthorName
-			actBean.setAuthorName(memberBasic.getName());
+			actBean.setMemberBasic(memberBasic);
 			//set TotalDay
 			actBean.setTotalDay(actInfo.getTotalDay());
+			//set ChangeDate
+			actBean.setChangeDate(actInfo.getChangeDate());
+			//set HideTag
+			actBean.setHideTag(actInfo.getHideTag());
 			//set Tag
-			Map<Integer, Boolean> tagResult = new TagSelector(actInfo,actBean).getTagResult();
-			actBean.setTag(tagResult);
 			actBeans.add(actBean);
 		}
 		return actBeans;
@@ -227,9 +225,9 @@ public class TransFuction {
 		//set price
 		actBean.setPrice("$" + actInfo.getPrice());
 		//set startDate
-		actBean.setStartDate(sdf.format(actInfo.getStartDate()));
+		actBean.setStartDate(actInfo.getStartDate());
 		//set EndDate
-		actBean.setEndDate(sdf.format(actInfo.getEndDate()));
+		actBean.setEndDate(actInfo.getEndDate());
 		//set NowReg
 		service.save(new ActRegInfo());
 		String hql = "Select count(*) From ActRegInfo ari where ari.actRegistry in (From ActRegistry ar where ACTIVITY_BASIC_SEQNO = "+ actID + ")";
@@ -238,16 +236,18 @@ public class TransFuction {
 		//set TopReg
 		actBean.setTopReg(actInfo.getRegTop());
 		//set RegEndDate
-		actBean.setRegEndDate(sdf.format(actInfo.getRegEndDate()));
+		actBean.setRegEndDate(actInfo.getRegEndDate());
 		//set PostDate
-		actBean.setPostDate(sdf.format(actInfo.getPostDate()));
+		actBean.setPostDate(actInfo.getPostDate());
 		//set AuthorName
-		actBean.setAuthorName(memberBasic.getName());
+		actBean.setMemberBasic(memberBasic);
 		//set TotalDay
 		actBean.setTotalDay(actInfo.getTotalDay());
+		//set ChangeDate
+		actBean.setChangeDate(actInfo.getChangeDate());
+		//set HideTag
+		actBean.setHideTag(actInfo.getHideTag());
 		//set Tag
-		Map<Integer, Boolean> tagResult = new TagSelector(actInfo,actBean).getTagResult();
-		actBean.setTag(tagResult);
 		
 		
 		return actBean;

@@ -16,6 +16,7 @@ import javax.persistence.Transient;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import main.generic.model.GenericTypeObject;
 import member.model.MemberBasic;
@@ -42,7 +43,7 @@ public class ActivityBasic extends GenericTypeObject{
 	}
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "member_basic_id", referencedColumnName = "seqno")
-	@JsonIgnore
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	public MemberBasic getMemberBasic() {
 		return memberBasic;
 	}
@@ -56,13 +57,4 @@ public class ActivityBasic extends GenericTypeObject{
 	public void setActInfo(ActivityInfo actInfo) {
 		this.actInfo = actInfo;
 	}
-	@Transient
-	public Integer getMemberBasicID() {
-		return memberBasic.getSeqno();
-	}
-	@Transient
-	public Integer getActInSeqno() {
-		return actInfo.getId();
-	}
-	
 }

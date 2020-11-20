@@ -71,6 +71,18 @@
 <colAssociation fkAssociation="AC8E6BB0-29F2-9CB5-5E9D-584EB99CD236" referredColumn="C4AA0944-B645-2ECF-5636-002A4CF55F8A"/>
 </associations>
 </Column>
+<Column name="defaultimage" id="213380B0-1CA8-67A8-3A59-02452E75C13F">
+<createdBy>Japan</createdBy>
+<createdTime>2020-11-19 23:04:42 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="538F0C42-BD97-93E5-594D-23E6B1F3189A" name="act_img_pk">

@@ -21,34 +21,23 @@ import main.generic.model.GenericTypeObject;
 @Table(name = "activity_registry_info")
 @Component
 public class ActRegInfo extends GenericTypeObject{
-	@Id
-	@Column(name = "SEQNO")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	private Integer seqno;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ACTIVITY_REGISTRY_SEQNO")
-	@JsonIgnore
 	private ActRegistry actRegistry;
-	@Column(name = "NAME")
 	private String name;
-	@Column(name = "BIRTHDAY")
 	private java.util.Date birthDay;
-	@Column(name = "PERSONAL_ID")
 	private String personID;
-	@Column(name = "CONTACT_PHONE")
 	private String contactPhone;
-	@Column(name = "CONTACT_CELLPHONE")
 	private String contactCellphone;
-	@Column(name = "CONTACT_EMAIL")
 	private String contactEmail;
-	@Column(name = "EMG_CONTACT_NAME")
 	private String emgName;
-	@Column(name = "EMG_CONTACT_CELLPHONE")
 	private String emgCellphone;
-	@Column(name = "EMG_CONTACT_PHONE")
 	private String emgPhone;
 	
 	@Override
+	@Id
+	@Column(name = "SEQNO")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -56,63 +45,77 @@ public class ActRegInfo extends GenericTypeObject{
 	public void setSeqno(Integer seqno) {
 		this.seqno = seqno;
 	}
+	@Column(name = "NAME")
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
+	@Column(name = "BIRTHDAY")
 	public java.util.Date getBirthDay() {
 		return birthDay;
 	}
 	public void setBirthDay(java.util.Date birthDay) {
 		this.birthDay = birthDay;
 	}
+	@Column(name = "PERSONAL_ID")
 	public String getPersonID() {
 		return personID;
 	}
 	public void setPersonID(String personID) {
 		this.personID = personID;
 	}
+	@Column(name = "CONTACT_PHONE")
 	public String getContactPhone() {
 		return contactPhone;
 	}
 	public void setContactPhone(String contactPhone) {
 		this.contactPhone = contactPhone;
 	}
+	@Column(name = "CONTACT_CELLPHONE")
 	public String getContactCellphone() {
 		return contactCellphone;
 	}
 	public void setContactCellphone(String contactCellphone) {
 		this.contactCellphone = contactCellphone;
 	}
+	@Column(name = "CONTACT_EMAIL")
 	public String getContactEmail() {
 		return contactEmail;
 	}
 	public void setContactEmail(String contactEmail) {
 		this.contactEmail = contactEmail;
 	}
+	@Column(name = "EMG_CONTACT_NAME")
 	public String getEmgName() {
 		return emgName;
 	}
 	public void setEmgName(String emgName) {
 		this.emgName = emgName;
 	}
+	@Column(name = "EMG_CONTACT_CELLPHONE")
 	public String getEmgCellphone() {
 		return emgCellphone;
 	}
 	public void setEmgCellphone(String emgCellphone) {
 		this.emgCellphone = emgCellphone;
 	}
+	@Column(name = "EMG_CONTACT_PHONE")
 	public String getEmgPhone() {
 		return emgPhone;
 	}
 	public void setEmgPhone(String emgPhone) {
 		this.emgPhone = emgPhone;
 	}
-	@Transient
-	public Integer getActRegSeqno() {
-		return actRegistry.getSeqno();
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ACTIVITY_REGISTRY_SEQNO")
+	@JsonIgnore
+	public ActRegistry getActRegistry() {
+		return actRegistry;
+	}
+	public void setActRegistry(ActRegistry actRegistry) {
+		this.actRegistry = actRegistry;
 	}
 	
 }

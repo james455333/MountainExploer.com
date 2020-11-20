@@ -31,33 +31,20 @@ import mountain.model.activity.ActivityBasic;
 @Table(name = "activity_registry")
 @Component
 public class ActRegistry extends GenericTypeObject {
-	@Id
-	@Column(name = "SEQNO")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer seqno;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ACTIVITY_BASIC_SEQNO")
-	@JsonIgnore
-	private ActivityBasic activityBasic;
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "MEMBER_BASIC_ID")
-	@JsonIgnore
-	private MemberBasic memberBasic;
-	@Basic
-	@Column(name = "REG_DATE")
-	@Temporal(TemporalType.DATE)
-	private java.util.Date reqDate;
-	@Column(name = "DECLINE_TAG")
-	private Character deniTag;
-	@Column(name = "CONFIRM")
-	private Character confirm;
-	@Column(name = "DECLINE_REASON")
-	private byte[] declineReson;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "actRegistry", cascade = CascadeType.ALL)
+	private Integer seqno;
+	private ActivityBasic activityBasic;
+	private MemberBasic memberBasic;
+	private java.util.Date reqDate;
+	private Integer deniTag;
+	private Integer confirm;
+	private byte[] declineReson;
 	private Set<ActRegInfo> actRegInfo;
 	
 	@Override
+	@Id
+	@Column(name = "SEQNO")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -65,55 +52,60 @@ public class ActRegistry extends GenericTypeObject {
 	public void setSeqno(Integer seqno) {
 		this.seqno = seqno;
 	}
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ACTIVITY_BASIC_SEQNO")
+	@JsonIgnore
 	public ActivityBasic getActivityBasic() {
 		return activityBasic;
 	}
 	public void setActivityBasic(ActivityBasic activityBasic) {
 		this.activityBasic = activityBasic;
 	}
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "MEMBER_BASIC_ID")
+	@JsonIgnore
 	public MemberBasic getMemberBasic() {
 		return memberBasic;
 	}
 	public void setMemberBasic(MemberBasic memberBasic) {
 		this.memberBasic = memberBasic;
 	}
+	@Basic
+	@Column(name = "REG_DATE")
+	@Temporal(TemporalType.DATE)
 	public java.util.Date getReqDate() {
 		return reqDate;
 	}
 	public void setReqDate(java.util.Date reqDate) {
 		this.reqDate = reqDate;
 	}
-	public Character getDeniTag() {
+	@Column(name = "DECLINE_TAG")
+	public Integer getDeniTag() {
 		return deniTag;
 	}
-	public void setDeniTag(Character deniTag) {
+	public void setDeniTag(Integer deniTag) {
 		this.deniTag = deniTag;
 	}
-	public Character getConfirm() {
+	@Column(name = "CONFIRM")
+	public Integer getConfirm() {
 		return confirm;
 	}
-	public void setConfirm(Character confirm) {
+	public void setConfirm(Integer confirm) {
 		this.confirm = confirm;
 	}
+	@Column(name = "DECLINE_REASON")
 	public byte[] getDeclineReson() {
 		return declineReson;
 	}
 	public void setDeclineReson(byte[] declineReson) {
 		this.declineReson = declineReson;
 	}
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "actRegistry", cascade = CascadeType.ALL)
 	public Set<ActRegInfo> getActRegInfo() {
 		return actRegInfo;
 	}
 	public void setActRegInfo(Set<ActRegInfo> actRegInfo) {
 		this.actRegInfo = actRegInfo;
-	}
-	@Transient
-	public int getActBasicSeqno() {
-		return activityBasic.getSeqno();
-	}
-	@Transient
-	public int getMemberBasicID() {
-		return memberBasic.getSeqno();
 	}
 
 }

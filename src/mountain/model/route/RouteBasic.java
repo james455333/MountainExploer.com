@@ -29,26 +29,14 @@ public class RouteBasic extends GenericTypeObject implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private Integer id;
+	private NationalPark national_park;
+	private RouteInfo routeInfo;
+	
+	@Override
 	@Id
 	@Column(name = "SEQNO")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	@Transient
-	private Integer npid;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="NATIONAL_PARK_ID",referencedColumnName = "SEQNO")
-	@JsonIgnore
-	private NationalPark national_park;
-	public NationalPark getNational_park() {
-		return national_park;
-	}
-	public void setNational_park(NationalPark national_park) {
-		this.national_park = national_park;
-	}
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "route_basic", cascade = CascadeType.ALL)
-	@JsonIgnore
-	private RouteInfo routeInfo;
-	@Override
 	public Integer getId() {
 		return id;
 	}
@@ -56,20 +44,23 @@ public class RouteBasic extends GenericTypeObject implements Serializable{
 	public void setId(Integer routeid) {
 		this.id = routeid;
 	}
-		
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="NATIONAL_PARK_ID",referencedColumnName = "SEQNO")
+	@JsonIgnore
+	public NationalPark getNational_park() {
+		return national_park;
+	}
+	public void setNational_park(NationalPark national_park) {
+		this.national_park = national_park;
+	}
+	
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "route_basic", cascade = CascadeType.ALL)
 	public RouteInfo getRouteInfo() {
 		return routeInfo;
 	}
 	public void setRouteInfo(RouteInfo routeInfo) {
 		this.routeInfo = routeInfo;
 	}
-	public int getNpid() {
-		return npid;
-	}
-	public void setNpid(Integer npid) {
-		this.npid = npid;
-	}
-	
-	
-	
+			
 }

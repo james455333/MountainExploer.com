@@ -83,125 +83,104 @@
                     </ul>
                 </nav>
 				<!--	活動標題 	-->
-<!-- 				<table class="actTitle"> -->
-<!-- 					<tbody> -->
-<!-- 						<tr> -->
-<!-- 							<td> -->
-<!-- 								標籤 -->
-<!-- 								<div></div> -->
-<!-- 								標題字 -->
-<!-- 								<div> -->
-<!-- 									測試用標題 -->
-<!-- 								</div> -->
-<!-- 							</td> -->
-<!-- 						</tr> -->
-<!-- 					</tbody> -->
-<!-- 				</table> -->
-				<!--	活動主內容與留言	 -->
-<!-- 				<div class="actPost"> -->
-<!-- 						分隔用DIV	 -->
-<!-- 					<div></div> -->
-<!-- 					<table> -->
-<!-- 						<tbody> -->
-<!-- 							<tr> -->
-<!-- 								會員資訊 -->
-<!-- 								<td class="memberTD"> -->
-<!-- 									會員Seqno -->
-<!-- 									<div style="display:none;"></div> -->
-<!-- 									會員暱稱 -->
-<!-- 									<div>測試暱稱</div> -->
-<!-- 									會員頭像 -->
-<!-- 									<div class="memeberImgContainer"> -->
-<!-- 										<img class="memeberImg" src="https://media1.s-nbcnews.com/j/newscms/2018_37/2566431/180914-stock-universe-al-1025_cdb902a22ae43a09c662a5f03f673a82.fit-1240w.jpg"> -->
-<!-- 									</div> -->
-<!-- 								</td> -->
-								
-<!-- 								發文內容 -->
-<!-- 								<td class="d_Main"> -->
-<!-- 									發文與最後編輯時間 -->
-<!-- 									<div class="d_time"> 測試發文時間 / </div> -->
-<!-- 									發文內容 -->
+				<table class="actTitle">
+					<tbody>
+						<tr>
+							<td>
+								<!-- 標籤 -->
+								<div class="tagContainer"></div>
+								<!-- 標題 -->
+								<div class="a_title"><a></a></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- 活動主內容 -->		
+				<div class="actPost">
+					<!-- 分隔用DIV	 -->
+					<div></div>
+					<table>
+						<tbody>
+							<tr>
+								<!-- 會員資訊 -->
+								<td class="memberTD">
+									<!-- 會員暱稱 -->
+									<div><a href=""></a></div>
+									<!-- 會員頭像 -->
+									<div class="memeberImgContainer">
+										<a href="">
+											<img class="memeberImg" src="https://profunder.com/wp-content/uploads/2016/04/default-male.png">
+										</a>
+									</div>
+								</td>
+								<td class="d_Main">
+									<!-- 發起時間 -->
+									<div class="d_time"></div>
 									
-<!-- 									<div class="d_content"> -->
-<!-- 										內容文字 -->
-<!-- 										<div class="d_text"> -->
-<!-- 											最後編輯時間 -->
-<!-- 											<i></i> -->
-<!-- 											名稱 -->
-<!-- 											<div>測試名稱</div> -->
-<!-- 											活動費用 -->
-<!-- 											<div>測試活動費用</div> -->
-<!-- 											路線資訊 -->
-<!-- 											<div>測試路線資訊</div> -->
-<!-- 											活動日期(開始~結束) -->
-<!-- 											<div>測試活動日期</div> -->
-<!-- 											目前報名人數 / 報名人數上限 -->
-<!-- 											<div>測試報名人數</div> -->
-<!-- 											報名截止日 -->
-<!-- 											<div>測試報名截止日</div> -->
-<!-- 											活動日期 -->
-<!-- 											<div>測試活動日期</div> -->
-<!-- 										</div> -->
-<!-- 										會員偵測 -->
-<!-- 										<div class="d_member_lock">會員專視 -->
-<!-- 											圖片 (複數:最多5) -->
+									<!-- 發文內容 -->
+									<div class="d_content">
+										<!-- 內容文字 -->
+										<div class="d_text">
+											<!-- 最後編輯時間 -->
+											<i></i>
+											<!-- 會有預設內容，可更改 -->
+										</div>
+										<!-- 會員偵測 -->
+										<div class="d_member_check">
+											<div class="memberLocker">
+												瀏覽完整內容，請先
+												<a href="">註冊</a>
+												或
+												<a href="">登入會員</a>
+											</div>
+											<!-- 圖片 (複數:最多5) -->
+											<div class="d_act_img_con">
+											</div>
 <!-- 											<div class="d_act_img"> -->
-<!-- 												<img alt="" src="https://cdn.mos.cms.futurecdn.net/qWRNTdErRRidiwWoT5dvj-1200-80.jpg"> -->
+<!-- 												<img alt="" src=""> -->
 <!-- 											</div> -->
-<!-- 											<div class="d_act_img"> -->
-<!-- 												<img alt="" src="https://cdn.mos.cms.futurecdn.net/qWRNTdErRRidiwWoT5dvj-1200-80.jpg"> -->
-<!-- 											</div> -->
-<!-- 											<div class="d_act_img"> -->
-<!-- 												<img alt="" src="https://cdn.mos.cms.futurecdn.net/qWRNTdErRRidiwWoT5dvj-1200-80.jpg"> -->
-<!-- 											</div> -->
-<!-- 											備註 -->
-<!-- 											<div> -->
-<!-- 												測試備註內容 -->
-<!-- 											</div> -->
-<!-- 											報名鈕 -->
-<!-- 											<div> -->
-<!-- 												<form> -->
-<!-- 													<input type="submit" value="報名"> -->
-<!-- 												</form> -->
-<!-- 											</div> -->
-<!-- 											留言 複數 -->
+											<!-- 備註 -->
+											<div class="d_note">
+											</div>
+											<!-- 報名鈕 -->
+											<div class="goReg">
+												
+												<a href="">前往本活動之報名頁面</a>
+											</div>
+											<!-- 留言 複數 -->
 <!-- 											<div class="d_sr"> -->
-<!-- 												留言者 -->
+												<!-- 留言者 -->
 <!-- 												<div class="d_sr_img"> -->
-<!-- 													留言者頭像 -->
-<!-- 													<a> -->
-<!-- 														<img src=""> -->
+													<!-- 留言者頭像 -->
+<!-- 													<a href=""> -->
+<!-- 														<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGqmpjgWstfG3p9qOmG8r2AsddLtXOjYfhCg&usqp=CAU"> -->
 <!-- 													</a> -->
-<!-- 													留言者暱稱 -->
 <!-- 												</div> -->
-<!-- 												留言內容 -->
+												<!-- 留言內容 -->
 <!-- 												<div class="d_sr_text"> -->
-<!-- 													<a>測試留言者暱稱</a> -->
-<!-- 													測試留言者內容 -->
-<!-- 													<span>留言時間</span> -->
+													<!-- 留言者暱稱 -->
+<!-- 													<a style="padding: 0" href=""></a> -->
+<!-- 													<span></span> -->
+													<!-- 測試留言者內容 -->
+<!-- 													<span>發表於 : </span> -->
 <!-- 												</div> -->
 <!-- 											</div> -->
-<!-- 										</div> -->
-<!-- 									</div> -->
+										</div>
+									</div>
 								
-<!-- 								</td> -->
-<!-- 							</tr> -->
+								</td>
+							</tr>
 <!-- 								預備用	 -->
-<!-- 							<tr> -->
-<!-- 							</tr> -->
+							<tr>
+							</tr>
 <!-- 								預備用	 -->
-<!-- 							<tr> -->
-<!-- 							</tr> -->
-<!-- 						</tbody> -->
-<!-- 					</table> -->
-<!-- 				</div> -->
+							<tr>
+							</tr>
+						</tbody>
+					</table>
+				</div>
             	
             	
-            	
-            	
-            </div>
-            <!-- 每頁不同的內容到這裡結束 -->
-            <!-- 頁面控制 -->
             	<nav class="pageControl">
                     <ul>
                         <li class="li1">
@@ -221,6 +200,11 @@
                         </li>
                     </ul>
                 </nav>
+            	
+            	
+            </div>
+            <!-- 每頁不同的內容到這裡結束 -->
+            <!-- 頁面控制 -->
         </div>
         
     </div>
