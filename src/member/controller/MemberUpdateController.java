@@ -128,6 +128,7 @@ public class MemberUpdateController {
 	public String processInfoUpdate(@RequestParam(name = "seqno")int seqno,
 									@RequestParam(name = "memberInfo.neck_name")String ncName,
 									@RequestParam(name = "name")String name,
+									@RequestParam(name = "memberInfo.gender")String gender,
 									@RequestParam(name = "memberInfo.birthday", required = false)String birDate,
 									@RequestParam(name = "memberInfo.phone")String phone,
 									@RequestParam(name = "email")String email,
@@ -136,41 +137,34 @@ public class MemberUpdateController {
 									Model m
 									) throws ParseException {
 		Map<String, String> errors = new HashMap<String, String>();
-		MemberBasic mb = new MemberBasic();
-		MemberInfo mbInfo = new MemberInfo();
-
-		mb.setName(name);
-		mb.setEmail(email);
-		
-		mbInfo.setNeck_name(ncName);
-		
+	
 		//String Data(sql)轉型
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		java.util.Date parse = sdf.parse(birDate);
 		Date sqldate = new Date(parse.getTime());
-		mbInfo.setBirthday(sqldate);
-		
-		mbInfo.setPhone(phone);
-		mbInfo.setClimb_ex(exp);
-		
+
+	
 		byte[] byteOther = other.getBytes();
-		mbInfo.setOther(byteOther);
-		
-		mb.setMemberInfo(mbInfo);
-		mbInfo.setMemberBasic(mb);
+
 		
 		MemberBasic queryMb = mbService.select(seqno);
 		if(queryMb != null) {
 			System.out.println("================帳號:" + queryMb.getAccount());
-			MemberBasic updateMb = mbService.updateData(mb);
-			mbInfo.setMemberBasic(updateMb);
+			queryMb.setName(name);
+			queryMb.setEmail(email);
+			queryMb.getMemberInfo().setBirthday(sqldate);
+			queryMb.getMemberInfo().setNeck_name(ncName);
+			queryMb.getMemberInfo().setGender(gender);
+			queryMb.getMemberInfo().setBirthday(sqldate);
+			queryMb.getMemberInfo().setPhone(phone);
+			queryMb.getMemberInfo().setClimb_ex(exp);
+			queryMb.getMemberInfo().setOther(byteOther);
 			
-			MemberInfo updateIN = mbInfoService.update(mbInfo);
-			
-			
-//			m.addAttribute("Member", );
+			mbService.updateData(queryMb);
+			m.addAttribute("Member", queryMb);
 			m.addAttribute("result", "會員資料更新成功");
 			System.out.println("會員資料更新成功");
+			
 			return "member/memberInfo";
 		} else {
 			errors.put("errors", "會員資料更新失敗");

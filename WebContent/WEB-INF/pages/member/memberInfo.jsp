@@ -20,7 +20,7 @@
 					<span>${Member.account}</span><br/>
 					<input type="hidden" name="account" value="${Member.account}">
 				</div>
-				<div>
+				<div style="display:none">
 					<label>密碼：</label>
 					<input type="hidden" name="password" value="${Member.password}">
 				</div>
@@ -36,7 +36,17 @@
 				</div>
 				<div>
 					<label>性別：</label>
-					<span>${Member.memberInfo.gender}</span><br/>
+					<span>
+						<c:if test="${Member.memberInfo.gender eq 'male'}">
+							男
+						</c:if>
+						<c:if test="${Member.memberInfo.gender eq 'female'}">
+							女
+						</c:if>
+						<c:if test="${Member.memberInfo.gender eq 'x'}">
+							X
+						</c:if>
+					</span><br/>
 					<input type="hidden" name="memberInfo.gender" value="${Member.memberInfo.gender}">
 				</div>
 				<div>
