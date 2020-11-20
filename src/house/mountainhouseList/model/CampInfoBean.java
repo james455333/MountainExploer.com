@@ -22,6 +22,8 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "camp_info")
 @Component
@@ -42,6 +44,7 @@ public class CampInfoBean {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "COUNTIES_NAME")
+	@JsonIgnore
 	private CountiesBean counties;
 	
 	@OneToOne(fetch = FetchType.LAZY , mappedBy = "campid",cascade = CascadeType.ALL)
