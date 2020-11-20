@@ -18,7 +18,7 @@ import member.model.MemberBasic;
 import member.model.MemberService;
 
 @Controller
-@SessionAttributes(names = {"MemberBasic", "beforeCheckURL"})
+@SessionAttributes(names = {"Member", "beforeCheckURL"})
 public class MemberLoginController {
 
 	private static String beforeCheckURL;

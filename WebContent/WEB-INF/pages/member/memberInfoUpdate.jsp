@@ -10,22 +10,12 @@
 </head>
 <body>
 	<div>
-		<form action="<c:url value='/member/memberInfoUpdate'/>" method="POST">
+		<form action="<c:url value='/member/memberInfoUpdateAction'/>" method="POST">
 			<fieldset>
 				<legend>修改個人資料</legend>
 				<div style="display:none">
 					<label>會員編號</label>
 					<input type="hidden" name="seqno" value="${Member.seqno}">
-				</div>
-				<div>
-					<label>密碼：</label>
-					<input type="password" id="pwd" class="pwd" name="password" value="${Member.password}" required="required">
-					<span class="pwdsp"></span><br/>
-				</div>
-				<div>
-					<label>密碼驗證：</label>
-					<input type="password" class="chkPwd" placeholder="請再次輸入密碼" required="required">
-					<span class="chksp"></span><br/>
 				</div>
 				<div>
 					<label>暱稱：</label>
@@ -44,7 +34,7 @@
 				</div>
 				<div>
 					<label>生日：</label>
-					<input type="text" id="birDate" class="birDate" name="memberInfo.birthday" class="${Member.memberInfo.birthday}">
+					<input type="text" id="birDate" class="birDate" name="memberInfo.birthday" value="${Member.memberInfo.birthday}">
 					<span class="brsp"></span><br/>
 				</div>
 				<div>
@@ -54,7 +44,7 @@
 				</div>
 				<div>
 					<label>Email：</label>
-					<input type="email" id="email" class="email" name="email" value="${Member.email}" required="required">
+					<input type="text" id="email" class="email" name="email" value="${Member.email}" required="required">
 					<span class="emsp"></span><br/>
 				</div>
 				<div>
@@ -65,12 +55,16 @@
 					<label>個人簡介：</label>
 					<input type="text" id="other" name="memberInfo.other" value="${Member.memberInfo.other}"><br/>
 				</div>
+				<div>
+					<input type="submit" id="submit" name="submit" value="儲存">
+					<input type="reset" id="reset" name="reset" value="清除">
+				</div>
 			</fieldset>
 		</form>
 	</div>
 	
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-	<script src="memberInfoUpdate.js"></script>
+	<script src="/MountainExploer.com/member/memberInfoUpdate.js"></script>
 
 </body>
 </html>

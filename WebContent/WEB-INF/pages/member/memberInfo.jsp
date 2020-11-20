@@ -20,7 +20,7 @@
 					<span>${Member.account}</span><br/>
 					<input type="hidden" name="account" value="${Member.account}">
 				</div>
-				<div>
+				<div style="display:none">
 					<label>密碼：</label>
 					<input type="hidden" name="password" value="${Member.password}">
 				</div>
@@ -36,7 +36,17 @@
 				</div>
 				<div>
 					<label>性別：</label>
-					<span>${Member.memberInfo.gender}</span><br/>
+					<span>
+						<c:if test="${Member.memberInfo.gender eq 'male'}">
+							男
+						</c:if>
+						<c:if test="${Member.memberInfo.gender eq 'female'}">
+							女
+						</c:if>
+						<c:if test="${Member.memberInfo.gender eq 'x'}">
+							X
+						</c:if>
+					</span><br/>
 					<input type="hidden" name="memberInfo.gender" value="${Member.memberInfo.gender}">
 				</div>
 				<div>
@@ -48,6 +58,11 @@
 					<label>手機號碼：</label>
 					<span>${Member.memberInfo.phone}</span><br/>
 					<input type="hidden" name="memberInfo.phone" value="${Member.memberInfo.phone}">
+				</div>
+				<div>
+					<label>Email：</label>
+					<span>${Member.email}</span>
+					<input type="hidden" name="email" value="${Member.email}">
 				</div>
 				<div>
 					<label>登山經驗：</label>
@@ -78,7 +93,11 @@
 			</fieldset>
 		</form>
 	</div>
-	
+	<div>
+		<form action="" method="GET">
+			<input type="submit" id="chgPwd" name="chgPwd" value="更改密碼">		
+		</form>	
+	</div>	
 
 </body>
 </html>
