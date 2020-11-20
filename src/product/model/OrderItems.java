@@ -7,6 +7,7 @@ public class OrderItems {
 	private Integer amount;
 	private Integer unitPrice;
 	private Double discount;
+	
 	public Integer getSeqno() {
 		return seqno;
 	}

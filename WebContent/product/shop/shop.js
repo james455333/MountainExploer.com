@@ -202,54 +202,6 @@ $(function(){
 		
 	})
 	
-		// 價格區間查詢
-	$(".priceSubmitButton").on("click",function(){
-		page = 1;
-		//console.log("show : " + showData + "\tpage : " + page)
-		let scale = $(".scSelect").val();
-		console.log(scale);
-		$.ajax({
-			url: homeUrl+ "/totalData?secondclass="+scID,
-			method : "GET",
-			success:function(data){
-				totalData = data;
-				$("#totalData").html(data)
-				//console.log("fc query TotalData : " + data )
-				totalPage = Math.ceil(totalData/showData);
-				//console.log("fc query TotalPage : " + totalPage)
-				$.ajax({
-					url : homeUrl + "/scSelect?secondclass=" + scID+"&showData="+showData ,
-					method : "GET",
-					dataType : "json",
-					success : function(data){
-						
-						insertTable(data);
-						setPageController(page)
-					}
-					
-				})
-				$("#pageController").off("click","input")
-				$("#pageController").on("click","input",function(){
-					var page = Number($(this).attr("name"));
-					//console.log("page Before Click : " + page)
-					$.ajax({
-					url : homeUrl + "/scSelect?secondclass=" + scID+"&showData="+showData+"&page="+page ,
-					method : "GET",
-					dataType : "json",
-					success : function(data){
-						
-						insertTable(data);
-						setPageController(page)
-					}
-					
-					})
-				})
-			}
-		})
-		
-		
-	})
-	
 	
 	//更換顯示
 	$("#changeShowData").on("click",function(){
@@ -262,30 +214,29 @@ $(function(){
 		$(".table").find("tbody").empty();
 		for( let i in data){
 			$(".table").find("tbody").append(
-				"<tr>" +
-					"<th>" + data[i].seqno + "</th>"+
+								"<tr>" +
+//					"<th>" + data[i].seqno + "</th>"+
 			  		"<td><div >" + data[i].name + "</div></td>"+
 			  		"<td><div >" + data[i].type + "</div></td>"+
-			  		"<td><div >" + data[i].firstClass + "</div></td>"+
-			  		"<td><div >" + data[i].secondClass + "</div></td>"+
+//			  		"<td><div >" + data[i].firstClass + "</div></td>"+
+//			  		"<td><div >" + data[i].secondClass + "</div></td>"+
 					"<td>"+
 						'<img style="width: 50px; height: 50px;" src="/MountainExploer.com/backstage/product/search/images?seqno='+ data[i].seqno+'" class="productImg" >'+
 					"</td>"+
+			  		"<td><div >" + data[i].description + "</div></td>" +
 			  		"<td><div >" + data[i].price + "</div></td>" +
-			  		"<td><div >" + data[i].stock + "</div></td>" +
-					"<td>" +
-						"<div>" +
-							"<form  action='" +homeUrl+"/updateDataPage'>" +
-								'<input type="hidden" name="seqno" value="' + data[i].seqno + '" readonly>' +
-						    	'<input type="submit" value="修改">' +
+//			  		"<td><div >" + data[i].stock + "</div></td>" +
+"<td>"+
+		'<div>'+
+		"<form  action='" +homeUrl+"/XXXXPage'>" +
+			'<span>數量選擇 :</span> <select name="amount" id="amountSelect">'+
+			'</select>'+
+			'<input type="hidden" name="seqno" value="' + data[i].seqno + '" readonly>' +
+			'<input type="button" value="加入購物車" class="amountSubmit">'+
 							'</form>' +
-						"</div>"+
-						"<div>"+
-							"<form class='hiddenForm' action='/MountainExploer.com/backstage/product/deleteData'>"+
-							'<input  type="hidden" name="seqno" value="' + data[i].seqno + '" readonly>' +
-							'</form>' +
-							'<input class="deleteButton" type="button"  value="刪除">' +
-						"</div>"+
+		"</div>"+
+
+
 					"</td>"+
 				"</tr>"
 			)
