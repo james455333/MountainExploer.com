@@ -27,7 +27,6 @@ public class RootAppConfig {
 	public void setEnv(Environment env) {
 		this.env = env;
 	}
-
 	@Bean
 	public DataSource dataSource() throws IllegalArgumentException, NamingException {
 		JndiObjectFactoryBean jndiBean = new JndiObjectFactoryBean();

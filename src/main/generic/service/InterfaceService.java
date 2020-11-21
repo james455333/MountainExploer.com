@@ -32,7 +32,7 @@ public interface InterfaceService<T extends GenericTypeObject> {
 
 	List<T> selectAllwithFK(String search, String FK);
 	
-	List<T> getwithHQL(String hql, Integer page, Integer showData);
+	List<? extends GenericTypeObject> getwithHQL(String hql, Integer page, Integer showData);
 	
 	int countWithHql(String hql);
 }

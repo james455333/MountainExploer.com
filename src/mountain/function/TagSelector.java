@@ -12,7 +12,7 @@ import mountain.model.activity.ActBean;
 import mountain.model.activity.ActivityInfo;
 
 public class TagSelector {
-	
+	/*	定義標籤參數	*/
 	private static long nowTime;
 	private static long postTime;
 	private static long startTime;
@@ -21,10 +21,11 @@ public class TagSelector {
 	private static int nowReg;
 	private static int topReg;
 	private static int regLeftDay;
+	/*	活動狀態標籤	*/
 	private static int newAct = 1;
 	private static int hotAct = 2;
 	private static int oldAct = 3;
-	
+	/*	報名標籤	*/
 	private static int regEnd = 4;
 	private static int regFull = 5;
 	private static int regAvl = 6;
@@ -73,16 +74,8 @@ public class TagSelector {
 		setRegClzFull(result);
 		setRegAvl(result);
 	}
-
-	private static void setOldAct(Map<Integer, Boolean> result) {
-		
-		if (startTime < nowTime) {
-			result.put(oldAct, true);
-		}else {
-			result.put(oldAct, false);
-		}
-	}
-
+	
+	/*	新活動標籤定義	*/
 	private static void setNewAct(Map<Integer, Boolean> result) {
 		
 		if (passDay <= 7) {
@@ -91,7 +84,7 @@ public class TagSelector {
 			result.put(newAct, false);
 		}
 	}
-	
+	/*	熱門活動標籤定義	*/
 	private static void setHotAct(Map<Integer, Boolean> result) {
 		
 		if (nowReg >= (topReg/2)) {
@@ -104,12 +97,17 @@ public class TagSelector {
 	
 	}
 	
+	/*	歷史活動標籤定義	*/
+	private static void setOldAct(Map<Integer, Boolean> result) {
+		
+		if (startTime < nowTime) {
+			result.put(oldAct, true);
+		}else {
+			result.put(oldAct, false);
+		}
+	}
+	/*	報名截止標籤定義	*/
 	private static void setRegEnd(Map<Integer, Boolean> result) {
-//		System.out.println("=============================");
-//		System.out.println("now Time : \t" + nowTime);
-//		System.out.println("regEnd Time : \t" + regEndTime);
-//		System.out.println("status : " + (nowTime >= regEndTime));
-//		System.out.println("=============================");
 		if (nowTime >= regEndTime) {
 			result.put(regEnd, true);
 			System.out.println("RegEnd : " + regEnd + "\t status : " + result.get(regEnd));
@@ -117,7 +115,7 @@ public class TagSelector {
 			result.put(regEnd, false);
 		}
 	}
-	
+	/*	報名已滿標籤定義	*/
 	private static void setRegFull(Map<Integer, Boolean> result) {
 		if (nowReg >= topReg) {
 			result.put(regFull, true);
@@ -125,7 +123,7 @@ public class TagSelector {
 			result.put(regFull, false);
 		}
 	}
-	
+	/*	尚可報名標籤定義	*/
 	private static void setRegAvl(Map<Integer, Boolean> result) {
 		if (nowReg < topReg) {
 			result.put(regAvl, true);
@@ -133,15 +131,15 @@ public class TagSelector {
 			result.put(regAvl, false);
 		}
 	}
-	
+	/*	報名將滿標籤定義	*/
 	private static void setRegClzEnd(Map<Integer, Boolean> result) {
-		if ( regLeftDay <= 7 ) {
+		if ( regLeftDay <= 7 && regLeftDay > 0) {
 			result.put(regClzEnd, true);
 		}else {
 			result.put(regClzEnd, false);
 		}
 	}
-
+	/*	報名已截止標籤定義	*/
 	private static void setRegClzFull(Map<Integer, Boolean> result) {
 		if ( nowReg >= (topReg*3/4) ) {
 			result.put(regClzFull, true);

@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -27,8 +26,6 @@ import member.back.model.MemberBasicBackService;
 import member.model.MemberBasic;
 import mountain.MountainGlobal;
 import mountain.function.TagSelector;
-import mountain.function.TransFuction;
-import mountain.model.activity.ActBean;
 import mountain.model.activity.ActImage;
 import mountain.model.activity.ActivityBasic;
 import mountain.model.activity.ActivityInfo;
@@ -38,11 +35,10 @@ import mountain.model.activity.response.ActSideResponse;
 @Controller
 @RequestMapping("/mountain/act/search")
 @SessionAttributes({"Member"})
+@SuppressWarnings("unchecked")
 public class ActRetrieveController {
 	@Autowired
 	private GenericService<GenericTypeObject> service;
-	@Autowired
-	private MemberBasicBackService memberBasicService;
 	
 	private int showData = MountainGlobal.actDS ;
 	private int respShowData = MountainGlobal.actRpDS;
@@ -51,43 +47,64 @@ public class ActRetrieveController {
 	/* 普通查詢 */
 	@GetMapping("/defaultAS")
 	@ResponseBody
-	public Map<Object ,Object> showActBeans(ActivityInfo actInfo,
-			@RequestParam(name = "page", required = false) Integer page){
+	public Map<Object ,Object> showActBeans(
+			ActivityBasic actBasic,
+			ActivityInfo actInfo,
+			@RequestParam(name = "page") Integer page){
 		// 回傳物件
 		Map<Object ,Object> resultMap = new HashMap<Object, Object>();		
-		List<ActBean> actBeans = new ArrayList<ActBean>();
+		List<Map<String, Object>> actList = new ArrayList<Map<String, Object>>();
 				
 		// 設定Service
 		InterfaceService<GenericTypeObject> service = this.service;
 		service.save(actInfo);
 		
 		// 設定hql語法
-		String hql = "From ActivityInfo where sysdate < startDate order by postDate";
+		String hql = "From ActivityInfo where sysdate < startDate order by postDate ,actBasic";
 		
 		// 得到hql總數
-		String all = "select count(*) " + hql;
+		String all = "select count(*) from ActivityInfo where sysdate < startDate " ;
 		int totalData = service.countWithHql(all);
 		
 		// 得到回傳結果
 		int totalPage = (int) Math.ceil( totalData*1.0 / showData  );
-		List<GenericTypeObject> actInfoList = service.getwithHQL(hql, page, showData);
-		actBeans = TransFuction.transToActBeans(actInfoList,service);
-		
+		List<ActivityInfo> actInfoList = (List<ActivityInfo>) service.getwithHQL(hql, page, showData);
+		for (ActivityInfo actInfoInList : actInfoList) {
+			//	Set actBasic => map
+			Map<String, Object> map = new HashMap<String, Object>();
+			actBasic = actInfoInList.getActBasic();
+			map.put("actBasic", actBasic);
+			
+			//	Set tagMap => map
+			Map<Integer, Boolean> tagResult = new TagSelector(actInfoInList, service).getTagResult();
+			map.put("tagMap",tagResult);
+			
+			// Set nowReg => map
+			service.save(new ActRegInfo());
+			String reghql = "Select count(*) From ActRegInfo ari where ari.actRegistry in (From ActRegistry ar where ACTIVITY_BASIC_SEQNO = "+ actBasic.getSeqno() + ")";
+			int nowReg = service.countWithHql(reghql);
+			map.put("nowReg", nowReg);
+			
+			actList.add(map);
+		}
 		
 		resultMap.put("totalData", totalData);
 		resultMap.put("totalPage", totalPage);
 		resultMap.put("page", page);
-		resultMap.put("actBeans", actBeans);
+		resultMap.put("actList", actList);
 		return resultMap;
 	}
 	
 	/* 標籤查詢 */
 	@GetMapping("/tagAS")
 	@ResponseBody
-	public Map<Object ,Object> rTagActBeans(ActivityInfo actInfo,@RequestParam Map<String, String> allParam){
+	public Map<Object ,Object> rTagActBeans(
+			ActivityBasic actBasic,
+			ActivityInfo actInfo,
+			@RequestParam Map<String, String> allParam){
 		// 回傳物件
 		Map<Object ,Object> resultMap = new HashMap<Object, Object>();		
-		List<ActBean> actBeans = new ArrayList<ActBean>();
+		List<Map<String ,Object>> actList = new ArrayList<Map<String ,Object>>();
 		
 		// 設定Service
 		InterfaceService<GenericTypeObject> service = this.service;
@@ -98,8 +115,7 @@ public class ActRetrieveController {
 		int page = Integer.parseInt(allParam.get("page") );
 		
 		// 由tag決定hql語法
-		String hql = null;
-		hql = tagParseHql(tag,hql);
+		String hql = tagParseHql(tag);
 		
 		// 提取hql結果總數
 		String allHql = "Select count(*) ".concat(hql);
@@ -107,14 +123,33 @@ public class ActRetrieveController {
 		
 		// 得到回傳結果
 		int totalPage = (int) Math.ceil( totalData*1.0 / showData  );
-		List<GenericTypeObject> actInfoList = service.getwithHQL(hql, page, showData);
-		actBeans = TransFuction.transToActBeans(actInfoList,service);
+		List<ActivityInfo> actInfoList = (List<ActivityInfo>) service.getwithHQL(hql, page, showData);
+		for (ActivityInfo actInfoInList : actInfoList) {
+			//	Set actBasic => map
+			Map<String, Object> map = new HashMap<String, Object>();
+			actBasic = actInfoInList.getActBasic();
+			map.put("actBasic", actBasic);
+			
+			//	Set tagMap => map
+			Map<Integer, Boolean> tagResult = new TagSelector(actInfoInList, service).getTagResult();
+			map.put("tagMap",tagResult);
+			
+			// Set nowReg => map
+			service.save(new ActRegInfo());
+			String reghql = "Select count(*) From ActRegInfo ari where ari.actRegistry in (From ActRegistry ar where ACTIVITY_BASIC_SEQNO = "+ actBasic.getSeqno() + ")";
+			int nowReg = service.countWithHql(reghql);
+			map.put("nowReg", nowReg);
+			
+			actList.add(map);
+		}
+		
+		
 		
 		// 結果放入回傳物件
 		resultMap.put("totalData", totalData);
 		resultMap.put("totalPage", totalPage);
 		resultMap.put("page", page);
-		resultMap.put("actBeans", actBeans);
+		resultMap.put("actList", actList);
 		
 		return resultMap;
 		
@@ -124,10 +159,13 @@ public class ActRetrieveController {
 	/* 名稱查詢 */
 	@GetMapping("/searchAS")
 	@ResponseBody
-	public Map<Object ,Object> searchActBeans(ActivityInfo actInfo,@RequestParam Map<String, String> allParam){
+	public Map<Object ,Object> searchActBeans(
+			ActivityBasic actBasic,
+			ActivityInfo actInfo,
+			@RequestParam Map<String, String> allParam){
 		//	回傳物件
 		Map<Object ,Object> resultMap = new HashMap<Object, Object>();
-		List<ActBean> actBeans = new ArrayList<ActBean>();
+		List<Map<String, Object>> actList = new ArrayList<Map<String, Object>>();
 		int totalData = 0;
 		int page = 1;
 		int totalPage = 1;
@@ -151,14 +189,31 @@ public class ActRetrieveController {
 			String allHql = "Select count(*) ".concat(hql);
 			totalData = service.countWithHql(allHql);
 			totalPage = (int) Math.ceil( totalData*1.0 / showData  );
-			List<GenericTypeObject> actInfoList = service.getwithHQL(hql, page, showData);
-			actBeans = TransFuction.transToActBeans(actInfoList,service);
+			List<ActivityInfo> actInfoList = (List<ActivityInfo>) service.getwithHQL(hql, page, showData);
+			for (ActivityInfo actInfoInList : actInfoList) {
+				//	Set actBasic => map
+				Map<String, Object> map = new HashMap<String, Object>();
+				actBasic = actInfoInList.getActBasic();
+				map.put("actBasic", actBasic);
+				
+				//	Set tagMap => map
+				Map<Integer, Boolean> tagResult = new TagSelector(actInfoInList, service).getTagResult();
+				map.put("tagMap",tagResult);
+				
+				// Set nowReg => map
+				service.save(new ActRegInfo());
+				String reghql = "Select count(*) From ActRegInfo ari where ari.actRegistry in (From ActRegistry ar where ACTIVITY_BASIC_SEQNO = "+ actBasic.getSeqno() + ")";
+				int nowReg = service.countWithHql(reghql);
+				map.put("nowReg", nowReg);
+				
+				actList.add(map);
+			}
 		}
 		
 		resultMap.put("totalData", totalData);
 		resultMap.put("totalPage", totalPage);
 		resultMap.put("page", page);
-		resultMap.put("actBeans", actBeans);
+		resultMap.put("actList", actList);
 		
 		return resultMap;
 	}
@@ -208,14 +263,13 @@ public class ActRetrieveController {
 			// set RespList
 			List<Map<String, Object>> respList = new ArrayList<Map<String, Object>>();
 			String respHql = "From ActResponse where activityBasic = " + actID;
-			List<GenericTypeObject> returnRespBeans = service.getwithHQL(respHql, page, respShowData);
+			List<ActResponse> returnRespBeans = (List<ActResponse>) service.getwithHQL(respHql, page, respShowData);
 //			System.out.println("================returnRespBeans size :" + returnRespBeans.size());
-			for (GenericTypeObject genericTypeObject : returnRespBeans) {
+			for (ActResponse returnRespBean : returnRespBeans) {
 				// Set acRespMap in respList 
 				Map<String ,Object> actRespMap = new HashMap<String, Object>();
 				// Set actResp in acRespMap
-				ActResponse actResp = (ActResponse) genericTypeObject;
-				actRespMap.put("actResp", actResp);
+				actRespMap.put("actResp", returnRespBean);
 				// Set respMB in acRespMap
 				respList.add(actRespMap);
 			}
@@ -229,11 +283,7 @@ public class ActRetrieveController {
 			Map<Integer, Boolean> tagMap = new TagSelector(actBasic.getActInfo(), service).getTagResult();
 			service.save(new ActImage());
 			String hqlImage = "From ActImage where activityBasic = " + actID;
-			List<GenericTypeObject> getwithHQL = service.getwithHQL(hqlImage, 1, 5);
-			List<ActImage> imgSeqList = new ArrayList<ActImage>();
-			for (GenericTypeObject gto : getwithHQL) {
-				imgSeqList.add( (ActImage)gto );
-			}
+			List<ActImage> imgSeqList = (List<ActImage>) service.getwithHQL(hqlImage, 1, 5);
 			
 			
 			resultMap.put("page", page);
@@ -245,7 +295,11 @@ public class ActRetrieveController {
 			return resultMap;
 		
 	}
-	/* 圖片顯示 */
+	/* 
+	 *	活動圖片顯示
+	 * 	回傳	:	List<ResponseEntity<byte[]>> 
+	 *  
+	 * */
 	@GetMapping(path = "/images")
 	@ResponseBody
 	public ResponseEntity<byte[]> showImage(
@@ -254,15 +308,29 @@ public class ActRetrieveController {
 			@RequestParam(name = "seqno", required = false) Integer seqno,
 			@RequestParam(name = "actID", required = false) Integer actID,
 			@RequestParam(name = "defImage", required = false)Integer defImage) { 
-//		System.out.println("圖片輸入開始");
+		/*	回傳物件	*/
 		List<ResponseEntity<byte[]>> result = new ArrayList<ResponseEntity<byte[]>>();
+		/*	設定service	*/
 		InterfaceService<GenericTypeObject> service = this.service;
 		service.save(actImage);
+		/*	
+		 * 	判定
+		 * 	直接查詢特定活動圖片ID
+		 * 	或者
+		 * 	特定活動ID(集合)	
+		 * 	來決定HQL
+		 * 
+		 * */
 		String hql = "From ActImage where seqno = " + seqno ;
 		if (defImage != null && actID != null) {
 			hql = "From ActImage where activityBasic = " + actID + " and defaultImage is not null";
 		}
-		List<GenericTypeObject> imgList = service.getwithHQL(hql, 1, 1);
+		/*
+		 * 
+		 * 	
+		 * 
+		 * */
+		List<ActImage> imgList = (List<ActImage>) service.getwithHQL(hql, 1, 1);
 		if ( !imgList.isEmpty() ) {
 			for (GenericTypeObject genericTypeObject : imgList) {
 				actImage = (ActImage) genericTypeObject;
@@ -273,7 +341,10 @@ public class ActRetrieveController {
 			}
 		}else{
 			service.save(sysImage);
-			sysImage = (SystemImage) service.select("defaultmountain");
+			String sysImgHql = "From SystemImage where name like 'defaultmountain' ";  
+			
+			List<SystemImage> getwithHQL = (List<SystemImage>) service.getwithHQL(sysImgHql, 1, 1);
+			sysImage = getwithHQL.get(0);
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.IMAGE_JPEG);
 			result.add(new ResponseEntity<byte[]>(sysImage.getImage(), headers, HttpStatus.OK));
@@ -283,8 +354,9 @@ public class ActRetrieveController {
 
 	}
 	
-	/* 標籤查詢-->編寫HQL */
-	private String tagParseHql(int tag, String hql) {
+	/*	標籤查詢 --> 編寫HQL	*/
+	private String tagParseHql(int tag) {
+		String hql = null;
 		if ( tag == 1 ) {
 			hql = "From ActivityInfo where sysdate < startDate and (postDate+7) >　sysdate order by actBasic";
 		}else if ( tag == 2 ) {
@@ -310,7 +382,7 @@ public class ActRetrieveController {
 					+ " (select seqno From ActRegistry ar where activityBasic = ai.id) )"
 					+ "order by ai.id";
 		}else if ( tag == 7 ) {
-			hql = "From ActivityInfo where sysdate < startDate and 7 > (regEndDate - sysdate)";
+			hql = "From ActivityInfo where sysdate < startDate and (regEndDate - sysdate) > 0 and 7 > (regEndDate - sysdate)";
 		}else if ( tag == 8 ) {
 			hql = "From ActivityInfo ai where sysdate < startDate and ai.regEndDate > sysdate and ai.regTop > "
 					+ "( Select count(*) From ActRegInfo where actRegistry in " 
