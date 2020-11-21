@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -35,12 +36,11 @@ public class WebAppMvcConfig implements WebMvcConfigurer  {
 		return viewResolver;
 	}
 	
-	//設置讀取特定路徑的真實路徑
-//	@Override
-//	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//		registry.addResourceHandler("/images/**").addResourceLocations("/WEB-INF/resources/images/");
-////		System.out.println("test2");
-//	}
+//	設置讀取特定路徑的真實路徑
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/**").addResourceLocations("/WEB-INF/pages/","/WEB-INF/resources/","/");
+	}
 	
 	
 	

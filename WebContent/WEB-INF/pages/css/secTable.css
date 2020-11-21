@@ -1,0 +1,42 @@
+.secDivContent {
+    position: relative;
+    top: 100px;
+    width: 1000px;
+    height: 1600px;
+    margin: 0px auto;
+    border: 5px solid black;
+}
+
+.order-table {
+    table-layout: fixed;
+    width: 900px;
+    margin: 15px auto;
+    border: 5px solid rgb(70, 64, 64);
+    border-collapse: collapse;
+    overflow: hidden;
+}
+
+.order-table-th {
+    font-size: 30px;
+}
+
+.order-table-tb {
+    font-size: 25px;
+    overflow: hidden;
+}
+
+tr:nth-child(even) {
+    background: rgb(204, 204, 204)
+}
+
+tr:nth-child(odd) {
+    background-color: #808080;
+}
+
+tr {
+    border: 2px solid rgb(0, 0, 0);
+}
+
+tbody tr:hover {
+    background-color: #bde6ee;
+}

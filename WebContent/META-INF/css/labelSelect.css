@@ -1,0 +1,13 @@
+.thirdSelect {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    /* line-height: 79px; */
+    float: left;
+    position: relative;
+}
+.li2{
+     /* 文字間格 */
+     padding: 20px 10px;
+     float: left;
+}

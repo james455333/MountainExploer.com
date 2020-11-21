@@ -40,19 +40,7 @@
         </nav>
     </header>
     <div class="div_ul">
-        <!-- <div class="導覽列表">
-            <nav>
-                <ul class="second_nav">
-                    <li class="li1"><a href="#">第二導覽列1</a></li>
-
-                    <li class="li1"><a href="#">第二導覽列2</a></li>
-
-                    <li class="li1"><a href="#">第二導覽列3</a></li>
-
-                    <li class="li1"><a href="#">第二導覽列4</a></li>
-                </ul>
-            </nav>
-        </div> -->
+        
         <div class="div_li1">
             <a>保留區</a>
         </div>

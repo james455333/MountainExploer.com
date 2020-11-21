@@ -10,13 +10,13 @@
     <title>岳進者</title>
     <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
     <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
-    <link rel="stylesheet" href="/MountainExploer.com/mountain/act/detail/css/detail.css">
+    <link rel="stylesheet" href="../../mountain/act/detail/detail.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="<c:url value='/mountain/act/detail/js/detail.js' />"></script>
+    <script src="../../mountain/act/detail/detail.js"></script>
 </head>
 
 <body>

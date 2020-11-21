@@ -1,0 +1,31 @@
+.forImage {
+    border: 5px solid rgb(95, 26, 26);
+    width: 980px;
+    height: 300px;
+    position: relative;
+    margin: 5px auto;
+}
+
+.forImagesImg {
+    object-fit: scale-down;
+    width: 970px;
+    height: 285px;
+    margin: 1px auto;
+}
+
+.forText {
+    border: 5px solid rgb(95, 26, 26);
+    width: 638px;
+    height: 1275px;
+    position: relative;
+    margin-left: 5px;
+}
+
+.forFrom {
+    border: 5px solid rgb(95, 26, 26);
+    width: 338px;
+    height: 1275px;
+    position: relative;
+    float: right;
+    margin-right: 5px;
+}

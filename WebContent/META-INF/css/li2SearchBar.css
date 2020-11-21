@@ -1,0 +1,32 @@
+.searchBar {
+    height: 79px;
+    width: 1000px;
+    position: relative;
+    /*依據父元素找到絕對位置*/
+    top: 30px;
+    left: 20px;
+    background: linear-gradient(#fef0c9, #fedf84);
+    border: 1px solid #fe9669;
+}
+
+.third_nav {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    line-height: 79px;
+    float: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.search {
+    float: right;
+    position: relative;
+    top: 24.5px;
+    right: 25px;
+}
+
+.imgSearch {
+    cursor: pointer;
+    position: relative;
+}
