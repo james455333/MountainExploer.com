@@ -93,7 +93,7 @@ public class GenericService<T extends GenericTypeObject> implements InterfaceSer
 	}
 
 	@Override
-	public List<T> getwithHQL(String hql, Integer page, Integer showData) {
+	public List<? extends GenericTypeObject> getwithHQL(String hql, Integer page, Integer showData) {
 		return genericDAO.getwithHQL(hql, page, showData);
 	}
 	@Override

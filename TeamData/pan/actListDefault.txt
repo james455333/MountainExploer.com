@@ -1,0 +1,69 @@
+{
+	totalPage : int,
+	totalData : int,
+	page : int,
+	actList : [
+				{
+					actBasic : {
+								seqno : int,
+						        memberBasic :	{
+						        					seqno : int,
+						        					name : String,
+						        					reg_Date : long,
+						        					email : String,
+						        					memberInfo : {
+						        									neck_name : String,
+						        									pre_img : byte[]
+						        					},
+						        					memberStatus : {
+						        									seqno : int,
+						        									name : String
+						        					}
+						        },
+						        actInfo :	{
+						        				id: int,
+						        				title : String,
+						        				totalDay : String,
+						        				price : int,
+						        				startDate : Date,
+						        				endDate : Date,
+						        				regTop : int,
+						        				regEndDate : Date,
+						        				postDate : Date,
+						        				changeDate : Date,
+						        				hiedTag : null or int,
+						        				note : String,
+						        				rtBasic: {
+						        							id: int,
+						        				            routeInfo : 	{
+						        												id : int,
+						        												name : String,
+						        							                    desp : String,
+						        							                    traf : String,
+						        												adv : String	
+						        							}
+						        				},
+						        },
+					},
+					tagMap:{
+						1:boolean, 2:boolean, ..., 8:boolean
+					},
+					nowReg : int,
+					*Newest actResp*
+				}
+	],
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

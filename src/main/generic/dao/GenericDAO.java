@@ -76,7 +76,7 @@ public class GenericDAO<T extends GenericTypeObject> implements InterfaceDAO<T> 
 	public T select(String name) {
 		Session session = sessionFactory.getCurrentSession();
 
-		String hql = "From " + entity.getClass().getName() + " where Name like '" + name + "'";
+		String hql = "From " + entity.getClass().getName() + " where name like '" + name + "'";
 
 		Query<? extends GenericTypeObject> query = session.createQuery(hql, entity.getClass());
 
@@ -204,7 +204,7 @@ public class GenericDAO<T extends GenericTypeObject> implements InterfaceDAO<T> 
 		
 	}
 	
-	public List<T> getwithHQL(String hql, Integer page, Integer showData){
+	public List<? extends GenericTypeObject> getwithHQL(String hql, Integer page, Integer showData){
 		if (page == null) {
 			page = 1;
 		}
@@ -213,8 +213,8 @@ public class GenericDAO<T extends GenericTypeObject> implements InterfaceDAO<T> 
 		}
 		int startPosition = (page-1) * showData;
 		Session session = sessionFactory.getCurrentSession();
-		Query<T> query = session.createQuery(hql);
-		List<T> result = query.setFirstResult(startPosition)
+		Query<? extends GenericTypeObject> query = session.createQuery(hql,entity.getClass());
+		List<? extends GenericTypeObject> result = query.setFirstResult(startPosition)
 			.setMaxResults(showData)
 			.setReadOnly(true)
 			.getResultList();

@@ -9,15 +9,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>岳進者</title>
-    <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
-    <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
+    <link rel="stylesheet" href="../css/other.css">
+    <link rel="stylesheet" href="../css/font.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/MountainExploer.com/mountain/act/list/css/list.css">
+    <link rel="stylesheet" href="../mountain/act/list/css/list.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="<c:url value='/mountain/act/list/js/ajax.js' />"></script>
+    <script src="../mountain/act/list/listFunction.js"></script>
+    <script src="../mountain/act/list/list.js"></script>
 </head>
 
 
@@ -113,12 +114,30 @@
                             <th scope="col">發布時間 / 默認排序</th>
                             <th scope="col">目前人數 / 人數上限</th>
                             <th scope="col">報名截止日</th>
-<!--                             <th scope="col">最新回應</th> -->
+                            <th scope="col">最新回應</th>
                               <!-- thead更改到這邊結束 -->
                         </tr>
                     </thead>
-
-
+                    <tbody  class='order-table-tb hideTbody'>
+	                    <tr>
+							<td>
+								<a href="">
+									<img class='showImage' src="" >
+									<img class='extendImage' src="" >
+								</a>
+							</td>
+							<td>
+								<div class='tagContainer'></div>
+								<a href=""></a>
+							</td>
+							<td>
+							<a href=""></a>
+							</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+                   	</tbody>
                 </table>
 
                 <nav class="pageControl">
@@ -157,11 +176,11 @@
     </footer>
 </body>
 <!-- 設置頁面參數 -->
-<script src="/MountainExploer.com/js/upLoadImg.js"></script><!-- 上傳頭像 -->
-<script src="/MountainExploer.com/js/table.js"></script>
+<script src="../js/upLoadImg.js"></script><!-- 上傳頭像 -->
+<script src="../js/table.js"></script>
 <!--sweet alert-->
-<script src="/MountainExploer.com/js/topBar.js"></script>
-<script src="/MountainExploer.com/js/sweetalert.js"></script>
-<script src="/MountainExploer.com/js/includejsp.js"></script>
+<script src="../js/topBar.js"></script>
+<script src="../js/sweetalert.js"></script>
+<script src="../js/includejsp.js"></script>
 <!--sweet alert-->
 </html>
