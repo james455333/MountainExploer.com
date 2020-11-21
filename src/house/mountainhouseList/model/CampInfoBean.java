@@ -44,7 +44,6 @@ public class CampInfoBean {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "COUNTIES_NAME")
-	@JsonIgnore
 	private CountiesBean counties;
 	
 	@OneToOne(fetch = FetchType.LAZY , mappedBy = "campid",cascade = CascadeType.ALL)

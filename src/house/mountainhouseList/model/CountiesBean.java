@@ -31,12 +31,12 @@ public class CountiesBean {
 	@Transient
 	private String areaname;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "AREA_NAME")
-	@JsonIgnore
 	private AreaBean area;
 	
 	@OneToMany(fetch = FetchType.LAZY,mappedBy = "counties",cascade = CascadeType.ALL)
+	@JsonIgnore
 	private Set<CampInfoBean> camp ;
 	
 	

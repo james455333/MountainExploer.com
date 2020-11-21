@@ -14,6 +14,8 @@ import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "camp_img")
 @Component
@@ -27,6 +29,7 @@ public class CampImgBean {
 	private String name;
 	
 	@Column(name = "CAMP_IMG")
+	@JsonIgnore
 	private byte[] img;
 	
 	@Transient
@@ -34,6 +37,7 @@ public class CampImgBean {
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "CAMPINFO_ID")
+	@JsonIgnore
 	private CampInfoBean campid;
 	
 	

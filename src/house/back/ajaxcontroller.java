@@ -20,8 +20,8 @@ public class ajaxcontroller {
 	@Autowired
 	private CampInfoBeanService campService;
 	
-	@GetMapping("/jumptestajax")
 	//@GetMapping(/mountainCampajax/jumptestajax)
+	@GetMapping("/jumptestajax")
 	public String jumpajax() {
 		return "house/testajax/campajax";
 	}
@@ -29,11 +29,10 @@ public class ajaxcontroller {
 	
 	@GetMapping("/ajaxcampAll")
 	@ResponseBody
-	public String selectAll(Model m) {
+	public List<CampInfoBean> selectAll(Model m) {
 		List<CampInfoBean> list = campService.selectAllCamp();
 
-		m.addAttribute("camp_all", list);
-		return "house/testajax/campajax";
+		return list;
 	}
 	
 	
