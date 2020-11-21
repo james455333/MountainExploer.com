@@ -16,6 +16,8 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "area")
 @Component
@@ -24,6 +26,7 @@ public class AreaBean {
 	@Column(name = "NAME")
 	private String name;
 	@OneToMany(fetch = FetchType.LAZY,mappedBy = "area",cascade = CascadeType.ALL)
+	@JsonIgnore
 	private Set<CountiesBean> counties ;
 	
 	public String getName() {
