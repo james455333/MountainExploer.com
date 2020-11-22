@@ -103,10 +103,12 @@
                     <thead class="order-table-th">
                         <tr>
                             <!-- thead更改從這邊開始 -->
-                            <th scope="col">飯店名</th>
-                            <th scope="col">房型</th>
-                            <th scope="col">其他1</th>
-                            <th scope="col">其他2</th>
+                            <th scope="col">商品名稱</th>
+                            <th scope="col">型號</th>
+                            <th scope="col">圖片</th>
+                            <th scope="col">價格</th>
+                            <th scope="col">數量</th>
+                            <th scope="col">加入購物車</th>
                             <!-- thead更改到這邊結束 -->
                         </tr>
                     </thead>
