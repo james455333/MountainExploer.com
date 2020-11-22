@@ -12,13 +12,13 @@
     <link rel="stylesheet" href="../css/other.css">
     <link rel="stylesheet" href="../css/font.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../mountain/act/list/list.css">
+    <link rel="stylesheet" href="act/list/list.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="../mountain/act/list/listFunction.js"></script>
-    <script src="../mountain/act/list/list.js"></script>
+    <script src="act/list/listFunction.js"></script>
+    <script src="act/list/list.js"></script>
 </head>
 
 
