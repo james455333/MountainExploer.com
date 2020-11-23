@@ -116,12 +116,14 @@ document.getElementById("demo7").addEventListener("click", function () {
     title: "會員登入",//標題
     text: "帳號：",//內容
     type: "input1",
-    
-    showCancelButton: true,
-    closeOnConfirm: false,
-    animation: "slide-from-top",
-    input1Placeholder: "請輸入帳號",
-    input2Placeholder: "請輸入密碼"
+    //buttons
+
+
+    // showCancelButton: true,
+    // closeOnConfirm: false,
+    // animation: "slide-from-top",
+    // input1Placeholder: "請輸入帳號",
+    // input2Placeholder: "請輸入密碼"
   },
     function (input1Value) {
       if (input1Value === false) return false;
