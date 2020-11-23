@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>岳進者</title>
+    <title>岳進者 - 路線介紹</title>
     <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
     <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
     <link rel="stylesheet" href="route/route.css">
@@ -14,8 +14,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="route/route.js"></script>
     <script src="route/routeFunction.js"></script>
+    <script src="route/route.js"></script>
     
     <style>
 
@@ -44,79 +44,39 @@
         </nav>
     </header>
     <div class="div_ul">
-        <div class="secNavbar">
-            <nav>
-                <ul class="second_nav">
-                    <li class="li1"><a href="#">第二導覽列1</a></li>
-
-                    <li class="li1"><a href="#">第二導覽列2</a></li>
-
-                    <li class="li1"><a href="#">第二導覽列3</a></li>
-
-                    <li class="li1"><a href="#">第二導覽列4</a></li>
-                </ul>
-            </nav>
+        <div class="secNavbar" include-html="fragment/secondNav.html">
+            
         </div>
         
         <div class="div_li1">
-            <a>保留區</a>
+            
         </div>
         <div class="div_li3">
             <a>保留區</a>
         </div>
         <div class="div_li2">
-        	 <div class="searchBar">
-                <nav>
-                    <ul class="thirdSelect">
-                        <!-- 副選項按鈕從這邊新增開始 -->
-                        <li class="li2"><button type="button" class="btn btn-outline-info">寶藍</button></li>
-                       
-                        <!-- 副選項按鈕到這邊新增結束 -->
-                    </ul>
-                </nav>
+        	<div class="npNav">
+                <nav><ul class="npList"> </ul></nav>
+        	</div>
+        	<div class="routeNav">
+                <nav><ul class="routeList"></ul></nav>
             </div>
-            <!-- 每頁不同的內容從這裡開始 -->
-            <!-- <div class="searchBar">
-                <nav>
-                    <ul class="third_nav">
-                        <li>居住地:
-                            <select>
-                                <option name="nothing" selected disabled>請選擇縣市</option>
-                                <option value="值2">aa</option>
-                                <option value="值3">bb</option>
-                            </select></li>
-
-                        <li>預設1:
-                            <select>
-                                <option name="nothing" selected disabled>選擇提示1</option>
-                                <option value="值2">aa</option>
-                                <option value="值3">bb</option>
-                            </select></li>
-
-                        <li>預設2:
-                            <select>
-                                <option name="nothing" selected disabled>選擇提示2</option>
-                                <option value="值2">aa</option>
-                                <option value="值3">bb</option>
-                            </select></li>
-
-                    </ul>
-                </nav>
-                <div class="search">
-                    搜尋：<input type="search" class="light-table-filter" data-table="order-table" placeholder="請輸入關鍵字">
-                    <img class=imgSearch src="/MountainExploer.com/images/放大鏡.png" alt="" width="35px">
-                </div>
-
-            </div> -->
-
-            <div class="secDivContent">
-
-                <div class="forImage">
-                    <img src="/MountainExploer.com/images/BGI.jpg" alt="" class="forImagesImg">
+            <div class="secDivContent sdcAdjust">
+                <div class="forImage imgAdjust">
                     <!-- 調整參考網址 https://segmentfault.com/q/1010000018971940 -->
                 </div>
-                <div class="forFrom"></div>
-                <div class="forText"></div>
+                <div class="sec-div">
+                	<div class="sec-div-title">路線描述</div>
+                	<div class="sec-div-text"></div>
+                </div>
+                <div class="sec-div">
+                	<div class="sec-div-title">建議行程</div>
+                	<div class="sec-div-text"></div>
+                </div>
+                <div class="sec-div">
+                	<div class="sec-div-title">前往交通</div>
+                	<div class="sec-div-text"></div>
+                </div>
             </div>
 
 

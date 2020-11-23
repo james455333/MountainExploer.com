@@ -60,7 +60,7 @@ public class ActRetrieveController {
 		service.save(actInfo);
 		
 		// 設定hql語法
-		String hql = "From ActivityInfo where sysdate < startDate order by postDate ,actBasic";
+		String hql = "From ActivityInfo where sysdate < startDate and deleteTag is null order by postDate ,actBasic";
 		
 		// 得到hql總數
 		String all = "select count(*) from ActivityInfo where sysdate < startDate " ;

@@ -8,15 +8,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>岳進者</title>
+    <title>岳進者 - 活動</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/other.css">
     <link rel="stylesheet" href="../css/font.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/MountainExploer.com/mountain/css/mountain.css">
     <link rel="stylesheet" href="act/list/list.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="/MountainExploer.com/mountain/js/mountain.js"></script>
     <script src="act/list/listFunction.js"></script>
     <script src="act/list/list.js"></script>
 </head>
@@ -30,7 +32,6 @@
             <img src="/MountainExploer.com/images/logo1.png">
             <hr>
             <h1 class="font">岳進者</h1>
-            <!-- <a class="font">岳進者</a> -->
         </div>
     </div>
     <header>
@@ -44,17 +45,7 @@
         </nav>
     </header>
     <div class="div_ul">
-        <div class="導覽列表">
-            <nav>
-                <ul class="second_nav">
-                    <li class="li1"><a href="/MountainExploer.com/mountain/list?page=1&od=1">活動列表</a></li>
-
-                    <li class="li1"><a href="#">活動管理</a></li>
-
-                    <li class="li1"><a href="#">路線介紹</a></li>
-
-                </ul>
-            </nav>
+        <div class="secNavbar" include-html="fragment/secondNav.html">  
         </div>
         <div class="div_li1">
             <a>保留區</a>
@@ -101,16 +92,34 @@
 		        		</div>
 		            </form>
 	            </div>
+			 <nav class="pageControl">
+                    <ul>
+                        <li class="li1">
+                            <a href="#">«第一頁</a>
+                        </li>
+                        <li class="li1">
+                            <a href="#">‹上一頁</a>
+                        </li>
+                        <li class="li1">
+                            <a href="#"></a>
+                        </li>
+                        <li class="li1">
+                            <a href="#">下一頁›</a>
+                        </li>
+                        <li class="li1">
+                            <a href="#">最末頁»</a>
+                        </li>
+                    </ul>
+               </nav>
 
-
-            <div class="secDivContent">
+            <div class="secDivContent m-sdc-adj">
                 <!--table-->
-                <table class="order-table">
+                <table class="order-table m-ta-aj">
                     <thead class="order-table-th">
                         <tr>
                             <!-- thead更改從這邊開始 -->
                             <th scope="col">活動預覽圖</th>
-                            <th scope="col">活動名稱</th>
+                            <th scope="col" calss="d-li-na">活動名稱</th>
                             <th scope="col">發布時間 / 默認排序</th>
                             <th scope="col">目前人數 / 人數上限</th>
                             <th scope="col">報名截止日</th>
@@ -140,6 +149,7 @@
                    	</tbody>
                 </table>
 
+            </div>
                 <nav class="pageControl">
                     <ul>
                         <li class="li1">
@@ -159,7 +169,6 @@
                         </li>
                     </ul>
                 </nav>
-            </div>
             <!-- 每頁不同的內容到這裡結束 -->
         </div>
     </div>

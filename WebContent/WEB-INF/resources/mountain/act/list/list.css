@@ -1,11 +1,19 @@
 @charset "UTF-8";
-
+.m-sdc-adj{
+	border : none;
+}
+.m-ta-aj{
+	width : 100%;
+}
 thead th {
 	font-size: 10px;
 }
 
 tbody td {
 	font-size: 15px;
+}
+.d-li-na{
+	width:15%;
 }
 
 .showImage {

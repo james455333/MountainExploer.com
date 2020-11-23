@@ -1,5 +1,6 @@
 package mountain.model.activity.Registry;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
@@ -33,6 +36,10 @@ public class ActRegInfo extends GenericTypeObject{
 	private String emgName;
 	private String emgCellphone;
 	private String emgPhone;
+	private Integer cancelTag;
+	private Integer changeSeqno;
+	private java.util.Date changeDate;
+	
 	
 	@Override
 	@Id
@@ -52,6 +59,8 @@ public class ActRegInfo extends GenericTypeObject{
 	public void setName(String name) {
 		this.name = name;
 	}
+	@Basic
+	@Temporal(TemporalType.DATE)
 	@Column(name = "BIRTHDAY")
 	public java.util.Date getBirthDay() {
 		return birthDay;
@@ -116,6 +125,28 @@ public class ActRegInfo extends GenericTypeObject{
 	}
 	public void setActRegistry(ActRegistry actRegistry) {
 		this.actRegistry = actRegistry;
+	}
+	public Integer getCancelTag() {
+		return cancelTag;
+	}
+	public void setCancelTag(Integer cancelTag) {
+		this.cancelTag = cancelTag;
+	}
+	@Column(name = "CHANGE_SEQNO")
+	public Integer getChangeSeqno() {
+		return changeSeqno;
+	}
+	public void setChangeSeqno(Integer changeSeqno) {
+		this.changeSeqno = changeSeqno;
+	}
+	@Basic
+	@Temporal(TemporalType.DATE)
+	@Column(name = "CHANGEDATE")
+	public java.util.Date getChangeDate() {
+		return changeDate;
+	}
+	public void setChangeDate(java.util.Date changeDate) {
+		this.changeDate = changeDate;
 	}
 	
 }

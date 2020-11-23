@@ -46,6 +46,7 @@ public class ActivityInfo extends GenericTypeObject {
 	private java.util.Date postDate;
 	private java.util.Date changeDate;
 	private Integer hideTag;
+	private Integer deleteTag;
 	
 	@Override
 	@Id
@@ -169,5 +170,12 @@ public class ActivityInfo extends GenericTypeObject {
 	}
 	public void setHideTag(Integer hideTag) {
 		this.hideTag = hideTag;
+	}
+	@Column(name = "DELETETAG")
+	public Integer getDeleteTag() {
+		return deleteTag;
+	}
+	public void setDeleteTag(Integer deleteTag) {
+		this.deleteTag = deleteTag;
 	}
 }

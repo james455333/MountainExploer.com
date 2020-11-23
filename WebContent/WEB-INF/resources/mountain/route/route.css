@@ -1,1 +1,35 @@
 @charset "UTF-8";
+.npNav{
+	position : relative;
+	height : 100px;
+	width : 100%;
+}
+.routeNav{
+	position : relative;
+	height : 150px;
+	width : 100%;
+}
+.imgAdjust{
+	height : 500px;
+}
+
+.imgSet{
+	height : 100%;
+	width : 100%;
+}
+.sec-div{
+	position : relative;
+	float : left;
+	width : 980px;
+	height : auto;
+	border: 5px solid rgb(95, 26, 26);
+	margin : 5px;
+}
+.sec-div-title{
+	font-size : 25px;
+	border-bottom: 3px solid #EA7500;
+}
+.sec-div-text{
+	font-size : 15px;
+	line-height : 45px;
+}

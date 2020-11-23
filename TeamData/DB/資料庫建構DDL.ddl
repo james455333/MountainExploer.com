@@ -1,5 +1,5 @@
 -- 產生者Oracle SQL Developer Data Modeler 20.2.0.167.1538
--- 於:2020-11-18 09:22:18 TST
+-- 於:2020-11-23 08:28:00 TST
 -- 位置:Oracle Database 12cR2
 -- 類型:Oracle Database 12cR2
 
@@ -15,7 +15,9 @@ CREATE TABLE act_img (
     NOT NULL,
     img_name              NVARCHAR2(250) NOT NULL,
     img                   BLOB,
-    activity_basic_seqno  NUMBER(5) NOT NULL
+    activity_basic_seqno  NUMBER(5) NOT NULL,
+    defaultimage          NUMBER(1),
+    hidetag               NUMBER(1)
 )
 LOGGING;
 
@@ -62,7 +64,10 @@ CREATE TABLE activity_info (
     start_date            DATE NOT NULL,
     end_date              DATE NOT NULL,
     reg_end_date          DATE,
-    post_date             DATE
+    post_date             DATE,
+    change_date           DATE,
+    hidetag               NUMBER(1),
+    deletetag             NUMBER(1)
 )
 LOGGING;
 
@@ -75,9 +80,11 @@ CREATE TABLE activity_registry (
     activity_basic_seqno  NUMBER(5) NOT NULL,
     member_basic_id       NUMBER(7) NOT NULL,
     reg_date              DATE NOT NULL,
-    deniedtag             VARCHAR2(1 CHAR),
-    confirm               VARCHAR2(1 CHAR),
-    deny_reson            BLOB
+    deniedtag             NUMBER(1),
+    confirm               NUMBER(1),
+    decline_reson         BLOB,
+    canceltag             NUMBER(1),
+    cancel_reason         BLOB
 )
 LOGGING;
 
@@ -96,7 +103,10 @@ CREATE TABLE activity_registry_info (
     contact_email            VARCHAR2(100),
     emg_contact_name         NVARCHAR2(150),
     emg_contact_cellphone    VARCHAR2(20),
-    emg_contact_phone        VARCHAR2(50)
+    emg_contact_phone        VARCHAR2(50),
+    canceltag                NUMBER(1),
+    change_seqno             NUMBER(8),
+    changedate               NUMBER(1)
 )
 LOGGING;
 
@@ -110,7 +120,9 @@ CREATE TABLE activity_response (
     member_basic_id       NUMBER(7) NOT NULL,
     message               BLOB NOT NULL,
     post_date             DATE NOT NULL,
-    privatetag            VARCHAR2(1 CHAR)
+    privatetag            NUMBER(1),
+    hidetag               NUMBER(1),
+    change_date           DATE
 )
 LOGGING;
 
@@ -124,7 +136,8 @@ CREATE TABLE activity_sideresp (
     member_basic_id          NUMBER(7) NOT NULL,
     message                  BLOB NOT NULL,
     post_date                DATE NOT NULL,
-    privatetag               VARCHAR2(1 CHAR)
+    privatetag               NUMBER(1),
+    hidetag                  NUMBER(1)
 )
 LOGGING;
 
@@ -377,14 +390,6 @@ LOGGING;
 
 ALTER TABLE shopping_member_dtail ADD CONSTRAINT shopping_member_dtail_pk PRIMARY KEY ( member_basic_id );
 
-CREATE TABLE systemimage (
-    name   VARCHAR2(250) NOT NULL,
-    image  BLOB
-)
-LOGGING;
-
-ALTER TABLE systemimage ADD CONSTRAINT systemimage_pk PRIMARY KEY ( name );
-
 ALTER TABLE act_img
     ADD CONSTRAINT act_img_activity_basic_fk FOREIGN KEY ( activity_basic_seqno )
         REFERENCES activity_basic ( seqno )
@@ -549,9 +554,9 @@ ALTER TABLE shopping_member_dtail
 
 -- Oracle SQL Developer Data Modeler 摘要報表:
 -- 
--- CREATE TABLE                            28
+-- CREATE TABLE                            27
 -- CREATE INDEX                             4
--- ALTER TABLE                             56
+-- ALTER TABLE                             55
 -- CREATE VIEW                              0
 -- ALTER VIEW                               0
 -- CREATE PACKAGE                           0
