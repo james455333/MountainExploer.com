@@ -173,47 +173,6 @@ public class MemberUpdateController {
 		
 		return "member/memberInfoUpdate";
 	}
-	
-	
-	@RequestMapping(path = "/member/memberPwdChangeEntry", method = RequestMethod.GET)
-	public String processUpdatePwdEntry() {
-		return "member/memberPwdChange";
-	}
-	
-	
-	@RequestMapping(path = "/member/memberPwdChangeAction", method = RequestMethod.POST)
-	public String processUpdatePwd(@RequestParam(name = "seqno")int seqno,
-								   @RequestParam(name = "password")String password,
-								   @RequestParam(name = "updatePwd")String updatePwd,
-								   Model m) {
-		Map<String, String> errors = new HashMap<String, String>();
-//		MemberBasic mb = new MemberBasic();
-		
-		System.out.println("=============user seqno:" + seqno);
-		
-		password = MemberGlobal.getSHA1Endocing(MemberGlobal.encryptString(password));
-		System.out.println("==================加密1：" + password);
-		
-		updatePwd = MemberGlobal.getSHA1Endocing(MemberGlobal.encryptString(updatePwd));
-		System.out.println("==================加密1：" + updatePwd);
-		
-		MemberBasic queryMb = mbService.select(seqno);
-		if(queryMb != null) {
-			if(queryMb.getPassword().equals(password)) {
-				queryMb.setPassword(updatePwd);
-				MemberBasic updateMb = mbService.updateData(queryMb);
-				m.addAttribute("Member", updateMb);
-				m.addAttribute("result", "密碼修改成功");
-				System.out.println("密碼修改成功");
-				return "member/memberInfo";
-			}else {
-				errors.put("errors", "舊密碼不正確，修改失敗");
-				System.out.println("舊密碼不正確，修改失敗");
-			}
-		}
-		
-		return "member/memberInfo";
-	}
 
 	
 

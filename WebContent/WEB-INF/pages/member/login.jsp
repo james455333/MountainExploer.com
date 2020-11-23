@@ -22,6 +22,9 @@
 			<div>
 				<input type="submit" id="submit" name="submit" value="登入">
 			</div>
+			<div>
+				<a href="">忘記密碼</a>
+			</div>
 		</form>
 	</div>
 

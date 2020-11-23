@@ -1,13 +1,17 @@
 package member.model;
 
 import java.util.List;
+import java.util.UUID;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
+
+import oracle.net.aso.m;
 
 
 
@@ -77,6 +81,20 @@ public class MemberDAO {
 	}
 	
 	
+	public MemberBasic select(String account, String email) {
+		Session session = sessionFactory.getCurrentSession();
+		Query<MemberBasic> query = session.createQuery("From MemberBasic where account = ?0 and email = ?1", MemberBasic.class);
+		query.setParameter(0, account);
+		query.setParameter(1, email);
+		
+		MemberBasic mb = query.uniqueResult();
+		if(mb != null) {
+			return mb;
+		}
+		return null;
+	}
+	
+	
 	//After login success return Member's info
 	public List<MemberBasic> listInfo(){
 		Session session = sessionFactory.getCurrentSession();
@@ -110,7 +128,17 @@ public class MemberDAO {
 	}
 	
 	
-	
+	//check email
+	public MemberBasic existEmail(String email) {
+		Session session = sessionFactory.getCurrentSession();
+		Query<MemberBasic> query = session.createQuery("From MemberBasic where email = ?0", MemberBasic.class);
+		query.setParameter(0, email);
+		MemberBasic mb = query.uniqueResult();
+		if(mb != null) {
+			return mb;
+		}
+		return null;
+	}
 
 	
 

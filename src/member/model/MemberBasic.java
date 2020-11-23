@@ -1,6 +1,7 @@
 package member.model;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -29,6 +30,8 @@ public class MemberBasic {
 	private int statusId;
 	private Date reg_Date;
 	private String password;
+	private String key;
+	private Timestamp resetDate;
 	private MemberInfo memberInfo;
 	private MemberStatus memberStatus;
 	
@@ -116,8 +119,28 @@ public class MemberBasic {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	
+	@Column(name = "KEY")
+	public String getKey() {
+		return key;
+	}
+
+	public void setKey(String key) {
+		this.key = key;
+	}
 
 	
+	@Column(name = "RESETDATE")
+	public Timestamp getResetDate() {
+		return resetDate;
+	}
+
+	public void setResetDate(Timestamp resetDate) {
+		this.resetDate = resetDate;
+	}
+	
+
 	@OneToOne(fetch = FetchType.LAZY, mappedBy = "memberBasic", cascade = CascadeType.ALL)
 	public MemberInfo getMemberInfo() {
 		return memberInfo;
