@@ -102,18 +102,6 @@ public class ProductRetrieveController {
 
 			return totalData;
 
-//			FirstClass fcBean = firstClassService.selectId(Integer.parseInt(firstclassID));
-//			Set<SecondClass> secondClassSet = fcBean.getSecondClasses();
-//			Iterator<SecondClass> iterator = secondClassSet.iterator();
-//			while (iterator.hasNext()) {
-//				SecondClass next = iterator.next();
-//				Set<ItemBasic> itemBasics = next.getItemBasics();
-//				int size = itemBasics.size();
-//				totalData =  totalData+size;
-//				}
-//				System.out.println(totalData);
-//			
-//			return totalData;
 
 			// 指定SecondClass商品數
 		} else if (firstclassID == null && secondclassID != null) {
@@ -263,24 +251,24 @@ public class ProductRetrieveController {
 		if (showData == null) {
 			showData = 30;
 		}
-		
+
 		switch (scale) {
-		
+
 		case 1:
-			max=1001;
-			min=0;
+			max = 1001;
+			min = 0;
 			break;
 		case 2:
-			max=2001;
-			min=1000;
+			max = 2001;
+			min = 1000;
 			break;
 		case 3:
-			max=3001;
-			min=2000;
+			max = 3001;
+			min = 2000;
 			break;
 		case 4:
-			max=1000000;
-			min=3000;
+			max = 1000000;
+			min = 3000;
 			break;
 //		default:
 //			break;
@@ -293,44 +281,73 @@ public class ProductRetrieveController {
 		return transItemBasic;
 
 	}
+
 	// 價格區間查詢筆數
 	@GetMapping("/searchPrice")
 	@ResponseBody
-	public Integer searchPrice(@RequestParam(name = "radioGroup", required = false) Integer scale){
+	public Integer searchPrice(@RequestParam(name = "radioGroup", required = false) Integer scale) {
 
 		Integer totalData = 0;
 		Integer max = null;
 		Integer min = null;
 		
-		if (scale!=null) {
+		if (scale != null) {
 			switch (scale) {
-			
+
 			case 1:
-				max=1001;
-				min=0;
+				max = 1001;
+				min = 0;
 				break;
 			case 2:
-				max=2001;
-				min=1000;
+				max = 2001;
+				min = 1000;
 				break;
 			case 3:
-				max=3001;
-				min=2000;
+				max = 3001;
+				min = 2000;
 				break;
 			case 4:
-				max=1000000;
-				min=3000;
+				max = 1000000;
+				min = 3000;
 				break;
 			}
-			String hql = "from ItemBasic where itemInfo.price > " + min + " and itemInfo.price < " + max
+			String hql = "Select count(*) from ItemBasic where itemInfo.price > " + min + " and itemInfo.price < " + max
 					+ " order by itemInfo.price";
-			
+
 			Integer countWithHql = itemBasicService.countWithHql(hql);
 			totalData = countWithHql;
-			
-			
+
 		}
-		
+
+		return totalData;
+	}
+
+	// 名稱查詢分頁資料
+	@GetMapping(value = "/nameSelect", produces = { "application/json;charset=UTF-8" })
+	@ResponseBody
+	public List<ProductBean> nameSelectList(@RequestParam(name = "nameSelect", required = false) String search,
+			@RequestParam(name = "page", required = false) Integer page,
+			@RequestParam(name = "showData", required = false) Integer showData) throws IOException, SQLException {
+
+		String hql = "From ItemBasic where name like '%" + search + "%'" + " order by seqno";
+		List<ItemBasic> getwithHQL = itemBasicService.getwithHQL(hql, page, showData);
+		List<ProductBean> transItemBasic = TransFuction.transItemBasic(getwithHQL);
+
+		return transItemBasic;
+
+	}
+
+	// 名稱查詢筆數
+	@GetMapping("/searchName")
+	@ResponseBody
+	public Integer searcName(@RequestParam(name = "nameSelect", required = false) String search) {
+
+		Integer totalData = null;
+		String hql = "Select count(*) From ItemBasic where name like '%" + search + "%'" + " order by seqno";
+
+		Integer countWithHql = itemBasicService.countWithHql(hql);
+		totalData = countWithHql;
+
 		return totalData;
 	}
 

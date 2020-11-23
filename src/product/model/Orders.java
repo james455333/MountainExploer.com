@@ -1,26 +1,72 @@
 package product.model;
 
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import member.model.MemberBasic;
+
+@Entity
+@Table(name = "orders")
 public class Orders {
+	@Id
+	@Column(name = "SEQNO")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer seqno;
+	
+	@OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "orders")
+	private Set<OrderItems> orderItemsSet = new HashSet<OrderItems>();
+	
 	private Integer memberBasicID;
+	@Column(name = "TOTALAMOUNT")
 	private Integer totalAmount;
+	@Column(name = "SHIPPINGADDRESS")
 	private String shippingAddress;
+	@Column(name = "INVOICETITLE")
 	private String invoiceTitle;
-	private String orderDate;
-	private String shippingDate;
+	@Column(name = "ORDERDATE")
+	private java.util.Date orderDate;
+	@Column(name = "SHIPPINGDATE")
+	private java.util.Date shippingDate;
+	@Column(name = "CANCELTAG")
 	private String cancelTag;
+	
+//	private MemberBasic memberBasic;
+//	
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name = "member_basic_id", referencedColumnName = "seqno")
+//	@JsonIgnore
+//	public MemberBasic getMemberBasic() {
+//		return memberBasic;
+//	}
+	
+	
 	public Integer getSeqno() {
 		return seqno;
 	}
 	public void setSeqno(Integer seqno) {
 		this.seqno = seqno;
 	}
+	@Transient
 	public Integer getMemberBasicID() {
 		return memberBasicID;
 	}
-	public void setMemberBasicID(Integer memberBasicID) {
-		this.memberBasicID = memberBasicID;
-	}
+
 	public Integer getTotalAmount() {
 		return totalAmount;
 	}
@@ -39,16 +85,16 @@ public class Orders {
 	public void setInvoiceTitle(String invoiceTitle) {
 		this.invoiceTitle = invoiceTitle;
 	}
-	public String getOrderDate() {
+	public Date getOrderDate() {
 		return orderDate;
 	}
-	public void setOrderDate(String orderDate) {
+	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
 	}
-	public String getShippingDate() {
+	public Date getShippingDate() {
 		return shippingDate;
 	}
-	public void setShippingDate(String shippingDate) {
+	public void setShippingDate(Date shippingDate) {
 		this.shippingDate = shippingDate;
 	}
 	public String getCancelTag() {
@@ -56,6 +102,12 @@ public class Orders {
 	}
 	public void setCancelTag(String cancelTag) {
 		this.cancelTag = cancelTag;
+	}
+	public Set<OrderItems> getOrderItemsSet() {
+		return orderItemsSet;
+	}
+	public void setOrderItemsSet(Set<OrderItems> orderItemsSet) {
+		this.orderItemsSet = orderItemsSet;
 	}
 	
 	

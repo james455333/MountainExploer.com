@@ -50,6 +50,13 @@ public class ProductPageEntryController {
 
 		return "product/back/backProductUpdate";
 	}
+	
+	//前往商品資訊頁面
+		@RequestMapping(path = "/productInfoEntry", method = RequestMethod.GET)
+		public String productInfo(Model model) {
+
+			return "product/shop/productInfoPage";
+		}
 
 
 	
