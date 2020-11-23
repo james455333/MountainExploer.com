@@ -93,6 +93,7 @@ function insertTable(data) {
 		let thisElm = $(".order-table-tb").eq(i)
 		
 		/**呼叫動態新增網頁元素之函式 */
+		console.log("actBasic.seqno : " + data[i].actBasic.seqno)
 		setActImg(data[i].actBasic.seqno, thisElm)
 		setTag(data[i].tagMap, thisElm)
 		setTitle(data[i].actBasic, thisElm)
@@ -116,9 +117,9 @@ function insertTable(data) {
 	
 */
 function setActImg(seqno, thisElm) {
-	
+	console.log("get seqno : " + seqno)
 	let thisTD = $(thisElm).find("td").eq(0)
-	let imgURL = actHomeURL + "/images?actID=" + seqno
+	let imgURL = actHomeURL + "/images?actID=" + seqno + "&defImage=1"
 
 	thisTD.find("a").attr("href", detailURL + seqno);
 	thisTD.find("img").attr("src", imgURL).on("error",imgError);

@@ -27,12 +27,13 @@ public class ActPageEntryController {
 	
 	//活動管理頁
 	@GetMapping("/manage/check")
-	public String memeberCheckEntry(Model model, RedirectAttributes redAttr) {
+	public String manageCheckEntry(Model model, RedirectAttributes redAttr) {
 		if (model.getAttribute("Member") != null) {
 			MemberBasic memberBasic = (MemberBasic) model.getAttribute("Member");
 			MemberStatus memberStatus = memberBasic.getMemberStatus();
-			int seqno = memberStatus.getSeqno();
-			return "redirct:/mountain/manage?status="+seqno;
+			int seqno = memberBasic.getSeqno();
+			int status = memberStatus.getSeqno();
+			return "redirect:/mountain/manage?actID="+ seqno +"&status="+status;
 		}
 		throw new HttpClientErrorException(HttpStatus.FORBIDDEN);
 	}

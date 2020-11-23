@@ -327,9 +327,10 @@ public class ActRetrieveController {
 				HttpHeaders headers = new HttpHeaders();
 				headers.setContentType(MediaType.IMAGE_JPEG);
 				result.add(new ResponseEntity<byte[]>(imgBytes, headers, HttpStatus.OK));
+				return result.get(0);
 			}
 		}else {
-			throw new HttpClientErrorException(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<byte[]>(HttpStatus.NOT_FOUND);
 		}
 		return result.get(0);
 
