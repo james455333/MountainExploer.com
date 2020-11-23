@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>後台資料維護系統/露營地修改</title>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src=" https://code.jquery.com/jquery-3.5.0.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href='<c:url value="/backstage/css/backStage.css"/>'> 
 <link rel="stylesheet" href='<c:url value="/housecamp/css/back/backhousecamp.css"/>' >
@@ -116,8 +118,6 @@ $("#imgInp").change(function() {
 
 </script>
 </body>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
 	<script type="text/javascript" charset="UTF-8" src='<c:url value="/housecamp/css/back/backhousecamp.js"/>'></script>
 </html>

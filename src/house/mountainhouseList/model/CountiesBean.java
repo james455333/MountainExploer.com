@@ -19,6 +19,7 @@ import javax.persistence.Transient;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "counties")
@@ -31,8 +32,9 @@ public class CountiesBean {
 	@Transient
 	private String areaname;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "AREA_NAME")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private AreaBean area;
 	
 	@OneToMany(fetch = FetchType.LAZY,mappedBy = "counties",cascade = CascadeType.ALL)

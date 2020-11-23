@@ -56,13 +56,42 @@
 		})
 		
 		
-	$(function(){
-	var campAll = document.getCampbasicid("campAll");
-	var xhr = new XMLHttpRequest(); 
-	var xhr2 = new XMLHttpRequest(); 
-
+	<div>
+		<input type="button" id="selectall" value="全部查詢">
+	</div>
+	<div id="totalData" >
 	
-		})
+	</div>
+
+
+
+	<script type="text/javascript">
+			
+		$("#selectall").on("click", campSelectAll);
+
+		function campSelectAll() {
+				 
+			$.ajax({
+				url : "<c:url value='/mountainCampajax/ajaxcampAll' />",
+				method : "GET",
+				dataType : "json",
+				success : function(data) {
+					console.log("success", data);
+
+					for(let i = 0 ; i< data.length ; i++){
+					$("#totalData").append(data[i].counties.area.name + data[i].counties.name + data[i].campbasicid + data[i].name + data[i].url +"</br>");
+				
+					}
+					},
+					
+				error : function() {
+					console.log("123")
+				}
+			})
+		
+		}
+		
+	</script>
 </script>
 
 </body>

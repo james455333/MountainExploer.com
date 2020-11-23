@@ -159,13 +159,13 @@ public class CampServletAction {
 		countiesbeanSet.add(countiesBean);
 
 		campBean.setCampimgid(campimgBean);
-		campimgBean.setCampid(campBean);
 		campBean.setName(name);
-//			byte[] bytedesc = desc.getBytes(CampGlobal.CHARSET);
 		campBean.setUrl(desc);
 		campBean.setCounties(countiesBean);
+		campimgBean.setCampid(campBean);
 		campbeanSet.add(campBean);
 		System.out.println("新增");
+		
 		AreaBean queryArea = areaService.select(area);
 		if (queryArea != null) {
 			countiesBean.setArea(queryArea);
