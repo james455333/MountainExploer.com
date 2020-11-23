@@ -13,4 +13,5 @@ public interface IAreaBeanService {
 	public AreaBean insertArea(AreaBean Abean);
 	public AreaBean update( AreaBean ABean);
 	public AreaBean deleteCamp(String area);
+	
 }

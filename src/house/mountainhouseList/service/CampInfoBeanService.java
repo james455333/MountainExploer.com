@@ -60,4 +60,10 @@ public class CampInfoBeanService implements ICampInfoBeanService {
 		return cDao.selectWithHql(hql);
 	}
 
+	@Override
+	public List<CampInfoBean> selectcounties(String counties) {
+		// TODO Auto-generated method stub
+		return cDao.selectcounties(counties);
+	}
+
 }

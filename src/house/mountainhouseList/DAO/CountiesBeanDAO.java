@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import house.mountainhouseList.DAO.Interface.ICountiesBeanService;
+import house.mountainhouseList.model.CampInfoBean;
 import house.mountainhouseList.model.CountiesBean;
 
 @Repository
@@ -27,6 +28,15 @@ public class CountiesBeanDAO implements ICountiesBeanService {
 			return sessionFactory.getCurrentSession();
 		}
 		
+		@Override
+		public List<CountiesBean> selectarea(String area) {
+			String originString = "From CountiesBean where area like '%" + area + "%'";
+			Query<CountiesBean> query = getSession().createQuery(originString , CountiesBean.class);
+			List<CountiesBean> list = query.list();
+			return list;
+		}
+		
+		@Override
 		public CountiesBean select(String counties) {
 //			String origString = "From CountiesBean where name like" + counties;
 //			Query<CountiesBean> query = getSession().createQuery(origString, CountiesBean.class);

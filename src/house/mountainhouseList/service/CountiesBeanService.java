@@ -50,4 +50,10 @@ public class CountiesBeanService implements ICountiesBeanService {
 		return counDAO.select(counties);
 	}
 
+	@Override
+	public List<CountiesBean> selectarea(String area) {
+		
+		return counDAO.selectarea(area);
+	}
+
 }

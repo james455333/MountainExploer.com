@@ -93,9 +93,23 @@
 
 <script type="text/javascript">
 $(function(){
-
+	
 	var campUrl = "/MountainExploer.com/mountainCampajax";
-
+	
+	$.ajax({
+		url:campUrl + "/ajaxcampArea",
+		method:"GET",
+		dataType:"json",
+		success:function(area){
+		for (var i = 0  ; i < area.length ; i++){
+			$("#selectArea").append("<option value='" + area[i].name + "'>" + area[i].name + "</option>")
+			}
+		let firstArea = $("#selectArea").find("option").eq(0).val()
+		
+		
+		
+		}
+	})		
 	//全部查詢
 	$("#selectall").on("click", campSelectAll);
 			function campSelectAll() {
@@ -117,43 +131,38 @@ $(function(){
 				})		
 			}
 //縣市選單變更	
+		
 		$("#selectArea").on("change",function(){
 			var selectarea = $("#selectArea").val();
-			$.ajax({
-				url:campUrl + "/ajaxcampArea?selectarea=" + selectarea,
+			console.log("area" + selectarea)
+			$("#selectCounties").empty();
+		$.ajax({
+				url:campUrl + "/ajaxcampCounties?selectarea=" + selectarea,
 				method:"GET",
 				dataType:"json",
-				success:function(area){
-				for (var i = 0  ; i < area.length ; i++){
-					$("#selectArea").append("<option value='" + area[i].name + "'>" + area[i].name + "</option>")
-					}
-				let firstArea = $("#selectArea").find("option").eq(0).val()
-				
-			$.ajax({
-				url:campUrl + "/ajaxcampCounties?selectcounties=" +firstArea,
-				method:("GET"),
-				dataType:"json",
 				success:function(counties){
+					console.log("counties" + counties.name)
 					for (var i = 0  ; i < counties.length ; i++){
 						$("#selectCounties").append("<option value='" + counties[i].name + "'>" + counties[i].name + "</option>")
-						}}
-				})
-				}
-			})			
-			})
 
-//縣市查詢			
+						}}
+		})
+				
+		})
+
+//鄉鎮選單變更			
 		$(".AreaSubmit").on("click",function(){
-			let areaName = $("#selectArea").val();
+			let selectarea = $("#selectArea").val();
 			
 			$.ajax({
-				url:campUrl + "/ajaxcampArea?selectarea=" + areaName,
+				url:campUrl + "/ajaxcampAreaSelect?selectarea=" + selectarea,
 				method:"GET",
 				dataType:"json",
 				success:function(data){
 					console.log(data);
+					$("#totalArea").empty();
 					for(let i = 0 ; i< data.length ; i++){
-						$("#totalArea").append("<tr>"+"<td>" + data[i].name +"</td>"+"</tr>");					
+						$("#totalArea").append("<tr>"+"<td>"+ data[i].campbasicid +"</td>"+"<td>" + data[i].counties.area.name +"</td>" +"<td>"+ data[i].counties.name  +"</td>" +"<td>"+ data[i].name +"</td>"+"<td>"+ data[i].url +"</td>"+"</tr>");					
 						}							
 				},
 				error:function(){
@@ -161,15 +170,14 @@ $(function(){
 					}				
 			})
 		})	
-
-		//鄉鎮選單變更
-		
+	
+//鄉鎮查詢		
 		$(".CountiesSubmit").on("click",function(){
 			let countiesName = $("#selectCounties").val()
 		$.ajax({
 			url:campUrl + "/ajaxcampCounties?selectcounties=" + countiesName,
-			method:("GET"),
-			data:["countiesName",countiesName],
+			method:"GET",
+			
 			dataType:"json",
 			success:function(counties){
 				console.log(counties)
