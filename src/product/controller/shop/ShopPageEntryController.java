@@ -21,10 +21,10 @@ public class ShopPageEntryController {
 	@Autowired
 	private SecondClassService secondClassService;
 	
-	//前往查詢頁面
-	@RequestMapping(path = "/retrievePage")
-	public String retrievePage(Model model) {
-		return "product/back/backProduct";
+	//前往購物頁面
+	@RequestMapping(path = "/shoppingPage")
+	public String shoppingPage(Model model) {
+		return "product/shop/shopPage";
 	}
 	
 	

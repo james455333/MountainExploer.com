@@ -1,4 +1,4 @@
-package product.controller.back;
+package product.controller.shop;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -29,6 +29,7 @@ import mountain.model.activity.ActBean;
 import mountain.model.activity.ActivityInfo;
 import product.function.RetrieveFunction;
 import product.function.ShoppingRetrieveFunction;
+import product.function.ShoppingTransFuction;
 import product.function.TransFuction;
 import product.model.FirstClass;
 import product.model.ItemBasic;
@@ -40,9 +41,9 @@ import product.service.ItemBasicService;
 import product.service.ItemInfoService;
 import product.service.SecondClassService;
 
-@RequestMapping(path = "/backstage/product/search")
+@RequestMapping(path = "/shop/search")
 @Controller
-public class ProductRetrieveController {
+public class ShoppingRetrieveController {
 
 	@Autowired
 	private FirstClassService firstClassService;
@@ -64,7 +65,7 @@ public class ProductRetrieveController {
 		}
 		System.out.println("page : " + page);
 		if (showData == null) {
-			showData = 30;
+			showData = 10;
 		}
 		List<ItemBasic> selectWithPage = itemBasicService.selectWithPage(page, showData);
 		List<ItemBasic> returnItemBasics = new ArrayList<ItemBasic>();
@@ -73,7 +74,7 @@ public class ProductRetrieveController {
 		}
 
 		List<ItemBasic> itemBasicList = returnItemBasics;
-		List<ProductBean> productBeanList = RetrieveFunction.getProductBeanList(itemBasicList);
+		List<ProductBean> productBeanList = ShoppingRetrieveFunction.getProductBeanList(itemBasicList);
 
 		return productBeanList;
 	}
@@ -147,11 +148,10 @@ public class ProductRetrieveController {
 		}
 		System.out.println("page : " + page);
 		if (showData == null) {
-			showData = 30;
+			showData = 10;
 		}
 
-//		FirstClass firstClass = firstClassService.selectId(fcID);
-//
+//		FirstClass firstClass = firstClassService.selectId(fcID);	
 //		Set<SecondClass> secondClasses = firstClass.getSecondClasses();
 //		Iterator<SecondClass> iterator = secondClasses.iterator();
 //		while (iterator.hasNext()) {
@@ -164,13 +164,14 @@ public class ProductRetrieveController {
 //			return productBeanList;
 //
 //		}
-//		return result;
 		String hql = "from ItemBasic where secondClass.id in (select id from SecondClass sc where sc.firstClass = "
 				+ fcID + ") order by seqno";
 		List<ItemBasic> getwithHQL = itemBasicService.getwithHQL(hql, page, showData);
 		List<ProductBean> productBeanList = ShoppingRetrieveFunction.getProductBeanList(getwithHQL);
 		
 		return productBeanList;
+	
+	
 	}
 
 	// 次類別列表
@@ -206,7 +207,7 @@ public class ProductRetrieveController {
 			showData = 30;
 		}
 		List<ItemBasic> scIDsetPage = itemBasicService.scIDsetPage(page, showData, scID);
-		List<ProductBean> productBeanList = RetrieveFunction.getProductBeanList(scIDsetPage);
+		List<ProductBean> productBeanList = ShoppingRetrieveFunction.getProductBeanList(scIDsetPage);
 
 		return productBeanList;
 
@@ -283,7 +284,7 @@ public class ProductRetrieveController {
 		String hql = "from ItemBasic where itemInfo.price > " + min + " and itemInfo.price < " + max
 				+ " order by itemInfo.price";
 		List<ItemBasic> getwithHQL = itemBasicService.getwithHQL(hql, page, showData);
-		List<ProductBean> transItemBasic = TransFuction.transItemBasic(getwithHQL);
+		List<ProductBean> transItemBasic = ShoppingTransFuction.transItemBasic(getwithHQL);
 
 		return transItemBasic;
 
@@ -338,7 +339,7 @@ public class ProductRetrieveController {
 
 		String hql = "From ItemBasic where name like '%" + search + "%'" + " order by seqno";
 		List<ItemBasic> getwithHQL = itemBasicService.getwithHQL(hql, page, showData);
-		List<ProductBean> transItemBasic = TransFuction.transItemBasic(getwithHQL);
+		List<ProductBean> transItemBasic = ShoppingTransFuction.transItemBasic(getwithHQL);
 
 		return transItemBasic;
 
