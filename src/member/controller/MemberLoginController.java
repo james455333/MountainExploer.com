@@ -94,6 +94,7 @@ public class MemberLoginController {
 	}
 	
 	
+	@RequestMapping(path = "/member/memberLogout", method = RequestMethod.GET)
 	public String processLogout(SessionStatus status) {
 		status.setComplete();
 		return "member/login";

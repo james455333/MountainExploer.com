@@ -23,6 +23,10 @@ public class MemberService {
 		return mbDao.select(seqno);
 	}
 	
+	public MemberBasic select(String account, String email) {
+		return mbDao.select(account, email);
+	}
+	
 	public boolean checkAnt(String account) {
 		return mbDao.checkAnt(account);
 	}
