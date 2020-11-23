@@ -23,6 +23,7 @@ import org.hibernate.annotations.Parameter;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "camp_info")
@@ -44,6 +45,7 @@ public class CampInfoBean {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "COUNTIES_NAME")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private CountiesBean counties;
 	
 	@OneToOne(fetch = FetchType.LAZY , mappedBy = "campid",cascade = CascadeType.ALL)

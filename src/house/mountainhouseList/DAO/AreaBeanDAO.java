@@ -49,7 +49,6 @@ public class AreaBeanDAO {
 			
 			return list;
 			}
-			
 		
 		
 		
