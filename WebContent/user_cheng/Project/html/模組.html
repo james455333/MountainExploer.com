@@ -1,32 +1,170 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
-  <title>對話框</title>
+  <title>jQuery UI 對話框（Dialog） - 模態表單</title>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.9.1.js"></script>
   <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
   <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+  <style>
+    body {
+      font-size: 62.5%;
+    }
+
+    label,
+    input {
+      display: block;
+    }
+
+    input.text {
+      margin-bottom: 12px;
+      width: 95%;
+      padding: .4em;
+    }
+
+    fieldset {
+      padding: 0;
+      border: 0;
+      margin-top: 25px;
+    }
+
+    h1 {
+      font-size: 1.2em;
+      margin: .6em 0;
+    }
+
+    div#users-contain {
+      width: 350px;
+      margin: 20px 0;
+    }
+
+    div#users-contain table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    div#users-contain table td,
+    div#users-contain table th {
+      border: 1px solid #eee;
+      padding: .6em 10px;
+      text-align: left;
+    }
+
+    .ui-dialog .ui-state-error {
+      padding: .3em;
+    }
+
+    .validateTips {
+      border: 1px solid transparent;
+      padding: 0.3em;
+    }
+  </style>
   <script>
- 
-  $(function () {
-    $("#a00001").click(function () {
-               $( "#dialog-modal" ).dialog({
-      height: 180,
-      modal: true
+    $(function () {
+      var name = $("#name"),
+        email = $("#email"),
+        password = $("#password"),
+        allFields = $([]).add(name).add(password),
+        tips = $(".validateTips");
+
+      function updateTips(t) {
+        tips
+          .text(t)
+          .addClass("ui-state-highlight");
+        setTimeout(function () {
+          tips.removeClass("ui-state-highlight", 1500);
+        }, 500);
+      }
+
+      function checkLength(o, n, min, max) {
+        if (o.val().length > max || o.val().length < min) {
+          o.addClass("ui-state-error");
+          updateTips("" + n + " 的長度必須在" +
+            min + " 和" + max + " 之間。");
+          return false;
+        } else {
+          return true;
+        }
+      }
+
+      function checkRegexp(o, regexp, n) {
+        if (!(regexp.test(o.val()))) {
+          o.addClass("ui-state-error");
+          updateTips(n);
+          return false;
+        } else {
+          return true;
+        }
+      }
+
+      $("#dialog-form").dialog({
+        autoOpen: false,
+        height: 300,
+        width: 350,
+        modal: true,
+        buttons: {
+          登入: function () {
+            $(this).dialog("close");
+          },
+          取消: function () {
+            $(this).dialog("close");
+          }
+        },
+        close: function () {
+          allFields.val("").removeClass("ui-state-error");
+        }
+      });
+
+      $("#create-user")
+        .button()
+        .click(function () {
+          $("#dialog-form").dialog("open");
+        });
     });
-    });
-});
   </script>
 </head>
+
 <body>
-<button id="a00001">123</button>
-<div id="dialog-modal" title="對話框">
-  <p>測試</p>
-</div>
- 
-<p>測試點不了我</p>
- 
- 
+
+  <div id="dialog-form" title="登入/註冊">
+
+
+    <form>
+      <fieldset>
+        <label for="name">帳號:</label>
+        <input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all">
+        <label for="password">密碼:</label>
+        <input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all">
+      </fieldset>
+    </form>
+  </div>
+
+
+  <div id="users-contain" class="ui-widget">
+    <h1>已有的用戶：</h1>
+    <table id="users" class="ui-widget ui-widget-content">
+      <thead>
+        <tr class="ui-widget-header ">
+          <th>姓名</th>
+          <th>密碼</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John Doe</td>
+
+          <td>johndoe1</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button id="create-user">登入/註冊</button>
+
+
+
 </body>
+
 </html>
