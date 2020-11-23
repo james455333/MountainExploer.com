@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import member.model.MemberBasic;
+
 
 @Controller
-@SessionAttributes(names = {"LoginOK"})
+@SessionAttributes(names = {"Member"})
 public class PageEntryController {
 	
 	@Autowired
@@ -26,8 +28,8 @@ public class PageEntryController {
 		return "index";
 	}
 	@RequestMapping(path = "/loginCheck")
-	public String showNav(Model model) {
-		if (session.getAttribute("LoginOK") != null) {
+	public String showNav(Model model,HttpSession session) {
+		if (session.getAttribute("Member") != null) {
 			return "redirect:/forinclude/logout.html"; 
 		}
 		return "redirect:/forinclude/login.html";

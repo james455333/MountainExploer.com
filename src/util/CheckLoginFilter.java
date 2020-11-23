@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import mountain.MountainLoginCheck;
 
-@SessionAttributes(names = "MemberBasic")
+@SessionAttributes(names = "Member")
 public class CheckLoginFilter implements Filter{
 //	int counter = 0;
 	
@@ -62,8 +62,7 @@ public class CheckLoginFilter implements Filter{
 			session.removeAttribute("beforeCheckURL");
 		}
 		//檢查是否以登入
-		String account = (String) session.getAttribute("MemberBasic");
-		if (account==null) {
+		if (session.getAttribute("Member")==null) {
 			//尚未登入，導向登入頁
 			System.out.println("not login yet, redirect to loginPage" );
 			beforeCheckURL = req.getRequestURI().substring(req.getContextPath().length());

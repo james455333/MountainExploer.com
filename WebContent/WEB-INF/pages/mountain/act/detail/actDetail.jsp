@@ -8,15 +8,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>岳進者</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
     <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
-    <link rel="stylesheet" href="/MountainExploer.com/mountain/act/detail/css/detail.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/MountainExploer.com/mountain/css/mountain.css">
+    <link rel="stylesheet" href="../../mountain/act/detail/detail.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="<c:url value='/mountain/act/detail/js/detail.js' />"></script>
+    <script src="/MountainExploer.com/mountain/js/mountain.js"></script>
+    <script src="../../mountain/act/detail/detail.js"></script>
 </head>
 
 <body>
@@ -62,26 +64,6 @@
             <!-- 每頁不同的內容從這裡開始 -->
             
             <div class="innerContainer">
-            	<!-- 頁面控制 -->
-            	<nav class="pageControl">
-                    <ul>
-                        <li class="li1">
-                            <a href="#">«第一頁</a>
-                        </li>
-                        <li class="li1">
-                            <a href="#">‹上一頁</a>
-                        </li>
-                        <li class="li1">
-                            <a href="#"></a>
-                        </li>
-                        <li class="li1">
-                            <a href="#">下一頁›</a>
-                        </li>
-                        <li class="li1">
-                            <a href="#">最末頁»</a>
-                        </li>
-                    </ul>
-                </nav>
 				<!--	活動標題 	-->
 				<table class="actTitle">
 					<tbody>
@@ -209,6 +191,26 @@
             	
             	
             </div>
+            <!-- 頁面控制 -->
+            	<nav class="pageControl">
+                    <ul>
+                        <li class="li1">
+                            <a href="#">«第一頁</a>
+                        </li>
+                        <li class="li1">
+                            <a href="#">‹上一頁</a>
+                        </li>
+                        <li class="li1">
+                            <a href="#"></a>
+                        </li>
+                        <li class="li1">
+                            <a href="#">下一頁›</a>
+                        </li>
+                        <li class="li1">
+                            <a href="#">最末頁»</a>
+                        </li>
+                    </ul>
+                </nav>
             <!-- 每頁不同的內容到這裡結束 -->
             <!-- 頁面控制 -->
         </div>

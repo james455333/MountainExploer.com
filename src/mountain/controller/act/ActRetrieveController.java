@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.client.HttpClientErrorException;
 
 import main.generic.model.GenericTypeObject;
 import main.generic.service.GenericService;
@@ -60,7 +61,7 @@ public class ActRetrieveController {
 		service.save(actInfo);
 		
 		// 設定hql語法
-		String hql = "From ActivityInfo where sysdate < startDate order by postDate ,actBasic";
+		String hql = "From ActivityInfo where sysdate < startDate and deleteTag is null order by postDate ,actBasic";
 		
 		// 得到hql總數
 		String all = "select count(*) from ActivityInfo where sysdate < startDate " ;
@@ -313,25 +314,13 @@ public class ActRetrieveController {
 		/*	設定service	*/
 		InterfaceService<GenericTypeObject> service = this.service;
 		service.save(actImage);
-		/*	
-		 * 	判定
-		 * 	直接查詢特定活動圖片ID
-		 * 	或者
-		 * 	特定活動ID(集合)	
-		 * 	來決定HQL
-		 * 
-		 * */
+		/*	判定 : 直接查詢特定活動圖片ID 或者 特定活動ID(集合)來決定HQL */
 		String hql = "From ActImage where seqno = " + seqno ;
 		if (defImage != null && actID != null) {
 			hql = "From ActImage where activityBasic = " + actID + " and defaultImage is not null";
 		}
-		/*
-		 * 
-		 * 	
-		 * 
-		 * */
 		List<ActImage> imgList = (List<ActImage>) service.getwithHQL(hql, 1, 1);
-		if ( !imgList.isEmpty() ) {
+		if ( !imgList.isEmpty()) {
 			for (GenericTypeObject genericTypeObject : imgList) {
 				actImage = (ActImage) genericTypeObject;
 				byte[] imgBytes = actImage.getImg();
@@ -339,17 +328,9 @@ public class ActRetrieveController {
 				headers.setContentType(MediaType.IMAGE_JPEG);
 				result.add(new ResponseEntity<byte[]>(imgBytes, headers, HttpStatus.OK));
 			}
-		}else{
-			service.save(sysImage);
-			String sysImgHql = "From SystemImage where name like 'defaultmountain' ";  
-			
-			List<SystemImage> getwithHQL = (List<SystemImage>) service.getwithHQL(sysImgHql, 1, 1);
-			sysImage = getwithHQL.get(0);
-			HttpHeaders headers = new HttpHeaders();
-			headers.setContentType(MediaType.IMAGE_JPEG);
-			result.add(new ResponseEntity<byte[]>(sysImage.getImage(), headers, HttpStatus.OK));
+		}else {
+			throw new HttpClientErrorException(HttpStatus.NOT_FOUND);
 		}
-
 		return result.get(0);
 
 	}

@@ -40,10 +40,10 @@ public class ActRegistry extends GenericTypeObject {
 	private java.util.Date reqDate;
 	private Integer deniTag;
 	private Integer confirm;
-	private byte[] declineReson;
-	private Set<ActRegInfo> actRegInfo;
+	private byte[] declineReason;
 	private Integer cancelTag;
 	private byte[] cancelReason;
+	private Set<ActRegInfo> actRegInfo;
 	
 	@Column(name = "CANCEL_TAG")
 	public Integer getCancelTag() {
@@ -95,8 +95,8 @@ public class ActRegistry extends GenericTypeObject {
 		this.memberBasic = memberBasic;
 	}
 	@Basic
-	@Column(name = "REG_DATE")
 	@Temporal(TemporalType.DATE)
+	@Column(name = "REG_DATE")
 	public java.util.Date getReqDate() {
 		return reqDate;
 	}
@@ -119,18 +119,18 @@ public class ActRegistry extends GenericTypeObject {
 	}
 	@Column(name = "DECLINE_REASON")
 	@JsonIgnore
-	public byte[] getDeclineReson() {
-		return declineReson;
+	public byte[] getdeclineReason() {
+		return declineReason;
 	}
 	@Transient
 	public String getDelnReason() throws UnsupportedEncodingException {
-		if (declineReson!=null) {
-			return new String(declineReson, MountainGlobal.CHARSET);
+		if (declineReason!=null) {
+			return new String(declineReason, MountainGlobal.CHARSET);
 		}
 		return null;
 	}
-	public void setDeclineReson(byte[] declineReson) {
-		this.declineReson = declineReson;
+	public void setdeclineReason(byte[] declineReason) {
+		this.declineReason = declineReason;
 	}
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "actRegistry", cascade = CascadeType.ALL)
 	public Set<ActRegInfo> getActRegInfo() {

@@ -3,6 +3,9 @@ package member.back.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import member.back.model.MemberBasicBackService;
 
 @Controller
-@SessionAttributes(names = {"LoginOK","beforeCheckURL"})
+@SessionAttributes(names = {"Member","beforeCheckURL"})
 public class MemberBackLoginController {
 	
 
@@ -79,7 +82,8 @@ public class MemberBackLoginController {
 	
 	
 	@RequestMapping(path = "/member/memberBackLogout", method = RequestMethod.GET)
-	public String processLogout(SessionStatus status) {
+	public String processLogout(SessionStatus status, HttpSession session) {
+		System.out.println("session hascode before clean : " + session.hashCode());
 		status.setComplete();
 		return "member/backLogin";
 		

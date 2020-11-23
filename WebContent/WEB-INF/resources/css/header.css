@@ -1,0 +1,36 @@
+.count1 {
+    column-count: 3;
+    column-rule: 3px double gray;
+    width: auto;
+    padding: 100px;
+    margin: 116px auto 10px auto;
+    background-image: url(../images/BGI.jpg);
+    background-attachment: fixed;
+    /*背景附著*/
+    background-repeat: no-repeat;
+    /*重複背景*/
+    background-position: bottom;
+    /*背景位置*/
+    background-size: cover;
+    /*背景尺寸*/
+    display: flex;
+    opacity: 0.8;
+    z-index: 0;
+}
+
+.count1_img {
+    margin: auto;
+    text-align: center;
+    /* border-top: px; */
+}
+
+.navbar-nav>li>a, .navbar-brand {
+    padding-top: 35px !important;
+    padding-bottom: 0 !important;
+    height: 100px;
+}
+
+.navbar {
+    min-height: 30px !important;
+    z-index: 50;
+}
