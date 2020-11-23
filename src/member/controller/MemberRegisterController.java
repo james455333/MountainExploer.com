@@ -6,9 +6,13 @@ import java.text.SimpleDateFormat;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -50,6 +54,27 @@ public class MemberRegisterController {
 	}
 	
 	
+	@RequestMapping(path = "")
+	public String checkCookie(String account, String passwrod, HttpServletResponse response) {
+		
+		//建立新的Cookie
+		Cookie antCookie = new Cookie("account", account);
+		Cookie pwdCookie = new Cookie("password", passwrod);
+		
+		//輸出到client
+		response.addCookie(antCookie);
+		response.addCookie(pwdCookie);
+		return "redirect:getCookie";
+	}
+	
+	
+	@RequestMapping(path = "")
+	public String getCookie(@CookieValue("account") String account,
+							@CookieValue("password") String password) {
+		System.out.println("account:" + account);
+		System.out.println("password" + password);
+		return "success";
+	}
 	
 	
 	@RequestMapping(path = "/member/memberRegister", method = RequestMethod.POST)
