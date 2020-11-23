@@ -109,36 +109,25 @@ document.getElementById("demo6").addEventListener("click", function () {
 
 
 
-// demo7 再次確認提醒
-document.getElementById("demo7").addEventListener("click", function () {
-  swal({      //swal等同於sweetalert
-    icon:"success",//圖示
-    title: "會員登入",//標題
-    text: "帳號：",//內容
-    type: "input1",
-    
-    showCancelButton: true,
-    closeOnConfirm: false,
-    animation: "slide-from-top",
-    input1Placeholder: "請輸入帳號",
-    input2Placeholder: "請輸入密碼"
-  },
-    function (input1Value) {
-      if (input1Value === false) return false;
 
-      if (input1Value === "") {
-        swal.showInput1Error("帳號不可為空白");
-        return false
-      }
-    });
-  
-  swal("登入成功！", "", "success");
+
+
+
+
+
+document.getElementById("demo9").addEventListener("click", function () {
+  swal({
+    content: {
+      title: "登入",
+      text: "your name",
+      element: "input",
+      attributes: {
+        placeholder: "請輸入密碼",
+        type: "password",
+      },
+    }
+  })
 });
-
-
-
-
-
 
 
 
