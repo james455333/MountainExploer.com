@@ -39,7 +39,7 @@ public class WebAppMvcConfig implements WebMvcConfigurer  {
 //	設置讀取特定路徑的真實路徑
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/**").addResourceLocations("/WEB-INF/pages/","/WEB-INF/resources/","/MontainExploer.com/");
+		registry.addResourceHandler("/**").addResourceLocations("/WEB-INF/pages/","/WEB-INF/resources/","/");
 	}
 	
 	
