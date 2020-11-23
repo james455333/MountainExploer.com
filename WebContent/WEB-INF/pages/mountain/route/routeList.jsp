@@ -52,9 +52,8 @@
             
         </div>
         <div class="div_li3">
-            <a>保留區</a>
         </div>
-        <div class="div_li2">
+        <div class="div_li2 m-dl2-adj">
         	<div class="npNav">
                 <nav><ul class="npList"> </ul></nav>
         	</div>

@@ -119,7 +119,7 @@
                         <tr>
                             <!-- thead更改從這邊開始 -->
                             <th scope="col">活動預覽圖</th>
-                            <th scope="col" calss="d-li-na">活動名稱</th>
+                            <th scope="col" class="d-li-na">活動名稱</th>
                             <th scope="col">發布時間 / 默認排序</th>
                             <th scope="col">目前人數 / 人數上限</th>
                             <th scope="col">報名截止日</th>
@@ -137,7 +137,7 @@
 							</td>
 							<td>
 								<div class='tagContainer'></div>
-								<a href=""></a>
+								<a class="m-tb-ti" href=""></a>
 							</td>
 							<td>
 							<a href=""></a>

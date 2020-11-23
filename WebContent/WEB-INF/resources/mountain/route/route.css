@@ -1,13 +1,25 @@
 @charset "UTF-8";
+.m-dl2-adj{
+	transition : 1000ms;
+}
+
 .npNav{
 	position : relative;
 	height : 100px;
 	width : 100%;
+	border: 2px solid red;
+	margin-bottom : 10px;
 }
 .routeNav{
 	position : relative;
 	height : 150px;
 	width : 100%;
+	border: 2px solid red;
+	transition : 1000ms;
+}
+.sdcAdjust{
+	transition : 1000ms;
+	z-index: 5
 }
 .imgAdjust{
 	height : 500px;

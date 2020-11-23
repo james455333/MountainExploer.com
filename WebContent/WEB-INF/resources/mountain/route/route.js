@@ -8,7 +8,6 @@ $(function(){
 	})
 	
 	$(".routeList").on("click","li",function(){
-		console.log("123")
 		let rtID = $(this).find("button").val()
 		ajaxVTN(rtID);
 	})

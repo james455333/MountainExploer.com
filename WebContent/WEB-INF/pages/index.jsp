@@ -97,7 +97,7 @@
 
     </div>
     <script type="text/javascript">
-		checklogin = "${sessionScope.LoginOK}"
+		checklogin = "${sessionScope.Member}"
 	</script>
     <script src="/MountainExploer.com/js/topBar.js"></script>
 
