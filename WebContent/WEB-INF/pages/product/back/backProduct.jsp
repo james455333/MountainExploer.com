@@ -68,10 +68,30 @@
 			<input type="button" value="次類別查詢" class="scSubmit">
 		</div>
 	</div>
+	
 	<div>
 		<a href='<c:url value="/backstage/product/createDataPage"/>'>新增一筆資料</a>
 
 	</div>
+	
+	<div>
+	<span>價格區間 : </span>
+<!-- 		<form class="priceSelect"> -->
+<!-- 		let array = $(".classsname") -->
+<!-- 		for(){ -->
+<!-- 		 	let a = array[i].attr("id") -->
+<!-- 		} -->
+		  <input  type="radio" name="radioGroup" id="radioA" value="1" checked="checked"/><label>0-1000元</label> 
+          <input type="radio" name="radioGroup" id="radioB" value="2"/><label>1001-2000元</label>
+          <input type="radio" name="radioGroup" id="radioC" value="3"/><label>2001-3000元</label>
+          <input type="radio" name="radioGroup" id="radioD" value="4"/><label>3000元以上</label>
+		 <button type="submit" class="priceSubmitButton">價格區間查詢</button>
+<!-- 		</form> -->
+	</div>
+	<div >
+					<input type="search" name="nameSelect" class="nameSelect">
+					<input type="button" value="商品名稱查詢" class="nameSubmit">
+				</div>
 
 	<div>
 		<span>資料筆數 : </span> <span id="totalData"> </span>

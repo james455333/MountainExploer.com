@@ -1,4 +1,4 @@
-package product.back.controller;
+package product.controller.back;
 
 import java.io.IOException;
 import java.util.Map;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import product.back.function.TransFuction;
+import product.function.TransFuction;
 import product.model.ItemBasic;
 import product.model.ItemInfo;
 import product.model.SecondClass;

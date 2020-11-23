@@ -1,4 +1,4 @@
-package product.back.controller;
+package product.controller.shop;
 
 import java.util.List;
 
@@ -12,9 +12,9 @@ import product.model.FirstClass;
 import product.model.SecondClass;
 import product.service.FirstClassService;
 import product.service.SecondClassService;
-@RequestMapping("/backstage/product")
+@RequestMapping("/shop")
 @Controller
-public class ProductPageEntryController {
+public class ShopPageEntryController {
 	
 	@Autowired
 	private FirstClassService firstClassService;

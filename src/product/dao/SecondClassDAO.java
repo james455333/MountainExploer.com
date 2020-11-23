@@ -86,6 +86,15 @@ public class SecondClassDAO {
 		return list;
 	}
 	
+	public int countWithHql(String hql) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery(hql);
+		
+		long result = (Long)query.uniqueResult();
+		
+		return (int) result;
+	}
+	
 	
 	
 }

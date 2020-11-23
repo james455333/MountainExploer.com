@@ -2,6 +2,8 @@ package product.service;
 
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -57,4 +59,14 @@ public class ItemBasicService {
 	public List<ItemBasic> scIDsetPage(int page, int showdata, int scID) {
 		return itemBasicDao.scIDsetPage(page, showdata, scID);
 	}
+	
+	public List<ItemBasic> getwithHQL(String hql, Integer page, Integer showData){
+		return itemBasicDao.getwithHQL(hql, page, showData);
+	}
+	
+	
+	public int countWithHql(String hql) {
+		return (int) itemBasicDao.countWithHql(hql);
+	}
+	
 }

@@ -1,4 +1,4 @@
-package product.back.function;
+package product.function;
 
 import java.io.IOException;
 import java.sql.SQLException;
