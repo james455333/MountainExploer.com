@@ -319,7 +319,7 @@ $(function() {
 				//				"<td><div >" + data[i].firstClass + "</div></td>" +
 				//				"<td><div >" + data[i].secondClass + "</div></td>" +
 				"<td>" +
-				'<img style="width: 50px; height: 50px;" src="/MountainExploer.com/backstage/product/search/images?seqno=' + data[i].seqno + '" class="productImg" >' +
+				'<img style="width: 100px; height: 100px;" src="/MountainExploer.com/backstage/product/search/images?seqno=' + data[i].seqno + '" class="productImg" >' +
 				"</td>" +
 				"<td><div >" + data[i].price + "</div></td>" +
 				//				"<td><div >" + data[i].stock + "</div></td>" +
