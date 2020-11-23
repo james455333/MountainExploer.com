@@ -17,5 +17,7 @@ public interface ICountiesBeanService {
 	CountiesBean deleteCounties(String counties);
 	
 	CountiesBean select(String counties);
+	List<CountiesBean> selectarea(String area);
+	
 
 }

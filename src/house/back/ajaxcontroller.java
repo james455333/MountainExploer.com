@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 import house.mountainhouseList.model.AreaBean;
 import house.mountainhouseList.model.CampInfoBean;
 import house.mountainhouseList.model.CountiesBean;
 import house.mountainhouseList.service.AreaBeanService;
 import house.mountainhouseList.service.CampInfoBeanService;
 import house.mountainhouseList.service.CountiesBeanService;
+import product.back.function.RetrieveFunction;
 
 @Controller
 @RequestMapping("/mountainCampajax")
@@ -50,20 +52,37 @@ public class ajaxcontroller {
 	
 	@GetMapping("/ajaxcampArea")
 	@ResponseBody
-	public List<AreaBean> selectArea(Model m ,@RequestParam(name = "selectarea") String area){
-		List<AreaBean> list = areaService.selectArea(area);
+	public List<AreaBean> selectAreaAll(){
+		List<AreaBean> list = new ArrayList<AreaBean>();
+		list = areaService.selectAllArea();
 		
 		return list;
-	}
-	
+		}
+			
 	@GetMapping("/ajaxcampCounties")
 	@ResponseBody
-	public List<CountiesBean> selectCounties(Model m ,@RequestParam(name = "selectcounties") String counties ,@RequestParam(name = "selectarea") String area){
-		List<CountiesBean> list  = countiesService.selectCounties(counties);
-		
-		
+	public List<CountiesBean> selectCounties(@RequestParam(name = "selectarea") String area){
+			List<CountiesBean> list = countiesService.selectarea(area);			
+			
 		return list;
  		
+	}
+	
+	@GetMapping("/ajaxcampAreaSelect")
+	@ResponseBody
+	public List<CampInfoBean> selectArea(@RequestParam(name = "selectarea") String area){
+		List<AreaBean> list = new ArrayList<AreaBean>();
+		List<CampInfoBean> list2 = new ArrayList<CampInfoBean>();
+		list = areaService.selectArea(area);
+		for (AreaBean areaBean : list) {
+			for (CountiesBean countiesBean : areaBean.getCounties()) {
+				for (CampInfoBean campInfoBean : countiesBean.getCamp()) {
+					list2.add(campInfoBean);
+				}
+			}
+		}
+		return list2;
+		
 	}
 	
 }

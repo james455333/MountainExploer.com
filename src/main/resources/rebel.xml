@@ -11,6 +11,8 @@
 		</dir>
 		<dir name="C:/MountainExploer/MountainExploer.com/target/classes">
 		</dir>
+		<dir name="C:/TeamProject/MountainExploer.com/target/classes">
+		</dir>
 	</classpath>
 
 	<web>
@@ -22,8 +24,6 @@
 			<dir name="C:/TeamProject/MountainExploer.com/target/m2e-wtp/web-resources">
 				<exclude name="/"/>
 			</dir>
-		</link>
-		<link target="/">
 			<dir name="C:/MountainExploer/MountainExploer.com/target/m2e-wtp/web-resources">
 				<exclude name="/"/>
 			</dir>
@@ -33,11 +33,10 @@
 			</dir>
 			<dir name="C:/TeamProject/MountainExploer.com/WebContent">
 			</dir>
-		</link>
-		<link target="/">
 			<dir name="C:/MountainExploer/MountainExploer.com/WebContent">
 			</dir>
 		</link>
+
 	</web>
 
 </application>

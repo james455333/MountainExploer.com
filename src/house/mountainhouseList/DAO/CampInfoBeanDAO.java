@@ -28,7 +28,13 @@ public class CampInfoBeanDAO implements ICampInfoBeanService {
 		return getSession().get(CampInfoBean.class, campid);
 
 	}
-	
+	@Override
+	public List<CampInfoBean> selectcounties(String counties) {
+		String originString = "From CampInfoBean where counties  like '%" + counties + "%'" ;
+		Query<CampInfoBean> query = getSession().createQuery(originString , CampInfoBean.class);
+		List<CampInfoBean> list = query.list();
+		return list;
+	}
 
 	@Override
 	public List<CampInfoBean> selectcampid(int campid) {

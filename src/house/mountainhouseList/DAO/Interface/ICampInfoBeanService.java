@@ -19,5 +19,7 @@ public interface ICampInfoBeanService {
 	CampInfoBean update(CampInfoBean cBean);
 
 	CampInfoBean deleteCamp(int campid);
+	
+	List<CampInfoBean> selectcounties(String counties);
 
 }
