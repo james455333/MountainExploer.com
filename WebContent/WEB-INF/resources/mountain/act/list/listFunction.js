@@ -185,7 +185,7 @@ function setPageController(page) {
 		let first = url + "page=1"
 		let previous = url + "page=" + (Number(page) - 1);
 		$(".pageControl").find("a").eq(0).attr("href", first).css("display", "block")
-		$(".pageControl").find("a").eq(1).css("display", "block")
+		$(".pageControl").find("a").eq(1).attr("href", previous).css("display", "block")
 	} else {
 		$(".pageControl").find("a").eq(0).css("display", "none")
 		$(".pageControl").find("a").eq(1).css("display", "none")
