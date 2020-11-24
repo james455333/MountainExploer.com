@@ -49,6 +49,10 @@
 							type="text" name="stock" value="${itemInfo.stock}" required>
 					</div>
 					<div>
+						<label for="description"> 介紹 :  &nbsp&nbsp(必填)</label> <input style="width: 200px"
+							type="text" name="description" value="${productBean.description}" required>
+					</div>
+					<div>
 						<img style="width: 50px; height: 50px;"
 <%-- 							src="<c:url value='/productBackStage/images?seqno=${itemInfo.itemBasicSeqno}' />"	> --%>
 							src="<c:url value='/backstage/product/search/images?seqno=${itemInfo.itemBasicSeqno}' />"	>

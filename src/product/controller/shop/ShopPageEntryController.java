@@ -26,23 +26,24 @@ public class ShopPageEntryController {
 	public String shoppingPage(Model model) {
 		return "product/shop/shopPage";
 	}
-	
-	
-	//前往新增頁面
-	@RequestMapping(path = "/createDataPage", method = RequestMethod.GET)
-	public String createPage(Model model) {
-		
-		List<FirstClass> firstClassBeans = null;
-		List<SecondClass> secondClassBeans = null;
-		
-		secondClassBeans = secondClassService.selectAll();
-		firstClassBeans = firstClassService.selectAll();
-		
-		model.addAttribute("fcBean", firstClassBeans);
-		model.addAttribute("scBean", secondClassBeans);
-		
-		return "product/back/backProductCreate";
+	//前往商品細項頁面
+	@RequestMapping(path = "/productInfoEntry")
+	public String productInfoPage(Model model) {
+		return "product/shop/productInfoPage";
 	}
+	
+		
+	//前往購物車頁面
+	@RequestMapping(path = "/shoppingCartPage", method = RequestMethod.GET)
+	public String shoppingCartPage(Model model) {
+		
+		return "product/xxxx";
+	}
+	
+	
+	
+	
+	
 	
 	//前往修改頁面
 	@RequestMapping(path = "/updateDataEntry", method = RequestMethod.GET)
