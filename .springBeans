@@ -20,11 +20,9 @@
 		<config>java:house.mountainhouseList.model.CampInfoBean</config>
 		<config>java:house.mountainhouseList.model.CountiesBean</config>
 		<config>java:main.generic.model.GenericTypeObject</config>
-		<config>java:product.model.ItemInfo</config>
 		<config>java:member.model.MemberBasic</config>
 		<config>java:mountain.model.route.MountainBean</config>
 		<config>java:mountain.model.route.NationalPark</config>
-		<config>java:product.model.ProductBean</config>
 		<config>java:config.RootAppConfig</config>
 		<config>java:mountain.model.route.RouteBasic</config>
 		<config>java:mountain.model.route.RouteInfo</config>

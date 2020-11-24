@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import house.CampGlobal;
@@ -300,6 +301,17 @@ public class CampServletAction {
 		m.addAttribute("jumpupdatename", list);
 		return "house/back/backupdateCamp";
 	}
+	
+	@GetMapping("/countiesoption")
+	@ResponseBody
+	public List<CountiesBean> countiesoption(@RequestParam(name = "areaselect") String area ){
+		List<CountiesBean> list = countiesService.selectarea(area);
+		
+		
+		return list;
+	}
+	
+	
 //	@GetMapping("/selectcampid")
 //	public String selectCampId(@RequestParam(name = "selectcampid") String id , Model m) {
 //		
