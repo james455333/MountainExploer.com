@@ -45,8 +45,10 @@ public class CheckLoginFilter implements Filter{
 		//得到當前路徑
 		req.getRequestURI().substring(req.getContextPath().length());
 		System.out.println("requestURI : " + req.getRequestURI());
+		int length = req.getContextPath().length();
+		String requestURI = req.getRequestURI().substring(length);
 		//檢查是否需要登入檢查
-		if (!passUrls.contains(req.getRequestURI().substring(req.getContextPath().length()))) {
+		if ( CheckLogin(requestURI) ) {
 			
 			//否，繼續
 			System.out.println("this url don't need to be check");
@@ -82,6 +84,19 @@ public class CheckLoginFilter implements Filter{
 			return;
 		}
 		
+	}
+
+	private boolean CheckLogin(String requestURI) {
+		
+		if(passUrls.contains(requestURI)) {
+			return false;
+		}
+		for (String string : passUrls) {
+			if (requestURI.indexOf(string) > -1) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 }
