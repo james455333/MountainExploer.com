@@ -7,12 +7,14 @@ public class MemberPwdStringRandom {
 	
 	private static ArrayList<String> strList = new ArrayList<String>();
 	private static Random random = new Random();
-	private static final int RANDOM_LENGTH = 10;
+	private static final int RANDOM_LENGTH = 10; //10位數亂碼
 	
 	static {
 		init();
 	}
 	
+	
+	//隨機生成10位混合大小寫英文字母與數字的亂碼
 	public static String tempPwd() {
 		String rndPwd = genRandom(RANDOM_LENGTH);
 		return rndPwd;

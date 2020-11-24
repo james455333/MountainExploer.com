@@ -22,7 +22,7 @@ public class MailUtils {
 		props.setProperty("mail.transport.protocol", "SMTP");
 		props.setProperty("mail.smtp.host", "smtp.gmail.com");
 		props.setProperty("mail.smtp.auth", "true");
-		String from = "web@gmail.com";
+		String from = "mountainexploer@gmail.com";
 		
 		try {
 			MailSSLSocketFactory sf = new MailSSLSocketFactory();
@@ -32,7 +32,7 @@ public class MailUtils {
 			
 			Authenticator auth = new Authenticator() {
 				public PasswordAuthentication getPasswordAuthentication() {
-					return new PasswordAuthentication("web@gmail.com", "email's password");
+					return new PasswordAuthentication("mountainexploer@gmail.com", "ewubisanmwdetjky");
 				}	
 			};
 			
