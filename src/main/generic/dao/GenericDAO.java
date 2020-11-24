@@ -213,8 +213,8 @@ public class GenericDAO<T extends GenericTypeObject> implements InterfaceDAO<T> 
 		}
 		int startPosition = (page-1) * showData;
 		Session session = sessionFactory.getCurrentSession();
-		Query<? extends GenericTypeObject> query = session.createQuery(hql,entity.getClass());
-		List<? extends GenericTypeObject> result = query.setFirstResult(startPosition)
+		Query<T> query = (Query<T>) session.createQuery(hql,entity.getClass());
+		List<T> result = query.setFirstResult(startPosition)
 			.setMaxResults(showData)
 			.setReadOnly(true)
 			.getResultList();

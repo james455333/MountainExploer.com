@@ -1,18 +1,25 @@
 package mountain.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
-import main.generic.model.GenericTypeObject;
-import main.generic.service.GenericService;
-import main.generic.service.InterfaceService;
-import mountain.model.activity.ActivityBasic;
+import member.model.MemberBasic;
 
 @RequestMapping("/mountain/public")
 @Controller
+@SessionAttributes("Member")
 public class ShareController {
 	
+	@GetMapping("/mbInfo")
+	@ResponseBody
+	public MemberBasic mbInfo(
+			MemberBasic mb,
+			Model model) {
+		mb = (MemberBasic) model.getAttribute("Member");
+		return mb;
+	}
 }

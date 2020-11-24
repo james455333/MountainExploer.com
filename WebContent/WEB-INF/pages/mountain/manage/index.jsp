@@ -10,7 +10,13 @@
     <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
     <link rel="stylesheet" href="manage/manage.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -52,25 +58,157 @@
 
 	        <div class="div_li1 m-dl1-adj">
 	            <div class="sideNav">
-	            	<div class='m-si-op'>舉辦活動管理</div>
-	            	<div class='m-si-op'>報名活動管理</div>
-	            	<div class='m-si-op'>活動紀錄</div>
-	            	<div class='m-si-op'>問題回報</div>
+	            	<div class='m-si-op m-hide'><div>舉辦活動管理</div></div>
+	            	<div class='m-si-op'><div>報名活動管理</div></div>
+	            	<div class='m-si-op'><div>活動紀錄</div></div>
+	            	<div class='m-si-op'><div>問題回報</div></div>
 	            </div>
 	        </div>
 	        <div class="div_li3 m-hide">
 	        </div>
 	        <div class="div_li2 m-dl2-adj">
-        </div>
-        	
-
-
-
-
-            <!-- 每頁不同的內容到這裡結束 -->
+	        	<div class="m-ma-container">
+	        		<div>
+	        			<h2>歡迎來到活動管理頁面</h2>
+	        			<h3>點選左列選項進入指定控制頁面</h3>
+	        		</div>
+					
+	        	</div>
+        	</div>
         </div>
     </div>
-
+    
+    <div class="m-hide">
+   		<table class="order-table m-ma-ta">
+        	<thead class="order-table-th"><tr>
+				<th scope="col" style="width:75px">活動編號</th>
+				<th scope="col" class="d-li-na">活動名稱</th>
+				<th scope="col" class="m-tb-date">開始時間</th>
+				<th scope="col" class="m-tb-date">結束時間</th>
+				<th scope="col" style="width:75px">活動價格</th>
+				<th scope="col" style="width:75px">路線名稱</th>
+				<th scope="col" class="m-tb-date">發布時間</th>
+				<th scope="col" style="width:75px">報名人數 / 人數上限</th>
+				<th scope="col" class="m-tb-date">報名截止日</th>
+				<th scope="col" style="width:50px">備註</th>
+				<th scope="col" style="width:50px">回覆</th>
+				<th scope="col">控制選項</th>
+			</tr></thead>
+			<tbody  class='order-table-tb hideTbody'>
+				<tr>
+					<td></td>
+					<td><a class="m-tb-ti" href=""></a></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td class="m-tb-rt"></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td><button>備註顯示</button></td>
+					<td><button>CM</button></td>
+					<td>
+						<div class="flex-box">
+							<button>報名選單</button>
+							<button class="update-show">修改內容</button>
+						</div>
+						<div class="flex-box">
+							<button></button>
+							<button>取消活動</button>
+						</div>
+					</td>
+				</tr>
+				<tr class="m-note hideTr">
+					<td colspan="12"> 
+					</td>
+				</tr>
+				<tr class="tr-up hideTr">
+					<td colspan="12">
+						<div>
+							<form action="" >
+								<div class="tr-up-form">
+									<div>
+										<label>活動標題 : 
+											<input type="text" name="title">
+										</label>
+									</div>
+									<div>
+										<label>活動開始時間 : 
+											<input name="startDate" readonly="readonly">
+										</label>
+									</div>
+									<div>
+										<label>活動結束時間 : 
+											<input name="endDate" readonly="readonly"> 
+										</label>
+									</div>
+									<div>
+										<label>總天數 : 
+											<input name="totalDay" readonly="readonly">
+										</label>
+									</div>
+								</div>
+								<div class="tr-up-form">
+									<div>
+										<label>活動價格 : 
+											<input type="text" name="price">
+										</label>
+									</div>
+									<div>
+										<label>報名人數上限 : 
+											<input type="text" name="regTop">
+										</label>
+									</div>
+									<div>
+										<label>報名截止日期 : 
+											<input name="regEndDate" readonly="readonly">
+										</label>
+									</div>
+								</div>
+								<div class="tr-up-form">
+									<label>備註 : 
+										<textarea rows="10" cols="100" name="note" class="m-note-form"></textarea>
+									</label>
+								</div>
+								<div class="tr-up-form">
+									<input type="button" value="確認修改">
+									<input type="button" class="cancel-up" value="取消修改">
+								</div>
+							</form>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+        <nav class="pageControl m-paC">
+        	<ul>
+            	<li class="li1">
+            		<div class="m-page">
+	            		«第一頁
+            		</div>
+				</li>
+                <li class="li1">
+                	<div class="m-page">
+	                	‹上一頁
+                	</div>
+                </li>
+                <li class="li1">
+                	<div  class="m-page">
+                	</div>
+				</li>
+                <li class="li1">
+                	<div class="m-page">
+                		下一頁›
+                	</div>
+                </li>
+                <li class="li1">
+                	<div  class="m-page">
+                		最末頁»
+                	</div>
+				</li>
+			</ul>
+		</nav>
+    </div>
     <footer id="footer">
         <a>全站導覽</a>
         <button id="demo1">確認demo1</button>
