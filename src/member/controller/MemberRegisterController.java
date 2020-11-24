@@ -54,7 +54,7 @@ public class MemberRegisterController {
 	}
 	
 	
-	@RequestMapping(path = "")
+//	@RequestMapping(path = "")
 	public String checkCookie(String account, String passwrod, HttpServletResponse response) {
 		
 		//建立新的Cookie
@@ -68,7 +68,7 @@ public class MemberRegisterController {
 	}
 	
 	
-	@RequestMapping(path = "")
+//	@RequestMapping(path = "")
 	public String getCookie(@CookieValue("account") String account,
 							@CookieValue("password") String password) {
 		System.out.println("account:" + account);

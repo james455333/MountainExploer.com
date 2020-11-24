@@ -21,9 +21,10 @@
 			</div>
 			<div>
 				<input type="submit" id="submit" name="submit" value="登入">
+				<input type="checkbox" id="rememberMe" name="rememberMe" value="rememberMe">記住我
 			</div>
 			<div>
-				<a href="">忘記密碼</a>
+				<a href="/MountainExploer.com/member/memberPwdFoundEntry">忘記密碼</a>
 			</div>
 		</form>
 	</div>

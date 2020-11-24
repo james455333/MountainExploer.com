@@ -72,12 +72,11 @@ public class MemberDAO {
 	//Select MemberInfo
 	public MemberBasic select(int seqno) {
 		Session session = sessionFactory.getCurrentSession();
-		Query<MemberBasic> query = session.createQuery("From MemberBasic where seqno = ?0", MemberBasic.class);
-		query.setParameter(0, seqno);
-		
-		MemberBasic mb = query.uniqueResult();
-		
-		return mb;
+		MemberBasic queryMb = session.get(MemberBasic.class, seqno);
+		if(queryMb != null) {
+			return queryMb;
+		}
+		return null;
 	}
 	
 	

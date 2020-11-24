@@ -25,7 +25,7 @@
 					<input type="hidden" name="password" value="${Member.password}">
 				</div>
 				<div>
-					<label>暱稱</label>
+					<label>暱稱：</label>
 					<span>${Member.memberInfo.neck_name}</span><br/>
 					<input type="hidden" name="memberInfo.neck_name" value="${Member.memberInfo.neck_name}">
 				</div>
@@ -89,15 +89,11 @@
 				</div>
 				<div>
 					<input type="submit" id="submit" name="submit" value="修改會員資料">
+					<a href="/MountainExploer.com/member/memberPwdChangeEntry">修改密碼</a>
 				</div>
 			</fieldset>
+			<a href="/MountainExploer.com/member/memberLogout">登出</a>
 		</form>
 	</div>
-	<div>
-		<form action="" method="GET">
-			<input type="submit" id="chgPwd" name="chgPwd" value="更改密碼">		
-		</form>	
-	</div>	
-
 </body>
 </html>

@@ -5,6 +5,7 @@ import java.security.GeneralSecurityException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,10 +21,18 @@ import member.model.MemberService;
 @Controller
 public class MemberPasswordController {
 	
+	@Autowired
 	private MemberService mbService;
 	
 	
+	@RequestMapping(path = "/member/memberPwdFoundEntry", method = RequestMethod.GET)
+	public String processPwdFoundEntry() {
+		return "member/memberForgetPwd";
+	}
+	
+	
 	//忘記密碼
+	@RequestMapping(path = "/member/memberPwdFoundAction", method = RequestMethod.POST)
 	public String processPwdFound(@RequestParam(name = "account")String account,
 								  @RequestParam(name = "email")String email,
 								  Model m) throws GeneralSecurityException {
@@ -33,7 +42,7 @@ public class MemberPasswordController {
 		
 		
 		MemberBasic mb = mbService.select(account, email);
-		if(mb.getAccount() != null && mb.getEmail() != null) {
+		if(mb != null) {
 			
 			//隨機生成10位字母與數字亂數作為暫時密碼
 			String rndPwd = MemberPwdStringRandom.tempPwd();
@@ -80,11 +89,12 @@ public class MemberPasswordController {
 		System.out.println("==================加密1：" + password);
 		
 		updatePwd = MemberGlobal.getSHA1Endocing(MemberGlobal.encryptString(updatePwd));
-		System.out.println("==================加密1：" + updatePwd);
+		System.out.println("==================加密2：" + updatePwd);
 		
 		MemberBasic queryMb = mbService.select(seqno);
 		if(queryMb != null) {
 			if(queryMb.getPassword().equals(password)) {
+				System.out.println("A");
 				queryMb.setPassword(updatePwd);
 				MemberBasic updateMb = mbService.updateData(queryMb);
 				m.addAttribute("Member", updateMb);
