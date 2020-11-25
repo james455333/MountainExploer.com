@@ -16,7 +16,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,6 +30,7 @@ import member.model.MemberBasic;
 import mountain.model.activity.ActivityBasic;
 import mountain.model.activity.ActivityInfo;
 import mountain.model.activity.Registry.ActRegInfo;
+import mountain.model.activity.Registry.ActRegistry;
 
 @Controller
 @RequestMapping("/mountain/manage/search")
@@ -45,7 +47,6 @@ public class ManageRetrieveController {
 		    binder.registerCustomEditor( String.class, new StringTrimmerEditor( true ));
 												
 		    //Custom Date Editor
-			System.out.println("=================================HIIIIIIIIIIIIIIIIIIIIIIII");									
 		    SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy/MM/dd");
 		    simpleDateFormat.setLenient(false);
 		    binder.registerCustomEditor( Date.class, new CustomDateEditor( simpleDateFormat,false));	   
@@ -63,7 +64,7 @@ public class ManageRetrieveController {
 		System.out.println("================mb name" + mb.getName());
 		
 		String hql = "From ActivityBasic where seqno in "
-					+ "( Select id From ActivityInfo where deleteTag is null and sysdate > startDate)"
+					+ "( Select id From ActivityInfo where deleteTag is null and sysdate < startDate)"
 					+ " and memberBasic = " + mb.getSeqno()
 					+ " order by seqno";
 		
@@ -94,18 +95,44 @@ public class ManageRetrieveController {
 		return resutlMap;
 	}
 	
-	@PutMapping("/post-update")
+	@PostMapping("/post-update")
 	@ResponseBody
-	public Boolean postUpdate(
-			ActivityInfo actInfo) {
+	public Boolean postUpdate(ActivityInfo actInfo) {
 		try {
 			service.save(actInfo);
-			System.out.println("============ actInfo : " + actInfo.getId() );
-//			actInfo = (ActivityInfo) service.update(actInfo);
+			
+			ActivityInfo originActivityInfo = (ActivityInfo) service.select(actInfo.getId());
+			originActivityInfo.setTitle(actInfo.getTitle());
+			originActivityInfo.setPrice(actInfo.getPrice());
+			originActivityInfo.setStartDate(actInfo.getStartDate());
+			originActivityInfo.setEndDate(actInfo.getEndDate());
+			originActivityInfo.setTotalDay(actInfo.getTotalDay());
+			originActivityInfo.setRegTop(actInfo.getRegTop());
+			originActivityInfo.setRegEndDate(actInfo.getRegEndDate());
+			originActivityInfo.setNote(actInfo.getNote());
+//			System.out.println("======note : " + new String(actInfo.getNote()));
+			originActivityInfo.setChangeDate(new Date());
+			
+			service.update(originActivityInfo);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new HttpClientErrorException(HttpStatus.UNAVAILABLE_FOR_LEGAL_REASONS);
+			throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
 		}
 		return true;
+	}
+	
+	@GetMapping("/post-registry")
+	@ResponseBody
+	public List<ActRegistry> postRegistry(
+			ActRegistry actRegistry,
+			@RequestParam("actID") Integer actID){
+		List<ActRegistry> actRegList = new ArrayList<ActRegistry>();
+		
+		service.save(actRegistry);
+		String hql = "From ActRegistry where activityBasic = " + actID;
+		actRegList = (List<ActRegistry>) service.getAllWithHql(hql);
+		
+		return actRegList;
 	}
 }

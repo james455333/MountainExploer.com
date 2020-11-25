@@ -102,7 +102,7 @@
 <ownDataTypeParameters>,1,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="decline_reson" id="5D5FD081-49BB-DBC2-91F6-A963838E5DA5">
+<Column name="decline_reason" id="5D5FD081-49BB-DBC2-91F6-A963838E5DA5">
 <sourceDDLFile>all.ddl</sourceDDLFile>
 <createdBy>Student</createdBy>
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>

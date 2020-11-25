@@ -26,7 +26,7 @@ function checkTitle(){
 /* 開始日期檢查 */
 function checkStartDate(){
 	let thisElm = $(this)
-	let actID = thisElm.parents("form").find("input[name='actBasic.seqno']").val();
+	let actID = thisElm.parents("form").find("input[name='id']").val();
 	$.ajax({
 		url : shareURL + "/dateCheck",
 		method : "Get",
@@ -85,7 +85,7 @@ function checkPrice(){
 }
 function checkRegTop(){
 	let thisElm = $(this)
-	let actID = thisElm.parents("form").find("input[name='actBasic.seqno']").val();
+	let actID = thisElm.parents("form").find("input[name='id']").val();
 	$.ajax({
 		url : shareURL + "/topRegCheck",
 		method : "Get",

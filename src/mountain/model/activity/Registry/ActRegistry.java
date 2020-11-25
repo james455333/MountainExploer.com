@@ -23,6 +23,7 @@ import javax.persistence.Transient;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import main.generic.model.GenericTypeObject;
 import member.model.MemberBasic;
@@ -45,7 +46,7 @@ public class ActRegistry extends GenericTypeObject {
 	private byte[] cancelReason;
 	private Set<ActRegInfo> actRegInfo;
 	
-	@Column(name = "CANCEL_TAG")
+	@Column(name = "CANCELTAG")
 	public Integer getCancelTag() {
 		return cancelTag;
 	}
@@ -87,7 +88,7 @@ public class ActRegistry extends GenericTypeObject {
 	}
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "MEMBER_BASIC_ID")
-	@JsonIgnore
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	public MemberBasic getMemberBasic() {
 		return memberBasic;
 	}
@@ -103,7 +104,7 @@ public class ActRegistry extends GenericTypeObject {
 	public void setReqDate(java.util.Date reqDate) {
 		this.reqDate = reqDate;
 	}
-	@Column(name = "DECLINE_TAG")
+	@Column(name = "DENIEDTAG")
 	public Integer getDeniTag() {
 		return deniTag;
 	}

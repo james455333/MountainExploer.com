@@ -17,65 +17,25 @@ if(urlNow.searchParams.has("status")){
 	status = urlNow.searchParams.get("status")
 }
 
-/* 
-100	General Member
-110	Uncertified Member
-120	General Guide
-130	Uncertified Guide
-140	Suspended Member
-150	Suspended Guide
-160	Administrator
- *
- */
-
-function checkStatus(){
-	if( status == '120' || status == '130'){
-		setGuideNav();
-	}
-	if( status == '140' || status == '150'){
-		setSuspend();
-	}
-}
-
-function setGuideNav(){
-	$(".sideNav").find(".m-si-op").removeClass("m-hide")
-}
-
-function setSuspend(){
-	$(".sideNav").find(".m-si-op").remove();
-}
 
 function post(page){
-	replaceContent("/post",page);
-}
-function registry(){
-	$(".m-ma-container").empty().css("display","inheirt");
-	replaceContent("/registry");
-}
-function record(){
-	$(".m-ma-container").empty().css("display","inheirt")
-	replaceContent("/record");
-}
-function report(){
-	$(".m-ma-container").empty().css("display","inheirt")
-	replaceContent("/report");
+	replaceContentPost("/post",page);
 }
 
-function replaceContent(order,page){
+/* 清空主要容器， */
+function replaceContentPost(order,page){
 	$(".m-ma-container").empty().css("display","inline-block");
-		let model,pageCtrl;
-	if( order == "/post"){
-		model = $(".m-ma-ta").clone();
-		pageCtrl = $(".m-hide").find(".pageControl").clone()
-		$(".m-ma-container").append(model)
-		$(".m-ma-container").append(pageCtrl)
-		insertPostInfo(order, page);
-		$(".m-dl2-adj").css("height","auto")
-	}
-
-	
+	let model,pageCtrl;
+	model = $(".m-ma-ta").clone();
+	pageCtrl = $(".m-hide").find(".pageControl").clone()
+	$(".m-ma-container").append(model)
+	$(".m-ma-container").append(pageCtrl)
+	insertPostInfo(order, page);
+	$(".m-dl2-adj").css("height","auto")
 }
 
+
+/* Post 主控制表 */
 function insertPostInfo(order, page){
 	
 	$.ajax({
@@ -84,7 +44,7 @@ function insertPostInfo(order, page){
 		dataType : "json",
 		data : { page : page },
 		success : function(data){
-			console.log(data)
+//			console.log(data)
 			totalPage = data.totalPage
 			totalData = data.totalData
 			for(let i in data.actList){
@@ -101,22 +61,28 @@ function insertPostInfo(order, page){
 				setRegInfo(data.actList[i],thisElm)
 				setRegEnd(data.actList[i],thisElm)
 				setNote(data.actList[i],thisElm)
-				setResp(data.actList[i],thisElm);
 				setControll(data.actList[i],thisElm);
 				setDatePicker(data.actList[i].actBasic.actInfo,thisElm)
 				setTotalDay(data.actList[i].actBasic.actInfo,thisElm)
+				setPostRegistry(thisElm,data.actList[i].actBasic.seqno)
 				thisElm.removeClass("hideTbody")
 			}
-				$(".m-ma-container").find(".hideTbody").eq(0).remove()
-				setPageController(order, page);
+			$(".m-ma-container").on("click",".cancel-up",function(){
+				$(this).parents("tr").addClass("hideTr");
+			})
+			$(".m-ma-container").find(".hideTbody").eq(0).remove()
+			setPageController(order, page);
 			
 		}
 	})
 	
 }
+/*
+	設定活動表單元素
+ */
 function setSeqno(actList,thisElm){
 	thisElm.find("td").eq(0).html(actList.actBasic.seqno)
-	thisElm.find(".tr-up-form").find("input[name='actBasic.seqno']").val(actList.actBasic.actInfo.id)
+	thisElm.find(".tr-up-form").find("input[name='id']").val(actList.actBasic.actInfo.id)
 }
 function setTitle(actList,thisElm){
 	thisElm.find("td").eq(1).find("a").html(actList.actBasic.actInfo.title)
@@ -157,7 +123,9 @@ function setNote(actList,thisElm){
 	thisElm.find("textarea[name='note']").html(actList.actBasic.actInfo.addInfo)
 	thisElm.find("td").eq(9).on("click",function(){
 		let thisNote = thisElm.find(".m-note")
-		$(".m-ma-container").find(".m-note").not(thisNote).addClass("hideTr")
+		let thead = $(".order-table-th").find("tr")
+		let mainTr = $(".tr-main-post")
+		$(".m-ma-container").find("tr").not(thead).not(mainTr).not(thisNote).addClass("hideTr")
 		thisElm.find(".m-note").toggleClass("hideTr")
 	})
 }
@@ -165,10 +133,7 @@ function setTotalDay(actInfo,thisElm){
 	thisElm.find(".tr-up-form").find("input[name='totalDay']").val(actInfo.totalDay)
 }
 
-function setResp(){
-	
-}
-/* 控制項 */
+/* 動態新增控制項元素 */
 function setControll(actList,thisElm){
 	let hideTag = actList.actBasic.actInfo.hideTag
 	if( hideTag == null){
@@ -186,7 +151,7 @@ function dateFormate(date) {
 
 	return result;
 }
-/* 舉辦活動 - 活動修改 */
+
 
 /* 頁面控制 */
 function setPageController(order, page) {
@@ -195,10 +160,10 @@ function setPageController(order, page) {
 		let first = 1
 		let previous = Number(page) - 1;
 		$(".pageControl").find("div").eq(0).on("click",function(){
-			replaceContent(order,first)
+			replaceContentPost(order,first)
 		}).css("display", "block")
 		$(".pageControl").find("div").eq(1).on("click",function(){
-			replaceContent(order,previous)
+			replaceContentPost(order,previous)
 		}).css("display", "block")
 	} else {
 		$(".pageControl").find("div").eq(0).css("display", "none")
@@ -208,10 +173,10 @@ function setPageController(order, page) {
 		let next = Number(page) + 1;
 		let final = Number(totalPage);
 		$(".pageControl").find("div").eq(3).on("click",function(){
-			replaceContent(order,next)
+			replaceContentPost(order,next)
 		}).css("display", "block")
 		$(".pageControl").find("div").eq(4).on("click",function(){
-			replaceContent(order,final)
+			replaceContentPost(order,final)
 		}).css("display", "block")
 	} else {
 		$(".pageControl").find("div").eq(3).css("display", "none")
@@ -225,10 +190,11 @@ function successSWAL(){
 		icon : "success",
 		button : "確定"
 	}).then(() => {
-    	let page = $(".m-ma-container").find(".pageControl")
+    	let pageCon = $(".m-ma-container").find(".pageControl")
 					.find("div").eq(2).text();
-		console.log(page)
-  });
+		let page = pageCon.substring(0,pageCon.indexOf("/")).trim();
+		post(page);
+	});
 }
 function errorSWAL(){
 	swal({
@@ -493,3 +459,92 @@ function setDatePicker(actInfo, thisElm){
 		}, function(start, end, label) {
 		});		    
 }
+
+function setPostRegistry(thisElm,thisActID){
+//	console.log(thisElm)
+	$.ajax({
+		url : manageHome+"/post-registry",
+		method : "GET",
+		dataType : "json",
+		data : { actID : thisActID},
+		success : function(data){
+//			console.log(data)
+			for(let i in data){
+				let model = thisElm.find(".tr-reg-con").find(".tr-reg-body").eq(i).clone();
+				thisElm.find(".tr-reg-con").append(model)
+				let thisBody =  thisElm.find(".tr-reg-order").eq(i)
+				setPR_Seqno(thisBody, data[i].seqno)
+				setPR_MBName(thisBody, data[i].memberBasic.memberInfo.neck_name)
+				setPR_RegNum(thisBody, data[i].actRegInfo.length)
+				setPR_RegDate(thisBody, data[i].reqDate)
+				setPR_RegAttr(thisBody, data[i]);
+				let regInfoBody = thisElm.find(".tr-reg-info").eq(i)
+				setPR_RegInfo(regInfoBody, data[i].actRegInfo)
+			}
+			thisElm.find(".tr-reg-body").eq(data.length).remove()
+		},
+		error : function(){
+			
+		}
+	})
+}
+
+function setPR_Seqno(thisBody, seqno){
+	thisBody.find("div").find("a").eq(0).html(seqno).attr("href","#regno="+seqno)
+	thisBody.find("a").eq(0).on("click",function(){
+		let thisRegInfo = thisBody.parent().find(".tr-reg-info")
+		thisBody.parents(".order-table-tb").find(".tr-reg-info").not(thisRegInfo).addClass("hideTr")
+		thisBody.parent().find(".tr-reg-info").toggleClass("hideTr")
+	})
+	thisBody.parent().find(".tr-reg-bar").on("click",function(){
+		let thisRegInfo = thisBody.parent().find(".tr-reg-info")
+		thisBody.parents(".order-table-tb").find(".tr-reg-info").not(thisRegInfo).addClass("hideTr")
+		thisBody.parent().find(".tr-reg-info").toggleClass("hideTr")
+	})
+}
+function setPR_MBName(thisBody, neck_name){
+	thisBody.find("div").eq(1).html(neck_name)
+}
+function setPR_RegNum(thisBody, length){
+	thisBody.find("div").eq(2).html(length + " 人")
+}
+function setPR_RegDate(thisBody, reqDate){
+	thisBody.find("div").eq(3).html(dateFormate(reqDate))
+}
+function setPR_RegAttr(thisBody, data){
+	if(data.cancelTag != null){
+		thisBody.find(".tr-reg-attr").html("[ 報名已取消 ]")
+		thisBody.find(".tr-reg-control").append("[ 取消原因 ] " + data.cancelRes)
+	}
+	if(data.deniTag == null){
+		if(data.confirm == null){
+			thisBody.find(".tr-reg-attr").html("[ 未接受報名 ]")
+			thisBody.find(".tr-reg-control").append("<button>接受報名</button>")
+			thisBody.find(".tr-reg-control").append("<button>拒絕報名</button>")
+		}else{
+			thisBody.find(".tr-reg-attr").html("[ 已接受報名 ]")
+			thisBody.find(".tr-reg-control").append("<button>拒絕報名</button>")
+		}
+	}else{
+		thisBody.find(".tr-reg-attr").html("[ 已拒絕報名 ]")
+		thisBody.find(".tr-reg-control").append("<button>接受報名</button>")
+	}
+	
+}
+
+function setPR_RegInfo(regInfoCon, actRegInfo){
+	console.log()
+	for(let i in actRegInfo){
+		let model = regInfoCon.find(".tr-reg-info-body").eq(i).clone();
+		let regInfoBody = regInfoCon.find(".tr-reg-info-body").eq(i)
+		regInfoBody.find("div").eq(0).html(actRegInfo[i].name)
+		regInfoBody.find("div").eq(1).html(dateFormate(actRegInfo[i].birthDay))
+		regInfoBody.find("div").eq(2).html(actRegInfo[i].personID)
+		regInfoBody.find("div").eq(3).html(actRegInfo[i].contactPhone)
+		regInfoBody.find("div").eq(4).html(actRegInfo[i].contactCellphone)
+		regInfoBody.find("div").eq(5).html(actRegInfo[i].contactEmail)
+		regInfoCon.append(model);
+	}
+	regInfoCon.find(".tr-reg-info-body").eq(actRegInfo.length).remove()
+}
+

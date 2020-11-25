@@ -8,30 +8,48 @@ $(function(){
 	$(".m-si-op").eq(0).on("click",function(){
 		post(1);
 	});
-	$(".m-si-op").eq(1).on("click",registry);
-	$(".m-si-op").eq(2).on("click",record);
-	$(".m-si-op").eq(3).on("click",report);
+	$(".m-si-op").eq(1).on("click",function(){
+		registry(1);
+	});
+	$(".m-si-op").eq(2).on("click",function(){
+		record(1);
+	});
+	$(".m-si-op").eq(3).on("click",function(){
+		report(1);
+	});
 	
-	$(".m-ma-container").on("click",".cancel-up",function(){
-		
-		$(this).parents("tr").addClass("hideTr");
-	})
-	$(".m-ma-container").on("click",".update-show",function(){
+	/* 
+		Post  Controller
+		update-Show => show update form 
+		reg-show => show Registry
+	*/
+	/* 顯示 - 修改內容 */
+	$(".m-ma-container").on("click",".bt-update-show",function(){
+		let thead = $(".order-table-th").find("tr")
+		let mainTr = $(".tr-main-post")
 		let thisElm = $(this).parents("tbody").find(".tr-up") 
-		$(".m-ma-container").find(".tr-up").not(thisElm).addClass("hideTr")
+		$(".m-ma-container").find("tr").not(thead).not(mainTr).not(thisElm).addClass("hideTr")
 		thisElm.toggleClass("hideTr")
 	})
+	/* 顯示+啟動 - 報名選單 */
+	$(".m-ma-container").on("click",".bt-reg-show",function(){
+		let thead = $(".order-table-th").find("tr")
+		let mainTr = $(".tr-main-post")
+		let thisElm = $(this).parents("tbody").find(".tr-reg") 
+		$(".m-ma-container").find("tr").not(thead).not(mainTr).not(thisElm).addClass("hideTr")
+		thisElm.toggleClass("hideTr")
+	})
+	/* 啟動 - 修改內容 - 內部Form檢查及送出 */
 	$(".m-ma-container").on("blur","input[name='title']",checkTitle)
 	$(".m-ma-container").on("change","input[name='startDate']",checkStartDate)
 	$(".m-ma-container").on("blur","input[name='price']",checkPrice)
 	$(".m-ma-container").on("blur","input[name='regTop']",checkRegTop)
 	$(".m-ma-container").on("submit",".tr-form",function(e){
 		e.preventDefault()
-		console.log(this)
 		$.ajax({
 			url: manageHome+"/post-update",
-	    	type: 'PUT',
-	     	data: new FormData( this ),
+	    	type: 'POST',
+	     	data: new FormData(this),
 	     	processData: false,
 	     	contentType: false,
 			success : function(data){
@@ -43,4 +61,81 @@ $(function(){
 		 });
 		
 	})
+	
+	$(".m-ma-container").on("click",".bt-act-hide",confirmSWAL)
+	$(".m-ma-container").on("click",".bt-act-delete",dangerSWAL)
+	
+	
 })
+/* 確認視窗 */
+function confirmSWAL(){
+	swal({
+		title : $(this).text(),
+		text : "確定要執行本操作嗎?",
+		icon : "warning",
+		dangerMode: true,
+		button : {
+			confirm :{
+				visible: true,
+				text : "確定"
+			},
+			cancel :{
+				text: "取消"
+			}
+		}
+	}).then(() => {
+    	
+	});
+}
+/* 危險確認視窗 */
+function dangerSWAL(){
+	swal({
+	    title: "確定要執行 取消本活動 嗎?",
+	    text: "請注意，本操作將取消本活動，\n本用戶將無法對本活動再次操控。\n若有問題請聯絡管理員\n\n\n\t確定要執行本操作?",
+	    icon: "warning",
+		dangerMode: true,
+	    buttons: {
+	      cancel: {
+	        text: "取消",
+	        visible: true
+	      },
+	      
+	      danger: {
+	        text: "確定執行刪除",
+	        visible: true,
+			value : true
+	      },
+	    },
+		
+	 }).then((value) => {
+		if(value){
+		}
+	 });
+}
+/* 
+100	General Member
+110	Uncertified Member
+120	General Guide
+130	Uncertified Guide
+140	Suspended Member
+150	Suspended Guide
+160	Administrator
+ *
+ */
+
+function checkStatus(){
+	if( status == '120' || status == '130'){
+		setGuideNav();
+	}
+	if( status == '140' || status == '150'){
+		setSuspend();
+	}
+}
+
+function setGuideNav(){
+	$(".sideNav").find(".m-si-op").removeClass("m-hide")
+}
+
+function setSuspend(){
+	$(".sideNav").find(".m-si-op").remove();
+}

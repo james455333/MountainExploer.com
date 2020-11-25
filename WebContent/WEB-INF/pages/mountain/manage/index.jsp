@@ -20,7 +20,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="manage/manageFunction.js"></script>
+    <script src="manage/managePostFunction.js"></script>
+    <script src="manage/manageRegistryFunction.js"></script>
+    <script src="manage/manageRecordFunction.js"></script>
+    <script src="manage/manageReportFunction.js"></script>
     <script src="manage/checkFunction.js"></script>
     <script src="manage/manage.js"></script>
     <style>
@@ -95,7 +98,7 @@
 				<th scope="col">控制選項</th>
 			</tr></thead>
 			<tbody  class='order-table-tb hideTbody'>
-				<tr>
+				<tr class="tr-main-post">
 					<td></td>
 					<td><a class="m-tb-ti" href=""></a></td>
 					<td></td>
@@ -109,12 +112,12 @@
 					<td><button>CM</button></td>
 					<td>
 						<div class="flex-box">
-							<button>報名選單</button>
-							<button class="update-show">修改內容</button>
+							<button class="bt-reg-show">報名選單</button>
+							<button class="bt-update-show">修改內容</button>
 						</div>
 						<div class="flex-box">
-							<button></button>
-							<button>取消活動</button>
+							<button class="bt-act-hide"></button>
+							<button class="bt-act-delete">取消活動</button>
 						</div>
 					</td>
 				</tr>
@@ -125,9 +128,9 @@
 				<tr class="tr-up hideTr">
 					<td colspan="12">
 						<div>
-							<form action="" class="tr-form" enctype="multipart/form-data">
+							<form class="tr-form" enctype="multipart/form-data">
 								<div class="tr-up-form">
-									<input type="hidden" name="actBasic.seqno">
+									<input type="hidden" name="id">
 									<div class="tr-up-fld">
 										<div class="tr-up-fld-div">
 											<div class="tr-up-label">
@@ -206,6 +209,51 @@
 									<input type="reset" class="cancel-up" value="取消修改">
 								</div>
 							</form>
+						</div>
+					</td>
+				</tr>
+				<tr class="tr-reg hideTr">
+					<td colspan="12">
+						<div class="tr-reg-con">
+							<div class="tr-reg-head">
+								<div class="tr-reg-seqno">報名編號</div>
+								<div class="tr-reg-mbName">報名會員名稱</div>
+								<div class="tr-reg-regNum">報名人數</div>
+								<div class="tr-reg-regDate">報名日期</div>
+								<div class="tr-reg-attr">狀態列</div>
+								<div class="tr-reg-control">控制列</div>
+							</div>
+							<div class="tr-reg-body">
+								<div class="tr-reg-order">
+									<div class="tr-reg-seqno"><a></a></div>
+									<div class="tr-reg-mbName"></div>
+									<div class="tr-reg-regNum"></div>
+									<div class="tr-reg-regDate"></div>
+									<div class="tr-reg-attr"></div>
+									<div class="tr-reg-control"></div>
+								</div>
+								<div class="tr-reg-bar">
+									<div><img src="/MountainExploer.com/mountain/images/down.png"></div>
+								</div>
+								<div class="tr-reg-info hideTr">
+									<div class="tr-reg-info-head">
+										<div class="tr-reg-info-name">姓名</div>
+										<div class="tr-reg-info-bDay">出生年月日</div>
+										<div class="tr-reg-info-pID">身分證字號</div>
+										<div class="tr-reg-info-phone">電話</div>
+										<div class="tr-reg-info-cellphone">手機</div>
+										<div class="tr-reg-info-email">電子信箱</div>
+									</div>
+									<div class="tr-reg-info-body">
+										<div class="tr-reg-info-name"></div>
+										<div class="tr-reg-info-bDay"></div>
+										<div class="tr-reg-info-pID"></div>
+										<div class="tr-reg-info-phone"></div>
+										<div class="tr-reg-info-cellphone"></div>
+										<div class="tr-reg-info-email"></div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</td>
 				</tr>
