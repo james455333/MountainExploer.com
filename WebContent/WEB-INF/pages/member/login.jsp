@@ -7,6 +7,7 @@
 	Cookie[] cookies = null;
 	String value1 = "";
 	String value2 = "";
+	String value3 = null;
 	cookies = request.getCookies();
 	if(cookies != null && cookies.length > 0){
 		for(Cookie cookie : cookies){
@@ -39,7 +40,8 @@
 			</div>
 			<div>
 				<input type="submit" id="submit" name="submit" value="登入">
-				<input type="checkbox" id="rememberMe" name="rememberMe" value="rememberMe">記住我<br/>
+				<input type="checkbox" id="rememberMe" name="rememberMe">記住我<br/>
+<%-- 				 ${requestScope.rememberMe eq 'check' } --%>
 				<a href="/MountainExploer.com/member/memberRegisterEntry">註冊會員</a>
 			</div>
 			<div>

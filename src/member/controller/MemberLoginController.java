@@ -36,22 +36,6 @@ public class MemberLoginController {
 		return "member/login";
 	}
 	
-//	@RequestMapping(path = "/member/memberLogin", method = RequestMethod.GET)
-//	public String checkCookie(@RequestParam(name = "account")String account,
-//							  @RequestParam(name = "password")String password,
-//							  HttpServletResponse response) {
-//		Cookie cookieAnt = new Cookie("account", account);
-//		Cookie cookiePwd = new Cookie("password", password);
-//		
-//		cookieAnt.setMaxAge(30*24*60*60);
-//		cookiePwd.setMaxAge(30*24*60*60);
-//		
-//		response.addCookie(cookieAnt);
-//		response.addCookie(cookiePwd);
-//		
-//		return "redirect:processCheckLogin";
-//	}
-	
 	
 	@RequestMapping(path = "/member/memberLogin", method = RequestMethod.POST)
 	public String processCheckLogin(
@@ -61,9 +45,6 @@ public class MemberLoginController {
 			HttpServletResponse response,
 			Model m,
 			RedirectAttributes redAttr) {
-		
-//		System.out.println("=================cookieAnt" + cookieAnt);
-//		System.out.println("=================cookiePwd" + cookiePwd);
 		
 		
 		Map<String, String> errors = new HashMap<String, String>();
@@ -97,8 +78,15 @@ public class MemberLoginController {
 			cookiePwd.setMaxAge(30*24*60*60);
 			cookiePwd.setPath("/");
 			
+			String rmCk = "check";
+			Cookie cookieRm = new Cookie("rememberMe", rmCk);
+			cookieRm.setMaxAge(30*24*60*60);
+			cookieRm.setPath("/");
+			
 			response.addCookie(cookieAnt);
 			response.addCookie(cookiePwd);
+			response.addCookie(cookieRm);
+			
 		} else {
 			Cookie cookieAnt = new Cookie("rmAnt", account);
 			cookieAnt.setMaxAge(0);
@@ -108,6 +96,9 @@ public class MemberLoginController {
 			Cookie cookiePwd = new Cookie("rmPwd", ckPwd);
 			cookiePwd.setMaxAge(0);
 			cookiePwd.setPath("/");
+			
+			response.addCookie(cookieAnt);
+			response.addCookie(cookiePwd);
 		}
 		
 		
