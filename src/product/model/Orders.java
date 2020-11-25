@@ -46,14 +46,14 @@ public class Orders {
 	@Column(name = "CANCELTAG")
 	private String cancelTag;
 	
-//	private MemberBasic memberBasic;
-//	
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "member_basic_id", referencedColumnName = "seqno")
-//	@JsonIgnore
-//	public MemberBasic getMemberBasic() {
-//		return memberBasic;
-//	}
+	private MemberBasic memberBasic;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "member_basic_id", referencedColumnName = "seqno")
+	@JsonIgnore
+	public MemberBasic getMemberBasic() {
+		return memberBasic;
+	}
 	
 	
 	public Integer getSeqno() {

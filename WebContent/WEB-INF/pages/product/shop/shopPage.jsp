@@ -127,7 +127,11 @@
 
 			<div class="secDivContent">
 			<div>
-				<a href='<c:url value="/backstage/product..../createDataPage"/>'>查看購物車</a>
+				<a href='<c:url value="/shop/shoppingCartEntry"/>'>查看購物車</a>
+
+			</div>
+			<div>
+				<a href='<c:url value="/shop/xxxy"/>'>查看訂單</a>
 
 			</div>
 				<!--table-->

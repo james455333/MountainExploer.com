@@ -4,7 +4,10 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
+import org.springframework.stereotype.Component;
+@Component
 public class ShoppingCart {
+	
 	private Map<Integer, CartBean> cart = new LinkedHashMap<>();
 
 	public ShoppingCart() {
@@ -15,28 +18,32 @@ public class ShoppingCart {
 	}
 
 	public void addToCart(Integer itemBasicSeqno, CartBean cartBean) {
-		if (cartBean.getAmount() <= 0) {
-			return;
-		}
+//		if (cartBean.getAmount() <= 0) {
+//			return;
+//		}
 		// 如果客戶在伺服器端沒有此項商品的資料，則客戶第一次購買此項商品
+		System.out.println(".................");
 		if (cart.get(itemBasicSeqno) == null) {
 			cart.put(itemBasicSeqno, cartBean);
 		} else {
 			// 如果客戶在伺服器端已有此項商品的資料，則客戶『加購』此項商品
 			CartBean cBean = cart.get(itemBasicSeqno);
-			// 加購的數量：oi.getQty()
-			// 原有的數量：oib.getQty()
+			// 加購的數量：cartBean.getAmount()
+			// 原有的數量：cBean.getAmount()
 			cBean.setAmount(cartBean.getAmount() + cBean.getAmount());
 		}
+		
 	}
 
 	public boolean modifyQty(Integer itemBasicSeqno, Integer newQty) {
 		if (cart.get(itemBasicSeqno) != null) {
 			CartBean cBean = cart.get(itemBasicSeqno);
+			System.out.println(cBean.getItemBasicSeqno());
 			cBean.setAmount(newQty);
-			// cart.put(bookID, oi);
 			return true;
 		} else {
+			System.out.println(itemBasicSeqno);
+			System.out.println(cart.get(itemBasicSeqno));
 			return false;
 		}
 	}
@@ -64,6 +71,7 @@ public class ShoppingCart {
 			double discount = cart.get(n).getDiscount();
 			Integer qty = cart.get(n).getAmount();
 			subTotal += price * discount * qty;
+			System.out.println("-----------------------");
 		}
 		return subTotal;
 	}
@@ -75,6 +83,12 @@ public class ShoppingCart {
 					cart.get(k).getUnitPrice() + cart.get(k).getDiscount());
 		}
 		System.out.println("------------------");
+	}
+	
+	//清空Cart
+	public void abortCart(CartBean cartBean) {
+//		cart.remove(cartBean);
+		
 	}
 
 }
