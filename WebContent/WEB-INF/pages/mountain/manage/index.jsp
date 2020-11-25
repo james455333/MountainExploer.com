@@ -21,8 +21,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="manage/manageFunction.js"></script>
+    <script src="manage/checkFunction.js"></script>
     <script src="manage/manage.js"></script>
-    
     <style>
 
     </style>
@@ -125,54 +125,85 @@
 				<tr class="tr-up hideTr">
 					<td colspan="12">
 						<div>
-							<form action="" >
+							<form action="" class="tr-form" enctype="multipart/form-data">
 								<div class="tr-up-form">
-									<div>
-										<label>活動標題 : 
-											<input type="text" name="title">
-										</label>
+									<input type="hidden" name="actBasic.seqno">
+									<div class="tr-up-fld">
+										<div class="tr-up-fld-div">
+											<div class="tr-up-label">
+												<label>活動標題</label>
+											</div>
+											<div>
+												<input type="text"  name="title" maxlength="15"><span></span>
+												<div class="tr-up-error"></div>
+											</div>
+										</div>
+										<div class="tr-up-fld-div">
+											<div class="tr-up-label">
+												<label>活動開始時間</label>
+											</div>
+											<div>
+												<input name="startDate" readonly="readonly"><span></span>
+												<div class="tr-up-error"></div>
+											</div>
+										</div>
+										<div class="tr-up-fld-div">
+											<div class="tr-up-label">
+												<label>活動結束時間</label>
+											</div>
+											<div>
+												<input name="endDate" readonly="readonly"><span></span>
+												<div class="tr-up-error"></div>
+											</div>
+										</div>
+										<div class="tr-up-fld-div">
+											<div class="tr-up-label">
+												<label>總天數</label>
+											</div>
+											<div>
+												<input name="totalDay" readonly="readonly">
+												<div></div>
+											</div>
+										</div>
 									</div>
-									<div>
-										<label>活動開始時間 : 
-											<input name="startDate" readonly="readonly">
-										</label>
-									</div>
-									<div>
-										<label>活動結束時間 : 
-											<input name="endDate" readonly="readonly"> 
-										</label>
-									</div>
-									<div>
-										<label>總天數 : 
-											<input name="totalDay" readonly="readonly">
-										</label>
-									</div>
-								</div>
-								<div class="tr-up-form">
-									<div>
-										<label>活動價格 : 
-											<input type="text" name="price">
-										</label>
-									</div>
-									<div>
-										<label>報名人數上限 : 
-											<input type="text" name="regTop">
-										</label>
-									</div>
-									<div>
-										<label>報名截止日期 : 
-											<input name="regEndDate" readonly="readonly">
-										</label>
+									<div class="tr-up-fld">
+										<div class="tr-up-fld-div">
+											<div class="tr-up-label">
+												<label>活動價格</label>
+											</div>
+											<div>
+												<input type="text" name="price" maxlength="9"><span></span>
+												<div class="tr-up-error"></div>
+											</div>
+										</div>
+										<div class="tr-up-fld-div">
+											<div class="tr-up-label">
+												<label>報名人數上限</label>
+											</div>
+											<div>
+												<input type="text" name="regTop" maxlength="9"><span></span>
+												<div class="tr-up-error"></div>
+											</div>
+										</div>
+										<div class="tr-up-fld-div">
+											<div class="tr-up-label">
+												<label>報名截止日期</label>
+											</div>
+											<div>
+												<input name="regEndDate" readonly="readonly"><span></span>
+												<div class="tr-up-error"></div>
+											</div>
+										</div>
 									</div>
 								</div>
 								<div class="tr-up-form">
 									<label>備註 : 
-										<textarea rows="10" cols="100" name="note" class="m-note-form"></textarea>
+										<textarea rows="5" cols="100" name="note" class="m-note-form"></textarea>
 									</label>
 								</div>
 								<div class="tr-up-form">
-									<input type="button" value="確認修改">
-									<input type="button" class="cancel-up" value="取消修改">
+									<input type="submit" value="確認修改">
+									<input type="reset" class="cancel-up" value="取消修改">
 								</div>
 							</form>
 						</div>
@@ -180,7 +211,7 @@
 				</tr>
 			</tbody>
 		</table>
-        <nav class="pageControl m-paC">
+        <nav class="pageControl ver-mid">
         	<ul>
             	<li class="li1">
             		<div class="m-page">

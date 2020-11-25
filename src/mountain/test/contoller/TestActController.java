@@ -120,14 +120,6 @@ public class TestActController {
 	@ResponseBody
 	public List<MountainBean> testAjax() throws IOException, SQLException{
 		List<MountainBean> testList = new ArrayList<MountainBean>();
-//		GsonBuilder gsonBuilder = new GsonBuilder();
-//		gsonBuilder.registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY);
-//		gsonBuilder.registerTypeAdapter(byte[].class, new JsonSerializer<byte[]>() {
-//		    public JsonElement serialize(byte[] src, Type typeOfSrc, JsonSerializationContext context) {
-//		        return new JsonPrimitive(Base64.encodeBase64String(src));
-//		    }
-//		});
-//		Gson gson = gsonBuilder.create();
 		rtBasicService.save(new RouteBasic());
 		List<RouteBasic> list = rtBasicService.selectWithPage(1, 5);
 		System.out.println("list Size : " + list.size());

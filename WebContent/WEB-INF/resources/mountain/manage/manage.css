@@ -7,6 +7,7 @@
 	position : relative;
 	width : 300px;
 	line-height : normal;
+	
 }
 
 .sideNav{
@@ -19,6 +20,7 @@
 }
 .m-dl2-adj{
 	position : relative;
+	height : 500px;
 	width : 1120px;
 	margin-left : 10px;
 	margin-right : auto;
@@ -44,6 +46,7 @@
 	display : flex;
     align-items:center;
     justify-content:center;
+    transition : 1000ms;
 }
 .m-ma-ta{
 	
@@ -95,8 +98,23 @@
 	padding : 1px;
 	cursor : pointer;
 }
-.m-paC{
+.ver-mid{
 	display : flex;
     align-items:center;
     justify-content:center;
+}
+.tr-up-fld{
+	text-align : left;
+	width : 50%;
+}
+.tr-up-fld-div{
+	display : flex;
+    align-items:left;
+    justify-content:left;
+}
+.tr-up-label{
+	width : 25%;
+}
+.tr-up-error{
+	color: red;
 }

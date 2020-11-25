@@ -2,7 +2,7 @@
 $(function(){
 	
 	var npFunctionURL = "/MountainExploer.com/backstage/mountain/search";
-	var actHomeURL = "/MountainExploer.com/mountain/test";
+	var actHomeURL = "/MountainExploer.com/mountain/act";
 	
 	$(window).on("load",function(){
 		//	預設顯示
@@ -177,7 +177,7 @@ $(function(){
 	}
 	$("#imgForm").submit(function(e){
 		$.ajax({
-			url: "/MountainExploer.com/mountain/test/crud/newImg",
+			url: "/MountainExploer.com/mountain/act/crud/newImg",
 		    type: 'POST',
 		    data:  new FormData( this ),
 		    processData: false,
@@ -204,13 +204,11 @@ $(function(){
 			method : "POST",
 			data :  new FormData( this ),
 			processData: false,
-		    contentType: false,
+		    contentType: "application/json",
 			success : function(data){
 				console.log(typeof data.error)
 				if( !(typeof data.error == undefined)){
 					let actID = data.actID;
-					$("#imgForm").find("input[name='actID']").val(actID)
-					$("#imgForm").submit();
 				}else{
 					swal("Oops! 出現錯誤囉", data.error, "error")
 				}

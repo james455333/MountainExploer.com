@@ -2,7 +2,7 @@
 var shareURL = "/MountainExploer.com/mountain/public"
 var manageHome = "/MountainExploer.com/mountain/manage/search"
 var detailURL = "/MountainExploer.com/mountain/act/detail?page=1&actID="
-var mb, status;
+var mb, status, totalPage, totalData;
 var nowDate = Number(new Date());
 var limitStartDate = new Date(nowDate + ((60*60*24*1000)*21)) ;
 	
@@ -29,8 +29,6 @@ if(urlNow.searchParams.has("status")){
  */
 
 function checkStatus(){
-	console.log("check begin")
-	console.log( status == "120" )
 	if( status == '120' || status == '130'){
 		setGuideNav();
 	}
@@ -47,47 +45,48 @@ function setSuspend(){
 	$(".sideNav").find(".m-si-op").remove();
 }
 
-function post(){
-	console.log("post")
-	$(".m-ma-container").empty().css("display","block");
-	replaceContent("post");
+function post(page){
+	replaceContent("/post",page);
 }
 function registry(){
-	console.log("registry")
-	$(".m-ma-container").empty().css("display","block");
-	replaceContent("registry");
+	$(".m-ma-container").empty().css("display","inheirt");
+	replaceContent("/registry");
 }
 function record(){
-	console.log("record")
-	$(".m-ma-container").empty().css("display","block")
-	replaceContent("record");
+	$(".m-ma-container").empty().css("display","inheirt")
+	replaceContent("/record");
 }
 function report(){
-	console.log("report")
-	$(".m-ma-container").empty().css("display","block")
-	replaceContent("report");
+	$(".m-ma-container").empty().css("display","inheirt")
+	replaceContent("/report");
 }
 
 function replaceContent(order,page){
-	let model,pageCtrl;
-	if( order == "post"){
-	 	model = $(".m-ma-ta").clone();
+	$(".m-ma-container").empty().css("display","inline-block");
+		let model,pageCtrl;
+	if( order == "/post"){
+		model = $(".m-ma-ta").clone();
 		pageCtrl = $(".m-hide").find(".pageControl").clone()
 		$(".m-ma-container").append(model)
 		$(".m-ma-container").append(pageCtrl)
-		insertInfo(1);
+		insertPostInfo(order, page);
+		$(".m-dl2-adj").css("height","auto")
 	}
+
+	
 }
 
-function insertInfo(page){
+function insertPostInfo(order, page){
 	
 	$.ajax({
-		url : manageHome+"/post",
+		url : manageHome+order,
 		method : "GET",
 		dataType : "json",
 		data : { page : page },
 		success : function(data){
 			console.log(data)
+			totalPage = data.totalPage
+			totalData = data.totalData
 			for(let i in data.actList){
 				let thisElm = $(".order-table-tb").eq(i)
 				let model = thisElm.clone()
@@ -108,14 +107,16 @@ function insertInfo(page){
 				setTotalDay(data.actList[i].actBasic.actInfo,thisElm)
 				thisElm.removeClass("hideTbody")
 			}
-			$(".m-ma-container").find(".hideTbody").eq(0).remove()
+				$(".m-ma-container").find(".hideTbody").eq(0).remove()
+				setPageController(order, page);
+			
 		}
 	})
 	
 }
 function setSeqno(actList,thisElm){
 	thisElm.find("td").eq(0).html(actList.actBasic.seqno)
-	
+	thisElm.find(".tr-up-form").find("input[name='actBasic.seqno']").val(actList.actBasic.actInfo.id)
 }
 function setTitle(actList,thisElm){
 	thisElm.find("td").eq(1).find("a").html(actList.actBasic.actInfo.title)
@@ -167,7 +168,7 @@ function setTotalDay(actInfo,thisElm){
 function setResp(){
 	
 }
-
+/* 控制項 */
 function setControll(actList,thisElm){
 	let hideTag = actList.actBasic.actInfo.hideTag
 	if( hideTag == null){
@@ -185,41 +186,60 @@ function dateFormate(date) {
 
 	return result;
 }
+/* 舉辦活動 - 活動修改 */
 
-/*	頁面控制*/
-function setPageController(page) {
-	//判別目前
-	let url;
-	if (od == 1) {
-		url = actEnterURL + "od=1&"
-	}
-	if (od == 2) {
-		url = actEnterURL + "od=2&tag=" + tag + "&"
-	}
-
-	$(".pageControl").find("a").eq(2).html("目前 " + page + ' / ' + totalPage + " 頁")
+/* 頁面控制 */
+function setPageController(order, page) {
+	$(".pageControl").find("div").eq(2).html(page + ' / ' + totalPage + " 頁")
 	if (page != 1) {
-		let first = url + "page=1"
-		let previous = url + "page=" + (Number(page) - 1);
-		$(".pageControl").find("div").eq(0).attr("href", first).css("display", "block")
-		$(".pageControl").find("div").eq(1).css("display", "block")
+		let first = 1
+		let previous = Number(page) - 1;
+		$(".pageControl").find("div").eq(0).on("click",function(){
+			replaceContent(order,first)
+		}).css("display", "block")
+		$(".pageControl").find("div").eq(1).on("click",function(){
+			replaceContent(order,previous)
+		}).css("display", "block")
 	} else {
 		$(".pageControl").find("div").eq(0).css("display", "none")
 		$(".pageControl").find("div").eq(1).css("display", "none")
 	}
 	if (page < totalPage) {
-		let next = url + "page=" + (Number(page) + 1);
-		let final = url + "page=" + (Number(totalPage));
-		$(".pageControl").find("div").eq(3).attr("href", next).css("display", "block")
-		$(".pageControl").find("div").eq(4).attr("href", final).css("display", "block")
+		let next = Number(page) + 1;
+		let final = Number(totalPage);
+		$(".pageControl").find("div").eq(3).on("click",function(){
+			replaceContent(order,next)
+		}).css("display", "block")
+		$(".pageControl").find("div").eq(4).on("click",function(){
+			replaceContent(order,final)
+		}).css("display", "block")
 	} else {
 		$(".pageControl").find("div").eq(3).css("display", "none")
 		$(".pageControl").find("div").eq(4).css("display", "none")
 	}
 }
+/* 舉辦活動 - 視窗 */
+function successSWAL(){
+	swal({
+		title : "修改成功",
+		icon : "success",
+		button : "確定"
+	}).then(() => {
+    	let page = $(".m-ma-container").find(".pageControl")
+					.find("div").eq(2).text();
+		console.log(page)
+  });
+}
+function errorSWAL(){
+	swal({
+		title : "修改失敗",
+		icon : "error",
+		button : "返回"
+	})
+}
+
 /*	日期選單設定 */
 function setDatePicker(actInfo, thisElm){
-	console.log(actInfo)
 	thisElm.find('input[name="startDate"]').daterangepicker({
 		"singleDatePicker": true,
 	    "showDropdowns": true,
@@ -268,7 +288,7 @@ function setDatePicker(actInfo, thisElm){
 	    "opens": "center"
 		}, function(start) {
 			var startDate = new Date(start)
-			console.log("startDate : " + startDate)
+			thisElm.find("input[name='totalDay']").val("單日返還");
 			thisElm.find("input[name='endDate']").daterangepicker({
 				"singleDatePicker": true,
 			    "showDropdowns": true,
@@ -317,7 +337,6 @@ function setDatePicker(actInfo, thisElm){
 			    "opens": "center"
 			},function(end){
 				var endDate = new Date(end)
-				console.log(endDate)
 //				console.log("endDate : " + endDate)
 				var totalDay = Math.ceil((endDate - startDate)*1.0 /  (60*60*24*1000))+1;
 //				console.log("s-e /one= " + totalDay )
@@ -372,9 +391,6 @@ function setDatePicker(actInfo, thisElm){
 				        "firstDay": 1
 				    },
 					"maxDate" : regLimit,
-					"minDate" : new Date(),
-				    "showCustomRangeLabel": false,
-				    "startDate": new Date(),
 					}, function(start, end, label) {
 					});
 			})
@@ -426,51 +442,54 @@ function setDatePicker(actInfo, thisElm){
 			    "minDate": new Date(actInfo.endDate),
 			    "opens": "center"
 			});
+	let dbSD = new Date(actInfo.startDate)
+	let regLimit = new Date( Number(dbSD) - ( (60*60*24*1000)*7 ) )
 	thisElm.find("input[name='regEndDate']").daterangepicker({
-				    "singleDatePicker": true,
-				    "showDropdowns": true,
-				    "minYear": 2010,
-				    "maxYear": 2099,
-				    "maxSpan": {
-				        "days": 1
-				    },
-				    "locale": {
-				        "format": "YYYY/MM/DD",
-				        "separator": " - ",
-				        "applyLabel": "確認",
-				        "cancelLabel": "取消",
-				        "fromLabel": "自",
-				        "toLabel": "到",
-				        "customRangeLabel": "Custom",
-				        "weekLabel": "W",
-				        "daysOfWeek": [
-				            "日",
-				            "一",
-				            "二",
-				            "三",
-				            "四",
-				            "五",
-				            "六"
-				        ],
-				        "monthNames": [
-				            "一月",
-				            "二月",
-				            "三月",
-				            "四月",
-				            "五月",
-				            "六月",
-				            "七月",
-				            "八月",
-				            "九月",
-				            "十月",
-				            "十一月",
-				            "十二月"
-				        ],
-				        "firstDay": 1
-				    },
-					"startDate" : new Date(actInfo.regEndDate),
-				    "showCustomRangeLabel": false,
-				    "startDate": new Date(),
-					}, function(start, end, label) {
-					});
+		"singleDatePicker": true,
+		"showDropdowns": true,
+		"minYear": 2010,
+		"maxYear": 2099,
+		"maxSpan": {
+		    "days": 1
+		},
+		"locale": {
+		    "format": "YYYY/MM/DD",
+		    "separator": " - ",
+		    "applyLabel": "確認",
+		    "cancelLabel": "取消",
+		    "fromLabel": "自",
+		    "toLabel": "到",
+		    "customRangeLabel": "Custom",
+		    "weekLabel": "W",
+		    "daysOfWeek": [
+		        "日",
+		        "一",
+		        "二",
+		        "三",
+		        "四",
+		        "五",
+		        "六"
+		    ],
+		    "monthNames": [
+		        "一月",
+		        "二月",
+		        "三月",
+		        "四月",
+		        "五月",
+		        "六月",
+		        "七月",
+		        "八月",
+		        "九月",
+		        "十月",
+		        "十一月",
+		        "十二月"
+		    ],
+		    "firstDay": 1
+		},
+		"startDate" : new Date(actInfo.regEndDate),
+		"endDate" : new Date(actInfo.regEndDate),
+		"minDate" : new Date(actInfo.regEndDate),
+		"maxDate" : regLimit,
+		}, function(start, end, label) {
+		});		    
 }
