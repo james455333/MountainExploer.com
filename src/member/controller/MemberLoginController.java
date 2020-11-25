@@ -3,9 +3,14 @@ package member.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,18 +36,34 @@ public class MemberLoginController {
 		return "member/login";
 	}
 	
+//	@RequestMapping(path = "/member/memberLogin", method = RequestMethod.GET)
+//	public String checkCookie(@RequestParam(name = "account")String account,
+//							  @RequestParam(name = "password")String password,
+//							  HttpServletResponse response) {
+//		Cookie cookieAnt = new Cookie("account", account);
+//		Cookie cookiePwd = new Cookie("password", password);
+//		
+//		cookieAnt.setMaxAge(30*24*60*60);
+//		cookiePwd.setMaxAge(30*24*60*60);
+//		
+//		response.addCookie(cookieAnt);
+//		response.addCookie(cookiePwd);
+//		
+//		return "redirect:processCheckLogin";
+//	}
+	
+	
 	@RequestMapping(path = "/member/memberLogin", method = RequestMethod.POST)
 	public String processCheckLogin(
 			@RequestParam(name = "account")String account,
 			@RequestParam(name = "password")String password,
+			@RequestParam(name = "rememberMe", required = false)String rm,
+			HttpServletResponse response,
 			Model m,
 			RedirectAttributes redAttr) {
 		
-		System.out.println(account);
-		System.out.println(password);
-		
-		password = MemberGlobal.getSHA1Endocing(MemberGlobal.encryptString(password));
-		System.out.println("加密:" + password);
+//		System.out.println("=================cookieAnt" + cookieAnt);
+//		System.out.println("=================cookiePwd" + cookiePwd);
 		
 		
 		Map<String, String> errors = new HashMap<String, String>();
@@ -65,18 +86,46 @@ public class MemberLoginController {
 			return "member/login";
 		}
 		
+		
+		if(rm != null) {
+			Cookie cookieAnt = new Cookie("rmAnt", account);
+			cookieAnt.setMaxAge(30*24*60*60);
+			cookieAnt.setPath("/");
+			
+			String ckPwd = MemberGlobal.encryptString(password);
+			Cookie cookiePwd = new Cookie("rmPwd", ckPwd);
+			cookiePwd.setMaxAge(30*24*60*60);
+			cookiePwd.setPath("/");
+			
+			response.addCookie(cookieAnt);
+			response.addCookie(cookiePwd);
+		} else {
+			Cookie cookieAnt = new Cookie("rmAnt", account);
+			cookieAnt.setMaxAge(0);
+			cookieAnt.setPath("/");
+			
+			String ckPwd = MemberGlobal.encryptString(password);
+			Cookie cookiePwd = new Cookie("rmPwd", ckPwd);
+			cookiePwd.setMaxAge(0);
+			cookiePwd.setPath("/");
+		}
+		
+		
+		String pwdEN = MemberGlobal.getSHA1Endocing(MemberGlobal.encryptString(password));
+		System.out.println("加密:" + pwdEN);
+			
 		if(account != null && password != null && errors.isEmpty()) {
-			MemberBasic mb = mbService.checkPassword(account, password);
+			MemberBasic mb = mbService.checkPassword(account, pwdEN);
 			if(mb != null) {
 				if(mb.getMemberStatus().getSeqno() == 100 || mb.getMemberStatus().getSeqno() == 120) {
-	//				int seqno = mb.getSeqno();
 					m.addAttribute("Member", mb);
-	//				m.addAttribute("MemberBasic", mbNoPwd);
 					m.addAttribute("result", "登入成功");
+					System.out.println("=======================登入成功");
 					return "member/memberInfo";
 				}else if(mb.getMemberStatus().getSeqno() == 110 || mb.getMemberStatus().getSeqno() == 130) {
 					m.addAttribute("Member", mb);
 					m.addAttribute("result", "初次登入成功");
+					System.out.println("=======================登入成功");
 					return "member/memberFirstInfo";
 				}else {
 					System.out.println("身分組權限不足");
