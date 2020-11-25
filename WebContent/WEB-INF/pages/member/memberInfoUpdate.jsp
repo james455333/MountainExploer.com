@@ -28,9 +28,9 @@
 				</div>
 				<div>
 					<label>性別：</label>
-					<input type="radio" name="memberInfo.gender" id="gender1" value="male">男
-					<input type="radio" name="memberInfo.gender" id="gender2" value="female">女
-					<input type="radio" name="memberInfo.gender" id="gender3" value="x">X
+					<input type="radio" name="memberInfo.gender" id="gender1" value="male" ${Member.memberInfo.gender == "male" ? 'checked' : ''}>男
+					<input type="radio" name="memberInfo.gender" id="gender2" value="female" ${Member.memberInfo.gender == "female" ? 'checked' : ''}>女
+					<input type="radio" name="memberInfo.gender" id="gender3" value="x" ${Member.memberInfo.gender == "x" ? 'checked' : ''}>X
 				</div>
 				<div>
 					<label>生日：</label>

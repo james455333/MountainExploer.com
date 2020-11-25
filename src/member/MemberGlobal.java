@@ -25,7 +25,7 @@ public class MemberGlobal {
 	
 	public static final String ImgDownLoadPath = "C:\\JavaProjectMountain\\MountainExploer.com\\member\\images\\";
 	public static final String CHARSET = "UTF-8";
-	public static final String KEY1 = "RlaCjvE2A5ai7R6i"; //16位，亂數生成
+	public static final String KEY = "RlaCjvE2A5ai7R6i"; //16位，亂數生成
 
 	
 	public static byte[] downloadImage(MultipartFile multipartFile) throws IllegalStateException, IOException {
@@ -122,8 +122,8 @@ public class MemberGlobal {
 		String encryptedString = "";
 		try {
 			Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-			SecretKeySpec secretKey = new SecretKeySpec(KEY1.getBytes(), "AES");
-			cipher.init(ENCRYPT_MODE, secretKey);
+			SecretKeySpec secretKey = new SecretKeySpec(KEY.getBytes(), "AES");
+			cipher.init(Cipher.ENCRYPT_MODE, secretKey);
 			encryptedString = DatatypeConverter.printBase64Binary(cipher.doFinal(message.getBytes()));
 		} catch (InvalidKeyException e) {
 			e.printStackTrace();
@@ -162,5 +162,18 @@ public class MemberGlobal {
 		}
 		return decryptedString;
 	}
+
+
+//	private static String parseByte2HexStr(byte[] b) {
+//		StringBuffer sb = new StringBuffer();
+//		for(int i = 0; i < b.length; i++) {
+//			String hex = Integer.toHexString(b[i] & 0xFF);
+//			if(hex.length() == 1) {
+//				hex = '0' + hex;
+//			}
+//			sb.append(hex.toUpperCase());
+//		}
+//		return sb.toString();
+//	}
 
 }
