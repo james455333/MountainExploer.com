@@ -1,22 +1,4 @@
 
-var shareURL = "/MountainExploer.com/mountain/public"
-var manageHome = "/MountainExploer.com/mountain/manage/search"
-var detailURL = "/MountainExploer.com/mountain/act/detail?page=1&actID="
-var mb, status, totalPage, totalData;
-var nowDate = Number(new Date());
-var limitStartDate = new Date(nowDate + ((60*60*24*1000)*21)) ;
-	
-var urlNow = new URL(window.location.href)
-
-if(urlNow.searchParams.has("mb")){
-	mb = urlNow.searchParams.get("mb")
-}else{
-	
-}
-if(urlNow.searchParams.has("status")){
-	status = urlNow.searchParams.get("status")
-}
-
 
 function post(page){
 	replaceContentPost("/post",page);

@@ -1,10 +1,30 @@
 
-$(window).on("load",function(){
-	console.log(status)
-	checkStatus()
-})
+	var shareURL = "/MountainExploer.com/mountain/public"
+	var manageHome = "/MountainExploer.com/mountain/manage/search"
+	var detailURL = "/MountainExploer.com/mountain/act/detail?page=1&actID="
+	var mb, status, totalPage, totalData;
+	var nowDate = Number(new Date());
+	var limitStartDate = new Date(nowDate + ((60*60*24*1000)*21)) ;
+		
+	var urlNow = new URL(window.location.href)
+	
+	if(urlNow.searchParams.has("mb")){
+		mb = urlNow.searchParams.get("mb")
+	}else{
+		
+	}
+	if(urlNow.searchParams.has("status")){
+		status = urlNow.searchParams.get("status")
+	}
 
 $(function(){
+	
+		
+	
+	console.log(status)
+	checkStatus()
+
+	
 	$(".m-si-op").eq(0).on("click",function(){
 		post(1);
 	});
@@ -69,22 +89,31 @@ $(function(){
 })
 /* 確認視窗 */
 function confirmSWAL(){
+	let thisBT = $(this)
 	swal({
 		title : $(this).text(),
 		text : "確定要執行本操作嗎?",
 		icon : "warning",
 		dangerMode: true,
-		button : {
+		buttons : {
+			cancel :{
+				visible: true,
+				text: "取消",
+				value : false
+			},
 			confirm :{
 				visible: true,
-				text : "確定"
-			},
-			cancel :{
-				text: "取消"
+				text : "確定",
+				value : true
 			}
 		}
-	}).then(() => {
-    	
+	}).then((value) => {
+		if(value){
+			
+			console.log( thisBT )
+	//    	setActHide()
+			
+		}
 	});
 }
 /* 危險確認視窗 */
@@ -125,6 +154,7 @@ function dangerSWAL(){
 
 function checkStatus(){
 	if( status == '120' || status == '130'){
+		console.log(status)
 		setGuideNav();
 	}
 	if( status == '140' || status == '150'){
