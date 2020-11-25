@@ -118,25 +118,17 @@
 	<div>
 		合計金額： <span>${subtotal}</span> 元
 	</div>
-	<TABLE border='1'>
-		<TR>
-			<TD ><A
-				href="<c:url value='/shop/shoppingPage' />">繼續購物</A>
-			</TD>
-			<TD ><A
-				href="<c:url value='../_03_listBooks/DisplayPageProducts?pageNo=${param.pageNo}' />">確認訂單</A>
-			</TD>
-			<TD ><A
-				href="<c:url value='/shoppingcart/abort' />">放棄購物</A>
-			</TD>
-			<!-- 			<TD width="265" align='center'><A -->
-			<%-- 				href="<c:url value='checkout.do' />" --%>
-			<%-- 				onClick="return Checkout(${subtotal});">送出訂單</A></TD> --%>
-			<!-- 			<TD width="265" align='center'><A -->
-			<%-- 				href="<c:url value='abort.do' />" onClick="return Abort();">放棄購物</A> --%>
-			<!-- 			</TD> -->
-		</TR>
-	</TABLE>
+	<div>
+			<A	href="<c:url value='/shop/shoppingPage' />">繼續購物</A>
+	</div>
+	<div>
+			<A href="<c:url value='../_03_listBooks/DisplayPageProducts?pageNo=${param.pageNo}' />">確認訂單</A>
+	</div>
+	<div>
+			<A	href="<c:url value='/shoppingcart/abort' />">清空購物車</A>
+	</div>
+			
+				
 
 
 	<!-- 每頁不同的內容到這邊結束 -->
