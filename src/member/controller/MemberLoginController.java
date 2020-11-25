@@ -88,12 +88,12 @@ public class MemberLoginController {
 			response.addCookie(cookieRm);
 			
 		} else {
-			Cookie cookieAnt = new Cookie("rmAnt", account);
+			Cookie cookieAnt = new Cookie("rmAnt", "");
 			cookieAnt.setMaxAge(0);
 			cookieAnt.setPath("/");
 			
 			String ckPwd = MemberGlobal.encryptString(password);
-			Cookie cookiePwd = new Cookie("rmPwd", ckPwd);
+			Cookie cookiePwd = new Cookie("rmPwd", "");
 			cookiePwd.setMaxAge(0);
 			cookiePwd.setPath("/");
 			
