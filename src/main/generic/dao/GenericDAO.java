@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import main.generic.model.GenericTypeObject;
+import mountain.model.activity.Registry.ActRegistry;
 
 @Repository
 @SuppressWarnings("unchecked")
@@ -233,6 +234,16 @@ public class GenericDAO<T extends GenericTypeObject> implements InterfaceDAO<T> 
 		long result = (Long)query.uniqueResult();
 		
 		return (int) result;
+	}
+
+	public List<? extends GenericTypeObject> getAllWithHql(String hql) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		Query<T> query = session.createQuery(hql);
+		List<T> resultList = query.setReadOnly(true)
+					.getResultList();
+		
+		return resultList;
 	}
 	
 	

@@ -21,6 +21,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -69,10 +70,11 @@ public class ActCRUDController {
 	//new Activity
 	@PostMapping("/newAct")
 	@ResponseBody
-	public Map<String, String> newAct(ActivityBasic actBasic) throws Exception {
+	public Map<String, String> newAct( @RequestBody ActivityBasic actBasic) throws Exception {
 		System.out.println("New Activity");
 		System.out.println("New Activity");
 		System.out.println("New Activity");
+		System.out.println("====================="+actBasic.getActInfo().getTitle());
 		Map<String, String> result = new HashMap<String, String>();
 		actBasic.getActInfo().setActBasic(actBasic);
 		InterfaceService<GenericTypeObject> service = this.service;

@@ -20,9 +20,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="manage/manageFunction.js"></script>
+    <script src="manage/managePostFunction.js"></script>
+    <script src="manage/manageRegistryFunction.js"></script>
+    <script src="manage/manageRecordFunction.js"></script>
+    <script src="manage/manageReportFunction.js"></script>
+    <script src="manage/checkFunction.js"></script>
     <script src="manage/manage.js"></script>
-    
     <style>
 
     </style>
@@ -95,7 +98,7 @@
 				<th scope="col">控制選項</th>
 			</tr></thead>
 			<tbody  class='order-table-tb hideTbody'>
-				<tr>
+				<tr class="tr-main-post">
 					<td></td>
 					<td><a class="m-tb-ti" href=""></a></td>
 					<td></td>
@@ -109,12 +112,12 @@
 					<td><button>CM</button></td>
 					<td>
 						<div class="flex-box">
-							<button>報名選單</button>
-							<button class="update-show">修改內容</button>
+							<button class="bt-reg-show">報名選單</button>
+							<button class="bt-update-show">修改內容</button>
 						</div>
 						<div class="flex-box">
-							<button></button>
-							<button>取消活動</button>
+							<button class="bt-act-hide"></button>
+							<button class="bt-act-delete">取消活動</button>
 						</div>
 					</td>
 				</tr>
@@ -125,62 +128,138 @@
 				<tr class="tr-up hideTr">
 					<td colspan="12">
 						<div>
-							<form action="" >
+							<form class="tr-form" enctype="multipart/form-data">
 								<div class="tr-up-form">
-									<div>
-										<label>活動標題 : 
-											<input type="text" name="title">
-										</label>
+									<input type="hidden" name="id">
+									<div class="tr-up-fld">
+										<div class="tr-up-fld-div">
+											<div class="tr-up-label">
+												<label>活動標題</label>
+											</div>
+											<div>
+												<input type="text"  name="title" maxlength="15"><span></span>
+												<div class="tr-up-error"></div>
+											</div>
+										</div>
+										<div class="tr-up-fld-div">
+											<div class="tr-up-label">
+												<label>活動開始時間</label>
+											</div>
+											<div>
+												<input name="startDate" readonly="readonly"><span></span>
+												<div class="tr-up-error"></div>
+											</div>
+										</div>
+										<div class="tr-up-fld-div">
+											<div class="tr-up-label">
+												<label>活動結束時間</label>
+											</div>
+											<div>
+												<input name="endDate" readonly="readonly"><span></span>
+												<div class="tr-up-error"></div>
+											</div>
+										</div>
+										<div class="tr-up-fld-div">
+											<div class="tr-up-label">
+												<label>總天數</label>
+											</div>
+											<div>
+												<input name="totalDay" readonly="readonly">
+												<div></div>
+											</div>
+										</div>
 									</div>
-									<div>
-										<label>活動開始時間 : 
-											<input name="startDate" readonly="readonly">
-										</label>
-									</div>
-									<div>
-										<label>活動結束時間 : 
-											<input name="endDate" readonly="readonly"> 
-										</label>
-									</div>
-									<div>
-										<label>總天數 : 
-											<input name="totalDay" readonly="readonly">
-										</label>
-									</div>
-								</div>
-								<div class="tr-up-form">
-									<div>
-										<label>活動價格 : 
-											<input type="text" name="price">
-										</label>
-									</div>
-									<div>
-										<label>報名人數上限 : 
-											<input type="text" name="regTop">
-										</label>
-									</div>
-									<div>
-										<label>報名截止日期 : 
-											<input name="regEndDate" readonly="readonly">
-										</label>
+									<div class="tr-up-fld">
+										<div class="tr-up-fld-div">
+											<div class="tr-up-label">
+												<label>活動價格</label>
+											</div>
+											<div>
+												<input type="text" name="price" maxlength="9"><span></span>
+												<div class="tr-up-error"></div>
+											</div>
+										</div>
+										<div class="tr-up-fld-div">
+											<div class="tr-up-label">
+												<label>報名人數上限</label>
+											</div>
+											<div>
+												<input type="text" name="regTop" maxlength="9"><span></span>
+												<div class="tr-up-error"></div>
+											</div>
+										</div>
+										<div class="tr-up-fld-div">
+											<div class="tr-up-label">
+												<label>報名截止日期</label>
+											</div>
+											<div>
+												<input name="regEndDate" readonly="readonly"><span></span>
+												<div class="tr-up-error"></div>
+											</div>
+										</div>
 									</div>
 								</div>
 								<div class="tr-up-form">
 									<label>備註 : 
-										<textarea rows="10" cols="100" name="note" class="m-note-form"></textarea>
+										<textarea rows="5" cols="100" name="note" class="m-note-form"></textarea>
 									</label>
 								</div>
 								<div class="tr-up-form">
-									<input type="button" value="確認修改">
-									<input type="button" class="cancel-up" value="取消修改">
+									<input type="submit" value="確認修改">
+									<input type="reset" class="cancel-up" value="取消修改">
 								</div>
 							</form>
 						</div>
 					</td>
 				</tr>
+				<tr class="tr-reg hideTr">
+					<td colspan="12">
+						<div class="tr-reg-con">
+							<div class="tr-reg-head">
+								<div class="tr-reg-seqno">報名編號</div>
+								<div class="tr-reg-mbName">報名會員名稱</div>
+								<div class="tr-reg-regNum">報名人數</div>
+								<div class="tr-reg-regDate">報名日期</div>
+								<div class="tr-reg-attr">狀態列</div>
+								<div class="tr-reg-control">控制列</div>
+							</div>
+							<div class="tr-reg-body">
+								<div class="tr-reg-order">
+									<div class="tr-reg-seqno"><a></a></div>
+									<div class="tr-reg-mbName"></div>
+									<div class="tr-reg-regNum"></div>
+									<div class="tr-reg-regDate"></div>
+									<div class="tr-reg-attr"></div>
+									<div class="tr-reg-control"></div>
+								</div>
+								<div class="tr-reg-bar">
+									<div><img src="/MountainExploer.com/mountain/images/down.png"></div>
+								</div>
+								<div class="tr-reg-info hideTr">
+									<div class="tr-reg-info-head">
+										<div class="tr-reg-info-name">姓名</div>
+										<div class="tr-reg-info-bDay">出生年月日</div>
+										<div class="tr-reg-info-pID">身分證字號</div>
+										<div class="tr-reg-info-phone">電話</div>
+										<div class="tr-reg-info-cellphone">手機</div>
+										<div class="tr-reg-info-email">電子信箱</div>
+									</div>
+									<div class="tr-reg-info-body">
+										<div class="tr-reg-info-name"></div>
+										<div class="tr-reg-info-bDay"></div>
+										<div class="tr-reg-info-pID"></div>
+										<div class="tr-reg-info-phone"></div>
+										<div class="tr-reg-info-cellphone"></div>
+										<div class="tr-reg-info-email"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
 			</tbody>
 		</table>
-        <nav class="pageControl m-paC">
+        <nav class="pageControl ver-mid">
         	<ul>
             	<li class="li1">
             		<div class="m-page">

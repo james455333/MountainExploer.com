@@ -1,5 +1,5 @@
 -- 產生者Oracle SQL Developer Data Modeler 20.2.0.167.1538
--- 於:2020-11-23 08:28:00 TST
+-- 於:2020-11-25 20:15:28 TST
 -- 位置:Oracle Database 12cR2
 -- 類型:Oracle Database 12cR2
 
@@ -82,7 +82,7 @@ CREATE TABLE activity_registry (
     reg_date              DATE NOT NULL,
     deniedtag             NUMBER(1),
     confirm               NUMBER(1),
-    decline_reson         BLOB,
+    decline_reason        BLOB,
     canceltag             NUMBER(1),
     cancel_reason         BLOB
 )
@@ -95,7 +95,7 @@ CREATE TABLE activity_registry_info (
         GENERATED ALWAYS AS IDENTITY ( START WITH 40000000 MINVALUE 40000000 MAXVALUE 49999999 CYCLE CACHE 10 ORDER )
     NOT NULL,
     activity_registry_seqno  NUMBER(7) NOT NULL,
-    name                     NVARCHAR2(1),
+    name                     NVARCHAR2(150),
     birthday                 DATE,
     personal_id              VARCHAR2(20),
     contact_cellphone        VARCHAR2(20),
