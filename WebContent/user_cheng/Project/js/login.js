@@ -7,8 +7,11 @@ $(function () {
   $("#dialog-form").dialog({
     autoOpen: false,
     modal: true,
+    show:'true',
+    // hide:'puff',
     height: 350,
     width: 300,
+    
     
     resizable: false,
     buttons: {
