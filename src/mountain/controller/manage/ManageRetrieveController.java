@@ -14,9 +14,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -134,5 +136,45 @@ public class ManageRetrieveController {
 		actRegList = (List<ActRegistry>) service.getAllWithHql(hql);
 		
 		return actRegList;
+	}
+	
+	@PutMapping(value = "/post-act")
+	@ResponseBody
+	public Boolean actHide(
+			ActivityInfo activityInfo,
+			@RequestBody Integer actID) {
+		service.save(activityInfo);
+		activityInfo = (ActivityInfo) service.select(actID);
+		try {
+			Integer hideTag = activityInfo.getHideTag();
+			if (hideTag != null) {
+				activityInfo.setHideTag(null);
+			}else {
+				activityInfo.setHideTag(1);
+			}
+			service.update(activityInfo);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
+		}
+		return true;
+	}
+	@DeleteMapping(value = "/post-act")
+	@ResponseBody
+	public Boolean actDelete(
+			ActivityInfo activityInfo,
+			@RequestBody Integer actID) {
+		service.save(activityInfo);
+		activityInfo = (ActivityInfo) service.select(actID);
+		try {
+			activityInfo.setDeleteTag(1);
+			service.update(activityInfo);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
+		}
+		return true;
 	}
 }
