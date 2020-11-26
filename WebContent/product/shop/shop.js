@@ -314,7 +314,7 @@ $(function() {
 				"<tr>" +
 				//				"<th>" + data[i].seqno + "</th>" +
 				//			  		"<td><div >" + data[i].name + "</div></td>"+
-				"<td>" + '<a href="#">' + data[i].name + '</a>' + "</td>" +
+				"<td>" + '<a href= "/MountainExploer.com/shop/productInfoEntry">' + data[i].name + '</a>' + "</td>" +
 				//				"<td><div >" + data[i].type + "</div></td>" +
 				//				"<td><div >" + data[i].firstClass + "</div></td>" +
 				//				"<td><div >" + data[i].secondClass + "</div></td>" +
@@ -325,9 +325,11 @@ $(function() {
 				//				"<td><div >" + data[i].stock + "</div></td>" +
 				"<td>" +
 				"<div>" +
-				"<form  action='" + homeUrl + "/updateDataPage'>" +
-				'<input type="hidden" name="seqno" value="' + data[i].seqno + '" readonly>' +
-				//				'<input type="select" name="amount" value={0,1,2,3,4,5}>' +
+//				'<form  action= "<c:url value=/shoppingcart/addCartBean">">' +
+				'<form  action= "/MountainExploer.com/shoppingcart/addShoppingCart">' +
+				'<input type="hidden" name="itemBasicSeqno" value="' + data[i].seqno + '" readonly>' +
+				'<input type="hidden" name="itemBasicName" value="' + data[i].name + '" readonly>' +
+				'<input type="hidden" name="unitPrice" value="' + data[i].price + '" readonly>' +
 				'<select name="amount">' +
 				'<option value="1">1</option>' +
 				'<option value="2">2</option>' +

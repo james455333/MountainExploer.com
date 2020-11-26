@@ -15,11 +15,17 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <style>
+.loginLightbox #cboxContent, .loginLightbox #cboxLoadedContent {
+    border: 0;
+    background: none;
+    color: #000;
+}
 
     </style>
 </head>
 
 <body>
+    
     <div class="count1_1">
         <div class="coverflow">
             <a href="#" style="height: 370px;"><img id="output1" src="../images/BGI.jpg"></a>
@@ -84,7 +90,9 @@
             </div>
             <div class="secDivContent">
                 <!-- div2放置內容從這邊開始 -->
-                <a>內容1</a>
+                <a id="headerLoginButton" class="headerLoginButton cboxElement tween" href="登入視窗.html">內容1</a>
+                <div id="cboxOverlay" class="loginLightbox" style="opacity: 0.9; cursor: pointer;visibility: visible; display: block;"></div>
+                <div id="cboxLoadedContent" style="width: 600px; overflow: auto; height: 260px;"></div>
                 <!-- div2放置內容到這邊結束 -->
             </div>
 

@@ -10,13 +10,22 @@
     <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
     <link rel="stylesheet" href="manage/manage.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="manage/manageFunction.js"></script>
+    <script src="manage/managePostFunction.js"></script>
+    <script src="manage/manageRegistryFunction.js"></script>
+    <script src="manage/manageRecordFunction.js"></script>
+    <script src="manage/manageReportFunction.js"></script>
+    <script src="manage/checkFunction.js"></script>
     <script src="manage/manage.js"></script>
-    
     <style>
 
     </style>
@@ -52,25 +61,233 @@
 
 	        <div class="div_li1 m-dl1-adj">
 	            <div class="sideNav">
-	            	<div class='m-si-op'>舉辦活動管理</div>
-	            	<div class='m-si-op'>報名活動管理</div>
-	            	<div class='m-si-op'>活動紀錄</div>
-	            	<div class='m-si-op'>問題回報</div>
+	            	<div class='m-si-op m-hide'><div>舉辦活動管理</div></div>
+	            	<div class='m-si-op'><div>報名活動管理</div></div>
+	            	<div class='m-si-op'><div>活動紀錄</div></div>
+	            	<div class='m-si-op'><div>問題回報</div></div>
 	            </div>
 	        </div>
 	        <div class="div_li3 m-hide">
 	        </div>
 	        <div class="div_li2 m-dl2-adj">
-        </div>
-        	
-
-
-
-
-            <!-- 每頁不同的內容到這裡結束 -->
+	        	<div class="m-ma-container">
+	        		<div>
+	        			<h2>歡迎來到活動管理頁面</h2>
+	        			<h3>點選左列選項進入指定控制頁面</h3>
+	        		</div>
+					
+	        	</div>
+        	</div>
         </div>
     </div>
-
+    
+    <div class="m-hide">
+   		<table class="order-table m-ma-ta">
+        	<thead class="order-table-th"><tr>
+				<th scope="col" style="width:75px">活動編號</th>
+				<th scope="col" class="d-li-na">活動名稱</th>
+				<th scope="col" class="m-tb-date">開始時間</th>
+				<th scope="col" class="m-tb-date">結束時間</th>
+				<th scope="col" style="width:75px">活動價格</th>
+				<th scope="col" style="width:75px">路線名稱</th>
+				<th scope="col" class="m-tb-date">發布時間</th>
+				<th scope="col" style="width:75px">報名人數 / 人數上限</th>
+				<th scope="col" class="m-tb-date">報名截止日</th>
+				<th scope="col" style="width:50px">備註</th>
+				<th scope="col" style="width:50px">回覆</th>
+				<th scope="col">控制選項</th>
+			</tr></thead>
+			<tbody  class='order-table-tb hideTbody'>
+				<tr class="tr-main-post">
+					<td></td>
+					<td><a class="m-tb-ti" href=""></a></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td class="m-tb-rt"></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td><button>備註顯示</button></td>
+					<td><button>CM</button></td>
+					<td>
+						<div class="flex-box">
+							<button class="bt-reg-show">報名選單</button>
+							<button class="bt-update-show">修改內容</button>
+						</div>
+						<div class="flex-box">
+							<button class="bt-act-hide"></button>
+							<button class="bt-act-delete">取消活動</button>
+						</div>
+					</td>
+				</tr>
+				<tr class="m-note hideTr">
+					<td colspan="12"> 
+					</td>
+				</tr>
+				<tr class="tr-up hideTr">
+					<td colspan="12">
+						<div>
+							<form class="tr-form" enctype="multipart/form-data">
+								<div class="tr-up-form">
+									<input type="hidden" name="id">
+									<div class="tr-up-fld">
+										<div class="tr-up-fld-div">
+											<div class="tr-up-label">
+												<label>活動標題</label>
+											</div>
+											<div>
+												<input type="text"  name="title" maxlength="15"><span></span>
+												<div class="tr-up-error"></div>
+											</div>
+										</div>
+										<div class="tr-up-fld-div">
+											<div class="tr-up-label">
+												<label>活動開始時間</label>
+											</div>
+											<div>
+												<input name="startDate" readonly="readonly"><span></span>
+												<div class="tr-up-error"></div>
+											</div>
+										</div>
+										<div class="tr-up-fld-div">
+											<div class="tr-up-label">
+												<label>活動結束時間</label>
+											</div>
+											<div>
+												<input name="endDate" readonly="readonly"><span></span>
+												<div class="tr-up-error"></div>
+											</div>
+										</div>
+										<div class="tr-up-fld-div">
+											<div class="tr-up-label">
+												<label>總天數</label>
+											</div>
+											<div>
+												<input name="totalDay" readonly="readonly">
+												<div></div>
+											</div>
+										</div>
+									</div>
+									<div class="tr-up-fld">
+										<div class="tr-up-fld-div">
+											<div class="tr-up-label">
+												<label>活動價格</label>
+											</div>
+											<div>
+												<input type="text" name="price" maxlength="9"><span></span>
+												<div class="tr-up-error"></div>
+											</div>
+										</div>
+										<div class="tr-up-fld-div">
+											<div class="tr-up-label">
+												<label>報名人數上限</label>
+											</div>
+											<div>
+												<input type="text" name="regTop" maxlength="9"><span></span>
+												<div class="tr-up-error"></div>
+											</div>
+										</div>
+										<div class="tr-up-fld-div">
+											<div class="tr-up-label">
+												<label>報名截止日期</label>
+											</div>
+											<div>
+												<input name="regEndDate" readonly="readonly"><span></span>
+												<div class="tr-up-error"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tr-up-form">
+									<label>備註 : 
+										<textarea rows="5" cols="100" name="note" class="m-note-form"></textarea>
+									</label>
+								</div>
+								<div class="tr-up-form">
+									<input type="submit" value="確認修改">
+									<input type="reset" class="cancel-up" value="取消修改">
+								</div>
+							</form>
+						</div>
+					</td>
+				</tr>
+				<tr class="tr-reg hideTr">
+					<td colspan="12">
+						<div class="tr-reg-con">
+							<div class="tr-reg-head">
+								<div class="tr-reg-seqno">報名編號</div>
+								<div class="tr-reg-mbName">報名會員名稱</div>
+								<div class="tr-reg-regNum">報名人數</div>
+								<div class="tr-reg-regDate">報名日期</div>
+								<div class="tr-reg-attr">狀態列</div>
+								<div class="tr-reg-control">控制列</div>
+							</div>
+							<div class="tr-reg-body">
+								<div class="tr-reg-order">
+									<div class="tr-reg-seqno"><a></a></div>
+									<div class="tr-reg-mbName"></div>
+									<div class="tr-reg-regNum"></div>
+									<div class="tr-reg-regDate"></div>
+									<div class="tr-reg-attr"></div>
+									<div class="tr-reg-control"></div>
+								</div>
+								<div class="tr-reg-bar">
+									<div><img src="/MountainExploer.com/mountain/images/down.png"></div>
+								</div>
+								<div class="tr-reg-info hideTr">
+									<div class="tr-reg-info-head">
+										<div class="tr-reg-info-name">姓名</div>
+										<div class="tr-reg-info-bDay">出生年月日</div>
+										<div class="tr-reg-info-pID">身分證字號</div>
+										<div class="tr-reg-info-phone">電話</div>
+										<div class="tr-reg-info-cellphone">手機</div>
+										<div class="tr-reg-info-email">電子信箱</div>
+									</div>
+									<div class="tr-reg-info-body">
+										<div class="tr-reg-info-name"></div>
+										<div class="tr-reg-info-bDay"></div>
+										<div class="tr-reg-info-pID"></div>
+										<div class="tr-reg-info-phone"></div>
+										<div class="tr-reg-info-cellphone"></div>
+										<div class="tr-reg-info-email"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+        <nav class="pageControl ver-mid">
+        	<ul>
+            	<li class="li1">
+            		<div class="m-page">
+	            		«第一頁
+            		</div>
+				</li>
+                <li class="li1">
+                	<div class="m-page">
+	                	‹上一頁
+                	</div>
+                </li>
+                <li class="li1">
+                	<div  class="m-page">
+                	</div>
+				</li>
+                <li class="li1">
+                	<div class="m-page">
+                		下一頁›
+                	</div>
+                </li>
+                <li class="li1">
+                	<div  class="m-page">
+                		最末頁»
+                	</div>
+				</li>
+			</ul>
+		</nav>
+    </div>
     <footer id="footer">
         <a>全站導覽</a>
         <button id="demo1">確認demo1</button>

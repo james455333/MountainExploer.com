@@ -1,57 +1,70 @@
 package product.controller.shop;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
-import product.model.FirstClass;
-import product.model.SecondClass;
-import product.service.FirstClassService;
-import product.service.SecondClassService;
+import member.model.MemberBasic;
+import oracle.net.aso.m;
+import product.model.ShoppingCart;
+
 @RequestMapping("/shop")
 @Controller
+@SessionAttributes(names = {"ShoppingCart","Member"})
 public class ShopPageEntryController {
-	
-	@Autowired
-	private FirstClassService firstClassService;
-	@Autowired
-	private SecondClassService secondClassService;
-	
-	//前往購物頁面
+
+	// 前往購物頁面
 	@RequestMapping(path = "/shoppingPage")
-	public String shoppingPage(Model model) {
+	public String shoppingPage(
+			@ModelAttribute("Member") MemberBasic mb,
+			Model model
+//			,	ShoppingCart shoppingCart
+			) {
+
+//		model.addAttribute("ShoppingCart", shoppingCart);
+		model.addAttribute("Member", mb);
+
 		return "product/shop/shopPage";
 	}
-	
-	
-	//前往新增頁面
-	@RequestMapping(path = "/createDataPage", method = RequestMethod.GET)
-	public String createPage(Model model) {
-		
-		List<FirstClass> firstClassBeans = null;
-		List<SecondClass> secondClassBeans = null;
-		
-		secondClassBeans = secondClassService.selectAll();
-		firstClassBeans = firstClassService.selectAll();
-		
-		model.addAttribute("fcBean", firstClassBeans);
-		model.addAttribute("scBean", secondClassBeans);
-		
-		return "product/back/backProductCreate";
-	}
-	
-	//前往修改頁面
-	@RequestMapping(path = "/updateDataEntry", method = RequestMethod.GET)
-	public String updatePage(Model model) {
 
-		return "product/back/backProductUpdate";
+	// 前往商品細項頁面
+	@RequestMapping(path = "/productInfoEntry")
+	public String productInfoPage(Model model) {
+		return "product/shop/productInfoPage";
 	}
 
+	// 前往購物車頁面
+	@RequestMapping(path = "/shoppingCartEntry", method = RequestMethod.GET)
+	public String shoppingCartPage(Model model
+//			,@ModelAttribute("Member")MemberBasic mb
+//			, ShoppingCart shoppingCart
+			) {
+//		model.addAttribute("ShoppingCart", shoppingCart);
+//		model.addAttribute("Member", mb);
+		ShoppingCart shoppingCart = (ShoppingCart)model.getAttribute("ShoppingCart");
+		MemberBasic mb = (MemberBasic)model.getAttribute("Member");
+		
+		System.out.println("ShoppingCart:"+shoppingCart.getSubtotal());
+		System.out.println("MemberBasic:"+mb);
+//		System.out.println("mb.getName():"+mb.getName());
+//		System.out.println(mb.getEmail());
+//		System.out.println("mb.getAccount():"+mb.getAccount());
 
-	
+		return "product/cart/shoppingCartPage";
+	}
+
+	// 前往確認訂單頁面
+	@RequestMapping(path = "/orderConfirmEntry", method = RequestMethod.GET)
+	public String deleteCartBean(@ModelAttribute("Member")MemberBasic mb, Model m
+			) { 
+		m.addAttribute("Member", mb);
+		
+		return "product/cart/orderConfirm";
+
+	}
 
 }

@@ -31,8 +31,6 @@ document.getElementById("demo4").addEventListener("click", function () {
         text: "取消",
         visible: true
       },
-      // danger: {
-      //變紅底
       commit: {
         text: "確認",
         visible: true,

@@ -66,6 +66,54 @@
     <div>註冊</div>
 </div>
             <!-- 每頁不同的內容從這裡開始 -->
+<div id="dialog-form" title="登入/註冊">
+    <div id="login-div" class="ui-dialog">
+      <div class="login-body" id="login-panel">
+        <table class="logintable" style="margin: 0 auto;">
+          <tbody>
+            <tr style="text-align: right;">
+              <th>帳號:</th>
+              <td><input name="username" type="text" style=" width: 200px;border: 1px #ABADB3 solid;
+                          padding: 5px 3px 5px; "></td>
+            </tr>
+            <tr style="text-align: right;">
+              <th>密碼:</th>
+              <td>
+                <div>
+                  <input type="password" style="width: 200px;border: 1px #ABADB3 solid;padding: 5px 3px 5px; ">
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th></th>
+              <td>
+                <div>
+                  <a href="#">忘記密碼</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th></th>
+              <td>
+                <div>
+                  <label>
+                    記住我<input type="checkbox" name="rememberme" style="float: left;">
+                  </label>
+                </div>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <div style="text-align: center;">立即<a href="#" style="color:blue;">註冊</a>新帳號</div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <button id="create-user">登入/註冊</button>
 
             
             <!-- 每頁不同的內容到這裡結束 -->
@@ -87,6 +135,7 @@
     </footer>
 </body>
 <script src="/MountainExploer.com/js/upLoadImg.js"></script><!-- 上傳頭像 -->
+<script src="/MountainExploer.com/js/login.js"></script><!-- 上傳頭像 -->
 <script src="/MountainExploer.com/js/table.js"></script>
 <script src="/MountainExploer.com/js/topBar.js"></script>
 <script src="/MountainExploer.com/js/sweetalert.js"></script><!--sweet alert-->

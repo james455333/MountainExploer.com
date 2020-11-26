@@ -77,8 +77,9 @@
 				 <div>				 
 				  	<form  action="<c:url value='/mountainCampBack/updateCamp'></c:url>"method="post" enctype="multipart/form-data">	
 				    	<td><input type="hidden" name="updatacamp_id" size="10" value="${l.campbasicid}">	</td> 			    		
- 				    	<td><input type="hidden" name="updatecamp_city" size="10" value="${l.counties.area.name}">${l.counties.area.name}	</td>	  
-				    	<td><input type="text" name="updatecamp_town" size="10" value="${l.counties.name}">	</td>
+ 				    	<td><input type="hidden" name="updatecamp_city" size="10" value="${l.counties.area.name}" id="selectArea">${l.counties.area.name}	</td>	  
+				    	<td><select name="updatecamp_town" id="selectCounties"><option  value="${l.counties.name}" >${l.counties.name}</option></select></td>
+<%-- 				    	<td><input type="text" name="updatecamp_town" size="10" value="${l.counties.name}" >	</td> --%>
 				    	<td><input type="text" name="updatecamp_name" size="20" value="${l.name}"> 	</td>
 				    	<td><input type="text" name="updatecamp_desc" size="50" value="${l.url}"> 	</td>
 				    	<td><img id="blah" src="#" alt="更新圖片" />		       
@@ -114,10 +115,31 @@ $("#imgInp").change(function() {
   readURL(this);
 });
 
+</script>
+
+</body>
+
+<script type="text/javascript">
+$(function(){
+	var campUrl = "/MountainExploer.com/mountainCampBack";
+$(window).on("load",function(){
+	
+		var areaselect = $("#selectArea").val()
+		$.ajax({
+			url:campUrl+"/countiesoption?areaselect=" + areaselect,
+			dataType:"json",
+			method:"GET",
+			success:function(counties){
+				for(var i = 0 ; i< counties.length ; i++){
+				$("#selectCounties").append("<option value='" + counties[i].name + "'>" + counties[i].name + "</option>")	
+				}	}
+			
+			})
+})
+})
 
 
 </script>
-</body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<!--     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script> -->
 	<script type="text/javascript" charset="UTF-8" src='<c:url value="/housecamp/css/back/backhousecamp.js"/>'></script>
 </html>

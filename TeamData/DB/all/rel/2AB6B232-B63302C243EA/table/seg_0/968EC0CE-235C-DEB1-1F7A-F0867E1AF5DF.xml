@@ -53,10 +53,11 @@
 <ownerDesignName>all</ownerDesignName>
 <importedID>B80434BF-1ECE-134F-D63D-82F263ABFB80</importedID>
 <nullsAllowed>true</nullsAllowed>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
 <logicalDatatype>LOGDT037</logicalDatatype>
-<domain>914A738E-C53C-867B-5DDD-3907BF129AF1</domain>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>150</dataTypeSize>
+<ownDataTypeParameters>150,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="birthday" id="A18B43B2-A89B-60AD-2982-D85F7176D94C">

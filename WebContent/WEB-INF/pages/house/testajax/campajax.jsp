@@ -96,6 +96,7 @@ $(function(){
 	
 	var campUrl = "/MountainExploer.com/mountainCampajax";
 	
+//所有縣市	
 	$.ajax({
 		url:campUrl + "/ajaxcampArea",
 		method:"GET",
@@ -150,7 +151,7 @@ $(function(){
 				
 		})
 
-//鄉鎮選單變更			
+//縣市查詢			
 		$(".AreaSubmit").on("click",function(){
 			let selectarea = $("#selectArea").val();
 			
