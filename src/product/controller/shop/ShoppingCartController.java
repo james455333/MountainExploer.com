@@ -21,12 +21,13 @@ import product.model.ShoppingCart;
 
 @RequestMapping(path = "/shoppingcart")
 @Controller
-@SessionAttributes("ShoppingCart")
+@SessionAttributes(names = {"ShoppingCart","Member"})
 public class ShoppingCartController {
 
 	// 在Session加入ShoppingCart屬性物件
 	@RequestMapping(path = "/addShoppingCart", method = RequestMethod.GET)
-	public String addCartBean(@ModelAttribute("Member") MemberBasic mb,
+	public String addCartBean(
+			@ModelAttribute("Member") MemberBasic mb,
 			Model m,
 			ShoppingCart shoppingCart,
 			@RequestParam(name = "itemBasicSeqno") String itemBasicSeqno,
@@ -63,8 +64,9 @@ public class ShoppingCartController {
 		// 將CartBean物件加入ShoppingCart的物件內
 		shoppingCart.addToCart(parseIntitemBasicSeqno, cartBean);
 		
+		
 //		m.addAttribute(shoppingCart);
-//		m.addAttribute("Member", mb);
+		m.addAttribute("Member", mb);
 		
 		return "redirect:/shop/shoppingPage";
 
@@ -87,6 +89,7 @@ public class ShoppingCartController {
 		
 		boolean modifyQty = shoppingCart.modifyQty(itemBasicSeqnoInt, newAmountInt);
 		System.out.println(modifyQty);
+		m.addAttribute("Member", mb);
 		
 		return "redirect:/shop/shoppingCartEntry";
 
@@ -102,20 +105,26 @@ public class ShoppingCartController {
 		Integer itemBasicSeqnoInt = Integer.parseInt(itemBasicSeqno);
 		shoppingCart.deleteProduct(itemBasicSeqnoInt);
 		
+		m.addAttribute("Member", mb);
+		
 		return "redirect:/shop/shoppingCartEntry";
 		
 	}
 	
-	// 放棄購物
+
+	// 
 		@RequestMapping(path = "/abort", method = RequestMethod.GET)
-		public String abort(@ModelAttribute("Member") MemberBasic mb,
-				ShoppingCart shoppingCart, 
-				Model m
-				) {
-			m.addAttribute("ShoppingCart", shoppingCart);
-			return "redirect:/shop/shoppingPage";
+		public String abort(@ModelAttribute("Member") MemberBasic mb, ShoppingCart shoppingCart, Model m) {
 			
-		}
+			m.addAttribute("ShoppingCart", shoppingCart);
+			
+			m.addAttribute("Member", mb);
+
+			return "redirect:/shop/shoppingPage";
+		
+
+		}		
+		
 		
 	//確認訂單
 		@RequestMapping(path = "/saveOrder", method = RequestMethod.POST)
@@ -154,7 +163,7 @@ public class ShoppingCartController {
 			}
 			orders.setOrderItemsSet(orderItemsSet);
 			
-			//清空ShoppingCart物件
+			m.addAttribute("Member", mb);
 			
 			return "redirect:/shop/shoppingPage";
 			

@@ -90,35 +90,50 @@
 		action="<c:url value='xxxx' />" method="POST">
 		<TABLE border='1'>
 			<TR>
-				<TD>總金額：
-				<Input size="60" type="text" name="subtotal" value="${subtotal}" readonly>
+				<TD>總金額： <Input size="60" type="text" name="subtotal"
+					value="${subtotal}" readonly>
 				</TD>
 			</TR>
 			<TR>
-				<TD>會員編號：
-				<Input size="60" type="text" name="memberId" value="${Member.memberId}" readonly>
+				<TD>會員編號： <Input size="60" type="text" name="memberId"
+					value="${Member.memberId}" readonly>
 				</TD>
 			</TR>
 			<TR>
-				<TD>收貨地址：
-				<Input size="60" type="text" name="shippingAddress"	value="">
+				<TD>收貨地址： <Input size="60" type="text" name="shippingAddress"
+					value="">
 				</TD>
 			</TR>
 			<TR>
-				<TD>統一編號：
-				<Input size="60" type="text" name="invoiceTitle"	value="">
+				<TD>統一編號： <Input size="60" type="text" name="invoiceTitle"
+					value="">
 				</TD>
 			</TR>
-<!-- 			<TR> -->
-<!-- 				<TD>訂單日期： -->
-<%-- 				<Input size="60" type="text" name="shippingAddress"	value="${today}" readonly> --%>
-<!-- 				</TD> -->
-<!-- 			</TR> -->
-<!-- 			<TR> -->
-<!-- 				<TD>出貨日期： -->
-<%-- 				<Input size="60" type="text" name="shippingAddress"	value="${today}" readonly> --%>
-<!-- 				</TD> -->
-<!-- 			</TR> -->
+			<!-- 			<TR> -->
+			<!-- 				<TD>訂單日期： -->
+			<%-- 				<Input size="60" type="text" name="shippingAddress"	value="${today}" readonly> --%>
+			<!-- 				</TD> -->
+			<!-- 			</TR> -->
+			<!-- 			<TR> -->
+			<!-- 				<TD>出貨日期： -->
+			<%-- 				<Input size="60" type="text" name="shippingAddress"	value="${today}" readonly> --%>
+			<!-- 				</TD> -->
+			<!-- 			</TR> -->
+			<TR>
+				<TD align="center">
+				<A href="<c:url value='/shop/shoppingPage' />">繼續購物</A>
+				</TD>
+			</TR>
+
+			<TR align="center">
+				<TD><A
+					href="<c:url value='../_03_listBooks/DisplayPageProducts?pageNo=${param.pageNo}' />">送出訂單</A>
+				</TD>
+			</TR>
+			<TR align="center">
+				<TD><A href="<c:url value='/shoppingcart/abort' />">刪除訂單</A>
+				</TD>
+			</TR>
 
 
 		</TABLE>
@@ -128,12 +143,6 @@
 
 	<TABLE border='1'>
 		<TR>
-			<TD width="265" align='center'><A
-				href="<c:url value='../_03_listBooks/DisplayPageProducts?pageNo=${param.pageNo}' />">送出訂單</A>
-			</TD>
-			<TD width="265" align='center'><A
-				href="<c:url value='../_03_listBooks/DisplayPageProducts?pageNo=${param.pageNo}' />">取消</A>
-			</TD>
 			<!-- 			<TD width="265" align='center'><A -->
 			<%-- 				href="<c:url value='checkout.do' />" --%>
 			<%-- 				onClick="return Checkout(${subtotal});">送出訂單</A></TD> --%>

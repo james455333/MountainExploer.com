@@ -122,7 +122,7 @@
 			<A	href="<c:url value='/shop/shoppingPage' />">繼續購物</A>
 	</div>
 	<div>
-			<A href="<c:url value='../_03_listBooks/DisplayPageProducts?pageNo=${param.pageNo}' />">確認訂單</A>
+			<A href="<c:url value='/shop/orderConfirmEntry' />">確認訂單</A>
 	</div>
 	<div>
 			<A	href="<c:url value='/shoppingcart/abort' />">清空購物車</A>
