@@ -82,65 +82,12 @@ $(function(){
 		
 	})
 	
-	$(".m-ma-container").on("click",".bt-act-hide",confirmSWAL)
-	$(".m-ma-container").on("click",".bt-act-delete",dangerSWAL)
+	$(".m-ma-container").on("click",".bt-act-hide",hideConfirm_PS)
+	$(".m-ma-container").on("click",".bt-act-delete",deleteDanger_PS)
 	
 	
 })
-/* 確認視窗 */
-function confirmSWAL(){
-	let thisBT = $(this)
-	swal({
-		title : $(this).text(),
-		text : "確定要執行本操作嗎?",
-		icon : "warning",
-		dangerMode: true,
-		buttons : {
-			cancel :{
-				visible: true,
-				text: "取消",
-				value : false
-			},
-			confirm :{
-				visible: true,
-				text : "確定",
-				value : true
-			}
-		}
-	}).then((value) => {
-		if(value){
-			
-			console.log( thisBT )
-	//    	setActHide()
-			
-		}
-	});
-}
-/* 危險確認視窗 */
-function dangerSWAL(){
-	swal({
-	    title: "確定要執行 取消本活動 嗎?",
-	    text: "請注意，本操作將取消本活動，\n本用戶將無法對本活動再次操控。\n若有問題請聯絡管理員\n\n\n\t確定要執行本操作?",
-	    icon: "warning",
-		dangerMode: true,
-	    buttons: {
-	      cancel: {
-	        text: "取消",
-	        visible: true
-	      },
-	      
-	      danger: {
-	        text: "確定執行刪除",
-	        visible: true,
-			value : true
-	      },
-	    },
-		
-	 }).then((value) => {
-		if(value){
-		}
-	 });
-}
+
 /* 
 100	General Member
 110	Uncertified Member
