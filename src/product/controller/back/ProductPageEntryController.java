@@ -55,7 +55,7 @@ public class ProductPageEntryController {
 		@RequestMapping(path = "/productInfoEntry", method = RequestMethod.GET)
 		public String productInfo(Model model) {
 
-			return "product/shop/productInfoPage";
+			return "product/back/productInfoPage";
 		}
 
 

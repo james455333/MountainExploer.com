@@ -214,15 +214,20 @@ public class ProductRetrieveController {
 
 	// 顯示修改頁面資料
 	@RequestMapping(path = "/updateDataPage", method = RequestMethod.GET)
-	public String updatePage(@RequestParam(name = "seqno") String seqno, Model model) {
+	public String updatePage(@RequestParam(name = "seqno") String seqno, Model model) throws IOException, SQLException {
 
 		int itemBasicSeqno = Integer.parseInt(seqno);
 
 		ItemInfo itemInfo = itemInfoService.selectNo(itemBasicSeqno);
 		ItemBasic itemBasic = itemBasicService.selectNo(itemBasicSeqno);
+		ProductBean productBean = new ProductBean();
+		
+		String description = TransFuction.bytesToString(itemInfo.getDescription());
+		productBean.setDescription(description);
 
 		model.addAttribute("itemInfo", itemInfo);
 		model.addAttribute("itemBasic", itemBasic);
+		model.addAttribute("productBean", productBean);
 		return "forward:/backstage/product/updateDataEntry";
 	}
 

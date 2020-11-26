@@ -9,7 +9,7 @@ public class CartBean {
 //	private Integer seqno;
 //	private Integer odersOderno;
 	private Integer itemBasicSeqno;
-	private String itemBasicname;
+	private String itemBasicName;
 //	private String firstClass;
 //	private String secondClass;
 //	private String type;
@@ -17,8 +17,8 @@ public class CartBean {
 	private Integer unitPrice;
 //	private Integer stock;
 //	private String description;
-	private Integer amount;
-	private Double discount;
+	private Integer amount = 0;
+	private Double discount = 1.0;
 	
 //	public Integer getSeqno() {
 //		return seqno;
@@ -38,11 +38,11 @@ public class CartBean {
 	public void setItemBasicSeqno(Integer itemBasicSeqno) {
 		this.itemBasicSeqno = itemBasicSeqno;
 	}
-	public String getItemBasicname() {
-		return itemBasicname;
+	public String getItemBasicName() {
+		return itemBasicName;
 	}
-	public void setItemBasicname(String itemBasicname) {
-		this.itemBasicname = itemBasicname;
+	public void setItemBasicName(String itemBasicname) {
+		this.itemBasicName = itemBasicname;
 	}
 //	public String getFirstClass() {
 //		return firstClass;

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import mountain.MountainGlobal;
 import product.function.TransFuction;
 import product.model.ItemBasic;
 import product.model.ItemInfo;
@@ -57,6 +58,7 @@ public class ProductCUDController {
 			@RequestParam(name = "type", required = false) String type,
 			@RequestParam(name = "price", required = false) String price,
 			@RequestParam(name = "stock", required = false) String stock,
+			@RequestParam(name = "description", required = false) String description,
 			@RequestParam(name = "productImg", required = false) MultipartFile multipartFile) throws IllegalStateException, IOException {
 		
 		Integer seqInt = Integer.parseInt(itemBasicSeqno);
@@ -69,6 +71,9 @@ public class ProductCUDController {
 		itemInfo.setPrice(priceNum1);
 		Integer stockNum = Integer.parseInt(stock);
 		itemInfo.setStock(stockNum);
+		
+		byte[] descriptionBytes = description.getBytes("UTF-8");
+		itemInfo.setDescription(descriptionBytes);
 		
 		byte[] imageBytes = TransFuction.downloadImage(multipartFile);
 		itemInfo.setImg(imageBytes);
