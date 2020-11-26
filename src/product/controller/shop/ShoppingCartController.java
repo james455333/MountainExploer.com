@@ -7,13 +7,11 @@ import java.util.Set;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import member.model.MemberBasic;
 import product.model.CartBean;
 import product.model.OrderItems;
 import product.model.Orders;
@@ -23,11 +21,13 @@ import product.model.ShoppingCart;
 @Controller
 @SessionAttributes(names = {"ShoppingCart","Member"})
 public class ShoppingCartController {
+	
+
 
 	// 在Session加入ShoppingCart屬性物件
 	@RequestMapping(path = "/addShoppingCart", method = RequestMethod.GET)
 	public String addCartBean(
-			@ModelAttribute("Member") MemberBasic mb,
+//			@ModelAttribute("Member") MemberBasic mb,
 			Model m,
 			ShoppingCart shoppingCart,
 			@RequestParam(name = "itemBasicSeqno") String itemBasicSeqno,
@@ -66,7 +66,7 @@ public class ShoppingCartController {
 		
 		
 //		m.addAttribute(shoppingCart);
-		m.addAttribute("Member", mb);
+//		m.addAttribute("Member", mb);
 		
 		return "redirect:/shop/shoppingPage";
 
@@ -74,7 +74,7 @@ public class ShoppingCartController {
 	
 	// 修改某項商品的數量
 	@RequestMapping(path = "/modifyCartBean", method = RequestMethod.GET)
-	public String modifyCartBean(@ModelAttribute("Member") MemberBasic mb,
+	public String modifyCartBean(
 			 Model m,
 			@RequestParam(name = "itemBasicSeqno") String itemBasicSeqno,
 			@RequestParam(name = "newAmount") String newAmount
@@ -89,14 +89,14 @@ public class ShoppingCartController {
 		
 		boolean modifyQty = shoppingCart.modifyQty(itemBasicSeqnoInt, newAmountInt);
 		System.out.println(modifyQty);
-		m.addAttribute("Member", mb);
+//		m.addAttribute("Member", mb);
 		
 		return "redirect:/shop/shoppingCartEntry";
 
 	}
 	// 刪除某項商品
 	@RequestMapping(path = "/deleteCartBean", method = RequestMethod.GET)
-	public String deleteCartBean(@ModelAttribute("Member") MemberBasic mb,
+	public String deleteCartBean(
 			Model m,
 			@RequestParam(name = "itemBasicSeqno") String itemBasicSeqno
 			) {
@@ -105,20 +105,22 @@ public class ShoppingCartController {
 		Integer itemBasicSeqnoInt = Integer.parseInt(itemBasicSeqno);
 		shoppingCart.deleteProduct(itemBasicSeqnoInt);
 		
-		m.addAttribute("Member", mb);
+//		m.addAttribute("Member", mb);
 		
 		return "redirect:/shop/shoppingCartEntry";
 		
 	}
 	
 
-	// 
+	// 清空購物車
 		@RequestMapping(path = "/abort", method = RequestMethod.GET)
-		public String abort(@ModelAttribute("Member") MemberBasic mb, ShoppingCart shoppingCart, Model m) {
+		public String abort( 
+				Model m) {
+			ShoppingCart shoppingCart = (ShoppingCart) m.getAttribute("ShoppingCart");
+			shoppingCart.getContent().clear();
 			
-			m.addAttribute("ShoppingCart", shoppingCart);
 			
-			m.addAttribute("Member", mb);
+			
 
 			return "redirect:/shop/shoppingPage";
 		
@@ -128,8 +130,8 @@ public class ShoppingCartController {
 		
 	//確認訂單
 		@RequestMapping(path = "/saveOrder", method = RequestMethod.POST)
-		public String saveOrder(@ModelAttribute("Member") MemberBasic mb,
-				ShoppingCart shoppingCart, Model m,
+		public String saveOrder(
+				 Model m,
 				@RequestParam(name = "subtotal") String subtotal,
 				@RequestParam(name = "memberId") String memberId,
 				@RequestParam(name = "shippingAddress") String shippingAddress,
@@ -148,6 +150,7 @@ public class ShoppingCartController {
 			
 			Set<OrderItems> orderItemsSet = new HashSet<OrderItems>();
 			
+			ShoppingCart shoppingCart = (ShoppingCart) m.getAttribute("ShoppingCart");
 			Map<Integer, CartBean> cart = shoppingCart.getContent();
 			
 			Set<Integer> keySet = cart.keySet();
@@ -163,7 +166,7 @@ public class ShoppingCartController {
 			}
 			orders.setOrderItemsSet(orderItemsSet);
 			
-			m.addAttribute("Member", mb);
+//			m.addAttribute("Member", mb);
 			
 			return "redirect:/shop/shoppingPage";
 			

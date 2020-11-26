@@ -85,10 +85,5 @@ public class ShoppingCart {
 		System.out.println("------------------");
 	}
 	
-	//清空Cart
-	public void abortCart(CartBean cartBean) {
-//		cart.remove(cartBean);
-		
-	}
 
 }

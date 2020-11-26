@@ -36,6 +36,7 @@ public class ItemBasicDAO {
 		Session session = sessionFactory.getCurrentSession();
 
 		String hql = "From ItemBasic  where Name like '" + name + "'";
+//		String hql = "From ItemBasic  where Name = " + name + " ";
 
 		Query<ItemBasic> query = session.createQuery(hql, ItemBasic.class);
 
