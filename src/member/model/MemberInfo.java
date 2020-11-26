@@ -36,7 +36,8 @@ public class MemberInfo {
 	private String gender;
 	private String climb_ex;
 	private byte[] per_img;
-	private byte[] other;	
+	private byte[] other;
+	private String img_name;
 	private MemberBasic memberBasic;
 	
 
@@ -139,6 +140,15 @@ public class MemberInfo {
 	public void setOther(byte[] other) {
 		this.other = other;
 	}
+	
+	@Column(name = "IMG_NAME")
+	public String getImg_name() {
+		return img_name;
+	}
+	public void setImg_name(String img_name) {
+		this.img_name = img_name;
+	}
+	
 
 	
 	@OneToOne (fetch = FetchType.LAZY)

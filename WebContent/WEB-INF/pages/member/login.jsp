@@ -37,7 +37,7 @@
 				<input type="submit" id="submit" name="submit" value="登入">
 				<input type="checkbox" id="rememberMe" name="rememberMe"
 					<c:if test="${cookie.rememberMe.value == 'check'}">checked="checked"</c:if>
-				value="">記住我<br/>
+				value="check">記住我<br/>
 
 				<a href="/MountainExploer.com/member/memberRegisterEntry">註冊會員</a>
 			</div>

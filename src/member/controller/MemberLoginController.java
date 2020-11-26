@@ -33,7 +33,7 @@ public class MemberLoginController {
 	
 	@RequestMapping(path = "/member/memberLoginEntry", method = RequestMethod.GET)
 	public String processLoginEntry() {
-		return "member/login";
+		return "member/formalLogin";
 	}
 	
 	
