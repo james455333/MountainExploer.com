@@ -82,7 +82,7 @@ public class ShopPageEntryController {
 
 	// 前往確認訂單頁面
 	@RequestMapping(path = "/orderConfirmEntry", method = RequestMethod.GET)
-	public String deleteCartBean( Model m) { 
+	public String orderConfirm( Model m) { 
 		
 		return "product/cart/orderConfirm";
 

@@ -31,10 +31,13 @@ public class Orders {
 	
 	@OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "orders")
 	private Set<OrderItems> orderItemsSet = new HashSet<OrderItems>();
-	@Column(name = "MEMBER_BASIC_ID")
+//	@Column(name = "MEMBER_BASIC_ID")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "member_basic_id", referencedColumnName = "seqno")
+	@JsonIgnore
 	private Integer memberBasicID;
 	@Column(name = "TOTALAMOUNT")
-	private Integer totalAmount;
+	private Double totalAmount;
 	@Column(name = "SHIPPINGADDRESS")
 	private String shippingAddress;
 	@Column(name = "INVOICETITLE")
@@ -46,14 +49,11 @@ public class Orders {
 	@Column(name = "CANCELTAG")
 	private String cancelTag;
 	
-//	private MemberBasic memberBasic;
-//	
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "member_basic_id", referencedColumnName = "seqno")
-//	@JsonIgnore
-//	public MemberBasic getMemberBasic() {
-//		return memberBasic;
-//	}
+	private MemberBasic memberBasic;
+	
+	public MemberBasic getMemberBasic() {
+		return memberBasic;
+	}
 	
 	
 	public Integer getSeqno() {
@@ -67,10 +67,10 @@ public class Orders {
 		return memberBasicID;
 	}
 
-	public Integer getTotalAmount() {
+	public Double getTotalAmount() {
 		return totalAmount;
 	}
-	public void setTotalAmount(Integer totalAmount) {
+	public void setTotalAmount(Double totalAmount) {
 		this.totalAmount = totalAmount;
 	}
 	public String getShippingAddress() {

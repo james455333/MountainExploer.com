@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import product.dao.OrdersDAO;
 import product.model.CartBean;
 import product.model.OrderItems;
 import product.model.Orders;
@@ -21,6 +23,9 @@ import product.model.ShoppingCart;
 @Controller
 @SessionAttributes(names = {"ShoppingCart","Member"})
 public class ShoppingCartController {
+	
+	@Autowired
+	private OrdersDAO ordersDao; 
 	
 
 
@@ -116,14 +121,11 @@ public class ShoppingCartController {
 		@RequestMapping(path = "/abort", method = RequestMethod.GET)
 		public String abort( 
 				Model m) {
+			
 			ShoppingCart shoppingCart = (ShoppingCart) m.getAttribute("ShoppingCart");
 			shoppingCart.getContent().clear();
-			
-			
-			
 
 			return "redirect:/shop/shoppingPage";
-		
 
 		}		
 		
@@ -132,25 +134,28 @@ public class ShoppingCartController {
 		@RequestMapping(path = "/saveOrder", method = RequestMethod.POST)
 		public String saveOrder(
 				 Model m,
-				@RequestParam(name = "subtotal") String subtotal,
+//				@RequestParam(name = "subtotal") String subtotal,
 				@RequestParam(name = "memberId") String memberId,
 				@RequestParam(name = "shippingAddress") String shippingAddress,
 				@RequestParam(name = "invoiceTitle") String invoiceTitle
 				) {
 			Orders orders = new Orders();
-//			String account = orders.getMemberBasic().getAccount();
 
-			Integer subtotalInt = Integer.parseInt(subtotal);
-			orders.setTotalAmount(subtotalInt);
+//			Integer subtotalInt = Integer.parseInt(subtotal);
+			ShoppingCart shoppingCart = (ShoppingCart) m.getAttribute("ShoppingCart");
+			double subtotal = shoppingCart.getSubtotal();
+			orders.setTotalAmount(subtotal);
+			
 			orders.setShippingAddress(shippingAddress);
 			orders.setInvoiceTitle(invoiceTitle);
 			Date today = new Date();   	
 			orders.setOrderDate(today);
 			orders.setShippingDate(today);
 			
+			ordersDao.insertOrder(orders);
+			
 			Set<OrderItems> orderItemsSet = new HashSet<OrderItems>();
 			
-			ShoppingCart shoppingCart = (ShoppingCart) m.getAttribute("ShoppingCart");
 			Map<Integer, CartBean> cart = shoppingCart.getContent();
 			
 			Set<Integer> keySet = cart.keySet();
@@ -161,12 +166,13 @@ public class ShoppingCartController {
 				orderItems.setUnitPrice(cartBean.getUnitPrice());
 				orderItems.setAmount(cartBean.getAmount());
 				orderItems.setDiscount(cartBean.getDiscount());
+				System.out.println("cartBean.getDiscount():"+cartBean.getDiscount());
 				
 				orderItemsSet.add(orderItems);
 			}
+			
 			orders.setOrderItemsSet(orderItemsSet);
 			
-//			m.addAttribute("Member", mb);
 			
 			return "redirect:/shop/shoppingPage";
 			

@@ -71,11 +71,11 @@
 			<c:forEach varStatus="vs" var="anEntry"
 				items="${ShoppingCart.content}">
 				<tr>
-					<td>${anEntry.itemBasicSeqno}</td>
+					<td>${anEntry.value.itemBasicSeqno}</td>
 					<td>${anEntry.value.itemBasicName}</td>
 					<td>${anEntry.value.unitPrice}</td>
 					<td>${anEntry.value.amount}</td>
-					<td>${anEntry.value.price * anEntry.value.discount * anEntry.value.amount}</td>
+					<td>${anEntry.value.unitPrice * anEntry.value.discount * anEntry.value.amount}</td>
 				</tr>
 			</c:forEach>
 			<!-- tbody更改到這邊結束 -->
@@ -87,16 +87,16 @@
 
 
 	<FORM style="margin: 0 auto; width: 750px;"
-		action="<c:url value='xxxx' />" method="POST">
+		action="<c:url value='/shoppingcart/saveOrder' />" method="POST">
 		<TABLE border='1'>
 			<TR>
-				<TD>總金額： <Input size="60" type="text" name="subtotal"
-					value="${subtotal}" readonly>
+				<TD>總金額： <Input size="10" type="text" name="subtotal"
+					value="${subtotal}" readonly>元
 				</TD>
 			</TR>
 			<TR>
 				<TD>會員編號： <Input size="60" type="text" name="memberId"
-					value="${Member.memberId}" readonly>
+					value="${Member.account}" readonly>
 				</TD>
 			</TR>
 			<TR>
@@ -120,14 +120,16 @@
 			<!-- 				</TD> -->
 			<!-- 			</TR> -->
 			<TR>
+			<input type="submit" value="送出訂單">
+			</TR>
+<!-- 			<TR align="center"> -->
+<!-- 				<TD><A -->
+<%-- 					href="<c:url value='/shoppingcart/saveOrder' />">送出訂單</A> --%>
+<!-- 				</TD> -->
+<!-- 			</TR> -->
+			<TR>
 				<TD align="center">
 				<A href="<c:url value='/shop/shoppingPage' />">繼續購物</A>
-				</TD>
-			</TR>
-
-			<TR align="center">
-				<TD><A
-					href="<c:url value='../_03_listBooks/DisplayPageProducts?pageNo=${param.pageNo}' />">送出訂單</A>
 				</TD>
 			</TR>
 			<TR align="center">
