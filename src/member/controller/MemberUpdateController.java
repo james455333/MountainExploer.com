@@ -175,5 +175,9 @@ public class MemberUpdateController {
 	}
 
 	
+	//上傳、更新圖片
+	
+	
+	
 
 }
