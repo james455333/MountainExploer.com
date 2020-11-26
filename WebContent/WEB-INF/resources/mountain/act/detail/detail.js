@@ -74,11 +74,13 @@ $(function(){
 	
 	//	函式 : 分配參數給正確函式
 	function insertElement(data){
-		let model = $(".actPost").clone();
-		if(totalData!=0){
-			for(let i = 1 ; i<=totalData;i++){
-				$(".innerContainer").append(model)
-				model = $(".actPost").eq(0).clone()
+		if(data.actBasic.actInfo.deleteTag==null){
+			let model = $(".actPost").clone();
+			if(totalData!=0){
+				for(let i = 1 ; i<=totalData;i++){
+					$(".innerContainer").append(model)
+					model = $(".actPost").eq(0).clone()
+				}
 			}
 		}
 		//	主內容
@@ -86,13 +88,15 @@ $(function(){
 		insertTitle(data)
 		insertMemberTD(thisElm, data.actBasic.memberBasic)
 		insertMainContent(thisElm,data)
-		//	留言
+		console.log(data)
+		
+			//	留言
 		for(let i = 0 ; i < totalData ; i++ ){
 			let respElm = $(".actPost").eq(i+1);
 			insertMemberTD(respElm, data.respList[i].actResp.memberBasic);
 			insertResp(respElm, data.respList[i]);
-			
 		}
+		
 		
 	}
 	
@@ -116,6 +120,10 @@ $(function(){
 		respElm.find(".d_time").html("最後發表於 " + postD)
 		editCheck(respElm,respList.actResp.changeDate);
 		
+		if(respList.actResp.deleteTag != null){
+			respElm.find(".d_Main").html("<div class='hideResp'>本回覆已被隱藏顯示<div>")
+			return;
+		}
 		if(respList.actResp.hideTag != null){
 			respElm.find(".d_Main").html("<div class='hideResp'>本回覆已被隱藏顯示<div>")
 			return;
@@ -143,6 +151,11 @@ $(function(){
 		//	檢查是否有修改時間
 		editCheck(thisElm,actInfo.changeDate);
 		let hideTag = actInfo.hideTag;
+		//	判斷活動是否取消
+		if(actInfo.deleteTag != null){
+			$(".d_Main").html("活動已取消")
+			return;
+		}
 		//	判斷隱藏是否啟動
 		if(hideTag != null){
 			$(".d_Main").html("本區域已被隱藏顯示")

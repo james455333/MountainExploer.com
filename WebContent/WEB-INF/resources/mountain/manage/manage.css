@@ -48,10 +48,9 @@
     justify-content:center;
     transition : 1000ms;
 }
+/* 舉辦活動管理 */
 .m-ma-ta{
-	
 	width : 100%;
-	
 }
 .order-table-th{
 	font-size : 10px;
@@ -183,3 +182,9 @@
 .tr-reg-info-phone{ width : 15% }
 .tr-reg-info-cellphone{ width : 15% }
 .tr-reg-info-email{ width : 20% }
+
+
+/* 報名管理 */
+.m-ma-reg-ta{
+	width : 100%;
+}

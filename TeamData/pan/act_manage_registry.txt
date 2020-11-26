@@ -1,0 +1,11 @@
+{
+	regList : [
+		{
+			registry : {},
+			actInfo : {}
+		}
+	],
+	totalData : int,
+	totalPage : int,
+	page : int
+}

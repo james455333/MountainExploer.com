@@ -33,7 +33,7 @@ public class ActPageEntryController {
 			MemberStatus memberStatus = memberBasic.getMemberStatus();
 			int seqno = memberBasic.getSeqno();
 			int status = memberStatus.getSeqno();
-			return "redirect:/mountain/manage?mb="+ seqno +"&status="+status;
+			return "redirect:/mountain/manage?status="+status;
 		}
 		throw new HttpClientErrorException(HttpStatus.FORBIDDEN);
 	}

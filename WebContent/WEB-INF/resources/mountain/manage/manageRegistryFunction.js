@@ -1,56 +1,39 @@
-//
-//var shareURL = "/MountainExploer.com/mountain/public"
-//var manageHome = "/MountainExploer.com/mountain/manage/search"
-//var detailURL = "/MountainExploer.com/mountain/act/detail?page=1&actID="
-//var mb, status, totalPage, totalData;
-//var nowDate = Number(new Date());
-//var limitStartDate = new Date(nowDate + ((60*60*24*1000)*21)) ;
-//	
-//var urlNow = new URL(window.location.href)
-//
-//if(urlNow.searchParams.has("mb")){
-//	mb = urlNow.searchParams.get("mb")
-//}else{
-//	
-//}
-//if(urlNow.searchParams.has("status")){
-//	status = urlNow.searchParams.get("status")
-//}
-//
+
 function registry(page){
 	replaceContentReg("/registry",page);
 }
 //
 function replaceContentReg(order,page){
 	$(".m-ma-container").empty().css("display","inline-block");
-//	let model,pageCtrl;
-//	model = $(".m-ma-ta").clone();
-//	pageCtrl = $(".m-hide").find(".pageControl").clone()
-//	$(".m-ma-container").append(model)
-//	$(".m-ma-container").append(pageCtrl)
-//	insertRegInfo(order, page);
-//	$(".m-dl2-adj").css("height","auto")
+	$(".m-ma-container").append("<h2>報名管理</h2>")
+	let model,pageCtrl;
+	model = $(".m-ma-reg-ta").clone();
+	pageCtrl = $(".m-hide").find(".pageControl").clone()
+	$(".m-ma-container").append(model)
+	$(".m-ma-container").append(pageCtrl)
+	insertRegInfo(order, page);
+	$(".m-dl2-adj").css("height","auto")
 }
-//
-//
-///* Post 主控制表 */
-//function insertRegInfo(order, page){
-//	
-//	$.ajax({
-//		url : manageHome+order,
-//		method : "GET",
-//		dataType : "json",
-//		data : { page : page },
-//		success : function(data){
-//			console.log(data)
-//			totalPage = data.totalPage
-//			totalData = data.totalData
-//			for(let i in data.actList){
-//				let thisElm = $(".order-table-tb").eq(i)
-//				let model = thisElm.clone()
-//				$(".m-ma-ta").eq(0).append(model);
-//				setSeqno(data.actList[i],thisElm)
-//				setTitle(data.actList[i],thisElm);
+
+
+/* Post 主控制表 */
+function insertRegInfo(order, page){
+	
+	$.ajax({
+		url : manageHome+order,
+		method : "GET",
+		dataType : "json",
+		data : { page : page },
+		success : function(data){
+			console.log(data)
+			totalPage = data.totalPage
+			totalData = data.totalData
+			for(let i in data.regList){
+				let thisElm = $(".m-ma-reg-ta").find(".rg-main").eq(i)
+				let model = thisElm.clone()
+				$(".m-ma-reg-ta").eq(0).append(model);
+				setRg_ActID(data.regList[i],thisElm)
+				setRg_ActTitle(data.regList[i],thisElm);
 //				setStaTime(data.actList[i],thisElm);
 //				setEndTime(data.actList[i],thisElm);
 //				setPrice(data.actList[i],thisElm)
@@ -64,23 +47,21 @@ function replaceContentReg(order,page){
 //				setDatePicker(data.actList[i].actBasic.actInfo,thisElm)
 //				setTotalDay(data.actList[i].actBasic.actInfo,thisElm)
 //				thisElm.removeClass("hideTbody")
-//			}
-//				$(".m-ma-container").find(".hideTbody").eq(0).remove()
+			}
+				$(".m-ma-reg-ta").eq(0).find("tbody").eq(data.regList.length).remove()
 //				setPageController(order, page);
-//			
-//		}
-//	})
-//	
-//}
-//function setSeqno(actList,thisElm){
-//	thisElm.find("td").eq(0).html(actList.actBasic.seqno)
-//	thisElm.find(".tr-up-form").find("input[name='id']").val(actList.actBasic.actInfo.id)
-//}
-//function setTitle(actList,thisElm){
-//	thisElm.find("td").eq(1).find("a").html(actList.actBasic.actInfo.title)
-//	thisElm.find("td").eq(1).find("a").attr("href",detailURL + actList.actBasic.seqno)
-//	thisElm.find(".tr-up-form").find("input[name='title']").val(actList.actBasic.actInfo.title)
-//}
+			
+		}
+	})
+	
+}
+function setRg_ActID(regList,thisElm){
+	thisElm.find("td").eq(0).html(regList.actInfo.id)
+}
+function setRg_ActTitle(regList,thisElm){
+	thisElm.find("td").eq(1).find("a").html(regList.actInfo.title)
+	thisElm.find("td").eq(1).find("a").attr("href",detailURL + regList.actInfo.id)
+}
 //function setStaTime(actList,thisElm){
 //	let start = dateFormate(actList.actBasic.actInfo.startDate)
 //	thisElm.find("td").eq(2).html( start)

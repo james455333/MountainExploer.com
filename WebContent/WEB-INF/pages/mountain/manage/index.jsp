@@ -260,6 +260,30 @@
 				</tr>
 			</tbody>
 		</table>
+        <table class="order-table m-ma-reg-ta">
+        	<thead class="order-table-th"><tr>
+	        		<th scope="col" style="width:100px">活動編號</th>
+	        		<th scope="col" style="width:200px">活動名稱</th>
+					<th scope="col" style="width:100px">報名編號</th>
+					<th scope="col" style="width:150px">報名會員名稱</th>
+					<th scope="col" style="width:100px">報名人數</th>
+					<th scope="col" style="width:100px">報名日期</th>
+					<th scope="col" style="width:200px">狀態列</th>
+					<th scope="col" >控制列</th>
+        	</tr></thead>
+        	<tbody class="order-table-tb">
+        		<tr class="rg-main">
+        			<td></td>
+        			<td><a></a></td>
+        			<td></td>
+        			<td></td>
+        			<td></td>
+        			<td></td>
+        			<td></td>
+        			<td></td>
+        		</tr>
+        	</tbody>
+        </table>
         <nav class="pageControl ver-mid">
         	<ul>
             	<li class="li1">

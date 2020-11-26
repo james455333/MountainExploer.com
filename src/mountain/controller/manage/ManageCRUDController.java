@@ -29,15 +29,16 @@ import org.springframework.web.client.HttpClientErrorException;
 import main.generic.model.GenericTypeObject;
 import main.generic.service.GenericService;
 import member.model.MemberBasic;
+import mountain.MountainGlobal;
 import mountain.model.activity.ActivityBasic;
 import mountain.model.activity.ActivityInfo;
 import mountain.model.activity.Registry.ActRegInfo;
 import mountain.model.activity.Registry.ActRegistry;
 
 @Controller
-@RequestMapping("/mountain/manage/search")
+@RequestMapping("/mountain/manage/crud")
 @SessionAttributes("Member")
-public class ManageRetrieveController {
+public class ManageCRUDController {
 	@Autowired
 	private GenericService<GenericTypeObject> service;
 	private final int showData = 5;
@@ -176,5 +177,78 @@ public class ManageRetrieveController {
 			throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
 		}
 		return true;
+	}
+	
+	@PutMapping("/post-act-reg")
+	@ResponseBody
+	public Boolean regConfirm(
+			ActRegistry actRegistry,
+			@RequestBody Integer regID) {
+		try {
+			service.save(actRegistry);
+			actRegistry = (ActRegistry) service.select(regID);
+			actRegistry.setConfirm(1);
+			actRegistry.setDeniTag(null);
+			actRegistry.setdeclineReason(null);
+			service.update(actRegistry);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
+		}
+		
+		
+		return true;
+	}
+	@PostMapping("/post-act-reg")
+	@ResponseBody
+	public Boolean regDecline(
+			ActRegistry actRegistry,
+			@RequestParam("regID") Integer regID,
+			@RequestParam("deReason") String deReason) {
+		try {
+			service.save(actRegistry);
+			actRegistry = (ActRegistry) service.select(regID);
+			actRegistry.setDeniTag(1);
+			actRegistry.setdeclineReason(deReason.getBytes(MountainGlobal.CHARSET));
+			actRegistry.setConfirm(null);
+			service.update(actRegistry);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
+		}
+		
+		return true;
+	}
+	
+	@GetMapping("/registry")
+	@ResponseBody
+	public Map<String, Object> memberRegistry(
+			Model model,
+			ActRegistry actRegistry,
+			@RequestParam("page") Integer page){
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		MemberBasic mb =  (MemberBasic) model.getAttribute("Member");
+		service.save(actRegistry);
+		String hql = "From ActRegistry where memberBasic = " + mb.getSeqno() 
+				+ "and activityBasic in (select id From ActivityInfo where sysdate < startDate) order by activityBasic";
+		String all = "select count(*) ".concat(hql);
+		int totalData = service.countWithHql(all);
+		int totalPage = (int)Math.ceil(totalData*1.0 / showData );
+		List<ActRegistry> actRegistryList = (List<ActRegistry>) service.getwithHQL(hql, 1, showData);
+		
+		List<Map<String, Object>> regList = new ArrayList<Map<String,Object>>();
+		for (ActRegistry actReg : actRegistryList) {
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("registry", actReg);
+			map.put("actInfo", actReg.getActivityBasic().getActInfo());
+			regList.add(map);
+		}
+		
+		resultMap.put("regList", regList);
+		resultMap.put("totalPage", totalPage);
+		resultMap.put("totalData", totalData);
+		resultMap.put("page", page);
+		
+		return resultMap;
 	}
 }

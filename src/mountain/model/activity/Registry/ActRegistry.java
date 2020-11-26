@@ -36,6 +36,7 @@ import mountain.model.activity.ActivityBasic;
 public class ActRegistry extends GenericTypeObject {
 	
 	private Integer seqno;
+	private Integer actID;
 	private ActivityBasic activityBasic;
 	private MemberBasic memberBasic;
 	private java.util.Date reqDate;
@@ -140,5 +141,10 @@ public class ActRegistry extends GenericTypeObject {
 	public void setActRegInfo(Set<ActRegInfo> actRegInfo) {
 		this.actRegInfo = actRegInfo;
 	}
+	@Transient
+	public Integer getActID() {
+		return activityBasic.getSeqno();
+	}
+	
 
 }
