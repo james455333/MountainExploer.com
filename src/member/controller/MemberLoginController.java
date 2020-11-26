@@ -97,8 +97,14 @@ public class MemberLoginController {
 			cookiePwd.setMaxAge(0);
 			cookiePwd.setPath("/");
 			
+			String rmCk = "";
+			Cookie cookieRm = new Cookie("rememberMe", rmCk);
+			cookieRm.setMaxAge(0);
+			cookieRm.setPath("/");
+			
 			response.addCookie(cookieAnt);
 			response.addCookie(cookiePwd);
+			response.addCookie(cookieRm);
 		}
 		
 		
