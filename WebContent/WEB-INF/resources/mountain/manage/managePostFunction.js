@@ -1,22 +1,4 @@
 
-var shareURL = "/MountainExploer.com/mountain/public"
-var manageHome = "/MountainExploer.com/mountain/manage/search"
-var detailURL = "/MountainExploer.com/mountain/act/detail?page=1&actID="
-var mb, status, totalPage, totalData;
-var nowDate = Number(new Date());
-var limitStartDate = new Date(nowDate + ((60*60*24*1000)*21)) ;
-	
-var urlNow = new URL(window.location.href)
-
-if(urlNow.searchParams.has("mb")){
-	mb = urlNow.searchParams.get("mb")
-}else{
-	
-}
-if(urlNow.searchParams.has("status")){
-	status = urlNow.searchParams.get("status")
-}
-
 
 function post(page){
 	replaceContentPost("/post",page);
@@ -51,27 +33,27 @@ function insertPostInfo(order, page){
 				let thisElm = $(".order-table-tb").eq(i)
 				let model = thisElm.clone()
 				$(".m-ma-ta").eq(0).append(model);
-				setSeqno(data.actList[i],thisElm)
-				setTitle(data.actList[i],thisElm);
-				setStaTime(data.actList[i],thisElm);
-				setEndTime(data.actList[i],thisElm);
-				setPrice(data.actList[i],thisElm)
-				setRoute(data.actList[i],thisElm)
-				setPostTime(data.actList[i],thisElm)
-				setRegInfo(data.actList[i],thisElm)
-				setRegEnd(data.actList[i],thisElm)
-				setNote(data.actList[i],thisElm)
-				setControll(data.actList[i],thisElm);
-				setDatePicker(data.actList[i].actBasic.actInfo,thisElm)
-				setTotalDay(data.actList[i].actBasic.actInfo,thisElm)
-				setPostRegistry(thisElm,data.actList[i].actBasic.seqno)
+				setPS_Seqno(data.actList[i],thisElm)
+				setPS_Title(data.actList[i],thisElm);
+				setPS_StaTime(data.actList[i],thisElm);
+				setPS_EndTime(data.actList[i],thisElm);
+				setPS_Price(data.actList[i],thisElm)
+				setPS_Route(data.actList[i],thisElm)
+				setPS_PostTime(data.actList[i],thisElm)
+				setPS_RegInfo(data.actList[i],thisElm)
+				setPS_RegEnd(data.actList[i],thisElm)
+				setPS_Note(data.actList[i],thisElm)
+				setPS_Controll(data.actList[i],thisElm);
+				setPS_DatePicker(data.actList[i].actBasic.actInfo,thisElm)
+				setPS_TotalDay(data.actList[i].actBasic.actInfo,thisElm)
+				setPS_Registry(thisElm,data.actList[i].actBasic.seqno)
 				thisElm.removeClass("hideTbody")
 			}
 			$(".m-ma-container").on("click",".cancel-up",function(){
 				$(this).parents("tr").addClass("hideTr");
 			})
 			$(".m-ma-container").find(".hideTbody").eq(0).remove()
-			setPageController(order, page);
+			setPS_PageController(order, page);
 			
 		}
 	})
@@ -80,45 +62,46 @@ function insertPostInfo(order, page){
 /*
 	設定活動表單元素
  */
-function setSeqno(actList,thisElm){
+function setPS_Seqno(actList,thisElm){
 	thisElm.find("td").eq(0).html(actList.actBasic.seqno)
 	thisElm.find(".tr-up-form").find("input[name='id']").val(actList.actBasic.actInfo.id)
 }
-function setTitle(actList,thisElm){
+function setPS_Title(actList,thisElm){
+	if(actList.actBasic.actInfo.hideTag != null) thisElm.find("td").eq(1).append("<br>[活動已隱藏] ")
 	thisElm.find("td").eq(1).find("a").html(actList.actBasic.actInfo.title)
 	thisElm.find("td").eq(1).find("a").attr("href",detailURL + actList.actBasic.seqno)
 	thisElm.find(".tr-up-form").find("input[name='title']").val(actList.actBasic.actInfo.title)
 }
-function setStaTime(actList,thisElm){
+function setPS_StaTime(actList,thisElm){
 	let start = dateFormate(actList.actBasic.actInfo.startDate)
 	thisElm.find("td").eq(2).html( start)
 }
-function setEndTime(actList,thisElm){
+function setPS_EndTime(actList,thisElm){
 	let end = dateFormate(actList.actBasic.actInfo.endDate)
 	thisElm.find("td").eq(3).html(end)
 }
-function setPrice(actList,thisElm){
+function setPS_Price(actList,thisElm){
 	thisElm.find("td").eq(4).html(actList.actBasic.actInfo.price)
 	thisElm.find(".tr-up-form").find("input[name='price']").val(actList.actBasic.actInfo.price)
 }
-function setRoute(actList,thisElm){
+function setPS_Route(actList,thisElm){
 	thisElm.find("td").eq(5).html(actList.routeBasic.routeInfo.name)
 }
-function setPostTime(actList,thisElm){
+function setPS_PostTime(actList,thisElm){
 	let post = dateFormate(actList.actBasic.actInfo.postDate)
 	thisElm.find("td").eq(6).html(post)
 }
-function setRegInfo(actList,thisElm){
+function setPS_RegInfo(actList,thisElm){
 	let nowReg = actList.nowReg
 	let topReg = actList.actBasic.actInfo.regTop
 	thisElm.find("td").eq(7).html(nowReg + " / " + topReg)
 	thisElm.find(".tr-up-form").find("input[name='regTop']").val(topReg)
 }
-function setRegEnd(actList,thisElm){
+function setPS_RegEnd(actList,thisElm){
 	let regEnd = dateFormate(actList.actBasic.actInfo.regEndDate)
 	thisElm.find("td").eq(8).html(regEnd)
 }
-function setNote(actList,thisElm){
+function setPS_Note(actList,thisElm){
 	thisElm.find("tr").eq(1).find("td").html(actList.actBasic.actInfo.addInfo)
 	thisElm.find("textarea[name='note']").html(actList.actBasic.actInfo.addInfo)
 	thisElm.find("td").eq(9).on("click",function(){
@@ -129,12 +112,12 @@ function setNote(actList,thisElm){
 		thisElm.find(".m-note").toggleClass("hideTr")
 	})
 }
-function setTotalDay(actInfo,thisElm){
+function setPS_TotalDay(actInfo,thisElm){
 	thisElm.find(".tr-up-form").find("input[name='totalDay']").val(actInfo.totalDay)
 }
 
 /* 動態新增控制項元素 */
-function setControll(actList,thisElm){
+function setPS_Controll(actList,thisElm){
 	let hideTag = actList.actBasic.actInfo.hideTag
 	if( hideTag == null){
 		thisElm.find("td").eq(11).find("button").eq(2).html("隱藏活動")
@@ -143,18 +126,9 @@ function setControll(actList,thisElm){
 	}	
 }
 
-/*	日期編譯 */
-function dateFormate(date) {
-	let result = "";
-	result = result.concat(new Date(date).toLocaleDateString())
-		.concat(" " + new Date(date).toLocaleTimeString())
-
-	return result;
-}
-
 
 /* 頁面控制 */
-function setPageController(order, page) {
+function setPS_PageController(order, page) {
 	$(".pageControl").find("div").eq(2).html(page + ' / ' + totalPage + " 頁")
 	if (page != 1) {
 		let first = 1
@@ -205,7 +179,7 @@ function errorSWAL(){
 }
 
 /*	日期選單設定 */
-function setDatePicker(actInfo, thisElm){
+function setPS_DatePicker(actInfo, thisElm){
 	thisElm.find('input[name="startDate"]').daterangepicker({
 		"singleDatePicker": true,
 	    "showDropdowns": true,
@@ -460,7 +434,7 @@ function setDatePicker(actInfo, thisElm){
 		});		    
 }
 
-function setPostRegistry(thisElm,thisActID){
+function setPS_Registry(thisElm,thisActID){
 //	console.log(thisElm)
 	$.ajax({
 		url : manageHome+"/post-registry",
@@ -548,3 +522,113 @@ function setPR_RegInfo(regInfoCon, actRegInfo){
 	regInfoCon.find(".tr-reg-info-body").eq(actRegInfo.length).remove()
 }
 
+/* 確認視窗 */
+function hideConfirm_PS(){
+	let thisBT = $(this)
+	swal({
+		title : $(this).text(),
+		text : "確定要執行本操作嗎?",
+		icon : "warning",
+		dangerMode: true,
+		buttons : {
+			cancel :{
+				visible: true,
+				text: "取消",
+				value : false
+			},
+			confirm :{
+				visible: true,
+				text : "確定",
+				value : true
+			}
+		}
+	}).then((value) => {
+		if(value){
+	    	setActHide(thisBT)
+		}
+	});
+}
+
+function setActHide(thisBT){
+	let thisActID = thisBT.parents(".tr-main-post").find("td").eq(0).text()
+	$.ajax({
+		url : manageHome + "/post-act",
+		type : "PUT",
+	    contentType: 'application/json',
+		dataType : "json",
+		data : thisActID,
+		success : function(data){
+			if(data){
+				swal({
+					title : "活動隱藏成功",
+					icon : "success",
+					button :  "OK"
+				}).then(() => {
+					let pageCon = $(".m-ma-container").find(".pageControl")
+								.find("div").eq(2).text();
+					let page = pageCon.substring(0,pageCon.indexOf("/")).trim();
+					post(page);
+				});
+			}
+		},
+		error : function(){
+			swal ("","隱藏活動出現問題","error")
+		}		
+	})
+}
+
+/* 危險確認視窗 */
+function deleteDanger_PS(){
+	thisBT = $(this)
+	swal({
+	    title: "確定要執行 取消本活動 嗎?",
+	    text: "請注意，本操作將取消本活動，\n本用戶將無法對本活動再次操控。\n若有問題請聯絡管理員\n\n\n\t確定要執行本操作?",
+	    icon: "warning",
+		dangerMode: true,
+	    buttons: {
+	      cancel: {
+	        text: "取消",
+	        visible: true,
+			value : false
+	      },
+	      
+	      danger: {
+	        text: "確定執行刪除",
+	        visible: true,
+			value : true
+	      },
+	    },
+		
+	 }).then((value) => {
+		if(value){
+			setActDelete(thisBT)
+		}
+	 });
+}
+function setActDelete(thisBT){
+	let thisActID = thisBT.parents(".tr-main-post").find("td").eq(0).text()
+	$.ajax({
+		url : manageHome + "/post-act",
+		type : "DELETE",
+	    contentType: 'application/json',
+		dataType : "json",
+		data : thisActID,
+		success : function(data){
+			if(data){
+				swal({
+					title : "取消活動成功",
+					icon : "success",
+					button :  "OK"
+				}).then(() => {
+					let pageCon = $(".m-ma-container").find(".pageControl")
+								.find("div").eq(2).text();
+					let page = pageCon.substring(0,pageCon.indexOf("/")).trim();
+					post(page);
+				});
+			}
+		},
+		error : function(){
+			swal ("","取消活動出現問題","error")
+		}		
+	})
+}
