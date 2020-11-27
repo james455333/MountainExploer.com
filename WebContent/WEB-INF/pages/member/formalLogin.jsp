@@ -74,7 +74,7 @@
                 <div id="dialog-form" title="登入/註冊">
                     <div id="login-div" class="ui-dialog">
                         <div class="login-body" id="login-panel">
-                        	<form action="<c:url value='/member/memberLoginEntry'/>" method="POST">
+                        	<form action="<c:url value='/member/memberLogin'/>" method="POST">
                             <table class="logintable" style="margin: 0 auto;">
                                 <tbody>
                                     <tr style="text-align: right;">
@@ -89,7 +89,7 @@
                                         <th>密碼:</th>
                                         <td>
                                             <div>
-                                                <input type="password" id="password" name="password" value=<%=value1%>
+                                                <input type="password" id="password" name="password" value="<%=value1%>"
                                                     style="width: 200px;border: 1px #ABADB3 solid;padding: 5px 3px 5px; ">
                                                 <span>${errors.password}${errors.msg}</span>
                                             </div>
