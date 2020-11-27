@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>購物頁面</title>
+<title>購物車頁面</title>
 <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
 <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
 <link rel="stylesheet"
@@ -73,7 +73,9 @@
 				items="${ShoppingCart.content}">
 				<tr>
 					<td>${anEntry.value.itemBasicSeqno}</td>
-					<td>${anEntry.value.itemBasicName}</td>
+					<td><a  href='<c:url value='/shop/productInfoEntry?no=${anEntry.value.itemBasicSeqno}' />'>
+				    ${anEntry.value.itemBasicName}  </a>
+			    </td>
 					<td>${anEntry.value.unitPrice}</td>
 					<td>${anEntry.value.amount}</td>
 					<td>${anEntry.value.unitPrice * anEntry.value.discount * anEntry.value.amount}</td>
@@ -95,14 +97,14 @@
 									<option value="9">9</option>
 									<option value="10">10</option>
 								</select> 
-								<input type="submit" value="修改數量">
+								<input id="demo3" type="submit" value="修改數量">
 							</form>
 						</div>
 						<div>
 							<form action="<c:url value='/shoppingcart/deleteCartBean' />">
 								<input type="text" name="itemBasicSeqno"
 									value="${anEntry.value.itemBasicSeqno}" style="display: none;">
-								<input type="submit" value="移除">
+								<input id="demo3" type="submit" value="移除">
 							</form>
 						</div>
 					</td>

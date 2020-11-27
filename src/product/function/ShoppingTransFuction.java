@@ -270,4 +270,30 @@ public class ShoppingTransFuction {
 		return holder;
 	}
 
+	// 單一ItemBasic轉換成單一ProductBean
+		public static ProductBean transItemBasic(ItemBasic itemBasic) throws IOException, SQLException {
+
+			ProductBean productBean = new ProductBean();
+			ItemInfo itemInfo = itemBasic.getItemInfo();
+			SecondClass secondClass = itemBasic.getSecondClass();
+			FirstClass firstClass = secondClass.getFirstClass();
+
+			productBean.setSeqno(itemBasic.getSeqno());
+			productBean.setName(itemBasic.getName());
+			productBean.setType(itemInfo.getType());
+			productBean.setPrice(itemInfo.getPrice());
+			productBean.setStock(itemInfo.getStock());
+
+			String description = bytesToString(itemInfo.getDescription());
+			productBean.setDescription(description);
+
+			String firstClassName = firstClass.getName();
+			productBean.setFirstClass(firstClassName);
+			String secondClassName = secondClass.getName();
+			productBean.setSecondClass(secondClassName);
+
+			return productBean;
+		}
+	
+	
 }

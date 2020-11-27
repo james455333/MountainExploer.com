@@ -47,6 +47,14 @@ public class OrdersDAO {
 		return list;
 	}
 	
+//  4.查詢某會員的訂單
+	public List<Orders> selectMemberOrders(Integer memberId) {
+		Session session = sessionFactory.getCurrentSession();
+		Query<Orders> query = session.createQuery("From Orders where memberBasic = "+ memberId , Orders.class);
+		List<Orders> list = query.list();
+		return list;
+	}
+	
 
 
 }

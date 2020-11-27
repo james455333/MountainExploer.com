@@ -314,10 +314,14 @@ $(function() {
 				"<tr>" +
 				//				"<th>" + data[i].seqno + "</th>" +
 				//			  		"<td><div >" + data[i].name + "</div></td>"+
-				"<td>" + '<a href= "/MountainExploer.com/shop/productInfoEntry">' + data[i].name + '</a>' + "</td>" +
-				//				"<td><div >" + data[i].type + "</div></td>" +
-				//				"<td><div >" + data[i].firstClass + "</div></td>" +
-				//				"<td><div >" + data[i].secondClass + "</div></td>" +
+//				"<td>" + '<a href= "/MountainExploer.com/shop/productInfoEntry">' + data[i].name + '</a>' + "</td>" +
+				"<td>" + 
+//				'<form  action= "/MountainExploer.com/shop/productInfoEntry">' +
+//				'<input type="hidden" name="no" value="' + data[i].seqno + '" readonly>' +
+//				data[i].name +
+//				'<input type="submit"  value="查看"' + data[i].name + '" readonly>' +
+//				'</form>' +
+				'<a href= "/MountainExploer.com/shop/productInfoEntry?no='+data[i].seqno+'">'+ data[i].name  + '</a>' +
 				"<td>" +
 				'<img style="width: 100px; height: 100px;" src="/MountainExploer.com/backstage/product/search/images?seqno=' + data[i].seqno + '" class="productImg" >' +
 				"</td>" +
