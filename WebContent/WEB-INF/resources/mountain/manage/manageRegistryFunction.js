@@ -2,6 +2,12 @@
 function registry(page){
 	replaceContentReg("/registry",page);
 }
+function showInfo_RG(){
+	let thisTR = $(this).parents("tbody").find(".rg-info")
+	let thead =$(".order-table-th").find("tr")
+	$(".m-ma-reg-ta").find("tr").not(thead).not(".rg-main").not(thisTR).addClass("hideTr")
+	thisTR.toggleClass("hideTr")
+}
 //
 function replaceContentReg(order,page){
 	$(".m-ma-container").empty().css("display","inline-block");
@@ -14,7 +20,78 @@ function replaceContentReg(order,page){
 	insertRegInfo(order, page);
 	$(".m-dl2-adj").css("height","auto")
 }
+function showInfoUpdateForm_RG(){
+	let parentDIV = $(this).parents(".rg-info-body")
+	let targetDIV = parentDIV.find(".rg-info-body-info2")
+	let allClassDIV = $(".m-ma-reg-ta").find(".rg-info-body-info2")
+	allClassDIV.not(targetDIV).addClass("hideTr")
+	targetDIV.toggleClass("hideTr")
+}
+function cancelRegistry_RG(){
+	let targetTDV = $(this).parents(".rg-main").find("td").eq(0).text()
+	cancelSWAL($(this).text(),targetTDV)
+}
+function confirmRgInfoUp_RG(thisForm){
+	let reginfoID = thisForm.find("input[name='seqno']").val()
+	swal({
+		title : "確認修改?",
+		text : "路線編號 : " + reginfoID ,
+		icon : "warning",
+		dangerMode: true,
+		closeOnClickOutside: true,
+		buttons : {
+			confirm : {
+				visible : true,
+				value : true
+			},
+			cancle : {
+				visible : true,
+				value : false
+			}
+		}
+	}).then((value) => {
+		if(value)
+		regInfoUpdate_RG(thisForm)
+	})
+}
 
+function regInfoUpdate_RG(thisForm){
+	$.ajax({
+		url : manageHome + "/reg-info-update",
+		type : "POST",
+		datType : "json",
+		data : new FormData(thisForm[0]),
+		processData: false,
+ 		contentType: false,
+		success : function(){
+			swal({
+				title : "修改成功",
+				icon : "success",
+				buttons : {
+					confirm : {
+						text : "好的",
+						visible : true
+					}
+				}
+			})
+		},
+		error : function(){
+			swal({
+				title : "修改失敗",
+				icon : "error",
+				buttons : {
+					cancel : {
+						visible : true
+					}
+				}
+			})
+		}
+	})
+}
+
+function cancelRgInfoUp_RG(){
+	console.log($(this))
+}
 
 /* Post 主控制表 */
 function insertRegInfo(order, page){
@@ -29,137 +106,183 @@ function insertRegInfo(order, page){
 			totalPage = data.totalPage
 			totalData = data.totalData
 			for(let i in data.regList){
-				let thisElm = $(".m-ma-reg-ta").find(".rg-main").eq(i)
-				let model = thisElm.clone()
+				let thisTB = $(".m-ma-reg-ta").eq(0).find(".order-table-tb").eq(i)
+				let model = thisTB.clone()
 				$(".m-ma-reg-ta").eq(0).append(model);
-				setRg_ActID(data.regList[i],thisElm)
-				setRg_ActTitle(data.regList[i],thisElm);
-//				setStaTime(data.actList[i],thisElm);
-//				setEndTime(data.actList[i],thisElm);
-//				setPrice(data.actList[i],thisElm)
-//				setRoute(data.actList[i],thisElm)
-//				setPostTime(data.actList[i],thisElm)
-//				setRegInfo(data.actList[i],thisElm)
-//				setRegEnd(data.actList[i],thisElm)
-//				setNote(data.actList[i],thisElm)
-//				setResp(data.actList[i],thisElm);
-//				setControll(data.actList[i],thisElm);
-//				setDatePicker(data.actList[i].actBasic.actInfo,thisElm)
-//				setTotalDay(data.actList[i].actBasic.actInfo,thisElm)
+				let mainTR= thisTB.find(".rg-main")
+				setRg_regID(data.regList[i],mainTR)
+				setRg_regAttr(data.regList[i],mainTR)
+				setRg_ActTitle(data.regList[i],mainTR);
+				setRg_RegNnum(data.regList[i],mainTR);
+				setRg_RegDate(data.regList[i],mainTR);
+				if(data.regList[i].registry.cancelTag == null){
+					setRg_infoTR(data.regList[i].registry.actRegInfo,thisTB.find(".rg-info-con"))
+				}
 //				thisElm.removeClass("hideTbody")
 			}
-				$(".m-ma-reg-ta").eq(0).find("tbody").eq(data.regList.length).remove()
-//				setPageController(order, page);
+				$(".m-ma-reg-ta").eq(0).find(".order-table-tb").eq(data.regList.length).remove()
+				setRg_PageController(order, page);
 			
 		}
 	})
 	
 }
-function setRg_ActID(regList,thisElm){
-	thisElm.find("td").eq(0).html(regList.actInfo.id)
+function setRg_regID(regList,thisElm){
+	thisElm.find("td").eq(0).html(regList.registry.seqno)
+}
+function setRg_regAttr(regList,thisElm){
+	let registry = regList.registry
+	let result ;
+	let rgInfoReg = thisElm.parent(".order-table-tb").find(".rg-info-body").find(".rg-info-controll")
+	console.log(rgInfoReg)
+	if(registry.cancelTag == null){
+		if(registry.deniTag == null){
+			if(registry.confirm != null){
+				result = "[ 報名已確認 ]"
+				setRg_Ctrl(1,thisElm)
+				setInfo_controll(1, rgInfoReg)
+			}else{
+				result = "[ 報名尚未確認 ]"
+				setRg_Ctrl(1,thisElm)
+				setInfo_controll(2, rgInfoReg)
+			}
+		}else{
+			result = "[ 報名已被拒絕 ]<br> [ 拒絕原因 ]<br>" + registry.delnReason
+			setRg_Ctrl(1,thisElm)
+			setInfo_controll(2, rgInfoReg)
+		}
+	}else{
+		result = "[ 報名已取消 ]"
+		setRg_Ctrl(0,thisElm)
+		setInfo_controll(0, rgInfoReg)
+	}
+	thisElm.find("td").eq(1).html(result)
 }
 function setRg_ActTitle(regList,thisElm){
-	thisElm.find("td").eq(1).find("a").html(regList.actInfo.title)
-	thisElm.find("td").eq(1).find("a").attr("href",detailURL + regList.actInfo.id)
+	thisElm.find("td").eq(2).find("a").html(regList.actInfo.title)
+	thisElm.find("td").eq(2).find("a").attr("href",detailURL + regList.actInfo.id)
 }
-//function setStaTime(actList,thisElm){
-//	let start = dateFormate(actList.actBasic.actInfo.startDate)
-//	thisElm.find("td").eq(2).html( start)
-//}
-//function setEndTime(actList,thisElm){
-//	let end = dateFormate(actList.actBasic.actInfo.endDate)
-//	thisElm.find("td").eq(3).html(end)
-//}
-//function setPrice(actList,thisElm){
-//	thisElm.find("td").eq(4).html(actList.actBasic.actInfo.price)
-//	thisElm.find(".tr-up-form").find("input[name='price']").val(actList.actBasic.actInfo.price)
-//}
-//function setRoute(actList,thisElm){
-//	thisElm.find("td").eq(5).html(actList.routeBasic.routeInfo.name)
-//}
-//function setPostTime(actList,thisElm){
-//	let post = dateFormate(actList.actBasic.actInfo.postDate)
-//	thisElm.find("td").eq(6).html(post)
-//}
-//function setRegInfo(actList,thisElm){
-//	let nowReg = actList.nowReg
-//	let topReg = actList.actBasic.actInfo.regTop
-//	thisElm.find("td").eq(7).html(nowReg + " / " + topReg)
-//	thisElm.find(".tr-up-form").find("input[name='regTop']").val(topReg)
-//}
-//function setRegEnd(actList,thisElm){
-//	let regEnd = dateFormate(actList.actBasic.actInfo.regEndDate)
-//	thisElm.find("td").eq(8).html(regEnd)
-//}
-//function setNote(actList,thisElm){
-//	thisElm.find("tr").eq(1).find("td").html(actList.actBasic.actInfo.addInfo)
-//	thisElm.find("textarea[name='note']").html(actList.actBasic.actInfo.addInfo)
-//	thisElm.find("td").eq(9).on("click",function(){
-//		let thisNote = thisElm.find(".m-note")
-//		let thead = $(".order-table-th").find("tr")
-//		let mainTr = $(".tr-main-post")
-//		$(".m-ma-container").find("tr").not(thead).not(mainTr).not(thisNote).addClass("hideTr")
-//		thisElm.find(".m-note").toggleClass("hideTr")
-//	})
-//}
-//function setTotalDay(actInfo,thisElm){
-//	thisElm.find(".tr-up-form").find("input[name='totalDay']").val(actInfo.totalDay)
-//}
-//
-//function setResp(){
-//	
-//}
-///* 控制項 */
-//function setControll(actList,thisElm){
-//	let hideTag = actList.actBasic.actInfo.hideTag
-//	if( hideTag == null){
-//		thisElm.find("td").eq(11).find("button").eq(2).html("隱藏活動")
-//	}else{
-//		thisElm.find("td").eq(11).find("button").eq(2).html("取消隱藏")
-//	}	
-//}
-//
-///*	日期編譯 */
-//function dateFormate(date) {
-//	let result = "";
-//	result = result.concat(new Date(date).toLocaleDateString())
-//		.concat(" " + new Date(date).toLocaleTimeString())
-//
-//	return result;
-//}
-///* 舉辦活動 - 活動修改 */
-//
+function setRg_RegNnum(regList,thisElm){
+	let regNum = regList.registry.actRegInfo.length
+	thisElm.find("td").eq(3).html( regNum + " 人")
+}
+function setRg_RegDate(regList,thisElm){
+	thisElm.find("td").eq(5).html(dateFormate(regList.registry.reqDate))
+}
+function setRg_Ctrl(order,thisElm){
+	if(order == 0 ){
+		thisElm.find("td").eq(6).empty()
+	}
+}
+
+function setRg_infoTR(actRegInfo, thisElm){
+	for(let i in actRegInfo){
+		let model = thisElm.find(".rg-info-body").eq(i).clone()
+		thisElm.append(model)
+		let thisBody = thisElm.find(".rg-info-body").eq(i)
+		setInfo_seqno(actRegInfo[i], thisBody)
+		setInfo_name(actRegInfo[i], thisBody)
+		setInfo_bDay(actRegInfo[i], thisBody)
+		setInfo_pID(actRegInfo[i], thisBody)
+		setInfo_phone(actRegInfo[i], thisBody)
+		setInfo_cellphone(actRegInfo[i], thisBody)
+		setInfo_email(actRegInfo[i], thisBody)
+		
+	}
+	thisElm.find(".rg-info-body").eq(actRegInfo.length).remove()
+}
+function setInfo_seqno(actRegInfo, thisBody){
+	thisBody.find(".rg-info-body-info").find("div").eq(0).html(actRegInfo.seqno)
+	thisBody.find(".rg-info-body-update").find("input").eq(0).val(actRegInfo.seqno)
+}
+function setInfo_name(actRegInfo, thisBody){
+	thisBody.find(".rg-info-body-info").find("div").eq(1).html(actRegInfo.name)
+	thisBody.find(".rg-info-body-update").find("input").eq(1).val(actRegInfo.name)
+}
+function setInfo_bDay(actRegInfo, thisBody){
+	thisBody.find(".rg-info-body-info").find("div").eq(2).html(new Date(actRegInfo.birthDay).toLocaleDateString())
+	setRG_updateDatePicker(actRegInfo.birthDay,thisBody.find(".rg-info-body-update").find("input").eq(2))
+}
+function setInfo_pID(actRegInfo, thisBody){
+	thisBody.find(".rg-info-body-info").find("div").eq(3).html(actRegInfo.personID)
+	thisBody.find(".rg-info-body-update").find("input").eq(3).val(actRegInfo.personID)
+}
+function setInfo_phone(actRegInfo, thisBody){
+	thisBody.find(".rg-info-body-info").find("div").eq(4).html(actRegInfo.contactPhone)
+	thisBody.find(".rg-info-body-update").find("input").eq(4).val(actRegInfo.contactPhone)
+}
+function setInfo_cellphone(actRegInfo, thisBody){
+	thisBody.find(".rg-info-body-info").find("div").eq(5).html(actRegInfo.contactCellphone)
+	thisBody.find(".rg-info-body-update").find("input").eq(5).val(actRegInfo.contactCellphone)
+}
+function setInfo_email(actRegInfo, thisBody){
+	thisBody.find(".rg-info-body-info").find("div").eq(6).html(actRegInfo.contactEmail)
+	thisBody.find(".rg-info-body-update").find("input").eq(6).val(actRegInfo.contactEmail)
+}
+function setInfo_controll(order,thisBody){
+	let updateBT = "<div><button class='bt-rg-info-update'>修改</button></div>"
+	let deleteBT = "<div><button class='bt-rg-info-delete'>刪除</button></div>"
+	if(order > 0){
+		if(order==1) thisBody.append(updateBT)
+		if(order==2) thisBody.append(updateBT).append(deleteBT)
+	}
+}
+
 ///* 頁面控制 */
-//function setPageController(order, page) {
-//	$(".pageControl").find("div").eq(2).html(page + ' / ' + totalPage + " 頁")
-//	if (page != 1) {
-//		let first = 1
-//		let previous = Number(page) - 1;
-//		$(".pageControl").find("div").eq(0).on("click",function(){
-//			replaceContentReg(order,first)
-//		}).css("display", "block")
-//		$(".pageControl").find("div").eq(1).on("click",function(){
-//			replaceContentReg(order,previous)
-//		}).css("display", "block")
-//	} else {
-//		$(".pageControl").find("div").eq(0).css("display", "none")
-//		$(".pageControl").find("div").eq(1).css("display", "none")
-//	}
-//	if (page < totalPage) {
-//		let next = Number(page) + 1;
-//		let final = Number(totalPage);
-//		$(".pageControl").find("div").eq(3).on("click",function(){
-//			replaceContentReg(order,next)
-//		}).css("display", "block")
-//		$(".pageControl").find("div").eq(4).on("click",function(){
-//			replaceContentReg(order,final)
-//		}).css("display", "block")
-//	} else {
-//		$(".pageControl").find("div").eq(3).css("display", "none")
-//		$(".pageControl").find("div").eq(4).css("display", "none")
-//	}
-//}
-///* 舉辦活動 - 視窗 */
+function setRg_PageController(order, page) {
+	$(".pageControl").find("div").eq(2).html(page + ' / ' + totalPage + " 頁")
+	if (page != 1) {
+		let first = 1
+		let previous = Number(page) - 1;
+		$(".pageControl").find("div").eq(0).on("click",function(){
+			replaceContentReg(order,first)
+		}).css("display", "block")
+		$(".pageControl").find("div").eq(1).on("click",function(){
+			replaceContentReg(order,previous)
+		}).css("display", "block")
+	} else {
+		$(".pageControl").find("div").eq(0).css("display", "none")
+		$(".pageControl").find("div").eq(1).css("display", "none")
+	}
+	if (page < totalPage) {
+		let next = Number(page) + 1;
+		let final = Number(totalPage);
+		$(".pageControl").find("div").eq(3).on("click",function(){
+			replaceContentReg(order,next)
+		}).css("display", "block")
+		$(".pageControl").find("div").eq(4).on("click",function(){
+			replaceContentReg(order,final)
+		}).css("display", "block")
+	} else {
+		$(".pageControl").find("div").eq(3).css("display", "none")
+		$(".pageControl").find("div").eq(4).css("display", "none")
+	}
+}
+/* 舉辦活動 - 視窗 */
+function cancelSWAL(text,targetTDV){
+	swal({
+		title : text,
+		text : "本操作將執行用戶端無法退回之行動。\n\n\n確定要取消  報名編號 : " + targetTDV + "  嗎?",
+		icon : "warning",
+		dangerMode: true,
+		closeOnClickOutside: true,
+		buttons : {
+			confirm : {
+				visible : true,
+				value : true
+			},
+			cancel : {
+				visible : true,
+				value : false
+			}
+		}
+	}).then((value) => {
+		if(value){
+			rg_cancelRegistry(text, targetTDV)
+		}
+	}) 
+}
+
 //function successSWAL(){
 //	swal({
 //		title : "修改成功",
@@ -172,6 +295,44 @@ function setRg_ActTitle(regList,thisElm){
 //		post(page);
 //	});
 //}
+
+function rg_cancelRegistry(text, targetTDV){
+	$.ajax({
+		url : manageHome + "/rg-cancel",
+		type : "PUT",
+		contentType: 'application/json',
+		dataType : "json",
+		data : targetTDV,
+		success : function(data){
+			swal({
+				title : text + "成功",
+				icon : "success",
+				buttons : {
+					confirm : {
+						visible : true
+					}	
+				}
+			}).then(() => {
+				let pageCon = $(".m-ma-container").find(".pageControl")
+					.find("div").eq(2).text();
+				let page = pageCon.substring(0,pageCon.indexOf("/")).trim();
+				registry(page);
+			})
+		},
+		error : function(data){
+			swal({
+				title : text + "失敗",
+				icon : "error",
+				buttons : {
+					confirm : {
+						visible : true
+					}	
+				}
+			})
+		}
+	})
+	
+}
 //function errorSWAL(){
 //	swal({
 //		title : "修改失敗",
@@ -181,257 +342,52 @@ function setRg_ActTitle(regList,thisElm){
 //}
 //
 ///*	日期選單設定 */
-//function setDatePicker(actInfo, thisElm){
-//	thisElm.find('input[name="startDate"]').daterangepicker({
-//		"singleDatePicker": true,
-//	    "showDropdowns": true,
-//	    "minYear": 2010,
-//		"maxYear": 2099,
-//		"maxSpan": {
-//			"days": 30
-//		},
-//	    "locale": {
-//	        "format": "YYYY/MM/DD",
-//	        "separator": " - ",
-//	        "applyLabel": "確認",
-//	        "cancelLabel": "取消",
-//	        "fromLabel": "自",
-//	        "toLabel": "到",
-//	        "customRangeLabel": "Custom",
-//	        "weekLabel": "W",
-//	         "daysOfWeek": [
-//	            "日",
-//	            "一",
-//	            "二",
-//	            "三",
-//	            "四",
-//	            "五",
-//	            "六"
-//	        ],
-//	        "monthNames": [
-//	            "一月",
-//	            "二月",
-//	            "三月",
-//	            "四月",
-//	            "五月",
-//	            "六月",
-//	            "七月",
-//	            "八月",
-//	            "九月",
-//	            "十月",
-//	            "十一月",
-//	            "十二月"
-//	        ],
-//	        "firstDay": 1
-//	    },
-//		"startDate": new Date(actInfo.startDate),
-//		"endDate" : new Date(actInfo.startDate),
-//	    "minDate": new Date(actInfo.startDate),
-//	    "opens": "center"
-//		}, function(start) {
-//			var startDate = new Date(start)
-//			thisElm.find("input[name='totalDay']").val("單日返還");
-//			thisElm.find("input[name='endDate']").daterangepicker({
-//				"singleDatePicker": true,
-//			    "showDropdowns": true,
-//			    "minYear": 2010,
-//				"maxYear": 2099,
-//				"maxSpan": {
-//					"days": 30
-//				},
-//			    "locale": {
-//			        "format": "YYYY/MM/DD",
-//			        "separator": " - ",
-//			        "applyLabel": "確認",
-//			        "cancelLabel": "取消",
-//			        "fromLabel": "自",
-//			        "toLabel": "到",
-//			        "customRangeLabel": "Custom",
-//			        "weekLabel": "W",
-//			         "daysOfWeek": [
-//			            "日",
-//			            "一",
-//			            "二",
-//			            "三",
-//			            "四",
-//			            "五",
-//			            "六"
-//			        ],
-//			        "monthNames": [
-//			            "一月",
-//			            "二月",
-//			            "三月",
-//			            "四月",
-//			            "五月",
-//			            "六月",
-//			            "七月",
-//			            "八月",
-//			            "九月",
-//			            "十月",
-//			            "十一月",
-//			            "十二月"
-//			        ],
-//			        "firstDay": 1
-//			    },
-//				"startDate": startDate,
-//				"endDate" : startDate,
-//			    "minDate": startDate,
-//			    "opens": "center"
-//			},function(end){
-//				var endDate = new Date(end)
-////				console.log("endDate : " + endDate)
-//				var totalDay = Math.ceil((endDate - startDate)*1.0 /  (60*60*24*1000))+1;
-////				console.log("s-e /one= " + totalDay )
-//				if( totalDay > 1){
-//					thisElm.find("input[name='totalDay']").val(totalDay + "天" + (totalDay-1) + "夜")
-//				}else{
-//					thisElm.find("input[name='totalDay']").val("單日返還");
-//				}
-//				//	報名截止日
-//				var regLimit = new Date( Number(startDate) - ( (60*60*24*1000)*7 ) )
-//				//console.log(regLimit)
-//				thisElm.find("input[name='regEndDate']").daterangepicker({
-//				    "singleDatePicker": true,
-//				    "showDropdowns": true,
-//				    "minYear": 2010,
-//				    "maxYear": 2099,
-//				    "maxSpan": {
-//				        "days": 1
-//				    },
-//				    "locale": {
-//				        "format": "YYYY/MM/DD",
-//				        "separator": " - ",
-//				        "applyLabel": "確認",
-//				        "cancelLabel": "取消",
-//				        "fromLabel": "自",
-//				        "toLabel": "到",
-//				        "customRangeLabel": "Custom",
-//				        "weekLabel": "W",
-//				        "daysOfWeek": [
-//				            "日",
-//				            "一",
-//				            "二",
-//				            "三",
-//				            "四",
-//				            "五",
-//				            "六"
-//				        ],
-//				        "monthNames": [
-//				            "一月",
-//				            "二月",
-//				            "三月",
-//				            "四月",
-//				            "五月",
-//				            "六月",
-//				            "七月",
-//				            "八月",
-//				            "九月",
-//				            "十月",
-//				            "十一月",
-//				            "十二月"
-//				        ],
-//				        "firstDay": 1
-//				    },
-//					"maxDate" : regLimit,
-//					}, function(start, end, label) {
-//					});
-//			})
-//	});
-//	thisElm.find("input[name='endDate']").daterangepicker({
-//				"singleDatePicker": true,
-//			    "showDropdowns": true,
-//			    "minYear": 2010,
-//				"maxYear": 2099,
-//				"maxSpan": {
-//					"days": 30
-//				},
-//			    "locale": {
-//			        "format": "YYYY/MM/DD",
-//			        "separator": " - ",
-//			        "applyLabel": "確認",
-//			        "cancelLabel": "取消",
-//			        "fromLabel": "自",
-//			        "toLabel": "到",
-//			        "customRangeLabel": "Custom",
-//			        "weekLabel": "W",
-//			         "daysOfWeek": [
-//			            "日",
-//			            "一",
-//			            "二",
-//			            "三",
-//			            "四",
-//			            "五",
-//			            "六"
-//			        ],
-//			        "monthNames": [
-//			            "一月",
-//			            "二月",
-//			            "三月",
-//			            "四月",
-//			            "五月",
-//			            "六月",
-//			            "七月",
-//			            "八月",
-//			            "九月",
-//			            "十月",
-//			            "十一月",
-//			            "十二月"
-//			        ],
-//			        "firstDay": 1
-//			    },
-//				"startDate": new Date(actInfo.endDate),
-//				"endDate" : new Date(actInfo.endDate),
-//			    "minDate": new Date(actInfo.endDate),
-//			    "opens": "center"
-//			});
-//	let dbSD = new Date(actInfo.startDate)
-//	let regLimit = new Date( Number(dbSD) - ( (60*60*24*1000)*7 ) )
-//	thisElm.find("input[name='regEndDate']").daterangepicker({
-//		"singleDatePicker": true,
-//		"showDropdowns": true,
-//		"minYear": 2010,
-//		"maxYear": 2099,
-//		"maxSpan": {
-//		    "days": 1
-//		},
-//		"locale": {
-//		    "format": "YYYY/MM/DD",
-//		    "separator": " - ",
-//		    "applyLabel": "確認",
-//		    "cancelLabel": "取消",
-//		    "fromLabel": "自",
-//		    "toLabel": "到",
-//		    "customRangeLabel": "Custom",
-//		    "weekLabel": "W",
-//		    "daysOfWeek": [
-//		        "日",
-//		        "一",
-//		        "二",
-//		        "三",
-//		        "四",
-//		        "五",
-//		        "六"
-//		    ],
-//		    "monthNames": [
-//		        "一月",
-//		        "二月",
-//		        "三月",
-//		        "四月",
-//		        "五月",
-//		        "六月",
-//		        "七月",
-//		        "八月",
-//		        "九月",
-//		        "十月",
-//		        "十一月",
-//		        "十二月"
-//		    ],
-//		    "firstDay": 1
-//		},
-//		"startDate" : new Date(actInfo.regEndDate),
-//		"endDate" : new Date(actInfo.regEndDate),
-//		"minDate" : new Date(actInfo.regEndDate),
-//		"maxDate" : regLimit,
-//		}, function(start, end, label) {
-//		});		    
-//}
+function setRG_updateDatePicker(bDay, thisElm){
+	thisElm.daterangepicker({
+		"singleDatePicker": true,
+		"showDropdowns": true,
+		"minYear": 1970,
+		"maxYear": 2099,
+		"maxSpan": {
+		    "days": 1
+		},
+		"locale": {
+		    "format": "YYYY/MM/DD",
+		    "separator": " - ",
+		    "applyLabel": "確認",
+		    "cancelLabel": "取消",
+		    "fromLabel": "自",
+		    "toLabel": "到",
+		    "customRangeLabel": "Custom",
+		    "weekLabel": "W",
+		    "daysOfWeek": [
+		        "日",
+		        "一",
+		        "二",
+		        "三",
+		        "四",
+		        "五",
+		        "六"
+		    ],
+		    "monthNames": [
+		        "一月",
+		        "二月",
+		        "三月",
+		        "四月",
+		        "五月",
+		        "六月",
+		        "七月",
+		        "八月",
+		        "九月",
+		        "十月",
+		        "十一月",
+		        "十二月"
+		    ],
+		    "firstDay": 1
+		},
+		"startDate" : new Date(bDay),
+		"endDate" : new Date(bDay),
+		}, function(start, end, label) {
+			console.log(thisElm.val())
+		});		    
+}

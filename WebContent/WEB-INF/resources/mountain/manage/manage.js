@@ -77,6 +77,18 @@ $(function(){
 	$(".m-ma-container").on("click", ".bt-ps-reg-confirm", confirmReg_PS)
 	$(".m-ma-container").on("click", ".bt-ps-reg-decline", declineReg_PS)
 	
+	$(".m-ma-container").on("click",".bt-reg-info", showInfo_RG)
+	$(".m-ma-container").on("click",".bt-rg-info-update",showInfoUpdateForm_RG)
+	$(".m-ma-container").on("click",".bt-reg-cancel",cancelRegistry_RG)
+	$(".m-ma-container").on("submit",".rg-info-body-update",function(e){
+		let thisForm = $(this)
+		e.preventDefault()
+		confirmRgInfoUp_RG(thisForm)
+	})
+	$(".m-ma-container").on("click",".bt-reg-info-update-cancel",cancelRgInfoUp_RG)
+	
+	
+	
 })
 
 /* 
@@ -107,3 +119,5 @@ function setGuideNav(){
 function setSuspend(){
 	$(".sideNav").find(".m-si-op").remove();
 }
+
+

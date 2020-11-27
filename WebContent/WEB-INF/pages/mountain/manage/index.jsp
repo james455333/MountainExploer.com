@@ -21,12 +21,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="/MountainExploer.com/mountain/js/mountain.js"></script>
-    <script src="manage/manage.js"></script>
     <script src="manage/managePostFunction.js"></script>
     <script src="manage/manageRegistryFunction.js"></script>
     <script src="manage/manageRecordFunction.js"></script>
     <script src="manage/manageReportFunction.js"></script>
     <script src="manage/checkFunction.js"></script>
+    <script src="manage/manage.js"></script>
     <style>
 
     </style>
@@ -261,26 +261,85 @@
 			</tbody>
 		</table>
         <table class="order-table m-ma-reg-ta">
-        	<thead class="order-table-th"><tr>
-	        		<th scope="col" style="width:100px">活動編號</th>
-	        		<th scope="col" style="width:200px">活動名稱</th>
+        	<thead class="order-table-th m-ma-reg-ta-th"><tr>
 					<th scope="col" style="width:100px">報名編號</th>
-					<th scope="col" style="width:150px">報名會員名稱</th>
+					<th scope="col" style="width:250px">報名狀態列</th>
+	        		<th scope="col" style="width:250px; font-size : 20px;">活動名稱</th>
 					<th scope="col" style="width:100px">報名人數</th>
-					<th scope="col" style="width:100px">報名日期</th>
-					<th scope="col" style="width:200px">狀態列</th>
+					<th scope="col" style="width:100px">報名詳情</th>
+					<th scope="col" style="width:200px">報名日期</th>
 					<th scope="col" >控制列</th>
         	</tr></thead>
         	<tbody class="order-table-tb">
         		<tr class="rg-main">
         			<td></td>
+        			<td></td>
         			<td><a></a></td>
         			<td></td>
+        			<td><button class="bt-reg-info">詳情</button></td>
         			<td></td>
-        			<td></td>
-        			<td></td>
-        			<td></td>
-        			<td></td>
+        			<td><button class="bt-reg-cancel">取消報名</button></td>
+        		</tr>
+        		<tr class="rg-info hideTr">
+        			<td colspan="7">
+        				<div class="rg-info-con">
+	        				<div class="rg-info-head">
+	        					<div class="rg-info-seqno">報名詳情編號</div>
+	        					<div class="rg-info-name">姓名</div>
+								<div class="rg-info-bDay">出生年月日</div>
+								<div class="rg-info-pID">身分證字號</div>
+								<div class="rg-info-phone">電話</div>
+								<div class="rg-info-cellphone">手機</div>
+								<div class="rg-info-email">電子信箱</div>
+								<div class="rg-info-controll">控制項</div>
+	        				</div>
+	        				<div class="rg-info-body">
+	        					<div class="rg-info-body-info">
+	        						<div class="rg-info-seqno"></div>
+		        					<div class="rg-info-name"></div>
+									<div class="rg-info-bDay"></div>
+									<div class="rg-info-pID"></div>
+									<div class="rg-info-phone"></div>
+									<div class="rg-info-cellphone"></div>
+									<div class="rg-info-email"></div>
+									<div class="rg-info-controll"></div>
+	        					</div>
+	        					<div class="rg-info-body-info2 hideTr">
+	        						<form action="#" class="rg-info-body-update">
+		        						<div class="rg-info-seqno">
+		        							<input type="hidden" name="seqno" readonly>
+		        						</div>
+			        					<div class="rg-info-name">
+		        							<input type="text" name="name" maxlength="10" required>
+			        					</div>
+										<div class="rg-info-bDay">
+											<input type="text" name="birthDay" required>
+										</div>
+										<div class="rg-info-pID">
+											<input type="text" name="personID" required>
+										</div>
+										<div class="rg-info-phone">
+											<input type="text" name="contactPhone" required>
+										</div>
+										<div class="rg-info-cellphone">
+											<input type="text" name="contactCellphone" required>
+										</div>
+										<div class="rg-info-email">
+											<input type="text" name="contactEmail" required>
+										</div>
+										<div class="rg-info-updateCtrl" >
+											<div>
+												<button class="bt-reg-info-update-confirm">確定</button>
+											</div>
+											<div>
+												<button class="bt-reg-info-update-cancel">取消</button>
+											</div>
+										</div>
+	        						</form>
+	        					</div>
+	        				</div>
+        				</div>
+        			</td>
         		</tr>
         	</tbody>
         </table>

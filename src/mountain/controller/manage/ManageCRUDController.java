@@ -81,7 +81,7 @@ public class ManageCRUDController {
 			Map<String, Object> actMap = new HashMap<String, Object>();
 			
 			service.save(new ActRegInfo());
-			String reghql = "Select count(*) From ActRegInfo ari where ari.actRegistry in (From ActRegistry ar where ACTIVITY_BASIC_SEQNO = "+ activityBasic.getSeqno() + ")";
+			String reghql = "Select count(*) From ActRegInfo ari where ari.actRegistry in (From ActRegistry ar where cancelTag is null and ACTIVITY_BASIC_SEQNO = "+ activityBasic.getSeqno() + ")";
 			int nowReg = service.countWithHql(reghql);
 			
 			actMap.put("actBasic", activityBasic);
@@ -229,12 +229,13 @@ public class ManageCRUDController {
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		MemberBasic mb =  (MemberBasic) model.getAttribute("Member");
 		service.save(actRegistry);
+		
 		String hql = "From ActRegistry where memberBasic = " + mb.getSeqno() 
-				+ "and activityBasic in (select id From ActivityInfo where sysdate < startDate) order by activityBasic";
+				+ "and activityBasic in (select id From ActivityInfo where sysdate < startDate) order by activityBasic , seqno";
 		String all = "select count(*) ".concat(hql);
 		int totalData = service.countWithHql(all);
 		int totalPage = (int)Math.ceil(totalData*1.0 / showData );
-		List<ActRegistry> actRegistryList = (List<ActRegistry>) service.getwithHQL(hql, 1, showData);
+		List<ActRegistry> actRegistryList = (List<ActRegistry>) service.getwithHQL(hql, page, showData);
 		
 		List<Map<String, Object>> regList = new ArrayList<Map<String,Object>>();
 		for (ActRegistry actReg : actRegistryList) {
@@ -251,4 +252,50 @@ public class ManageCRUDController {
 		
 		return resultMap;
 	}
+	
+	@PutMapping("/rg-cancel")
+	@ResponseBody
+	public boolean cancelRegistry(
+			ActRegistry actRegistry,
+			@RequestBody Integer regID) {
+		
+		try {
+			System.out.println(regID);
+			service.save(actRegistry);
+			actRegistry = (ActRegistry) service.select(regID);
+			actRegistry.setCancelTag(1);
+			service.update(actRegistry);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
+		}
+		
+		return true;
+	}
+	
+	@PostMapping("/reg-info-update")
+	@ResponseBody
+	public Boolean regInfoUpdate(ActRegInfo actRegInfo) throws HttpClientErrorException{
+		try {
+			System.out.println("=========== bDay : " + actRegInfo.getBirthDay());
+			System.out.println("=========== bDay : " + actRegInfo.getBirthDay());
+			service.save(actRegInfo);
+			ActRegInfo origin = (ActRegInfo) service.select(actRegInfo.getSeqno());
+			origin.setName(actRegInfo.getName());
+			origin.setBirthDay(actRegInfo.getBirthDay());
+			origin.setPersonID(actRegInfo.getPersonID());
+			origin.setContactPhone(actRegInfo.getContactPhone());
+			origin.setContactCellphone(actRegInfo.getContactCellphone());
+			origin.setContactEmail(actRegInfo.getContactEmail());
+			
+			service.update(origin);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
+		}
+		
+		return true;
+	}
+	
 }
