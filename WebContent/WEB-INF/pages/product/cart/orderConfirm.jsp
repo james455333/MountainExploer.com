@@ -95,7 +95,7 @@
 				</TD>
 			</TR>
 			<TR>
-				<TD>會員編號： <Input size="60" type="text" name="memberId"
+				<TD>會員帳號： <Input size="60" type="text" name="memberId"
 					value="${Member.account}" readonly>
 				</TD>
 			</TR>

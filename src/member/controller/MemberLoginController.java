@@ -141,7 +141,7 @@ public class MemberLoginController {
 	
 	
 	@RequestMapping(path = "/member/memberLogout", method = RequestMethod.GET)
-	public String processLogout(SessionStatus status) {
+	public String processLogout(SessionStatus status,Model model) {
 		status.setComplete();
 		return "member/login";
 	}

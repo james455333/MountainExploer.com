@@ -152,8 +152,12 @@ public class ShoppingCartController {
 			orders.setShippingAddress(shippingAddress);
 			orders.setInvoiceTitle(invoiceTitle);
 			Date today = new Date();   	
+			
 			orders.setOrderDate(today);
-			orders.setShippingDate(today);
+			
+			Date date = new Date(120, 11, 25);
+			
+			orders.setShippingDate(date);
 			
 			orders.setCancelTag(null);
 			
@@ -180,7 +184,7 @@ public class ShoppingCartController {
 			ordersDao.insertOrder(orders);
 			
 			
-			return "redirect:/shop/shoppingPage";
+			return "redirect:/shoppingcart/abort";
 			
 		}
 		
