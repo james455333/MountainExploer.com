@@ -148,6 +148,7 @@ public class ShoppingCartController {
 			double subtotal = shoppingCart.getSubtotal();
 			orders.setTotalAmount(subtotal);
 			
+			orders.setMemberBasic( (MemberBasic)m.getAttribute("Member"));
 			orders.setShippingAddress(shippingAddress);
 			orders.setInvoiceTitle(invoiceTitle);
 			Date today = new Date();   	
@@ -156,7 +157,6 @@ public class ShoppingCartController {
 			
 			orders.setCancelTag(null);
 			
-			ordersDao.insertOrder(orders);
 			
 			Set<OrderItems> orderItemsSet = new HashSet<OrderItems>();
 			
@@ -166,16 +166,18 @@ public class ShoppingCartController {
 			for (Integer k : keySet) {
 				CartBean cartBean = cart.get(k);
 				OrderItems orderItems = new OrderItems();
+				orderItems.setOrders(orders);
 				orderItems.setItemBasicSeqno(cartBean.getItemBasicSeqno());
 				orderItems.setUnitPrice(cartBean.getUnitPrice());
 				orderItems.setAmount(cartBean.getAmount());
 				orderItems.setDiscount(cartBean.getDiscount());
-				System.out.println("cartBean.getDiscount():"+cartBean.getDiscount());
+//				System.out.println("cartBean.getDiscount():"+cartBean.getDiscount());
 				
 				orderItemsSet.add(orderItems);
 			}
 			
 			orders.setOrderItemsSet(orderItemsSet);
+			ordersDao.insertOrder(orders);
 			
 			
 			return "redirect:/shop/shoppingPage";

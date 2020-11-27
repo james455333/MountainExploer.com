@@ -6,14 +6,12 @@ import java.sql.SQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import member.model.MemberBasic;
-import oracle.net.aso.m;
 import product.function.ShoppingTransFuction;
 import product.model.ItemBasic;
 import product.model.ProductBean;
@@ -54,7 +52,6 @@ public class ShopPageEntryController {
 	// 前往購物車頁面
 	@RequestMapping(path = "/shoppingCartEntry", method = RequestMethod.GET)
 	public String shoppingCartPage(Model model
-//			,@ModelAttribute("Member")MemberBasic mb
 			, ShoppingCart shoppingCart
 			) {
 		
@@ -66,13 +63,9 @@ public class ShopPageEntryController {
 			shoppingCart = (ShoppingCart) model.getAttribute("ShoppingCart");
 		}
 		
-//		model.addAttribute("ShoppingCart", shoppingCart);
-//		model.addAttribute("Member", mb);
-//		ShoppingCart shoppingCart = (ShoppingCart)model.getAttribute("ShoppingCart");
 		MemberBasic mb = (MemberBasic)model.getAttribute("Member");
 		
 		System.out.println("ShoppingCart:"+shoppingCart.getSubtotal());
-//		System.out.println("MemberBasic:"+mb);
 		System.out.println("mb.getName():"+mb.getName());
 		System.out.println(mb.getEmail());
 		System.out.println("mb.getAccount():"+mb.getAccount());

@@ -51,6 +51,11 @@ public class Orders {
 	@JsonIgnore
 	private MemberBasic memberBasic;
 	
+	public void setMemberBasic(MemberBasic memberBasic) {
+		this.memberBasic = memberBasic;
+	}
+
+
 	public MemberBasic getMemberBasic() {
 		return memberBasic;
 	}
@@ -64,7 +69,7 @@ public class Orders {
 	}
 	@Transient
 	public Integer getMemberBasicID() {
-		return memberBasicID;
+		return memberBasic.getSeqno();
 	}
 
 	public Double getTotalAmount() {

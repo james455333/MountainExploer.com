@@ -76,6 +76,7 @@
 				    ${anOrderBean.seqno}
 			    </a>
 			</TD>
+			<TD >${anOrderBean.totalAmount}</TD>
 			<TD >${anOrderBean.invoiceTitle}</TD>
 			<TD >${anOrderBean.orderDate}</TD>
 			<TD >${anOrderBean.shippingDate}</TD>
