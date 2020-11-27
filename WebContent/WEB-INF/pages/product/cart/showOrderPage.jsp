@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>購物頁面</title>
+<title>查詢訂單</title>
 <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
 <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
 <link rel="stylesheet"
@@ -55,58 +55,34 @@
 	<!--table-->
 	<table class="order-table">
 		<thead class="order-table-th">
+		<tr >
+			<th colspan="5" align="center">${Member.name}的訂購紀錄</th>
+		</tr>
 			<tr>
 				<!-- thead更改從這邊開始 -->
-				<th scope="col">商品編號</th>
-				<th scope="col">商品名稱</th>
-				<th scope="col">價格</th>
-				<th scope="col">數量</th>
-				<th scope="col">小計</th>
-				<th scope="col">修改/刪除</th>
+				<th scope="col">訂單編號</th>
+				<th scope="col">總金額</th>
+				<th scope="col">統一編號</th>
+				<th scope="col">訂貨日期</th>
+				<th scope="col">出貨日期</th>
 				<!-- thead更改到這邊結束 -->
 			</tr>
 		</thead>
 
-		<tbody class="order-table-tb">
-			<!-- tbody更改從這邊開始 -->
-			<c:forEach varStatus="vs" var="anEntry"
-				items="${ShoppingCart.content}">
-				<tr>
-					<td>${anEntry.itemBasicSeqno}</td>
-					<td>${anEntry.value.itemBasicName}</td>
-					<td>${anEntry.value.unitPrice}</td>
-					<td>${anEntry.value.amount}</td>
-					<td>${anEntry.value.price * anEntry.value.discount * anEntry.value.amount}</td>
-					<td>
-						<div>
-							<form action="<c:url value='/productBackStage/updateDataPage' />">
-								<input type="text" name="itemBasicSeqno"
-									value="${anEntry.value.itemBasicSeqno}" style="display: none;">
-								<select name="newAmount">
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-									<option value="7">7</option>
-									<option value="8">8</option>
-									<option value="9">9</option>
-									<option value="10">10</option>
-								</select> <input type="submit" value="修改數量">
-							</form>
-						</div>
-						<div>
-							<form action="<c:url value='/productBackStage/deleteData' />">
-								<input type="text" name="itemBasicSeqno"
-									value="${anEntry.value.itemBasicSeqno}" style="display: none;">
-								<input type="submit" value="刪除">
-							</form>
-						</div>
-					</td>
-
-				</tr>
-			</c:forEach>
+	<c:forEach var="anOrderBean" varStatus="stat" items="${MemberOrders}">
+			<TR >
+			<TD >
+			    <a  href='<c:url value='/shoppingcart/orderInfo?orderId=${anOrderBean.seqno}' />'>
+				    ${anOrderBean.seqno}
+			    </a>
+			</TD>
+			<TD >${anOrderBean.totalAmount}</TD>
+			<TD >${anOrderBean.invoiceTitle}</TD>
+			<TD >${anOrderBean.orderDate}</TD>
+			<TD >${anOrderBean.shippingDate}</TD>
+							
+		</TR>
+		</c:forEach>
 
 
 			<!-- tbody更改到這邊結束 -->
@@ -114,27 +90,8 @@
 
 	</table>
 	<div>
-		合計金額： <span>${subtotal}</span> 元
+			<A	href="<c:url value='/shop/shoppingPage' />">繼續購物</A>
 	</div>
-	<TABLE border='1'>
-		<TR>
-			<TD width="265" align='center'><A
-				href="<c:url value='../_03_listBooks/DisplayPageProducts?pageNo=${param.pageNo}' />">繼續購物</A>
-			</TD>
-			<TD width="265" align='center'><A
-				href="<c:url value='../_03_listBooks/DisplayPageProducts?pageNo=${param.pageNo}' />">確認訂單</A>
-			</TD>
-			<TD width="265" align='center'><A
-				href="<c:url value='../_03_listBooks/DisplayPageProducts?pageNo=${param.pageNo}' />">放棄購物</A>
-			</TD>
-			<!-- 			<TD width="265" align='center'><A -->
-			<%-- 				href="<c:url value='checkout.do' />" --%>
-			<%-- 				onClick="return Checkout(${subtotal});">送出訂單</A></TD> --%>
-			<!-- 			<TD width="265" align='center'><A -->
-			<%-- 				href="<c:url value='abort.do' />" onClick="return Abort();">放棄購物</A> --%>
-			<!-- 			</TD> -->
-		</TR>
-	</TABLE>
 
 
 	<!-- 每頁不同的內容到這邊結束 -->

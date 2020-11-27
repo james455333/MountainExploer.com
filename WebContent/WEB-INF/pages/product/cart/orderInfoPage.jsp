@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>確認訂單</title>
+<title>訂單明細</title>
 <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
 <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
 <link rel="stylesheet"
@@ -41,118 +41,73 @@
 		</nav>
 	</header>
 
-	<c:choose>
-		<c:when test="${ShoppingCart.subtotal > 0}">
-			<c:set var="subtotalMessage" value="金額小計:${ShoppingCart.subtotal} 元" />
-			<c:set var="subtotal" value="${ShoppingCart.subtotal}" />
-		</c:when>
-		<c:otherwise>
-			<c:set var="subtotalMessage" value="金額小計:  0 元" />
-			<c:set var="subtotal" value="0" />
-		</c:otherwise>
-	</c:choose>
+	<%-- 	<c:choose> --%>
+	<%-- 		<c:when test="${ShoppingCart.subtotal > 0}"> --%>
+	<%-- 			<c:set var="subtotalMessage" value="金額小計:${ShoppingCart.subtotal} 元" /> --%>
+	<%-- 			<c:set var="subtotal" value="${ShoppingCart.subtotal}" /> --%>
+	<%-- 		</c:when> --%>
+	<%-- 		<c:otherwise> --%>
+	<%-- 			<c:set var="subtotalMessage" value="金額小計:  0 元" /> --%>
+	<%-- 			<c:set var="subtotal" value="0" /> --%>
+	<%-- 		</c:otherwise> --%>
+	<%-- 	</c:choose> --%>
 
 	<!--table-->
 	<table class="order-table">
 		<thead class="order-table-th">
 			<tr>
+				<th colspan="5" align="center">訂單編號: ${orderId}</th>
+			</tr>
+			<tr>
 				<!-- thead更改從這邊開始 -->
 				<th scope="col">商品編號</th>
-				<th scope="col">商品名稱</th>
-				<th scope="col">價格</th>
+<!-- 				<th scope="col">商品名稱</th> -->
+				<th scope="col">單價</th>
 				<th scope="col">數量</th>
+				<th scope="col">折扣</th>
 				<th scope="col">小計</th>
 				<!-- thead更改到這邊結束 -->
 			</tr>
 		</thead>
-
 		<tbody class="order-table-tb">
 			<!-- tbody更改從這邊開始 -->
-			<c:forEach varStatus="vs" var="anEntry"
-				items="${ShoppingCart.content}">
-				<tr>
-					<td>${anEntry.value.itemBasicSeqno}</td>
-					<td>${anEntry.value.itemBasicName}</td>
-					<td>${anEntry.value.unitPrice}</td>
-					<td>${anEntry.value.amount}</td>
-					<td>${anEntry.value.unitPrice * anEntry.value.discount * anEntry.value.amount}</td>
+			<c:forEach var="aBean" varStatus="stat" items="${OrderInfo}">
+				<tr id='borderA' bgColor="${aColor}" height='30'>
+					<td align="center">${aBean.itemBasicSeqno}</td>
+					<td align="center">${aBean.unitPrice}</td>
+					<td align="center">${aBean.amount}</td>
+					<td align="center">${aBean.discount}</td>
+					<td align="right">${aBean.unitPrice*aBean.discount*aBean.amount}
+							元</td>
+					<c:set var="subtotal"
+						value="${ subtotal + aBean.unitPrice * aBean.discount * aBean.amount }" />
 				</tr>
 			</c:forEach>
+<!-- 			<tr > -->
+<!-- 				<TD align="center"><b>總金額</b></TD> -->
+<%-- 				<TD align="right">${OrderInfo.totalAmount}元</TD> --%>
+<!-- 			</tr> -->
+
+
+
 			<!-- tbody更改到這邊結束 -->
 		</tbody>
+
+
+
 	</table>
+	<!-- 	<div> -->
+	<%-- 		合計金額： <span>${subtotal}</span> 元 --%>
+	<!-- 	</div> -->
+
+
 	<div>
-		合計金額： <span>${subtotal}</span> 元
+		<input type="button" value="返回上一頁" id="backPreviousPage">
+	</div>
+	<div>
+		<A href="<c:url value='/shop/shoppingPage' />">繼續購物</A>
 	</div>
 
-
-	<FORM style="margin: 0 auto; width: 750px;"
-		action="<c:url value='/shoppingcart/saveOrder' />" method="POST">
-		<TABLE border='1'>
-			<TR>
-				<TD>總金額： <Input size="10" type="text" name="subtotal"
-					value="${subtotal}" readonly>元
-				</TD>
-			</TR>
-			<TR>
-				<TD>會員帳號： <Input size="60" type="text" name="memberId"
-					value="${Member.account}" readonly>
-				</TD>
-			</TR>
-			<TR>
-				<TD>收貨地址： <Input size="60" type="text" name="shippingAddress"
-					value="">
-				</TD>
-			</TR>
-			<TR>
-				<TD>統一編號： <Input size="60" type="text" name="invoiceTitle"
-					value="">
-				</TD>
-			</TR>
-			<!-- 			<TR> -->
-			<!-- 				<TD>訂單日期： -->
-			<%-- 				<Input size="60" type="text" name="shippingAddress"	value="${today}" readonly> --%>
-			<!-- 				</TD> -->
-			<!-- 			</TR> -->
-			<!-- 			<TR> -->
-			<!-- 				<TD>出貨日期： -->
-			<%-- 				<Input size="60" type="text" name="shippingAddress"	value="${today}" readonly> --%>
-			<!-- 				</TD> -->
-			<!-- 			</TR> -->
-			<TR>
-			<input type="submit" value="送出訂單">
-			</TR>
-<!-- 			<TR align="center"> -->
-<!-- 				<TD><A -->
-<%-- 					href="<c:url value='/shoppingcart/saveOrder' />">送出訂單</A> --%>
-<!-- 				</TD> -->
-<!-- 			</TR> -->
-			<TR>
-				<TD align="center">
-				<A href="<c:url value='/shop/shoppingPage' />">繼續購物</A>
-				</TD>
-			</TR>
-			<TR align="center">
-				<TD><A id="demo3" href="<c:url value='/shoppingcart/abort' />">刪除訂單</A>
-				</TD>
-			</TR>
-
-
-		</TABLE>
-	</FORM>
-
-
-
-	<TABLE border='1'>
-		<TR>
-			<!-- 			<TD width="265" align='center'><A -->
-			<%-- 				href="<c:url value='checkout.do' />" --%>
-			<%-- 				onClick="return Checkout(${subtotal});">送出訂單</A></TD> --%>
-			<!-- 			<TD width="265" align='center'><A -->
-			<%-- 				href="<c:url value='abort.do' />" onClick="return Abort();">放棄購物</A> --%>
-			<!-- 			</TD> -->
-		</TR>
-	</TABLE>
 
 
 	<!-- 每頁不同的內容到這邊結束 -->
@@ -177,4 +132,12 @@
 <script src="/MountainExploer.com/js/sweetalert.js"></script>
 <!--sweet alert-->
 <script src="/MountainExploer.com/js/includejsp.js"></script>
+<script>
+	$(function() {
+		$("#backPreviousPage").on("click", function() {
+			window.history.go(-1)
+		})
+	})
+</script>
+
 </html>
