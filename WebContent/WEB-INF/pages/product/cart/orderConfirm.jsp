@@ -133,7 +133,7 @@
 				</TD>
 			</TR>
 			<TR align="center">
-				<TD><A href="<c:url value='/shoppingcart/abort' />">刪除訂單</A>
+				<TD><A id="demo3" href="<c:url value='/shoppingcart/abort' />">刪除訂單</A>
 				</TD>
 			</TR>
 

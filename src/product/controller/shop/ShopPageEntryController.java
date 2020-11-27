@@ -39,7 +39,7 @@ public class ShopPageEntryController {
 	}
 
 	// 前往商品細項頁面
-	@RequestMapping(path = "/productInfoEntry")
+	@RequestMapping(path = "/productInfoEntry",method = RequestMethod.GET)
 	public String productInfoPage(Model model,
 			@RequestParam(name = "no") String no
 			) throws IOException, SQLException {
@@ -87,5 +87,6 @@ public class ShopPageEntryController {
 		return "product/cart/orderConfirm";
 
 	}
+	
 
 }

@@ -31,10 +31,7 @@ public class Orders {
 	
 	@OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "orders")
 	private Set<OrderItems> orderItemsSet = new HashSet<OrderItems>();
-//	@Column(name = "MEMBER_BASIC_ID")
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "member_basic_id", referencedColumnName = "seqno")
-	@JsonIgnore
+	@Transient
 	private Integer memberBasicID;
 	@Column(name = "TOTALAMOUNT")
 	private Double totalAmount;
@@ -49,6 +46,9 @@ public class Orders {
 	@Column(name = "CANCELTAG")
 	private String cancelTag;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "member_basic_id", referencedColumnName = "seqno")
+	@JsonIgnore
 	private MemberBasic memberBasic;
 	
 	public MemberBasic getMemberBasic() {

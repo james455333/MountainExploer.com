@@ -2,6 +2,7 @@ package product.controller.shop;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import member.model.MemberBasic;
 import product.dao.OrdersDAO;
 import product.model.CartBean;
 import product.model.OrderItems;
@@ -152,6 +154,8 @@ public class ShoppingCartController {
 			orders.setOrderDate(today);
 			orders.setShippingDate(today);
 			
+			orders.setCancelTag(null);
+			
 			ordersDao.insertOrder(orders);
 			
 			Set<OrderItems> orderItemsSet = new HashSet<OrderItems>();
@@ -177,8 +181,48 @@ public class ShoppingCartController {
 			return "redirect:/shop/shoppingPage";
 			
 		}
-	
-	
+		
+		// 查詢會員訂單
+		@RequestMapping(path = "/memberOrders", method = RequestMethod.GET)
+		public String memberOrders(
+				 Model m
+				) {
+			MemberBasic mb = (MemberBasic)m.getAttribute("Member");
+			Integer memberSeqno = mb.getSeqno();
+			List<Orders> selectMemberOrders = ordersDao.selectMemberOrders(memberSeqno);
+			
+			m.addAttribute("MemberOrders",selectMemberOrders);
+			
+			
+			return "product/cart/showOrderPage";
+			
+		}
+		
+
+		// 查詢訂單明細
+		@RequestMapping(path = "/orderInfo", method = RequestMethod.GET)
+		public String orderInfo(
+				 Model m,
+				 @RequestParam(name = "orderId") String orderId
+				) {
+			MemberBasic mb = (MemberBasic)m.getAttribute("Member");
+			Integer memberSeqno = mb.getSeqno();
+			List<Orders> selectMemberOrders = ordersDao.selectMemberOrders(memberSeqno);
+//			Orders orders = selectMemberOrders.get(0);
+			Integer orderIdInt = Integer.parseInt(orderId);
+			for (Orders orders : selectMemberOrders) {
+				if (orders.getSeqno()==orderIdInt) {
+					
+					Set<OrderItems> orderItemsSet = orders.getOrderItemsSet();
+					
+					m.addAttribute("OrderInfo",orderItemsSet);
+				}
+			}
+			
+			
+			return "product/cart/orderInfoPage";
+			
+		}
 	
 	
 	
