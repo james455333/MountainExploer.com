@@ -1,16 +1,16 @@
 
-	var shareURL = "/MountainExploer.com/mountain/public"
-	var manageHome = "/MountainExploer.com/mountain/manage/crud"
-	var detailURL = "/MountainExploer.com/mountain/act/detail?page=1&actID="
-	var status, totalPage, totalData;
-	var nowDate = Number(new Date());
-	var limitStartDate = new Date(nowDate + ((60*60*24*1000)*21)) ;
+var shareURL = "/MountainExploer.com/mountain/public"
+var manageHome = "/MountainExploer.com/mountain/manage/crud"
+var detailURL = "/MountainExploer.com/mountain/act/detail?page=1&actID="
+var status, totalPage, totalData;
+var nowDate = Number(new Date());
+var limitStartDate = new Date(nowDate + ((60*60*24*1000)*21)) ;
 		
-	var urlNow = new URL(window.location.href)
+var urlNow = new URL(window.location.href)
 	
-	if(urlNow.searchParams.has("status")){
-		status = urlNow.searchParams.get("status")
-	}
+if(urlNow.searchParams.has("status")){
+	status = urlNow.searchParams.get("status")
+}
 
 $(function(){
 	checkStatus()
@@ -21,10 +21,10 @@ $(function(){
 	$(".m-si-op").eq(1).on("click",function(){
 		registry(1);
 	});
+//	$(".m-si-op").eq(2).on("click",function(){
+//		record(1);
+//	});
 	$(".m-si-op").eq(2).on("click",function(){
-		record(1);
-	});
-	$(".m-si-op").eq(3).on("click",function(){
 		report(1);
 	});
 	
@@ -78,15 +78,20 @@ $(function(){
 	$(".m-ma-container").on("click", ".bt-ps-reg-decline", declineReg_PS)
 	
 	$(".m-ma-container").on("click",".bt-reg-info", showInfo_RG)
-	$(".m-ma-container").on("click",".bt-rg-info-update",showInfoUpdateForm_RG)
-	$(".m-ma-container").on("click",".bt-reg-cancel",cancelRegistry_RG)
+	$(".m-ma-container").on("click",".bt-rg-info-update", showInfoUpdateForm_RG)
+	$(".m-ma-container").on("click",".bt-reg-cancel", cancelRegistry_RG)
 	$(".m-ma-container").on("submit",".rg-info-body-update",function(e){
 		let thisForm = $(this)
 		e.preventDefault()
 		confirmRgInfoUp_RG(thisForm)
 	})
-	$(".m-ma-container").on("click",".bt-reg-info-update-cancel",cancelRgInfoUp_RG)
-	
+	$(".m-ma-container").on("click",".bt-reg-info-update-cancel",function(e){
+		e.preventDefault()
+		cancelRgInfoUp_RG($(this));
+	})
+	$(".m-ma-container").on("click", ".bt-rg-info-delete", function(){
+		regInfoDeleteSWAL_RG($(this))
+	})
 	
 	
 })

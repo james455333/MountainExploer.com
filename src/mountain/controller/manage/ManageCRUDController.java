@@ -278,7 +278,7 @@ public class ManageCRUDController {
 	@ResponseBody
 	public Boolean regInfoUpdate(ActRegInfo actRegInfo) throws HttpClientErrorException{
 		try {
-			System.out.println("=========== bDay : " + actRegInfo.getBirthDay());
+			System.out.println("=========== regInfoIF : " + actRegInfo.getSeqno());
 			System.out.println("=========== bDay : " + actRegInfo.getBirthDay());
 			service.save(actRegInfo);
 			ActRegInfo origin = (ActRegInfo) service.select(actRegInfo.getSeqno());
@@ -290,12 +290,33 @@ public class ManageCRUDController {
 			origin.setContactEmail(actRegInfo.getContactEmail());
 			
 			service.update(origin);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
 		}
 		
 		return true;
+	}
+	
+	@DeleteMapping("/reg-info-update")
+	@ResponseBody
+	public boolean regInfoDelete(
+			ActRegInfo actRegInfo,
+			@RequestBody Integer regInfoID) {
+		try {
+			service.save(actRegInfo);
+			System.out.println("============== regInfoID : " + regInfoID);
+			if (service.delete(regInfoID)) {
+				return true;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
+		}
+		
+		throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
 	}
 	
 }

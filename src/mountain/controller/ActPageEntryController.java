@@ -66,9 +66,9 @@ public class ActPageEntryController {
 	}
 	
 	//報名活動頁面
-	@GetMapping("/reg")
+	@GetMapping("/act/registry")
 	public String enterRegistry(Model model, RedirectAttributes redAttr) {
-		return "";
+		return "/mountain/act/registry/registry";
 	}
 	
 

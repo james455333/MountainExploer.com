@@ -1,0 +1,40 @@
+.mainContainer{
+	width : 100%;
+	padding : 10px;
+}
+.reg-ta{
+	width : 100%;
+}
+.reg-ta-tb{
+	height : 35px;
+}
+.reg-ta-tb-tr div{
+	margin : 15px;
+}
+.reg-ta-tb-tr input{
+	width : 100%;
+}
+.reg-tb-controller{
+	display : flex;
+	align-items:center;
+    justify-content:center;
+	width : 100%;
+	
+}
+.reg-tb-controller div{
+	width : 15%;
+}
+.reg-tb-controller img{
+	cursor : pointer;
+}
+
+.bt-plus{
+	border-radius: 50%;
+}
+.reg-ta-th-quick{
+	font-size : 20px;
+}
+.reg-ta-th-note{
+	font-size : 20px;
+	
+}

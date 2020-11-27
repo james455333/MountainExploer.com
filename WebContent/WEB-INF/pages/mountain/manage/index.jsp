@@ -64,8 +64,8 @@
 	            <div class="sideNav">
 	            	<div class='m-si-op m-hide'><div>舉辦活動管理</div></div>
 	            	<div class='m-si-op'><div>報名活動管理</div></div>
-	            	<div class='m-si-op'><div>活動紀錄</div></div>
-	            	<div class='m-si-op'><div>問題回報</div></div>
+<!-- 	            	<div class='m-si-op'><div>活動紀錄</div></div> -->
+	            	<div class='m-si-op'><div>求助及問題回報</div></div>
 	            </div>
 	        </div>
 	        <div class="div_li3 m-hide">
@@ -343,6 +343,28 @@
         		</tr>
         	</tbody>
         </table>
+		<table class="order-table m-ma-repo-ta">
+			<thead class="order-table-th"><tr>
+				<th scope="col">回報編號</th>
+				<th scope="col">回報時間</th>
+				<th scope="col">回覆狀態</th>
+				<th scope="col">回報主題</th>
+				<th scope="col">回報主旨</th>
+				<th scope="col">回報內容</th>
+				<th scope="col">回報選項</th>
+			</tr></thead>
+			<tbody class="order-table-tb">
+				<tr class="main-repo-tr">
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
         <nav class="pageControl ver-mid">
         	<ul>
             	<li class="li1">

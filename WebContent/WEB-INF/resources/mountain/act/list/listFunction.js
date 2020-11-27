@@ -1,6 +1,6 @@
 
 /* Controller路徑對應變數 */
-var actHomeURL = "/MountainExploer.com/mountain/act/search";
+var actHomeURL = "/MountainExploer.com/mountain/act/crud";
 var actEnterURL = "/MountainExploer.com/mountain/list?";
 var mountainShare = "/MountainExploer.com/mountain/public";
 var detailURL = "/MountainExploer.com/mountain/act/detail?page=1&actID="
@@ -164,6 +164,9 @@ function activeTagAS(tag) {
 	if (tag != 0) {
 		let tagAs = actEnterURL + "od=2&page=1&tag=" + tag;
 		window.location.assign(tagAs)
+	}else{
+		let defaultAs = actEnterURL + "od=1&page=1"
+		window.location.assign(defaultAs)
 	}
 }
 
@@ -179,25 +182,28 @@ function setPageController(page) {
 	if (od == 2) {
 		url = actEnterURL + "od=2&tag=" + tag + "&"
 	}
-
-	$(".pageControl").find("a").eq(2).html("目前 " + page + ' / ' + totalPage + " 頁")
-	if (page != 1) {
-		let first = url + "page=1"
-		let previous = url + "page=" + (Number(page) - 1);
-		$(".pageControl").find("a").eq(0).attr("href", first).css("display", "block")
-		$(".pageControl").find("a").eq(1).attr("href", previous).css("display", "block")
-	} else {
-		$(".pageControl").find("a").eq(0).css("display", "none")
-		$(".pageControl").find("a").eq(1).css("display", "none")
-	}
-	if (page < totalPage) {
-		let next = url + "page=" + (Number(page) + 1);
-		let final = url + "page=" + (Number(totalPage));
-		$(".pageControl").find("a").eq(3).attr("href", next).css("display", "block")
-		$(".pageControl").find("a").eq(4).attr("href", final).css("display", "block")
-	} else {
-		$(".pageControl").find("a").eq(3).css("display", "none")
-		$(".pageControl").find("a").eq(4).css("display", "none")
+	let pageCtrl = $(".pageControl")
+	for(let i in pageCtrl){
+		
+		pageCtrl.eq(i).find("a").eq(2).html("目前 " + page + ' / ' + totalPage + " 頁")
+		if (page != 1) {
+			let first = url + "page=1"
+			let previous = url + "page=" + (Number(page) - 1);
+			pageCtrl.eq(i).find("a").eq(0).attr("href", first).css("display", "block")
+			pageCtrl.eq(i).find("a").eq(1).attr("href", previous).css("display", "block")
+		} else {
+			pageCtrl.eq(i).find("a").eq(0).css("display", "none")
+			pageCtrl.eq(i).find("a").eq(1).css("display", "none")
+		}
+		if (page < totalPage) {
+			let next = url + "page=" + (Number(page) + 1);
+			let final = url + "page=" + (Number(totalPage));
+			pageCtrl.eq(i).find("a").eq(3).attr("href", next).css("display", "block")
+			pageCtrl.eq(i).find("a").eq(4).attr("href", final).css("display", "block")
+		} else {
+			pageCtrl.eq(i).find("a").eq(3).css("display", "none")
+			pageCtrl.eq(i).find("a").eq(4).css("display", "none")
+		}
 	}
 }
 

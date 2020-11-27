@@ -64,6 +64,7 @@
 	                        <li>活動標籤:
 	                            <select name="aTag">
 	                                <option value="0" selected disabled>請選擇活動標籤</option>
+	                                <option value="0">預設顯示</option>
 	                                <option value="1">新活動</option>
 	                                <option value="2">熱門活動</option>
 	                                <option value="3">歷史活動</option>
@@ -72,6 +73,7 @@
 	                        <li>報名標籤:
 	                            <select name="rTag">
 	                                <option value="0" selected disabled >請選擇報名標籤</option>
+	                                <option value="0">預設顯示</option>
 	                                <option value="6">尚可報名</option>
 	                                <option value="8">報名將滿</option>
 	                                <option value="7">報名將截止</option>

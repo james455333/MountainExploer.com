@@ -35,7 +35,7 @@ function confirmRgInfoUp_RG(thisForm){
 	let reginfoID = thisForm.find("input[name='seqno']").val()
 	swal({
 		title : "確認修改?",
-		text : "路線編號 : " + reginfoID ,
+		text : "報名資訊編號 : " + reginfoID ,
 		icon : "warning",
 		dangerMode: true,
 		closeOnClickOutside: true,
@@ -73,6 +73,8 @@ function regInfoUpdate_RG(thisForm){
 						visible : true
 					}
 				}
+			}).then(() => {
+				reloadReg();
 			})
 		},
 		error : function(){
@@ -89,11 +91,67 @@ function regInfoUpdate_RG(thisForm){
 	})
 }
 
-function cancelRgInfoUp_RG(){
-	console.log($(this))
+function cancelRgInfoUp_RG(thisForm){
+	let thisParentDIV = thisForm.parents(".rg-info-body-info2")
+	thisForm.parents(".m-ma-reg-ta").find(".rg-info-body-info2").not(thisParentDIV).addClass("hideTr")
+	thisParentDIV.toggleClass("hideTr")
 }
 
-/* Post 主控制表 */
+function regInfoDeleteSWAL_RG(thisBT){
+	console.log(thisBT)
+	let thisRegInfoID = thisBT.parents(".rg-info-body-info").find(".rg-info-seqno").text()
+	swal({
+		title : "確認" + thisBT.text(),
+		text : "報名資訊編號 : " + thisRegInfoID,
+		icon : "warning",
+		dangerMode: true,
+		closeOnClickOutside: true,
+		buttons : {
+			confirm : {
+				visible : true,
+				value : true
+			},
+			cancel : {
+				visible : true,
+				value : false
+			}
+		}
+		
+	}).then((value) => {
+		if(value)
+		regInfoDeleteAjax(thisRegInfoID);
+	})
+
+}
+
+function regInfoDeleteAjax(regInfoID){
+	$.ajax({
+		url : manageHome + "/reg-info-update",
+		type : "DELETE",
+		data : regInfoID,
+		dataType : "json",
+		contentType: 'application/json',
+		success : function(){
+			swal({
+				title : "刪除報名資訊成功",
+				icon : "success",
+				button : "好的"
+			}).then(() => {
+				reloadReg();
+			})
+		},
+		error : function(){
+			swal({
+				title : "刪除報名資訊失敗",
+				icon : "error",
+				button : "好的"
+			})
+		}
+	})
+}
+
+
+/* Post 主資料表顯示 */
 function insertRegInfo(order, page){
 	
 	$.ajax({
@@ -313,10 +371,7 @@ function rg_cancelRegistry(text, targetTDV){
 					}	
 				}
 			}).then(() => {
-				let pageCon = $(".m-ma-container").find(".pageControl")
-					.find("div").eq(2).text();
-				let page = pageCon.substring(0,pageCon.indexOf("/")).trim();
-				registry(page);
+				reloadReg();
 			})
 		},
 		error : function(data){
@@ -390,4 +445,11 @@ function setRG_updateDatePicker(bDay, thisElm){
 		}, function(start, end, label) {
 			console.log(thisElm.val())
 		});		    
+}
+
+function reloadReg(){
+	let pageCon = $(".m-ma-container").find(".pageControl")
+		.find("div").eq(2).text();
+	let page = pageCon.substring(0,pageCon.indexOf("/")).trim();
+	registry(page);
 }

@@ -39,7 +39,7 @@ public class TagSelector {
 		postTime = activityInfo.getPostDate().getTime();
 		regEndTime = activityInfo.getRegEndDate().getTime();
 		nowTime = new Date().getTime();
-		passDay = (int) Math.ceil( ( (postTime - nowTime)*1.0 ) / MountainGlobal.ONEDAY);
+		passDay = (int) Math.ceil( ( (nowTime - postTime)*1.0 ) / MountainGlobal.ONEDAY);
 		regLeftDay = (int) Math.ceil( (regEndTime - nowTime)*1.0 / MountainGlobal.ONEDAY );
 		service.save(activityInfo);
 		String hql = "Select count(*) From ActRegInfo ari where ari.actRegistry in (From ActRegistry ar where ACTIVITY_BASIC_SEQNO = "+ activityInfo.getId() + ")";
@@ -75,7 +75,9 @@ public class TagSelector {
 		setRegAvl(result);
 	}
 	
-	/*	新活動標籤定義	*/
+	/*	新活動標籤定義	
+	 * 	現時 - 發表時 <= 7日
+	 * */
 	private static void setNewAct(Map<Integer, Boolean> result) {
 		
 		if (passDay <= 7) {
@@ -84,12 +86,12 @@ public class TagSelector {
 			result.put(newAct, false);
 		}
 	}
-	/*	熱門活動標籤定義	*/
+	/*	熱門活動標籤定義	
+	 * 	報名人數   >= 報名上限/2
+	 * */
 	private static void setHotAct(Map<Integer, Boolean> result) {
 		
 		if (nowReg >= (topReg/2)) {
-			result.put(hotAct, true);
-		}else if (regLeftDay <= 7 && nowReg >= (topReg*3/4)) {
 			result.put(hotAct, true);
 		}else {
 			result.put(hotAct, false);

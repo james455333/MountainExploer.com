@@ -516,7 +516,7 @@ function setPR_RegInfo(regInfoCon, actRegInfo){
 		let model = regInfoCon.find(".tr-reg-info-body").eq(i).clone();
 		let regInfoBody = regInfoCon.find(".tr-reg-info-body").eq(i)
 		regInfoBody.find("div").eq(0).html(actRegInfo[i].name)
-		regInfoBody.find("div").eq(1).html(dateFormate(actRegInfo[i].birthDay))
+		regInfoBody.find("div").eq(1).html(new Date(actRegInfo[i].birthDay).toLocaleDateString())
 		regInfoBody.find("div").eq(2).html(actRegInfo[i].personID)
 		regInfoBody.find("div").eq(3).html(actRegInfo[i].contactPhone)
 		regInfoBody.find("div").eq(4).html(actRegInfo[i].contactCellphone)
