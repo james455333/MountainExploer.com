@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import product.model.ItemInfo;
 import product.model.Orders;
 @Repository("ordersDao")
 public class OrdersDAO {
@@ -30,7 +29,7 @@ public class OrdersDAO {
 		}
 		return bean;
 	}
-//  2.查詢orders表格內的單筆訂單
+//  2.訂單編號查詢orders表格內的單筆訂單
 	public Orders selectSeqno(Integer seqno) {
 		Session session = sessionFactory.getCurrentSession();
 

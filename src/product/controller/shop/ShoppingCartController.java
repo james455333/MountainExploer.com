@@ -207,20 +207,14 @@ public class ShoppingCartController {
 				 Model m,
 				 @RequestParam(name = "orderId") String orderId
 				) {
-			MemberBasic mb = (MemberBasic)m.getAttribute("Member");
-			Integer memberSeqno = mb.getSeqno();
-			List<Orders> selectMemberOrders = ordersDao.selectMemberOrders(memberSeqno);
-//			Orders orders = selectMemberOrders.get(0);
-			Integer orderIdInt = Integer.parseInt(orderId);
-			for (Orders orders : selectMemberOrders) {
-				if (orders.getSeqno()==orderIdInt) {
-					
-					Set<OrderItems> orderItemsSet = orders.getOrderItemsSet();
-					
-					m.addAttribute("OrderInfo",orderItemsSet);
-				}
-			}
 			
+			Integer orderIdInt = Integer.parseInt(orderId);
+			Orders odersSelect = ordersDao.selectSeqno(orderIdInt);
+			
+			Set<OrderItems> orderItemsSet = odersSelect.getOrderItemsSet();
+			
+			m.addAttribute("OrderInfo",orderItemsSet);
+			m.addAttribute("orderId", orderId);
 			
 			return "product/cart/orderInfoPage";
 			

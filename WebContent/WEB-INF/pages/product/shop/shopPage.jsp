@@ -89,18 +89,6 @@
 							class="scSelect"></select> <input type="button" value="次類別查詢"
 							class="scSubmit"> <!-- 							</div> -->
 						</li>
-						<!-- 						<li>預設1: <select> -->
-						<!-- 								<option name="nothing" selected disabled>選擇提示1</option> -->
-						<!-- 								<option value="值2">aa</option> -->
-						<!-- 								<option value="值3">bb</option> -->
-						<!-- 						</select></li> -->
-
-						<!-- 						<li>預設2: <select> -->
-						<!-- 								<option name="nothing" selected disabled>選擇提示2</option> -->
-						<!-- 								<option value="值2">aa</option> -->
-						<!-- 								<option value="值3">bb</option> -->
-						<!-- 						</select></li> -->
-						<!-- 控制列表內容到這邊結束 -->
 					</ul>
 				</nav>
 
@@ -131,7 +119,7 @@
 
 			</div>
 			<div>
-				<a href='<c:url value="/shop/xxxy"/>'>查看訂單</a>
+				<a href='<c:url value="/shoppingcart/memberOrders"/>'>查看訂單</a>
 
 			</div>
 				<!--table-->
@@ -151,15 +139,6 @@
 
 					<tbody class="order-table-tb">
 						<!-- tbody更改從這邊開始 -->
-						<tr>
-							<td>商品名稱1</td>
-							<!-- 							<td>型a</td> -->
-							<td>圖片1</td>
-							<td>價格1</td>
-							<!-- 							<td>數量1</td> -->
-							<td>加入購物車\</td>
-
-						</tr>
 
 
 						<!-- tbody更改到這邊結束 -->
