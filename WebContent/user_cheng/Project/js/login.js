@@ -17,6 +17,13 @@ $(function () {
     buttons: {
       登入: function () {
         $(this).dialog("close");
+        // $.ajax({
+        //    url : "",
+        //    type : "GET"
+        //    data : {
+        //      account : $(".class").find("input[name='']").val()
+        //    }
+        // })
         window.location.href = '../index.html'
       },
       取消: function () {
