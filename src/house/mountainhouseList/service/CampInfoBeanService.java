@@ -26,16 +26,11 @@ public class CampInfoBeanService implements ICampInfoBeanService {
 		return cDao.selectcampid(campid);
 	}
 
+	
 	@Override
-	public List<CampInfoBean> selectAllCamp() {
+	public List<CampInfoBean> selectCampName(String campname,Integer page , Integer showData) {
  
-		return cDao.selectAllCamp();
-	}
-
-	@Override
-	public List<CampInfoBean> selectCampName(String campname) {
- 
-		return cDao.selectCampName(campname);
+		return cDao.selectCampName(campname, page , showData);
 	}
 
 	@Override
@@ -60,10 +55,26 @@ public class CampInfoBeanService implements ICampInfoBeanService {
 		return cDao.selectWithHql(hql);
 	}
 
+	
+
 	@Override
-	public List<CampInfoBean> selectcounties(String counties) {
-		// TODO Auto-generated method stub
-		return cDao.selectcounties(counties);
+	public int countCamp(String area, Integer no) {
+		return cDao.countCamp(area,  no);
 	}
 
+	@Override
+	public List<CampInfoBean> selectAllCamp(Integer page, Integer showData, Integer no, String area) {
+		return cDao.selectAllCamp(page, showData, no, area);
+	}
+
+	
+
+	@Override
+	public int countCampname(String campname) {
+		return cDao.countCampname(campname);
+	}
+
+	
+
+	
 }

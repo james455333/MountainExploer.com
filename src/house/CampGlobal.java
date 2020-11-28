@@ -12,7 +12,8 @@ public class CampGlobal {
 
 	public static final String ImgDownloadPath="C:\\TeamProject\\MountainExploer.com\\TeamData\\Data\\";
 	public static final String CHARSET = "UTF-8";
-
+	public static int actDS = 20 ;  
+	public static int actRpDS = 5;
 	
 	public static byte[] downloadImage(MultipartFile multipartFile) throws Exception, IOException {
 		String originalFilename = multipartFile.getOriginalFilename()+"";

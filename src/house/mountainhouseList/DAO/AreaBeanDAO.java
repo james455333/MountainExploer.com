@@ -42,11 +42,20 @@ public class AreaBeanDAO {
 			return list;
 		}
 		
-		public List<AreaBean> selectArea(String area){
+		public List<AreaBean> selectArea(String area , Integer page , Integer showData ){
+			if (page == null) {
+				page = 1;
+			}
+			if (showData == null) {
+				showData = 8 ;
+			}
+			int startPosition = ((page-1) * showData);
 			String originString = " From AreaBean where name like '%"+ area+"%'";
 			Query<AreaBean> query = getSession().createQuery(originString,AreaBean.class);					
-			List<AreaBean> list = query.list();
-			
+			List<AreaBean> list = query.setFirstResult(startPosition)
+			.setMaxResults(showData)
+			.setReadOnly(true)
+			.getResultList();
 			return list;
 			}
 		
@@ -77,12 +86,33 @@ public class AreaBeanDAO {
 			}
 			return ABean;
 			
-			
-			
 		}
+		
+		
+		public int countAreaname(String area) {		
+			Query query = getSession().createQuery("Select count(*) From AreaBean where name like '%" + area + "%'");
+			long result = (long) query.uniqueResult();
+			return (int)result;		
+		}
+		
 
-		
-		
+//分頁		
+//		public List<AreaBean> getwithHQL(Integer page , Integer showData , String area){
+//			if (page == null) {
+//				page = 1;
+//			}
+//			if (showData == null) {
+//				showData = 8;
+//			}
+//			int startPosition = (page-1) * showData;
+//			Query<AreaBean> query = getSession().createQuery("From AreaBean where name like '%" +area +"%'");
+//			List<AreaBean> list =  (List<AreaBean>)query.setFirstResult(startPosition)
+//			.setMaxResults(startPosition)
+//			.setReadOnly(true)
+//			.getResultList();
+//			
+//			return list;
+//		}
 			
 		
 		
