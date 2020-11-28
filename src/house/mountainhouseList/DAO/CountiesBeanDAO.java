@@ -29,10 +29,20 @@ public class CountiesBeanDAO implements ICountiesBeanService {
 		}
 		
 		@Override
-		public List<CountiesBean> selectarea(String area) {
+		public List<CountiesBean> selectarea(String area,Integer page , Integer showData) {
+			if (page == null) {
+				page = 1;
+			}
+			if (showData == null) {
+				showData = 8;
+			}
+			int startPosition = ((page-1) * showData);
 			String originString = "From CountiesBean where area like '%" + area + "%'";
 			Query<CountiesBean> query = getSession().createQuery(originString , CountiesBean.class);
-			List<CountiesBean> list = query.list();
+			List<CountiesBean> list = query.setFirstResult(startPosition)
+					.setMaxResults(showData)
+					.setReadOnly(true)
+					.getResultList();
 			return list;
 		}
 		
@@ -46,19 +56,39 @@ public class CountiesBeanDAO implements ICountiesBeanService {
 		
 		
 		@Override
-		public List<CountiesBean> selectAllCounties() {
+		public List<CountiesBean> selectAllCounties(Integer page , Integer showData) {
+			if (page == null) {
+				page = 1;
+			}
+			if (showData == null) {
+				showData = 8;
+			}
+			int startPosition = ((page-1) * showData);
 			Query<CountiesBean> query = getSession().createQuery("From CountiesBean",CountiesBean.class);
-			List<CountiesBean> list = query.list();
+			List<CountiesBean> list = query.setFirstResult(startPosition)
+					.setMaxResults(showData)
+					.setReadOnly(true)
+					.getResultList();
 			return list;
 		}
 		
 		
 		
 		@Override
-		public List<CountiesBean> selectCounties(String counties){
+		public List<CountiesBean> selectCounties(String counties,Integer page , Integer showData){
+			if (page == null) {
+				page = 1;
+			}
+			if (showData == null) {
+				showData = 8;
+			}
+			int startPosition = ((page-1) * showData);
 			String originString = " From CountiesBean where name like '%"+ counties+"%'";
 			Query<CountiesBean> query = getSession().createQuery(originString,CountiesBean.class);
-			List<CountiesBean> list = query.list();
+			List<CountiesBean> list = query.setFirstResult(startPosition)
+					.setMaxResults(showData)
+					.setReadOnly(true)
+					.getResultList();
 			return list;
 			
 		}
@@ -92,13 +122,21 @@ public class CountiesBeanDAO implements ICountiesBeanService {
 				return counbean;
 			}
 			return counbean;
-			
-			
-			
+		}
+		@Override
+		public int countCounties(String countiesname) {		
+			Query query = getSession().createQuery("select count(*) From CountiesBean where name like '%" + countiesname + "%'");
+			long result = (long) query.uniqueResult();
+			return (int)result;		
+		}
+		
+		@Override
+		public int countArea(String area) {		
+			Query query = getSession().createQuery("select count(*) From CountiesBean where area like '%" + area + "%'");
+			long result = (long) query.uniqueResult();
+			return (int)result;		
 		}
 
-		
-		
 			
 		
 		

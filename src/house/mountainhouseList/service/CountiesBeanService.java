@@ -16,15 +16,15 @@ public class CountiesBeanService implements ICountiesBeanService {
 	private CountiesBeanDAO counDAO;
 	
 	@Override
-	public List<CountiesBean> selectAllCounties() {
+	public List<CountiesBean> selectAllCounties(Integer page , Integer showData) {
  
-		return counDAO.selectAllCounties();
+		return counDAO.selectAllCounties( page ,  showData);
 	}
 
 	@Override
-	public List<CountiesBean> selectCounties(String counties) {
+	public List<CountiesBean> selectCounties(String counties,Integer page , Integer showData) {
  
-		return counDAO.selectCounties(counties);
+		return counDAO.selectCounties(counties, page ,  showData);
 	}
 
 	@Override
@@ -50,10 +50,25 @@ public class CountiesBeanService implements ICountiesBeanService {
 		return counDAO.select(counties);
 	}
 
+	
+
 	@Override
-	public List<CountiesBean> selectarea(String area) {
-		
-		return counDAO.selectarea(area);
+	public int countCounties(String countiesname) {
+		return counDAO.countCounties(countiesname);
+	}
+
+
+	
+
+
+	@Override
+	public List<CountiesBean> selectarea(String area, Integer page, Integer showData) {
+		return counDAO.selectarea(area, page, showData);
+	}
+
+	@Override
+	public int countArea(String area) {
+		return counDAO.countArea(area);
 	}
 
 }

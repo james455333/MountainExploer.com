@@ -26,9 +26,9 @@ public class AreaBeanService implements IAreaBeanService {
 	}
 
 	@Override
-	public List<AreaBean> selectArea(String area) {
+	public List<AreaBean> selectArea(String area , Integer page , Integer showData) {
  
-		return ADao.selectArea(area);
+		return ADao.selectArea(area, page, showData);
 	}
 
 	@Override
@@ -47,6 +47,11 @@ public class AreaBeanService implements IAreaBeanService {
 	public AreaBean deleteCamp(String area) {
  
 		return ADao.deleteCamp(area);
+	}
+
+	@Override
+	public int countAreaname(String area) {
+		return ADao.countAreaname(area);
 	}
 
 	

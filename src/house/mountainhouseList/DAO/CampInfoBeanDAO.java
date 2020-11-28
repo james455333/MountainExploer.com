@@ -2,6 +2,8 @@ package house.mountainhouseList.DAO;
 
 import java.util.List;
 
+import javax.persistence.OneToOne;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -28,13 +30,45 @@ public class CampInfoBeanDAO implements ICampInfoBeanService {
 		return getSession().get(CampInfoBean.class, campid);
 
 	}
-	@Override
-	public List<CampInfoBean> selectcounties(String counties) {
-		String originString = "From CampInfoBean where counties  like '%" + counties + "%'" ;
-		Query<CampInfoBean> query = getSession().createQuery(originString , CampInfoBean.class);
-		List<CampInfoBean> list = query.list();
-		return list;
-	}
+	
+//	@Override
+//	public List<CampInfoBean> selectarea(String area,Integer page , Integer showData) {
+//		if (page == null) {
+//			page = 1;
+//		}
+//		if (showData == null) {
+//			showData = 8;
+//		}
+//		int startPosition = ((page-1) * showData);
+//
+//		String originString = "From CampInfoBean where counties in(From counties where area like '%" + area + "%')" ;
+//		Query<CampInfoBean> query = getSession().createQuery(originString , CampInfoBean.class);
+//		List<CampInfoBean> list = query.setFirstResult(startPosition)
+//				.setMaxResults(showData)
+//				.setReadOnly(true)
+//				.getResultList();
+//		return list;
+//	}
+	
+	
+//	@Override
+//	public List<CampInfoBean> selectcounties(String counties,Integer page , Integer showData) {
+//		if (page == null) {
+//			page = 1;
+//		}
+//		if (showData == null) {
+//			showData = 8;
+//		}
+//		int startPosition = ((page-1) * showData);
+//
+//		String originString = "From CampInfoBean where counties  like '%" + counties + "%'" ;
+//		Query<CampInfoBean> query = getSession().createQuery(originString , CampInfoBean.class);
+//		List<CampInfoBean> list = query.setFirstResult(startPosition)
+//				.setMaxResults(showData)
+//				.setReadOnly(true)
+//				.getResultList();
+//		return list;
+//	}
 
 	@Override
 	public List<CampInfoBean> selectcampid(int campid) {
@@ -44,26 +78,86 @@ public class CampInfoBeanDAO implements ICampInfoBeanService {
 	}
 
 	@Override
-	public List<CampInfoBean> selectAllCamp() {
+	public List<CampInfoBean> selectAllCamp(Integer page , Integer showData,Integer no ,String area ) {
+		if (no==1) {
+			
+		if (page == null) {
+			page = 1;
+		}
+		if (showData == null) {
+			showData = 8;
+		}
+		int startPosition = ((page-1) * showData);
+
 		Query<CampInfoBean> query = getSession().createQuery("From CampInfoBean", CampInfoBean.class);
-		List<CampInfoBean> list = query.list();
+		List<CampInfoBean> list = query.setFirstResult(startPosition)
+				.setMaxResults(showData)
+				.setReadOnly(true)
+				.getResultList();
 		return list;
+		
+		}else if (no==2) {
+			if (page == null) {
+				page = 1;
+			}
+			if (showData == null) {
+				showData = 8;
+			}
+			int startPosition = ((page-1) * showData);
+
+			String originString = "From CampInfoBean where counties  like '%" + area + "%'" ;
+			Query<CampInfoBean> query = getSession().createQuery(originString , CampInfoBean.class);
+			List<CampInfoBean> list = query.setFirstResult(startPosition)
+					.setMaxResults(showData)
+					.setReadOnly(true)
+					.getResultList();
+			return list;
+			
+		}else if (no==3) {
+			if (page == null) {
+				page = 1;
+			}
+			if (showData == null) {
+				showData = 8;
+			}
+			int startPosition = ((page-1) * showData);
+
+			String originString = ("From CampInfoBean  where counties in (From CountiesBean  where area like '%" + area + "%') ") ;
+			Query<CampInfoBean> query = getSession().createQuery(originString , CampInfoBean.class);
+			List<CampInfoBean> list = query.setFirstResult(startPosition)
+					.setMaxResults(showData)
+					.setReadOnly(true)
+					.getResultList();
+			return list;
+			
+		}
+		return null;
+		
+		
 	}
 
 	@Override
-	public List<CampInfoBean> selectCampName(String campname) {
-		String originString = " From CampInfoBean where name like '%" + campname + "%'";
+	public List<CampInfoBean> selectCampName(String campname,Integer page , Integer showData) {
+		if (page == null) {
+			page = 1;
+		}
+		if (showData == null) {
+			showData = 8;
+		}
+		int startPosition = ((page-1) * showData);
+		String originString = "From CampInfoBean where name like '%" + campname + "%'";
 		Query<CampInfoBean> query = getSession().createQuery(originString, CampInfoBean.class);
-		List<CampInfoBean> list = query.list();
+		List<CampInfoBean> list = query.setFirstResult(startPosition)
+				.setMaxResults(showData)
+				.setReadOnly(true)
+				.getResultList();	
 		return list;
 
 	}
+	
 
 	@Override
 	public CampInfoBean insertCamp(CampInfoBean bean) {
-//		System.out.println("beanID : " + bean.getCampbasicid());
-//		System.out.println("beanName : " + bean.getName());
-		
 		
 			getSession().save(bean);
 			return bean;
@@ -94,5 +188,45 @@ public class CampInfoBeanDAO implements ICampInfoBeanService {
 		List<CampInfoBean> list = query.list();
 		return list;
 	}
-
+	@Override
+	public int countCamp(String area,Integer no) {		
+		
+		int result=0;
+		
+		if (no == 1) {
+		Query query = getSession().createQuery("From CampInfoBean",CampInfoBean.class);
+		result = query.list().size();
+		
+		}else if (no==2) {
+			Query query = getSession().createQuery("From CampInfoBean where counties like '%" + area + "%'",CampInfoBean.class);
+			result = query.list().size();
+					
+		}else if (no==3) {
+			Query query = getSession().createQuery("From CampInfoBean  where counties in (From CountiesBean  where area like '%" + area + "%') ",CampInfoBean.class);
+			result = query.list().size();
+			System.out.println(result+"+++++++555555555555555555555");	
+		}
+		return result;		
+			
+	}
+	@Override
+	public int countCampname(String campname) {		
+		Query query = getSession().createQuery("Select count(*) From CampInfoBean where name like '%" + campname + "%'");
+		long result = (long) query.uniqueResult();
+		return (int)result;		
+	}
+//	@Override
+//	public int countcountiesname(String counties) {		
+//		Query query = getSession().createQuery("Select count(*) From CampInfoBean where counties like '%" + counties + "%'");
+//		long result = (long) query.uniqueResult();
+//		return (int)result;		
+//	}
+//	
+//	@Override
+//	public int countareaname(String area) {		
+//		Query query = getSession().createQuery("Select count(*) From CampInfoBean  where counties in (From CountiesBean  where area like '%" + area + "%') ");
+//		long result = (long) query.uniqueResult();
+//		return (int)result;		
+//	}
+	
 }

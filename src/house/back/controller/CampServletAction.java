@@ -37,6 +37,7 @@ import house.mountainhouseList.service.AreaBeanService;
 import house.mountainhouseList.service.CampInfoBeanService;
 import house.mountainhouseList.service.CampImgBeanService;
 import house.mountainhouseList.service.CountiesBeanService;
+import mountain.MountainGlobal;
 
 @Controller
 @RequestMapping("/mountainCampBack")
@@ -54,59 +55,85 @@ public class CampServletAction {
 	private SessionFactory sessionfactory;
 	@Autowired
 	private HttpServletRequest httprequest;
+	private int showData = CampGlobal.actDS ;
+	private int respShowData = CampGlobal.actRpDS;
 
 	@RequestMapping(path = "/selectAll", method = RequestMethod.GET)
 //	@RequestMapping(path = "/mountainCampBack/selectAll", method = RequestMethod.GET)
-	public String selectAll(Model m) {
-		List<CampInfoBean> list = campService.selectAllCamp();
-
+	public String selectAll(Model m ,@RequestParam(name = "page") Integer page , String area , String counties , int no) {
+		//總比數		
+		int totalData = campService.countCamp(area,counties,no);
+		//總頁數
+		int totalPage = (int) Math.ceil(totalData*1.0/10);
+		List<CampInfoBean> list = campService.selectAllCamp(page, 10, no, counties, area);
+		
 		m.addAttribute("camp_all", list);
+		m.addAttribute("totalData",totalData);
+		m.addAttribute("totalPage",totalPage);
+		m.addAttribute("page",page);
+		
 		return "house/back/backCamp";
 	}
 
-	@PostMapping("/selectArea")
-	public String selectArea(@RequestParam(name = "selectarea") String area, Model m) {
+//	@PostMapping("/selectArea")
+//	public String selectArea(@RequestParam(name = "selectarea") String area, Model m,Integer page ) {
+//		List<AreaBean> list = new ArrayList<AreaBean>();
+//		List<CountiesBean>list1 = new ArrayList<CountiesBean>();
+//		List<CampInfoBean> list2 = new ArrayList<CampInfoBean>();
+//		list = areaService.selectArea(area, page, 10);
+//		for (AreaBean a : list) {
+//			
+//			for (CountiesBean b : a.getCounties()) {
+//			
+//				for (CampInfoBean c : b.getCamp()) {
+//					list2.add(c);
+//				}
+//			}
+//		}
+//		
+//		int totalData =  campService.countareaname(area);
+//		int totalPage = (int) Math.ceil(totalData*1.0 /10);
+//		
+//		m.addAttribute("camp_all", list2);
+//		m.addAttribute("totalData",totalData);
+//		m.addAttribute("totalPage",totalPage);
+//		m.addAttribute("page",page);
+//		return "house/back/backCamp";
+//
+//	}
 
-		List<AreaBean> list = areaService.selectArea(area);
-
-		ArrayList<CampInfoBean> list1 = new ArrayList<CampInfoBean>();
-
-		for (AreaBean a : list) {
-
-			for (CountiesBean b : a.getCounties()) {
-
-				for (CampInfoBean c : b.getCamp()) {
-					list1.add((CampInfoBean) c);
-				}
-			}
-		}
-		System.out.println("");
-		m.addAttribute("camp_area", list1);
-
-		return "house/back/backCamp";
-
-	}
-
-	@PostMapping("/selectCounties")
-	public String selectCounties(@RequestParam(name = "selectcounties") String counties, Model m) {
-		List<CountiesBean> list = countiesService.selectCounties(counties);
-		ArrayList<CampInfoBean> list2 = new ArrayList<CampInfoBean>();
-		for (CountiesBean countiesBean : list) {
-			for (CampInfoBean campInfoBean : countiesBean.getCamp()) {
-				list2.add(campInfoBean);
-			}
-		}
-
-		m.addAttribute("camp_counties", list2);
-		return "house/back/backCamp";
-
-	}
+//	@PostMapping("/selectCounties")
+//	public String selectCounties(@RequestParam(name = "selectcounties") String counties, Model m,Integer page) {
+//		int totalData = campService.countCampname(counties);
+//		int totalPage = (int) Math.ceil(totalData*1.0 / 10);
+//		List<CountiesBean> list = new ArrayList<CountiesBean>();
+////		ArrayList<CampInfoBean> list2 = (ArrayList<CampInfoBean>) campService.selectcounties(counties, page, 10);
+//		for (CountiesBean countiesBean : list) {
+//			for (CampInfoBean campInfoBean : countiesBean.getCamp()) {
+//				list2.add(campInfoBean);
+//			}
+//		}
+//		System.out.println("..........." + totalData);
+//		m.addAttribute("camp_all",list2);
+//		m.addAttribute("totalData",totalData);
+//		m.addAttribute("totalPage",totalPage);
+//		m.addAttribute("page",page);
+//		return "house/back/backCamp";
+//
+//	}
 
 	@GetMapping("/selectCamp")
-	public String selectCampName(@RequestParam(name = "selectcampname") String campname, Model m) {
-
-		List<CampInfoBean> list = campService.selectCampName(campname);
-		m.addAttribute("camp_campname", list);
+	public String selectCampName(@RequestParam(name = "selectcampname") String campname, Model m,Integer page) {
+		//總比數		
+		int totalData = campService.countCampname(campname);
+		//總頁數
+		int totalPage = (int) Math.ceil(totalData*1.0/10);		
+		
+		List<CampInfoBean> list = campService.selectCampName(campname,page,10);
+		m.addAttribute("camp_all", list);
+		m.addAttribute("totalData",totalData);
+		m.addAttribute("totalPage",totalPage);		
+		m.addAttribute("page",page);
 		return "house/back/backCamp";
 
 	}
@@ -186,7 +213,7 @@ public class CampServletAction {
 			areaService.insertArea(areaBean);
 		}
 
-		return "redirect:/mountainCampBack/selectAll";
+		return "redirect:/mountainCampBack/selectAll?page=";
 	}
 
 	@RequestMapping(path = "/deleteCamp", method = RequestMethod.POST)
@@ -304,8 +331,8 @@ public class CampServletAction {
 	
 	@GetMapping("/countiesoption")
 	@ResponseBody
-	public List<CountiesBean> countiesoption(@RequestParam(name = "areaselect") String area ){
-		List<CountiesBean> list = countiesService.selectarea(area);
+	public List<CountiesBean> countiesoption(@RequestParam(name = "areaselect") String area ,Integer page){
+		List<CountiesBean> list = countiesService.selectarea(area, page, null);
 		
 		
 		return list;

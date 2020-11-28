@@ -10,16 +10,22 @@ public interface ICampInfoBeanService {
 
 	List<CampInfoBean> selectcampid(int campid);
 
-	List<CampInfoBean> selectAllCamp();
+	List<CampInfoBean> selectAllCamp(Integer page, Integer showData, Integer no, String area);
 
-	List<CampInfoBean> selectCampName(String campname);
+	List<CampInfoBean> selectCampName(String campname,Integer page , Integer showData);
 
 	CampInfoBean insertCamp(CampInfoBean bean);
 
 	CampInfoBean update(CampInfoBean cBean);
 
 	CampInfoBean deleteCamp(int campid);
-	
-	List<CampInfoBean> selectcounties(String counties);
 
+	int countCamp(String area, Integer no);
+
+	int countCampname(String campname);
+	
+
+	
+
+	
 }
