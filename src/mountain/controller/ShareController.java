@@ -22,6 +22,7 @@ import main.generic.service.GenericService;
 import member.model.MemberBasic;
 import mountain.MountainGlobal;
 import mountain.model.activity.ActivityInfo;
+import oracle.net.aso.m;
 
 @RequestMapping("/mountain/public")
 @Controller
@@ -37,7 +38,11 @@ public class ShareController {
 	public MemberBasic mbInfo(
 			MemberBasic mb,
 			Model model) {
-		mb = (MemberBasic) model.getAttribute("Member");
+		if(model.getAttribute("Member") != null) {
+			mb = (MemberBasic) model.getAttribute("Member");
+			return mb;
+			
+		}
 		return mb;
 	}
 	//test價格輸入格式
@@ -150,4 +155,6 @@ public class ShareController {
 			result.put("correct","correct");
 			return result;
 		}
+		
+		
 }

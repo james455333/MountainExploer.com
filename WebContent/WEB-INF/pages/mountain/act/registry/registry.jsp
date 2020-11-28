@@ -7,31 +7,29 @@
 <title>岳進者 - 報名頁面</title>
 <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
 <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css"
-	href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="registry/registry.css">
+<!-- jquery + bootstrap + ionicframework -->
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
-<script type="text/javascript"
-	src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script type="text/javascript"
-	src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
+<script src="http://code.ionicframework.com/1.0.0/js/ionic.bundle.js"></script>
 
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- jquery validator -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"></script>
+<!-- daterangepicker -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+<!-- 自用 -->
 <script src="/MountainExploer.com/mountain/js/mountain.js"></script>
 <script src="registry/registry.js"></script>
 <script src="registry/registryFunction.js"></script>
@@ -66,20 +64,22 @@
 		<div class="div_li3 dl3_adj"></div>
 		<div class="div_li2 dl2_adj">
 			<!-- 每頁不同的內容從這裡開始 -->
-			<div class="container-fluid">
+			<div class="container-fluid reg-mainCon">
 				<div class="row">
 					<div class="col-md-12">
+					
 						<nav>
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item"><a href="#">Library</a></li>
-								<li class="breadcrumb-item active">Data</li>
+							<ol class="breadcrumb" id="bc">
+								<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
+								<li class="breadcrumb-item"><a href="#">活動討論區</a></li>
+								<li class="breadcrumb-item"><a href="#">活動詳情</a></li>
+								<li class="breadcrumb-item active">報名頁面</li>
 							</ol>
 						</nav>
 						<div class="page-header"></div>
 						<div class="row rb">
 							<div class="col-md-6">
-								<div class="row ">
+								<div class="row reg-actInfo">
 									<div class="col-md-12 cb1 text-center">報名訊息</div>
 									<div class="col-md-12" id="info-Container">
 										<div id="actInfo-Container-head">
@@ -100,7 +100,7 @@
 								</div>
 							</div>
 							<div class="col-md-6">
-								<div class="row">
+								<div class="row reg-actInfo">
 									<div class="col-md-12 cb1 text-center">備註</div>
 									<div class="col-md-12" id="act-note"></div>
 								</div>
@@ -109,53 +109,78 @@
 						<div class="row rb">
 							<div class="col-md-12 reg-ctrl">
 								<div class="btn-group btn-group-lg bt-position" role="group">
-									<button type="button" class="btn btn-success btn-lg">
-										<i class="fa fa-plus"></i>增加報名人數
+									<button type="button" class="btn-regInfo-plus btn btn-success btn-lg">
+										<i class="fa fa-plus" ></i>增加報名人數
 									</button>
-									<button type="button" class="btn btn-danger btn-lg">
+									<button type="button" class="btn-regInfo-minus btn btn-danger btn-lg">
 										<i class="fa fa-minus"></i>減少報名人數
 									</button>
 								</div>
 								<div class="row">**所有欄位皆為必填**</div>
-								<div class="row regInfo-head">
-									<div style="width: 12.5%;">姓名</div>
-									<div style="width: 12.5%;">出生年月日</div>
-									<div style="width: 12.5%;">身分證字號</div>
-									<div style="width: 15%;">電話(住)</div>
-									<div style="width: 15%;">手機</div>
-									<div style="width: 22.5%;">Email</div>
-									<div style="width: 10%;">控制欄</div>
-								</div>
-								<div class="row regInfo-body">
-									<form class="regInfo-form">
-										<div class="regInfo-body-order">
-											<div style="width:12.5%;">
-												<input class="form-control" required type="text" name="name_0" placeholder="姓名">
+								<div class="row regInfo">
+									<form action="/" class="regInfo-form">
+										<div class="regInfo-container">
+											<div class="rei-con-main">
+												<div class="rgi-con-left">
+													<div class="reg-body">
+														<div>姓名</div>
+														<div>
+															<input class="form-control" required type="text" name="name" pattern="^[\u4e00-\u9fa5_a-zA-Z]+$" placeholder="僅能輸入中文或英文">
+														</div>
+													</div>
+													<div class="reg-body">
+														<div>出生年月日</div>
+														<div>
+															<input required class="form-control" type="text" name="birthDay" readonly>
+														</div>
+													</div>
+													<div class="reg-body">
+														<div>身分證字號</div>
+														<div>
+															<input class="form-control" required type="text" name="personID" pattern="[A-Z]{1}[0-9]{9}" placeholder="範例 : A123456789">
+														</div>
+													</div>
+												</div>
+												<div class="rgi-con-right">
+													<div class="reg-body">
+														<div>電話(住)</div>
+														<div>
+															<input class="form-control" required type="text" name="contactPhone" pattern="[0-9]{2}-[0-9]+" placeholder="範例 : 01-2345678">
+														</div>
+													</div>
+													<div class="reg-body">
+														<div>手機</div>
+														<div>
+															<input class="form-control" required type="text" minlength="10" maxlength="10" pattern="^09[0-9]{8}" name="contactCellphone" placeholder="範例 : 0912345678">
+														</div>
+													</div>
+													<div class="reg-body">
+														<div>Email</div>
+														<div>
+															<input class="form-control" required type="email" name="contactEmail" placeholder="範例 : xxx@xmail.com">
+														</div>
+													</div>
+												
+												</div>
 											</div>
-											<div style="width:12.5%;">
-												<input required class="form-control" type="text" name="birthDay">
-											</div>
-											<div style="width:12.5%;">
-												<input class="form-control" required type="text" name="personID_0" pattern="[A-Z]{1}-[0-9]+" placeholder="A123456789">
-												<div class="invalid-feedback"></div>
-											</div>
-											<div style="width:15%;">
-												<input class="form-control" required type="text" name="contactPhone_0" pattern="[0-9]{2}-[0-9]+" placeholder="01-2345678">
-											</div>
-											<div style="width:15%;">
-												<input class="form-control" required type="text" minlength="10" maxlength="10" pattern="^09[0-9]{8}" name="contactCellphone_0" placeholder="ex : 0912345678">
-											</div>
-											<div style="width:22.5%;">
-												<input class="form-control" required type="email" name="contactEmail_0" placeholder="Email">
-											</div>
-											<div style="width:10%;">
-												<button type="reset" class="btn btn-warning"><i class="fa fa-file-text"></i>重置</button>
+											<div class="btn-rgi-reset">
+												<div class="btn-group btn-group-lg bt-position" role="group">
+													<button type="button" class="btn-regInfo-plus btn btn-success btn-lg">
+														<i class="fa fa-plus" ></i>增加報名人數
+													</button>
+													<button type="button" class="btn-regInfo-minus btn btn-danger btn-lg">
+														<i class="fa fa-minus"></i>減少報名人數
+													</button>
+													<button type="button" class="btn btn-warning btn-warning-reset">
+														<i class="fa fa-file-text"></i> 重填
+													</button>
+												</div>
 											</div>
 										</div>
 									</form>									
 								</div>
-								<a id="regInfo-submit" class="btn btn-primary btn-block"
-									type="button"><i class="fa fa-cloud-upload"></i>確認報名</a>
+								<button type="button" id="regInfo-submit" class="btn btn-primary btn-block"
+									type="button"><i class="fa fa-cloud-upload"></i>確認報名</button>
 							</div>
 						</div>
 					</div>
@@ -164,31 +189,7 @@
 			<!-- 每頁不同的內容到這裡結束 -->
 		</div>
 	</div>
-	<div class="hideDIV" style="display: none">=
-<!-- 			<div id="regInfo-body-order-origin"> -->
-<!-- 				<div style="width:12.5%;"> -->
-<!-- 					<input class="form-control" required type="text" name="name" placeholder="姓名"> -->
-<!-- 				</div> -->
-<!-- 				<div style="width:12.5%;"> -->
-<!-- 					<input required type="text" name="birthDay"> -->
-<!-- 				</div> -->
-<!-- 				<div style="width:12.5%;"> -->
-<!-- 					<input class="form-control" required type="text" name="personID" placeholder="身分證字號"> -->
-<!-- 					<div class="invalid-feedback"></div> -->
-<!-- 				</div> -->
-<!-- 				<div style="width:15%;"> -->
-<!-- 					<input class="form-control" required type="text" name="contactPhone" placeholder="電話(住)"> -->
-<!-- 				</div> -->
-<!-- 				<div style="width:15%;"> -->
-<!-- 					<input class="form-control" required type="text" name="contactCellphone" minlength="10" pattern="^09[0-9]{8}" placeholder="手機"> -->
-<!-- 				</div> -->
-<!-- 				<div style="width:22.5%;"> -->
-<!-- 					<input class="form-control" required type="text" name="contactEmail" placeholder="Email"> -->
-<!-- 				</div> -->
-<!-- 				<div style="width:10%;"> -->
-<!-- 					<button type="reset" class="btn btn-warning"><i class="fa fa-file-text"></i>重置</button> -->
-<!-- 				</div> -->
-<!-- 			</div>			 -->
+	<div class="hideDIV" style="display:none;">
 	</div>
 
 	<footer id="footer">

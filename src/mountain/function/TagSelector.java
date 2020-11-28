@@ -42,7 +42,7 @@ public class TagSelector {
 		passDay = (int) Math.ceil( ( (nowTime - postTime)*1.0 ) / MountainGlobal.ONEDAY);
 		regLeftDay = (int) Math.ceil( (regEndTime - nowTime)*1.0 / MountainGlobal.ONEDAY );
 		service.save(activityInfo);
-		String hql = "Select count(*) From ActRegInfo ari where ari.actRegistry in (From ActRegistry ar where ACTIVITY_BASIC_SEQNO = "+ activityInfo.getId() + ")";
+		String hql = "Select count(*) From ActRegInfo ari where ari.actRegistry in (From ActRegistry ar where deniTag is null and cancelTag is null and ACTIVITY_BASIC_SEQNO = "+ activityInfo.getId() + ")";
 		nowReg = service.countWithHql(hql);
 		topReg = activityInfo.getRegTop();
 		
@@ -133,7 +133,7 @@ public class TagSelector {
 			result.put(regAvl, false);
 		}
 	}
-	/*	報名將滿標籤定義	*/
+	/*	報名將截止標籤定義	*/
 	private static void setRegClzEnd(Map<Integer, Boolean> result) {
 		if ( regLeftDay <= 7 && regLeftDay > 0) {
 			result.put(regClzEnd, true);
@@ -141,7 +141,7 @@ public class TagSelector {
 			result.put(regClzEnd, false);
 		}
 	}
-	/*	報名已截止標籤定義	*/
+	/*	報名將滿標籤定義	*/
 	private static void setRegClzFull(Map<Integer, Boolean> result) {
 		if ( nowReg >= (topReg*3/4) ) {
 			result.put(regClzFull, true);

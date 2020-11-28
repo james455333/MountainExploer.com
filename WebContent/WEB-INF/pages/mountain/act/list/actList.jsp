@@ -9,15 +9,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>岳進者 - 活動</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
     <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
     <link rel="stylesheet" href="/MountainExploer.com/mountain/css/mountain.css">
     <link rel="stylesheet" href="/MountainExploer.com/mountain/act/list/list.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- jquery + bootstrap + ionicframework -->
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
+	<script src="http://code.ionicframework.com/1.0.0/js/ionic.bundle.js"></script>
+	
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<!-- jquery validator -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"></script>
+	<!-- daterangepicker -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+	
 	<script src="/MountainExploer.com/mountain/js/mountain.js"></script>
     <script src="act/list/listFunction.js"></script>
     <script src="act/list/list.js"></script>
@@ -115,6 +131,13 @@
                </nav>
 
             <div class="secDivContent m-sdc-adj">
+            	<!-- btn -->
+        
+            	<div class="btn-group btn-group-lg" role="group">
+					<button class="list-newPost btn btn-secondary" type="button">
+						發起活動   <i class="fa fa-pencil-square-o"></i>
+					</button> 
+				</div>
                 <!--table-->
                 <table class="order-table m-ta-aj">
                     <thead class="order-table-th">
@@ -138,7 +161,6 @@
 								</a>
 							</td>
 							<td>
-								<div class='tagContainer'></div>
 								<a class="m-tb-ti" href=""></a>
 							</td>
 							<td>

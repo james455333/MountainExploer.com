@@ -1,5 +1,5 @@
 $(function(){
-	var actHomeURL = "/MountainExploer.com/mountain/act/search";
+	var actHomeURL = "/MountainExploer.com/mountain/act/crud";
 	var actListURL = "/MountainExploer.com/mountain/list?";
 	var actEnterURL = "/MountainExploer.com/mountain/act/detail?";
 	
@@ -163,14 +163,13 @@ $(function(){
 		}
 		thisElm.find(".d_time").html("發表於 " + dateFormate(actInfo.postDate));
 		insertDefault(thisElm,actInfo)
-	/*	
+
 		//	測試登入與否
 		if(data.login == null){
 			thisElm.find(".memberLocker").css("display","block")
 			thisElm.find(".memberLocker").siblings().remove();
 			return;
 		}	
-	*/
 		//	插入圖片
 		insertImage(thisElm, data.images)
 		//	插入備註
@@ -182,7 +181,7 @@ $(function(){
 		}
 		//	插入報名頁面連結	
 		thisElm.find(".goReg").find("a").text("前往本活動報名頁面")
-		.attr("href","/MountainExploer.com/mountain/act/reg?actID="+actID);
+		.attr("href","/MountainExploer.com/mountain/act/registry?actID="+actID);
 	}
 	
 	//	函式 : 動態新增 => 預設內容 (擴增 : 可修改)

@@ -1,41 +1,4 @@
 
-/* Controller路徑對應變數 */
-var actHomeURL = "/MountainExploer.com/mountain/act/crud";
-var actEnterURL = "/MountainExploer.com/mountain/list?";
-var mountainShare = "/MountainExploer.com/mountain/public";
-var detailURL = "/MountainExploer.com/mountain/act/detail?page=1&actID="
-
-/* 預先設定要使用的變數名稱 
-	totalPage	=	本條件查詢頁面總數
-	totalData	=	本條件查詢總筆數
-	page 		=	當前頁面
-	od			=	本次命令
-	(1 = 預設, 2 = 標籤, 3 = 搜尋)
-	tag			=	本次查詢標籤號碼
-	search		=	本次搜尋內容
-*/
-var totalPage, totalData, page, od, tag, search;
-
-/* 抓取網域提供參數 */
-var urlNow = new URL(window.location.href)
-
-/* 設置預先設定的變數 */
-if (urlNow.searchParams.has("page")) {
-	page = urlNow.searchParams.get("page");
-} else {
-	page = 1;
-}
-if (urlNow.searchParams.has("od")) {
-	od = urlNow.searchParams.get("od");
-} else {
-	od = 1;
-}
-if (urlNow.searchParams.has("tag")) {
-	tag = urlNow.searchParams.get("tag");
-}
-if (urlNow.searchParams.has("search")) {
-	search = urlNow.searchParams.get("search");
-}
 /*	函式 : 圖片錯誤(空值)時處理 */
 function imgError(){
 	$(this).attr("src","../images/defaultMountain.jpg")
@@ -64,7 +27,7 @@ function activeMainAjax(page, as) {
 		dataType: 'json',
 		data: sendData,
 		success: function(data) {
-
+			console.log(data)
 			//參數給值
 			totalPage = data.totalPage;
 			totalData = data.totalData;
@@ -93,10 +56,10 @@ function insertTable(data) {
 		let thisElm = $(".order-table-tb").eq(i)
 		
 		/**呼叫動態新增網頁元素之函式 */
-		console.log("actBasic.seqno : " + data[i].actBasic.seqno)
+//		console.log("actBasic.seqno : " + data[i].actBasic.seqno)
 		setActImg(data[i].actBasic.seqno, thisElm)
-		setTag(data[i].tagMap, thisElm)
 		setTitle(data[i].actBasic, thisElm)
+		setTag(data[i].tagMap, thisElm)
 		setPostTime(data[i].actBasic, thisElm)
 		setRegNum(data[i], thisElm)
 		setRegEndDate(data[i].actBasic.actInfo, thisElm)
@@ -117,7 +80,7 @@ function insertTable(data) {
 	
 */
 function setActImg(seqno, thisElm) {
-	console.log("get seqno : " + seqno)
+//	console.log("get seqno : " + seqno)
 	let thisTD = $(thisElm).find("td").eq(0)
 	let imgURL = actHomeURL + "/images?actID=" + seqno + "&defImage=1"
 
@@ -127,12 +90,12 @@ function setActImg(seqno, thisElm) {
 }
 function setTitle(actBasic, thisElm) {
 	
-	let thisTD = thisElm.find(".tagContainer").siblings("a")
+	let thisTD = thisElm.find("td").eq(1).find("a")
 	let title = "<br>" + actBasic.actInfo.title + "<br>"
 	
 	thisTD.attr("href", detailURL + actBasic.seqno)
 		+ actBasic.actInfo.totalDay + " / " + actBasic.actInfo.price;
-	thisTD.html(title)
+	thisTD.append(title)
 }
 function setPostTime(actBasic, thisElm) {
 	
@@ -209,7 +172,7 @@ function setPageController(page) {
 
 /*	函式 : 透過傳入參數，於網頁動態新增狀態標籤 */
 function setTag(check, thisElm) {
-	let container = thisElm.find(".tagContainer")
+	let container = thisElm.find("td").eq(1).find("a")
 	let aURL = actEnterURL.concat("od=2&page=1&tag=")
 	let aTagStart = "<div class='actTag'><a href='"
 	let aTagEnd = "</a></div>"
@@ -218,32 +181,29 @@ function setTag(check, thisElm) {
 
 	if (!check[3]) {
 		if (check[1]) {
-			container.append(aTagStart + aURL + "1'>新活動" + aTagEnd)
+			container.append(aTagStart + aURL + "1'><i class='fa fa-lightbulb-o'></i>" + aTagEnd)
 		}
 		if (check[2]) {
-			container.append(aTagStart + aURL + "2'>熱門活動" + aTagEnd)
+			container.append(aTagStart + aURL + "2'><i class='fa fa-star'></i>" + aTagEnd)
 		}
 		if (!check[4]) {
 			if (!check[5]) {
-				if (check[6]) {
-					container.append(regTagStart + aURL + "6'>尚可報名" + regTagEnd)
-				}
 				if (check[7]) {
-					container.append(regTagStart + aURL + "7'>報名將截止" + regTagEnd)
+					container.append(regTagStart + aURL + "7'><i class='fa fa-exclamation-circle'></i>" + regTagEnd)
 				}
 				if (check[8]) {
-					container.append(regTagStart + aURL + "8'>報名將滿" + regTagEnd)
+					container.append(regTagStart + aURL + "8'><i class='fa fa-battery-three-quarters'></i>" + regTagEnd)
 
 				}
 			} else {
-				container.append(regTagStart + aURL + "5'>報名已滿" + regTagEnd)
+				container.append(regTagStart + aURL + "5'><i class='fa fa-battery'></i>" + regTagEnd)
 			}
 		} else {
-			container.append(regTagStart + aURL + "4'>報名截止" + regTagEnd)
+			container.append(regTagStart + aURL + "4'><i class='fa fa-exclamation-triangle'></i>" + regTagEnd)
 		}
 
 	} else {
-		container.append(aTagStart + aURL + "3'>歷史活動" + aTagEnd)
+		container.append(aTagStart + aURL + "3'><i class='fa fa-calendar-times-o'></i>" + aTagEnd)
 	}
 }
 

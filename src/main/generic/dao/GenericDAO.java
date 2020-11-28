@@ -101,7 +101,8 @@ public class GenericDAO<T extends GenericTypeObject> implements InterfaceDAO<T> 
 	public T insert(T entity) {
 
 		Session session = sessionFactory.getCurrentSession();
-		session.evict(entity);
+//		session.evict(entity);
+		System.out.println("insert Active");
 		session.save(entity);
 		return entity;
 

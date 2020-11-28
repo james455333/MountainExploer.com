@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -51,6 +52,7 @@ import mountain.model.route.RouteBasic;
 
 @Controller
 @RequestMapping("/mountain/act/crud")
+@SessionAttributes(names = "Member")
 public class ActCRUDController {
 	@Autowired
 	HttpServletRequest request;
@@ -63,6 +65,7 @@ public class ActCRUDController {
 
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 
+//	private int showData = MountainGlobal.actDS;
 	private int showData = MountainGlobal.actDS;
 	private int respShowData = MountainGlobal.actRpDS;
 
@@ -220,6 +223,7 @@ public class ActCRUDController {
 	@GetMapping("/defaultAS")
 	@ResponseBody
 	public Map<Object, Object> showActBeans(
+			Model model,
 			ActivityBasic actBasic, 
 			ActivityInfo actInfo,
 			@RequestParam(name = "page") Integer page) {
@@ -235,7 +239,7 @@ public class ActCRUDController {
 		/*
 		 * 預設 : 非刪除+未過期
 		 */
-		String hql = "From ActivityInfo where sysdate < startDate and deleteTag is null order by postDate ,actBasic";
+		String hql = "From ActivityInfo where sysdate < startDate and deleteTag is null order by postDate desc,actBasic";
 
 		// 得到hql總數
 		String all = "select count(*) from ActivityInfo where sysdate < startDate ";
@@ -264,7 +268,7 @@ public class ActCRUDController {
 
 			actList.add(map);
 		}
-
+		
 		resultMap.put("totalData", totalData);
 		resultMap.put("totalPage", totalPage);
 		resultMap.put("page", page);
@@ -358,7 +362,7 @@ public class ActCRUDController {
 		if (allParam.get("search") != null) {
 			String search = allParam.get("search");
 			System.out.println("================" + search);
-			String hql = "From ActivityInfo where Title like '%" + search + "%'" + " order by postDate";
+			String hql = "From ActivityInfo where Title like '%" + search + "%'" + " order by postDate desc, actBasic";
 
 			String allHql = "Select count(*) ".concat(hql);
 			totalData = service.countWithHql(allHql);
@@ -449,7 +453,7 @@ public class ActCRUDController {
 			// Set respMB in acRespMap
 			respList.add(actRespMap);
 		}
-
+		System.out.println("============== Member : " + model.getAttribute("Member"));
 		if (model.getAttribute("Member") != null) {
 			resultMap.put("login", model.getAttribute("Member"));
 		} else {
@@ -510,34 +514,32 @@ public class ActCRUDController {
 
 	/* 標籤查詢 --> 編寫HQL */
 	private String tagParseHql(int tag) {
+		
+		String nowReg = "( Select count(*) From ActRegInfo where actRegistry in "
+				+ " (select seqno From ActRegistry ar where  deniTag is null and cancelTag is null and activityBasic = ai.id) )";
+		
 		String hql = null;
 		if (tag == 1) {
-			hql = "From ActivityInfo where sysdate < startDate and (postDate+7) >　sysdate order by actBasic";
+			hql = "From ActivityInfo where sysdate < startDate and (postDate+7) >　sysdate order by postDate desc, actBasic";
 		} else if (tag == 2) {
 			System.out.println("enter 2 ");
 			hql = "From ActivityInfo ai where sysdate < startDate and ( ai.regTop / 2 ) <= "
-					+ "( Select count(*) From ActRegInfo where actRegistry in "
-					+ " (select seqno From ActRegistry ar where activityBasic = ai.id) )" + "order by ai.id";
+					+ nowReg + "order by postDate desc, ai.id";
 		} else if (tag == 3) {
-			hql = "From ActivityInfo where startDate < sysdate order by actBasic";
+			hql = "From ActivityInfo where startDate < sysdate order by postDate, actBasic";
 		} else if (tag == 4) {
-			hql = "From ActivityInfo where sysdate < startDate and regEndDate < sysdate order by actBasic";
+			hql = "From ActivityInfo where sysdate < startDate and regEndDate < sysdate order by postDate desc, actBasic";
 		} else if (tag == 5) {
 			hql = "From ActivityInfo ai where sysdate < startDate and ai.regEndDate > sysdate" + " and ai.regTop <= "
-					+ "( Select count(*) From ActRegInfo where actRegistry in "
-					+ " (select seqno From ActRegistry ar where activityBasic = ai.id) )" + "order by ai.id";
+					+ nowReg + "order by ai.postDate desc, ai.id";
 		} else if (tag == 6) {
 			hql = "From ActivityInfo ai where sysdate < startDate and ai.regEndDate > sysdate" + " and ai.regTop > "
-					+ "( Select count(*) From ActRegInfo where actRegistry in "
-					+ " (select seqno From ActRegistry ar where activityBasic = ai.id) )" + "order by ai.id";
+					+ nowReg + "order by ai.postDate desc, ai.id";
 		} else if (tag == 7) {
-			hql = "From ActivityInfo where sysdate < startDate and (regEndDate - sysdate) > 0 and 7 > (regEndDate - sysdate)";
+			hql = "From ActivityInfo where sysdate < startDate and (regEndDate - sysdate) > 0 and 7 > (regEndDate - sysdate) order by postDate desc, actBasic";
 		} else if (tag == 8) {
 			hql = "From ActivityInfo ai where sysdate < startDate and ai.regEndDate > sysdate and ai.regTop > "
-					+ "( Select count(*) From ActRegInfo where actRegistry in "
-					+ " (select seqno From ActRegistry ar where activityBasic = ai.id) )"
-					+ " and (ai.regTop * 3 / 4 ) <  " + "( Select count(*) From ActRegInfo where actRegistry in "
-					+ " (select seqno From ActRegistry ar where activityBasic = ai.id) )" + "order by ai.id";
+					+ nowReg + " and (ai.regTop * 3 / 4 ) <=  " + nowReg + "order by ai.postDate desc, ai.id";
 		}
 
 		return hql;

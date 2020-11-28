@@ -14,7 +14,10 @@ tbody td {
 }
 .m-tb-ti{
 	color : #ffffff;
-	font-size: 20px;
+	font-size: 30px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 }
 .d-li-na{
 	width:30%;
@@ -40,31 +43,56 @@ tbody td {
 	justify-content: center;
 }
 
-.actTag {
-	font-size: 50%;
-	color: blue;
-}
-
-.actTag a:link {
-	color: blue;
-}
-
-.actTag a:visited {
-	color: blue;
-}
-
 .regTag {
-	font-size: 50%;
-	color: red;
+	font-size: 20px;
+	margin : 0px 2.5px;
+	color: blue;
 }
 
 .regTag a:link {
-	color: red;
+	color: blue;
 }
 
 .regTag a:visited {
+	color: blue;
+}
+
+.actTag {
+	font-size: 20px;
+	margin : 0px 5px;
+	color: red;
+}
+
+.actTag a:link {
+	color: red;
+}
+
+.actTag a:visited {
 	color: red;
 }
 .hideTbody{
 	display : none;
+}
+.list-newPost {
+	box-shadow: 0px 10px 10px -7px #276873;
+	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	background-color:#599bb3;
+	border-radius:19px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:25px;
+	font-weight:bold;
+	padding:25px 20px;
+	text-decoration:none;
+	text-shadow:-5px 0px 0px #3d768a;
+}
+.list-newPost:hover {
+	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background-color:#408c99;
+}
+.list-newPost:active {
+	position:relative;
+	top:1px;
 }
