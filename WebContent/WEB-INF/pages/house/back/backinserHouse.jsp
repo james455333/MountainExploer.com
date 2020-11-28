@@ -6,6 +6,7 @@
 <head>
 <meta charset="BIG5">
 <title>後台資料維護系統/山中小屋新增</title>
+<script src=" https://code.jquery.com/jquery-3.5.0.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href='<c:url value="/backstage/css/backStage.css"/>'> 
 <link rel="stylesheet" href='<c:url value="/housecamp/css/back/backhousecamp.css"/>' >
@@ -63,21 +64,24 @@
 						<th scope="col"><span class="tr_title">山屋床位</span></th>
 						<th scope="col"><span class="tr_title">山屋營地位</span></th>
 						<th scope="col"><span class="tr_title">高度 / 海拔</span></th>
+						<th scope="col"><span class="tr_title">照片</span></th>
+						<th scope="col"><span class="tr_title"></span></th>
 					</tr>
 				</thead>
 				<tbody>
 				  <tr>  
 				   
-				  	<form action="<c:url value='/mountainHouseBack/inserHouse'></c:url>"method='post'>
-				      <td><select name="inser_park" >
-				      <option value="玉山國家公園">玉山國家公園</option>
-					  <option value="太魯閣國家公園">太魯閣國家公園</option>
-					  <option value="雪霸國家公園">雪霸國家公園</option>
+				  	<form action="<c:url value='/mountainHouseBack/inserHouse'></c:url>"method='post' enctype="multipart/form-data">
+				      <td><select name="inser_park" id="selectnPark">
+				      
 				      </select></td>
 				      <td><input type="text" name="inser_house" size="20" value="大大小屋"></td>
 				      <td><input type="text" name="inser_bed" size="20" value="10"></td>
 				      <td><input type="text" name="inser_camp" size="20" value="20"></td>
 				      <td><input type="text" name="inser_height" size="20" value="330M"></td>
+				      <td><img id="blah" src="#" alt="your image" />		       
+				      <input type="file" name="mFile" id="imgInp" size="25" accept="image/*">
+				      </td>
 				      <td><input type="submit"  value="新增"></td>
 					</form>	    
 				   
@@ -88,7 +92,43 @@
 	</div>
 
 </body>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
+<script type="text/javascript">
+	$(function() {
+		var houseUrl = "/MountainExploer.com/mountainHouseBack";
+
+		$.ajax({
+			url:houseUrl + "/nParkAlloption",
+			method:"GET",
+			dataType : "json",
+			success:function(nPark){
+				for(var i =0 ; i< nPark.length ; i++){
+					$("#selectnPark").append(
+							"<option value='" + nPark[i].id + "'>"
+							+ nPark[i].name + "</option>") }
+				let firstArea = $("#selectnPark").find("option").eq(0).val()
+				
+				}
+			})
+
+		})
+	</script>
+	<script>
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    
+    reader.onload = function(e) {
+      $('#blah').attr('src', e.target.result);
+    }
+    
+    reader.readAsDataURL(input.files[0]); // convert to base64 string
+  }
+}
+
+$("#imgInp").change(function() {
+  readURL(this);
+});
+</script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
 	<script type="text/javascript" charset="UTF-8" src='<c:url value="/housecamp/css/back/backhousecamp.js"/>'></script>

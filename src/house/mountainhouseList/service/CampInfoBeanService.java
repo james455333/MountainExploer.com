@@ -58,13 +58,13 @@ public class CampInfoBeanService implements ICampInfoBeanService {
 	
 
 	@Override
-	public int countCamp(String area, Integer no) {
-		return cDao.countCamp(area,  no);
+	public int countCamp(String area, Integer no,String counties) {
+		return cDao.countCamp(area,  no , counties);
 	}
 
 	@Override
-	public List<CampInfoBean> selectAllCamp(Integer page, Integer showData, Integer no, String area) {
-		return cDao.selectAllCamp(page, showData, no, area);
+	public List<CampInfoBean> selectAllCamp(Integer page, Integer showData, Integer no, String area,String counties) {
+		return cDao.selectAllCamp(page, showData, no, area, counties);
 	}
 
 	

@@ -33,6 +33,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import house.CampGlobal;
 import house.mountainhouseList.model.AreaBean;
+import house.mountainhouseList.model.CampImgBean;
 import house.mountainhouseList.model.CampInfoBean;
 import house.mountainhouseList.model.CountiesBean;
 import house.mountainhouseList.service.AreaBeanService;
@@ -115,6 +116,10 @@ public class ImportHouseCamp {
 				campbean.setUrl(btyesdesc);
 				campbean.setCounties(countiesbean);
 				campbeanSet.add(campbean);
+				
+				CampImgBean campImgBean = new CampImgBean();
+				campbean.setCampimgid(campImgBean);
+				campImgBean.setCampid(campbean);
 				
 				AreaBean queryArea = areaService.select(areaName);
 				if (queryArea!=null) {

@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import house.CampGlobal;
+import house.mountainhouseList.model.HouseImgBean;
 import house.mountainhouseList.model.HouseInfoBean;
 import house.mountainhouseList.service.HouseInfoBeanService;
 import house.mountainhouseList.service.NationalParkService;
@@ -104,6 +105,7 @@ public class ImportHouse {
 			hBean.setHeight(height);
 			service.save(nationPark);
 			nationPark = (NationalPark) service.select(nationalPark);
+			
 //			List<GenericTypeObject> selectAll = service.selectAll();
 //			List<NationalPark> list = new ArrayList<NationalPark>();
 //			for (GenericTypeObject gto : selectAll) {
@@ -111,7 +113,9 @@ public class ImportHouse {
 //			}
 			hBean.setName(housename);
 //			List<NationalPark> quPark = npService.selectParks(nationalPark);
-			
+			HouseImgBean houseImgBean  = new HouseImgBean();
+			hBean.setImgid(houseImgBean);
+			houseImgBean.setHouseid(hBean);
 			
 				hBean.setNationalPark(nationPark);
 				System.out.println("NPID : " + nationPark.getId());

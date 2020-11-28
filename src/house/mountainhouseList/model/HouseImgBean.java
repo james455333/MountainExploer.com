@@ -32,7 +32,7 @@ public class HouseImgBean {
 	private Integer housebasicid;
 	
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "HOUSEBASIC_ID")
+	@JoinColumn(name = "HOUSE_BASIC_ID")
 	private HouseInfoBean houseid;
 	
 	

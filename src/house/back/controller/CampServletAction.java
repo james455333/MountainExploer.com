@@ -52,25 +52,26 @@ public class CampServletAction {
 	@Autowired
 	private CampImgBeanService campImgService;
 	@Autowired
-	private SessionFactory sessionfactory;
-	@Autowired
 	private HttpServletRequest httprequest;
-	private int showData = CampGlobal.actDS ;
-	private int respShowData = CampGlobal.actRpDS;
 
 	@RequestMapping(path = "/selectAll", method = RequestMethod.GET)
 //	@RequestMapping(path = "/mountainCampBack/selectAll", method = RequestMethod.GET)
-	public String selectAll(Model m ,@RequestParam(name = "page") Integer page , String area , String counties , int no) {
-		//總比數		
-		int totalData = campService.countCamp(area,counties,no);
+	public String selectAll(Model m ,@RequestParam(name = "page") Integer page,@RequestParam(name = "selectarea") String area ,@RequestParam(name = "no") Integer no,@RequestParam(name = "selectcounties") String counties ) {
+		//總比數
+		int totalData = campService.countCamp(area, no ,counties);			
+				
 		//總頁數
 		int totalPage = (int) Math.ceil(totalData*1.0/10);
-		List<CampInfoBean> list = campService.selectAllCamp(page, 10, no, counties, area);
+		
+		List<CampInfoBean> list = campService.selectAllCamp( page ,  10, no , area,counties );
 		
 		m.addAttribute("camp_all", list);
 		m.addAttribute("totalData",totalData);
 		m.addAttribute("totalPage",totalPage);
 		m.addAttribute("page",page);
+		m.addAttribute("no",no);
+		m.addAttribute("selectarea",area);
+		m.addAttribute("selectcounties",counties);
 		
 		return "house/back/backCamp";
 	}
@@ -144,7 +145,9 @@ public class CampServletAction {
 			@RequestParam(name = "insercamp_counties") String counties,
 			@RequestParam(name = "insercamp_name") String name, @RequestParam(name = "insercamp_desc") byte[] desc,
 			@RequestParam(name = "mFile") MultipartFile mFile) throws IllegalStateException, IOException {
-
+		
+		if (mFile != null && !mFile.isEmpty()) {
+			
 		String fileName = mFile.getOriginalFilename();
 		String fileTramDirPath = httprequest.getSession().getServletContext().getRealPath("/") + "UploadTempDir\\";
 
@@ -173,6 +176,7 @@ public class CampServletAction {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}
 		}
 
 		Set<CountiesBean> countiesbeanSet = new HashSet<CountiesBean>();
@@ -213,7 +217,7 @@ public class CampServletAction {
 			areaService.insertArea(areaBean);
 		}
 
-		return "redirect:/mountainCampBack/selectAll?page=";
+		return "redirect:/mountainCampBack/selectAll?selectarea=&selectcounties=&no=1&page=1";
 	}
 
 	@RequestMapping(path = "/deleteCamp", method = RequestMethod.POST)
@@ -265,7 +269,6 @@ public class CampServletAction {
 
 		// 照片
 		if (mFile != null && !mFile.isEmpty()) {
-//			campImgService.deleteCamp(h2);
 
 			String fileName = mFile.getOriginalFilename();
 			String fileTramDirPath = httprequest.getSession().getServletContext().getRealPath("/") + "UploadTempDir\\";

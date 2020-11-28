@@ -85,6 +85,12 @@ public class HouseInfoBean {
 	public void setNationparkseqno(Integer nationparkseqno) {
 		this.nationparkseqno = nationparkseqno;
 	}
+	public HouseImgBean getImgid() {
+		return imgid;
+	}
+	public void setImgid(HouseImgBean imgid) {
+		this.imgid = imgid;
+	}
 	
 	
 	

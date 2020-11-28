@@ -6,6 +6,7 @@
 <head>
 <meta charset="BIG5">
 <title>後台資料維護系統/中山小屋修改</title>
+<script src=" https://code.jquery.com/jquery-3.5.0.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href='<c:url value="/backstage/css/backStage.css"/>'> 
 <link rel="stylesheet" href='<c:url value="/housecamp/css/back/backhousecamp.css"/>' >
@@ -63,21 +64,31 @@
 						<th scope="col"><span class="tr_title">山屋床位</span></th>
 						<th scope="col"><span class="tr_title">山屋營地位</span></th>
 						<th scope="col"><span class="tr_title">高度 / 海拔</span></th>
+						<th scope="col"><span class="tr_title">照片</span></th>
+						<th scope="col"><span class="tr_title"></span></th>
+						<th scope="col"><span class="tr_title"></span></th>
+						<th scope="col"><span class="tr_title">原本圖片</span></th>
 					</tr>
 				</thead>
 				<tbody>
 				  <c:forEach var="k" items="${jumpupdatename}"> 
 				<tr>  
 				 <div>				 
-				  	<form  action="<c:url value='/mountainHouseBack/updateHouse'></c:url>"method="post">	
+				  	<form  action="<c:url value='/mountainHouseBack/updateHouse'></c:url>"method="post" enctype="multipart/form-data">	
  				    	<td><input type="hidden" name="update_park" value="${k.nationalPark.name}">${k.nationalPark.name}</td>	  
 				    	<td><input type="text" name="update_name" size="20" value="${k.name}"> 	</td>
 				    	<td><input type="text" name="update_bed" size="20" value="${k.bed}"> 	</td>
 				    	<td><input type="text" name="update_camp" size="50" value="${k.camp}"> 	</td>
 				    	<td><input type="text" name="update_height" size="50" value="${k.height}"> 	</td>				    	
 				    	<td><input type="hidden" name="update_id" size="10" value="${k.housebasicid}">	</td> 			    		
+				    	<td><img id="blah" src="#" alt="更新圖片" />		       
+				     		<input type="file" name="files" id="imgInp" size="25" accept="image/*"></td>
+				     		 <input type="hidden" name="hotelnumber" value="${k.imgid.id}">
 				    	<td><input type="submit"  value="修改"></td>
 				    </form>
+				    <td><img height="100" width="100"
+							src="<c:url value='/mountainHouseBack/showimg?imgid=${k.imgid.id}'/>">
+				      </td>
 				 </div>
 				</tr> 
 				    	</c:forEach> 
@@ -87,6 +98,24 @@
 	</div>
 
 </body>
+<script>
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    
+    reader.onload = function(e) {
+      $('#blah').attr('src', e.target.result);
+    }
+    
+    reader.readAsDataURL(input.files[0]); // convert to base64 string
+  }
+}
+
+$("#imgInp").change(function() {
+  readURL(this);
+});
+
+</script>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>

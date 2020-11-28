@@ -22,22 +22,31 @@
 			<div class="searchAll">
 				<form action="<c:url value='/mountainCampBack/selectAll'></c:url>"
 					method='get'>					
-					<input type="hidden" name="page" >
+					<input type="hidden" value="" name="selectarea" >
+					<input type="hidden" value="" name="selectcounties" >
+					<input type="hidden" value=1 name="no" >
+					<input type="hidden" value=1 name="page" >
 					<input type="submit" value="全部觀看">
 				</form>
 			</div>
 			<div class="searchSelect">
-				<form action="<c:url value='/mountainCampBack/selectArea'></c:url>"
-					method='post'>
+				<form action="<c:url value='/mountainCampBack/selectAll'></c:url>"
+					method='get'>
 					<span>縣市 :&nbsp </span> <input type="text" name="selectarea">
+					<input type="hidden" value="" name="selectcounties" >
+					<input type="hidden" value=3 name="no" >
+					<input type="hidden" value=1 name="page" >
 					<input type="submit" value="查詢">
 				</form>
 			</div>
 			<div class="searchSelect">
 				<form
-					action="<c:url value='/mountainCampBack/selectCounties'></c:url>"
-					method='post'>
+					action="<c:url value='/mountainCampBack/selectAll'></c:url>"
+					method='get'>
 					<span>鄉鎮 :&nbsp </span> <input type="text" name="selectcounties">
+					<input type="hidden" value="" name="selectarea" >
+					<input type="hidden" value=2 name="no" >
+					<input type="hidden" value=1 name="page" >				
 					<input type="submit" value="查詢">
 				</form>
 			</div>
@@ -87,12 +96,23 @@
 				</thead>
 				<tbody>
 					<!-- 查詢全部 -->
-					<c:forEach var="talpage" begin="1" end="${totalPage}" >
-					<a href="selectAll?page=${talpage}">${talpage}</a>
-					</c:forEach>
+					
+					<div>
+					<a href="selectAll?selectarea=${selectarea }&selectcounties=${selectcounties}&no=${no }&page=1">«第一頁</a>
+					<a href="selectAll?selectarea=${selectarea }&selectcounties=${selectcounties}&no=${no }&page=${page-1}">‹上一頁</a>
+				
+					<select onChange="location = this.options[this.selectedIndex].value">
+						<c:forEach var="toPage" begin="1" end="${totalPage}">
+						<option value="selectAll?selectarea=${selectarea }&selectcounties=${selectcounties}&no=${no }&page=${toPage}" <c:if test="${toPage==page}">selected="selected"</c:if>>第${toPage}頁</option>
+						</c:forEach>
+
+					</select>
+					<a href="selectAll?selectarea=${selectarea }&selectcounties=${selectcounties}&no=${no }&page=${page+1}">下一頁›</a>
+					<a href="selectAll?selectarea=${selectarea }&selectcounties=${selectcounties}&no=${no }&page=${totalPage}">最末頁»</a>
 					
 					
-					<tr>總共<c:out value="${totalData}">${totalData}</c:out>筆資料</tr>
+					
+					總共<c:out value="${totalData}">${totalData}</c:out>筆資料 </div>
 					
 					<c:forEach var="i" items="${camp_all}">
 						<tr>

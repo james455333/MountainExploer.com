@@ -10,7 +10,7 @@ public interface ICampInfoBeanService {
 
 	List<CampInfoBean> selectcampid(int campid);
 
-	List<CampInfoBean> selectAllCamp(Integer page, Integer showData, Integer no, String area);
+	List<CampInfoBean> selectAllCamp(Integer page, Integer showData, Integer no, String area , String counties);
 
 	List<CampInfoBean> selectCampName(String campname,Integer page , Integer showData);
 
@@ -20,7 +20,7 @@ public interface ICampInfoBeanService {
 
 	CampInfoBean deleteCamp(int campid);
 
-	int countCamp(String area, Integer no);
+	int countCamp(String area, Integer no ,String counties);
 
 	int countCampname(String campname);
 	

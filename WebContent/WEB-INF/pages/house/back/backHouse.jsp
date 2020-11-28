@@ -7,6 +7,7 @@
 <head>
 <meta charset="BIG5">
 <title>後台資料維護系統/山中小屋資料</title>
+<script src=" https://code.jquery.com/jquery-3.5.0.js"></script>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -22,25 +23,31 @@
 			<div class="searchAll">
 				<form action="<c:url value='/mountainHouseBack/selectAll'></c:url>"
 					method='get'>
+					<input type="hidden" value="1" name="page">
+					<input type="hidden" value="1" name="no">
+					<input type="hidden" value="" name="parkid">
 					<input type="submit" value="全部觀看">
 				</form>
 			</div>
 			<div class="searchSelect">
-				<form action="<c:url value='/mountainHouseBack/selectPark'></c:url>"
-					method='post'>
+				<form action="<c:url value='/mountainHouseBack/selectAll'></c:url>"
+					method='get'>
 					<span>國家公園 :&nbsp </span> 
-					<select  name="selectpark">
-					<option value="301">玉山國家公園</option>
-					<option value="300">太魯閣國家公園</option>
-					<option value="303">雪霸國家公園</option>
+					<select  name="parkid" id="selectnPark">
+					<option>選擇國家公園</option>
+<!-- 					<option value="301">玉山國家公園</option> -->
+<!-- 					<option value="300">太魯閣國家公園</option> -->
+<!-- 					<option value="304">雪霸國家公園</option> -->
 					</select>
+					<input type="hidden" value="1" name="page">
+					<input type="hidden" value="2" name="no">
 					<input type="submit" value="查詢">
 				</form>
 			</div>
 			<div class="searchSelect">
 				<form
 					action="<c:url value='/mountainHouseBack/selectHouse'></c:url>"
-					method='post'>
+					method='get'>
 					<span>山中小屋 :&nbsp </span> <input type="text" name="selecthouse">
 					<input type="submit" value="查詢">
 				</form>
@@ -78,10 +85,29 @@
 						<th scope="col"><span class="tr_title">床位數量</span></th>
 						<th scope="col"><span class="tr_title">露營地數量</span></th>
 						<th scope="col"><span class="tr_title">海拔</span></th>
+						<th scope="col"><span class="tr_title">照片</span></th>
+						<th scope="col"><span class="tr_title"></span></th>
 
 					</tr>
 				</thead>
 				<tbody>
+				<div>
+					<a href="selectAll?selectparkid=${parkid }&no=${no }&page=1">«第一頁</a>
+					<a href="selectAll?selectarea=${selectarea }&selectcounties=${selectcounties}&no=${no }&page=${page-1}">‹上一頁</a>
+				
+					<select onChange="location = this.options[this.selectedIndex].value">
+						<c:forEach var="toPage" begin="1" end="${totalPage}">
+						<option value="selectAll?parkid=${parkid }&no=${no }&page=${toPage}" <c:if test="${toPage==page}">selected="selected"</c:if>>第${toPage}頁</option>
+						</c:forEach>
+
+					</select>
+					<a href="selectAll?selectarea=${selectarea }&selectcounties=${selectcounties}&no=${no }&page=${page+1}">下一頁›</a>
+					<a href="selectAll?selectarea=${selectarea }&selectcounties=${selectcounties}&no=${no }&page=${totalPage}">最末頁»</a>
+					
+					
+					總共<c:out value="${totalData}">${totalData}</c:out>筆資料</div>
+					
+				
 					<!-- 查詢全部 -->
 					<c:forEach var="i" items="${House_All}">
 						<tr>
@@ -92,55 +118,30 @@
 							<td>${i.bed}</td>
 							<td>${i.camp}</td>
 							<td>${i.height}</td>
-
-						</tr>
-					</c:forEach>
-					<!-- 查詢國家公園 -->
-
-					<c:forEach var="j" items="${houselist}">
-						<tr>
-
-							<td>${j.housebasicid}</td>
-							<td>${j.nationalPark.name}</td>
-							<td>${j.name}</td>
-							<td>${j.bed}</td>
-							<td>${j.camp}</td>
-							<td>${j.height}</td>
-						</tr>
-					</c:forEach>
-					<!-- 查詢山中小屋 -->
-
-					<c:forEach var="k" items="${select_House}">
-						<tr>
-							<td>${k.housebasicid}</td>
-							<td>${k.nationalPark.name}</td>
-							<td>${k.name}</td>
-							<td>${k.bed}</td>
-							<td>${k.camp}</td>
-							<td>${k.height}</td>
-
-
+							<td><img height="100" width="100"
+							src="<c:url value='/mountainHouseBack/showimg?imgid=${i.imgid.id}'/>"></td>
+							
 							<td>
 								<form
 									action="<c:url value='/mountainHouseBack/deleteHouse'></c:url>"
 									name="form1" method='post'>
 									<input type="hidden" name="deletehouse"
-										value="${k.housebasicid}"> <input type="button"
+										value="${i.housebasicid}"> <input type="button"
 										value="刪除"
 										onclick="if(confirm('確認要刪除嗎？')) this.form.submit();">
 								</form>
-							</td>
-							<td>
+							
 								<form
 									action="<c:url value="/mountainHouseBack/updatejump"></c:url>"
 									method="get">
 									<input type="hidden" name="jumpupdate"
-										value="${k.housebasicid}"> <input type="submit"
+										value="${i.housebasicid}"> <input type="submit"
 										value="修改">
 								</form>
 							</td>
 						</tr>
 					</c:forEach>
+					
 
 					<c:forEach var="m" items="${lookupdate}">
 						<tr>
@@ -150,6 +151,9 @@
 							<td>${m.bed}</td>
 							<td>${m.camp}</td>
 							<td>${m.height}</td>
+						<td><img height="100" width="100"
+							src="<c:url value='/mountainHouseBack/showimg?imgid=${m.imgid.id}'/>"></td>
+							
 						</tr>
 					</c:forEach>
 					
@@ -159,6 +163,27 @@
 	</div>
 
 	</tbody>
+	<script type="text/javascript">
+	$(function() {
+		var houseUrl = "/MountainExploer.com/mountainHouseBack";
+
+		$.ajax({
+			url:houseUrl + "/nParkAlloption",
+			method:"GET",
+			dataType : "json",
+			success:function(nPark){
+				for(var i =0 ; i< nPark.length ; i++){
+					$("#selectnPark").append(
+							"<option value='" + nPark[i].id + "'>"
+							+ nPark[i].name + "</option>") }
+				let firstArea = $("#selectnPark").find("option").eq(0).val()
+				
+				}
+			})
+
+		})
+	</script>
+	
 	<script>
 		function delete_data() {
 			if (confirm("確認刪除?")) {
@@ -171,7 +196,6 @@
 			}
 		}
 	</script>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 	<script

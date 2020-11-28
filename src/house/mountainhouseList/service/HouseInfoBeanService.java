@@ -5,34 +5,24 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import house.mountainhouseList.DAO.HouseInfoInfoBeanDAO;
+import house.mountainhouseList.DAO.HouseInfoBeanDAO;
 import house.mountainhouseList.DAO.Interface.IHouseInfoBeanService;
 import house.mountainhouseList.model.HouseInfoBean;
 @Service
 public class HouseInfoBeanService implements IHouseInfoBeanService {
 	@Autowired
-	private HouseInfoInfoBeanDAO hDAO ;
+	private HouseInfoBeanDAO hDAO ;
 	@Override
 	public HouseInfoBean select(int houseid) {
 		return hDAO.select(houseid);
 	}
 
-	@Override
-	public List<HouseInfoBean> selecthouseid(int houseid) {
- 
-		return  hDAO.selecthouseid(houseid);
-	}
+	
 
 	@Override
-	public List<HouseInfoBean> selectAllHouse() {
+	public List<HouseInfoBean> selectHouseName(Integer page , Integer showData,String housename) {
  
-		return  hDAO.selectAllHouse();
-	}
-
-	@Override
-	public List<HouseInfoBean> selectHouseName(String housename) {
- 
-		return  hDAO.selectHouseName(housename);
+		return  hDAO.selectHouseName( page ,  showData,housename);
 	}
 
 	@Override
@@ -53,10 +43,39 @@ public class HouseInfoBeanService implements IHouseInfoBeanService {
 		return  hDAO.deleteHouse(houseid);
 	}
 
+
 	@Override
-	public List<HouseInfoBean> selectNationalPark(Integer parkid) {
+	public List<HouseInfoBean> selecthouseid(int houseid) {
+		return hDAO.selecthouseid(houseid);
+	}
+
+
+
+	@Override
+	public List<HouseInfoBean> selectAllHouse(Integer page, Integer showData, Integer no, Integer parkid) {
+		return hDAO.selectAllHouse(page, showData, no, parkid);
+	}
+
+
+
+	@Override
+	public int countHouse(Integer no, Integer parkid) {
+		return hDAO.countHouse(no, parkid);
+	}
+
+
+
+	@Override
+	public int counthousenaem(String house) {
+		return hDAO.counthousenaem(house);
+	}
+
+
+
+	@Override
+	public List<HouseInfoBean> selectPark(Integer parkid) {
 		
-		return hDAO.selectNationalPark(parkid);
+		return hDAO.selectPark(parkid);
 	}
 
 }

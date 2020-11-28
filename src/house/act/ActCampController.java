@@ -37,19 +37,14 @@ public class ActCampController {
 	
 //	@RequestMapping(/mountainCampAct/actselectAll)
 	@GetMapping("/actselectAll")
-	public String selectAll(Model m ,@RequestParam(name = "page") Integer page,@RequestParam(name = "selectarea") String area ,@RequestParam(name = "no") Integer no ) {
+	public String selectAll(Model m ,@RequestParam(name = "page") Integer page,@RequestParam(name = "selectarea") String area ,@RequestParam(name = "no") Integer no,@RequestParam(name = "selectcounties") String counties ) {
 		//總比數
-		int totalData = campService.countCamp(area, no);			
-		
-		System.out.println(totalData+"---------------------");
-		
+		int totalData = campService.countCamp(area, no ,counties);			
+				
 		//總頁數
 		int totalPage = (int) Math.ceil(totalData*1.0/10);
 		
-		System.out.println(totalPage+"----------+++++++++++-----------");
-		
-		System.out.println(area+"$$$$$$$$$$$$$$$$$$$$$$$$$");
-		List<CampInfoBean> list = campService.selectAllCamp( page ,  10, no , area );
+		List<CampInfoBean> list = campService.selectAllCamp( page ,  10, no , area,counties );
 		
 		m.addAttribute("camp_all", list);
 		m.addAttribute("totalData",totalData);
@@ -57,6 +52,7 @@ public class ActCampController {
 		m.addAttribute("page",page);
 		m.addAttribute("no",no);
 		m.addAttribute("selectarea",area);
+		m.addAttribute("selectcounties",counties);
 		return "house/act/actCamp";
 	}
 	
