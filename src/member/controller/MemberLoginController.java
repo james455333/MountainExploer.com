@@ -7,7 +7,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -198,7 +200,11 @@ public class MemberLoginController {
 	
 
 	@RequestMapping(path = "/member/memberLogout", method = RequestMethod.GET)
-	public String processLogout(SessionStatus status,Model model) {
+	public String processLogout(HttpSession session, HttpServletRequest request, SessionStatus status) {
+		session.removeAttribute("Member");
+		
+		System.out.println("logout:" + session.getAttribute("Member"));
+		
 		status.setComplete();
 		return "member/login";
 	}
