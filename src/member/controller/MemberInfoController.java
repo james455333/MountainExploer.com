@@ -1,5 +1,7 @@
 package member.controller;
 
+import java.io.UnsupportedEncodingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,13 +44,14 @@ public class MemberInfoController {
 	
 	@ResponseBody
 	@GetMapping(value = "/member/memberOther")
-	public boolean processOtherSelectAction(
+	public String processOtherSelectAction(
 					@RequestParam(name = "seqno")int seqno,
-					@RequestParam(name = "memberInfo.other")byte[] other) {
+					@RequestParam(name = "memberInfo.other")byte[] other) throws UnsupportedEncodingException {
 		
 		MemberBasic mb = mService.select(seqno);
-		String otherStr = new String(mb.getMemberInfo().getOther());
-		return true;
+		byte[] otherByte = mb.getMemberInfo().getOther();
+		String otherStr = new String(otherByte, "UTF-8");
+		return otherStr;
 		
 		
 	}
