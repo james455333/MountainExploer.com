@@ -117,7 +117,7 @@ public class MemberUpdateController {
 				m.addAttribute("result", "認證成功");
 				System.out.println("一般會員認證成功");
 				
-				return "member/memberInfo";
+				return "member/memberFormalInfo";
 				
 			}else if(queryMb.getMemberStatus().getSeqno() == 130) {
 				MemberStatus mbStId = mbStService.select(120);
@@ -133,13 +133,13 @@ public class MemberUpdateController {
 				m.addAttribute("result", "認證成功");
 				System.out.println("登山嚮導認證成功");
 				
-				return "member/memberInfo";
+				return "member/memberFormalInfo";
 			}
 		} else {
 			errors.put("errors", "找不到會員基本資料");
 			System.out.println("找不到會員基本資料");
 		}	
-		return "member/login";
+		return "member/formalLogin";
 	}
 	
 	
@@ -184,7 +184,7 @@ public class MemberUpdateController {
 			m.addAttribute("result", "會員資料更新成功");
 			System.out.println("會員資料更新成功");
 			
-			return "member/memberInfo";
+			return "member/memberFormalInfo";
 		} else {
 			errors.put("errors", "會員資料更新失敗");
 			System.out.println("會員資料更新失敗");

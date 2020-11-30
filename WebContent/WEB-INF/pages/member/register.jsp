@@ -16,8 +16,7 @@
                 <div>
                     <label>帳號：</label>
                     <input type="text" id="account" class="account" name="account" placeholder="請輸入帳號" autocomplete="off" required="required"/>
-                    <span id="Antsp" class="Antsp"></span><br/>
-                    <input type="button" id="chkAnt" value="檢查帳號">
+                    <span id="Antsp" class="Antsp"></span>
                     <span id="chksp"></span><br/>
                 </div>
                 <div>
