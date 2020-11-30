@@ -1,19 +1,23 @@
 package member.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import member.MemberGlobal;
 import member.model.MemberBasic;
 import member.model.MemberService;
 
 @Controller
 public class MemberInfoController {
 	
-	private MemberService mbService;
+	@Autowired
+	private MemberService mService;
 	
 	@RequestMapping(path = "/member/memberInfoEntry", method = RequestMethod.GET)
 	public String processInfoEntry() {
@@ -33,6 +37,19 @@ public class MemberInfoController {
 		
 		m.addAttribute("Member", mb);
 		return "member/memberInfoUpdate";
+		
+	}
+	
+	@ResponseBody
+	@GetMapping(value = "/member/memberOther")
+	public boolean processOtherSelectAction(
+					@RequestParam(name = "seqno")int seqno,
+					@RequestParam(name = "memberInfo.other")byte[] other) {
+		
+		MemberBasic mb = mService.select(seqno);
+		String otherStr = new String(mb.getMemberInfo().getOther());
+		return true;
+		
 		
 	}
 	

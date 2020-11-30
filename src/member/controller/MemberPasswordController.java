@@ -73,7 +73,7 @@ public class MemberPasswordController {
 	@ResponseBody
 	@GetMapping(value = "/member/checkPwd")
 	public boolean processCheckPwd(
-			@RequestParam(name = "seqno")int seqno,
+			@RequestParam(name = "seqnoPwd")int seqno,
 			@RequestParam(name = "password")String password,
 			Model m) {
 		MemberBasic mb = mbService.select(seqno);
