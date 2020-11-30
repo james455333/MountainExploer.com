@@ -20,7 +20,7 @@ import mountain.model.route.NationalPark;
 
 @Controller
 @RequestMapping("/mountainHouseAct")
-@SessionAttributes(names = {"housestar","Member"})
+@SessionAttributes(names = {"Member"})
 public class ActHouseController {
 	@Autowired
 	private HouseInfoBeanService houseService;
@@ -33,10 +33,10 @@ public class ActHouseController {
 //	@RequestMapping(/mountainHouseAct/actselectAll)
 	@GetMapping("/actselectAll")
 	public String selectAll(Model m, @RequestParam(name = "page") Integer page, Integer showData,
-			@RequestParam(name = "no") Integer no, @RequestParam(name = "parkid") Integer parkid,Integer star) {
+			@RequestParam(name = "no") Integer no, @RequestParam(name = "parkid") Integer parkid,Integer star,Integer clickcount) {
 		int totalData = houseService.countHouse(no, parkid);
 		int totalPage = (int) Math.ceil(totalData * 1.0 / 10);
-		List<HouseInfoBean> list = houseService.selectAllHouse(page, 10, no, parkid,star);
+		List<HouseInfoBean> list = houseService.selectAllHouse(page, 10, no, parkid,star,clickcount);
 		
 		
 		m.addAttribute("House_All", list);
@@ -51,11 +51,11 @@ public class ActHouseController {
 	}
 	
 	@GetMapping("/actselectHouse")
-	public String selectHouse(@RequestParam(name = "selecthouse") String house, Integer page, Integer showData,Integer star,Integer view,
+	public String selectHouse(@RequestParam(name = "selecthouse") String house, Integer page, Integer showData,Integer star,Integer clickcount,
 			Model m) {
 		int totalData = houseService.counthousenaem(house);
 		int totalPage = (int) Math.ceil(totalData * 1.0 / 10);
-		List<HouseInfoBean> list = houseService.selectHouseName(page, 10, house,star,view);
+		List<HouseInfoBean> list = houseService.selectHouseName(page, 10, house,star,clickcount);
 
 		m.addAttribute("House_All", list);
 		m.addAttribute("totalData", totalData);
@@ -79,12 +79,28 @@ public class ActHouseController {
 		m.addAttribute("selecthouseid",list);
 		return "house/act/Deschouse";
 	}
+	@GetMapping("/jumpupdatestart")
+	public String jumpupdatestar(Model m) {
+		if (m.getAttribute("Member") == null) {
+			
+			return "redirect:/member/memberLoginEntry";
+		}
+		
+		return "redirect:/mountainHouseAct/star";
+	}
 	
+	@GetMapping("/star")
+	public String star(Model m) {
+		return "house/act/star";
+	}
+	
+	@GetMapping("/updatestar")
 	public String updatestar(@RequestParam(name = "updatestar") Integer star ,@RequestParam(name = "updateclick") Integer clickcount , Model m) {
 		
 		hbean.setStar(hbean.getStar()+star);
 		hbean.setClickcount(hbean.getClickcount()+clickcount);
 		
-		
+		houseService.updateHouse(hbean);
+		return "house/act/Deschouse";
 	}
 }

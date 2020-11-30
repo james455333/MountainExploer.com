@@ -55,7 +55,7 @@ public class HouseInfoBeanDAO implements IHouseInfoBeanService  {
 	}
 	
 	@Override
-	public List<HouseInfoBean> selectAllHouse(Integer page , Integer showData ,Integer no , Integer parkid,Integer star){
+	public List<HouseInfoBean> selectAllHouse(Integer page , Integer showData ,Integer no , Integer parkid,Integer star,Integer clickcount){
 		if (no==1) {
 			
 			if (page == null) {
@@ -65,8 +65,11 @@ public class HouseInfoBeanDAO implements IHouseInfoBeanService  {
 				showData = 8;
 			}
 			int startPosition = ((page-1) * showData);
-			if (star==null) {
+			if (star == null) {
 				star = 5;
+			}
+			if (clickcount == null) {
+				clickcount = 1;
 			}
 		Query<HouseInfoBean> query = getSession().createQuery("From HouseInfoBean", HouseInfoBean.class);
 		List<HouseInfoBean> list = query.setFirstResult(startPosition)
@@ -82,8 +85,11 @@ public class HouseInfoBeanDAO implements IHouseInfoBeanService  {
 			showData = 8;
 		}
 		int startPosition = ((page-1) * showData);
-		if (star==null) {
+		if (star == null) {
 			star = 5;
+		}
+		if (clickcount == null) {
+			clickcount = 1;
 		}
 		Query<HouseInfoBean> query = getSession().createQuery("From HouseInfoBean where nationalPark=" + parkid,HouseInfoBean.class);
 		List<HouseInfoBean> list = query.setFirstResult(startPosition)
@@ -107,6 +113,9 @@ public class HouseInfoBeanDAO implements IHouseInfoBeanService  {
 		int startPosition = ((page-1) * showData);
 		if (star == null) {
 			star = 5;
+		}
+		if (clickcount == null) {
+			clickcount = 1;
 		}
 		String originString = " From HouseInfoBean where name like '%" + housename + "%'";
 		Query<HouseInfoBean> query = getSession().createQuery(originString, HouseInfoBean.class);

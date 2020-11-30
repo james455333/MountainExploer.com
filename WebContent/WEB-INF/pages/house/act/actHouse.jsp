@@ -21,6 +21,12 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <style>
+.images{
+width:18px;
+height:18px;
+}
+.clickcount{font-size :20px}
+
 </style>
 </head>
 
@@ -129,6 +135,7 @@
 							<th scope="col">露營地數量</th>
 							<th scope="col">海拔</th>
 							<th scope="col">照片</th>
+							<th scope="col">星級</th>
 							<!-- thead更改到這邊結束 -->
 						</tr>
 					</thead>
@@ -153,6 +160,56 @@
 							src="<c:url value='/mountainHouseBack/showimg?imgid=${i.imgid.id}'/>">
 							</c:when>
 							</c:choose>
+							</td>
+							<td>
+								<!-- 星星評分 -->
+								<p> 
+									<c:choose >
+									<c:when test="${(i.star*1.0 / i.clickcount) lt 1}">
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+									</c:when>
+									<c:when test="${ i.star*1.0/i.clickcount ge 1 && i.star*1.0/i.clickcount lt 2}">
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+									</c:when>
+									<c:when test="${i.star*1.0/i.clickcount ge 2 && i.star*1.0/i.clickcount lt 3}">
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+									</c:when>
+									<c:when test="${i.star*1.0/i.clickcount ge 3 && i.star*1.0/i.clickcount lt 4}">
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+									</c:when>
+									<c:when test="${i.star*1.0/i.clickcount ge 4 && i.star*1.0/i.clickcount lt 4.5}">
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+									</c:when>
+									<c:when test="${i.star*1.0 / i.clickcount ge 4.5}">
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+									</c:when>
+									</c:choose>
+								</p>
+								<p class="clickcount">${i.clickcount}人評分過</p>
 							</td>
 							</tr>
 						</c:forEach>
