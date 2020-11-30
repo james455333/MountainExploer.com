@@ -20,6 +20,10 @@ public class MemberInfoController {
 		return "member/memberFormalInfo";
 	}
 	
+	@RequestMapping(path = "/member/memberInfoUpdateEntry", method = RequestMethod.GET)
+	public String processInfoUpdateTurn() {
+		return "member/memberInfoUpdate";
+	}
 	
 	@RequestMapping(path = "/member/memberInfoUpdateChange", method = RequestMethod.POST)
 	public String processInfoUpdateEntry(@ModelAttribute("Member")MemberBasic mb, Model m) {

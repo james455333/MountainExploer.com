@@ -1,3 +1,8 @@
+//跳轉會員修改頁面
+$(".turnToUpPage").on("click", function(){
+    window.location.href = "/MountainExploer.com/member/memberInfoUpdateEntry";
+})
+
 //舊密碼不得為空
 $(".pwd").on("blur", function(){
     let OldPwdVal = $(".pwd").val();

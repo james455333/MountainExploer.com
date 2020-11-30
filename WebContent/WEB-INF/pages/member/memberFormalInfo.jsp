@@ -145,6 +145,9 @@
                         	<span>${Member.memberInfo.other}</span><br/>
                         	<input type="hidden" name="memberInfo.other" value="${Member.memberInfo.other}">
                         </div>
+                        <div>
+                        	<input type="button" class="turnToUpPage" value="修改會員資料"/>
+                        </div>
                     </div>
                     <form action="<c:url value='/member/memberPwdChangeAction' />" method="POST">
                     <div id="padLock" style="display: none;">
