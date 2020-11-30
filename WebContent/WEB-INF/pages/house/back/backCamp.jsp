@@ -123,8 +123,18 @@
 							<td>${i.name}</td>
 							<td><a href="${i.url}">${i.url}</a></td>
 							<td>${i.desc}</td>
-							<td><img height="100" width="100"
-							src="<c:url value='/mountainCampBack/showimg?imgid=${i.campimgid.id}'/>"></td>
+							<td>
+								<c:choose>
+								<c:when test="${empty i.campimgid.img }">
+								<a href="${i.url}"><img height="100" width="100"
+										src="/MountainExploer.com/housecamp/images/campnull.PNG">按</a>
+								</c:when>
+								<c:when test="${not empty i.campimgid.img }">
+								<a href="${i.url}"><img height="100" width="100"
+										src="<c:url value='/mountainCampBack/showimg?imgid=${i.campimgid.id}'/>">按</a>
+								</c:when>
+								</c:choose>
+								</td>
 							<td>
 								<form
 									action="<c:url value='/mountainCampBack/deleteCamp'></c:url>"
@@ -155,9 +165,19 @@
 							<td>${m.name}</td>
 							<td><a href="${m.url}">${m.url}</a></td>
 							<td>${m.desc}</td>
-							<td><img height="100" width="100"
-							src="<c:url value='/mountainCampBack/showimg?imgid=${m.campimgid.id}'/>"></td>													
-						</tr>
+							<td>
+								<c:choose>
+								<c:when test="${empty i.campimgid.img }">
+								<a href="${i.url}"><img height="100" width="100"
+										src="/MountainExploer.com/housecamp/images/campnull.PNG">按</a>
+								</c:when>
+								<c:when test="${not empty i.campimgid.img }">
+								<a href="${i.url}"><img height="100" width="100"
+										src="<c:url value='/mountainCampBack/showimg?imgid=${i.campimgid.id}'/>">按</a>
+								</c:when>
+								</c:choose>
+							</td>
+							</tr>
 					</c:forEach>
 
 					

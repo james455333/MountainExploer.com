@@ -148,7 +148,6 @@
 							<c:when test="${ empty i.imgid.img}">
 							<img height="100" width="100" src="/MountainExploer.com/housecamp/images/housenull.PNG">
 							</c:when>
-<%-- 							<c:otherwise></c:otherwise> --%>
 							<c:when test="${not emptyi.imgid.img}">
 							<img height="100" width="100"
 							src="<c:url value='/mountainHouseBack/showimg?imgid=${i.imgid.id}'/>">

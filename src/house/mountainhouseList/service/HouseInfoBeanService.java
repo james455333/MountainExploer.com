@@ -20,9 +20,9 @@ public class HouseInfoBeanService implements IHouseInfoBeanService {
 	
 
 	@Override
-	public List<HouseInfoBean> selectHouseName(Integer page , Integer showData,String housename) {
+	public List<HouseInfoBean> selectHouseName(Integer page , Integer showData,String housename,Integer star,Integer clickcount) {
  
-		return  hDAO.selectHouseName( page ,  showData,housename);
+		return  hDAO.selectHouseName( page ,  showData,housename,star,clickcount);
 	}
 
 	@Override
@@ -52,8 +52,8 @@ public class HouseInfoBeanService implements IHouseInfoBeanService {
 
 
 	@Override
-	public List<HouseInfoBean> selectAllHouse(Integer page, Integer showData, Integer no, Integer parkid) {
-		return hDAO.selectAllHouse(page, showData, no, parkid);
+	public List<HouseInfoBean> selectAllHouse(Integer page, Integer showData, Integer no, Integer parkid,Integer star) {
+		return hDAO.selectAllHouse(page, showData, no, parkid,star);
 	}
 
 

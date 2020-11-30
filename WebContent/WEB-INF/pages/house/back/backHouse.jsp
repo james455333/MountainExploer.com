@@ -88,13 +88,14 @@
 						<th scope="col"><span class="tr_title">描述</span></th>
 						<th scope="col"><span class="tr_title">照片</span></th>
 						<th scope="col"><span class="tr_title"></span></th>
+						<th scope="col"><span class="tr_title"></span></th>
 
 					</tr>
 				</thead>
 				<tbody>
 				<div>
-					<a href="selectAll?selectparkid=${parkid }&no=${no }&page=1">«第一頁</a>
-					<a href="selectAll?selectarea=${selectarea }&selectcounties=${selectcounties}&no=${no }&page=${page-1}">‹上一頁</a>
+					<a href="selectAll?parkid=${parkid }&no=${no }&page=1">«第一頁</a>
+					<a href="selectAll?parkid=${parkid }&no=${no }&page=${page-1}">‹上一頁</a>
 				
 					<select onChange="location = this.options[this.selectedIndex].value">
 						<c:forEach var="toPage" begin="1" end="${totalPage}">
@@ -102,8 +103,8 @@
 						</c:forEach>
 
 					</select>
-					<a href="selectAll?selectarea=${selectarea }&selectcounties=${selectcounties}&no=${no }&page=${page+1}">下一頁›</a>
-					<a href="selectAll?selectarea=${selectarea }&selectcounties=${selectcounties}&no=${no }&page=${totalPage}">最末頁»</a>
+					<a href="selectAll?parkid=${parkid }&no=${no }&page=${page+1}">下一頁›</a>
+					<a href="selectAll?parkid=${parkid }&no=${no }&page=${totalPage}">最末頁»</a>
 					
 					
 					總共<c:out value="${totalData}">${totalData}</c:out>筆資料</div>
@@ -120,9 +121,17 @@
 							<td>${i.camp}</td>
 							<td>${i.height}</td>
 							<td>${i.desc}</td>
-							<td><img height="100" width="100"
-							src="<c:url value='/mountainHouseBack/showimg?imgid=${i.imgid.id}'/>"></td>
-							
+							<td>
+							<c:choose>
+							<c:when test="${ empty i.imgid.img}">
+							<img height="100" width="100" src="/MountainExploer.com/housecamp/images/housenull.PNG">
+							</c:when>
+							<c:when test="${not emptyi.imgid.img}">
+							<img height="100" width="100"
+							src="<c:url value='/mountainHouseBack/showimg?imgid=${i.imgid.id}'/>">
+							</c:when>
+							</c:choose>
+							</td>
 							<td>
 								<form
 									action="<c:url value='/mountainHouseBack/deleteHouse'></c:url>"
@@ -132,7 +141,8 @@
 										value="刪除"
 										onclick="if(confirm('確認要刪除嗎？')) this.form.submit();">
 								</form>
-							
+							</td>
+							<td>
 								<form
 									action="<c:url value="/mountainHouseBack/updatejump"></c:url>"
 									method="get">
@@ -154,9 +164,17 @@
 							<td>${m.camp}</td>
 							<td>${m.height}</td>
 							<td>${m.desc}</td>
-						<td><img height="100" width="100"
-							src="<c:url value='/mountainHouseBack/showimg?imgid=${m.imgid.id}'/>"></td>
-							
+							<td>
+							<c:choose>
+							<c:when test="${ empty i.imgid.img}">
+							<img height="100" width="100" src="/MountainExploer.com/housecamp/images/housenull.PNG">
+							</c:when>
+							<c:when test="${not emptyi.imgid.img}">
+							<img height="100" width="100"
+							src="<c:url value='/mountainHouseBack/showimg?imgid=${i.imgid.id}'/>">
+							</c:when>
+							</c:choose>
+							</td>
 						</tr>
 					</c:forEach>
 					
