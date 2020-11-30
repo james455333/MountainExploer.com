@@ -48,10 +48,9 @@
     justify-content:center;
     transition : 1000ms;
 }
+/* 舉辦活動管理 */
 .m-ma-ta{
-	
 	width : 100%;
-	
 }
 .order-table-th{
 	font-size : 10px;
@@ -183,3 +182,77 @@
 .tr-reg-info-phone{ width : 15% }
 .tr-reg-info-cellphone{ width : 15% }
 .tr-reg-info-email{ width : 20% }
+
+
+/* 報名管理 */
+.m-ma-reg-ta{
+	font-size : 20px;
+	width : 100%;
+}
+.m-ma-reg-ta-th{
+	font-size: 20px;
+}
+.rg-main{
+	font-size : 18.5px;
+}
+.rg-info{
+	padding : 10px;
+}
+/*
+.rg-info-con{
+	margin-left : 15px;
+	margin-right : 5px;
+}
+*/
+.rg-info-head{
+	margin : 5px;
+	width : 100%;
+	display : flex;
+    align-items: center;
+    justify-content: center;
+}
+.rg-info-head div{
+}
+.rg-info-body{
+	margin : 10px;
+	width : 100%;
+}
+.rg-info-body-info{
+	width : 100%;
+	display : flex;
+    align-items: center;
+    justify-content: center;
+	
+}
+.rg-info-body-update{
+	margin : 5px auto;
+	width : 100%;
+	display : flex;
+    align-items: center;
+    justify-content: center;
+}
+.rg-info-body-update div{
+	display : flex;
+    align-items: center;
+    justify-content: center;
+}
+.rg-info-body-update input{
+	width : 95%
+}
+.rg-info-body-info div{
+	display : flex;
+    align-items: center;
+    justify-content: center;
+}
+.rg-info-seqno{ width : 10% }
+.rg-info-name{ width : 12.5%}
+.rg-info-bDay{ width : 10%}
+.rg-info-pID{ width : 12.5%}
+.rg-info-phone{ width : 10%}
+.rg-info-cellphone{ width : 12.5%}
+.rg-info-email{ width : 19%}
+.rg-info-controll{ width : 15%}
+.rg-info-controll div{ margin : 0px 10px;}
+.rg-info-updateCtrl{ width : 14%}
+.rg-info-updateCtrl div{ margin : 0px 10px;}
+

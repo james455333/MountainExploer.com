@@ -20,8 +20,9 @@ public class GenericDAO<T extends GenericTypeObject> implements InterfaceDAO<T> 
 	private T entity;
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	private Integer page;
+
 	public Integer getPage() {
 		return page;
 	}
@@ -31,6 +32,7 @@ public class GenericDAO<T extends GenericTypeObject> implements InterfaceDAO<T> 
 	}
 
 	private Integer showData;
+
 	public Integer getShowData() {
 		return showData;
 	}
@@ -38,30 +40,26 @@ public class GenericDAO<T extends GenericTypeObject> implements InterfaceDAO<T> 
 	public void setShowData(Integer showData) {
 		this.showData = showData;
 	}
-	
+
 	public GenericDAO() {
 	}
-	
+
 	@Override
 	public void save(T entity) {
 		this.entity = entity;
 	}
+
 	@Override
 	public List<T> selectWithPage(int page, int showdata) {
 		Session session = sessionFactory.getCurrentSession();
-		int startPosition = (page-1) * showdata;
+		int startPosition = (page - 1) * showdata;
 		List<T> list = new ArrayList<T>();
-		String hql = "From " + entity.getClass().getName() ;
-		list = session.createQuery(hql)
-					.setReadOnly(true)
-					.setFirstResult(startPosition)
-					.setMaxResults(showdata)
-					.getResultList();
+		String hql = "From " + entity.getClass().getName();
+		list = session.createQuery(hql).setReadOnly(true).setFirstResult(startPosition).setMaxResults(showdata)
+				.getResultList();
 		return list;
 	}
-	
-	
-	
+
 	@Override
 	public T select(Integer id) {
 
@@ -103,7 +101,8 @@ public class GenericDAO<T extends GenericTypeObject> implements InterfaceDAO<T> 
 	public T insert(T entity) {
 
 		Session session = sessionFactory.getCurrentSession();
-		session.evict(entity);
+//		session.evict(entity);
+		System.out.println("insert Active");
 		session.save(entity);
 		return entity;
 
@@ -111,28 +110,33 @@ public class GenericDAO<T extends GenericTypeObject> implements InterfaceDAO<T> 
 
 	@Override
 	public T update(T entity) {
-		
+
 		Session session = sessionFactory.getCurrentSession();
 		try {
-
-			T result = (T) session.get(entity.getClass(), entity.getId());
-			System.out.println("id : " + result.getId());
-			if (result != null) {
-				session.update(entity);
-				return entity;
+			
+			System.out.println("========= Let's try getID!");
+			if(entity.getId() != null) {
+				T result = (T) session.get(entity.getClass(), entity.getId());
+				System.out.println("id : " + result.getId());
+				if (result != null) {
+					session.update(entity);
+					return entity;
+				}
 			}
-			return null;
-
-		} catch (Exception e) {
+			System.out.println("========= previous fail try this one : getSeqno!");
+			if (entity.getSeqno() != null) {
+				T result = (T) session.get(entity.getClass(), entity.getSeqno());
+				System.out.println("result status : " + (result != null));
+				if (result != null) {
+					session.update(entity);
+					return entity;
+				}
+			}
+			
+		}catch(Exception e){
 			e.printStackTrace();
-			T result = (T) session.get(entity.getClass(), entity.getSeqno());
-			if (result != null) {
-				session.update(entity);
-				return entity;
-			}
-			return null;
 		}
-
+		return null;
 	}
 
 	@Override
@@ -149,103 +153,94 @@ public class GenericDAO<T extends GenericTypeObject> implements InterfaceDAO<T> 
 		return false;
 
 	}
+
 	@Override
 	public int getAllData(T entity) {
-		
+
 		Session session = sessionFactory.getCurrentSession();
-		
+
 		String hql = "Select count(*) From " + entity.getClass().getName();
-		
+
 		Query query = session.createQuery(hql);
 		long uniqueResult = (Long) query.uniqueResult();
-		
-		return (int)uniqueResult;
+
+		return (int) uniqueResult;
 	}
 
 	@Override
 	public int countWith(Integer id, String coulmnName) {
 		Session session = sessionFactory.getCurrentSession();
-		
-		String hql = "Select count(*) From " +entity.getClass().getName() + " where " + coulmnName + " = " + id;
-		
+
+		String hql = "Select count(*) From " + entity.getClass().getName() + " where " + coulmnName + " = " + id;
+
 		Query query = session.createQuery(hql);
 		long result = (Long) query.uniqueResult();
 		return (int) result;
 	}
+
 	@Override
-	public List<T> selectAllwithFK(Integer id, String FK){
+	public List<T> selectAllwithFK(Integer id, String FK) {
 		Session session = sessionFactory.getCurrentSession();
-		
-		String hql ="From " + entity.getClass().getName() + " where " + FK + " = " + id ;
+
+		String hql = "From " + entity.getClass().getName() + " where " + FK + " = " + id;
 		Query query = session.createQuery(hql);
 		List<T> result = query.setReadOnly(true).getResultList();
-		
+
 		return result;
-		
+
 	}
+
 	@Override
-	public List<T> selectAllwithFK(String search, String FK){
+	public List<T> selectAllwithFK(String search, String FK) {
 		Session session = sessionFactory.getCurrentSession();
-		
+
 		if (page == null) {
 			page = 1;
 		}
 		if (showData == null) {
 			showData = 3;
 		}
-		int startPosition = (page-1) * showData;
-		String hql ="From " + entity.getClass().getName() + " where " + FK + " like '" +  search + "'";
+		int startPosition = (page - 1) * showData;
+		String hql = "From " + entity.getClass().getName() + " where " + FK + " like '" + search + "'";
 		Query query = session.createQuery(hql);
-		List<T> result = query.setFirstResult(startPosition)
-								.setMaxResults(showData)
-								.setReadOnly(true)
-								.getResultList();
-		
+		List<T> result = query.setFirstResult(startPosition).setMaxResults(showData).setReadOnly(true).getResultList();
+
 		return result;
-		
+
 	}
-	
-	public List<? extends GenericTypeObject> getwithHQL(String hql, Integer page, Integer showData){
+
+	public List<? extends GenericTypeObject> getwithHQL(String hql, Integer page, Integer showData) {
 		if (page == null) {
 			page = 1;
 		}
 		if (showData == null) {
 			showData = 3;
 		}
-		int startPosition = (page-1) * showData;
+		int startPosition = (page - 1) * showData;
 		Session session = sessionFactory.getCurrentSession();
-		Query<T> query = (Query<T>) session.createQuery(hql,entity.getClass());
-		List<T> result = query.setFirstResult(startPosition)
-			.setMaxResults(showData)
-			.setReadOnly(true)
-			.getResultList();
-		
-		
+		Query<T> query = (Query<T>) session.createQuery(hql, entity.getClass());
+		List<T> result = query.setFirstResult(startPosition).setMaxResults(showData).setReadOnly(true).getResultList();
+
 		return result;
-		
-		
+
 	}
-	
-	
+
 	public int countWithHql(String hql) {
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery(hql);
-		
-		long result = (Long)query.uniqueResult();
-		
+
+		long result = (Long) query.uniqueResult();
+
 		return (int) result;
 	}
 
 	public List<? extends GenericTypeObject> getAllWithHql(String hql) {
-		
+
 		Session session = sessionFactory.getCurrentSession();
 		Query<T> query = session.createQuery(hql);
-		List<T> resultList = query.setReadOnly(true)
-					.getResultList();
-		
+		List<T> resultList = query.setReadOnly(true).getResultList();
+
 		return resultList;
 	}
-	
-	
-	
+
 }

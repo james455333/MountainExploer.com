@@ -9,15 +9,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>岳進者 - 活動</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- public -->
     <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
     <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
+    <!-- for this page -->
     <link rel="stylesheet" href="/MountainExploer.com/mountain/css/mountain.css">
     <link rel="stylesheet" href="/MountainExploer.com/mountain/act/list/list.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	 <!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+	<!-- Bootstrap core CSS -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+	
+	<!-- JQuery -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Bootstrap tooltips -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<!-- MDB core JavaScript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/js/mdb.min.js"></script>
+	<!-- sweetalert -->
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<!-- daterangepicker -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+	<!-- for this page -->
 	<script src="/MountainExploer.com/mountain/js/mountain.js"></script>
     <script src="act/list/listFunction.js"></script>
     <script src="act/list/list.js"></script>
@@ -48,10 +64,8 @@
         <div class="secNavbar" include-html="fragment/secondNav.html">  
         </div>
         <div class="div_li1">
-            <a>保留區</a>
         </div>
         <div class="div_li3">
-            <a>保留區</a>
         </div>
         <div class="div_li2">
             <!-- 每頁不同的內容從這裡開始 -->
@@ -64,6 +78,7 @@
 	                        <li>活動標籤:
 	                            <select name="aTag">
 	                                <option value="0" selected disabled>請選擇活動標籤</option>
+	                                <option value="0">預設顯示</option>
 	                                <option value="1">新活動</option>
 	                                <option value="2">熱門活動</option>
 	                                <option value="3">歷史活動</option>
@@ -72,6 +87,7 @@
 	                        <li>報名標籤:
 	                            <select name="rTag">
 	                                <option value="0" selected disabled >請選擇報名標籤</option>
+	                                <option value="0">預設顯示</option>
 	                                <option value="6">尚可報名</option>
 	                                <option value="8">報名將滿</option>
 	                                <option value="7">報名將截止</option>
@@ -113,6 +129,13 @@
                </nav>
 
             <div class="secDivContent m-sdc-adj">
+            	<!-- btn -->
+        
+            	<div id="btn-newpost" class="btn-group btn-group-lg" role="group">
+					<button class="list-newPost btn btn-secondary" type="button">
+						發起活動   <i class="fa fa-pencil-square-o"></i>
+					</button> 
+				</div>
                 <!--table-->
                 <table class="order-table m-ta-aj">
                     <thead class="order-table-th">
@@ -136,7 +159,6 @@
 								</a>
 							</td>
 							<td>
-								<div class='tagContainer'></div>
 								<a class="m-tb-ti" href=""></a>
 							</td>
 							<td>

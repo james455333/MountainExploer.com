@@ -33,7 +33,7 @@ public class ActPageEntryController {
 			MemberStatus memberStatus = memberBasic.getMemberStatus();
 			int seqno = memberBasic.getSeqno();
 			int status = memberStatus.getSeqno();
-			return "redirect:/mountain/manage?mb="+ seqno +"&status="+status;
+			return "redirect:/mountain/manage?status="+status;
 		}
 		throw new HttpClientErrorException(HttpStatus.FORBIDDEN);
 	}
@@ -57,7 +57,7 @@ public class ActPageEntryController {
 	//新增活動頁面
 	@GetMapping("/manage/new")
 	public String enterNewActivity(Model model, RedirectAttributes redAttr) {
-		return "";
+		return "/mountain/manage/newAct";
 	}
 	//修改活動頁面
 	@GetMapping("/manage/edite")
@@ -66,9 +66,9 @@ public class ActPageEntryController {
 	}
 	
 	//報名活動頁面
-	@GetMapping("/reg")
+	@GetMapping("/act/registry")
 	public String enterRegistry(Model model, RedirectAttributes redAttr) {
-		return "";
+		return "/mountain/act/registry/registry";
 	}
 	
 

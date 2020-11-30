@@ -6,3 +6,4 @@ function dateFormate(date) {
 
 	return result;
 }
+

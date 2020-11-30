@@ -1,35 +1,21 @@
 //
 //var shareURL = "/MountainExploer.com/mountain/public"
 //var manageHome = "/MountainExploer.com/mountain/manage/search"
-//var detailURL = "/MountainExploer.com/mountain/act/detail?page=1&actID="
-//var mb, status, totalPage, totalData;
-//var nowDate = Number(new Date());
-//var limitStartDate = new Date(nowDate + ((60*60*24*1000)*21)) ;
-//	
-//var urlNow = new URL(window.location.href)
-//
-//if(urlNow.searchParams.has("mb")){
-//	mb = urlNow.searchParams.get("mb")
-//}else{
-//	
-//}
-//if(urlNow.searchParams.has("status")){
-//	status = urlNow.searchParams.get("status")
-//}
-//
+
 function report(page){
-	replaceContentRep("/report",page);
+	replaceContentRepo("/report",page);
 }
 
-function replaceContentRep(order,page){
-	$(".m-ma-container").empty().css("display","inline-block");
-//	let model,pageCtrl;
-//	model = $(".m-ma-ta").clone();
-//	pageCtrl = $(".m-hide").find(".pageControl").clone()
-//	$(".m-ma-container").append(model)
-//	$(".m-ma-container").append(pageCtrl)
+function replaceContentRepo(order,page){
+	$(".m-ma-container").empty().css("display","inline-block")
+			.append("<h2>求助及問題回報</h2>")
+	let model,pageCtrl;
+	model = $(".m-ma-repo-ta").clone();
+	pageCtrl = $(".m-hide").find(".pageControl").clone()
+	$(".m-ma-container").append(model)
+	$(".m-ma-container").append(pageCtrl)
 //	insertReportInfo(order, page);
-//	$(".m-dl2-adj").css("height","auto")
+	$(".m-dl2-adj").css("height","auto")
 	
 }
 //
@@ -155,10 +141,10 @@ function replaceContentRep(order,page){
 //		let first = 1
 //		let previous = Number(page) - 1;
 //		$(".pageControl").find("div").eq(0).on("click",function(){
-//			replaceContentRep(order,first)
+//			replaceContentRepo(order,first)
 //		}).css("display", "block")
 //		$(".pageControl").find("div").eq(1).on("click",function(){
-//			replaceContentRep(order,previous)
+//			replaceContentRepo(order,previous)
 //		}).css("display", "block")
 //	} else {
 //		$(".pageControl").find("div").eq(0).css("display", "none")
@@ -168,10 +154,10 @@ function replaceContentRep(order,page){
 //		let next = Number(page) + 1;
 //		let final = Number(totalPage);
 //		$(".pageControl").find("div").eq(3).on("click",function(){
-//			replaceContentRep(order,next)
+//			replaceContentRepo(order,next)
 //		}).css("display", "block")
 //		$(".pageControl").find("div").eq(4).on("click",function(){
-//			replaceContentRep(order,final)
+//			replaceContentRepo(order,final)
 //		}).css("display", "block")
 //	} else {
 //		$(".pageControl").find("div").eq(3).css("display", "none")

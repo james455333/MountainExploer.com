@@ -1,41 +1,59 @@
-
-/* Controller路徑對應變數 */
-var actHomeURL = "/MountainExploer.com/mountain/act/search";
-var actEnterURL = "/MountainExploer.com/mountain/list?";
-var mountainShare = "/MountainExploer.com/mountain/public";
-var detailURL = "/MountainExploer.com/mountain/act/detail?page=1&actID="
-
-/* 預先設定要使用的變數名稱 
-	totalPage	=	本條件查詢頁面總數
-	totalData	=	本條件查詢總筆數
-	page 		=	當前頁面
-	od			=	本次命令
-	(1 = 預設, 2 = 標籤, 3 = 搜尋)
-	tag			=	本次查詢標籤號碼
-	search		=	本次搜尋內容
-*/
-var totalPage, totalData, page, od, tag, search;
-
-/* 抓取網域提供參數 */
-var urlNow = new URL(window.location.href)
-
-/* 設置預先設定的變數 */
-if (urlNow.searchParams.has("page")) {
-	page = urlNow.searchParams.get("page");
-} else {
-	page = 1;
+/* 會員登入檢查 */
+function ajaxCheckLogin(od){
+	$.ajax({
+		url : "/MountainExploer.com/mountain/public/mbInfo",
+		type : "GET",
+		dataType : "json",
+		success : function(data){
+			
+			member = data.seqno
+			if(od == 1){
+				activeMainAjax(page,"/defaultAS");			
+			}
+			if(od == 2){
+				activeMainAjax(page,"/tagAS")
+				setSelectOption();	
+			}
+			if(od == 3){
+				activeMainAjax(page,"/searchAS")
+			}
+		},
+		error : function(){
+			console.log("error")
+			swal("會員偵測出錯","請聯絡管理員","error")
+		}
+	})
 }
-if (urlNow.searchParams.has("od")) {
-	od = urlNow.searchParams.get("od");
-} else {
-	od = 1;
+
+function publishNewAct(){
+	console.log(member)
+	if(member != null && member != 0 ){
+		window.location.assign("/MountainExploer.com/mountain/manage/new")
+	}else{
+		swal({
+			title : "尚未登入",
+			text : "必須登入才能使用",
+			icon : "warning",
+			buttons : {
+				confirm : {
+					text : "開啟登入視窗",
+					visible : true,
+					value : true
+				},
+				cancel : {
+					text : "關閉視窗",
+					visible : true,
+					value : false
+				}
+			}
+		}).then((value) => {
+			if(value){
+				
+			}
+		})
+	}
 }
-if (urlNow.searchParams.has("tag")) {
-	tag = urlNow.searchParams.get("tag");
-}
-if (urlNow.searchParams.has("search")) {
-	search = urlNow.searchParams.get("search");
-}
+
 /*	函式 : 圖片錯誤(空值)時處理 */
 function imgError(){
 	$(this).attr("src","../images/defaultMountain.jpg")
@@ -57,6 +75,7 @@ function setSelectOption() {
 	再將結果交給動態新增函式處理 
 */
 function activeMainAjax(page, as) {
+	console.log(member)
 	let sendData = { page: page, tag: tag, search: search }
 	$.ajax({
 		url: actHomeURL + as,
@@ -64,7 +83,7 @@ function activeMainAjax(page, as) {
 		dataType: 'json',
 		data: sendData,
 		success: function(data) {
-
+			console.log(data)
 			//參數給值
 			totalPage = data.totalPage;
 			totalData = data.totalData;
@@ -93,10 +112,10 @@ function insertTable(data) {
 		let thisElm = $(".order-table-tb").eq(i)
 		
 		/**呼叫動態新增網頁元素之函式 */
-		console.log("actBasic.seqno : " + data[i].actBasic.seqno)
+//		console.log("actBasic.seqno : " + data[i].actBasic.seqno)
 		setActImg(data[i].actBasic.seqno, thisElm)
-		setTag(data[i].tagMap, thisElm)
 		setTitle(data[i].actBasic, thisElm)
+		setTag(data[i].tagMap, thisElm)
 		setPostTime(data[i].actBasic, thisElm)
 		setRegNum(data[i], thisElm)
 		setRegEndDate(data[i].actBasic.actInfo, thisElm)
@@ -117,7 +136,7 @@ function insertTable(data) {
 	
 */
 function setActImg(seqno, thisElm) {
-	console.log("get seqno : " + seqno)
+//	console.log("get seqno : " + seqno)
 	let thisTD = $(thisElm).find("td").eq(0)
 	let imgURL = actHomeURL + "/images?actID=" + seqno + "&defImage=1"
 
@@ -127,12 +146,12 @@ function setActImg(seqno, thisElm) {
 }
 function setTitle(actBasic, thisElm) {
 	
-	let thisTD = thisElm.find(".tagContainer").siblings("a")
-	let title = "<br>" + actBasic.actInfo.title + "<br>"
+	let thisTD = thisElm.find("td").eq(1).find("a")
+	let title = actBasic.actInfo.title + "<br>"
+		+ actBasic.actInfo.totalDay + " / $" + actBasic.actInfo.price;
 	
 	thisTD.attr("href", detailURL + actBasic.seqno)
-		+ actBasic.actInfo.totalDay + " / " + actBasic.actInfo.price;
-	thisTD.html(title)
+	thisTD.append(title)
 }
 function setPostTime(actBasic, thisElm) {
 	
@@ -164,6 +183,9 @@ function activeTagAS(tag) {
 	if (tag != 0) {
 		let tagAs = actEnterURL + "od=2&page=1&tag=" + tag;
 		window.location.assign(tagAs)
+	}else{
+		let defaultAs = actEnterURL + "od=1&page=1"
+		window.location.assign(defaultAs)
 	}
 }
 
@@ -179,31 +201,34 @@ function setPageController(page) {
 	if (od == 2) {
 		url = actEnterURL + "od=2&tag=" + tag + "&"
 	}
-
-	$(".pageControl").find("a").eq(2).html("目前 " + page + ' / ' + totalPage + " 頁")
-	if (page != 1) {
-		let first = url + "page=1"
-		let previous = url + "page=" + (Number(page) - 1);
-		$(".pageControl").find("a").eq(0).attr("href", first).css("display", "block")
-		$(".pageControl").find("a").eq(1).attr("href", previous).css("display", "block")
-	} else {
-		$(".pageControl").find("a").eq(0).css("display", "none")
-		$(".pageControl").find("a").eq(1).css("display", "none")
-	}
-	if (page < totalPage) {
-		let next = url + "page=" + (Number(page) + 1);
-		let final = url + "page=" + (Number(totalPage));
-		$(".pageControl").find("a").eq(3).attr("href", next).css("display", "block")
-		$(".pageControl").find("a").eq(4).attr("href", final).css("display", "block")
-	} else {
-		$(".pageControl").find("a").eq(3).css("display", "none")
-		$(".pageControl").find("a").eq(4).css("display", "none")
+	let pageCtrl = $(".pageControl")
+	for(let i in pageCtrl){
+		
+		pageCtrl.eq(i).find("a").eq(2).html("目前 " + page + ' / ' + totalPage + " 頁")
+		if (page != 1) {
+			let first = url + "page=1"
+			let previous = url + "page=" + (Number(page) - 1);
+			pageCtrl.eq(i).find("a").eq(0).attr("href", first).css("display", "block")
+			pageCtrl.eq(i).find("a").eq(1).attr("href", previous).css("display", "block")
+		} else {
+			pageCtrl.eq(i).find("a").eq(0).css("display", "none")
+			pageCtrl.eq(i).find("a").eq(1).css("display", "none")
+		}
+		if (page < totalPage) {
+			let next = url + "page=" + (Number(page) + 1);
+			let final = url + "page=" + (Number(totalPage));
+			pageCtrl.eq(i).find("a").eq(3).attr("href", next).css("display", "block")
+			pageCtrl.eq(i).find("a").eq(4).attr("href", final).css("display", "block")
+		} else {
+			pageCtrl.eq(i).find("a").eq(3).css("display", "none")
+			pageCtrl.eq(i).find("a").eq(4).css("display", "none")
+		}
 	}
 }
 
 /*	函式 : 透過傳入參數，於網頁動態新增狀態標籤 */
 function setTag(check, thisElm) {
-	let container = thisElm.find(".tagContainer")
+	let container = thisElm.find("td").eq(1)
 	let aURL = actEnterURL.concat("od=2&page=1&tag=")
 	let aTagStart = "<div class='actTag'><a href='"
 	let aTagEnd = "</a></div>"
@@ -212,32 +237,32 @@ function setTag(check, thisElm) {
 
 	if (!check[3]) {
 		if (check[1]) {
-			container.append(aTagStart + aURL + "1'>新活動" + aTagEnd)
+			container.append(aTagStart + aURL + "1'><i class='fas fa-tree'></i>" + aTagEnd)
 		}
 		if (check[2]) {
-			container.append(aTagStart + aURL + "2'>熱門活動" + aTagEnd)
+			container.append(aTagStart + aURL + "2'><i class='fab fa-hotjar'></i>" + aTagEnd)
 		}
 		if (!check[4]) {
 			if (!check[5]) {
 				if (check[6]) {
-					container.append(regTagStart + aURL + "6'>尚可報名" + regTagEnd)
+					container.append(regTagStart + aURL + "6'><i class='far fa-calendar-check'></i>" + regTagEnd)
 				}
 				if (check[7]) {
-					container.append(regTagStart + aURL + "7'>報名將截止" + regTagEnd)
+					container.append(regTagStart + aURL + "7'><i class='fa fa-exclamation-circle'></i>" + regTagEnd)
 				}
 				if (check[8]) {
-					container.append(regTagStart + aURL + "8'>報名將滿" + regTagEnd)
+					container.append(regTagStart + aURL + "8'><i class='fa fa-battery-three-quarters'></i>" + regTagEnd)
 
 				}
 			} else {
-				container.append(regTagStart + aURL + "5'>報名已滿" + regTagEnd)
+				container.append(regTagStart + aURL + "5'><i class='fa fa-battery'></i>" + regTagEnd)
 			}
 		} else {
-			container.append(regTagStart + aURL + "4'>報名截止" + regTagEnd)
+			container.append(regTagStart + aURL + "4'><i class='fa fa-exclamation-triangle'></i>" + regTagEnd)
 		}
 
 	} else {
-		container.append(aTagStart + aURL + "3'>歷史活動" + aTagEnd)
+		container.append(aTagStart + aURL + "3'><i class='far fa-calendar-times'></i>" + aTagEnd)
 	}
 }
 

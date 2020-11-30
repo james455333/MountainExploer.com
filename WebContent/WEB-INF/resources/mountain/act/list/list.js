@@ -1,18 +1,50 @@
-$("body").on("load",function(){
-	
-})	
+
+/* Controller路徑對應變數 */
+var actHomeURL = "/MountainExploer.com/mountain/act/crud";
+var actEnterURL = "/MountainExploer.com/mountain/list?";
+var mountainShare = "/MountainExploer.com/mountain/public";
+var detailURL = "/MountainExploer.com/mountain/act/detail?page=1&actID="
+
+/* 預先設定要使用的變數名稱 
+	totalPage	=	本條件查詢頁面總數
+	totalData	=	本條件查詢總筆數
+	page 		=	當前頁面
+	od			=	本次命令
+	(1 = 預設, 2 = 標籤, 3 = 搜尋)
+	tag			=	本次查詢標籤號碼
+	search		=	本次搜尋內容
+*/
+var totalPage, totalData, page, od, tag, search, member;
+
+/* 抓取網域提供參數 */
+var urlNow = new URL(window.location.href)
+
+/* 設置預先設定的變數 */
+if (urlNow.searchParams.has("page")) {
+	page = urlNow.searchParams.get("page");
+} else {
+	page = 1;
+}
+if (urlNow.searchParams.has("od")) {
+	od = urlNow.searchParams.get("od");
+} else {
+	od = 1;
+}
+if (urlNow.searchParams.has("tag")) {
+	tag = urlNow.searchParams.get("tag");
+}
+if (urlNow.searchParams.has("search")) {
+	search = urlNow.searchParams.get("search");
+}
+
+
+
+
 $(function(){
+	
 	/*	依照頁面命令變數值(od)，給予呼叫的函式相應的參數	*/
-	if(od == 1){
-		activeMainAjax(page,"/defaultAS");			
-	}
-	if(od == 2){
-		activeMainAjax(page,"/tagAS");		
-		setSelectOption();	
-	}
-	if(od == 3){
-		activeMainAjax(page,"/searchAS");	
-	}
+	ajaxCheckLogin(od)
+	
 
 	/* 掛載活動狀態標籤查詢方法，讓點擊選單選項執行查詢函式 */
 	$("select[name='aTag']").on("change",function(){
@@ -38,6 +70,9 @@ $(function(){
 	}).on("mouseleave",".showImage",function(){
 		$(this).siblings().hide();
 	})
+	
+	$("#btn-newpost").on("click",publishNewAct)
+	
 	
 })
 	/*

@@ -73,12 +73,13 @@
 
 .d_act_img img {
 	width: 100%;
+	max-width:400px;
 	height: 100%;;
+	max-height:300px;
 }
 
 .d_sr {
 	clear: left;
-	display : none;
 }
 
 .d_sr_img {
@@ -155,6 +156,7 @@
 	color: red;
 }
 .d_noteInfo{
+	margin : 10px 0;
 	text-align: left;
 	padding : 10px;
 	vertical-align: top;
@@ -166,4 +168,40 @@
 	color : white;
 	font-size : 25px;
 	font-style: italic,oblique;
+}
+.btn-hide{
+	display : none;
+}
+.comment-container{
+	padding : 5px;
+}
+.comment-input-container{
+	display : inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+.comment-input-container input{
+	padding-left : 15px;
+	letter-spacing: 1px;
+	height : 100%;
+	width : 100%;
+}
+.comment-btn-container{
+	display : inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+.resp-ckeditor{
+	padding : 25px;
+}
+.resp-container{
+	padding : 15px;
+	margin : 5px;
+	background-color: #e9e8ff;
+}
+.d-sr-body{
+	clear: left;
+	display : none;
+	align-items: left;
+	justify-content: left;
 }

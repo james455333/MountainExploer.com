@@ -60,8 +60,8 @@ public class ActRegInfo extends GenericTypeObject{
 		this.name = name;
 	}
 	@Basic
-	@Temporal(TemporalType.DATE)
 	@Column(name = "BIRTHDAY")
+	@Temporal(TemporalType.DATE)
 	public java.util.Date getBirthDay() {
 		return birthDay;
 	}

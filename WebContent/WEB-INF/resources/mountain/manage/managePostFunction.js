@@ -10,6 +10,8 @@ function replaceContentPost(order,page){
 	let model,pageCtrl;
 	model = $(".m-ma-ta").clone();
 	pageCtrl = $(".m-hide").find(".pageControl").clone()
+	let notice = "<h2>已完成活動請至 <i>活動紀錄查看</i></h2>";
+	$(".m-ma-container").append(notice)
 	$(".m-ma-container").append(model)
 	$(".m-ma-container").append(pageCtrl)
 	insertPostInfo(order, page);
@@ -19,7 +21,6 @@ function replaceContentPost(order,page){
 
 /* Post 主控制表 */
 function insertPostInfo(order, page){
-	
 	$.ajax({
 		url : manageHome+order,
 		method : "GET",
@@ -30,7 +31,7 @@ function insertPostInfo(order, page){
 			totalPage = data.totalPage
 			totalData = data.totalData
 			for(let i in data.actList){
-				let thisElm = $(".order-table-tb").eq(i)
+				let thisElm = $(".m-ma-ta").eq(0).find(".order-table-tb").eq(i)
 				let model = thisElm.clone()
 				$(".m-ma-ta").eq(0).append(model);
 				setPS_Seqno(data.actList[i],thisElm)
@@ -442,7 +443,7 @@ function setPS_Registry(thisElm,thisActID){
 		dataType : "json",
 		data : { actID : thisActID},
 		success : function(data){
-//			console.log(data)
+			console.log(data)
 			for(let i in data){
 				let model = thisElm.find(".tr-reg-con").find(".tr-reg-body").eq(i).clone();
 				thisElm.find(".tr-reg-con").append(model)
@@ -486,22 +487,25 @@ function setPR_RegDate(thisBody, reqDate){
 	thisBody.find("div").eq(3).html(dateFormate(reqDate))
 }
 function setPR_RegAttr(thisBody, data){
+	let confirmBT = "<button class='bt-ps-reg-confirm'>確認報名</button>";
+	let declineBT = "<button class='bt-ps-reg-decline'>拒絕報名</button>";
 	if(data.cancelTag != null){
 		thisBody.find(".tr-reg-attr").html("[ 報名已取消 ]")
 		thisBody.find(".tr-reg-control").append("[ 取消原因 ] " + data.cancelRes)
-	}
-	if(data.deniTag == null){
-		if(data.confirm == null){
-			thisBody.find(".tr-reg-attr").html("[ 未接受報名 ]")
-			thisBody.find(".tr-reg-control").append("<button>接受報名</button>")
-			thisBody.find(".tr-reg-control").append("<button>拒絕報名</button>")
-		}else{
-			thisBody.find(".tr-reg-attr").html("[ 已接受報名 ]")
-			thisBody.find(".tr-reg-control").append("<button>拒絕報名</button>")
-		}
 	}else{
-		thisBody.find(".tr-reg-attr").html("[ 已拒絕報名 ]")
-		thisBody.find(".tr-reg-control").append("<button>接受報名</button>")
+		if(data.deniTag == null){
+			if(data.confirm == null){
+				thisBody.find(".tr-reg-attr").html("[ 未接受報名 ]")
+				thisBody.find(".tr-reg-control").append(confirmBT)
+				thisBody.find(".tr-reg-control").append(declineBT)
+			}else{
+				thisBody.find(".tr-reg-attr").html("[ 已接受報名 ]")
+				thisBody.find(".tr-reg-control").append(declineBT)
+			}
+		}else{
+			thisBody.find(".tr-reg-attr").html("[ 已拒絕報名 ]" + "<br> [ 拒絕原因 ] <p>" + data.delnReason + "</p>")
+			thisBody.find(".tr-reg-control").append(confirmBT)
+		}
 	}
 	
 }
@@ -512,7 +516,7 @@ function setPR_RegInfo(regInfoCon, actRegInfo){
 		let model = regInfoCon.find(".tr-reg-info-body").eq(i).clone();
 		let regInfoBody = regInfoCon.find(".tr-reg-info-body").eq(i)
 		regInfoBody.find("div").eq(0).html(actRegInfo[i].name)
-		regInfoBody.find("div").eq(1).html(dateFormate(actRegInfo[i].birthDay))
+		regInfoBody.find("div").eq(1).html(new Date(actRegInfo[i].birthDay).toLocaleDateString())
 		regInfoBody.find("div").eq(2).html(actRegInfo[i].personID)
 		regInfoBody.find("div").eq(3).html(actRegInfo[i].contactPhone)
 		regInfoBody.find("div").eq(4).html(actRegInfo[i].contactCellphone)
@@ -630,5 +634,86 @@ function setActDelete(thisBT){
 		error : function(){
 			swal ("","取消活動出現問題","error")
 		}		
+	})
+}
+
+function confirmReg_PS(){
+	let thisBT = $(this)
+	let thisRegID = thisBT.parents(".tr-reg-order").find(".tr-reg-seqno").text()
+	$.ajax({
+		url : manageHome+"/post-act-reg",
+		type : "PUT",
+		contentType: 'application/json',
+		dataType : "json",
+		data : thisRegID,
+		success : function(data){
+			if(data){
+				ps_successSWAL(thisBT)
+			}
+		},
+		error : function(data){
+			ps_errorSWAL(thisBT)
+		}
+	})
+}
+function declineReg_PS(){
+	let thisBT = $(this)
+	let thisRegID = thisBT.parents(".tr-reg-order").find(".tr-reg-seqno").text()
+	swal({
+		title : "請輸入拒絕報名原因 (必填,最多250字)",
+		icon : "info",
+		dangerMode: true,
+		closeOnClickOutside: true,
+		buttons : {
+			confirm : {
+				visible : true,
+				value : true
+			},
+			cancel : {
+				visible : true,
+				value : false
+			},
+		},
+		content: {
+			element: "input",
+			attributes: {
+				type: "text",
+				'max-length' : "250",
+			}
+		}
+	}).then((value) => {
+		if(value){
+			$.ajax({
+				url : manageHome+"/post-act-reg",
+				type : "POST",
+				dataType : "json",
+				data : {regID : thisRegID, deReason : value},
+				success : function(data){
+					ps_successSWAL(thisBT)
+				},
+				error : function(data){
+					ps_errorSWAL(thisBT)
+				}
+			})
+		}
+s	})
+}
+function ps_successSWAL(bt){
+	swal({
+		title : bt.text()+"成功",
+		icon : "success",
+		button :  "OK"
+	}).then(() => {
+		let pageCon = $(".m-ma-container").find(".pageControl")
+					.find("div").eq(2).text();
+		let page = pageCon.substring(0,pageCon.indexOf("/")).trim();
+		post(page);
+	});
+}
+function ps_errorSWAL(bt){
+	swal({
+		title : bt.text()+"失敗",
+		icon : "error",
+		button :  "OK"
 	})
 }

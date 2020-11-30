@@ -36,9 +36,6 @@ public class RouteRetrieveController {
 		String hql = "from NationalPark order by id";
 		nationParkList = (List<NationalPark>) service.getwithHQL(hql, 1, 10);
 		
-		for (NationalPark nationalPark : nationParkList) {
-			nationalPark.setRouteBasic(null);
-		}
 		
 		return nationParkList;
 	}

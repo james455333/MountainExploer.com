@@ -1,0 +1,145 @@
+.reg-mainCon{
+	padding : 10px;
+}
+.rb {
+	border-radius: 20px 20px 20px 20px;
+	-moz-border-radius: 20px 20px 20px 20px;
+	-webkit-border-radius: 20px 20px 20px 20px;
+	border: 6px solid #b9d9c0;
+	padding: 5px;
+	margin: 10px;
+}
+
+.cb1 {
+	background-color: rgb(201, 241, 255);
+	margin-bottom: 5px;
+}
+.reg-ctrl{
+	padding : 10px;
+}
+.text-center {
+	text-align: center;
+}
+
+.bt-position {
+	display: flex;
+	align-items: right;
+	justify-content: right;
+}
+.reg-actInfo{
+	margin :10px;
+}
+
+#act-note {
+	overflow: auto;
+	height: 125px;
+	text-align: justify;
+}
+
+#info-Container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#actInfo-Container-head {
+	padding: 5px;
+	text-align: left;
+	width: 50%;
+}
+
+#act-simpleinfo {
+	padding: 5px;
+	width: 50%;
+}
+/*
+.regInfo-head {
+	margin : 10px;
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border: 0px solid #000000;
+	background-color: #9cbf40;
+	font-size : 20px; 
+}
+*/
+.regInfo-form{
+	width : 100%;
+}
+.regInfo {
+	margin : 10px;
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border: 0px solid #000000;
+	background-color: #ffffff;
+}
+.regInfo-container{
+	width : 100%;
+	margin: 15px 0px;
+	border : 3px double #c2e4d1;
+	padding : 10px;
+}
+/*
+.regInfo-body-order div{
+	margin : 5px;
+	height : 50px;
+}
+*/
+.regInfo-container input{
+	width : 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center; 
+}
+
+.regInfo-form{
+	margin : 10px 0px;
+}
+label.error{
+	color : red;
+	font-size : 10px;
+}
+input.error{
+	border : 1px solid red;
+}
+input.valid{
+	border : 1px solid green;
+}
+.rei-con-main {
+	display: flex;
+	align-items: center;
+	justify-content: center; 
+}
+.rgi-con-left{
+	margin : 10px;
+	width : 50%;
+}
+.rgi-con-right{
+	margin : 10px;
+	width : 50%;
+}
+
+.reg-body {
+	width : 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center; 
+	height : 100px;
+}
+.reg-body div{
+	height : 100%;
+	margin : 15px 15px;
+}
+.reg-body div:nth-child(1){
+	width : 30%;
+}
+.reg-body div:nth-child(2){
+	width : 70%;
+}
+.btn-rgi-reset{
+	display: flex;
+	align-items: center;
+	justify-content: center; 
+	width : 100%;
+}
