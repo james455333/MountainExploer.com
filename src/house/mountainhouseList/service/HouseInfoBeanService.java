@@ -52,8 +52,8 @@ public class HouseInfoBeanService implements IHouseInfoBeanService {
 
 
 	@Override
-	public List<HouseInfoBean> selectAllHouse(Integer page, Integer showData, Integer no, Integer parkid,Integer star) {
-		return hDAO.selectAllHouse(page, showData, no, parkid,star);
+	public List<HouseInfoBean> selectAllHouse(Integer page, Integer showData, Integer no, Integer parkid,Integer star,Integer clickcount) {
+		return hDAO.selectAllHouse(page, showData, no, parkid,star, clickcount);
 	}
 
 

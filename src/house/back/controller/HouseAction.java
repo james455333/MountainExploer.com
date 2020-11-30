@@ -52,10 +52,10 @@ public class HouseAction {
 	@GetMapping("/selectAll")
 //	@GetMapping("/mountainHouseBack/selectAll")
 	public String selectAll(Model m, @RequestParam(name = "page") Integer page, Integer showData,
-			@RequestParam(name = "no") Integer no, @RequestParam(name = "parkid") Integer parkid) {
+			@RequestParam(name = "no") Integer no, @RequestParam(name = "parkid") Integer parkid,Integer star,Integer clickcount) {
 		int totalData = houseService.countHouse(no, parkid);
 		int totalPage = (int) Math.ceil(totalData * 1.0 / 10);
-		List<HouseInfoBean> list = houseService.selectAllHouse(page, 10, no, parkid);
+		List<HouseInfoBean> list = houseService.selectAllHouse(page, 10, no, parkid, star, clickcount);
 
 		m.addAttribute("House_All", list);
 		m.addAttribute("totalData", totalData);
@@ -78,11 +78,11 @@ public class HouseAction {
 //	}
 //
 	@GetMapping("/selectHouse")
-	public String selectHouse(@RequestParam(name = "selecthouse") String house, Integer page, Integer showData,
+	public String selectHouse(@RequestParam(name = "selecthouse") String house, Integer page, Integer showData,Integer star,Integer clickcount,
 			Model m) {
 		int totalData = houseService.counthousenaem(house);
 		int totalPage = (int) Math.ceil(totalData * 1.0 / 10);
-		List<HouseInfoBean> list = houseService.selectHouseName(page, 10, house);
+		List<HouseInfoBean> list = houseService.selectHouseName(page, 10, house, star, clickcount);
 
 		m.addAttribute("House_All", list);
 		m.addAttribute("totalData", totalData);

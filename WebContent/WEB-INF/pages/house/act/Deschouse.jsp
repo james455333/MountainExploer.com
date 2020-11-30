@@ -16,7 +16,11 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
     <style>
-	.topname{margin : 50px 50px 50px 5px;
+    .images{
+width:18px;
+height:18px;
+}
+	.topname{margin : 50px 45px 50px 5px;
 	float: left;
 	padding : 50px 50px 50px 5px;
 	}
@@ -51,19 +55,19 @@
         </nav>
     </header>
     <div class="div_ul">
-        <div class="secNavbar">
-            <nav>
-                <ul class="second_nav">
-                    <li class="li1"><a href="#">第二導覽列1</a></li>
+<!--         <div class="secNavbar"> -->
+<!--             <nav> -->
+<!--                 <ul class="second_nav"> -->
+<!--                     <li class="li1"><a href="#">第二導覽列1</a></li> -->
 
-                    <li class="li1"><a href="#">第二導覽列2</a></li>
+<!--                     <li class="li1"><a href="#">第二導覽列2</a></li> -->
 
-                    <li class="li1"><a href="#">第二導覽列3</a></li>
+<!--                     <li class="li1"><a href="#">第二導覽列3</a></li> -->
 
-                    <li class="li1"><a href="#">第二導覽列4</a></li>
-                </ul>
-            </nav>
-        </div>
+<!--                     <li class="li1"><a href="#">第二導覽列4</a></li> -->
+<!--                 </ul> -->
+<!--             </nav> -->
+<!--         </div> -->
         <div class="div_li1">
             <a>保留區</a>
         </div>
@@ -129,6 +133,58 @@
 								</c:choose>
 					</div>
 	                <div class = "topname"><h2>${i.name}</h2></div>
+	                <div><c:choose >
+									<c:when test="${(i.star*1.0 / i.clickcount) lt 1}">
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+									</c:when>
+									<c:when test="${ i.star*1.0/i.clickcount ge 1 && i.star*1.0/i.clickcount lt 2}">
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+									</c:when>
+									<c:when test="${i.star*1.0/i.clickcount ge 2 && i.star*1.0/i.clickcount lt 3}">
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+									</c:when>
+									<c:when test="${i.star*1.0/i.clickcount ge 3 && i.star*1.0/i.clickcount lt 4}">
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+									</c:when>
+									<c:when test="${i.star*1.0/i.clickcount ge 4 && i.star*1.0/i.clickcount lt 4.5}">
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+									</c:when>
+									<c:when test="${i.star*1.0 / i.clickcount ge 4.5}">
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+									</c:when>
+									</c:choose>
+					</div>
+<!-- 					評價 -->
+					<div>
+					<form action="<c:url value='/mountainHouseAct/jumpupdatestart'></c:url>">
+					<input type="hidden" value="${i.housebasicid}">
+					<input type="submit" value="評分"></form>
+					</div>
+					
 	                <div class="body">${i.desc}</div>
 	                </c:forEach>
 	                </div>
