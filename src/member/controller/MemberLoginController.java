@@ -1,22 +1,33 @@
 package member.controller;
 
+import java.io.IOException;
+import java.security.GeneralSecurityException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken.Payload;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.jackson2.JacksonFactory;
 
 import member.MemberGlobal;
 import member.model.MemberBasic;
@@ -28,17 +39,27 @@ public class MemberLoginController {
 
 	private static String beforeCheckURL;
 	
+	private static String client_id = "578428677346-4jvc65cma0hl66a9vvv9ka9iijjh2l6a.apps.googleusercontent.com";
+	private static String client_key = "4nwYIYzwvLL9RDjDMcnIyjdY";
+	private static String scope = "https://www.googleapis.com/auth/drive.metadata.readonly";
+	private static String redirect_url = "http://gntina.iok.la/GoogleUserInfo";
+	private static String code_url = "https://accounts.google.com/o/oauth2/v2/auth";
+	private static String token_url = "https://www.googleapis.com/oauth2/v4/token";
+	private static String user_url = "https://www.googleapis.com/oauth2/v2/userinfo";
+	private static String verify_url = "https://www.googleapis.com/oauth2/v3/tokeninfo";
+	
 	@Autowired
 	private MemberService mbService;
 	
 	@RequestMapping(path = "/member/memberLoginEntry", method = RequestMethod.GET)
 	public String processLoginEntry() {
-		return "member/login";
+		return "member/formalLogin";
 	}
 	
 	
-	@RequestMapping(path = "/member/memberLogin", method = RequestMethod.POST)
-	public String processCheckLogin(
+	@ResponseBody
+	@GetMapping(path = "/member/memberLogin")
+	public boolean processCheckLogin(
 			@RequestParam(name = "account")String account,
 			@RequestParam(name = "password")String password,
 			@RequestParam(name = "rememberMe", required = false)String rm,
@@ -64,7 +85,7 @@ public class MemberLoginController {
 		}
 		
 		if(errors != null && !errors.isEmpty()) {
-			return "member/login";
+			return false;
 		}
 		
 		
@@ -118,34 +139,81 @@ public class MemberLoginController {
 					m.addAttribute("Member", mb);
 					m.addAttribute("result", "登入成功");
 					System.out.println("=======================登入成功");
-					return "member/memberInfo";
+					return true;
 				}else if(mb.getMemberStatus().getSeqno() == 110 || mb.getMemberStatus().getSeqno() == 130) {
 					m.addAttribute("Member", mb);
 					m.addAttribute("result", "初次登入成功");
 					System.out.println("=======================登入成功");
-					return "member/memberFirstInfo";
+					return true;
 				}else {
 					System.out.println("身分組權限不足");
-					return "member/login";
+					return false;
 				}
 			} else {
 				errors.put("msg", "帳號或密碼錯誤");
-				return "member/login";
+				return false;
 			}
 		}
 		
 		errors.put("msg", "帳號或密碼錯誤");
-		return "member/login";
+		return false;
 		
 	}
 	
 	
-	@RequestMapping(path = "/member/memberLogout", method = RequestMethod.GET)
-	public String processLogout(SessionStatus status,Model model) {
-		status.setComplete();
-		return "member/login";
+	//第三方登入
+	@RequestMapping(path = "/member/socialLoginEntry", method = RequestMethod.GET)
+	public String socialLoginEntry() {
+		return "member/socailLoginGoogleTest";
 	}
 	
 	
+	@RequestMapping(path = "/member/googleVerify", method = RequestMethod.POST)
+	public void verifyToken(String idTokenStr) {
+		System.out.println(idTokenStr);
+		GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(new NetHttpTransport(), JacksonFactory.getDefaultInstance()).setAudience(Collections.singletonList(client_id)).build();
+		GoogleIdToken idToken = null;
+		try {
+			idToken = verifier.verify(idTokenStr);
+		} catch (GeneralSecurityException e) {
+			e.printStackTrace();
+			System.out.println("驗證時出現GeneralSecurityException例外");
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("驗證時出現IOException例外");
+		}
+		
+		if(idToken != null) {
+			System.out.println("驗證成功");
+			Payload payload = idToken.getPayload();
+			String userId = payload.getSubject();
+			System.out.println("=================UserId:" + userId);
+			
+			String email = payload.getEmail();
+			System.out.println("=================Email:" + email);
+			
+			String name = (String)payload.get("name");
+			System.out.println("=================Name:" + name);
+		} else {
+			System.out.println("Invalid ID token");
+		}
+	}
+	
+	
+	
+
+	@RequestMapping(path = "/member/memberLogout", method = RequestMethod.GET)
+	public String processLogout(HttpSession session, HttpServletRequest request, SessionStatus status) {
+		session.removeAttribute("Member");
+		
+		System.out.println("logout:" + session.getAttribute("Member"));
+		
+		status.setComplete();
+		System.out.println("Session" + (status != null));
+		
+		return "member/login";
+	}
+	
+
 	
 }

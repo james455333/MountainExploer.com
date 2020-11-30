@@ -1,20 +1,30 @@
 package member.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
-import member.MemberGlobal;
+
 import member.model.MemberBasic;
 import member.model.MemberInfo;
 import member.model.MemberInfoService;
@@ -35,6 +45,10 @@ public class MemberUpdateController {
 	
 	@Autowired
 	private MemberInfoService mbInfoService;
+	
+	@Autowired
+	private HttpServletRequest request;
+	
 	
 //	@RequestMapping(path = "/member/memberInfoUpdateEntry1", method = RequestMethod.GET)
 //	public String processUpdateInfoEntry1() {
@@ -174,6 +188,61 @@ public class MemberUpdateController {
 		return "member/memberInfoUpdate";
 	}
 
+	
+	//上傳、更新圖片
+	@RequestMapping(path = "/member/memberImageUploadAction", method = RequestMethod.POST)
+	public ResponseEntity<byte[]> processUploadImage(@RequestParam(name = "userImage")MultipartFile mFile) throws IllegalStateException, IOException{
+		
+		String fileName = mFile.getOriginalFilename();
+		String fileTemeDirPath = request.getSession().getServletContext().getRealPath("/") + "UploadTempDir\\";
+		
+		System.out.println("fileName:" + fileName);
+		System.out.println("fileTempDirPath:" + fileTemeDirPath);
+		
+		File dirPath = new File(fileTemeDirPath);
+		if(!dirPath.exists()) {
+			boolean status = dirPath.mkdirs();
+			System.out.println("status:" + status);
+		}
+		
+		String fileSavePath = fileTemeDirPath + fileName;
+		File saveFile = new File(fileSavePath);
+		mFile.transferTo(saveFile);
+		System.out.println("fileSavePath:" + fileSavePath);
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.IMAGE_JPEG);
+		
+		if(fileName != null && fileName.length() != 0) {
+			savePicture(fileName, fileSavePath);
+		}
+		
+		return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(saveFile), headers, HttpStatus.OK);
+		
+	}
+
+
+	private void savePicture(String fileName, String fileSavePath) {
+		try {
+			MemberInfo mbInfo = new MemberInfo();
+			mbInfo.setImg_name(fileName);
+			
+			FileInputStream is1 = new FileInputStream(fileSavePath);
+			byte[] b = new byte[is1.available()];
+			is1.read(b);
+			is1.close();
+			
+			mbInfo.setPer_img(b);
+			
+			mbInfoService.update(mbInfo);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
 	
 
 }

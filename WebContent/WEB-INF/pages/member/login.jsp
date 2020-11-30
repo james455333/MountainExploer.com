@@ -6,16 +6,11 @@
 <%
 	Cookie[] cookies = null;
 	String value1 = "";
-	String value2 = "";
-	String value3 = null;
 	cookies = request.getCookies();
 	if(cookies != null && cookies.length > 0){
 		for(Cookie cookie : cookies){
-			if(cookie.getName().equals("rmAnt")){
-				value1 = cookie.getValue();
-			}
 			if(cookie.getName().equals("rmPwd")){
-				value2 = MemberGlobal.decryptString(MemberGlobal.KEY, cookie.getValue());
+				value1 = MemberGlobal.decryptString(MemberGlobal.KEY, cookie.getValue());
 			}
 		}
 	}
@@ -32,17 +27,17 @@
 		<form action="<c:url value='/member/memberLogin'/>" method="POST">
 			<div>
 				<label>帳號：</label>
-				<input type="text" id="account" name="account" value=<%=value1%>>
+				<input type="text" id="account" name="account" value="${cookie.rmAnt.value}">
 				<span>${errors.account}${errors.msg}</span><br/>
 				<label>密碼：</label>
-				<input type="password" id="password" name="password" value=<%=value2%>>
+				<input type="password" id="password" name="password" value=<%=value1%>>
 				<span>${errors.password}${errors.msg}</span><br/>
 			</div>
 			<div>
 				<input type="submit" id="submit" name="submit" value="登入">
 				<input type="checkbox" id="rememberMe" name="rememberMe"
 					<c:if test="${cookie.rememberMe.value == 'check'}">checked="checked"</c:if>
-				value="">記住我<br/>
+				value="check">記住我<br/>
 
 				<a href="/MountainExploer.com/member/memberRegisterEntry">註冊會員</a>
 			</div>
