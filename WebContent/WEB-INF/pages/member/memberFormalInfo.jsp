@@ -144,7 +144,7 @@
                         <div>
                         	<label>個人簡介：</label>
 <%--                         	<span>${Member.memberInfo.other}</span><br/> --%>
-                        	<input type="text" name="memberInfo.other" class="other" value="${Member.memberInfo.other}">
+                        	<input type="text" name="memberInfo.other" class="other" readonly="readonly" value="${Member.memberInfo.other}">
                         </div>
                         <div>
                         	<input type="button" class="turnToUpPage" value="修改會員資料"/>
