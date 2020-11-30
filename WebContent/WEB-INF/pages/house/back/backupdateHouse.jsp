@@ -64,6 +64,7 @@
 						<th scope="col"><span class="tr_title">山屋床位</span></th>
 						<th scope="col"><span class="tr_title">山屋營地位</span></th>
 						<th scope="col"><span class="tr_title">高度 / 海拔</span></th>
+						<th scope="col"><span class="tr_title">描述</span></th>
 						<th scope="col"><span class="tr_title">照片</span></th>
 						<th scope="col"><span class="tr_title"></span></th>
 						<th scope="col"><span class="tr_title"></span></th>
@@ -78,9 +79,10 @@
  				    	<td><input type="hidden" name="update_park" value="${k.nationalPark.name}">${k.nationalPark.name}</td>	  
 				    	<td><input type="text" name="update_name" size="20" value="${k.name}"> 	</td>
 				    	<td><input type="text" name="update_bed" size="20" value="${k.bed}"> 	</td>
-				    	<td><input type="text" name="update_camp" size="50" value="${k.camp}"> 	</td>
-				    	<td><input type="text" name="update_height" size="50" value="${k.height}"> 	</td>				    	
-				    	<td><input type="hidden" name="update_id" size="10" value="${k.housebasicid}">	</td> 			    		
+				    	<td><input type="text" name="update_camp" size="20" value="${k.camp}"> 	</td>
+				    	<td><input type="text" name="update_height" size="20" value="${k.height}"> 	</td>				    	
+						<td><textarea name="update_desc" cols="40" rows="8">${k.desc}</textarea></td>				    	
+						<td><input type="hidden" name="update_id" size="10" value="${k.housebasicid}">	</td> 			    		
 				    	<td><img id="blah" src="#" alt="更新圖片" />		       
 				     		<input type="file" name="files" id="imgInp" size="25" accept="image/*"></td>
 				     		 <input type="hidden" name="hotelnumber" value="${k.imgid.id}">

@@ -95,7 +95,8 @@ public class HouseAction {
 	public String inserHouse(HouseInfoBean housebean, Model m, String id, HouseImgBean houseImgBean,
 			@RequestParam(name = "inser_park") Integer park, @RequestParam(name = "inser_house") String name,
 			@RequestParam(name = "inser_bed") Integer bed, @RequestParam(name = "inser_camp") Integer camp,
-			@RequestParam(name = "inser_height") String height, @RequestParam(name = "mFile") MultipartFile mFile)
+			@RequestParam(name = "inser_height") String height, @RequestParam(name = "mFile") MultipartFile mFile,
+			@RequestParam(name = "inser_desc") String desc)
 			throws IllegalStateException, IOException {
 		
 		if (mFile != null && !mFile.isEmpty()) {	
@@ -131,6 +132,7 @@ public class HouseAction {
 		housebean.setBed(bed);
 		housebean.setCamp(camp);
 		housebean.setHeight(height);
+		housebean.setDesc(desc);
 		genService.save(nParkBean);
 		nParkBean = (NationalPark) genService.select(park);
 		housebean.setNationalPark(nParkBean);
@@ -156,7 +158,7 @@ public class HouseAction {
 			@RequestParam(name = "update_park") String Park, @RequestParam(name = "update_id") String id,
 			@RequestParam(name = "update_name") String name, @RequestParam(name = "update_bed") Integer bed,
 			@RequestParam(name = "update_camp") Integer camp, @RequestParam(name = "update_height") String height,
-			@RequestParam(name = "hotelnumber") String hotelnum
+			@RequestParam(name = "hotelnumber") String hotelnum,@RequestParam(name = "update_desc") String desc
 			) throws IllegalStateException, IOException {
 
 		HouseImgBean houseImgBean = hBean.getImgid();
@@ -168,6 +170,7 @@ public class HouseAction {
 		Integer houseid = Integer.parseInt(id);
 		hBean.setHousebasicid(houseid);
 		hBean.setImgid(houseImgBean);
+		hBean.setDesc(desc);
 		
 		Integer h2 = Integer.parseInt(hotelnum);
 		HouseImgBean imgQuery = houseImgService.select(h2);

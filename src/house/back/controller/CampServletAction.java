@@ -143,8 +143,8 @@ public class CampServletAction {
 	public String insertCamp(CampInfoBean campBean, AreaBean areaBean, CountiesBean countiesBean, Model m, String id,
 			CampImgBean campimgBean, @RequestParam(name = "insercamp_area") String area,
 			@RequestParam(name = "insercamp_counties") String counties,
-			@RequestParam(name = "insercamp_name") String name, @RequestParam(name = "insercamp_desc") byte[] desc,
-			@RequestParam(name = "mFile") MultipartFile mFile) throws IllegalStateException, IOException {
+			@RequestParam(name = "insercamp_name") String name, @RequestParam(name = "insercamp_url") byte[] url,
+			@RequestParam(name = "mFile") MultipartFile mFile,@RequestParam(name = "insercamp_desc") String desc) throws IllegalStateException, IOException {
 		
 		if (mFile != null && !mFile.isEmpty()) {
 			
@@ -192,7 +192,8 @@ public class CampServletAction {
 
 		campBean.setCampimgid(campimgBean);
 		campBean.setName(name);
-		campBean.setUrl(desc);
+		campBean.setUrl(url);
+		campBean.setDesc(desc);
 		campBean.setCounties(countiesBean);
 		campimgBean.setCampid(campBean);
 		campbeanSet.add(campBean);
@@ -237,7 +238,7 @@ public class CampServletAction {
 			@RequestParam(name = "updatecamp_city") String area,
 			@RequestParam(name = "updatecamp_town") String counties,
 			@RequestParam(name = "updatecamp_name") String name, @RequestParam(name = "hotelnumber") String hotelnum,
-			@RequestParam(name = "updatecamp_desc") byte[] desc) throws IllegalStateException, IOException {
+			@RequestParam(name = "updatecamp_url") byte[] url,@RequestParam(name = "updatecamp_desc") String desc) throws IllegalStateException, IOException {
 		
 		CampImgBean campimgBean = campBean.getCampimgid();
 //		Integer imgid = campimgBean.getId();
@@ -257,7 +258,8 @@ public class CampServletAction {
 		int campid = Integer.parseInt(id);
 		campBean.setCampbasicid(campid);
 		campBean.setName(name);
-		campBean.setUrl(desc);
+		campBean.setUrl(url);
+		campBean.setDesc(desc);
 		campBean.setCountiesname(counties);
 		campBean.setCounties(countiesBean);
 		campSet.add(campBean);

@@ -63,6 +63,7 @@
 						<th scope="col"><span class="tr_title">鄉鎮</span></th>
 						<th scope="col"><span class="tr_title">營地名稱</span></th>
 						<th scope="col"><span class="tr_title">網址</span></th>
+						<th scope="col"><span class="tr_title">描述</span></th>
 						<th scope="col"><span class="tr_title">照片</span></th>
 						<th scope="col"><span class="tr_title"></span></th>
 					</tr>
@@ -75,7 +76,8 @@
 				      <td><input type="text" name="insercamp_area" size="10" value="高雄市"></td>
 				      <td><input type="text" name="insercamp_counties" size="10" value="前鎮區"></td>
 				      <td><input type="text" name="insercamp_name" size="20" value="小小露營區"></td>
-				      <td><input type="text" name="insercamp_desc" size="50" value="https://evshhips.pixnet.net/blog"></td>
+				      <td><input type="text" name="insercamp_url" size="50" value="https://evshhips.pixnet.net/blog"></td>
+				      <td><input type="text" name="insercamp_desc" size="100" value="有收集雨水之儲水設備，枯水期不穩定，有簡易太陽能照明。有坑洞式廁所。住宿山屋者，請自備過夜及睡眠裝備。"></td>
 				      <td><img id="blah" src="#" alt="your image" />		       
 				      <input type="file" name="mFile" id="imgInp" size="25" accept="image/*">
 				      </td>

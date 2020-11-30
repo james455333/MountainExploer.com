@@ -85,6 +85,7 @@
 						<th scope="col"><span class="tr_title">床位數量</span></th>
 						<th scope="col"><span class="tr_title">露營地數量</span></th>
 						<th scope="col"><span class="tr_title">海拔</span></th>
+						<th scope="col"><span class="tr_title">描述</span></th>
 						<th scope="col"><span class="tr_title">照片</span></th>
 						<th scope="col"><span class="tr_title"></span></th>
 
@@ -118,6 +119,7 @@
 							<td>${i.bed}</td>
 							<td>${i.camp}</td>
 							<td>${i.height}</td>
+							<td>${i.desc}</td>
 							<td><img height="100" width="100"
 							src="<c:url value='/mountainHouseBack/showimg?imgid=${i.imgid.id}'/>"></td>
 							
@@ -151,6 +153,7 @@
 							<td>${m.bed}</td>
 							<td>${m.camp}</td>
 							<td>${m.height}</td>
+							<td>${m.desc}</td>
 						<td><img height="100" width="100"
 							src="<c:url value='/mountainHouseBack/showimg?imgid=${m.imgid.id}'/>"></td>
 							

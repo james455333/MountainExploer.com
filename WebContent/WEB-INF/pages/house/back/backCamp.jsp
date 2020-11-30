@@ -89,6 +89,7 @@
 						<th scope="col"><span class="tr_title">鄉鎮</span></th>
 						<th scope="col"><span class="tr_title">營地名稱</span></th>
 						<th scope="col"><span class="tr_title">網址</span></th>
+						<th scope="col"><span class="tr_title">描述</span></th>
 						<th scope="col"><span class="tr_title">照片</span></th>
 						<th scope="col"><span class="tr_title"></span></th>
 						<th scope="col"><span class="tr_title"></span></th>
@@ -121,6 +122,7 @@
 							<td>${i.counties.name}</td>
 							<td>${i.name}</td>
 							<td><a href="${i.url}">${i.url}</a></td>
+							<td>${i.desc}</td>
 							<td><img height="100" width="100"
 							src="<c:url value='/mountainCampBack/showimg?imgid=${i.campimgid.id}'/>"></td>
 							<td>
@@ -152,6 +154,7 @@
 							<td>${m.counties.name}</td>
 							<td>${m.name}</td>
 							<td><a href="${m.url}">${m.url}</a></td>
+							<td>${m.desc}</td>
 							<td><img height="100" width="100"
 							src="<c:url value='/mountainCampBack/showimg?imgid=${m.campimgid.id}'/>"></td>													
 						</tr>

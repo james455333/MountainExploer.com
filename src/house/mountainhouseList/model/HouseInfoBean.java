@@ -32,6 +32,8 @@ public class HouseInfoBean {
 	private Integer camp;
 	@Column(name = "HEIGHT")
 	private String height;
+	@Column(name = "description")
+	private String desc;
 	
 	@Transient
 	private Integer nationparkseqno;
@@ -90,6 +92,12 @@ public class HouseInfoBean {
 	}
 	public void setImgid(HouseImgBean imgid) {
 		this.imgid = imgid;
+	}
+	public String getDesc() {
+		return desc;
+	}
+	public void setDesc(String desc) {
+		this.desc = desc;
 	}
 	
 	

@@ -92,7 +92,8 @@ public class ImportHouseCamp {
 				String areaName = csvRecord.get("縣市");
 				String countiesName = csvRecord.get("鄉鎮");
 				String campName = csvRecord.get("名字");
-				String desc = csvRecord.get("description");
+				String url = csvRecord.get("description");
+				String desc = csvRecord.get("描述");
 				
 				AreaBean areabean = new AreaBean();
 				CountiesBean countiesbean = new CountiesBean();
@@ -112,9 +113,10 @@ public class ImportHouseCamp {
 				campbean.setName(campName);
 //				System.out.println(desc.substring(desc.lastIndexOf("/")+1));
 				
-				byte[] btyesdesc = desc.getBytes(CampGlobal.CHARSET);
-				campbean.setUrl(btyesdesc);
+				byte[] btyesurl = url.getBytes(CampGlobal.CHARSET);
+				campbean.setUrl(btyesurl);
 				campbean.setCounties(countiesbean);
+				campbean.setDesc(desc);
 				campbeanSet.add(campbean);
 				
 				CampImgBean campImgBean = new CampImgBean();

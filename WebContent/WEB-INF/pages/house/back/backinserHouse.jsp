@@ -64,6 +64,7 @@
 						<th scope="col"><span class="tr_title">山屋床位</span></th>
 						<th scope="col"><span class="tr_title">山屋營地位</span></th>
 						<th scope="col"><span class="tr_title">高度 / 海拔</span></th>
+						<th scope="col"><span class="tr_title">描述</span></th>
 						<th scope="col"><span class="tr_title">照片</span></th>
 						<th scope="col"><span class="tr_title"></span></th>
 					</tr>
@@ -79,6 +80,7 @@
 				      <td><input type="text" name="inser_bed" size="20" value="10"></td>
 				      <td><input type="text" name="inser_camp" size="20" value="20"></td>
 				      <td><input type="text" name="inser_height" size="20" value="330M"></td>
+				      <td><textarea name="inser_desc" cols="40" rows="8">冬季水源較不穩定，有簡易太陽能照明。有乾式生態廁所。住宿山屋者，請自備過夜及睡眠裝備。通訊品質:尚可~不穩定。為登頂雪山主峰主要之住宿山莊。請民眾依入園證之核准床位號碼入住使用。</textarea></td>
 				      <td><img id="blah" src="#" alt="your image" />		       
 				      <input type="file" name="mFile" id="imgInp" size="25" accept="image/*">
 				      </td>

@@ -139,12 +139,22 @@
 						<c:forEach var="i" items="${House_All}">
 							<tr>
 							<td>${i.nationalPark.name}</td>
-							<td>${i.name}</td>
+							<td><a href="jumpHouseDesc?selecthouseid=${i.housebasicid}">${i.name}</a></td>
 							<td>${i.bed}</td>
 							<td>${i.camp}</td>
 							<td>${i.height}</td>
-								<td><img height="100" width="100"
-							src="<c:url value='/mountainHouseBack/showimg?imgid=${i.imgid.id}'/>"></td>
+							<td>
+							<c:choose>
+							<c:when test="${ empty i.imgid.img}">
+							<img height="100" width="100" src="/MountainExploer.com/housecamp/images/housenull.PNG">
+							</c:when>
+<%-- 							<c:otherwise></c:otherwise> --%>
+							<c:when test="${not emptyi.imgid.img}">
+							<img height="100" width="100"
+							src="<c:url value='/mountainHouseBack/showimg?imgid=${i.imgid.id}'/>">
+							</c:when>
+							</c:choose>
+							</td>
 							</tr>
 						</c:forEach>
 

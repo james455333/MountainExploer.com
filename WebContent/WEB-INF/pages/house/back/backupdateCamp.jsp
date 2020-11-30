@@ -81,7 +81,8 @@
 				    	<td><select name="updatecamp_town" id="selectCounties"><option  value="${l.counties.name}" >${l.counties.name}</option></select></td>
 <%-- 				    	<td><input type="text" name="updatecamp_town" size="10" value="${l.counties.name}" >	</td> --%>
 				    	<td><input type="text" name="updatecamp_name" size="20" value="${l.name}"> 	</td>
-				    	<td><input type="text" name="updatecamp_desc" size="50" value="${l.url}"> 	</td>
+				    	<td><input type="text" name="updatecamp_url" size="50" value="${l.url}"> 	</td>
+				    	<td><input type="text" name="updatecamp_desc" size="100" value="${l.desc}"> 	</td>
 				    	<td><img id="blah" src="#" alt="更新圖片" />		       
 				     		<input type="file" name="files" id="imgInp" size="25" accept="image/*"></td>
 				     		 <input type="hidden" name="hotelnumber" value="${l.campimgid.id}">

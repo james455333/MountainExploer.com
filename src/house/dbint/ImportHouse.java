@@ -93,6 +93,7 @@ public class ImportHouse {
 			String bed = csvRecord.get("山屋床位");
 			String camp = csvRecord.get("營地營位");
 			String height = csvRecord.get("海拔");
+			String desc = csvRecord.get("描述");
 			
 			System.out.println("我又進來惹");
 			
@@ -103,6 +104,7 @@ public class ImportHouse {
 			Integer camps = Integer.parseInt(camp);
 			hBean.setCamp(camps);
 			hBean.setHeight(height);
+			hBean.setDesc(desc);
 			service.save(nationPark);
 			nationPark = (NationalPark) service.select(nationalPark);
 			

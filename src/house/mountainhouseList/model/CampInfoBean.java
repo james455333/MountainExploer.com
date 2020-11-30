@@ -39,6 +39,8 @@ public class CampInfoBean {
 	
 	@Column(name = "URL")
 	private byte[] url;
+	@Column(name = "DESCRIPTION")
+	private String desc;
 	
 	@Transient
 	private String countiesname;
@@ -89,6 +91,12 @@ public class CampInfoBean {
 	}
 	public void setCounties(CountiesBean counties) {
 		this.counties = counties;
+	}
+	public String getDesc() {
+		return desc;
+	}
+	public void setDesc(String desc) {
+		this.desc = desc;
 	}
 	
 }
