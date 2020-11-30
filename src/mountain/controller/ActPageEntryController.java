@@ -57,7 +57,7 @@ public class ActPageEntryController {
 	//新增活動頁面
 	@GetMapping("/manage/new")
 	public String enterNewActivity(Model model, RedirectAttributes redAttr) {
-		return "";
+		return "/mountain/manage/newAct";
 	}
 	//修改活動頁面
 	@GetMapping("/manage/edite")

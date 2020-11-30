@@ -1,3 +1,58 @@
+/* 會員登入檢查 */
+function ajaxCheckLogin(od){
+	$.ajax({
+		url : "/MountainExploer.com/mountain/public/mbInfo",
+		type : "GET",
+		dataType : "json",
+		success : function(data){
+			
+			member = data.seqno
+			if(od == 1){
+				activeMainAjax(page,"/defaultAS");			
+			}
+			if(od == 2){
+				activeMainAjax(page,"/tagAS")
+				setSelectOption();	
+			}
+			if(od == 3){
+				activeMainAjax(page,"/searchAS")
+			}
+		},
+		error : function(){
+			console.log("error")
+			swal("會員偵測出錯","請聯絡管理員","error")
+		}
+	})
+}
+
+function publishNewAct(){
+	console.log(member)
+	if(member != null && member != 0 ){
+		window.location.assign("/MountainExploer.com/mountain/manage/new")
+	}else{
+		swal({
+			title : "尚未登入",
+			text : "必須登入才能使用",
+			icon : "warning",
+			buttons : {
+				confirm : {
+					text : "開啟登入視窗",
+					visible : true,
+					value : true
+				},
+				cancel : {
+					text : "關閉視窗",
+					visible : true,
+					value : false
+				}
+			}
+		}).then((value) => {
+			if(value){
+				
+			}
+		})
+	}
+}
 
 /*	函式 : 圖片錯誤(空值)時處理 */
 function imgError(){
@@ -20,6 +75,7 @@ function setSelectOption() {
 	再將結果交給動態新增函式處理 
 */
 function activeMainAjax(page, as) {
+	console.log(member)
 	let sendData = { page: page, tag: tag, search: search }
 	$.ajax({
 		url: actHomeURL + as,
@@ -91,10 +147,10 @@ function setActImg(seqno, thisElm) {
 function setTitle(actBasic, thisElm) {
 	
 	let thisTD = thisElm.find("td").eq(1).find("a")
-	let title = "<br>" + actBasic.actInfo.title + "<br>"
+	let title = actBasic.actInfo.title + "<br>"
+		+ actBasic.actInfo.totalDay + " / $" + actBasic.actInfo.price;
 	
 	thisTD.attr("href", detailURL + actBasic.seqno)
-		+ actBasic.actInfo.totalDay + " / " + actBasic.actInfo.price;
 	thisTD.append(title)
 }
 function setPostTime(actBasic, thisElm) {
@@ -172,7 +228,7 @@ function setPageController(page) {
 
 /*	函式 : 透過傳入參數，於網頁動態新增狀態標籤 */
 function setTag(check, thisElm) {
-	let container = thisElm.find("td").eq(1).find("a")
+	let container = thisElm.find("td").eq(1)
 	let aURL = actEnterURL.concat("od=2&page=1&tag=")
 	let aTagStart = "<div class='actTag'><a href='"
 	let aTagEnd = "</a></div>"
@@ -181,13 +237,16 @@ function setTag(check, thisElm) {
 
 	if (!check[3]) {
 		if (check[1]) {
-			container.append(aTagStart + aURL + "1'><i class='fa fa-lightbulb-o'></i>" + aTagEnd)
+			container.append(aTagStart + aURL + "1'><i class='fas fa-tree'></i>" + aTagEnd)
 		}
 		if (check[2]) {
-			container.append(aTagStart + aURL + "2'><i class='fa fa-star'></i>" + aTagEnd)
+			container.append(aTagStart + aURL + "2'><i class='fab fa-hotjar'></i>" + aTagEnd)
 		}
 		if (!check[4]) {
 			if (!check[5]) {
+				if (check[6]) {
+					container.append(regTagStart + aURL + "6'><i class='far fa-calendar-check'></i>" + regTagEnd)
+				}
 				if (check[7]) {
 					container.append(regTagStart + aURL + "7'><i class='fa fa-exclamation-circle'></i>" + regTagEnd)
 				}
@@ -203,7 +262,7 @@ function setTag(check, thisElm) {
 		}
 
 	} else {
-		container.append(aTagStart + aURL + "3'><i class='fa fa-calendar-times-o'></i>" + aTagEnd)
+		container.append(aTagStart + aURL + "3'><i class='far fa-calendar-times'></i>" + aTagEnd)
 	}
 }
 

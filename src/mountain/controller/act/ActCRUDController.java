@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.sound.midi.Soundbank;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -56,10 +57,7 @@ import mountain.model.route.RouteBasic;
 public class ActCRUDController {
 	@Autowired
 	HttpServletRequest request;
-	@Autowired
-	private ActivityBasic actBasic;
-	@Autowired
-	private ActImage actImage;
+
 	@Autowired
 	private GenericService<GenericTypeObject> service;
 
@@ -82,20 +80,41 @@ public class ActCRUDController {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(simpleDateFormat, false));
 	}
 
-	// new Activity
+	/* 新增活動 */
 	@PostMapping("/newAct")
 	@ResponseBody
-	public Map<String, String> newAct(@RequestBody ActivityBasic actBasic) throws Exception {
-		System.out.println("New Activity");
-		System.out.println("New Activity");
+	public Map<String, String> insertNewActivity(
+			ActivityBasic actBasic,
+			Model model,
+			@RequestParam(name = "files", required = false) MultipartFile[] files) throws Exception {
 		System.out.println("New Activity");
 		System.out.println("=====================" + actBasic.getActInfo().getTitle());
+		System.out.println("===================== multipartfile length : " + files.length);
+		
 		Map<String, String> result = new HashMap<String, String>();
-		actBasic.getActInfo().setActBasic(actBasic);
 		InterfaceService<GenericTypeObject> service = this.service;
+		actBasic.getActInfo().setActBasic(actBasic);
+		MemberBasic mBasic = (MemberBasic) model.getAttribute("Member");
+		actBasic.setMemberBasic(mBasic);
+		actBasic.getActInfo().setPostDate(new Date());
 		try {
+			/* 新增活動 */
 			service.save(actBasic);
 			actBasic = (ActivityBasic) service.insert(actBasic);
+			/* 新增活動圖片 */
+			if(files.length>0) {
+				for (MultipartFile multipartFile : files) {
+					ActImage actImage = new ActImage();
+					actImage.setActivityBasic(actBasic);
+					actImage.setName(multipartFile.getOriginalFilename());
+					byte[] imgeBytes = MountainGlobal.downloadImage(multipartFile, request);
+					actImage.setImg(imgeBytes);
+					service.save(actImage);
+					service.insert(actImage);
+				}
+			}
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			result.put("error", "發生錯誤，請聯絡管理員");
@@ -103,119 +122,6 @@ public class ActCRUDController {
 		}
 		result.put("success", "新增成功");
 		result.put("actID", String.valueOf(actBasic.getSeqno()));
-		return result;
-	}
-
-	// new ActImg
-	@PostMapping("/newImg")
-	@ResponseBody
-	public List<String> newActImg(
-			@RequestParam(name = "files", required = false) MultipartFile[] files,
-			@RequestParam(name = "actID") Integer actID) throws IllegalStateException, IOException {
-		System.out.println("New Image Start");
-		List<String> result = new ArrayList<String>();
-		InterfaceService<GenericTypeObject> service = this.service;
-		service.save(actImage);
-		int actImageNum = service.countWith(actID, "ACTIVITY_BASIC_SEQNO");
-		if (actImageNum >= 5 || (actImageNum + files.length) > 5) {
-			System.out.println("Img can't sotre more than 5");
-			throw new RuntimeException("目前有" + files.length + "張圖,每個活動最多不可上傳超過五張圖片");
-		}
-		for (MultipartFile multipartFile : files) {
-			System.out.println("file_name : " + multipartFile.getOriginalFilename());
-			byte[] imgeBytes = MountainGlobal.downloadImage(multipartFile, request);
-			actBasic.setSeqno(actID);
-			actImage.setActivityBasic(actBasic);
-			actImage.setName(multipartFile.getOriginalFilename());
-			actImage.setImg(imgeBytes);
-
-			service.insert(actImage);
-		}
-
-		result.add("圖片新增成功");
-
-		return result;
-	}
-
-	// test價格輸入格式
-	@GetMapping(path = "/priceTest", produces = { "application/json;charset=UTF-8" })
-	@ResponseBody
-	public Map<String, String> priceTest(@RequestParam("price") String price) {
-
-		Map<String, String> result = new HashMap<String, String>();
-
-		if (!price.matches("[\\d]*")) {
-			result.put("error", "!!只能輸入數字!!");
-			return result;
-		}
-		if (price.isEmpty()) {
-			result.put("error", "!!必須輸入數字!!");
-			return result;
-		}
-		result.put("correct", "correct");
-		return result;
-	}
-
-	// test 開始及結束日期
-	@GetMapping(path = "/setDateTest", produces = { "application/json;charset=UTF-8" })
-	@ResponseBody
-	public Map<String, String> seDateTest(@RequestParam("StEndDate") String stEndDate) throws ParseException {
-		Map<String, String> result = new HashMap<String, String>();
-
-		String startDate = stEndDate.substring(0, stEndDate.indexOf("-")).trim();
-		Date pSD = sdf.parse(startDate);
-//		System.out.println("startDate : " + parseStartDate);
-		String endDate = stEndDate.substring(stEndDate.indexOf("-") + 1).trim();
-		Date pED = sdf.parse(endDate);
-		if (pED.before(pSD)) {
-			result.put("error", "活動結束日期不得早於開始日期");
-			return result;
-		}
-		result.put("correct", "correct");
-		return result;
-	}
-
-	// test 報名人數上限
-	@GetMapping(path = "/topRegTest", produces = { "application/json;charset=UTF-8" })
-	@ResponseBody
-	public Map<String, String> topRegTest(@RequestParam("TopReg") String topReg) throws ParseException {
-		Map<String, String> result = new HashMap<String, String>();
-
-		if (!topReg.matches("[\\d]*")) {
-			result.put("error", "只能輸入數字");
-			return result;
-		}
-		if (topReg.isEmpty()) {
-			result.put("error", "必須輸入數字");
-			return result;
-		}
-
-		result.put("correct", "correct");
-		return result;
-	}
-
-	// test Title
-	@GetMapping(path = "/titleTest", produces = { "application/json;charset=UTF-8" })
-	@ResponseBody
-	public Map<String, String> titleTest(@RequestParam("title") String title) throws ParseException {
-		Map<String, String> result = new HashMap<String, String>();
-
-		if (title == null) {
-			result.put("error", "活動名稱不得為空");
-			return result;
-		} else if (title.length() > 15) {
-			result.put("error", "包含中、英文不得超過15字");
-		}
-		char[] titleChars = title.toCharArray();
-		for (char c : titleChars) {
-			if ((32 <= c && c <= 47) || (58 <= c && c <= 64) || (91 <= c && c <= 96) || (123 <= c && c <= 127)) {
-
-				result.put("error", "不得含有特殊字元及空格");
-				return result;
-			}
-		}
-
-		result.put("correct", "correct");
 		return result;
 	}
 
@@ -495,20 +401,28 @@ public class ActCRUDController {
 		if (defImage != null && actID != null) {
 			hql = "From ActImage where activityBasic = " + actID + " and defaultImage is not null";
 		}
-		List<ActImage> imgList = (List<ActImage>) service.getwithHQL(hql, 1, 1);
-		if (!imgList.isEmpty()) {
-			for (GenericTypeObject genericTypeObject : imgList) {
-				actImage = (ActImage) genericTypeObject;
-				byte[] imgBytes = actImage.getImg();
-				HttpHeaders headers = new HttpHeaders();
-				headers.setContentType(MediaType.IMAGE_JPEG);
-				result.add(new ResponseEntity<byte[]>(imgBytes, headers, HttpStatus.OK));
-				return result.get(0);
+		try {
+			List<ActImage> imgList = (List<ActImage>) service.getwithHQL(hql, 1, 1);
+			if (!imgList.isEmpty()) {
+				for (GenericTypeObject genericTypeObject : imgList) {
+					actImage = (ActImage) genericTypeObject;
+					byte[] imgBytes = actImage.getImg();
+					HttpHeaders headers = new HttpHeaders();
+					headers.setContentType(MediaType.IMAGE_JPEG);
+					result.add(new ResponseEntity<byte[]>(imgBytes, headers, HttpStatus.OK));
+					return result.get(0);
+				}
+			} else {
+				return null;
 			}
-		} else {
-			throw new HttpClientErrorException(HttpStatus.NOT_FOUND);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
 		}
-		return result.get(0);
+		
+		
+		
+		return null;
 
 	}
 

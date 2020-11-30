@@ -8,17 +8,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>岳進者</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+	<!-- Bootstrap core CSS -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- project public -->
     <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
     <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
     <link rel="stylesheet" href="/MountainExploer.com/mountain/css/mountain.css">
-    <link rel="stylesheet" href="../../mountain/act/detail/detail.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <!-- for this page -->
+    <link rel="stylesheet" href="detail/detail.css">
+    
+	<!-- JQuery -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Bootstrap tooltips -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<!-- MDB core JavaScript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/js/mdb.min.js"></script>
+	<!-- sweetalert -->
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- CKeditor4 -->
+	<script src="/MountainExploer.com/mountain/ckeditor/ckeditor.js"></script>
+    <!-- for this page -->
     <script src="/MountainExploer.com/mountain/js/mountain.js"></script>
-    <script src="../../mountain/act/detail/detail.js"></script>
+    <script src="detail/detail.js"></script>
+    <script src="detail/detailFunction.js"></script>
 </head>
 
 <body>
@@ -55,10 +71,8 @@
             </nav>
         </div> -->
         <div class="div_li1">
-            <a>保留區</a>
         </div>
         <div class="div_li3">
-            <a>保留區</a>
         </div>
         <div class="div_li2">
             <!-- 每頁不同的內容從這裡開始 -->
@@ -137,28 +151,44 @@
 										</div>
 										<!-- 留言 複數 -->
 											<div class="d_sr">
-												<!-- 留言者 -->
-												<div class="d_sr_img">
-													<!-- 留言者頭像 -->
-													<a href="">
-														<img src="">
-													</a>
-												</div>
-												<!-- 留言內容 -->
-												<div class="d_sr_text">
-													<!-- 留言者暱稱 -->
-													<a style="padding: 0" href=""></a>
-													<span></span>
-													<!-- 測試留言者內容 -->
-													<span>發表於 : </span>
+												<div class="d-sr-body">
+													<!-- 留言者 -->
+													<div class="d_sr_img">
+														<!-- 留言者頭像 -->
+														<a href="">
+															<img src="">
+														</a>
+													</div>
+													<!-- 留言內容 -->
+													<div class="d_sr_text">
+														<!-- 留言者暱稱 -->
+														<a style="padding: 0" href=""></a>
+														<span></span>
+														<!-- 測試留言者內容 -->
+														<span>發表於 : </span>
+													</div>
 												</div>
 											</div>
 									</div>
 								
 								</td>
 							</tr>
-<!-- 								預備用	 -->
+							<!-- 回覆-->
 							<tr>
+								<td>
+								</td>
+								<td>
+									<div class="container-fluid comment-container btn-hide">
+										<div class="row">
+											<div class="col-md-10 comment-input-container">
+												<input type="text" name="message" maxlength="30" placeholder="最大留言字數 : 30">
+											</div>
+											<div class="col-md-2 comment-btn-container">
+												<button class="btn btn-success btn-block btn-sideResp">留言  <i class="fas far fa-comment-alt pl-1"></i></button>
+											</div>
+										</div>
+									</div>
+								</td>
 							</tr>
 <!-- 								預備用	 -->
 							<tr>
@@ -192,25 +222,50 @@
             	
             </div>
             <!-- 頁面控制 -->
-            	<nav class="pageControl">
-                    <ul>
-                        <li class="li1">
-                            <a href="#">«第一頁</a>
-                        </li>
-                        <li class="li1">
-                            <a href="#">‹上一頁</a>
-                        </li>
-                        <li class="li1">
-                            <a href="#"></a>
-                        </li>
-                        <li class="li1">
-                            <a href="#">下一頁›</a>
-                        </li>
-                        <li class="li1">
-                            <a href="#">最末頁»</a>
-                        </li>
-                    </ul>
-                </nav>
+            <nav class="pageControl">
+			    <ul>
+			        <li class="li1">
+			            <a href="#">«第一頁</a>
+			        </li>
+			        <li class="li1">
+			            <a href="#">‹上一頁</a>
+			        </li>
+			        <li class="li1">
+			            <a href="#"></a>
+			        </li>
+			        <li class="li1">
+			            <a href="#">下一頁›</a>
+			        </li>
+			        <li class="li1">
+			            <a href="#">最末頁»</a>
+			        </li>
+			    </ul>
+			</nav>
+            <div class="container-fluid">
+				<div class="row resp-container">
+					<div class="col-md-12">
+						<div class="row">
+							<div class="col-md-12">
+								快速回覆
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 resp-ckeditor">
+								<textarea name="resp"></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								 
+								<button type="button" class="btn btn-primary btn-lg">
+									<i class="fas fa-plus"></i>
+									發布
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
             <!-- 每頁不同的內容到這裡結束 -->
             <!-- 頁面控制 -->
         </div>

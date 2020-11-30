@@ -14,8 +14,8 @@ tbody td {
 }
 .m-tb-ti{
 	color : #ffffff;
-	font-size: 30px;
-	display: inline-flex;
+	font-size: 22.5px;
+ 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 }
@@ -30,7 +30,7 @@ tbody td {
 
 .extendImage {
 	position: absolute;
-	hegith: 300px;
+	height: 300px;
 	width: 300px;
 	display: none;
 	z-index: 10;
@@ -95,4 +95,10 @@ tbody td {
 .list-newPost:active {
 	position:relative;
 	top:1px;
+}
+
+.order-table-tb td:nth-child(2){
+		display: inline-flex;
+	align-items: center;
+	justify-content: center;
 }

@@ -14,7 +14,7 @@ var detailURL = "/MountainExploer.com/mountain/act/detail?page=1&actID="
 	tag			=	本次查詢標籤號碼
 	search		=	本次搜尋內容
 */
-var totalPage, totalData, page, od, tag, search, memberSeqno;
+var totalPage, totalData, page, od, tag, search, member;
 
 /* 抓取網域提供參數 */
 var urlNow = new URL(window.location.href)
@@ -39,21 +39,12 @@ if (urlNow.searchParams.has("search")) {
 
 
 
+
 $(function(){
+	
 	/*	依照頁面命令變數值(od)，給予呼叫的函式相應的參數	*/
-	if(od == 1){
-		memberSeqno = ajaxCheckLogin() 
-		$.Callbacks(memberSeqno).fire(activeMainAjax(page,"/defaultAS"));			
-	}
-	if(od == 2){
-		memberSeqno = ajaxCheckLogin();
-		$.Callbacks(memberSeqno).fire(activeMainAjax(page,"/tagAS"))
-		setSelectOption();	
-	}
-	if(od == 3){
-		memberSeqno = ajaxCheckLogin();
-		$.Callbacks(memberSeqno).fire(activeMainAjax(page,"/searchAS"))
-	}
+	ajaxCheckLogin(od)
+	
 
 	/* 掛載活動狀態標籤查詢方法，讓點擊選單選項執行查詢函式 */
 	$("select[name='aTag']").on("change",function(){
@@ -79,6 +70,9 @@ $(function(){
 	}).on("mouseleave",".showImage",function(){
 		$(this).siblings().hide();
 	})
+	
+	$("#btn-newpost").on("click",publishNewAct)
+	
 	
 })
 	/*
