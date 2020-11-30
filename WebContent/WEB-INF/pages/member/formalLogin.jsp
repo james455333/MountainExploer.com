@@ -74,13 +74,12 @@
                 <div id="dialog-form" title="登入/註冊">
                     <div id="login-div" class="ui-dialog">
                         <div class="login-body" id="login-panel">
-                        	<form action="<c:url value='/member/memberLogin'/>" method="POST">
                             <table class="logintable" style="margin: 0 auto;">
                                 <tbody>
                                     <tr style="text-align: right;">
                                         <th>帳號:</th>
                                         <td>
-                                        	<input name="account" type="text" value="${cookie.rmAnt.value}" style=" width: 200px;border: 1px #ABADB3 solid;
+                                        	<input name="account" type="text" id="account" value="${cookie.rmAnt.value}" style=" width: 200px;border: 1px #ABADB3 solid;
                                           			padding: 5px 3px 5px; ">
                                           	<span>${errors.account}${errors.msg}</span>
                                         </td>
@@ -108,7 +107,7 @@
                                         <td>
                                             <div>
                                                 <label>
-                                                    	記住我<input type="checkbox" name="rememberme" <c:if test="${cookie.rememberMe.value == 'check'}">checked="checked"</c:if>
+                                                    	記住我<input type="checkbox" name="rememberMe" id="rememberMe" <c:if test="${cookie.rememberMe.value == 'check'}">checked="checked"</c:if>
 																value="check" style="float: left;">
                                                 </label>
                                             </div>
@@ -118,7 +117,6 @@
                                 </tbody>
                             </table>
                             <br>
-                            </form>
                             <div style="text-align: center;">立即<a href="/MountainExploer.com/member/memberRegisterEntry" style="color:blue;">註冊</a>新帳號</div>
                         </div>
                     </div>

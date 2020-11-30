@@ -14,9 +14,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -55,8 +57,9 @@ public class MemberLoginController {
 	}
 	
 	
-	@RequestMapping(path = "/member/memberLogin", method = RequestMethod.POST)
-	public String processCheckLogin(
+	@ResponseBody
+	@GetMapping(path = "/member/memberLogin")
+	public boolean processCheckLogin(
 			@RequestParam(name = "account")String account,
 			@RequestParam(name = "password")String password,
 			@RequestParam(name = "rememberMe", required = false)String rm,
@@ -82,7 +85,7 @@ public class MemberLoginController {
 		}
 		
 		if(errors != null && !errors.isEmpty()) {
-			return "member/login";
+			return false;
 		}
 		
 		
@@ -136,24 +139,24 @@ public class MemberLoginController {
 					m.addAttribute("Member", mb);
 					m.addAttribute("result", "登入成功");
 					System.out.println("=======================登入成功");
-					return "member/memberInfo";
+					return true;
 				}else if(mb.getMemberStatus().getSeqno() == 110 || mb.getMemberStatus().getSeqno() == 130) {
 					m.addAttribute("Member", mb);
 					m.addAttribute("result", "初次登入成功");
 					System.out.println("=======================登入成功");
-					return "member/memberFirstInfo";
+					return true;
 				}else {
 					System.out.println("身分組權限不足");
-					return "member/login";
+					return false;
 				}
 			} else {
 				errors.put("msg", "帳號或密碼錯誤");
-				return "member/login";
+				return false;
 			}
 		}
 		
 		errors.put("msg", "帳號或密碼錯誤");
-		return "member/login";
+		return false;
 		
 	}
 	
@@ -206,6 +209,8 @@ public class MemberLoginController {
 		System.out.println("logout:" + session.getAttribute("Member"));
 		
 		status.setComplete();
+		System.out.println("Session" + (status != null));
+		
 		return "member/login";
 	}
 	

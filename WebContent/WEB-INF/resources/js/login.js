@@ -16,8 +16,29 @@ $(function () {
     resizable: false,
     buttons: {
       登入: function () {
-        $(this).dialog("close");
-        window.location.href = '../index.html'
+        // window.location.href = '../index.html'
+        let userAnt = $.trim($("#account").val());
+        let userPwd = $.trim($("#password").val());
+        let rm = $.trim($("rememberMe").val());
+        
+        $.ajax({
+          method:"GET",
+          url:"/MountainExploer.com/member/memberLogin",
+          data:{account:userAnt, password:userPwd, rememberMe:rm},
+          dataType:"json",
+          success: function(response){
+            if(response == true){
+              alert("登入成功");
+              window.location.href = "/MountainExploer.com/member/memberInfoEntry";
+            }else{
+              alert("登入失敗");
+              window.location.href = "/MountainExploer.com/member/memberLoginEntry";
+            }
+          }
+
+        })
+
+
       },
       取消: function () {
         $(this).dialog("close");

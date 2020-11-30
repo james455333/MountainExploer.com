@@ -35,7 +35,7 @@ function GoogleLogin(){
         //people.get
         gapi.client.people.people.get({
             'resourceName': 'people/me',
-            //通常你會想要知道的用戶個資
+            //用戶個資
             'personFields': 'names, phoneNumbers, emailAddresses, addresses, residences, genders, birthdays, occupations',
         }).then(function(res){
 
@@ -47,7 +47,7 @@ function GoogleLogin(){
             document.getElementById('content').innerHTML = str;
             //↑通常metadata標記primary:true的個字就是你該抓的資料
 
-            //再自行pase JSON，可以將JSON字串丟到線上parse工具查看：http://json.parser.online.fr/
+            //再自行parse JSON，可以將JSON字串丟到線上parse工具查看：http://json.parser.online.fr/
 
             //最終取得用戶個資後看要填寫在畫面表單上或是透過Ajax儲存到資料庫
 
