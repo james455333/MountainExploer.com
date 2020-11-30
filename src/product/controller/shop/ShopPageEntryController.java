@@ -55,6 +55,11 @@ public class ShopPageEntryController {
 			, ShoppingCart shoppingCart
 			) {
 		
+		// 如果找不到Member物件
+		if (model.getAttribute("Member") == null) {
+			return "redirect:/member/memberLoginEntry";
+		}
+		
 		if (model.getAttribute("ShoppingCart") == null) {
 			System.out.println("ShoppingCart============ null : " + (shoppingCart==null));
 			// 並將此新建ShoppingCart的物件放到session物件內，成為它的屬性物件
@@ -63,12 +68,10 @@ public class ShopPageEntryController {
 			shoppingCart = (ShoppingCart) model.getAttribute("ShoppingCart");
 		}
 		
-		MemberBasic mb = (MemberBasic)model.getAttribute("Member");
-		
-		System.out.println("ShoppingCart:"+shoppingCart.getSubtotal());
-		System.out.println("mb.getName():"+mb.getName());
-		System.out.println(mb.getEmail());
-		System.out.println("mb.getAccount():"+mb.getAccount());
+//		System.out.println("ShoppingCart:"+shoppingCart.getSubtotal());
+//		System.out.println("mb.getName():"+mb.getName());
+//		System.out.println(mb.getEmail());
+//		System.out.println("mb.getAccount():"+mb.getAccount());
 
 		return "product/cart/shoppingCartPage";
 	}

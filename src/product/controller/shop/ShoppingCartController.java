@@ -23,208 +23,202 @@ import product.model.ShoppingCart;
 
 @RequestMapping(path = "/shoppingcart")
 @Controller
-@SessionAttributes(names = {"ShoppingCart","Member"})
+@SessionAttributes(names = { "ShoppingCart", "Member" })
 public class ShoppingCartController {
-	
-	@Autowired
-	private OrdersDAO ordersDao; 
-	
 
+	@Autowired
+	private OrdersDAO ordersDao;
 
 	// 在Session加入ShoppingCart屬性物件
 	@RequestMapping(path = "/addShoppingCart", method = RequestMethod.GET)
-	public String addCartBean(
-//			@ModelAttribute("Member") MemberBasic mb,
-			Model m,
+	public String addCartBean(Model m, 
 			ShoppingCart shoppingCart,
 			@RequestParam(name = "itemBasicSeqno") String itemBasicSeqno,
 			@RequestParam(name = "itemBasicName") String itemBasicName,
-			@RequestParam(name = "unitPrice") String unitPrice,
-			@RequestParam(name = "amount") String amount) {
-	// 如果找不到ShoppingCart物件
+			@RequestParam(name = "unitPrice") String unitPrice, @RequestParam(name = "amount") String amount) {
+
+		// 如果找不到Member物件
+		if (m.getAttribute("Member") == null) {
+			System.out.println("============ Member null : " );
+			
+			shoppingCart.getContent().clear();
+			m.addAttribute("ShoppingCart", shoppingCart);
+			
+			return "redirect:/member/memberLoginEntry";
+		}
+
+		// 如果找不到ShoppingCart物件
 		if (m.getAttribute("ShoppingCart") == null) {
-			System.out.println("============ null : " + (shoppingCart==null));
-	// 並將此新建ShoppingCart的物件放到session物件內，成為它的屬性物件
-			m.addAttribute("ShoppingCart", shoppingCart );
-		}else {
+			System.out.println("============ null : " + (shoppingCart == null));
+			// 並將此新建ShoppingCart的物件放到session物件內，成為它的屬性物件
+			m.addAttribute("ShoppingCart", shoppingCart);
+		} else {
 			shoppingCart = (ShoppingCart) m.getAttribute("ShoppingCart");
 		}
 		CartBean cartBean = new CartBean();
 		// 將訂單資料封裝到CartBean物件內
 		Integer parseIntitemBasicSeqno = Integer.parseInt(itemBasicSeqno);
 		cartBean.setItemBasicSeqno(parseIntitemBasicSeqno);
-		System.out.println("parseIntitemBasicSeqno:"+parseIntitemBasicSeqno);
+		System.out.println("parseIntitemBasicSeqno:" + parseIntitemBasicSeqno);
 		cartBean.setItemBasicName(itemBasicName);
 		System.out.println(cartBean.getItemBasicName());
 
 		Integer priceNum = Integer.parseInt(unitPrice);
 		cartBean.setUnitPrice(priceNum);
-		System.out.println("priceNum:"+priceNum);
+		System.out.println("priceNum:" + priceNum);
 
 		Integer amuountNum = Integer.parseInt(amount);
-		System.out.println("amuountNum:"+amuountNum);
+		System.out.println("amuountNum:" + amuountNum);
 		cartBean.setAmount(amuountNum);
-		
+
 		cartBean.setDiscount(1.0);
-		System.out.println(cartBean.getDiscount());
-		System.out.println("shoppingCart : "  + shoppingCart);
+//		System.out.println(cartBean.getDiscount());
+		System.out.println("shoppingCart : " + shoppingCart);
 		// 將CartBean物件加入ShoppingCart的物件內
 		shoppingCart.addToCart(parseIntitemBasicSeqno, cartBean);
-		
-		
+
 //		m.addAttribute(shoppingCart);
 //		m.addAttribute("Member", mb);
-		
+
 		return "redirect:/shop/shoppingPage";
 
 	}
-	
+
 	// 修改某項商品的數量
 	@RequestMapping(path = "/modifyCartBean", method = RequestMethod.GET)
-	public String modifyCartBean(
-			 Model m,
-			@RequestParam(name = "itemBasicSeqno") String itemBasicSeqno,
-			@RequestParam(name = "newAmount") String newAmount
-			) {
-		
+	public String modifyCartBean(Model m, @RequestParam(name = "itemBasicSeqno") String itemBasicSeqno,
+			@RequestParam(name = "newAmount") String newAmount) {
+
 		ShoppingCart shoppingCart = (ShoppingCart) m.getAttribute("ShoppingCart");
-		
+
 		Integer itemBasicSeqnoInt = Integer.parseInt(itemBasicSeqno);
-		System.out.println("itemBasicSeqnoInt:"+itemBasicSeqnoInt);
+		System.out.println("itemBasicSeqnoInt:" + itemBasicSeqnoInt);
 		Integer newAmountInt = Integer.parseInt(newAmount);
-		System.out.println("newAmountInt:"+newAmountInt);
-		
+		System.out.println("newAmountInt:" + newAmountInt);
+
 		boolean modifyQty = shoppingCart.modifyQty(itemBasicSeqnoInt, newAmountInt);
 		System.out.println(modifyQty);
 //		m.addAttribute("Member", mb);
-		
+
 		return "redirect:/shop/shoppingCartEntry";
 
 	}
+
 	// 刪除某項商品
 	@RequestMapping(path = "/deleteCartBean", method = RequestMethod.GET)
-	public String deleteCartBean(
-			Model m,
-			@RequestParam(name = "itemBasicSeqno") String itemBasicSeqno
-			) {
+	public String deleteCartBean(Model m, @RequestParam(name = "itemBasicSeqno") String itemBasicSeqno) {
 		ShoppingCart shoppingCart = (ShoppingCart) m.getAttribute("ShoppingCart");
-		
+
 		Integer itemBasicSeqnoInt = Integer.parseInt(itemBasicSeqno);
 		shoppingCart.deleteProduct(itemBasicSeqnoInt);
-		
+
 //		m.addAttribute("Member", mb);
-		
+
 		return "redirect:/shop/shoppingCartEntry";
-		
+
 	}
-	
 
 	// 清空購物車
-		@RequestMapping(path = "/abort", method = RequestMethod.GET)
-		public String abort( 
-				Model m) {
-			
-			ShoppingCart shoppingCart = (ShoppingCart) m.getAttribute("ShoppingCart");
-			shoppingCart.getContent().clear();
+	@RequestMapping(path = "/abort", method = RequestMethod.GET)
+	public String abort(Model m) {
 
-			return "redirect:/shop/shoppingPage";
+		ShoppingCart shoppingCart = (ShoppingCart) m.getAttribute("ShoppingCart");
+		shoppingCart.getContent().clear();
 
-		}		
-		
-		
-	//確認訂單
-		@RequestMapping(path = "/saveOrder", method = RequestMethod.POST)
-		public String saveOrder(
-				 Model m,
+		return "redirect:/shop/shoppingPage";
+
+	}
+
+	// 確認訂單
+	@RequestMapping(path = "/saveOrder", method = RequestMethod.POST)
+	public String saveOrder(Model m,
 //				@RequestParam(name = "subtotal") String subtotal,
-				@RequestParam(name = "memberId") String memberId,
-				@RequestParam(name = "shippingAddress") String shippingAddress,
-				@RequestParam(name = "invoiceTitle") String invoiceTitle
-				) {
-			Orders orders = new Orders();
+//			@RequestParam(name = "memberId") String memberId,
+			@RequestParam(name = "shippingAddress") String shippingAddress,
+			@RequestParam(name = "invoiceTitle") String invoiceTitle) {
+		Orders orders = new Orders();
 
-//			Integer subtotalInt = Integer.parseInt(subtotal);
-			ShoppingCart shoppingCart = (ShoppingCart) m.getAttribute("ShoppingCart");
-			double subtotal = shoppingCart.getSubtotal();
-			orders.setTotalAmount(subtotal);
-			
-			orders.setMemberBasic( (MemberBasic)m.getAttribute("Member"));
-			orders.setShippingAddress(shippingAddress);
-			orders.setInvoiceTitle(invoiceTitle);
-			Date today = new Date();   	
-			
-			orders.setOrderDate(today);
-			
-			Date date = new Date(120, 11, 25);
-			
-			orders.setShippingDate(date);
-			
-			orders.setCancelTag(null);
-			
-			
-			Set<OrderItems> orderItemsSet = new HashSet<OrderItems>();
-			
-			Map<Integer, CartBean> cart = shoppingCart.getContent();
-			
-			Set<Integer> keySet = cart.keySet();
-			for (Integer k : keySet) {
-				CartBean cartBean = cart.get(k);
-				OrderItems orderItems = new OrderItems();
-				orderItems.setOrders(orders);
-				orderItems.setItemBasicSeqno(cartBean.getItemBasicSeqno());
-				orderItems.setUnitPrice(cartBean.getUnitPrice());
-				orderItems.setAmount(cartBean.getAmount());
-				orderItems.setDiscount(cartBean.getDiscount());
+		ShoppingCart shoppingCart = (ShoppingCart) m.getAttribute("ShoppingCart");
+		double subtotal = shoppingCart.getSubtotal();
+		orders.setTotalAmount(subtotal);
+
+		orders.setMemberBasic((MemberBasic) m.getAttribute("Member"));
+		orders.setShippingAddress(shippingAddress);
+		orders.setInvoiceTitle(invoiceTitle);
+		Date today = new Date();
+
+		orders.setOrderDate(today);
+
+		Date date = new Date(120, 11, 25);
+
+		orders.setShippingDate(date);
+
+		orders.setCancelTag(null);
+
+		Set<OrderItems> orderItemsSet = new HashSet<OrderItems>();
+
+		Map<Integer, CartBean> cart = shoppingCart.getContent();
+
+		Set<Integer> keySet = cart.keySet();
+		for (Integer k : keySet) {
+			CartBean cartBean = cart.get(k);
+			OrderItems orderItems = new OrderItems();
+			orderItems.setOrders(orders);
+			orderItems.setItemBasicSeqno(cartBean.getItemBasicSeqno());
+			orderItems.setUnitPrice(cartBean.getUnitPrice());
+			orderItems.setAmount(cartBean.getAmount());
+			orderItems.setDiscount(cartBean.getDiscount());
 //				System.out.println("cartBean.getDiscount():"+cartBean.getDiscount());
-				
-				orderItemsSet.add(orderItems);
-			}
-			
-			orders.setOrderItemsSet(orderItemsSet);
-			ordersDao.insertOrder(orders);
-			
-			
-			return "redirect:/shoppingcart/abort";
-			
+
+			orderItemsSet.add(orderItems);
 		}
+
+		orders.setOrderItemsSet(orderItemsSet);
+		ordersDao.insertOrder(orders);
+
+		return "redirect:/shoppingcart/abort";
+
+	}
+
+	// 查詢會員訂單
+	@RequestMapping(path = "/memberOrders", method = RequestMethod.GET)
+	public String memberOrders(Model m) {
+
+		// 如果找不到Member物件
+		if (m.getAttribute("Member") == null) {
+//			System.out.println("============ null : " + (mb1 == null));
+			
+			return "redirect:/member/memberLoginEntry";
+		}
+
+		MemberBasic mb = (MemberBasic) m.getAttribute("Member");
+		Integer memberSeqno = mb.getSeqno();
+		List<Orders> selectMemberOrders = ordersDao.selectMemberOrders(memberSeqno);
+
+		m.addAttribute("MemberOrders", selectMemberOrders);
+		ShoppingCart shoppingCart = (ShoppingCart) m.getAttribute("ShoppingCart");
 		
-		// 查詢會員訂單
-		@RequestMapping(path = "/memberOrders", method = RequestMethod.GET)
-		public String memberOrders(
-				 Model m
-				) {
-			MemberBasic mb = (MemberBasic)m.getAttribute("Member");
-			Integer memberSeqno = mb.getSeqno();
-			List<Orders> selectMemberOrders = ordersDao.selectMemberOrders(memberSeqno);
-			
-			m.addAttribute("MemberOrders",selectMemberOrders);
-			
-			
-			return "product/cart/showOrderPage";
-			
-		}
+		System.out.println(shoppingCart.getItemNumber());
+
+		return "product/cart/showOrderPage";
+
+	}
+
+	// 查詢訂單明細
+	@RequestMapping(path = "/orderInfo", method = RequestMethod.GET)
+	public String orderInfo(Model m, @RequestParam(name = "orderId") String orderId) {
+
+		Integer orderIdInt = Integer.parseInt(orderId);
+		Orders odersSelect = ordersDao.selectSeqno(orderIdInt);
+
+		Set<OrderItems> orderItemsSet = odersSelect.getOrderItemsSet();
+
+		m.addAttribute("OrderInfo", orderItemsSet);
+		m.addAttribute("orderId", orderId);
 		
 
-		// 查詢訂單明細
-		@RequestMapping(path = "/orderInfo", method = RequestMethod.GET)
-		public String orderInfo(
-				 Model m,
-				 @RequestParam(name = "orderId") String orderId
-				) {
-			
-			Integer orderIdInt = Integer.parseInt(orderId);
-			Orders odersSelect = ordersDao.selectSeqno(orderIdInt);
-			
-			Set<OrderItems> orderItemsSet = odersSelect.getOrderItemsSet();
-			
-			m.addAttribute("OrderInfo",orderItemsSet);
-			m.addAttribute("orderId", orderId);
-			
-			return "product/cart/orderInfoPage";
-			
-		}
-	
-	
-	
+		return "product/cart/orderInfoPage";
+
+	}
 
 }

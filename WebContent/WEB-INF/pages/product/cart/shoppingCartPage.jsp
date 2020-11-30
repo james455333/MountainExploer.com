@@ -56,13 +56,17 @@
 	<table class="order-table">
 		<thead class="order-table-th">
 			<tr>
+				<th colspan="7" align="center">${Member.name}的購物車</th>
+			</tr>
+			<tr>
 				<!-- thead更改從這邊開始 -->
 				<th scope="col">商品編號</th>
 				<th scope="col">商品名稱</th>
+				<th scope="col">圖片</th>
 				<th scope="col">價格</th>
 				<th scope="col">數量</th>
 				<th scope="col">小計</th>
-				<th scope="col">修改/刪除</th>
+				<th scope="col">修改</th>
 				<!-- thead更改到這邊結束 -->
 			</tr>
 		</thead>
@@ -73,64 +77,62 @@
 				items="${ShoppingCart.content}">
 				<tr>
 					<td>${anEntry.value.itemBasicSeqno}</td>
-					<td><a  href='<c:url value='/shop/productInfoEntry?no=${anEntry.value.itemBasicSeqno}' />'>
-				    ${anEntry.value.itemBasicName}  </a>
-			    </td>
+					<td><a
+						href='<c:url value='/shop/productInfoEntry?no=${anEntry.value.itemBasicSeqno}' />'>
+							${anEntry.value.itemBasicName} </a></td>
+					<td><img style="width: 100px; height: 100px;"
+						src="<c:url value='/backstage/product/search/images?seqno=${anEntry.value.itemBasicSeqno}' />">
+					</td>
 					<td>${anEntry.value.unitPrice}</td>
 					<td>${anEntry.value.amount}</td>
-					<td>${anEntry.value.unitPrice * anEntry.value.discount * anEntry.value.amount}</td>
+					<td>${anEntry.value.unitPrice * anEntry.value.discount * anEntry.value.amount}
+						元</td>
 					<td>
-						<div>
-							<form action="<c:url value='/shoppingcart/modifyCartBean' />">
-<!-- 								<input type="text" name="itemBasicSeqno" -->
-<%-- 									value="${anEntry.value.itemBasicSeqno}" style="display: none;"> --%>
-								<input type="hidden" name="itemBasicSeqno" value='${anEntry.value.itemBasicSeqno}' readonly>
-								<select name="newAmount">
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-									<option value="7">7</option>
-									<option value="8">8</option>
-									<option value="9">9</option>
-									<option value="10">10</option>
-								</select> 
-								<input id="demo3" type="submit" value="修改數量">
-							</form>
-						</div>
-						<div>
-							<form action="<c:url value='/shoppingcart/deleteCartBean' />">
-								<input type="text" name="itemBasicSeqno"
-									value="${anEntry.value.itemBasicSeqno}" style="display: none;">
-								<input id="demo3" type="submit" value="移除">
-							</form>
-						</div>
+						<form action="<c:url value='/shoppingcart/modifyCartBean' />">
+							<input type="hidden" name="itemBasicSeqno"
+								value='${anEntry.value.itemBasicSeqno}' readonly> <select
+								name="newAmount">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+							</select> <input id="demo3" type="submit" value="修改數量">
+						</form>
+						<form action="<c:url value='/shoppingcart/deleteCartBean' />">
+							<input type="text" name="itemBasicSeqno"
+								value="${anEntry.value.itemBasicSeqno}" style="display: none;">
+							<input id="demo3" type="submit" value="刪除品項">
+						</form>
 					</td>
-
 				</tr>
 			</c:forEach>
+			<tr>
+				<td colspan="7" align="center">品項： ${ShoppingCart.itemNumber} 項</td>
+			</tr>
+			<tr>
+				<td colspan="7" align="center">合計金額： ${subtotal} 元</td>
+			</tr>
+			<tr>
+				<td colspan="7" align="center"><A href="<c:url value='/shop/orderConfirmEntry' />">確認訂單</A></td>
+			</tr>
+			<tr>
+				<td colspan="7" align="center"><A href="<c:url value='/shop/shoppingPage' />">繼續購物</A></td>
+			</tr>
+			<tr>
+				<td colspan="7" align="center"><A href="<c:url value='/shoppingcart/abort' />">清空購物車</A></td>
+			</tr>
 
 
 			<!-- tbody更改到這邊結束 -->
 		</tbody>
 
 	</table>
-	<div>
-		合計金額： <span>${subtotal}</span> 元
-	</div>
-	<div>
-			<A	href="<c:url value='/shop/shoppingPage' />">繼續購物</A>
-	</div>
-	<div>
-			<A href="<c:url value='/shop/orderConfirmEntry' />">確認訂單</A>
-	</div>
-	<div>
-			<A	href="<c:url value='/shoppingcart/abort' />">清空購物車</A>
-	</div>
-			
-				
 
 
 	<!-- 每頁不同的內容到這邊結束 -->

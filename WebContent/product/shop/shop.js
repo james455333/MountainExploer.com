@@ -2,7 +2,7 @@
 $(function() {
 	//頁面參數
 	var page = 1;
-	if (typeof showData === 'undefined') var showData = 10;
+	if (typeof showData === 'undefined') var showData = 20;
 	var totalPage = 0;
 	//統一網域名稱設置
 	var homeUrl = "/MountainExploer.com/shop/search";
@@ -323,9 +323,9 @@ $(function() {
 //				'</form>' +
 				'<a href= "/MountainExploer.com/shop/productInfoEntry?no='+data[i].seqno+'">'+ data[i].name  + '</a>' +
 				"<td>" +
-				'<img style="width: 100px; height: 100px;" src="/MountainExploer.com/backstage/product/search/images?seqno=' + data[i].seqno + '" class="productImg" >' +
+				'<img style="width: 80px; height: 80px;" src="/MountainExploer.com/backstage/product/search/images?seqno=' + data[i].seqno + '" class="productImg" >' +
 				"</td>" +
-				"<td><div >" + data[i].price + "</div></td>" +
+				"<td><div >" + data[i].price +"元" + "</div></td>" +
 				//				"<td><div >" + data[i].stock + "</div></td>" +
 				"<td>" +
 				"<div>" +

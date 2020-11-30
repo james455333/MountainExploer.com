@@ -56,12 +56,13 @@
 	<table class="order-table">
 		<thead class="order-table-th">
 			<tr>
-				<th colspan="5" align="center">訂單編號: ${orderId}</th>
+				<th colspan="6" align="center">訂單編號: ${orderId}</th>
 			</tr>
 			<tr>
 				<!-- thead更改從這邊開始 -->
 				<th scope="col">商品編號</th>
 <!-- 				<th scope="col">商品名稱</th> -->
+				<th scope="col">圖片</th>
 				<th scope="col">單價</th>
 				<th scope="col">數量</th>
 				<th scope="col">折扣</th>
@@ -72,8 +73,17 @@
 		<tbody class="order-table-tb">
 			<!-- tbody更改從這邊開始 -->
 			<c:forEach var="aBean" varStatus="stat" items="${OrderInfo}">
-				<tr id='borderA' bgColor="${aColor}" height='30'>
-					<td align="center">${aBean.itemBasicSeqno}</td>
+				<tr >
+<%-- 					<td align="center">${aBean.itemBasicSeqno}</td> --%>
+					<td><a
+						href='<c:url value='/shop/productInfoEntry?no=${anEntry.itemBasicSeqno}' />'>
+							${aBean.itemBasicSeqno} </a></td>
+<!-- 					<td><a -->
+<%-- 						href='<c:url value='/shop/productInfoEntry?no=${anEntry.itemBasicSeqno}' />'> --%>
+<%-- 							${anEntry.itemBasic.name} </a></td> --%>
+					<td><img style="width: 100px; height: 100px;"
+						src="<c:url value='/backstage/product/search/images?seqno=${aBean.itemBasicSeqno}' />">
+					</td>
 					<td align="center">${aBean.unitPrice}</td>
 					<td align="center">${aBean.amount}</td>
 					<td align="center">${aBean.discount}</td>
@@ -83,11 +93,9 @@
 						value="${ subtotal + aBean.unitPrice * aBean.discount * aBean.amount }" />
 				</tr>
 			</c:forEach>
-<!-- 			<tr > -->
-<!-- 				<TD align="center"><b>總金額</b></TD> -->
-<%-- 				<TD align="right">${OrderInfo.totalAmount}元</TD> --%>
-<!-- 			</tr> -->
-
+			<tr>
+			<td colspan="6" align="center"><input type="button" value="返回上一頁" id="backPreviousPage"></td>
+			</tr>
 
 
 			<!-- tbody更改到這邊結束 -->
@@ -96,17 +104,7 @@
 
 
 	</table>
-	<!-- 	<div> -->
-	<%-- 		合計金額： <span>${subtotal}</span> 元 --%>
-	<!-- 	</div> -->
 
-
-	<div>
-		<input type="button" value="返回上一頁" id="backPreviousPage">
-	</div>
-	<div>
-		<A href="<c:url value='/shop/shoppingPage' />">繼續購物</A>
-	</div>
 
 
 
