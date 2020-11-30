@@ -1,5 +1,4 @@
 
-
 //	函式 : 將參數傳入、組合，並執行Ajax指令，最後得到回傳結果，再將結果交給動態新增函式處理
 function activeMainAjax(page,as){
 	let sendData = { page : page, actID}
@@ -70,15 +69,17 @@ function insertElement(data){
 	insertTitle(data)
 	insertMemberTD(thisElm, data.actBasic.memberBasic)
 	insertMainContent(thisElm,data)
-	
 		//	留言
 	for(let i = 0 ; i < data.respList.length ; i++ ){
 		let respElm = $(".actPost").eq(i+1);
 		insertMemberTD(respElm, data.respList[i].actResp.memberBasic);
 		insertResp(respElm, data.respList[i]);
+		let textCK = "d-update-note"+i
+		respElm.find(".d-update-note").attr("id",textCK)
 	}
-	
-	
+	console.log()
+	let t = $(anchorThis).offset().top
+	$(window).scrollTop(t);
 }
 
 //	函式 : 動態新增 => 主標題
@@ -91,11 +92,15 @@ function insertTitle(data){
 
 //	函式 : 動態新增 => 會員區域
 function insertMemberTD(thisElm, memberBasic){
+	if(member.seqno == memberBasic.seqno){
+		thisElm.find(".d_ctrl").css("display","inline-flex")
+	}
 	thisElm.find(".memberTD").find("a").eq(0).html(memberBasic.memberInfo.neck_name)
 }
 //	函式 : 動態新增 => 回覆與留言
 function insertResp(respElm, respList){
-	respElm.find("input[name='']").attr("id",respList.actResp.seqno)
+	respElm.find("input[name='seqno']").attr("id","id"+respList.actResp.seqno)
+	
 	
 	//	回覆
 	var postD = dateFormate(respList.actResp.postDate)
@@ -155,7 +160,7 @@ function insertMainContent(thisElm, data){
 		$(".resp-ckeditor").empty().append(memberLocker)
 		return;
 	}
-	CKEDITOR.replace("resp")	
+	CKEDITOR.replace("resp")
 	//	插入圖片
 	insertImage(thisElm, data.images)
 	//	插入備註
@@ -338,7 +343,7 @@ function loginConfirmSWAL(){
 			}
 		}).then((value) => {
 			if(value){
-				
+				$("#dialog-form").dialog("open");
 			}
 		})
 }
@@ -416,7 +421,7 @@ function checkResp(){
 }
 
 function confirmNewResp(data){
-	let goURL = actEnterURL + "page=" + data.totalPage + "&actID=" + actID + "#" + data.respID
+	let goURL = actEnterURL + "page=" + data.totalPage + "&actID=" + actID + "#id" + data.respID
 	setTimeout(function(){
 		window.location.assign(goURL)
 	},2800)

@@ -71,6 +71,18 @@
 <colAssociation fkAssociation="7440F29A-F387-5886-CC7C-89EE85DB924C" referredColumn="364B43F2-35C3-550C-4AE6-D032D48FC828"/>
 </associations>
 </Column>
+<Column name="description" id="500C2400-44A9-8393-CA71-C9E67007B0BE">
+<createdBy>Student</createdBy>
+<createdTime>2020-11-30 05:12:47 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>150</dataTypeSize>
+<ownDataTypeParameters>150,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="F8508609-E84D-024E-BD2B-243C0541B70E" name="camp_pk">

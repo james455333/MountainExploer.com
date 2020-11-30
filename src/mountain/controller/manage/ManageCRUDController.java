@@ -231,7 +231,7 @@ public class ManageCRUDController {
 		service.save(actRegistry);
 		
 		String hql = "From ActRegistry where memberBasic = " + mb.getSeqno() 
-				+ "and activityBasic in (select id From ActivityInfo where sysdate < startDate) order by activityBasic , seqno";
+				+ "and activityBasic in (select id From ActivityInfo where sysdate < startDate) order by reqDate desc, seqno desc, activityBasic desc";
 		String all = "select count(*) ".concat(hql);
 		int totalData = service.countWithHql(all);
 		int totalPage = (int)Math.ceil(totalData*1.0 / showData );

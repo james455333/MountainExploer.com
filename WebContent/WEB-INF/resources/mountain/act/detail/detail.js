@@ -13,7 +13,9 @@ if(urlNow.searchParams.has("page")){
 if(urlNow.searchParams.has("actID")){
 	actID = urlNow.searchParams.get("actID");
 }
+var anchorThis = window.location.hash
 $(function(){
+	
 	/* 預設畫面 */
 	activeMainAjax(page,"/detail");
 	
@@ -33,5 +35,11 @@ $(function(){
 	
 	/* 快速回覆 */
 	$(".btn-resp").on("click",checkResp)
+	
+	$(".div_ul").on("click",'.login-alert',function(){
+		 $("#dialog-form").dialog("open");
+	})
+	
+	
 	
 })
