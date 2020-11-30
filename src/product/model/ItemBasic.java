@@ -33,7 +33,19 @@ public class ItemBasic {
 	@OneToOne(fetch = FetchType.LAZY, mappedBy = "itemBasic", cascade = CascadeType.ALL)
 	private ItemInfo itemInfo;
 	
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "itemBasic", cascade = CascadeType.ALL)
+	private OrderItems orderItems;
+	
+	
+	
 
+	
+	public OrderItems getOrderItems() {
+		return orderItems;
+	}
+	public void setOrderItems(OrderItems orderItems) {
+		this.orderItems = orderItems;
+	}
 	
 	public Integer getSeqno() {
 		return seqno;

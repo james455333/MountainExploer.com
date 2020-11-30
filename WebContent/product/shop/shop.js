@@ -2,7 +2,7 @@
 $(function() {
 	//頁面參數
 	var page = 1;
-	if (typeof showData === 'undefined') var showData = 10;
+	if (typeof showData === 'undefined') var showData = 20;
 	var totalPage = 0;
 	//統一網域名稱設置
 	var homeUrl = "/MountainExploer.com/shop/search";

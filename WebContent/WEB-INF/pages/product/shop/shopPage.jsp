@@ -47,21 +47,26 @@
 			<nav>
 				<ul class="second_nav">
 					<!-- 更改內容從這邊開始 -->
-					<span>主類別 :&nbsp</span>
-					<select name="firstclass" id="fcSelect">
-					</select>
-					<input type="button" value="主類別查詢" class="fcSubmit">
-					<!-- 					<li class="li1"><a href="#">戶外服飾</a></li> -->
-					<!-- 					<li class="li1"><a href="#">爬山涉水</a></li> -->
-					<!-- 					<li class="li1"><a href="#">戶外廚房</a></li> -->
-					<!-- 					<li class="li1"><a href="#">野外的家</a></li> -->
-					<!-- 					<li class="li1"><a href="#">功能背包</a></li> -->
-					<!-- 					<li class="li1"><a href="#">照明設備</a></li> -->
-					<!-- 					<li class="li1"><a href="#">人身部品</a></li> -->
-					<!-- 					<li class="li1"><a href="#">專業儀器</a></li> -->
-					<!-- 					<li class="li1"><a href="#">技術攀登</a></li> -->
-					<!-- 					<li class="li1"><a href="#">水上用具</a></li> -->
-					<!-- 					<li class="li1"><a href="#">配件、其他</a></li> -->
+									<li class="li1">
+										<span>主類別 :&nbsp</span>
+										<select name="firstclass" id="fcSelect">
+										</select>
+										<input type="button" value="主類別查詢" class="fcSubmit">
+										</li>
+									<li class="li1">次類別: <select name="secondclass" class="scSelect"></select>
+							<input type="button" value="次類別查詢" class="scSubmit">
+						</li>
+<%-- 										<li class="li1"><a href="<c:url value='/MountainExploer.com/shop/search/totalData?firstclass=624' />">戶外服飾</a></li> --%>
+<!-- 										<li class="li1"><a href="?firstclass=624">爬山涉水</a></li> -->
+<!-- 										<li class="li1"><a href="#">戶外廚房</a></li> -->
+<!-- 										<li class="li1"><a href="#">野外的家</a></li> -->
+<!-- 										<li class="li1"><a href="#">功能背包</a></li> -->
+<!-- 										<li class="li1"><a href="#">照明設備</a></li> -->
+<!-- 										<li class="li1"><a href="#">人身部品</a></li> -->
+<!-- 										<li class="li1"><a href="#">專業儀器</a></li> -->
+<!-- 										<li class="li1"><a href="#">技術攀登</a></li> -->
+<!-- 										<li class="li1"><a href="#">水上用具</a></li> -->
+<!-- 										<li class="li1"><a href="#">配件、其他</a></li> -->
 
 					<!-- 					<li class="li1"><a href="#">第二導覽列2</a></li> -->
 
@@ -74,10 +79,10 @@
 			</nav>
 		</div>
 		<div class="div_li1">
-			<a>保留區</a>
+			<a></a>
 		</div>
 		<div class="div_li3">
-			<a>保留區</a>
+			<a></a>
 		</div>
 		<div class="div_li2">
 			<!-- 每頁不同的內容從這裡開始 -->
@@ -85,10 +90,12 @@
 				<nav>
 					<ul class="third_nav">
 						<!-- 控制列表內容從這邊開始 -->
-						<li>次類別: <!-- 							<div> --> <select name="secondclass"
-							class="scSelect"></select> <input type="button" value="次類別查詢"
-							class="scSubmit"> <!-- 							</div> -->
-						</li>
+<!-- 						<li>主類別: <select name="firstclass" id="fcSelect"></select> <input -->
+<!-- 							type="button" value="主類別查詢" class="fcSubmit"> -->
+<!-- 						</li> -->
+<!-- 						<li>次類別: <select name="secondclass" class="scSelect"></select> -->
+<!-- 							<input type="button" value="次類別查詢" class="scSubmit"> -->
+<!-- 						</li> -->
 					</ul>
 				</nav>
 
@@ -100,7 +107,7 @@
 					<input type="radio" name="radioGroup" id="radioD" value="4" /><label>3000元以上</label>
 					<button type="submit" class="priceSubmitButton">價格區間查詢</button>
 				</div>
-				<div class="search">
+				<div>
 					商品名稱搜尋：<input type="search" class="light-table-filter"
 						data-table="order-table" placeholder="請輸入關鍵字"> <img
 						class="imgSearch" src="/MountainExploer.com/images/放大鏡.png" alt=""
@@ -108,23 +115,29 @@
 					<!-- <button><img class=imgSearch src="/MountainExploer.com/images/放大鏡.png" alt="" width="35px"></button> -->
 				</div>
 
-				<div>
-					<span>資料筆數 : </span> <span id="totalData"> </span>
-				</div>
 			</div>
 
 			<div class="secDivContent">
-			<div>
-				<a href='<c:url value="/shop/shoppingCartEntry"/>'>查看購物車</a>
+				<div>
+					<span>資料筆數 : </span> <span id="totalData"> </span>
+				</div>
+				<div>
+					<a href='<c:url value="/shop/shoppingCartEntry"/>'>查看購物車</a>
 
-			</div>
-			<div>
-				<a href='<c:url value="/shoppingcart/memberOrders"/>'>查看訂單</a>
+				</div>
+				<div>
+					<a href='<c:url value="/shoppingcart/memberOrders"/>'>查看訂單</a>
 
-			</div>
+				</div>
 				<!--table-->
 				<table class="order-table">
 					<thead class="order-table-th">
+<!-- 						<tr> -->
+<%-- 							<th colspan="4" align="center"><a href='<c:url value="/shop/shoppingCartEntry"/>'>查看購物車</a></th> --%>
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<%-- 							<th colspan="4" align="center"><a href='<c:url value="/shoppingcart/memberOrders"/>'>查看訂單</a></th> --%>
+<!-- 						</tr> -->
 						<tr>
 							<!-- thead更改從這邊開始 -->
 							<th scope="col">商品名稱</th>
@@ -147,22 +160,28 @@
 				</table>
 
 				<nav class="pageControl">
-					<div>
-						<input id="firstPage" type="button" value="最前頁" name="1" disabled>
-					</div>
-					<div>
-						<input id="previousPage" type="button" value="前一頁" name=""
-							disabled>
-					</div>
-					<div>
-						<i id="pageNo"></i>
-					</div>
-					<div>
-						<input id="nextPage" type="button" value="下一頁" name="" disabled>
-					</div>
-					<div>
-						<input id="lastPage" type="button" value="最尾頁" name="" disabled>
-					</div>
+					<!-- 					<div> -->
+					<!-- 						<li id="firstPage" class="li1" ><a href="/MountainExploer.com/shop/shoppingPage?name=1">«第一頁</a></li> -->
+					<!-- 					</div> -->
+					<!-- 					<div> -->
+					<!-- 						<li id="previousPage" class="li1" ><a href="/MountainExploer.com/shop/shoppingPage?name=">‹上一頁</a></li> -->
+					<!-- 					</div> -->
+					<!-- 					<div> -->
+					<!-- 						<i id="pageNo"></i> -->
+					<!-- 					</div> -->
+					<!-- 					<div> -->
+					<!-- 						<li id="nextPage" class="li1" ><a href="/MountainExploer.com/shop/shoppingPage?name=">下一頁›</a></li> -->
+					<!-- 					</div> -->
+					<!-- 					<div> -->
+					<!-- 						<li id="lastPage" class="li1" ><a href="/MountainExploer.com/shop/shoppingPage?name=">最末頁»</a></li> -->
+					<!-- 					</div> -->
+
+					<input id="firstPage" type="button" value="最前頁" name="1" disabled>
+					<input id="previousPage" type="button" value="前一頁" name="" disabled>
+					<i id="pageNo"></i> <input id="nextPage" type="button" value="下一頁"
+						name="" disabled> <input id="lastPage" type="button"
+						value="最尾頁" name="" disabled>
+
 				</nav>
 			</div>
 

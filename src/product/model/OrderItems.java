@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -31,6 +33,15 @@ public class OrderItems {
 	private Integer unitPrice;
 	@Column(name = "DISCOUNT")
 	private Double discount;
+	
+	
+	@OneToOne(fetch = FetchType.LAZY )
+	@PrimaryKeyJoinColumn
+	private ItemBasic itemBasic;
+	
+	public ItemBasic getItemBasic() {
+		return itemBasic;
+	}
 	
 	public Integer getSeqno() {
 		return seqno;

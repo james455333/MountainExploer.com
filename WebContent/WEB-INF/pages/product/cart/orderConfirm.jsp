@@ -56,9 +56,13 @@
 	<table class="order-table">
 		<thead class="order-table-th">
 			<tr>
+				<th colspan="6" align="center">${Member.name}的訂單資訊</th>
+			</tr>
+			<tr>
 				<!-- thead更改從這邊開始 -->
 				<th scope="col">商品編號</th>
 				<th scope="col">商品名稱</th>
+				<th scope="col">圖片</th>
 				<th scope="col">價格</th>
 				<th scope="col">數量</th>
 				<th scope="col">小計</th>
@@ -72,87 +76,55 @@
 				items="${ShoppingCart.content}">
 				<tr>
 					<td>${anEntry.value.itemBasicSeqno}</td>
-					<td>${anEntry.value.itemBasicName}</td>
+					<td><a
+						href='<c:url value='/shop/productInfoEntry?no=${anEntry.value.itemBasicSeqno}' />'>
+							${anEntry.value.itemBasicName} </a></td>
+					<td><img style="width: 100px; height: 100px;"
+						src="<c:url value='/backstage/product/search/images?seqno=${anEntry.value.itemBasicSeqno}' />">
+					</td>
 					<td>${anEntry.value.unitPrice}</td>
 					<td>${anEntry.value.amount}</td>
-					<td>${anEntry.value.unitPrice * anEntry.value.discount * anEntry.value.amount}</td>
+					<td>${anEntry.value.unitPrice * anEntry.value.discount * anEntry.value.amount}元</td>
 				</tr>
 			</c:forEach>
 			<!-- tbody更改到這邊結束 -->
-		</tbody>
-	</table>
-	<div>
-		合計金額： <span>${subtotal}</span> 元
-	</div>
-
-
-	<FORM style="margin: 0 auto; width: 750px;"
-		action="<c:url value='/shoppingcart/saveOrder' />" method="POST">
-		<TABLE border='1'>
-			<TR>
-				<TD>總金額： <Input size="10" type="text" name="subtotal"
-					value="${subtotal}" readonly>元
-				</TD>
+			<tr>
+				<td colspan="6">合計金額： <span>${subtotal}</span> 元
+				</td>
+			</tr>
+			<FORM action="<c:url value='/shoppingcart/saveOrder' />"
+				method="POST">
+				<tr>
+					<td colspan="6">收貨地址： <Input size="60" type="text"
+						name="shippingAddress" value="請輸入收貨地址">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="6">連絡電話： <Input size="60" type="text"
+						name="invoiceTitle" value="請輸入連絡電話">
+					</td>
+				</tr>
+				<TR>
+					<TD colspan="6" align="center"><input type="submit"
+						value="送出訂單">
+			</FORM>
+			<tr>
+			<td colspan="6" align="center"><input type="button" value="返回上一頁" id="backPreviousPage"></td>
+			</tr>
+			</TR>
+			<tr>
+				<TD colspan="6" align="center"><A
+					href="<c:url value='/shop/shoppingPage' />">繼續購物</A></TD>
 			</TR>
 			<TR>
-				<TD>會員帳號： <Input size="60" type="text" name="memberId"
-					value="${Member.account}" readonly>
-				</TD>
+				<TD colspan="6" align="center"><A id="demo3"
+					href="<c:url value='/shoppingcart/abort' />">刪除訂單</A></TD>
 			</TR>
-			<TR>
-				<TD>收貨地址： <Input size="60" type="text" name="shippingAddress"
-					value="">
-				</TD>
-			</TR>
-			<TR>
-				<TD>統一編號： <Input size="60" type="text" name="invoiceTitle"
-					value="">
-				</TD>
-			</TR>
-			<!-- 			<TR> -->
-			<!-- 				<TD>訂單日期： -->
-			<%-- 				<Input size="60" type="text" name="shippingAddress"	value="${today}" readonly> --%>
-			<!-- 				</TD> -->
-			<!-- 			</TR> -->
-			<!-- 			<TR> -->
-			<!-- 				<TD>出貨日期： -->
-			<%-- 				<Input size="60" type="text" name="shippingAddress"	value="${today}" readonly> --%>
-			<!-- 				</TD> -->
-			<!-- 			</TR> -->
-			<TR>
-			<input type="submit" value="送出訂單">
-			</TR>
-<!-- 			<TR align="center"> -->
-<!-- 				<TD><A -->
-<%-- 					href="<c:url value='/shoppingcart/saveOrder' />">送出訂單</A> --%>
-<!-- 				</TD> -->
-<!-- 			</TR> -->
-			<TR>
-				<TD align="center">
-				<A href="<c:url value='/shop/shoppingPage' />">繼續購物</A>
-				</TD>
-			</TR>
-			<TR align="center">
-				<TD><A id="demo3" href="<c:url value='/shoppingcart/abort' />">刪除訂單</A>
-				</TD>
-			</TR>
-
-
-		</TABLE>
-	</FORM>
-
-
-
-	<TABLE border='1'>
-		<TR>
-			<!-- 			<TD width="265" align='center'><A -->
-			<%-- 				href="<c:url value='checkout.do' />" --%>
-			<%-- 				onClick="return Checkout(${subtotal});">送出訂單</A></TD> --%>
-			<!-- 			<TD width="265" align='center'><A -->
-			<%-- 				href="<c:url value='abort.do' />" onClick="return Abort();">放棄購物</A> --%>
-			<!-- 			</TD> -->
-		</TR>
 	</TABLE>
+
+	</tbody>
+
+
 
 
 	<!-- 每頁不同的內容到這邊結束 -->
@@ -177,4 +149,11 @@
 <script src="/MountainExploer.com/js/sweetalert.js"></script>
 <!--sweet alert-->
 <script src="/MountainExploer.com/js/includejsp.js"></script>
+<script>
+	$(function() {
+		$("#backPreviousPage").on("click", function() {
+			window.history.go(-1)
+		})
+	})
+</script>
 </html>

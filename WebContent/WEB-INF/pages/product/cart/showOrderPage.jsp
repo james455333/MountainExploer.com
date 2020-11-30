@@ -56,13 +56,14 @@
 	<table class="order-table">
 		<thead class="order-table-th">
 		<tr >
-			<th colspan="5" align="center">${Member.name}的訂購紀錄</th>
+			<th colspan="6" align="center">${Member.name}的訂購紀錄</th>
 		</tr>
 			<tr>
 				<!-- thead更改從這邊開始 -->
 				<th scope="col">訂單編號</th>
-				<th scope="col">總金額</th>
-				<th scope="col">統一編號</th>
+				<th scope="col">金額</th>
+				<th scope="col">收貨地址</th>
+				<th scope="col">連絡電話</th>
 				<th scope="col">訂貨日期</th>
 				<th scope="col">出貨日期</th>
 				<!-- thead更改到這邊結束 -->
@@ -76,22 +77,25 @@
 				    ${anOrderBean.seqno}
 			    </a>
 			</TD>
-			<TD >${anOrderBean.totalAmount}</TD>
+			<TD >${anOrderBean.totalAmount} 元</TD>
+			<TD >${anOrderBean.shippingAddress}</TD>
 			<TD >${anOrderBean.invoiceTitle}</TD>
 			<TD >${anOrderBean.orderDate}</TD>
 			<TD >${anOrderBean.shippingDate}</TD>
 							
 		</TR>
 		</c:forEach>
+						<tr>
+				<TD colspan="6" align="center"><A
+					href="<c:url value='/shop/shoppingPage' />">繼續購物</A></TD>
+			</tr>
+			
 
 
 			<!-- tbody更改到這邊結束 -->
 		</tbody>
 
 	</table>
-	<div>
-			<A	href="<c:url value='/shop/shoppingPage' />">繼續購物</A>
-	</div>
 
 
 	<!-- 每頁不同的內容到這邊結束 -->
