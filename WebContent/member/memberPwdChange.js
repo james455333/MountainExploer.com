@@ -1,3 +1,22 @@
+//顯示個人簡介
+// $(function(){
+//     var seqnoPre = $.trim($(".seqno").val());
+//     var other = $(".other").val();
+
+//     $.ajax({
+//         method:"GET";
+//         url:"",
+//         data:{},
+//         dataType:"json",
+//         success
+//     })
+// })
+
+//跳轉會員修改頁面
+$(".turnToUpPage").on("click", function(){
+    window.location.href = "/MountainExploer.com/member/memberInfoUpdateEntry";
+})
+
 //舊密碼不得為空
 $(".pwd").on("blur", function(){
     let OldPwdVal = $(".pwd").val();
@@ -12,7 +31,7 @@ $(".pwd").on("blur", function(){
 
 //查詢密碼
 $(".pwd").on("blur", function(){
-    var userSeq = $.trim($(".seqno").val());
+    var userSeq = $.trim($(".seqnoPwd").val());
     var userPwd = $.trim($(".pwd").val());
 
     $.ajax({
@@ -85,4 +104,29 @@ $(".chkPwd").on("blur", function(){
     }else{
         $(".chksp").html("<font color='red'>密碼驗證必須與先前輸入之密碼相同</font>");
     }
+})
+
+
+//上傳頭貼
+$(".userImg").on("click", function(){
+    var userSeqImg = $.trim($(".seqno").val());
+    var userImg = $.trim($(".userImg").val());
+
+    $.ajax({
+        method:"PUT",
+        url:"/MountainExploer.com/member/imgUpdateAction",
+        data:{seqno:userSeqImg, multipartFile:userImg},
+        dataType:"json",
+        success: function(response){
+            if(response == true){
+                alert("圖片上傳成功");
+                window.location.href = "/MountainExploer.com/member/memberInfoEntry";
+            }else{
+                alert("圖片上傳失敗");
+            }
+        },
+        error: function(){
+            alert("圖片上傳出現問題");
+        }
+    })
 })

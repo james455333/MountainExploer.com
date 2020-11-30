@@ -72,7 +72,8 @@
                 </div>
                 <div class="personalInfo">
                     <div id="user" style="display: block;">
-                        上傳頭像
+                    	<h2>上傳頭貼</h2>
+                       	<input type="button" name="userImg" class="userImg" value="上傳頭貼">
                     </div>
                     <div id="idCard" style="display: none;">
                        	<h2>${Member.memberInfo.neck_name}的個人資料</h2>
@@ -142,15 +143,18 @@
                         </div>
                         <div>
                         	<label>個人簡介：</label>
-                        	<span>${Member.memberInfo.other}</span><br/>
-                        	<input type="hidden" name="memberInfo.other" value="${Member.memberInfo.other}">
+<%--                         	<span>${Member.memberInfo.other}</span><br/> --%>
+                        	<input type="text" name="memberInfo.other" class="other" value="${Member.memberInfo.other}">
+                        </div>
+                        <div>
+                        	<input type="button" class="turnToUpPage" value="修改會員資料"/>
                         </div>
                     </div>
                     <form action="<c:url value='/member/memberPwdChangeAction' />" method="POST">
                     <div id="padLock" style="display: none;">
                     	<h2>修改密碼</h2>
                     	<div style="display:none">
-							<input type="text" name="seqno" class="seqno" value="${Member.seqno}">
+							<input type="text" name="seqnoPwd" class="seqnoPwd" value="${Member.seqno}">
 						</div>
                         <div>
                         	<label>請輸入舊密碼：</label>

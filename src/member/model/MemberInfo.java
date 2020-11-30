@@ -1,8 +1,10 @@
 package member.model;
 
+import java.io.IOException;
 import java.sql.Blob;
 import java.sql.Clob;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,9 +21,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.sql.rowset.serial.SerialBlob;
+import javax.sql.rowset.serial.SerialException;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -35,18 +41,30 @@ public class MemberInfo {
 	private String phone;
 	private String gender;
 	private String climb_ex;
-	private byte[] per_img;
+	private Blob per_img;
 	private byte[] other;
 	private String img_name;
 	private MemberBasic memberBasic;
 	
+	@JsonIgnore
+	@Transient
+	private MultipartFile multipartFile;
+	
+	public void setMultipartFile(MultipartFile multipartFile) throws IOException, SerialException, SQLException {
+		this.multipartFile = multipartFile;
+		if(multipartFile.getBytes().length > 0) {
+			SerialBlob sb = new SerialBlob(multipartFile.getBytes());
+			setPer_img(sb);
+		}
+	}
 
 	public MemberInfo() {
 		
 	}
+	
 	@JsonIgnore
 	public MemberInfo(int member_basic_id, Date birthday, String neck_name, 
-			String phone, String gender, String climb_ex, byte[] per_img, byte[] other) {
+			String phone, String gender, String climb_ex, Blob per_img, byte[] other) {
 		
 		this.member_basic_id = member_basic_id;
 		this.birthday = birthday;
@@ -123,11 +141,11 @@ public class MemberInfo {
 
 	
 	@Column(name = "PER_IMG")
-	public byte[] getPer_img() {
+	public Blob getPer_img() {
 		return per_img;
 	}
 
-	public void setPer_img(byte[] per_img) {
+	public void setPer_img(Blob per_img) {
 		this.per_img = per_img;
 	}
 

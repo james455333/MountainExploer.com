@@ -4,12 +4,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.sql.rowset.serial.SerialException;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +21,11 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 
@@ -31,6 +35,7 @@ import member.model.MemberInfoService;
 import member.model.MemberService;
 import member.model.MemberStatus;
 import member.model.MemberStatusService;
+import oracle.net.aso.m;
 
 
 @Controller
@@ -190,57 +195,39 @@ public class MemberUpdateController {
 
 	
 	//上傳、更新圖片
-	@RequestMapping(path = "/member/memberImageUploadAction", method = RequestMethod.POST)
-	public ResponseEntity<byte[]> processUploadImage(@RequestParam(name = "userImage")MultipartFile mFile) throws IllegalStateException, IOException{
+	@ResponseBody
+	@GetMapping(value = "/member/imgUpdateAction")
+	public boolean processImageUpdate(
+						@RequestParam(name = "seqno")int seqno,
+						@RequestParam(name = "userImg")MultipartFile multipartFile,
+						Model m) throws SerialException, IOException, SQLException {
 		
-		String fileName = mFile.getOriginalFilename();
-		String fileTemeDirPath = request.getSession().getServletContext().getRealPath("/") + "UploadTempDir\\";
+		MemberBasic mb = mbService.select(seqno);
+		Map<String, String> errors = new HashMap<String, String>();
+		m.addAttribute("errors", errors);
 		
-		System.out.println("fileName:" + fileName);
-		System.out.println("fileTempDirPath:" + fileTemeDirPath);
 		
-		File dirPath = new File(fileTemeDirPath);
-		if(!dirPath.exists()) {
-			boolean status = dirPath.mkdirs();
-			System.out.println("status:" + status);
+		if(multipartFile == null) {
+			errors.put("msg", "請上傳圖片檔案");
+			return false;
 		}
 		
-		String fileSavePath = fileTemeDirPath + fileName;
-		File saveFile = new File(fileSavePath);
-		mFile.transferTo(saveFile);
-		System.out.println("fileSavePath:" + fileSavePath);
 		
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.IMAGE_JPEG);
+		String fileName = multipartFile.getOriginalFilename();
+		mb.getMemberInfo().setImg_name(fileName);
+		mb.getMemberInfo().setMultipartFile(multipartFile);
 		
-		if(fileName != null && fileName.length() != 0) {
-			savePicture(fileName, fileSavePath);
-		}
+		mbService.updateData(mb);
+		m.addAttribute("Member", mb);
+		m.addAttribute("result", "圖片上傳成功");
+		System.out.println("圖片上傳成功");
 		
-		return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(saveFile), headers, HttpStatus.OK);
+		return true;
 		
 	}
 
 
-	private void savePicture(String fileName, String fileSavePath) {
-		try {
-			MemberInfo mbInfo = new MemberInfo();
-			mbInfo.setImg_name(fileName);
-			
-			FileInputStream is1 = new FileInputStream(fileSavePath);
-			byte[] b = new byte[is1.available()];
-			is1.read(b);
-			is1.close();
-			
-			mbInfo.setPer_img(b);
-			
-			mbInfoService.update(mbInfo);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-	}
+	
 	
 	
 	

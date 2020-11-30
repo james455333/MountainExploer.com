@@ -24,7 +24,7 @@
 			<dir name="C:/moutain/MountainExploer.com/target/m2e-wtp/web-resources">
 				<exclude name="/"/>
 			</dir>
-			<dir name="C:/TeamProject/MountainExploer.com/target/m2e-wtp/web-resources">
+			<dir name="C:/JavaProjectMountain/MountainExploer.com/target/m2e-wtp/web-resources">
 				<exclude name="/"/>
 			</dir>
 		</link>
@@ -33,7 +33,7 @@
 			</dir>
 			<dir name="C:/moutain/MountainExploer.com/WebContent">
 			</dir>
-			<dir name="C:/TeamProject/MountainExploer.com/WebContent">
+			<dir name="C:/JavaProjectMountain/MountainExploer.com/WebContent">
 			</dir>
 		</link>
 
