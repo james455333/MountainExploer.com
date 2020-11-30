@@ -95,6 +95,7 @@
 				<div class="actPost">
 					<!-- 分隔用DIV	 -->
 					<div></div>
+					<input type="hidden" name="seqno" >
 					<table>
 						<tbody>
 							<tr>
@@ -144,8 +145,7 @@
 											</div>
 											<!-- 報名鈕 -->
 											<div class="goReg">
-												
-												<a href=""></a>
+												<a href="#"></a>
 											</div>
 											
 										</div>
@@ -181,6 +181,7 @@
 									<div class="container-fluid comment-container btn-hide">
 										<div class="row">
 											<div class="col-md-10 comment-input-container">
+												
 												<input type="text" name="message" maxlength="30" placeholder="最大留言字數 : 30">
 											</div>
 											<div class="col-md-2 comment-btn-container">
@@ -257,9 +258,9 @@
 						<div class="row">
 							<div class="col-md-12">
 								 
-								<button type="button" class="btn btn-primary btn-lg">
+								<button type="button" class="btn btn-primary btn-lg btn-resp">
 									<i class="fas fa-plus"></i>
-									發布
+									發布回覆
 								</button>
 							</div>
 						</div>

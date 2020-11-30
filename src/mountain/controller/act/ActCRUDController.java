@@ -1,9 +1,5 @@
 package mountain.controller.act;
 
-import java.io.Console;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.sound.midi.Soundbank;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -27,7 +22,6 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -39,7 +33,6 @@ import main.generic.model.GenericTypeObject;
 import main.generic.service.GenericService;
 import main.generic.service.InterfaceService;
 import main.model.SystemImage;
-import member.back.model.MemberBasicBackService;
 import member.model.MemberBasic;
 import mountain.MountainGlobal;
 import mountain.function.TagSelector;
@@ -49,7 +42,6 @@ import mountain.model.activity.ActivityInfo;
 import mountain.model.activity.Registry.ActRegInfo;
 import mountain.model.activity.response.ActResponse;
 import mountain.model.activity.response.ActSideResponse;
-import mountain.model.route.RouteBasic;
 
 @Controller
 @RequestMapping("/mountain/act/crud")
@@ -61,7 +53,6 @@ public class ActCRUDController {
 	@Autowired
 	private GenericService<GenericTypeObject> service;
 
-	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 
 //	private int showData = MountainGlobal.actDS;
 	private int showData = MountainGlobal.actDS;
@@ -333,7 +324,7 @@ public class ActCRUDController {
 		actBasic = (ActivityBasic) service.select(actID);
 		resultMap.put("actBasic", actBasic);
 		service.save(new ActRegInfo());
-		String hql = "Select count(*) From ActRegInfo ari where ari.actRegistry in (From ActRegistry ar where ACTIVITY_BASIC_SEQNO = "
+		String hql = "Select count(*) From ActRegInfo ari where ari.actRegistry in (From ActRegistry ar where  deniTag is null and cancelTag is null and ACTIVITY_BASIC_SEQNO = "
 				+ actID + ")";
 		int nowReg = service.countWithHql(hql);
 		resultMap.put("nowReg", nowReg);
@@ -430,7 +421,7 @@ public class ActCRUDController {
 	private String tagParseHql(int tag) {
 		
 		String nowReg = "( Select count(*) From ActRegInfo where actRegistry in "
-				+ " (select seqno From ActRegistry ar where  deniTag is null and cancelTag is null and activityBasic = ai.id) )";
+				+ " (select seqno From ActRegistry ar where deniTag is null and cancelTag is null and activityBasic = ai.id) )";
 		
 		String hql = null;
 		if (tag == 1) {

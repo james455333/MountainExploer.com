@@ -108,7 +108,7 @@ function ajaxNewRGI(){
 function ajaxConfirmSWAL(){
 	swal({
 		title : "確認發送報名?",
-		text : "text",
+		text : "",
 		icon : "warning",
 		dangerMode: true,
 		buttons : {
@@ -125,7 +125,7 @@ function ajaxConfirmSWAL(){
 		}
 	}).then((value) => {
 			if(value){
-				formArray = [];
+				console.log(formArray)
 				ajaxNewRGI()
 			}else{
 				formArray = []

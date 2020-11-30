@@ -9,6 +9,7 @@ function activeMainAjax(page,as){
 		dataType: 'json',
 		data : sendData,
 		success:function(data){
+			console.log(data)
 			member = data.login
 			//參數給值
 			totalPage = data.totalPage;
@@ -27,13 +28,14 @@ function activeMainAjax(page,as){
 
 //	函式 : 計算傳入參數，並於網頁動態新增或修改頁面控制項
 function setPageController(page){
-	let url ;
+	let url = actEnterURL ;
+	let thisAct = "&actID=" + actID
 	let pageConNum = $(".pageControl").length	
 	for(let i = 0 ; i < pageConNum ; i ++){
 		$(".pageControl").eq(i).find("a").eq(2).html("目前 " + page + ' / ' +totalPage + " 頁")
 		if(page != 1){
-			let first = url + "page=1"
-			let previous = url + "page=" + ( Number(page) - 1 ) ;
+			let first = url + "page=1" + thisAct
+			let previous = url + "page=" + ( Number(page) - 1 ) +thisAct;
 			$(".pageControl").eq(i).find("a").eq(0).attr("href",first).css("display","block")
 			$(".pageControl").eq(i).find("a").eq(1).attr("href",previous).css("display","block")
 		}else{
@@ -41,8 +43,8 @@ function setPageController(page){
 			$(".pageControl").eq(i).find("a").eq(1).css("display","none")
 		}
 		if(page<totalPage){
-			let next = url +"page=" + ( Number(page) + 1 ) ;
-			let final = url + "page=" + ( Number(totalPage));
+			let next = url +"page=" + ( Number(page) + 1 ) +thisAct ;
+			let final = url + "page=" + ( Number(totalPage)) +thisAct;
 			$(".pageControl").eq(i).find("a").eq(3).attr("href",next).css("display","block")
 			$(".pageControl").eq(i).find("a").eq(4).attr("href",final).css("display","block")
 		}else{
@@ -57,7 +59,7 @@ function insertElement(data){
 	if(data.actBasic.actInfo.deleteTag==null){
 		let model = $(".actPost").clone();
 		if(totalData!=0){
-			for(let i = 1 ; i<=totalData;i++){
+			for(let i = 1 ; i<= data.respList.length;i++){
 				$(".innerContainer").append(model)
 				model = $(".actPost").eq(0).clone()
 			}
@@ -70,7 +72,7 @@ function insertElement(data){
 	insertMainContent(thisElm,data)
 	
 		//	留言
-	for(let i = 0 ; i < totalData ; i++ ){
+	for(let i = 0 ; i < data.respList.length ; i++ ){
 		let respElm = $(".actPost").eq(i+1);
 		insertMemberTD(respElm, data.respList[i].actResp.memberBasic);
 		insertResp(respElm, data.respList[i]);
@@ -93,6 +95,7 @@ function insertMemberTD(thisElm, memberBasic){
 }
 //	函式 : 動態新增 => 回覆與留言
 function insertResp(respElm, respList){
+	respElm.find("input[name='']").attr("id",respList.actResp.seqno)
 	
 	//	回覆
 	var postD = dateFormate(respList.actResp.postDate)
@@ -151,7 +154,8 @@ function insertMainContent(thisElm, data){
 		let memberLocker = thisElm.find(".memberLocker").clone();
 		$(".resp-ckeditor").empty().append(memberLocker)
 		return;
-	}	
+	}
+	CKEDITOR.replace("resp")	
 	//	插入圖片
 	insertImage(thisElm, data.images)
 	//	插入備註
@@ -161,9 +165,33 @@ function insertMainContent(thisElm, data){
 					.concat(actInfo.addInfo);
 		thisElm.find(".d_noteInfo").find("div").html(noteReasult);
 	}
-	//	插入報名頁面連結	
-	thisElm.find(".goReg").find("a").text("前往本活動報名頁面")
-	.attr("href","/MountainExploer.com/mountain/act/registry?actID="+actID);
+	//	插入報名頁面連結
+	let tagMap = data.tagMap
+	setGoReg(thisElm, tagMap)
+	
+}
+/* 依據Tag設定報名頁面欄位 */
+function setGoReg(thisElm, tagMap){
+	let goReg = "<button type='button' class='btn btn-primary'><i class='fas fa-sign-in-alt'></i>前往報名</button>"
+	let regTop = "<button type='button' class='btn btn-warning'><i class='fas fa-exclamation-circle'></i> 報名人數達到上限</button>"
+	let regEndDate ="<button type='button' class='btn btn-danger'><i class='far fa-calendar-times'></i> 報名已截止</button>"
+	let actEnd = "<button type='button' class='btn btn-dark'><i class='fas fa-calendar-times'></i> 活動已開始或結束</button>"
+	if (!tagMap[3]) {
+		if (!tagMap[4]) {
+			if (!tagMap[5]) {
+					thisElm.find(".goReg").find("a").html(goReg)
+						.attr("href","/MountainExploer.com/mountain/act/registry?actID="+actID);	
+			} else {
+				thisElm.find(".goReg").find("a").html(regTop)
+			}
+		} else {
+			thisElm.find(".goReg").find("a").html(regEndDate)
+		}
+	
+	} else {
+		thisElm.find(".goReg").find("a").text(actEnd)
+	}
+	
 }
 
 //	函式 : 動態新增 => 預設內容 (擴增 : 可修改)
@@ -199,7 +227,6 @@ function editCheck(thisElm, changeDate){
 function dateFormate(date){
 	let result = "";
 	result = result.concat(new Date(date).toLocaleDateString())
-			.concat(" " + new Date(date).toLocaleTimeString())
 			
 	return result;
 }
@@ -318,6 +345,31 @@ function loginConfirmSWAL(){
 
 // 動態新增留言並存入資料庫
 function ajaxAddComment(thisBtn, thisComment){
+	
+	let formData = new FormData();
+	let respSeqno = thisBtn.parent("div").siblings("div")
+			.find("input[name='seqno']").val()
+	formData.append("message",thisComment)
+			console.log(respSeqno)
+	
+	$.ajax({
+		url : respHome + "/sideResp/insert." + respSeqno,
+		data : formData,
+		type : "POST",
+		dataType : "json",
+		processData : false,
+		contentType : false,
+		success : function(data){
+			if(data)appendSideResp(thisBtn, thisComment);	
+		},
+		error : function(){
+			swal("發生錯誤","請通知管理員","error")
+		}		
+	})
+	
+}
+/* 動態新增留言於畫面 */
+function appendSideResp(thisBtn, thisComment){
 	let commentList = thisBtn.parents("tbody").find(".d_sr")
 	let clLength = commentList.find(".d-sr-body").length
 	console.log("clLength : " + clLength)
@@ -333,5 +385,50 @@ function ajaxAddComment(thisBtn, thisComment){
 			.attr("href","")
 	thisSR.find(".d_sr_text").find("span").eq(0).html(thisComment)
 	thisSR.find(".d_sr_text").find("span").eq(1).append(dateFormate(new Date()))
-	console.log(thisSR)
 }
+
+/* 檢查回覆資訊 */
+
+function checkResp(){
+	
+	let data = CKEDITOR.instances.resp.getData()
+	
+	if( data != ''){
+		let formData = new FormData();
+		formData.append("message",data) 
+		$.ajax({
+			url : respHome + "/resp/insert." + actID,
+			type : "POST",
+			data : formData,
+			dataType : "json",
+			processData : false,
+			contentType : false,
+			success : function(data){
+				confirmNewResp(data)				
+			},
+			error : function(){
+				swal("發表回覆失敗",'請聯絡管理員','error')
+			}
+		})
+	}else{
+		swal("回覆不得為空白",'','warning')
+	}
+}
+
+function confirmNewResp(data){
+	let goURL = actEnterURL + "page=" + data.totalPage + "&actID=" + actID + "#" + data.respID
+	setTimeout(function(){
+		window.location.assign(goURL)
+	},2800)
+	swal({
+		title : "發布回覆成功",
+		text : "點擊跳轉或3秒鐘後自動跳轉至留言",
+		buttons : {
+			confirm : "跳轉"
+		}
+	}).then(() => {
+		window.location.assign(goURL)
+	})
+}
+
+
