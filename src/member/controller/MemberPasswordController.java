@@ -8,9 +8,11 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import member.MemberGlobal;
 import member.MemberPwdStringRandom;
@@ -67,6 +69,23 @@ public class MemberPasswordController {
 	}
 	
 	
+	//確認密碼
+	@ResponseBody
+	@GetMapping(value = "/member/checkPwd")
+	public boolean processCheckPwd(
+			@RequestParam(name = "seqno")int seqno,
+			@RequestParam(name = "password")String password,
+			Model m) {
+		MemberBasic mb = mbService.select(seqno);
+		password = MemberGlobal.getSHA1Endocing(MemberGlobal.encryptString(password));
+		
+		if(password.equals(mb.getPassword())) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
 	
 	//更改密碼
 	@RequestMapping(path = "/member/memberPwdChangeEntry", method = RequestMethod.GET)
@@ -79,9 +98,29 @@ public class MemberPasswordController {
 	public String processUpdatePwd(@RequestParam(name = "seqno")int seqno,
 								   @RequestParam(name = "password")String password,
 								   @RequestParam(name = "updatePwd")String updatePwd,
+								   @RequestParam(name = "chkPwd")String chkPwd,
 								   Model m) {
 		Map<String, String> errors = new HashMap<String, String>();
+		m.addAttribute("errors", errors);
 //		MemberBasic mb = new MemberBasic();
+		
+		
+		if(password == null || password.length() == 0) {
+			errors.put("password", "請輸入舊密碼");
+		}
+		
+		if(updatePwd == null || updatePwd.length() == 0) {
+			errors.put("updatePwd", "請輸入新密碼");
+		}
+		
+		if(chkPwd == null || chkPwd.length() == 0) {
+			errors.put("chkPwd", "請再次輸入新密碼");
+		}
+		
+		if(errors != null && !errors.isEmpty()) {
+			return "member/memberFormalInfo";
+		}
+		
 		
 		System.out.println("=============user seqno:" + seqno);
 		
@@ -107,7 +146,7 @@ public class MemberPasswordController {
 			}
 		}
 		
-		return "member/memberInfo";
+		return "member/memberFormalInfo";
 	}
 	
 

@@ -17,7 +17,7 @@ public class MemberInfoController {
 	
 	@RequestMapping(path = "/member/memberInfoEntry", method = RequestMethod.GET)
 	public String processInfoEntry() {
-		return "member/memberInfo";
+		return "member/memberFormalInfo";
 	}
 	
 	
