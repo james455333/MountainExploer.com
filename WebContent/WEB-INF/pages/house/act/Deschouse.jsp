@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,16 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
     <style>
-
+	.topname{margin : 50px 50px 50px 5px;
+	float: left;
+	padding : 50px 50px 50px 5px;
+	}
+	.body{margin : 50px;
+	clear : left;
+	
+	width:500px;
+	height : 500px
+	}
     </style>
 </head>
 
@@ -104,7 +114,26 @@
 <!-- 右邊 -->
                 <div class="forFrom"></div>
 <!-- 左邊 -->
-                <div class="forText"></div>
+                <div class="forText">
+	                <div>
+	                <c:forEach var="i" items="${selecthouseid}">
+	                <div style="float: left ; margin : 30px" >
+					<c:choose>
+								<c:when test="${ empty i.imgid.img}">
+								<img height="200" width="200" src="/MountainExploer.com/housecamp/images/housenull.PNG">
+								</c:when>
+								<c:when test="${not emptyi.imgid.img}">
+								<img height="200" width="200"
+								src="<c:url value='/mountainHouseBack/showimg?imgid=${i.imgid.id}'/>">
+								</c:when>
+								</c:choose>
+					</div>
+	                <div class = "topname"><h2>${i.name}</h2></div>
+	                <div class="body">${i.desc}</div>
+	                </c:forEach>
+	                </div>
+                
+                </div>
             </div>
 
 

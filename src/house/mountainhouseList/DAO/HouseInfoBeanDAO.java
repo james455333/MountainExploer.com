@@ -55,7 +55,7 @@ public class HouseInfoBeanDAO implements IHouseInfoBeanService  {
 	}
 	
 	@Override
-	public List<HouseInfoBean> selectAllHouse(Integer page , Integer showData ,Integer no , Integer parkid){
+	public List<HouseInfoBean> selectAllHouse(Integer page , Integer showData ,Integer no , Integer parkid,Integer star){
 		if (no==1) {
 			
 			if (page == null) {
@@ -65,6 +65,9 @@ public class HouseInfoBeanDAO implements IHouseInfoBeanService  {
 				showData = 8;
 			}
 			int startPosition = ((page-1) * showData);
+			if (star==null) {
+				star = 5;
+			}
 		Query<HouseInfoBean> query = getSession().createQuery("From HouseInfoBean", HouseInfoBean.class);
 		List<HouseInfoBean> list = query.setFirstResult(startPosition)
 				.setMaxResults(showData)
@@ -79,6 +82,9 @@ public class HouseInfoBeanDAO implements IHouseInfoBeanService  {
 			showData = 8;
 		}
 		int startPosition = ((page-1) * showData);
+		if (star==null) {
+			star = 5;
+		}
 		Query<HouseInfoBean> query = getSession().createQuery("From HouseInfoBean where nationalPark=" + parkid,HouseInfoBean.class);
 		List<HouseInfoBean> list = query.setFirstResult(startPosition)
 				.setMaxResults(showData)
@@ -91,7 +97,7 @@ public class HouseInfoBeanDAO implements IHouseInfoBeanService  {
 
 	
 	@Override
-	public List<HouseInfoBean> selectHouseName(Integer page , Integer showData,String housename) {
+	public List<HouseInfoBean> selectHouseName(Integer page , Integer showData,String housename,Integer star,Integer clickcount) {
 		if (page == null) {
 			page = 1;
 		}
@@ -99,6 +105,9 @@ public class HouseInfoBeanDAO implements IHouseInfoBeanService  {
 			showData = 8;
 		}
 		int startPosition = ((page-1) * showData);
+		if (star == null) {
+			star = 5;
+		}
 		String originString = " From HouseInfoBean where name like '%" + housename + "%'";
 		Query<HouseInfoBean> query = getSession().createQuery(originString, HouseInfoBean.class);
 		List<HouseInfoBean> list = query.setFirstResult(startPosition)
@@ -162,5 +171,8 @@ public class HouseInfoBeanDAO implements IHouseInfoBeanService  {
 		}
 		return result;
 }
+	
+
+	
 }	
 		

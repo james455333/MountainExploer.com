@@ -150,8 +150,18 @@
 								<td>${i.counties.area.name}</td>
 								<td>${i.counties.name}</td>
 								<td>${i.name}</td>
-								<td><a href="${i.url}"><img height="100" width="100"
-										src="<c:url value='/mountainCampBack/showimg?imgid=${i.campimgid.id}'/>">按</a></td>
+								<td>
+								<c:choose>
+								<c:when test="${empty i.campimgid.img }">
+								<a href="${i.url}"><img height="100" width="100"
+										src="/MountainExploer.com/housecamp/images/campnull.PNG">按</a>
+								</c:when>
+								<c:when test="${not empty i.campimgid.img }">
+								<a href="${i.url}"><img height="100" width="100"
+										src="<c:url value='/mountainCampBack/showimg?imgid=${i.campimgid.id}'/>">按</a>
+								</c:when>
+								</c:choose>
+								</td>
 							</tr>
 						</c:forEach>
 

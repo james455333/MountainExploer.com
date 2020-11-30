@@ -34,6 +34,10 @@ public class HouseInfoBean {
 	private String height;
 	@Column(name = "description")
 	private String desc;
+	@Column(name = "STARRANGE")
+	private Integer star;
+	@Column(name = "CLICKCOUNT")	
+	private Integer clickcount;
 	
 	@Transient
 	private Integer nationparkseqno;
@@ -99,6 +103,19 @@ public class HouseInfoBean {
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
+	public Integer getStar() {
+		return star;
+	}
+	public void setStar(Integer star) {
+		this.star = star;
+	}
+	public Integer getClickcount() {
+		return clickcount;
+	}
+	public void setClickcount(Integer clickcount) {
+		this.clickcount = clickcount;
+	}
+	
 	
 	
 	

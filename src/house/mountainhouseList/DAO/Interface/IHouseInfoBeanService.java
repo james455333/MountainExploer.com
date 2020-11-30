@@ -10,9 +10,9 @@ public interface IHouseInfoBeanService {
 
 	List<HouseInfoBean> selecthouseid(int houseid);
 
-	List<HouseInfoBean> selectAllHouse(Integer page , Integer showData ,Integer no , Integer parkid);
+	List<HouseInfoBean> selectAllHouse(Integer page , Integer showData ,Integer no , Integer parkid , Integer star);
 
-	List<HouseInfoBean> selectHouseName(Integer page , Integer showData,String housename);
+	List<HouseInfoBean> selectHouseName(Integer page , Integer showData,String housename ,Integer star,Integer clickcount);
 
 	HouseInfoBean insertHouse(HouseInfoBean bean);
 
@@ -25,4 +25,5 @@ public interface IHouseInfoBeanService {
 	int counthousenaem(String house);
 
 	List<HouseInfoBean> selectPark(Integer parkid);
+
 }
