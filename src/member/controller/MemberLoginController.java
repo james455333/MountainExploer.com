@@ -207,9 +207,9 @@ public class MemberLoginController {
 		session.removeAttribute("Member");
 		
 		System.out.println("logout:" + session.getAttribute("Member"));
+		System.out.println("==================Session:" + (session != null));
 		
 		status.setComplete();
-		System.out.println("Session" + (status != null));
 		
 		return "member/login";
 	}

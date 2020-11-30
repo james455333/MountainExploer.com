@@ -50,8 +50,7 @@ public class MemberDAO {
 		}
 		return false;
 	}
-	
-	
+
 	//Login Check Password
 	public MemberBasic checkPassword(String account, String password) {
 		Session session = sessionFactory.getCurrentSession();

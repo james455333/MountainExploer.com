@@ -73,11 +73,9 @@
 					<label>身分組：</label>
 					<span>
 						<c:if test="${Member.memberStatus.seqno eq 100}">
-<!-- 							<input type="hidden" name="memberStatus.seqno" value="Member.memberStatus.seqno"> -->
 							一般會員
 						</c:if>
 						<c:if test="${Member.memberStatus.seqno eq 120}">
-<!-- 							<input type="hidden" name="memberStatus.seqno" value="Member.memberStatus.seqno"> -->
 							登山嚮導						
 						</c:if>
 					</span><br/>
