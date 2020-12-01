@@ -35,7 +35,8 @@
 
         <header>
             <nav class="navbar navbar-expand-lg navbar-light bg-light zline">
-                <a class="navbar-brand" href="#"><img src="/MountainExploer.com/images/logo1.png" height="30%" width="30%"></a>
+                 <a class="navbar-brand" href="#" include-html="/MountainExploer.com/forinclude/includeForIndexLogo.html">
+            </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">

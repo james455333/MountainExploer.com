@@ -25,7 +25,7 @@
     overflow: hidden;
 }
 
-tr:nth-child(even) {
+/*tr:nth-child(even) {
     background: rgb(204, 204, 204)
 }
 
@@ -39,4 +39,4 @@ tr {
 
 tbody tr:hover {
     background-color: #bde6ee;
-}
+}*/
