@@ -1,5 +1,6 @@
 package member.model;
 
+import java.sql.Blob;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,10 @@ public class MemberService {
 	
 	public MemberBasic updateData(MemberBasic mb) {
 		return mbDao.updateData(mb);
+	}
+	
+	public byte[] blobToBytes(Blob blob) {
+		return mbDao.blobToBytes(blob);
 	}
 
 }

@@ -6,10 +6,11 @@
          method:"GET",
          url:"/MountainExploer.com/member/memberOther",
          data:{seqno:seqnoPre},
-         dataType:"json",
+		 contentType: "application/json; charset=UTF-8",
+         dataType:"text",
          success: function(otherStr){
-//			console.log(otherStr);
-			$(".other").val(otherStr);
+			console.log(otherStr);
+			$(".other").attr("value", otherStr);
 			
 		 }
      })
@@ -111,25 +112,25 @@ $(".chkPwd").on("blur", function(){
 
 
 //上傳頭貼
-$(".userImg").on("click", function(){
-    var userSeqImg = $.trim($(".seqno").val());
-    var userImg = $.trim($(".userImg").val());
-
-    $.ajax({
-        method:"PUT",
-        url:"/MountainExploer.com/member/imgUpdateAction",
-        data:{seqno:userSeqImg, multipartFile:userImg},
-        dataType:"json",
-        success: function(response){
-            if(response == true){
-                alert("圖片上傳成功");
-                window.location.href = "/MountainExploer.com/member/memberInfoEntry";
-            }else{
-                alert("圖片上傳失敗");
-            }
-        },
-        error: function(){
-            alert("圖片上傳出現問題");
-        }
-    })
-})
+//$(".userImg").on("click", function(){
+//    var userSeqImg = $.trim($(".userSeqImg").val());
+//    var userFile = $.trim($(".userFile").val());
+//
+//    $.ajax({
+//        method:"POST",
+//        url:"/MountainExploer.com/member/imgUpdateAction",
+//        data:{seqno:userSeqImg, multipartFile:userFile},
+//        dataType:"json",
+//        success: function(response){
+//            if(response == true){
+//                alert("圖片上傳成功");
+//                window.location.href = "/MountainExploer.com/member/memberInfoEntry";
+//            }else{
+//                alert("圖片上傳失敗");
+//            }
+//        },
+//        error: function(){
+//            alert("圖片上傳出現問題");
+//        }
+//    })
+//})

@@ -22,6 +22,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -195,11 +197,10 @@ public class MemberUpdateController {
 
 	
 	//上傳、更新圖片
-	@ResponseBody
-	@GetMapping(value = "/member/imgUpdateAction")
-	public boolean processImageUpdate(
-						@RequestParam(name = "seqno")int seqno,
-						@RequestParam(name = "userImg")MultipartFile multipartFile,
+	@RequestMapping(path = "/member/imgUpdateAction", method = RequestMethod.POST)
+	public String processImageUpdate(
+						@RequestParam(name = "userSeqImg")int seqno,
+						@RequestParam(name = "userFile")MultipartFile userFile,
 						Model m) throws SerialException, IOException, SQLException {
 		
 		MemberBasic mb = mbService.select(seqno);
@@ -207,22 +208,22 @@ public class MemberUpdateController {
 		m.addAttribute("errors", errors);
 		
 		
-		if(multipartFile == null) {
+		if(userFile == null) {
 			errors.put("msg", "請上傳圖片檔案");
-			return false;
+			return "member/memberFormalInfo";
 		}
 		
 		
-		String fileName = multipartFile.getOriginalFilename();
+		String fileName = userFile.getOriginalFilename();
 		mb.getMemberInfo().setImg_name(fileName);
-		mb.getMemberInfo().setMultipartFile(multipartFile);
+		mb.getMemberInfo().setMultipartFile(userFile);
 		
 		mbService.updateData(mb);
 		m.addAttribute("Member", mb);
 		m.addAttribute("result", "圖片上傳成功");
 		System.out.println("圖片上傳成功");
 		
-		return true;
+		return "member/memberFormalInfo";
 		
 	}
 
