@@ -56,6 +56,11 @@ public class MemberLoginController {
 		return "member/formalLogin";
 	}
 	
+	@RequestMapping(path = "/member/memberLoginAloneEntry", method = RequestMethod.GET)
+	public String processLoginAloneEntry() {
+		return "member/formalLoginAlone";
+	}
+	
 	
 	@ResponseBody
 	@GetMapping(path = "/member/memberLogin")
