@@ -46,12 +46,11 @@ public class MemberInfoController {
 	@ResponseBody
 	@GetMapping(value = "/member/memberOther")
 	public String processOtherSelectAction(
-					@RequestParam(name = "seqno")int seqno,
-					@RequestParam(name = "memberInfo.other")byte[] other) throws UnsupportedEncodingException {
+					@RequestParam(name = "seqno")int seqno) throws UnsupportedEncodingException {
 		
 		MemberBasic mb = mService.select(seqno);
-		byte[] otherByte = mb.getMemberInfo().getOther();
-		String otherStr = new String(otherByte, "UTF-8");
+		String otherStr = mb.getMemberInfo().getPreOther();
+		
 		return otherStr;
 		
 		

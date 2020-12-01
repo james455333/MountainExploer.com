@@ -67,6 +67,7 @@ public class MemberLoginController {
 			Model m,
 			RedirectAttributes redAttr) {
 		
+		System.out.println("========================rememberMe:" + rm);
 		
 		Map<String, String> errors = new HashMap<String, String>();
 		m.addAttribute("errors", errors);
@@ -118,8 +119,8 @@ public class MemberLoginController {
 			cookiePwd.setMaxAge(0);
 			cookiePwd.setPath("/");
 			
-			String rmCk = "";
-			Cookie cookieRm = new Cookie("rememberMe", rmCk);
+//			String rmCk = "";
+			Cookie cookieRm = new Cookie("rememberMe", "");
 			cookieRm.setMaxAge(0);
 			cookieRm.setPath("/");
 			

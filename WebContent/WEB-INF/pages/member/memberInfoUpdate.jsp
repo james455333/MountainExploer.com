@@ -15,7 +15,7 @@
 				<legend>修改個人資料</legend>
 				<div style="display:none">
 					<label>會員編號</label>
-					<input type="hidden" name="seqno" value="${Member.seqno}">
+					<input type="hidden" name="seqno" class="seqno" value="${Member.seqno}">
 				</div>
 				<div>
 					<label>暱稱：</label>
@@ -53,7 +53,7 @@
 				</div>
 				<div>
 					<label>個人簡介：</label>
-					<input type="text" id="other" name="memberInfo.other" value="${Member.memberInfo.other}"><br/>
+					<input type="text" id="other" name="memberInfo.other"><br/>
 				</div>
 				<div>
 					<input type="submit" id="submit" name="submit" value="儲存">

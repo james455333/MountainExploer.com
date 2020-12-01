@@ -1,16 +1,19 @@
 //顯示個人簡介
-// $(function(){
-//     var seqnoPre = $.trim($(".seqno").val());
+ $(function(){
+     var seqnoPre = $.trim($(".seqno").val());
 //     var other = $(".other").val();
 
-//     $.ajax({
-//         method:"GET";
-//         url:"",
-//         data:{},
-//         dataType:"json",
-//         success
-//     })
-// })
+     $.ajax({
+         method:"GET",
+         url:"/MountainExploer.com/member/memberOther",
+         data:{seqno:seqnoPre},
+         dataType:"json",
+         success: function(otherStr){
+			$(".otsp").text(otherStr);
+			
+		 }
+     })
+ })
 
 //跳轉會員修改頁面
 $(".turnToUpPage").on("click", function(){

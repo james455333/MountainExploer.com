@@ -107,8 +107,11 @@
                                         <td>
                                             <div>
                                                 <label>
-                                                    	記住我<input type="checkbox" name="rememberMe" id="rememberMe" <c:if test="${cookie.rememberMe.value == 'check'}">checked="checked"</c:if>
-																value="check" style="float: left;">
+                                                    	記住我<input type="checkbox" name="rememberMe" class="rememberMe" id="rememberMe" 
+                                                    	<c:if test="${cookie.rememberMe.value == 'check'}">
+                                                    		checked="checked"
+                                                    	</c:if>
+															value="true" style="float: left;">
                                                 </label>
                                             </div>
 

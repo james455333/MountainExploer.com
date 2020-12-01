@@ -98,3 +98,19 @@ $(".email").on("blur", function(){
         }
     }
 })
+
+ $(function(){
+     var seqnoPre = $.trim($(".seqno").val());
+//     var other = $(".other").val();
+
+     $.ajax({
+         method:"GET",
+         url:"/MountainExploer.com/member/memberOther",
+         data:{seqno:seqnoPre},
+         dataType:"json",
+         success: function(otherStr){
+			$("#other").val(otherStr);
+			
+		 }
+     })
+ })
