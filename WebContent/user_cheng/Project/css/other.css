@@ -5,7 +5,7 @@
 } */
 
 .navbar {
-	min-height: 30px !important;
+	/* min-height: 30px !important; */
 	z-index: 50;
 }
 
@@ -40,10 +40,10 @@ header {
 
 /* ?? */
 
-.bgi {
+/* .bgi {
 	background-image: url(../images/BGI.jpg);
 	background-attachment: scroll;
-}
+} */
 
 .count1 {
 	column-count: 3;
