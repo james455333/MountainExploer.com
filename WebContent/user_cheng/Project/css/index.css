@@ -9,8 +9,7 @@
     height: 2980px;
     text-align: center;
     margin: 0px auto;
-    overflow: auto;
-    min-width: 600px;
+        min-width: 600px;
 }
 
 .p_i_name {
@@ -93,8 +92,7 @@ header {
     text-align: center;
     box-sizing: border-box;
     width: 1440px;
-    overflow: auto;
-    margin:  0px auto;/* div置中 */
+        margin:  0px auto;/* div置中 */
 }
 
 .div_li1 {
@@ -132,28 +130,4 @@ header {
     margin:0px auto;
 }
 
-.c001 {
-    box-sizing: border-box;
-    text-align: center;
-}
 
-.c002 {
-    box-sizing: border-box;
-    text-align: center;
-    padding: 100px;
-}
-
-.c003 {
-    box-sizing: border-box;
-    text-align: center;
-}
-
-.c004 {
-    text-align: center;
-    width: auto;
-    overflow: hidden;
-    /* width: 255px; */
-}
-#p_i_content {
-    text-align: center;
-}
