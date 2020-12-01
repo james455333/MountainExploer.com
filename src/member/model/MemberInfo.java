@@ -1,6 +1,7 @@
 package member.model;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.sql.Blob;
 import java.sql.Clob;
 import java.sql.Date;
@@ -30,6 +31,8 @@ import org.hibernate.annotations.Parameter;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import member.MemberGlobal;
 
 @Entity
 @Table(name = "MEMBER_INFO")
@@ -151,8 +154,18 @@ public class MemberInfo {
 
 	
 	@Column(name = "OTHER")
+	@JsonIgnore
 	public byte[] getOther() {
 		return other;
+	}
+	
+	@Transient
+	public String getPreOther() throws UnsupportedEncodingException {
+		if(other != null) {
+			return new String(other, MemberGlobal.CHARSET);
+		}else {
+			return "";
+		}
 	}
 
 	public void setOther(byte[] other) {

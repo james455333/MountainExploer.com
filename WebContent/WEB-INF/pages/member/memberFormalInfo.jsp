@@ -78,7 +78,7 @@
                     <div id="idCard" style="display: none;">
                        	<h2>${Member.memberInfo.neck_name}的個人資料</h2>
                        	<div style="display:none">
-							<input type="text" name="seqno" value="${Member.seqno}">
+							<input type="text" name="seqno" class="seqno" value="${Member.seqno}">
 						</div>
 						<div>
                         	<label>帳號：</label>
@@ -143,8 +143,8 @@
                         </div>
                         <div>
                         	<label>個人簡介：</label>
-<%--                         	<span>${Member.memberInfo.other}</span><br/> --%>
-                        	<input type="text" name="memberInfo.other" class="other" readonly="readonly" value="${Member.memberInfo.other}">
+                        	<span class="otsp"></span><br/>
+                        	<input type="hidden" name="memberInfo.other" class="other">
                         </div>
                         <div>
                         	<input type="button" class="turnToUpPage" value="修改會員資料"/>
