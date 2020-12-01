@@ -360,21 +360,21 @@ nav ul {
 	overflow: hidden;
 }
 
-tr:nth-child(even) {
+/* tr:nth-child(even) {
 	background: rgb(204, 204, 204)
 }
 
 tr:nth-child(odd) {
 	background-color: #808080;
-}
+} */
 
-tr {
+/* tr {
 	border: 2px solid rgb(0, 0, 0);
-}
+} */
 
-tbody tr:hover {
+/* tbody tr:hover {
 	background-color: #bde6ee;
-}
+} */
 
 /*secTable底部頁面控制器*/
 
