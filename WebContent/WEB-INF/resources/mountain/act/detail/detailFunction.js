@@ -68,18 +68,21 @@ function insertElement(data){
 	let thisElm = $(".actPost").eq(0)
 	insertTitle(data)
 	insertMemberTD(thisElm, data.actBasic.memberBasic)
+	thisElm.find(".btn-detail-update").removeClass("btn-detail-update").addClass("btn-detail-update-act")
 	insertMainContent(thisElm,data)
 		//	留言
 	for(let i = 0 ; i < data.respList.length ; i++ ){
 		let respElm = $(".actPost").eq(i+1);
 		insertMemberTD(respElm, data.respList[i].actResp.memberBasic);
-		insertResp(respElm, data.respList[i]);
+		insertResp(respElm, data.respList[i], data.actBasic.memberBasic.seqno);
 		let textCK = "d-update-note"+i
 		respElm.find(".d-update-note").attr("id",textCK)
 	}
-	console.log()
-	let t = $(anchorThis).offset().top
-	$(window).scrollTop(t);
+	console.log(anchorThis)
+	if(anchorThis != ''){
+		let t = $(anchorThis).offset().top
+		$(window).scrollTop(t);
+	}
 }
 
 //	函式 : 動態新增 => 主標題
@@ -92,15 +95,18 @@ function insertTitle(data){
 
 //	函式 : 動態新增 => 會員區域
 function insertMemberTD(thisElm, memberBasic){
-	if(member.seqno == memberBasic.seqno){
-		thisElm.find(".d_ctrl").css("display","inline-flex")
+	if( member != null ){
+		if(member.seqno == memberBasic.seqno){
+			thisElm.find(".d_ctrl").css("display","inline-flex")
+		}
 	}
 	thisElm.find(".memberTD").find("a").eq(0).html(memberBasic.memberInfo.neck_name)
 }
 //	函式 : 動態新增 => 回覆與留言
-function insertResp(respElm, respList){
-	respElm.find("input[name='seqno']").attr("id","id"+respList.actResp.seqno)
-	
+function insertResp(respElm, respList, posterSeqno){
+	respElm.find("input[name='seqno']")
+			.attr("id","id_" + respList.actResp.seqno)
+			.val(respList.actResp.seqno)
 	
 	//	回覆
 	var postD = dateFormate(respList.actResp.postDate)
@@ -112,12 +118,26 @@ function insertResp(respElm, respList){
 		return;
 	}
 	if(respList.actResp.hideTag != null){
-		respElm.find(".d_Main").html("<div class='hideResp'>本回覆已被隱藏顯示<div>")
-		return;
+		if( member != null ){
+			if(member.seqno != respList.actResp.memberBasic.seqno){
+				respElm.find(".d_Main").html("<div class='hideResp'>本回覆已被隱藏顯示<div>")
+				return;
+			}
+		}else{
+			respElm.find(".d_Main").html("<div class='hideResp'>本回覆已被隱藏顯示<div>")
+			return;
+		}
 	}
 	if(respList.actResp.privateTag != null){
-		respElm.find(".d_Main").html("<div class='hideResp'>本回覆為私密回覆<div>")
-		return;
+		if( member != null ){
+			if(member.seqno != respList.actResp.memberBasic.seqno){
+				respElm.find(".d_Main").html("<div class='hideResp'>本回覆為私密回覆<div>")
+				return;
+			}
+		}else{
+			respElm.find(".d_Main").html("<div class='hideResp'>本回覆為私密回覆<div>")
+			return;
+		}
 	}
 	
 	if(respList.actResp.msg != null){
@@ -352,10 +372,9 @@ function loginConfirmSWAL(){
 function ajaxAddComment(thisBtn, thisComment){
 	
 	let formData = new FormData();
-	let respSeqno = thisBtn.parent("div").siblings("div")
+	let respSeqno = thisBtn.parents(".actPost")
 			.find("input[name='seqno']").val()
 	formData.append("message",thisComment)
-			console.log(respSeqno)
 	
 	$.ajax({
 		url : respHome + "/sideResp/insert." + respSeqno,
@@ -397,10 +416,13 @@ function appendSideResp(thisBtn, thisComment){
 function checkResp(){
 	
 	let data = CKEDITOR.instances.resp.getData()
-	
 	if( data != ''){
 		let formData = new FormData();
 		formData.append("message",data) 
+		let checkPrivate = $("#btn-resp-private").is(':checked') 
+		if(checkPrivate){
+			formData.append("privateTag",1)
+		}
 		$.ajax({
 			url : respHome + "/resp/insert." + actID,
 			type : "POST",
@@ -421,8 +443,9 @@ function checkResp(){
 }
 
 function confirmNewResp(data){
-	let goURL = actEnterURL + "page=" + data.totalPage + "&actID=" + actID + "#id" + data.respID
+	let goURL = actEnterURL + "page=" + data.totalPage + "&actID=" + actID
 	setTimeout(function(){
+		console.log(goURL)
 		window.location.assign(goURL)
 	},2800)
 	swal({
@@ -432,6 +455,7 @@ function confirmNewResp(data){
 			confirm : "跳轉"
 		}
 	}).then(() => {
+		console.log(goURL)
 		window.location.assign(goURL)
 	})
 }

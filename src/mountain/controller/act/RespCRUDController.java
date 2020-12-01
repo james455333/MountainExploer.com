@@ -41,8 +41,8 @@ public class RespCRUDController {
 			ActSideResponse actSideResponse,
 			Model model,
 			@PathVariable("respSeqno") Integer respSeqno) throws UnsupportedEncodingException {
-		
-		System.out.println("================ actSideResponse : " + actSideResponse.getMsg());
+		String iString  = new String(actSideResponse.getMessage(), MountainGlobal.CHARSET);
+		System.out.println("================ actSideResponse : " + iString);
 		System.out.println("================ respSeqno : " + respSeqno);
 		try {
 			MemberBasic mBasic = (MemberBasic) model.getAttribute("Member");
@@ -52,7 +52,7 @@ public class RespCRUDController {
 			actSideResponse.setPostDate(new Date());
 			
 			service.save(actSideResponse);
-			service.insert(actSideResponse);
+//			service.insert(actSideResponse);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -70,8 +70,7 @@ public class RespCRUDController {
 		try {
 			
 			Map<String, Integer> map = new HashMap<String, Integer>();
-			
-			ActivityBasic activityBasic = new ActivityBasic();
+			ActivityBasic activityBasic = new ActivityBasic(); 
 			activityBasic.setSeqno(actID);
 			actResponse.setActivityBasic(activityBasic);
 			

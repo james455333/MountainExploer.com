@@ -317,8 +317,7 @@
 								 <div class="control-group">
 								    <label class="control control-checkbox">
 								        設為私密回覆
-								            <input type="checkbox" checked="checked" />
-								        <div class="control_indicator"></div>
+								            <input type="checkbox" id="btn-resp-private" />
 								    </label>
 								</div>
 								<button type="button" class="btn btn-primary btn-lg btn-resp">

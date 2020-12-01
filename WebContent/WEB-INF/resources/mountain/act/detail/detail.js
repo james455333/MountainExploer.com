@@ -22,12 +22,14 @@ $(function(){
 	/* 留言按鈕設定 */
 	$(".innerContainer").on("click", ".btn-sideResp",function(){
 		thisComment = $(this).parents(".comment-container").find("input[name='message']").val()
+		converComment = String(thisComment)
+		console.log(converComment)
 		if(member != null){
 			if(thisComment == ""){
 				swal("留言不得為空","","warning")
 				return;
 			}
-			ajaxAddComment($(this), thisComment);
+			ajaxAddComment($(this), converComment);
 		}else{
 			loginConfirmSWAL()
 		}
@@ -40,6 +42,10 @@ $(function(){
 		 $("#dialog-form").dialog("open");
 	})
 	
-	
+	$('.innerContainer').on("click" ,'.btn-detail-update-act', function(){
+		window.location.assign("/MountainExploer.com/mountain/manage/edite?actID="+actID)
+	})
 	
 })
+
+

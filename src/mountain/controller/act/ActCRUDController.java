@@ -21,6 +21,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,6 +43,8 @@ import mountain.model.activity.ActivityInfo;
 import mountain.model.activity.Registry.ActRegInfo;
 import mountain.model.activity.response.ActResponse;
 import mountain.model.activity.response.ActSideResponse;
+import mountain.model.route.NationalPark;
+import mountain.model.route.RouteBasic;
 
 @Controller
 @RequestMapping("/mountain/act/crud")
@@ -114,6 +117,34 @@ public class ActCRUDController {
 		result.put("success", "新增成功");
 		result.put("actID", String.valueOf(actBasic.getSeqno()));
 		return result;
+	}
+	
+	
+	@GetMapping("/act-update.{actID}")
+	@ResponseBody
+	public Map<String, Object> actUpdate(
+			Model model,
+			ActivityBasic activityBasic,
+			@PathVariable("actID") Integer actID){
+		
+		InterfaceService<GenericTypeObject> service = this.service;
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		
+		service.save(activityBasic);
+		activityBasic = (ActivityBasic) service.select(actID);
+		MemberBasic memberBasic = (MemberBasic) model.getAttribute("Member");
+		if (activityBasic.getMemberBasic().getSeqno() != memberBasic.getSeqno()) {
+			resultMap.put("error", "非本會員所舉辦之活動，不得進行修改");
+		}
+		
+		
+		resultMap.put("actInfo", activityBasic.getActInfo());
+		RouteBasic rtBasic = activityBasic.getActInfo().getRtBasic();
+		NationalPark nationalPark = rtBasic.getNational_park();
+		resultMap.put("npID",nationalPark.getId());
+		
+		return resultMap;
+		
 	}
 
 	/* 普通查詢 */
@@ -314,7 +345,11 @@ public class ActCRUDController {
 
 		// 得到參數 set Page
 		actID = Integer.parseInt(allParam.get("actID"));
-		page = Integer.parseInt(allParam.get("page"));
+		if(allParam.get("page") != null) {
+			page = Integer.parseInt(allParam.get("page"));
+		}else {
+			page = 1;
+		}
 
 		// 設定service
 		InterfaceService<GenericTypeObject> service = this.service;
