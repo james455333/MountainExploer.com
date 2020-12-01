@@ -1,7 +1,6 @@
 //顯示個人簡介
  $(function(){
      var seqnoPre = $.trim($(".seqno").val());
-//     var other = $(".other").val();
 
      $.ajax({
          method:"GET",
@@ -9,7 +8,8 @@
          data:{seqno:seqnoPre},
          dataType:"json",
          success: function(otherStr){
-			$(".other").attr("value", otherStr);
+//			console.log(otherStr);
+			$(".other").val(otherStr);
 			
 		 }
      })

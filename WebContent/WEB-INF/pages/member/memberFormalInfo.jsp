@@ -141,10 +141,10 @@
 								</c:if>
                         	</span><br>
                         </div>
-                        <div>
+                        <div class="otdiv">
                         	<label>個人簡介：</label>
-<!--                         	<span class="otsp"></span><br/> -->
-                        	<input type="hidden" name="memberInfo.other" class="other" value="">
+                        	<span class="otsp"></span><br/>
+                        	<input type="text" name="memberInfo.other" class="other" id="other" value="" readonly="readonly">
                         </div>
                         <div>
                         	<input type="button" class="turnToUpPage" value="修改會員資料"/>
