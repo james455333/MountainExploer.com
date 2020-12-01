@@ -9,7 +9,7 @@
          data:{seqno:seqnoPre},
          dataType:"json",
          success: function(otherStr){
-			$(".otsp").text(otherStr);
+			$(".other").attr("value", otherStr);
 			
 		 }
      })

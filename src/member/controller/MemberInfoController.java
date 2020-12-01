@@ -50,7 +50,7 @@ public class MemberInfoController {
 		
 		MemberBasic mb = mService.select(seqno);
 		String otherStr = mb.getMemberInfo().getPreOther();
-		
+		System.out.println("============================" + otherStr);
 		return otherStr;
 		
 		
