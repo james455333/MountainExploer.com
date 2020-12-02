@@ -14,6 +14,15 @@
 	href='<c:url value="/backstage/css/backStage.css"/>'>
 <link rel="stylesheet"
 	href='<c:url value="/housecamp/css/back/backhousecamp.css"/>'>
+	
+	<style>
+.pageauto{
+width:60% ;
+margin-left:auto;}
+.totalData{
+padding-right:10%;
+float : right;}
+</style>
 </head>
 <body>
 	<div id="container1">
@@ -75,6 +84,36 @@
 				</form>
 			</div>
 		</div>
+		
+<!--  分頁	 -->
+			<div class="pageauto">
+					<a href="selectAll?parkid=${parkid }&no=${no }&page=1">«第一頁</a>
+					<c:choose>
+					<c:when test="${page <=1 }"><a href="#">‹上一頁</a></c:when>
+					<c:otherwise>
+					<a href="selectAll?parkid=${parkid }&no=${no }&page=${page-1}">‹上一頁</a>
+					</c:otherwise>
+					</c:choose>
+					
+				
+					<select onChange="location = this.options[this.selectedIndex].value">
+						<c:forEach var="toPage" begin="1" end="${totalPage}">
+						<option value="selectAll?parkid=${parkid }&no=${no }&page=${toPage}" <c:if test="${toPage==page}">selected="selected"</c:if>>第${toPage}頁</option>
+						</c:forEach>
+
+					</select>
+					<c:choose>
+					<c:when test="${page == totalPage}"><a href="#">下一頁›</a></c:when>
+					<c:otherwise>
+					<a href="selectAll?parkid=${parkid }&no=${no }&page=${page+1}">下一頁›</a>
+					</c:otherwise>
+					</c:choose>
+					<a href="selectAll?parkid=${parkid }&no=${no }&page=${totalPage}">最末頁»</a>
+					
+					
+					<div class="totalData">總共<c:out value="${totalData}">${totalData}</c:out>筆資料</div></div>
+		
+		
 		<div id="mainContainer">
 			<table class="table">
 				<thead class="thead-light">
@@ -95,35 +134,7 @@
 
 					</tr>
 				</thead>
-				<tbody>
-				<div>
-<!-- 分頁	 -->
-					<a href="selectAll?parkid=${parkid }&no=${no }&page=1">«第一頁</a>
-					<c:choose>
-					<c:when test="${page <=1 }">&lt;<a href="#">上一頁</a></c:when>
-					<c:otherwise>
-					<a href="selectAll?parkid=${parkid }&no=${no }&page=${page-1}">‹上一頁</a>
-					</c:otherwise>
-					</c:choose>
-					
-				
-					<select onChange="location = this.options[this.selectedIndex].value">
-						<c:forEach var="toPage" begin="1" end="${totalPage}">
-						<option value="selectAll?parkid=${parkid }&no=${no }&page=${toPage}" <c:if test="${toPage==page}">selected="selected"</c:if>>第${toPage}頁</option>
-						</c:forEach>
-
-					</select>
-					<c:choose>
-					<c:when test="${page == totalPage}">&lt;<a href="#">下一頁›</a></c:when>
-					<c:otherwise>
-					<a href="selectAll?parkid=${parkid }&no=${no }&page=${page+1}">下一頁›</a>
-					</c:otherwise>
-					</c:choose>
-					<a href="selectAll?parkid=${parkid }&no=${no }&page=${totalPage}">最末頁»</a>
-					
-					
-					總共<c:out value="${totalData}">${totalData}</c:out>筆資料</div>
-					
+				<tbody>				
 				
 					<!-- 查詢全部 -->
 					<c:forEach var="i" items="${House_All}">
