@@ -19,7 +19,7 @@
 	<!-- jquery validator -->
 	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"></script>
-<!-- 	<script src="registry/registry.js"></script> -->
+	<script src="registry/registry.js"></script>
 </head>
 <body>
 	<div class="count1">
@@ -92,7 +92,7 @@
 				</tr>
 			</c:forEach>
 			<!-- tbody更改到這邊結束 -->
-			<FORM action="<c:url value='/shoppingcart/saveOrder' />"method="POST">
+			<FORM action="<c:url value='/shoppingcart/saveOrder' />"method="POST" class="regInfo-form">
 			<tr>
 				<td colspan="6">合計金額： <span>${subtotal}</span> 元
 				</td>
