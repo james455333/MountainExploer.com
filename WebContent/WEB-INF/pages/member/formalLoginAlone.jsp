@@ -121,15 +121,21 @@
                                        	</c:if> value="true">
                                        	<label for="rememberme">記住我</label>
                                     <input type="submit" class="submit" id="submit" value="登入">
-<!--                                     <input type="button" class="test" value="test"> -->
+                                    
                                 </td>
                             </tr>
+                         
                         </tbody>
                     </table>
                     <br>
                     <div style="text-align: center;">立即<a href="/MountainExploer.com/member/memberRegisterEntry">註冊</a>帳號</div>
                 </div>
                 </form>
+	            <div>
+		          	<input type="button" name="userLog1" class="userLog1" value="一般登入">
+		          	<input type="button" name="userLog2" class="userLog2" value="登山嚮導登入">
+		          	<input type="button" name="adminLog" class="adminLog" value="管理員登入">
+	            </div>
             </div>
             <!-- 每頁不同的內容到這裡結束 -->
         </div>
