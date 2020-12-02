@@ -351,7 +351,7 @@ nav ul {
 	/* border: 5px solid rgb(70, 64, 64); */
 	border-collapse: collapse;
 	overflow: hidden;
-	background-color: white;
+	background-color: rgb(253, 253, 253);
 }
 
 .order-table-th {

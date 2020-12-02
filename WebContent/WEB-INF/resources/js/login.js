@@ -9,8 +9,8 @@ $(function () {
     modal: true,
     show:'true',
     // hide:'puff',
-    height: 350,
-    width: 300,
+    height: 400,
+    width: 500,
     
     
     resizable: false,
