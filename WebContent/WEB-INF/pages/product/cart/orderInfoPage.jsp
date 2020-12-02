@@ -76,7 +76,7 @@
 				<tr >
 <%-- 					<td align="center">${aBean.itemBasicSeqno}</td> --%>
 					<td><a
-						href='<c:url value='/shop/productInfoEntry?no=${anEntry.itemBasicSeqno}' />'>
+						href='<c:url value='/shop/productInfoEntry?no=${aBean.itemBasicSeqno}' />'>
 							${aBean.itemBasicSeqno} </a></td>
 <!-- 					<td><a -->
 <%-- 						href='<c:url value='/shop/productInfoEntry?no=${anEntry.itemBasicSeqno}' />'> --%>

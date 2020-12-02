@@ -95,13 +95,18 @@
 			<FORM action="<c:url value='/shoppingcart/saveOrder' />"
 				method="POST">
 				<tr>
-					<td colspan="6">收貨地址： <Input size="60" type="text"
-						name="shippingAddress" value="請輸入收貨地址">
+					<td colspan="6">收貨人姓名： <Input size="15" type="text"
+						name="receiver" placeholder="請輸入收貨人姓名">
 					</td>
 				</tr>
 				<tr>
-					<td colspan="6">連絡電話： <Input size="60" type="text"
-						name="invoiceTitle" value="請輸入連絡電話">
+					<td colspan="6">收貨地址： <Input size="60" type="text"
+						name="shippingAddress" placeholder="請輸入收貨地址">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="6">連絡電話： <Input size="15" type="text"
+						name="invoiceTitle" placeholder="請輸入連絡電話">
 					</td>
 				</tr>
 				<TR>

@@ -56,12 +56,13 @@
 	<table class="order-table">
 		<thead class="order-table-th">
 		<tr >
-			<th colspan="6" align="center">${Member.name}的訂購紀錄</th>
+			<th colspan="7" align="center">${Member.name}的訂購紀錄</th>
 		</tr>
 			<tr>
 				<!-- thead更改從這邊開始 -->
 				<th scope="col">訂單編號</th>
 				<th scope="col">金額</th>
+				<th scope="col">收貨人</th>
 				<th scope="col">收貨地址</th>
 				<th scope="col">連絡電話</th>
 				<th scope="col">訂貨日期</th>
@@ -78,6 +79,7 @@
 			    </a>
 			</TD>
 			<TD >${anOrderBean.totalAmount} 元</TD>
+			<TD >${anOrderBean.receiver}</TD>
 			<TD >${anOrderBean.shippingAddress}</TD>
 			<TD >${anOrderBean.invoiceTitle}</TD>
 			<TD >${anOrderBean.orderDate}</TD>
@@ -86,7 +88,7 @@
 		</TR>
 		</c:forEach>
 						<tr>
-				<TD colspan="6" align="center"><A
+				<TD colspan="7" align="center"><A
 					href="<c:url value='/shop/shoppingPage' />">繼續購物</A></TD>
 			</tr>
 			
