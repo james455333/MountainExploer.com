@@ -72,6 +72,8 @@
                             alt=""></a>
                     <hr>
                 </div>
+                <form action="<c:url value='/member/memberLoginAlone' />" method="POST">
+                
                 <div class="login-body" id="login-panel">
                     <table class="logintable" style="margin: 0 auto;">
                         <tbody>
@@ -113,6 +115,7 @@
                     <br>
                     <div style="text-align: center;">立即<a href="/MountainExploer.com/member/memberRegisterEntry">註冊</a>帳號</div>
                 </div>
+                </form>
             </div>
             <!-- 每頁不同的內容到這裡結束 -->
         </div>
@@ -132,6 +135,7 @@
     </footer>
 </body>
 <script src="/MountainExploer.com/js/upLoadImg.js"></script><!-- 上傳頭像 -->
+<!-- <script src="/MountainExploer.com/js/login.js "></script> -->
 <script src="/MountainExploer.com/js/table.js"></script>
 <script src="/MountainExploer.com/js/topBar.js"></script>
 <script src="/MountainExploer.com/js/sweetalert.js"></script><!--sweet alert-->
