@@ -54,26 +54,26 @@ height:18px;
 		</nav>
 	</header>
 	<div class="div_ul">
-		<div class="secNavbar">
-			<nav>
-				<ul class="second_nav">
-					<!-- 更改內容從這邊開始 -->
-					<li class="li1"><a href="#">第二導覽列1</a></li>
+<!-- 		<div class="secNavbar"> -->
+<!-- 			<nav> -->
+<!-- 				<ul class="second_nav"> -->
+<!-- 					更改內容從這邊開始 -->
+<!-- 					<li class="li1"><a href="#">第二導覽列1</a></li> -->
 
-					<li class="li1"><a href="#">第二導覽列2</a></li>
+<!-- 					<li class="li1"><a href="#">第二導覽列2</a></li> -->
 
-					<li class="li1"><a href="#">第二導覽列3</a></li>
+<!-- 					<li class="li1"><a href="#">第二導覽列3</a></li> -->
 
-					<li class="li1"><a href="#">第二導覽列4</a></li>
-					<!-- 更改內容到這邊結束 -->
-				</ul>
-			</nav>
-		</div>
+<!-- 					<li class="li1"><a href="#">第二導覽列4</a></li> -->
+<!-- 					更改內容到這邊結束 -->
+<!-- 				</ul> -->
+<!-- 			</nav> -->
+<!-- 		</div> -->
 		<div class="div_li1">
-			<a>保留區</a>
+<!-- 			<a>保留區</a> -->
 		</div>
 		<div class="div_li3">
-			<a>保留區</a>
+<!-- 			<a>保留區</a> -->
 		</div>
 		<div class="div_li2">
 			<!-- 每頁不同的內容從這裡開始 -->
@@ -165,8 +165,8 @@ height:18px;
 							</c:choose>
 							
 							</td>
-							<td>
 								<!-- 星星評分 -->
+							<td>
 								<p> 
 									<c:choose >
 									<c:when test="${(i.star*1.0 / i.clickcount) lt 1 || empty i.star}">
@@ -237,7 +237,12 @@ height:18px;
 
 					<ul>
 						<li class="li1"><a href="actselectAll?parkid=${parkid}&no=${no }&page=1">«第一頁</a></li>
+						<c:choose>
+					<c:when test="${page <=1 }"><li class="li1"><a href="#">‹上一頁</a></li></c:when>
+					<c:otherwise>
 						<li class="li1"><a href="actselectAll?parkid=${parkid}&no=${no }&page=${page-1}">‹上一頁</a></li>
+					</c:otherwise>
+					</c:choose>
 					<li class="li1">
 					<select onChange="location = this.options[this.selectedIndex].value">
 						<c:forEach var="toPage" begin="1" end="${totalPage}">
@@ -245,7 +250,12 @@ height:18px;
 						</c:forEach>
 
 					</select></li>
+					<c:choose>
+					<c:when test="${page == totalPage}"><li class="li1"><a href="#">下一頁›</a></li></c:when>
+					<c:otherwise>
 						<li class="li1"><a href="actselectAll?parkid=${parkid}&no=${no }&page=${page+1}">下一頁›</a></li>
+					</c:otherwise>
+					</c:choose>	
 						<li class="li1"><a href="actselectAll?parkid=${parkid}&no=${no }&page=${totalPage}">最末頁»</a></li>
 					</ul>
 				</nav>

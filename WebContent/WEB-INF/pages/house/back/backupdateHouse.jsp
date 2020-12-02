@@ -84,20 +84,33 @@
 				    	<td><input type="text" name="update_bed" size="20" value="${k.bed}"> 	</td>
 				    	<td><input type="text" name="update_camp" size="20" value="${k.camp}"> 	</td>
 				    	<td><input type="text" name="update_height" size="20" value="${k.height}"> 	</td>	
-				    				    	
-					    <td><input type="hidden" name="update_star" value="${k.star}">${k.star}</td>
-					    <td><input type="hidden" name="update_click" value="${k.clickcount}">${k.clickcount}</td>
+				    	
+					    <td>
+						<c:choose>
+					    <c:when test="${empty k.star}">總共0分</c:when>				    				    	
+					    <c:otherwise><input type="hidden" name="update_star" value="${k.star}">總共${k.star}分</c:otherwise>
+					    </c:choose></td>
+					    <td>
+					    <c:choose>
+					    <c:when test="${empty k.clickcount}">0次</c:when>	
+					    <c:otherwise><input type="hidden" name="update_click" value="${k.clickcount}">${k.clickcount}次</c:otherwise>
+					    </c:choose></td>
 					    <td>平均${k.star/k.clickcount}分</td>
 					    
 						<td><textarea name="update_desc" cols="40" rows="8">${k.desc}</textarea></td>				    	
 						<td><input type="hidden" name="update_id" size="10" value="${k.housebasicid}">	</td> 			    		
-				    	<td><img id="blah" src="#" alt="更新圖片" />		       
+				    	<td><img id="blah" src="/MountainExploer.com/housecamp/images/housenull.PNG" alt="更新圖片" />		       
 				     		<input type="file" name="files" id="imgInp" size="25" accept="image/*"></td>
 				     		 <input type="hidden" name="hotelnumber" value="${k.imgid.id}">
 				    	<td><input type="submit"  value="修改"></td>
 				    </form>
-				    <td><img height="100" width="100"
-							src="<c:url value='/mountainHouseBack/showimg?imgid=${k.imgid.id}'/>">
+				    <td>
+				    <c:choose>
+							<c:when test="${ empty k.imgid.img}">
+							<img height="100" width="100" src="/MountainExploer.com/housecamp/images/housenull.PNG">
+							</c:when>
+				    	<c:otherwise><img height="100" width="100"src="<c:url value='/mountainHouseBack/showimg?imgid=${k.imgid.id}'/>"></c:otherwise>
+				    </c:choose>
 				      </td>
 				 </div>
 				</tr> 

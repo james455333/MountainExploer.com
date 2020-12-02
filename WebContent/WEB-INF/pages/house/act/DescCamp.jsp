@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>山屋</title>
+    <title>露營地</title>
     <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
     <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -20,16 +20,19 @@
 width:25px;
 height:25px;
 }
-	.topname{margin : 50px 50px 50px 5px;
+	.topname{margin : 50px 45px 40px 5px;
 	float: left;
-	padding : 50px 50px 50px 5px;
+	padding : 50px 0px 40px 5px;
 	}
-	.body{margin : 10px;
+	.body{margin : 20px;
 	clear : left;
 	
 	width:500px;
 	height :50px;
 	}
+	.counties{float:left;
+	padding : 0px 20px 40px 50px;
+	clear:left;}
     </style>
 </head>
 
@@ -87,7 +90,7 @@ height:25px;
 <!-- 右邊 -->
                 <div class="forFrom ">
 	         <!-- 評價 -->
-                <c:forEach var="j" items="${selecthouseid}">
+                <c:forEach var="j" items="${selectcamp}">
                 <div class="topname">
                 				<c:choose>
 									<c:when test="${(j.star*1.0 / j.clickcount) lt 1 || empty j.star}">
@@ -135,8 +138,8 @@ height:25px;
 							</c:choose>
 					(${j.clickcount }人評分過)
 					<div>
-					<form action="<c:url value='/mountainHouseAct/jumpupdatestart'></c:url>">
-					<input type="hidden" name="selecthouseid" value="${j.housebasicid}">
+					<form action="<c:url value='/mountainCampAct/jumpupdatestar'></c:url>">
+					<input type="hidden" name="selectcampid" value="${j.campbasicid}">
 					<input type="submit" value="評分"></form>
 					</div>
 					</div>
@@ -145,20 +148,22 @@ height:25px;
 <!-- 左邊 -->
                 <div class="forText">
 	                <div>
-	                <c:forEach var="i" items="${selecthouseid}">
+	                <c:forEach var="i" items="${selectcamp}">
 	                <div style="float: left ; margin : 30px" >
 					<c:choose>
-								<c:when test="${ empty i.imgid.img}">
-								<img height="200" width="200" src="/MountainExploer.com/housecamp/images/housenull.PNG">
+								<c:when test="${ empty i.campimgid.img}">
+								<img height="200" width="200" src="/MountainExploer.com/housecamp/images/campnull.PNG">
 								</c:when>
-								<c:when test="${not empty i.imgid.img}">
+								<c:when test="${not empty i.campimgid.img}">
 								<img height="200" width="200"
-								src="<c:url value='/mountainHouseBack/showimg?imgid=${i.imgid.id}'/>">
+								src="<c:url value='/mountainCampBack/showimg?imgid=${i.campimgid.id}'/>">
 								</c:when>
 								</c:choose>
 					</div>
 	                <div class = "topname"><h2>${i.name}</h2></div>
-	                <div class="body">山屋床位${i.bed}  營地數量${i.camp}</div>					
+					
+	                <div class = "counties">地址 : ${i.counties.area.name}${i.counties.name}</div>
+	               <div><a href="${i.url}" target="_blank" >前往部落格</a></div>
 	                <div class="body" style="height: 300px">${i.desc}</div>
 	                </c:forEach>
 	                </div>

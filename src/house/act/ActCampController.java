@@ -139,17 +139,18 @@ public class ActCampController {
 		return list;
 	}
 	
-	@GetMapping(name = "/jumpCampDesc")
+	@GetMapping("/jumpCampDesc")
 	public String CampDesc(@RequestParam(name = "selectcampid")int campid , Model m) {
 		List<CampInfoBean> list = campService.selectcampid(campid);
 		
 		m.addAttribute("selectcamp",list);
 		return "house/act/DescCamp";
 	}
-	
+	@GetMapping("/jumpupdatestar")
 	public String jumpupdatestar(@RequestParam(name = "selectcampid")int campid , Model m) {
 		if (m.getAttribute("Member")==null) {
-			return "redrict:/member/memberLoginEntry";
+			
+			return "redirect:/member/memberLoginEntry";
 		}
 		List<CampInfoBean> list = campService.selectcampid(campid);
 		m.addAttribute("toupdatestar",list);
@@ -167,7 +168,7 @@ public class ActCampController {
 		campService.update(campInfoBean);
 		
 		List<CampInfoBean> list = campService.selectcampid(campid);
-		m.addAttribute("selectcampid",list);
+		m.addAttribute("selectcamp",list);
 		return "house/act/DescCamp";
 	}
 	
