@@ -115,19 +115,7 @@ document.getElementById("demo6").addEventListener("click", function () {
 
 
 
-document.getElementById("demo9").addEventListener("click", function () {
-  swal({
-    content: {
-      title: "登入",
-      text: "your name",
-      element: "input",
-      attributes: {
-        placeholder: "請輸入密碼",
-        type: "password",
-      },
-    }
-  })
-});
+
 
 
 
