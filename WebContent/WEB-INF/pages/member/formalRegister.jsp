@@ -94,18 +94,18 @@
                                 <option value="130">登山嚮導</option>
                             </select>
                         </div>
-                        
-
-                    </div>
-                    <div style="display:none">
+                        <div style="display:none">
                         	<label>註冊時間：</label>
-                			<input type="text" class="regDate" id="regDate" name="regDate" readonly>  
+                			<input type="text" class="regDate" id="regDate" name="regDate" readonly="readonly">  
+                    	</div>
+
                     </div>
                     <button type="submit" name="submit" class="btn btn-outline-success"><i class="fa fa-check-circle-o"></i>
                         確認送出</button>
                     <button type="button" name="fastRg" class="btn btn-outline-success fastRg"><i class="fa fa-check-circle-o"></i>快速註冊</button>
-                    <button type="reset" class="btn btn-outline-danger"><i class="fa fa-close"></i> 清除</button>
+                    <button type="reset" class="btn btn-outline-danger reset" id="reset"><i class="fa fa-close"></i> 清除</button>
                 </div>
+                    
             </form>
             <!-- 每頁不同的內容到這裡結束 -->
         </div>

@@ -58,13 +58,11 @@
                     <fieldset>
                         <legend>${Member.name}的認證資料</legend>
                     </fieldset>
-                    <div style="display:none">
+                    <div>
 						<label>會員編號：</label>
-						<span>${Member.seqno}</span><br/>
-						<input type="text" name="seqno" value="${Member.seqno}">
+						<input type="text" name="seqno" id="seqno" value="${Member.seqno}">
 						<label>身分組ID：</label>
-						<span>${Member.memberStatus.seqno}</span>
-						<input type="text" name="memberStatus.seqno" value="${Member.memberStatus.seqno}">
+						<input type="text" name="memberStatus.seqno" id="statusId" value="${Member.memberStatus.seqno}">
 					</div>
                     <div class="form-group">
                         <label for="inputNcName">暱稱：</label>
@@ -103,7 +101,7 @@
                     <button type="submit" id="submit" name="submit" class="btn btn-outline-success"><i class="fa fa-check-circle-o"></i>
                         確認送出</button>
                      <button type="button" class="btn btn-outline-success fastIn"><i class="fa fa-check-circle-o"></i>快速填寫</button>
-                    <button type="reset" class="btn btn-outline-danger"><i class="fa fa-close"></i> 清除</button>
+                    <button type="reset" class="btn btn-outline-danger" id="reset"><i class="fa fa-close"></i> 清除</button>
                 </div>
             </form>
             <!-- 每頁不同的內容到這裡結束 -->

@@ -1,8 +1,8 @@
 //快速註冊
 $(".fastRg").on("click", function(){
-    $("#account").val("xxxxx456");
+    $("#account").val("nnnnn789");
     $("#pwd").val("DoingTest123");
     $("#chkPwd").val("DoingTest123");
-    $("#name").val("阿斯忒里翁");
-    $("#email").val("berserker050@gmail.com");
+    $("#name").val("布倫希爾德");
+    $("#email").val("lancer100@gmail.com");
 })
