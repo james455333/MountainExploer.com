@@ -257,7 +257,7 @@
 					
             	
             	
-            	<nav class="pageControl">
+            	<nav class="pageControl" id="innerPC1">
                     <ul>
                         <li class="li1">
                             <a href="#">«第一頁</a>

@@ -1,12 +1,14 @@
 @charset "UTF-8";
 .m-list-searchBar{
 	position : static;
-	width : 100%;
 	margin : 15px;
 }
 
 .m-sdc-adj{
 	border : none;
+	top : 0;
+	margin : 20px;
+	height : atuo;
 }
 .m-ta-aj{
 	width : 100%;
@@ -19,8 +21,7 @@ tbody td {
 	font-size: 15px;
 }
 .m-tb-ti{
-	color : #ffffff;
-	font-size: 22.5px;
+	font-size: 20px;
  	display: inline-flex;
 	align-items: center;
 	justify-content: center;

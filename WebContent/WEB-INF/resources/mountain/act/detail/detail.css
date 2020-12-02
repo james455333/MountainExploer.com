@@ -10,17 +10,18 @@
 	position: relative;
 	font-size: 25px;
 	width: 100%;
+	border : 1px solid green;
+	margin-bottom : 10px;
 }
 
 .actPost {
 	position: relative;
 	width: 100%;
-	border-bottom: 1px solid black;
 }
 
 .memberTD {
 	width: 14%;
-	border: 　1px solid blue;
+	border: 1px solid green;
 	padding: 5px;
 	vertical-align: top;
 }
@@ -198,6 +199,7 @@
 	padding : 15px;
 	margin : 5px;
 	background-color: #e9e8ff;
+	margin-bottom : 15px;
 }
 .d-sr-body{
 	clear: left;
