@@ -66,10 +66,10 @@ public class HouseInfoBeanDAO implements IHouseInfoBeanService  {
 			}
 			int startPosition = ((page-1) * showData);
 			if (star == null) {
-				star = 5;
+				star = null;
 			}
 			if (clickcount == null) {
-				clickcount = 1;
+				clickcount = null;
 			}
 		Query<HouseInfoBean> query = getSession().createQuery("From HouseInfoBean", HouseInfoBean.class);
 		List<HouseInfoBean> list = query.setFirstResult(startPosition)
@@ -86,10 +86,10 @@ public class HouseInfoBeanDAO implements IHouseInfoBeanService  {
 		}
 		int startPosition = ((page-1) * showData);
 		if (star == null) {
-			star = 5;
+			star = null;
 		}
 		if (clickcount == null) {
-			clickcount = 1;
+			clickcount = null;
 		}
 		Query<HouseInfoBean> query = getSession().createQuery("From HouseInfoBean where nationalPark=" + parkid,HouseInfoBean.class);
 		List<HouseInfoBean> list = query.setFirstResult(startPosition)
@@ -112,10 +112,10 @@ public class HouseInfoBeanDAO implements IHouseInfoBeanService  {
 		}
 		int startPosition = ((page-1) * showData);
 		if (star == null) {
-			star = 5;
+			star = null;
 		}
 		if (clickcount == null) {
-			clickcount = 1;
+			clickcount = null;
 		}
 		String originString = " From HouseInfoBean where name like '%" + housename + "%'";
 		Query<HouseInfoBean> query = getSession().createQuery(originString, HouseInfoBean.class);

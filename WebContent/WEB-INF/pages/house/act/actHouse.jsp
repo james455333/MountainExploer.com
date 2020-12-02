@@ -111,7 +111,8 @@ height:18px;
 					<form
 						action="<c:url value='/mountainHouseAct/actselectHouse'></c:url>"
 						method='GET' id="form1" name="form1">
-						山中小屋查詢：<input type="text" class="light-table-filter"
+						山中小屋查詢：
+						<input type="text" class="light-table-filter"
 							placeholder="請輸入關鍵字" name="selecthouse">
 						<!--                     <img class=imgSearch src="/MountainExploer.com/images/放大鏡.png" alt="" width="35px"> -->
 						<input type="image" class=imgSearch
@@ -151,21 +152,24 @@ height:18px;
 							<td>${i.camp}</td>
 							<td>${i.height}</td>
 							<td>
+							
 							<c:choose>
 							<c:when test="${ empty i.imgid.img}">
 							<img height="100" width="100" src="/MountainExploer.com/housecamp/images/housenull.PNG">
 							</c:when>
+							
 							<c:when test="${not emptyi.imgid.img}">
 							<img height="100" width="100"
 							src="<c:url value='/mountainHouseBack/showimg?imgid=${i.imgid.id}'/>">
 							</c:when>
 							</c:choose>
+							
 							</td>
 							<td>
 								<!-- 星星評分 -->
 								<p> 
 									<c:choose >
-									<c:when test="${(i.star*1.0 / i.clickcount) lt 1}">
+									<c:when test="${(i.star*1.0 / i.clickcount) lt 1 || empty i.star}">
 												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
 												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
 												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
@@ -193,14 +197,14 @@ height:18px;
 												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
 												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
 									</c:when>
-									<c:when test="${i.star*1.0/i.clickcount ge 4 && i.star*1.0/i.clickcount lt 4.5}">
+									<c:when test="${i.star*1.0/i.clickcount ge 4 && i.star*1.0/i.clickcount lt 4.8}">
 												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
 												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
 												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
 												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
 												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
 									</c:when>
-									<c:when test="${i.star*1.0 / i.clickcount ge 4.5}">
+									<c:when test="${i.star*1.0 / i.clickcount ge 4.8}">
 												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
 												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
 												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
@@ -208,8 +212,16 @@ height:18px;
 												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
 									</c:when>
 									</c:choose>
-								</p>
+								</p> 
+<!-- 星星結束 -->
+								<c:choose>
+								<c:when test="${empty i.clickcount}">
+								<p class="clickcount">無人評分</p>
+								</c:when>
+								<c:otherwise>
 								<p class="clickcount">${i.clickcount}人評分過</p>
+								</c:otherwise>
+								</c:choose>
 							</td>
 							</tr>
 						</c:forEach>

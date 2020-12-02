@@ -6,17 +6,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>岳進者</title>
+    <title>星星</title>
     <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
     <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src=" https://code.jquery.com/jquery-3.5.0.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
     <style>
-
+.images{
+width:25px;
+height:25px;
+}
     </style>
 </head>
 
@@ -63,38 +67,7 @@
         </div>
         <div class="div_li2">
             <!-- 每頁不同的內容從這裡開始 -->
-<!--             <div class="searchBar"> -->
-<!--                 <nav> -->
-<!--                     <ul class="third_nav"> -->
-<!--                         控制列表內容從這邊開始 -->
-<!--                         <li>居住地: -->
-<!--                             <select> -->
-<!--                                 <option name="nothing" selected disabled>請選擇縣市</option> -->
-<!--                                 <option value="值2">aa</option> -->
-<!--                                 <option value="值3">bb</option> -->
-<!--                             </select></li> -->
 
-<!--                         <li>預設1: -->
-<!--                             <select> -->
-<!--                                 <option name="nothing" selected disabled>選擇提示1</option> -->
-<!--                                 <option value="值2">aa</option> -->
-<!--                                 <option value="值3">bb</option> -->
-<!--                             </select></li> -->
-
-<!--                         <li>預設2: -->
-<!--                             <select> -->
-<!--                                 <option name="nothing" selected disabled>選擇提示2</option> -->
-<!--                                 <option value="值2">aa</option> -->
-<!--                                 <option value="值3">bb</option> -->
-<!--                             </select></li> -->
-<!--                         控制列表內容到這邊結束 -->
-<!--                     </ul> -->
-<!--                 </nav> -->
-<!--                 <div class="search"> -->
-<!--                     搜尋：<input type="search" class="light-table-filter" data-table="order-table" placeholder="請輸入關鍵字"> -->
-<!--                     <img class=imgSearch src="/MountainExploer.com/images/放大鏡.png" alt="" width="35px"> -->
-<!--                     <button><img class=imgSearch src="/MountainExploer.com/images/放大鏡.png" alt="" width="35px"></button> -->
-<!--                 </div> -->
 
 <!--             </div> -->
 
@@ -102,71 +75,35 @@
                 <!--table-->
                 <table class="order-table">
 
+  <c:forEach var="i" items="${list}">
+  
+<form id="star" action="<c:url value='/mountainHouseAct/updatestar'></c:url>" method='GET'>
+    <span><img id="img1" class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG" />
+    <img id="img2" class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG" />
+    <img id="img3" class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG" />
+    <img id="img4" class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG" />
+    <img id="img5" class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG" />
+	</span>
+	<input type="text" name="updatestar" value="${i.star}">
+	<input type="hidden" name="updateclick" value="${i.clickcount}">
+	<input type="hidden" name="updateid" value="${i.housebasicid}">
+	<input type="reset" value="清除">
+	<input type="submit" value="送出">
+</form>
+  </c:forEach>   
+   
+
+				
 
                     <tbody class="order-table-tb">
                     
 <!--                     星星評分 -->
                     
-                    
-                    
-                        <!-- tbody更改從這邊開始 -->
-<!--                         <tr> -->
-<!--                             <td>飯店1</td> -->
-<!--                             <td>房型a</td> -->
-<!--                             <td>飯店1</td> -->
-<!--                             <td>飯店1</td> -->
 
-<!--                         </tr> -->
-<!--                         <tr> -->
-<!--                             <td>飯店2</td> -->
-<!--                             <td>房型b</td> -->
-<!--                             <td>飯店1</td> -->
-<!--                             <td>飯店1</td> -->
-
-
-<!--                         </tr> -->
-<!--                         <tr> -->
-<!--                             <td>飯店3</td> -->
-<!--                             <td>房型c</td> -->
-<!--                             <td>房型c</td> -->
-<!--                             <td>飯店1</td> -->
-<!--                         </tr> -->
-<!--                         <tr> -->
-<!--                             <td>飯店4</td> -->
-<!--                             <td>房型d</td> -->
-<!--                             <td>房型c</td> -->
-<!--                             <td>飯店1</td> -->
-<!--                         </tr> -->
-<!--                         <tr> -->
-<!--                             <td>飯店4</td> -->
-<!--                             <td>房型d</td> -->
-<!--                             <td>房型c</td> -->
-<!--                             <td>飯店1</td> -->
-<!--                         </tr> -->
-                        <!-- tbody更改到這邊結束 -->
                     </tbody>
 
                 </table>
 
-<!--                 <nav class="pageControl"> -->
-<!--                     <ul> -->
-<!--                         <li class="li1"> -->
-<!--                             <a href="#">«第一頁</a> -->
-<!--                         </li> -->
-<!--                         <li class="li1"> -->
-<!--                             <a href="#">‹上一頁</a> -->
-<!--                         </li> -->
-<!--                         <li class="li1"> -->
-<!--                             <a>目前頁</a> -->
-<!--                         </li> -->
-<!--                         <li class="li1"> -->
-<!--                             <a href="#">下一頁›</a> -->
-<!--                         </li> -->
-<!--                         <li class="li1"> -->
-<!--                             <a href="#">最末頁»</a> -->
-<!--                         </li> -->
-<!--                     </ul> -->
-<!--                 </nav> -->
             </div>
 
 
@@ -188,7 +125,54 @@
 
 
     </footer>
+
+<script>
+let index ;
+
+$("#img1").click(function(){
+    $(this).attr("src","/MountainExploer.com/housecamp/images/bringstar.PNG");
+}).click(function(){
+	$("#img5,#img4,#img3,#img2").attr("src","/MountainExploer.com/housecamp/images/blackstar.PNG");
+}).val()
+
+$("#img2").click(function(){
+    $("#img2,#img1").attr("src","/MountainExploer.com/housecamp/images/bringstar.PNG");
+}).click(function(){
+	$("#img5,#img4,#img3").attr("src","/MountainExploer.com/housecamp/images/blackstar.PNG");
+})
+
+$("#img3").click(function(){
+    $("#img3,#img2,#img1").attr("src","/MountainExploer.com/housecamp/images/bringstar.PNG");
+}).click(function(){
+	$("#img5,#img4").attr("src","/MountainExploer.com/housecamp/images/blackstar.PNG");
+})
+
+$("#img4").click(function(){
+    $("#img4,#img3,#img2,#img1").attr("src","/MountainExploer.com/housecamp/images/bringstar.PNG");
+}).click(function(){
+	$("#img5").attr("src","/MountainExploer.com/housecamp/images/blackstar.PNG");
+})
+
+$("#img5").click(function(){
+    $("#img5,#img4,#img3,#img2,#img1").attr("src","/MountainExploer.com/housecamp/images/bringstar.PNG");
+})
+
+$(document).ready(function(){
+	$("img").click(function(){
+		index = $(this).index()
+	});
+	$("#star").on("submit",function(e){
+
+		let originStarV = $("input[name='updatestar']").val()
+		let originCount = $("input[name='updateclick']").val()
+		$("input[name='updatestar']").val(Number(originStarV) + Number(index+1))
+		$("input[name='updateclick']").val(Number(originCount) + Number(1))
+// 		e.preventDefault(); // 不會送出submit
+	})
+});
+</script>
 </body>
+
 <script src="/MountainExploer.com/js/upLoadImg.js"></script><!-- 上傳頭像 -->
 <script src="/MountainExploer.com/js/table.js"></script>
 <script src="/MountainExploer.com/js/topBar.js"></script>

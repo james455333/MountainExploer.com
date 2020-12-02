@@ -96,19 +96,28 @@
 					</tr>
 				</thead>
 				<tbody>
-					<!-- 查詢全部 -->
-					
 					<div>
-					<a href="selectAll?selectarea=${selectarea }&selectcounties=${selectcounties}&no=${no }&page=1">«第一頁</a>
-					<a href="selectAll?selectarea=${selectarea }&selectcounties=${selectcounties}&no=${no }&page=${page-1}">‹上一頁</a>
+					<!-- 查詢全部 -->
+					<!-- 分頁 -->
+
+				<a href="selectAll?selectarea=${selectarea }&selectcounties=${selectcounties}&no=${no }&page=1">«第一頁</a>	
+				
+				<c:choose>
+				<c:when test="${page <= 1}">&lt;<a href="#">上一頁</a></c:when>
+				<c:otherwise><a href="selectAll?selectarea=${selectarea}&selectcounties=${selectcounties}&no=${no }&page=${page-1}">‹上一頁</a></c:otherwise>
+				</c:choose>					
 				
 					<select onChange="location = this.options[this.selectedIndex].value">
 						<c:forEach var="toPage" begin="1" end="${totalPage}">
 						<option value="selectAll?selectarea=${selectarea }&selectcounties=${selectcounties}&no=${no }&page=${toPage}" <c:if test="${toPage==page}">selected="selected"</c:if>>第${toPage}頁</option>
 						</c:forEach>
-
 					</select>
-					<a href="selectAll?selectarea=${selectarea }&selectcounties=${selectcounties}&no=${no }&page=${page+1}">下一頁›</a>
+				
+				<c:choose>
+				<c:when test="${page == totalPage}">&lt;<a href="#">下一頁›</a></c:when>
+				<c:otherwise><a href="selectAll?selectarea=${selectarea }&selectcounties=${selectcounties}&no=${no }&page=${page+1}">下一頁›</a></c:otherwise>
+				</c:choose>				
+					
 					<a href="selectAll?selectarea=${selectarea }&selectcounties=${selectcounties}&no=${no }&page=${totalPage}">最末頁»</a>
 					
 					

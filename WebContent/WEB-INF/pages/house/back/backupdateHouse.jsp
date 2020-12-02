@@ -64,6 +64,9 @@
 						<th scope="col"><span class="tr_title">山屋床位</span></th>
 						<th scope="col"><span class="tr_title">山屋營地位</span></th>
 						<th scope="col"><span class="tr_title">高度 / 海拔</span></th>
+						<th scope="col"><span class="tr_title">星星總和分數</span></th>
+						<th scope="col"><span class="tr_title">評分次數</span></th>
+						<th scope="col"><span class="tr_title">平均分數</span></th>
 						<th scope="col"><span class="tr_title">描述</span></th>
 						<th scope="col"><span class="tr_title">照片</span></th>
 						<th scope="col"><span class="tr_title"></span></th>
@@ -80,7 +83,12 @@
 				    	<td><input type="text" name="update_name" size="20" value="${k.name}"> 	</td>
 				    	<td><input type="text" name="update_bed" size="20" value="${k.bed}"> 	</td>
 				    	<td><input type="text" name="update_camp" size="20" value="${k.camp}"> 	</td>
-				    	<td><input type="text" name="update_height" size="20" value="${k.height}"> 	</td>				    	
+				    	<td><input type="text" name="update_height" size="20" value="${k.height}"> 	</td>	
+				    				    	
+					    <td><input type="hidden" name="update_star" value="${k.star}">${k.star}</td>
+					    <td><input type="hidden" name="update_click" value="${k.clickcount}">${k.clickcount}</td>
+					    <td>平均${k.star/k.clickcount}分</td>
+					    
 						<td><textarea name="update_desc" cols="40" rows="8">${k.desc}</textarea></td>				    	
 						<td><input type="hidden" name="update_id" size="10" value="${k.housebasicid}">	</td> 			    		
 				    	<td><img id="blah" src="#" alt="更新圖片" />		       

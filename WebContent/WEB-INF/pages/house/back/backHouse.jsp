@@ -86,6 +86,9 @@
 						<th scope="col"><span class="tr_title">露營地數量</span></th>
 						<th scope="col"><span class="tr_title">海拔</span></th>
 						<th scope="col"><span class="tr_title">描述</span></th>
+						<th scope="col"><span class="tr_title">星星分數總合</span></th>
+						<th scope="col"><span class="tr_title">評分次數</span></th>
+						<th scope="col"><span class="tr_title">平均分數</span></th>
 						<th scope="col"><span class="tr_title">照片</span></th>
 						<th scope="col"><span class="tr_title"></span></th>
 						<th scope="col"><span class="tr_title"></span></th>
@@ -94,8 +97,15 @@
 				</thead>
 				<tbody>
 				<div>
+<!-- 分頁	 -->
 					<a href="selectAll?parkid=${parkid }&no=${no }&page=1">«第一頁</a>
+					<c:choose>
+					<c:when test="${page <=1 }">&lt;<a href="#">上一頁</a></c:when>
+					<c:otherwise>
 					<a href="selectAll?parkid=${parkid }&no=${no }&page=${page-1}">‹上一頁</a>
+					</c:otherwise>
+					</c:choose>
+					
 				
 					<select onChange="location = this.options[this.selectedIndex].value">
 						<c:forEach var="toPage" begin="1" end="${totalPage}">
@@ -103,7 +113,12 @@
 						</c:forEach>
 
 					</select>
+					<c:choose>
+					<c:when test="${page == totalPage}">&lt;<a href="#">下一頁›</a></c:when>
+					<c:otherwise>
 					<a href="selectAll?parkid=${parkid }&no=${no }&page=${page+1}">下一頁›</a>
+					</c:otherwise>
+					</c:choose>
 					<a href="selectAll?parkid=${parkid }&no=${no }&page=${totalPage}">最末頁»</a>
 					
 					
@@ -121,6 +136,15 @@
 							<td>${i.camp}</td>
 							<td>${i.height}</td>
 							<td>${i.desc}</td>
+						<c:choose>
+							<c:when test="${empty i.star}"><td>0</td></c:when>
+							<c:otherwise><td>總共${i.star}分</td></c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${empty i.clickcount}"><td>0</td></c:when>
+							<c:otherwise><td>評分過${i.clickcount}次</td></c:otherwise>
+						</c:choose>
+							<td>平均${i.star/i.clickcount}分</td>
 							<td>
 							<c:choose>
 							<c:when test="${ empty i.imgid.img}">
@@ -164,14 +188,23 @@
 							<td>${m.camp}</td>
 							<td>${m.height}</td>
 							<td>${m.desc}</td>
+							<c:choose>
+							<c:when test="${empty m.star}"><td>0</td></c:when>
+							<c:otherwise><td>總共${m.star}分</td></c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${empty m.clickcount}"><td>0</td></c:when>
+							<c:otherwise><td>評分過${m.clickcount}次</td></c:otherwise>
+						</c:choose>
+							<td>平均${m.star/m.clickcount}分</td>
 							<td>
 							<c:choose>
-							<c:when test="${ empty i.imgid.img}">
+							<c:when test="${ empty m.imgid.img}">
 							<img height="100" width="100" src="/MountainExploer.com/housecamp/images/housenull.PNG">
 							</c:when>
-							<c:when test="${not emptyi.imgid.img}">
+							<c:when test="${not empty m.imgid.img}">
 							<img height="100" width="100"
-							src="<c:url value='/mountainHouseBack/showimg?imgid=${i.imgid.id}'/>">
+							src="<c:url value='/mountainHouseBack/showimg?imgid=${m.imgid.id}'/>">
 							</c:when>
 							</c:choose>
 							</td>

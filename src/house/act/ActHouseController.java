@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import house.mountainhouseList.model.HouseInfoBean;
 import house.mountainhouseList.service.HouseInfoBeanService;
 import house.mountainhouseList.service.NationalParkService;
+import main.generic.model.GenericTypeObject;
+import main.generic.service.GenericService;
 import mountain.model.route.NationalPark;
 
 @Controller
@@ -28,6 +30,10 @@ public class ActHouseController {
 	private NationalParkService nParkService;
 	@Autowired
 	private HouseInfoBean hbean;
+	@Autowired
+	private NationalPark nParkBean;
+	@Autowired
+	private GenericService<GenericTypeObject> genService;
 	
 	
 //	@RequestMapping(/mountainHouseAct/actselectAll)
@@ -80,27 +86,32 @@ public class ActHouseController {
 		return "house/act/Deschouse";
 	}
 	@GetMapping("/jumpupdatestart")
-	public String jumpupdatestar(Model m) {
+	public String jumpupdatestar(@RequestParam(name = "selecthouseid")Integer houseid,Model m) {
 		if (m.getAttribute("Member") == null) {
 			
 			return "redirect:/member/memberLoginEntry";
 		}
-		
-		return "redirect:/mountainHouseAct/star";
-	}
-	
-	@GetMapping("/star")
-	public String star(Model m) {
+		List<HouseInfoBean> list = houseService.selecthouseid(houseid);
+		m.addAttribute("list",list);
 		return "house/act/star";
 	}
 	
+	
 	@GetMapping("/updatestar")
-	public String updatestar(@RequestParam(name = "updatestar") Integer star ,@RequestParam(name = "updateclick") Integer clickcount , Model m) {
+	public String updatestar(@RequestParam(name = "updatestar") Integer star ,@RequestParam(name = "updateclick")Integer clickcount, Model m,
+		@RequestParam(name = "updateid")Integer houseid) {
+		HouseInfoBean houseInfoBean = houseService.select(houseid);
 		
-		hbean.setStar(hbean.getStar()+star);
-		hbean.setClickcount(hbean.getClickcount()+clickcount);
+		houseInfoBean.setHousebasicid(houseid);
+		houseInfoBean.setStar(star);
+		houseInfoBean.setClickcount(clickcount);
 		
-		houseService.updateHouse(hbean);
+		houseService.updateHouse(houseInfoBean);
+		
+		List<HouseInfoBean> list = houseService.selecthouseid(houseid);
+		m.addAttribute("selecthouseid",list);
+		
+//		return "redirect:/mountainHouseAct/jumpHouseDesc";
 		return "house/act/Deschouse";
 	}
 }

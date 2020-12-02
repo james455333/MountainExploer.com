@@ -41,7 +41,10 @@ public class CampInfoBean {
 	private byte[] url;
 	@Column(name = "DESCRIPTION")
 	private String desc;
-	
+	@Column(name = "STARRANGE")
+	private Integer star;
+	@Column(name = "CLICKCOUNT")
+	private Integer clickcount;
 	@Transient
 	private String countiesname;
 	
@@ -53,8 +56,7 @@ public class CampInfoBean {
 	@OneToOne(fetch = FetchType.LAZY , mappedBy = "campid",cascade = CascadeType.ALL)
 	private CampImgBean campimgid;
 	
-	
-	
+
 	
 	public String getUrl() throws UnsupportedEncodingException {
 		return new String(url, "UTF-8");

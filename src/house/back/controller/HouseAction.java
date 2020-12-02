@@ -159,7 +159,7 @@ public class HouseAction {
 			@RequestParam(name = "update_name") String name, @RequestParam(name = "update_bed") Integer bed,
 			@RequestParam(name = "update_camp") Integer camp, @RequestParam(name = "update_height") String height,
 			@RequestParam(name = "hotelnumber") String hotelnum,@RequestParam(name = "update_desc") String desc
-			) throws IllegalStateException, IOException {
+			,@RequestParam(name = "update_star")Integer star ,@RequestParam(name = "update_click") Integer clickcount) throws IllegalStateException, IOException {
 
 		HouseImgBean houseImgBean = hBean.getImgid();
 
@@ -171,6 +171,8 @@ public class HouseAction {
 		hBean.setHousebasicid(houseid);
 		hBean.setImgid(houseImgBean);
 		hBean.setDesc(desc);
+		hBean.setStar(star);
+		hBean.setClickcount(clickcount);
 		
 		Integer h2 = Integer.parseInt(hotelnum);
 		HouseImgBean imgQuery = houseImgService.select(h2);
