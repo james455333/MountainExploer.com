@@ -55,8 +55,8 @@ public class MemberPasswordController {
 			mb.setPassword(password);
 			mbService.updateData(mb);
 			
-			String emailmessage = "<div><h3>親愛的會員您好：</h3>此郵件為系統自動發送，請勿回覆此郵件。<br/><br/><br/></div>" + "<div>您的暫時密碼為：" + rndPwd + "<br/>登入後請盡快更新您的密碼。<br/></div><div>請點此回到網站<br/>"
-					+ "http://localhost:8080/MountainExploer.com/</div>";
+			String emailmessage = "<div><h3>親愛的會員您好：</h3>此郵件為系統自動發送，請勿回覆此郵件。<br/><br/><br/></div>" + "<div>您的暫時密碼為：" + rndPwd + "<br/>登入後請盡快更新您的密碼。<br/></div><div><font color='red'>請點此回到岳進者：</font><br/>"
+					+ "http://localhost:8080/MountainExploer.com/member/memberLoginEntry</div>";
 			MailUtils.sendMail(email, emailmessage);
 			System.out.println(emailmessage);
 			

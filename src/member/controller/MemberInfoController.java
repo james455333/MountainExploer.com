@@ -2,6 +2,8 @@ package member.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.sql.Blob;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -54,13 +56,16 @@ public class MemberInfoController {
 	
 	@ResponseBody
 	@GetMapping(value = "/member/memberOther")
-	public String processOtherSelectAction(
+	public List<String> processOtherSelectAction(
 					@RequestParam(name = "seqno")int seqno) throws UnsupportedEncodingException {
+		
+		List<String> otherLs = new ArrayList<String>();
 		
 		MemberBasic mb = mService.select(seqno);
 		String otherStr = mb.getMemberInfo().getPreOther();
+		otherLs.add(otherStr);
 		System.out.println("============================" + otherStr);
-		return otherStr;
+		return otherLs;
 		
 	}
 	

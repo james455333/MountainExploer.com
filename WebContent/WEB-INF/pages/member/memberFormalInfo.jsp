@@ -72,7 +72,7 @@
                 </div>
                 <div class="personalInfo">
                 	<div>
-	                	<h2>${Member.memberInfo.neck_name}的公開頁面</h2>                	
+<%-- 	                	<h2>${Member.memberInfo.neck_name}的公開頁面</h2>                	 --%>
                 	</div>
                 	
                     <div>
@@ -213,7 +213,7 @@
                         <div class="otdiv">
                         	<label>個人簡介：</label>
                         	<span class="otsp"></span><br/>
-                        	<input type="text" name="memberInfo.other" class="other" id="other" readonly="readonly">
+                        	<input type="text" name="memberInfo.other" class="other" id="other">
                         </div>
                         <div>
                         	<input type="button" class="turnToUpPage" value="修改會員資料"/>
