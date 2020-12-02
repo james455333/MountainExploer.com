@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>岳進者會員註冊</title>
+    <title>岳進者會員認證資料填寫</title>
     <link rel="stylesheet" href="../css/other.css">
     <link rel="stylesheet" href="../css/font.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -51,57 +51,56 @@
         </div> -->
         <div class="div_li2" style="background: #ecf5ff; height: auto;">
             <!-- 每頁不同的內容從這裡開始 -->
-            <form action="<c:url value='/member/memberRegister'/>" method="POST"
+            <form
                 style="width: 800px; margin: 0 auto; border: 10px solid#ecf5ff; border-radius: 1%; background-color: d#ecf5ff;">
                 <div style="border-radius: 3%; border: 10px solid white; background-color: white;">
-				
+
                     <fieldset>
-                        <legend>請輸入個人資料</legend>
+                        <legend>${Member.name}的認證資料</legend>
                     </fieldset>
+                    <div style="display:none">
+						<label>會員編號：</label>
+						<span>${Member.seqno}</span><br/>
+						<input type="text" name="seqno" value="${Member.seqno}">
+						<label>身分組ID：</label>
+						<span>${Member.memberStatus.seqno}</span>
+						<input type="text" name="memberStatus.seqno" value="${Member.memberStatus.seqno}">
+					</div>
                     <div class="form-group">
-                        <label for="inputAddress">帳號:</label>
-                        <input type="text" class="account" name="account" id="inputAddress" placeholder="請輸入帳號" required="required">
-                    	<span id="Antsp" class="Antsp"></span>
-                    	<span id="chksp"></span><br/>
+                        <label for="inputNcName">暱稱：</label>
+                        <input type="text" class="form-control ncName" id="ncName" name="memberInfo.neck_name" placeholder="請輸入暱稱" required="required">
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputEmail4">密碼:</label>
-                            <input type="password" class="pwd" name="pwd" id="inputEmail4" placeholder="請輸入密碼" required="required">
-                            <span class="pwdsp"></span><br/>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputPassword4">確認密碼:</label>
-                            <input type="password" class="chkPwd" id="inputPassword4" placeholder="請再次輸入帳密碼" required="required">
-                            <span class="chksp"></span><br/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputAddress2">姓名:</label>
-                        <input type="text" class="name" name="name" id="inputAddress2" placeholder="請輸入姓名" required="required">
-                        <span class="nmsp"></span><br/>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputCity">Email</label>
-                            <input type="text" class="email" id="inputCity" name="email" placeholder="example@gmail.com" required="required">
-                            <span class="emsp"></span><br/>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputState">身分組選擇</label>
-                            <select id="inputState" name="statusId" class="form-control" required="required">
-                                <option value="110" selected>一般登山者</option>
-                                <option value="130">登山嚮導</option>
+                            <label for="inputGender">性別：</label>
+                            <select id="" class="form-control">
+                            	<option value="mask" selected>不透露</option>
+                            	<option value="male">男</option>
+                            	<option value="female">女</option>
+                            	<option value="x">X</option>
                             </select>
+                            
                         </div>
-                        
+                        <div class="form-group col-md-6">
+                            <label for="inputBirthday">生日：</label>
+                            <input type="text" id="birDate" class="form-control birDate" name="memberInfo.birthday" placeholder="YYYY-MM-DD">
+							<span class="brsp"></span><br/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPhone">手機號碼：</label>
+                        <input type="text" id="phone" class="form-control phone" name="memberInfo.phone" placeholder="09xxxxxxxx" required="required">
+						<span class="phsp"></span><br/>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputExp">登山經驗：</label>
+                            <input type="text" id="exp" class="form-control exp" name="memberInfo.climb_ex" placeholder="請輸入登山經驗" required="required" align="">
+							<span class="expsp"></span>
+                        </div>
 
                     </div>
-                    <div style="display:none">
-                        	<label>註冊時間：</label>
-                			<input type="text" class="regDate" id="regDate" name="regDate" readonly>  
-                    </div>
-                    <button type="submit" name="submit" class="btn btn-outline-success"><i class="fa fa-check-circle-o"></i>
+                    <button type="submit" id="submit" name="submit" class="btn btn-outline-success"><i class="fa fa-check-circle-o"></i>
                         確認送出</button>
                     <button type="reset" class="btn btn-outline-danger"><i class="fa fa-close"></i> 清除</button>
                 </div>
@@ -129,6 +128,5 @@
 <script src="../js/sweetalert.js"></script>
 <!--sweet alert-->
 <script src="../js/includejsp.js"></script>
-<script src="register.js"></script>
 
 </html>
