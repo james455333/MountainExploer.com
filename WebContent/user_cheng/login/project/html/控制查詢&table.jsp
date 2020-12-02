@@ -54,12 +54,12 @@
                 </ul>
             </nav>
         </div>
-        <div class="div_li1">
+        <!-- <div class="div_li1">
             <a>保留區</a>
         </div>
         <div class="div_li3">
             <a>保留區</a>
-        </div>
+        </div> -->
         <div class="div_li2">
             <!-- 每頁不同的內容從這裡開始 -->
             <div class="searchBar">
@@ -99,7 +99,7 @@
 
             <div class="secDivContent">
                 <!--table-->
-                <table class="order-table">
+                <table class="order-table table table-hover"  id="tablePreview" style="background-color:white;">
                     <thead class="order-table-th">
                         <tr>
                             <!-- thead更改從這邊開始 -->

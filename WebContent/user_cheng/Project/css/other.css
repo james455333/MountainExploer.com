@@ -131,7 +131,6 @@ header {
 	width: 1040px;
 	text-align: center;
 	z-index: 1;
-	
 }
 
 #footer {
@@ -179,7 +178,7 @@ header {
 	height: 60px;
 	/*background: linear-gradient(0deg, #a8edea, #fed6e3);*/
 	/*background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);*/
-	background-color: rgb(222, 184, 135);
+	background-color: #6699ccb7;
 	text-align: center;
 	font-size: 30px;
 	/* display: flex; */
@@ -260,8 +259,8 @@ nav ul {
 	/*依據父元素找到絕對位置*/
 	top: 0px;
 	left: 20px;
-	background: linear-gradient(#fef0c9, #fedf84);
-	border: 1px solid #fe9669;
+	border:  1px solid rgba(0, 0, 0, 0.096);
+	
 }
 
 .third_nav {
@@ -411,4 +410,5 @@ tr:nth-child(odd) {
 	padding: 0px 20px;
 	float: left;
 	font-size: 25px;
+	/* color: black; */
 }
