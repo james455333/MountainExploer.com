@@ -69,10 +69,10 @@ height:25px;
 <!--             </nav> -->
 <!--         </div> -->
         <div class="div_li1">
-            <a>保留區</a>
+<!--             <a>保留區</a> -->
         </div>
         <div class="div_li3">
-            <a>保留區</a>
+<!--             <a>保留區</a> -->
         </div>
         <div class="div_li2">
             <!-- 每頁不同的內容從這裡開始 -->
@@ -133,7 +133,7 @@ height:25px;
 												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
 									</c:when>
 							</c:choose>
-					
+					(${j.clickcount }人評分過)
 					<div>
 					<form action="<c:url value='/mountainHouseAct/jumpupdatestart'></c:url>">
 					<input type="hidden" name="selecthouseid" value="${j.housebasicid}">
@@ -151,7 +151,7 @@ height:25px;
 								<c:when test="${ empty i.imgid.img}">
 								<img height="200" width="200" src="/MountainExploer.com/housecamp/images/housenull.PNG">
 								</c:when>
-								<c:when test="${not emptyi.imgid.img}">
+								<c:when test="${not empty i.imgid.img}">
 								<img height="200" width="200"
 								src="<c:url value='/mountainHouseBack/showimg?imgid=${i.imgid.id}'/>">
 								</c:when>

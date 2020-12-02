@@ -1,0 +1,63 @@
+#login-div {
+    width: 560px;
+    position: relative;
+    display: block;
+    z-index: 1000;
+    left: 250px;
+    height: auto;
+    top: 80px;
+}
+
+.ui-dialog {
+    border: 2px #797979 solid;
+    background-color: #adadad;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.login-header {
+    padding: 15px 0px 15px 10px;
+    display: block;
+    background-color: white;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 10px 10px 0px 0px;
+    
+}
+.login-body {
+    padding: 15px 0px 15px 10px;
+    display: block;
+    background-color: white;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 0px 0px 10px 10px;
+    
+}
+
+#login-panel {
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 2;
+    width: auto;
+    min-height: 0px;
+    height: auto;
+    padding: 20px;
+}
+
+.logintable th,
+.logintable td {
+    padding: 2px;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 26px;
+    vertical-align: top;
+    padding: 2px 10px 2px 2px;
+}
+input.submit {
+background-color: #3987fc;
+color: white;
+border: 1px #716456 solid;
+cursor: pointer;
+padding: 5px 10px ;
+border-radius: 10%;
+}

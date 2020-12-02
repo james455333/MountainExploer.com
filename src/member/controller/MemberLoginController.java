@@ -53,13 +53,13 @@ public class MemberLoginController {
 	
 	@RequestMapping(path = "/member/memberLoginEntry", method = RequestMethod.GET)
 	public String processLoginEntry() {
-		return "member/formalLogin";
-	}
-	
-	@RequestMapping(path = "/member/memberLoginAloneEntry", method = RequestMethod.GET)
-	public String processLoginAloneEntry() {
 		return "member/formalLoginAlone";
 	}
+	
+//	@RequestMapping(path = "/member/memberLoginAloneEntry", method = RequestMethod.GET)
+//	public String processLoginAloneEntry() {
+//		return "member/formalLoginAlone";
+//	}
 	
 	
 	@ResponseBody
@@ -124,7 +124,6 @@ public class MemberLoginController {
 			cookiePwd.setMaxAge(0);
 			cookiePwd.setPath("/");
 			
-//			String rmCk = "";
 			Cookie cookieRm = new Cookie("rememberMe", "");
 			cookieRm.setMaxAge(0);
 			cookieRm.setPath("/");
@@ -165,6 +164,109 @@ public class MemberLoginController {
 		return 0;
 		
 	}
+	
+	@RequestMapping(path = "/member/memberLoginAlone", method = RequestMethod.POST)
+	public String processCheckLoginAlone(
+			@RequestParam(name = "account")String account,
+			@RequestParam(name = "password")String password,
+			@RequestParam(name = "rememberMe", required = false)String rm,
+			HttpServletResponse response,
+			Model m,
+			RedirectAttributes redAttr) {
+		
+		System.out.println("========================password:" + password);
+		
+		Map<String, String> errors = new HashMap<String, String>();
+		m.addAttribute("errors", errors);
+		
+		if(m.getAttribute("beforeCheckURL") != null) {
+			beforeCheckURL = (String)m.getAttribute("beforeCheckURL");
+			System.out.println("beforeCheckURL : " + beforeCheckURL);
+		}
+		
+		if(account == null || account.length() == 0) {
+			errors.put("account", "請輸入帳號");
+		}
+		
+		if(password == null || password.length() == 0) {
+			errors.put("password", "請輸入密碼");
+		}
+		
+		if(errors != null && !errors.isEmpty()) {
+			return "member/formalLoginAlone";
+		}
+		
+		
+		if(rm != null) {
+			Cookie cookieAnt = new Cookie("rmAnt", account);
+			cookieAnt.setMaxAge(30*24*60*60);
+			cookieAnt.setPath("/");
+			
+			String ckPwd = MemberGlobal.encryptString(password);
+			Cookie cookiePwd = new Cookie("rmPwd", ckPwd);
+			cookiePwd.setMaxAge(30*24*60*60);
+			cookiePwd.setPath("/");
+			
+			String rmCk = "check";
+			Cookie cookieRm = new Cookie("rememberMe", rmCk);
+			cookieRm.setMaxAge(30*24*60*60);
+			cookieRm.setPath("/");
+			
+			response.addCookie(cookieAnt);
+			response.addCookie(cookiePwd);
+			response.addCookie(cookieRm);
+			
+		} else {
+			Cookie cookieAnt = new Cookie("rmAnt", "");
+			cookieAnt.setMaxAge(0);
+			cookieAnt.setPath("/");
+			
+			String ckPwd = MemberGlobal.encryptString(password);
+			Cookie cookiePwd = new Cookie("rmPwd", "");
+			cookiePwd.setMaxAge(0);
+			cookiePwd.setPath("/");
+			
+			Cookie cookieRm = new Cookie("rememberMe", "");
+			cookieRm.setMaxAge(0);
+			cookieRm.setPath("/");
+			
+			response.addCookie(cookieAnt);
+			response.addCookie(cookiePwd);
+			response.addCookie(cookieRm);
+		}
+		
+		
+		String pwdEN = MemberGlobal.getSHA1Endocing(MemberGlobal.encryptString(password));
+		System.out.println("加密:" + pwdEN);
+			
+		if(account != null && password != null && errors.isEmpty()) {
+			MemberBasic mb = mbService.checkPassword(account, pwdEN);
+			if(mb != null) {
+				if(mb.getMemberStatus().getSeqno() == 100 || mb.getMemberStatus().getSeqno() == 120) {
+					m.addAttribute("Member", mb);
+					m.addAttribute("result", "登入成功");
+					System.out.println("=======================登入成功");
+					return "member/memberFormalInfo";
+				}else if(mb.getMemberStatus().getSeqno() == 110 || mb.getMemberStatus().getSeqno() == 130) {
+					m.addAttribute("Member", mb);
+					m.addAttribute("result", "初次登入成功");
+					System.out.println("=======================登入成功");
+					return "member/memberFirstInfo";
+				}else {
+					System.out.println("身分組權限不足");
+					return "member/formalLoginAlone";
+				}
+			} else {
+				errors.put("msg", "帳號或密碼錯誤");
+				return "member/formalLoginAlone";
+			}
+		}
+		
+		errors.put("msg", "帳號或密碼錯誤");
+		return "member/formalLoginAlone";
+		
+	}
+	
 	
 	
 	//第三方登入
@@ -217,7 +319,7 @@ public class MemberLoginController {
 		
 		status.setComplete();
 		
-		return "member/formalLogin";
+		return "member/formalLoginAlone";
 	}
 	
 

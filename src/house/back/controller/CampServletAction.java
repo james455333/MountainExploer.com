@@ -299,6 +299,7 @@ public class CampServletAction {
 			}
 
 		}
+		
 		campBean.setCampimgid(imgQuery);
 		CountiesBean countiesQuery = countiesService.select(counties);
 
@@ -314,10 +315,15 @@ public class CampServletAction {
 
 			campService.update(campBean);
 		}
-
+		
+		
 		List<CampInfoBean> list = campService.selectcampid(campid);
 
 		m.addAttribute("lookupdate", list);
+		
+		
+		
+		
 		return "house/back/backCamp";
 	}
 
@@ -327,13 +333,14 @@ public class CampServletAction {
 	}
 
 	@RequestMapping(path = "/updatejump", method = RequestMethod.GET)
-	public String jumpupdate(@RequestParam(name = "jumpupdate") String id, Model m) {
-		int campid = Integer.parseInt(id);
-		List<CampInfoBean> list = campService.selectcampid(campid);
+	public String jumpupdate(@RequestParam(name = "jumpupdate") int id, Model m) {
+//		int campid = Integer.parseInt(id);
+		List<CampInfoBean> list = campService.selectcampid(id);
 		m.addAttribute("jumpupdatename", list);
+		
 		return "house/back/backupdateCamp";
 	}
-	
+//counties ajax option	
 	@GetMapping("/countiesoption")
 	@ResponseBody
 	public List<CountiesBean> countiesoption(@RequestParam(name = "areaselect") String area ,Integer page){
@@ -342,21 +349,16 @@ public class CampServletAction {
 		
 		return list;
 	}
-	
-	
-//	@GetMapping("/selectcampid")
-//	public String selectCampId(@RequestParam(name = "selectcampid") String id , Model m) {
-//		
-//		int campid = Integer.parseInt(id);
-//		List<CampInfoBean> list = campService.selectcampid(campid);
-//		m.addAttribute("campid",list);
-//		return "house/back/backCamp";
-//	}
-	
-//	@GetMapping("/jumptestajax")
-//	public String jumpajax() {
-//		return "house/back/testajax";
-//	}
+// area ajax option	
+	@GetMapping("/areaoption")
+	@ResponseBody
+	public List<AreaBean> areaoptionall(){
+		List<AreaBean> list = new ArrayList<AreaBean>();
+		list = areaService.selectAllArea();
+		
+		return list;
+	}
+
 	
 
 }

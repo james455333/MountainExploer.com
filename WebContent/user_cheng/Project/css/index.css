@@ -98,26 +98,26 @@ header {
 .div_li1 {
     background-color: lightblue;
     width: 200px;
-    height: 1800px;
+    /* height: 1800px; */
     text-align: center;
     line-height: 400px;
     float: left;
 }
 
 .div_li3 {
-    background-color: lightblue;
+    /* background-color: lightblue; */
     width: 200px;
-    height: 1800px;
+    /* height: 1800px; */
     text-align: center;
     line-height: 400px;
     float: right;
 }
 
 .div_li2 {
-    background-color: slategrey;
+    /* background-color: slategrey; */
     margin-left: 200px;
     margin-right: 200px;
-    height: 1800px;
+    /* height: 1800px; */
     text-align: center;
 }
 

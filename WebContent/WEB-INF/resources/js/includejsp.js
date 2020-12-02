@@ -27,8 +27,15 @@ $(function(){
 	        return;
 	      }
 	    }
-		
-  	}
+		/*
+		let ullength= $(".navbar-nav").find("li").length;
+		if( !checklogin == ""){
+			console.log(  $(".navbar-nav").find("li").eq(0))
+			$(".navbar-nav").find("li").eq(1).remove();			
+		}else{
+			$(".navbar-nav").find("li").eq(ullength-1).remove();	
+		}*/
+	
+  }
 	
 })
-

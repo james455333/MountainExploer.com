@@ -84,7 +84,7 @@ height:25px;
     <img id="img4" class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG" />
     <img id="img5" class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG" />
 	</span>
-	<input type="text" name="updatestar" value="${i.star}">
+	<input type="hidden" name="updatestar" value="${i.star}">
 	<input type="hidden" name="updateclick" value="${i.clickcount}">
 	<input type="hidden" name="updateid" value="${i.housebasicid}">
 	<input type="reset" value="清除">
@@ -93,9 +93,25 @@ height:25px;
   </c:forEach>   
    
 <!--    camp star update -->
-
+	 <c:forEach var="j" items="${toupdatestar}">
+  
+<form id="star" action="<c:url value='/mountainCampAct/updatestar'></c:url>" method='GET'>
+    <span><img id="img1" class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG" />
+    <img id="img2" class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG" />
+    <img id="img3" class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG" />
+    <img id="img4" class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG" />
+    <img id="img5" class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG" />
+	</span>
+	<input type="hidden" name="updatestar" value="${j.star}">
+	<input type="hidden" name="updateclick" value="${j.clickcount}">
+	<input type="hidden" name="updateid" value="${j.campbasicid}">
+	<input type="reset" value="清除">
+	<input type="submit" value="送出">
+</form>
+  </c:forEach>   
 				
 
+	<p>麻煩給個好評</p>
                     <tbody class="order-table-tb">
                     
 <!--                     星星評分 -->

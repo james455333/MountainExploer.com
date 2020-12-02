@@ -45,7 +45,17 @@ public class Orders {
 	private java.util.Date shippingDate;
 	@Column(name = "CANCELTAG")
 	private String cancelTag;
+	@Column(name = "RECEIVER")
+	private String receiver;
 	
+	public String getReceiver() {
+		return receiver;
+	}
+
+
+	public void setReceiver(String receiver) {
+		this.receiver = receiver;
+	}
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "member_basic_id", referencedColumnName = "seqno")
 	@JsonIgnore

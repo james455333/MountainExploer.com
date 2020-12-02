@@ -23,6 +23,7 @@ public interface ICampInfoBeanService {
 	int countCamp(String area, Integer no ,String counties);
 
 	int countCampname(String campname);
+
 	
 
 	
