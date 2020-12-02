@@ -100,14 +100,23 @@ function insertMemberTD(thisElm, memberBasic){
 			thisElm.find(".d_ctrl").css("display","inline-flex")
 		}
 	}
-	thisElm.find(".memberTD").find("a").eq(0).html(memberBasic.memberInfo.neck_name)
+	thisElm.find(".memberTD").find("a").eq(0).html(memberBasic.memberInfo.neck_name).attr("href", "/MountainExploer.com/member/memberInfoEntry")
+	thisElm.find(".memeberImgContainer").find("a").attr("href", "/MountainExploer.com/member/memberInfoEntry")
+	thisElm.find(".memeberImgContainer").find("img").attr("src","/MountainExploer.com/member/showUserImg?userSeq="+memberBasic.seqno)
+				.on("error",function(){
+					$(this).attr("src","/MountainExploer.com/images/預設頭像.png")
+				})
 }
 //	函式 : 動態新增 => 回覆與留言
 function insertResp(respElm, respList, posterSeqno){
 	respElm.find("input[name='seqno']")
 			.attr("id","id_" + respList.actResp.seqno)
 			.val(respList.actResp.seqno)
-	
+	//	編輯按鈕走向
+	console.log(respElm.find(".d_ctrl").find("button"))
+	respElm.find(".d_ctrl").find("button").on("click",function(){
+		window.location.href= "/MountainExploer.com/mountain/manage/resp/edite?seqno=" + respList.actResp.seqno
+	})
 	//	回覆
 	var postD = dateFormate(respList.actResp.postDate)
 	respElm.find(".d_time").html("最後發表於 " + postD)

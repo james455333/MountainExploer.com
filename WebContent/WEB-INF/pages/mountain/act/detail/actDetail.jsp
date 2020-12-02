@@ -160,7 +160,7 @@
 									<!-- 會員頭像 -->
 									<div class="memeberImgContainer">
 										<a href="">
-											<img class="memeberImg" src="https://profunder.com/wp-content/uploads/2016/04/default-male.png">
+											<img class="memeberImg" src="">
 										</a>
 									</div>
 								</td>
@@ -184,9 +184,9 @@
 										<div class="d_member_check">
 											<div class="memberLocker">
 												瀏覽完整內容，請先
-												<a href="#dialog-form">註冊</a>
+												<a href="/MountainExploer.com/member/memberRegisterEntry">註冊</a>
 												或
-												<a href="#dialog-form" class="login-alert">登入會員</a>
+												<a href="/MountainExploer.com/member/memberLoginEntry">登入會員</a>
 											</div>
 											<!-- 圖片 (複數:最多5) -->
 											<div class="d_act_img_con">

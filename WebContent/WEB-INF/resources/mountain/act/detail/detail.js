@@ -45,6 +45,9 @@ $(function(){
 	$('.innerContainer').on("click" ,'.btn-detail-update-act', function(){
 		window.location.assign("/MountainExploer.com/mountain/manage/edite?actID="+actID)
 	})
+	$('.innerContainer').on("click" ,'.btn-detail-update', function(){
+		window.location.assign("/MountainExploer.com/mountain/manage/resp/edite?actID="+actID)
+	})
 	
 })
 

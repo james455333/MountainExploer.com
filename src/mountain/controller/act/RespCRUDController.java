@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -93,6 +94,27 @@ public class RespCRUDController {
 		
 	}
 	
-	
+	@GetMapping("/update.{seqno}")
+	public ActResponse getOriginResp(
+			ActResponse actResponse,
+			@PathVariable("seqno")Integer seqno)throws Exception{
+
+		service.save(actResponse);
+		actResponse = (ActResponse) service.select(seqno);
+		return actResponse;
+		
+	}
+	@PostMapping("/update.{seqno}")
+	public Boolean updateResp(
+			ActResponse actResponse,
+			@PathVariable("seqno")Integer seqno)throws Exception{
+		System.out.println("=============== msg : " + new String(actResponse.getMessage(), MountainGlobal.CHARSET));
+		service.save(actResponse);
+		ActResponse originActResponse = (ActResponse) service.select(seqno);
+		originActResponse.setMessage(actResponse.getMessage());
+		service.update(originActResponse);
+		return true;
+		
+	}
 	
 }

@@ -36,7 +36,7 @@ function publishNewAct(){
 			icon : "warning",
 			buttons : {
 				confirm : {
-					text : "開啟登入視窗",
+					text : "前往登入頁面",
 					visible : true,
 					value : true
 				},
@@ -48,7 +48,8 @@ function publishNewAct(){
 			}
 		}).then((value) => {
 			if(value){
-				$("#dialog-form").dialog("open");
+//				$("#dialog-form").dialog("open");
+				window.location.href = "/MountainExploer.com/member/memberLoginEntry"
 			}
 		})
 	}
