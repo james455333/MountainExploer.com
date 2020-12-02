@@ -81,7 +81,7 @@ public class ManageCRUDController {
 			Map<String, Object> actMap = new HashMap<String, Object>();
 			
 			service.save(new ActRegInfo());
-			String reghql = "Select count(*) From ActRegInfo ari where ari.actRegistry in (From ActRegistry ar where cancelTag is null and ACTIVITY_BASIC_SEQNO = "+ activityBasic.getSeqno() + ")";
+			String reghql = "Select count(*) From ActRegInfo ari where ari.actRegistry in (From ActRegistry ar where deniTag is null and cancelTag is null and ACTIVITY_BASIC_SEQNO = "+ activityBasic.getSeqno() + ")";
 			int nowReg = service.countWithHql(reghql);
 			
 			actMap.put("actBasic", activityBasic);
