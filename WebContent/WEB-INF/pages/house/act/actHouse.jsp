@@ -26,7 +26,9 @@ width:18px;
 height:18px;
 }
 .clickcount{font-size :20px}
-
+.img{width:100%;
+transition: all 0.6s;}
+.img:hover{transform: scale(1.5);}
 </style>
 </head>
 
@@ -152,7 +154,7 @@ height:18px;
 							<td>${i.bed}</td>
 							<td>${i.camp}</td>
 							<td>${i.height}</td>
-							<td>
+							<td class="img">
 							
 							<c:choose>
 							<c:when test="${ empty i.imgid.img}">

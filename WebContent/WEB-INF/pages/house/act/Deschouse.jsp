@@ -149,15 +149,15 @@ height:25px;
 	                <div style="float: left ; margin : 30px" >
 					<c:choose>
 								<c:when test="${ empty i.imgid.img}">
-								<img height="200" width="200" src="/MountainExploer.com/housecamp/images/housenull.PNG">
+								<img height="250" width="250" src="/MountainExploer.com/housecamp/images/housenull.PNG">
 								</c:when>
 								<c:when test="${not empty i.imgid.img}">
-								<img height="200" width="200"
+								<img height="250" width="250"
 								src="<c:url value='/mountainHouseBack/showimg?imgid=${i.imgid.id}'/>">
 								</c:when>
 								</c:choose>
 					</div>
-	                <div class = "topname"><h2>${i.name}</h2></div>
+	                <div class = "topname"><h3>${i.name}</h3></div>
 	                <div class="body">山屋床位${i.bed}  營地數量${i.camp}</div>					
 	                <div class="body" style="height: 300px">${i.desc}</div>
 	                </c:forEach>
