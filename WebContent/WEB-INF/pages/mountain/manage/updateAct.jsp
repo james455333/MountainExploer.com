@@ -215,28 +215,22 @@
 										<div class="col-md-12">
 											<div class="row new-form-head">
 												<div class="col-md-12">
-													上傳圖片(最多五張)
+													原本圖片預覽
 												</div>
 											</div>
 											<div class="row new-form-body">
 												<div class="col-md-12">
-													<input type="file" accept="image/*" name='files' multiple>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-12">
-											<div class="row new-form-head">
-												<div class="col-md-12">
-													上傳圖片預覽
-												</div>
-											</div>
-											<div class="row new-form-body">
-												<div class="col-md-12">
-													<div id="previewMultiple"></div>
+													<div id="originIMG">
+														<div class='newAct-img-container'>
+															<img class='showImage' src=''>
+															<img class='extendImage' src=''>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
+									
 									<div class="row new-form-head-con">
 										<div class="col-md-12">
 											<div class="row new-form-head">

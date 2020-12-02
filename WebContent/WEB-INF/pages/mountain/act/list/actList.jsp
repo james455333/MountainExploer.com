@@ -135,7 +135,7 @@
                     </ul>
                </nav>
 
-            <div class="secDivContent m-sdc-adj">
+            <div class="m-sdc-adj">
             	<!-- btn -->
         
             	<div id="btn-newpost" class="btn-group btn-group-lg" role="group">

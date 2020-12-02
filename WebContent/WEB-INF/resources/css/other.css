@@ -104,7 +104,6 @@ header {
 }
 
 .div_li1 {
-	background-color: rgb(208, 243, 255);
 	width: 200px;
 	height: 1800px;
 	text-align: center;
@@ -113,7 +112,6 @@ header {
 }
 
 .div_li3 {
-	background-color: rgb(208, 243, 255);
 	width: 200px;
 	height: 1800px;
 	text-align: center;
@@ -122,10 +120,9 @@ header {
 }
 
 .div_li2 {
-	/* background-color: rgb(243, 248, 194); */
+	background-color: rgb(243, 248, 194); 
 	margin-left: 200px;
 	margin-right: 200px;
-	height: 1800px;
 	width: 1040px;
 	text-align: center;
 	z-index: 1;

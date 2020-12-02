@@ -424,9 +424,9 @@ function setActInfo(){
 				setRouteDefault(data)
 				setDateDefault(data)
 				setRegInfo(data)
+				setImgInfo(data)
 				
 			}
-//			setImgInfo(data)
 //			setNoteInfo(data)
 		}
 	})
@@ -457,6 +457,17 @@ function setRegInfo(data){
 	$("input[name='actInfo.regTop']").val(data.actInfo.regTop)
 }
 function setImgInfo(data){
+	let originImages = data.actImage
+	for (let i in originImages){
+		let model = $(".newAct-img-container").eq(i).clone();
+		$("#originIMG").append(model)
+		$(".newAct-img-container").eq(i).find(".showImage")
+			.attr("src","/MountainExploer.com/mountain/act/crud/images?seqno=" + originImages[i].seqno)
+		$(".newAct-img-container").eq(i).find(".extendImage")
+			.attr("src","/MountainExploer.com/mountain/act/crud/images?seqno=" + originImages[i].seqno)
+		
+	}
+	$(".newAct-img-container").eq(originImages.length).remove()
 }
 function setNoteInfo(data){
 }

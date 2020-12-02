@@ -132,13 +132,20 @@ public class ActCRUDController {
 		
 		service.save(activityBasic);
 		activityBasic = (ActivityBasic) service.select(actID);
+		
 		MemberBasic memberBasic = (MemberBasic) model.getAttribute("Member");
 		if (activityBasic.getMemberBasic().getSeqno() != memberBasic.getSeqno()) {
-			resultMap.put("error", "非本會員所舉辦之活動，不得進行修改");
+			resultMap.put("error", "非本會員所發表，不得進行修改");
 		}
 		
 		
 		resultMap.put("actInfo", activityBasic.getActInfo());
+		
+		service.save(new ActImage());
+		String imgHql = "From ActImage where activityBasic = " + actID ;
+		List<ActImage> actImages = (List<ActImage>) service.getwithHQL(imgHql, 1, 5);
+		resultMap.put("actImage", actImages);
+		
 		RouteBasic rtBasic = activityBasic.getActInfo().getRtBasic();
 		NationalPark nationalPark = rtBasic.getNational_park();
 		resultMap.put("npID",nationalPark.getId());
@@ -408,7 +415,7 @@ public class ActCRUDController {
 	}
 
 	/*
-	 * 活動圖片顯示 回傳 : List<ResponseEntity<byte[]>>
+	 * 活動圖片顯示 回傳 : ResponseEntity<byte[]>
 	 * 
 	 */
 	@GetMapping(path = "/images")
