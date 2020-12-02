@@ -73,7 +73,14 @@
 			</div>
 			<div class="importData">
 				<form action='<c:url value="/houseDataImport"/>' method="post" enctype="multipart/form-data">
-					<i>指定"小屋及露營地"資料輸入檔案</i>
+					<i>指定"小屋"資料輸入檔案</i>
+					<input type="file" name="datafile" accept=".csv" required>
+					<input type="submit" value="確認輸入">
+				</form>
+			</div>
+			<div class="importData">
+				<form action='<c:url value="/campDataImport"/>' method="post" enctype="multipart/form-data">
+					<i>指定"露營地"資料輸入檔案</i>
 					<input type="file" name="datafile" accept=".csv" required>
 					<input type="submit" value="確認輸入">
 				</form>
