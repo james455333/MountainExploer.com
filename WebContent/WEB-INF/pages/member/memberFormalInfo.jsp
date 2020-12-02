@@ -44,10 +44,10 @@
     </header>
     <div class="div_ul">
         <div class="div_li1">
-            <a>保留區</a>
+            <a></a>
         </div>
         <div class="div_li3">
-            <a>保留區</a>
+            <a></a>
         </div>
         <div class="div_li2">
             <!-- 每頁不同的內容從這裡開始 -->
@@ -71,11 +71,68 @@
                     </div>
                 </div>
                 <div class="personalInfo">
+                	<div>
+	                	<h2>${Member.memberInfo.neck_name}的公開頁面</h2>                	
+                	</div>
                 	
                     <div>
                     	<input type="hidden" name="userSeq" class="userSeq" value="${Member.seqno}">
-                    	<img src="<c:url value='showUserImg?userSeq=${Member.seqno}'/>"><br/>
+                    	<c:choose>
+                    		<c:when test="${empty Member.memberInfo.img_name}">
+                    			<img src="/MountainExploer.com/images/preset.png">
+                    		</c:when>
+                    		<c:otherwise><img src="<c:url value='showUserImg?userSeq=${Member.seqno}'/>"></c:otherwise>
+                    	</c:choose>
+                    	<br/>
+                    	<br/>
                     	<a href="/MountainExploer.com/member/memberImageUploadEntry">修改頭像</a>
+                    	<br/>
+                    	<br/>
+<!--                     	<div> -->
+<!--                     		<label>帳號：</label> -->
+<%--                     		<span>${Member.account}</span><br/> --%>
+<%--                     		<input type="hidden" class="account" name="account" value="${Member.account}"> --%>
+<!--                     	</div> -->
+<!--                     	<div> -->
+<!--                     		<label>暱稱：</label> -->
+<%--                     		<span>${Member.memberInfo.neck_name}</span><br/> --%>
+<%--                     		<input type="hidden" class="ncName" name="ncName" value="${Member.memberInfo.neck_name}"> --%>
+<!--                     	</div> -->
+<!--                     	<div> -->
+<!--                     		<label>性別：</label> -->
+<!--                     		<span> -->
+<%--                     			<c:if test="${Member.memberInfo.gender eq 'mask'}"> --%>
+<!--                     				不透露 -->
+<%--                     			</c:if> --%>
+<%-- 								<c:if test="${Member.memberInfo.gender eq 'male'}"> --%>
+<!-- 									男 -->
+<%-- 								</c:if> --%>
+<%-- 								<c:if test="${Member.memberInfo.gender eq 'female'}"> --%>
+<!-- 									女 -->
+<%-- 								</c:if> --%>
+<%-- 								<c:if test="${Member.memberInfo.gender eq 'x'}"> --%>
+<!-- 									X -->
+<%-- 								</c:if> --%>
+<!-- 							</span><br> -->
+<%-- 							<input type="hidden" class="gender" name="gender" value="${Member.memberInfo.gender}"> --%>
+<!--                     	</div> -->
+<!--                     	<div> -->
+<!--                     		<label>登山經驗：</label> -->
+<!--                     		<span></span><br/> -->
+<%--                     		<input type="hidden" class="exp" name="exp" value="${Member.memberInfo.climb_ex}"> --%>
+<!--                     	</div> -->
+<!--                     	<div> -->
+<!--                     		<label>身分組：</label> -->
+<!--                     		<span> -->
+<%--                         		<c:if test="${Member.memberStatus.seqno eq 100}"> --%>
+<!-- 									一般登山者 -->
+<%-- 								</c:if> --%>
+<%-- 								<c:if test="${Member.memberStatus.seqno eq 120}"> --%>
+<!-- 									登山嚮導						 -->
+<%-- 								</c:if> --%>
+<!--                         	</span><br> -->
+<%--                     		<input type="hidden" class="statusId" name="statusId" value="${Member.memberStatus.seqno}"> --%>
+<!--                     	</div> -->
                     </div>
                     
 <%--                     <form action="<c:url value='/member/imgUpdateAction' />" method="POST" enctype="multipart/form-data"> --%>

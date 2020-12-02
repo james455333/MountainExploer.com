@@ -51,7 +51,7 @@
         </div> -->
         <div class="div_li2" style="background: #ecf5ff; height: auto;">
             <!-- 每頁不同的內容從這裡開始 -->
-            <form
+            <form action="<c:url value='/member/memberFirstInfoInsert' />" method="POST"
                 style="width: 800px; margin: 0 auto; border: 10px solid#ecf5ff; border-radius: 1%; background-color: d#ecf5ff;">
                 <div style="border-radius: 3%; border: 10px solid white; background-color: white;">
 
@@ -73,7 +73,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputGender">性別：</label>
-                            <select id="" class="form-control">
+                            <select id="" class="form-control" name="memberInfo.gender">
                             	<option value="mask" selected>不透露</option>
                             	<option value="male">男</option>
                             	<option value="female">女</option>

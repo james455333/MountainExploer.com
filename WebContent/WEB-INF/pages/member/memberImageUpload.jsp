@@ -41,10 +41,10 @@
     </header>
     <div class="div_ul">
         <div class="div_li1">
-            <a>保留區</a>
+            <a></a>
         </div>
         <div class="div_li3">
-            <a>保留區</a>
+            <a></a>
         </div>
         <div class="div_li2">
             <!-- 每頁不同的內容從這裡開始 -->
@@ -61,6 +61,7 @@
 	                <br>
                 </div>
                 </form>
+                <a href="/MountainExploer.com/member/memberInfoEntry">回到會員中心</a>
 <!--                 <a>上傳頭像</a> -->
                 <!--上傳影像div結束-->
             </div> 
