@@ -7,9 +7,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>岳進者</title>
-    <link rel="stylesheet" href="../css/other.css">
-    <link rel="stylesheet" href="../css/font.css">
-    <link rel="stylesheet" href="../css/personalPage.css">
+    <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
+    <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
+    <link rel="stylesheet" href="/MountainExploer.com/css/personalPage.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
@@ -30,7 +30,7 @@
     
     <div class="count1">
         <div class="count1_img">
-            <img src="../images/logo1.png">
+            <img src="/MountainExploer.com/images/logo1.png">
             <hr>
             <h1 class="font">岳進者</h1>
             <!-- <a class="font">岳進者</a> -->
@@ -38,7 +38,7 @@
     </div>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light zline">
-            <a class="navbar-brand" href="#"><img src="../images/logo1.png" height="30%" width="30%"></a>
+            <a class="navbar-brand" href="#"><img src="/MountainExploer.com/images/logo1.png" height="30%" width="30%"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -107,19 +107,19 @@
 
                     
                     <!-- <div class="pageControl_Tr">
-                        <img src="../images/personal/user.png" alt="" class="pageControl_Td" type="button"
+                        <img src="/MountainExploer.com/images/personal/user.png" alt="" class="pageControl_Td" type="button"
                             id="userShow">
                     </div>
                     <div class="pageControl_Tr">
-                        <img src="../images/personal/id-card.png" alt="" class="pageControl_Td" type="button"
+                        <img src="/MountainExploer.com/images/personal/id-card.png" alt="" class="pageControl_Td" type="button"
                             id="idCardShow">
                     </div>
                     <div class="pageControl_Tr">
-                        <img src="../images/personal/padlock.png" alt="" class="pageControl_Td" type="button"
+                        <img src="/MountainExploer.com/images/personal/padlock.png" alt="" class="pageControl_Td" type="button"
                             id="padlockShow">
                     </div>
                     <div class="pageControl_Tr">
-                        <img src="../images/personal/trophy.png" alt="" class="pageControl_Td" type="button"
+                        <img src="/MountainExploer.com/images/personal/trophy.png" alt="" class="pageControl_Td" type="button"
                             id="challengeShow">
                     </div> -->
                 </div>
@@ -139,7 +139,7 @@
                         <form>
                             <div class="form-group row" style="margin-right: 15px;
                             margin-left: 15px; margin-top: 15px;">
-                              <label for="" class="col-2 col-form-label"><a><img src="../images/personal/padlock.png" alt="" style="width:30%;"></a></label> 
+                              <label for="" class="col-2 col-form-label"><a><img src="/MountainExploer.com/images/personal/padlock.png" alt="" style="width:30%;"></a></label> 
                               <div class="col-8">
                                 <div class="input-group">
                                   <div class="input-group-prepend">
@@ -243,7 +243,7 @@
             <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a
                     href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
             <!-- 每頁不同內容到這邊結束 -->
-            <!-- <div class="fix"><a href="#"><img src="../images/arror.png" alt="" style=" width:60px; height:60px;"></a>
+            <!-- <div class="fix"><a href="#"><img src="/MountainExploer.com/images/arror.png" alt="" style=" width:60px; height:60px;"></a>
             </div> -->
             <!-- 此為快捷鍵；宣告為fix後會將DIV的層級拉到最外層(不管原本是寫在哪)也就是跳脫出原本的HTML框架 -->
         </div>
@@ -257,21 +257,21 @@
         <button id="demo4">多重選項&提醒視窗demo4</button>
         <button id="demo5">Demo5</button>
         <button id="demo6">Demo6</button>
-        <button id="button7"><a href=""><img src="../images/personal/user.png" alt="" style="width: 30px;"
+        <button id="button7"><a href=""><img src="/MountainExploer.com/images/personal/user.png" alt="" style="width: 30px;"
                     id="logInButton"></a></button>
 
 
 
     </footer>
 </body>
-<script src="../js/upLoadImg.js"></script><!-- 上傳頭像 -->
-<script src="../js/table.js"></script>
-<script src="../js/login.js "></script>
-<script src="../js/topBar.js"></script>
-<script src="../js/sweetalert.js"></script>
+<script src="/MountainExploer.com/js/upLoadImg.js"></script><!-- 上傳頭像 -->
+<script src="/MountainExploer.com/js/table.js"></script>
+<script src="/MountainExploer.com/js/login.js "></script>
+<script src="/MountainExploer.com/js/topBar.js"></script>
+<script src="/MountainExploer.com/js/sweetalert.js"></script>
 <!--sweet alert-->
-<script src="../js/includejsp.js"></script>
-<script src="../js/personalContrul.js"></script><!-- 個人資料控制列表 -->
+<script src="/MountainExploer.com/js/includejsp.js"></script>
+<script src="/MountainExploer.com/js/personalContrul.js"></script><!-- 個人資料控制列表 -->
 
 
 </html>
