@@ -90,7 +90,7 @@ body {
 								<h3>關於我們</h3>
 								<p>跨域Java軟體工程師就業養成班(Oracle+AWS)</p>
 							</div>
-<!--  
+							<!--  
 							<div class="row about-container">
 
 								<div class="col-lg-6 content order-lg-1 order-2">
@@ -649,7 +649,7 @@ body {
 		</div>
 
 
-		  <footer id="footer"> </footer>
+		<footer id="footer"> </footer>
 	</div>
 
 	<!--     <script src="/MountainExploer.com/assets/vendor/jquery/jquery.min.js"></script> -->

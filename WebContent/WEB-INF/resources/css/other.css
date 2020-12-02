@@ -3,24 +3,21 @@
 	padding-bottom: 0px !important;
 	height: 70px;
 } */
-
 .navbar {
 	/* min-height: 30px !important; */
 	z-index: 50;
 }
 
 /*---------下拉選單滑入展開---------*/
-
- .dropdown-menu li:hover .sub-menu {
+.dropdown-menu li:hover .sub-menu {
 	visibility: visible;
 }
 
 .dropdown:hover .dropdown-menu {
 	display: block;
-} 
+}
 
 /* -------下拉選單滑入展開 ---------*/
-
 header {
 	background-color: #fff;
 	padding: 0px 0px;
@@ -44,7 +41,6 @@ header {
 	background-image: url(../images/BGI.jpg);
 	background-attachment: scroll;
 } */
-
 .count1 {
 	column-count: 3;
 	column-rule: 3px double gray;
@@ -153,7 +149,6 @@ header {
 }
 
 /* 會員上傳頭像標籤 */
-
 .upLoadImg {
 	border: 5px solid #666;
 	width: 210px;
@@ -251,7 +246,6 @@ nav ul {
 /* div_li2中的控制選擇器 */
 
 /* <link rel="stylesheet" href="/MountainExploer.com/css/li2SearchBar.css"> */
-
 .searchBar {
 	height: 79px;
 	width: 1000px;
@@ -259,8 +253,7 @@ nav ul {
 	/*依據父元素找到絕對位置*/
 	top: 0px;
 	left: 20px;
-	border:  1px solid rgba(0, 0, 0, 0.096);
-	
+	border: 1px solid rgba(0, 0, 0, 0.096);
 }
 
 .third_nav {
@@ -288,7 +281,6 @@ nav ul {
 /* div標籤選擇器 */
 
 /* <link rel="stylesheet" href="/MountainExploer.com/css/labelSelect.css"> */
-
 .thirdSelect {
 	list-style: none;
 	display: flex;
@@ -307,7 +299,6 @@ nav ul {
 /* for士豪*/
 
 /* <link rel="stylesheet" href="/MountainExploer.com/css/g4cl6djru84.css"> */
-
 .forImage {
 	border: 5px solid rgb(95, 26, 26);
 	width: 980px;
@@ -343,7 +334,6 @@ nav ul {
 /* 移植去secTable.css 以為下table.css */
 
 /* <link rel="stylesheet" href="/MountainExploer.com/css/secTable.css"> */
-
 .order-table {
 	table-layout: fixed;
 	width: 900px;
@@ -383,7 +373,6 @@ tr:nth-child(odd) {
 /*secTable底部頁面控制器*/
 
 /* <link rel="stylesheet" href="/MountainExploer.com/css/pageController.css"> */
-
 .pageControl {
 	/* border: 1px solid black; */
 	box-sizing: border-box;
@@ -405,7 +394,8 @@ tr:nth-child(odd) {
 	width: 700px;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-.pageControl ul{
+
+.pageControl ul {
 	display: inline-flex;
 }
 
