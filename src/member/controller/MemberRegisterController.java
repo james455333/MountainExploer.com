@@ -94,11 +94,11 @@ public class MemberRegisterController {
 				if(insertMB == null) {
 					System.out.println("註冊資料為空");
 					redAttr.addFlashAttribute("error", "註冊失敗");
-					return "member/register";
+					return "member/formalRegister";
 				} else {
 					System.out.println(mb.getAccount() + "註冊成功");
 					redAttr.addFlashAttribute("result", "註冊成功");
-					return "member/login";
+					return "member/formalLoginAlone";
 				}
 			} else {
 				System.out.println(statusId);
@@ -106,17 +106,17 @@ public class MemberRegisterController {
 				if(insertST == null) {
 					System.out.println("未選擇會員身分組");
 					redAttr.addFlashAttribute("error", "註冊失敗");
-					return "member/register";
+					return "member/formalRegister";
 				} else {
 					System.out.println(mb.getAccount() + "註冊成功");
 					redAttr.addFlashAttribute("result", "註冊成功");
-					return "redirect:/member/login";
+					return "redirect:/member/formalLoginAlone";
 				}
 			}
 			
 		}
 
-		return "member/register";	
+		return "member/formalRegister";	
 	}
 	
 	

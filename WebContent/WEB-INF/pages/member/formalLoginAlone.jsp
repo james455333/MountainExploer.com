@@ -102,7 +102,7 @@
                             <tr>
                                 <th></th>
                                 <td>
-                                    <input type="checkbox" name="rememberme"
+                                    <input type="checkbox" name="rememberMe"
                                     	<c:if test="${cookie.rememberMe.value == 'check'}">
                                                     		checked="checked"
                                        	</c:if> value="true">

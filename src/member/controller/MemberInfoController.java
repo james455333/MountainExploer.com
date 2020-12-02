@@ -30,6 +30,11 @@ public class MemberInfoController {
 		return "member/memberFormalInfo";
 	}
 	
+	@RequestMapping(path = "/member/memberFormalFirstInfoEntry", method = RequestMethod.GET)
+	public String processFormalInfoEntry() {
+		return "member/formalFirstInfo";
+	}
+	
 	
 	@RequestMapping(path = "/member/memberInfoUpdateEntry", method = RequestMethod.GET)
 	public String processInfoUpdateTurn() {
