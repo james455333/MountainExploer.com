@@ -74,7 +74,7 @@ height:25px;
             <div class="secDivContent">
                 <!--table-->
                 <table class="order-table">
-
+<!-- house star update -->
   <c:forEach var="i" items="${list}">
   
 <form id="star" action="<c:url value='/mountainHouseAct/updatestar'></c:url>" method='GET'>
@@ -92,6 +92,7 @@ height:25px;
 </form>
   </c:forEach>   
    
+<!--    camp star update -->
 
 				
 

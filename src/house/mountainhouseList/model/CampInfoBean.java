@@ -100,5 +100,17 @@ public class CampInfoBean {
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
+	public Integer getStar() {
+		return star;
+	}
+	public void setStar(Integer star) {
+		this.star = star;
+	}
+	public Integer getClickcount() {
+		return clickcount;
+	}
+	public void setClickcount(Integer clickcount) {
+		this.clickcount = clickcount;
+	}
 	
 }

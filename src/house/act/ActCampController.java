@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import house.mountainhouseList.model.AreaBean;
 import house.mountainhouseList.model.CampInfoBean;
@@ -24,6 +25,7 @@ import house.mountainhouseList.service.CountiesBeanService;
 
 @Controller
 @RequestMapping("/mountainCampAct")
+@SessionAttributes(names = {"Member"})
 public class ActCampController {
 
 	@Autowired
@@ -137,6 +139,36 @@ public class ActCampController {
 		return list;
 	}
 	
+	@GetMapping(name = "/jumpCampDesc")
+	public String CampDesc(@RequestParam(name = "selectcampid")int campid , Model m) {
+		List<CampInfoBean> list = campService.selectcampid(campid);
+		
+		m.addAttribute("selectcamp",list);
+		return "house/act/DescCamp";
+	}
 	
+	public String jumpupdatestar(@RequestParam(name = "selectcampid")int campid , Model m) {
+		if (m.getAttribute("Member")==null) {
+			return "redrict:/member/memberLoginEntry";
+		}
+		List<CampInfoBean> list = campService.selectcampid(campid);
+		m.addAttribute("toupdatestar",list);
+		return "house/act/star";
+	}
+	
+	@GetMapping("/updatestar")
+	public String updatestar(@RequestParam(name = "updatestar")Integer star,Model m,@RequestParam(name = "updateclick") Integer clickcount,@RequestParam(name = "updateid")Integer campid) {
+		CampInfoBean campInfoBean = campService.select(campid);
+		
+		campInfoBean.setCampbasicid(campid);
+		campInfoBean.setStar(star);
+		campInfoBean.setClickcount(clickcount);
+		
+		campService.update(campInfoBean);
+		
+		List<CampInfoBean> list = campService.selectcampid(campid);
+		m.addAttribute("selectcampid",list);
+		return "house/act/DescCamp";
+	}
 	
 }
