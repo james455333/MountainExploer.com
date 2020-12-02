@@ -31,8 +31,8 @@
             padding: 1px;
         }
     </style>
-    <script src/MountainExploer.com/js/includejsp.js"></script>
-    <script src/MountainExploer.com/js/topBar.js"></script>
+    <script src="/MountainExploer.com/js/includejsp.js"></script>
+    <script src="/MountainExploer.com/js/topBar.js"></script>
 </head>
 
 <body>
