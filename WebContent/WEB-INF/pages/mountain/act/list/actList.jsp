@@ -78,7 +78,7 @@
             <!-- 每頁不同的內容從這裡開始 -->
             
 	            
-	        	<div class="searchBar">
+	        	<div class="searchBar m-list-searchBar">
 	                <nav>
 	                    <ul class="third_nav">
 	                        <!-- 控制列表內容從這邊開始 -->

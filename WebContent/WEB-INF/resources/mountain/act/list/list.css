@@ -1,4 +1,10 @@
 @charset "UTF-8";
+.m-list-searchBar{
+	position : static;
+	width : 100%;
+	margin : 15px;
+}
+
 .m-sdc-adj{
 	border : none;
 }
