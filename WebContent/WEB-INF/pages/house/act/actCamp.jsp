@@ -94,7 +94,7 @@ height:18px;
 						<form	action="<c:url value='/mountainCampAct/actselectAll'></c:url>"
 							method='GET'>
 							<div>鄉鎮: <select name="selectcounties" id="selectCounties">
-									<option>請選擇鄉鎮</option>
+									<option>請先選擇縣市</option>
 							</select>
 							<input type="hidden" value="" name="selectarea" >
 							<input type="hidden" value=2 name="no" >
@@ -238,7 +238,7 @@ height:18px;
 				<nav class="pageControl">
 						
 
-					<ul>
+					<ul style="display: inline-flex;">
 						<li class="li1"><a href="actselectAll?selectarea=${selectarea }&selectcounties=${selectcounties}&no=${no }&page=1">«第一頁</a></li>
 						<c:choose>
 						<c:when test="${page<=1}"><li class="li1"><a href="#">‹上一頁</a></li></c:when>

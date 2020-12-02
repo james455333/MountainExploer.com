@@ -235,7 +235,7 @@ height:18px;
 				<nav class="pageControl">
 						
 
-					<ul>
+					<ul style="display: inline-flex;">
 						<li class="li1"><a href="actselectAll?parkid=${parkid}&no=${no }&page=1">«第一頁</a></li>
 						<c:choose>
 					<c:when test="${page <=1 }"><li class="li1"><a href="#">‹上一頁</a></li></c:when>
