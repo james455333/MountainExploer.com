@@ -74,6 +74,8 @@ public class CampInfoBeanService implements ICampInfoBeanService {
 		return cDao.countCampname(campname);
 	}
 
+
+
 	
 
 	

@@ -315,10 +315,15 @@ public class CampServletAction {
 
 			campService.update(campBean);
 		}
-
+		
+		
 		List<CampInfoBean> list = campService.selectcampid(campid);
 
 		m.addAttribute("lookupdate", list);
+		
+		
+		
+		
 		return "house/back/backCamp";
 	}
 
@@ -328,10 +333,11 @@ public class CampServletAction {
 	}
 
 	@RequestMapping(path = "/updatejump", method = RequestMethod.GET)
-	public String jumpupdate(@RequestParam(name = "jumpupdate") String id, Model m) {
-		int campid = Integer.parseInt(id);
-		List<CampInfoBean> list = campService.selectcampid(campid);
+	public String jumpupdate(@RequestParam(name = "jumpupdate") int id, Model m) {
+//		int campid = Integer.parseInt(id);
+		List<CampInfoBean> list = campService.selectcampid(id);
 		m.addAttribute("jumpupdatename", list);
+		
 		return "house/back/backupdateCamp";
 	}
 //counties ajax option	
