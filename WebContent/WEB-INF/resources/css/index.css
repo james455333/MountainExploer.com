@@ -3,48 +3,42 @@
     padding: 0;
      min-width: 600px; 
 }*/
-
 .container1 {
-    width: auto;
-    height: auto;
-    text-align: center;
-    margin: 0px auto;
-        min-width: 600px;
+	width: auto;
+	height: auto;
+	text-align: center;
+	margin: 0px auto;
+	min-width: 600px;
 }
 
 .p_i_name {
-    text-align: center;
+	text-align: center;
 }
 
 /*---------下拉選單滑入展開---------*/
-
 .dropdown-menu li:hover .sub-menu {
-    visibility: visible;
+	visibility: visible;
 }
 
 .dropdown:hover .dropdown-menu {
-    display: block;
+	display: block;
 }
-
 
 /* -------下拉選單滑入展開 ---------*/
-
 header {
-    background-color: #fff;
-    padding: 0px 0px;
-    height: 48px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    box-sizing: border-box;
-    transition: top 0.4s ease-in-out;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+	background-color: #fff;
+	padding: 0px 0px;
+	height: 48px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	box-sizing: border-box;
+	transition: top 0.4s ease-in-out;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
 
-
-
-.hideUp header {   /*---選單隱藏幅度---*/ 
-    top: -60px;
+.hideUp header { /*---選單隱藏幅度---*/
+	top: -60px;
 }
 
 /*
@@ -54,72 +48,69 @@ header {
 } */
 
 /*---背景圖片設定---*/
-
 .count1 {
-    column-count: 3;
-    column-rule: 3px double gray;
-    width: 100%;
-    padding: 395px;
-    margin: 10px auto;
-    background-image: url(/MountainExploer.com/images/bgi.jpg   );
-    background-attachment: fixed;
-    /*背景附著*/
-    background-repeat: no-repeat;
-    /*重複背景*/
-    background-position: 100%;
-    /*背景位置*/
-    background-size: cover;
-    /*背景尺寸*/
-    display: flex;
-    opacity: 0.8;
-    z-index: 0;
-    margin-bottom: 0px;
+	column-count: 3;
+	column-rule: 3px double gray;
+	width: 100%;
+	padding: 395px;
+	margin: 10px auto;
+	background-image: url(/MountainExploer.com/images/bgi.jpg   );
+	background-attachment: fixed;
+	/*背景附著*/
+	background-repeat: no-repeat;
+	/*重複背景*/
+	background-position: 100%;
+	/*背景位置*/
+	background-size: cover;
+	/*背景尺寸*/
+	display: flex;
+	opacity: 0.8;
+	z-index: 0;
+	margin-bottom: 0px;
 }
 
 /*---背景圖片設定---*/
-
 .count1_img {
-    width: 100%;
-    margin: auto;
-    text-align: center;
+	width: 100%;
+	margin: auto;
+	text-align: center;
 }
 
 .zline {
-    z-index: 99;
+	z-index: 99;
 }
 
-
 .div_ul {
-    text-align: center;
-    box-sizing: border-box;
-    width: 1440px;
-        margin:  0px auto;/* div置中 */
+	text-align: center;
+	box-sizing: border-box;
+	width: 1440px;
+	margin: 0px auto; /* div置中 */
 }
 
 .div_li1 {
-    background-color: lightblue;
-    width: 200px;
-    height: 1800px;
-    text-align: center;
-    line-height: 400px;
-    float: left;
+	background-color: lightblue;
+	width: 200px;
+	height: 1800px;
+	text-align: center;
+	line-height: 400px;
+	float: left;
 }
 
 .div_li3 {
-    background-color: lightblue;
-    width: 200px;
-    height: 1800px;
-    text-align: center;
-    line-height: 400px;
-    float: right;
+	background-color: lightblue;
+	width: 200px;
+	height: 1800px;
+	text-align: center;
+	line-height: 400px;
+	float: right;
 }
 
 .div_li2 {
-    background-color: slategrey;
-    margin-left: 200px;
-    margin-right: 200px;
-    height: 1800px;
-    text-align: center;
+	background-color: slategrey;
+	margin-left: 200px;
+	margin-right: 200px;
+	height: 1800px;
+	text-align: center;
 }
 /*
 #footer {
@@ -131,4 +122,3 @@ header {
     margin:0px auto;
 }
 */
-

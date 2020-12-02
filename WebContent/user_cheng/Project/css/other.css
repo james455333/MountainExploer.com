@@ -351,6 +351,7 @@ nav ul {
 	/* border: 5px solid rgb(70, 64, 64); */
 	border-collapse: collapse;
 	overflow: hidden;
+	background-color: white;
 }
 
 .order-table-th {
@@ -414,4 +415,7 @@ tr:nth-child(odd) {
 	/* float: left; */
 	font-size: 20px;
 	/* color: black; */
+}
+.form-group{
+	
 }
