@@ -467,46 +467,37 @@ body {
 									<div class="owl-carousel testimonials-carousel">
 
 										<div class="testimonial-item">
-											<img src="assets/img/testimonial-1.jpg"
+											<img src="images/預設頭像.png"
 												class="testimonial-img" alt="">
-											<h3>Saul Goodman</h3>
-											<h4>Ceo &amp; Founder</h4>
-											<p>Proin iaculis purus consequat sem cure digni ssim
-												donec porttitora entum suscipit rhoncus. Accusantium quam,
-												ultricies eget id, aliquam eget nibh et. Maecen aliquam,
-												risus at semper.</p>
+											<h3>劉 玉玲</h3>
+											<h4>組長</h4>
+											<p>請支援收銀</p>
 										</div>
 
 										<div class="testimonial-item">
-											<img src="assets/img/testimonial-2.jpg"
+											<img src="images/預設頭像.png"
 												class="testimonial-img" alt="">
-											<h3>Sara Wilsson</h3>
-											<h4>Designer</h4>
-											<p>Export tempor illum tamen malis malis eram quae irure
-												esse labore quem cillum quid cillum eram malis quorum velit
-												fore eram velit sunt aliqua noster fugiat irure amet legam
-												anim culpa.</p>
+											<h3>潘 威承</h3>
+											<h4>技術長</h4>
+											<p>請支援收銀</p>
 										</div>
 
 										<div class="testimonial-item">
-											<img src="assets/img/testimonial-3.jpg"
+										
+										<!-- <img src="assets/img/testimonial-3.jpg"-->
+										<img src="images/預設頭像.png"
 												class="testimonial-img" alt="">
-											<h3>Jena Karlis</h3>
-											<h4>Store Owner</h4>
-											<p>Enim nisi quem export duis labore cillum quae magna
-												enim sint quorum nulla quem veniam duis minim tempor labore
-												quem eram duis noster aute amet eram fore quis sint minim.</p>
+											<h3>劉 士豪</h3>
+											<h4>組員</h4>
+											<p>請支援收銀</p>
 										</div>
 
 										<div class="testimonial-item">
-											<img src="assets/img/testimonial-4.jpg"
+											<img src="images/預設頭像.png"
 												class="testimonial-img" alt="">
-											<h3>Matt Brandon</h3>
-											<h4>Freelancer</h4>
-											<p>Fugiat enim eram quae cillum dolore dolor amet nulla
-												culpa multos export minim fugiat minim velit minim dolor
-												enim duis veniam ipsum anim magna sunt elit fore quem dolore
-												labore illum veniam.</p>
+											<h3>洪 上尚</h3>
+											<h4>組員</h4>
+											<p>請支援收銀</p>
 										</div>
 
 										<div class="testimonial-item">
@@ -530,8 +521,7 @@ body {
 						<div class="container" data-aos="fade-up">
 							<div class="section-header">
 								<h3>組員介紹</h3>
-								<p>Sed ut perspiciatis unde omnis iste natus error sit
-									voluptatem accusantium doloremque</p>
+								<p>關於我們</p>
 							</div>
 
 							<div class="row">
@@ -539,12 +529,13 @@ body {
 								<div class="col-lg-3 col-md-6" data-aos="zoom-out"
 									data-aos-delay="100">
 									<div class="member">
-										<img src="assets/img/team-1.jpg" class="img-fluid" alt="">
+										<img src="images/預設頭像450.png" class="img-fluid" alt="">
 										<!--使用正方形400*400以上的照片-->
+										<!-- <img src="assets/img/team-1.jpg" class="img-fluid" alt="">-->
 										<div class="member-info">
 											<div class="member-info-content">
-												<h4>Walter White</h4>
-												<span>Chief Executive Officer</span>
+												<h4>劉 玉玲</h4>
+												<span>組長</span>
 												<div class="social">
 													<a href=""><i class="fa fa-twitter"></i></a> <a href=""><i
 														class="fa fa-facebook"></i></a> <a href=""><i
@@ -562,8 +553,8 @@ body {
 										<img src="images/預設頭像450.png" class="img-fluid" alt="">
 										<div class="member-info">
 											<div class="member-info-content">
-												<h4>Sarah Jhonson</h4>
-												<span>Product Manager</span>
+												<h4>潘 威承</h4>
+												<span>技術長</span>
 												<div class="social">
 													<a href=""><i class="fa fa-twitter"></i></a> <a href=""><i
 														class="fa fa-facebook"></i></a> <a href=""><i
@@ -581,8 +572,8 @@ body {
 										<img src="images/預設頭像450.png" class="img-fluid" alt="">
 										<div class="member-info">
 											<div class="member-info-content">
-												<h4>William Anderson</h4>
-												<span>CTO</span>
+												<h4>劉 士豪</h4>
+												<span>組員</span>
 												<div class="social">
 													<a href=""><i class="fa fa-twitter"></i></a> <a href=""><i
 														class="fa fa-facebook"></i></a> <a href=""><i
@@ -600,8 +591,8 @@ body {
 										<img src="images/預設頭像450.png" class="img-fluid" alt="">
 										<div class="member-info">
 											<div class="member-info-content">
-												<h4>Amanda Jepson</h4>
-												<span>Accountant</span>
+												<h4>洪 上尚</h4>
+												<span>組員</span>
 												<div class="social">
 													<a href=""><i class="fa fa-twitter"></i></a> <a href=""><i
 														class="fa fa-facebook"></i></a> <a href=""><i
@@ -620,7 +611,7 @@ body {
 										<div class="member-info">
 											<div class="member-info-content">
 												<h4>程 文杰</h4>
-												<span>crew member</span>
+												<span>組員</span>
 												<div class="social">
 													<a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i
 														class="fa fa-facebook"></i></a> <a href="#"><i

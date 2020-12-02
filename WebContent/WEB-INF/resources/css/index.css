@@ -86,7 +86,7 @@ header {
 	width: 1440px;
 	margin: 0px auto; /* div置中 */
 }
-
+/*
 .div_li1 {
 	background-color: lightblue;
 	width: 200px;
@@ -104,12 +104,12 @@ header {
 	line-height: 400px;
 	float: right;
 }
-
+*/
 .div_li2 {
-	background-color: slategrey;
+	
 	margin-left: 200px;
 	margin-right: 200px;
-	height: 1800px;
+	
 	text-align: center;
 }
 /*
