@@ -65,6 +65,11 @@ public class ActPageEntryController {
 		return "/mountain/manage/updateAct";
 	}
 	
+	@GetMapping("/manage/resp/edite")
+	public String enterEditeResp(Model model, RedirectAttributes redAttr) {
+		return "/mountain/manage/respUpdate";
+	}
+	
 	//報名活動頁面
 	@GetMapping("/act/registry")
 	public String enterRegistry(Model model, RedirectAttributes redAttr) {

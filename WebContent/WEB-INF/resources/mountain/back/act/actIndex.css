@@ -1,0 +1,256 @@
+@charset "UTF-8";
+.m-con{
+	margin-top : 10px;
+	display : inline-flex;
+}
+.m-dl1-adj{
+	position : relative;
+	width : 300px;
+	line-height : normal;
+	
+}
+
+.sideNav{
+	width : 100%;
+	height : 100%;
+	display : inline-flex;
+}
+.m-hide{
+	display : none;
+}
+.m-dl2-adj{
+	position : relative;
+	height : 500px;
+	width : 1120px;
+	margin-left : 10px;
+	margin-right : auto;
+	left : auto;
+	right : auto;
+}
+.m-si-op{
+	margin-top : 25px;
+	font-size : 20px;
+	height : 50px;
+	width : 100%;
+	display : inline-flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.m-ma-container{
+	width : 100%;
+	height : 500px;
+	padding : 15px;
+	display : flex;
+    align-items:center;
+    justify-content:center;
+    transition : 1000ms;
+}
+/* 舉辦活動管理 */
+.m-ma-ta{
+	width : 100%;
+}
+.order-table-th{
+	font-size : 10px;
+}
+.d-li-na{
+	width:200px;
+}
+.hideTbody{
+	display : none;
+}
+.order-table-tb{
+	font-size : 15px;
+}
+.m-tb-date{
+	width : 85px
+}
+.hideTr{
+	transition : 1000ms;
+	display : none;
+}
+.m-tb-rt{
+	font-size : 10px;
+}
+.tr-up-form{
+	display : flex;
+    align-items:center;
+    justify-content:center;
+    padding : 5px;
+}
+.tr-up-form div{
+	margin : 10px;
+}
+.flex-box{
+	display : flex;
+    align-items:center;
+    justify-content:center;
+}
+.m-note-form{
+	padding : 5px;
+}
+.m-page{
+	border : 2px outset white;
+	background-color: #A6FFFF;
+	padding : 1px;
+	cursor : pointer;
+}
+.ver-mid{
+	display : flex;
+    align-items:center;
+    justify-content:center;
+}
+.tr-up-fld{
+	text-align : left;
+	width : 50%;
+}
+.tr-up-fld-div{
+	display : flex;
+    align-items:left;
+    justify-content:left;
+}
+.tr-up-label{
+	width : 25%;
+}
+.tr-up-error{
+	color: red;
+}
+.tr-reg-con{
+	width : 100%;
+	padding : 1px;
+}
+/* 報名單 */
+.tr-reg-head{
+	padding : 1px;
+	width : 100%;
+	display : flex;
+    align-items:left;
+    justify-content:left;
+}
+.tr-reg-order{
+	padding : 1px;
+	border-top : 1px inset gray;
+	width : 100%;
+	display : flex;
+    align-items:left;
+    justify-content:left;
+}
+.tr-reg-bar{
+	height : 16px;
+	background-color: #f5caad;
+	border: 1px solid black;
+	display : flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.tr-reg-head div{
+	border-left: 1px solid purple;
+}
+.tr-reg-seqno{width : 10%;}
+.tr-reg-mbName{width : 15%;}
+.tr-reg-regNum{width : 10%}
+.tr-reg-regDate{width : 20%;}
+.tr-reg-attr{width : 25%}
+.tr-reg-control{width : 20%}
+/* 報名詳細資料 */
+.tr-reg-info{
+	width : 90%;
+	margin-left : 10%;
+	transition : 1000ms;
+}
+.tr-reg-info-head{
+	padding : 1px;
+	width : 100%;
+	display : flex;
+    align-items:left;
+    justify-content:left;
+}
+.tr-reg-info-body{
+	padding : 1px;
+	border-left : 1px inset gray;
+	width : 100%;
+	display : flex;
+    align-items:left;
+    justify-content:left;
+}
+.tr-reg-info-name{ width : 15% }
+.tr-reg-info-bDay{ width : 20% }
+.tr-reg-info-pID{ width : 15% }
+.tr-reg-info-phone{ width : 15% }
+.tr-reg-info-cellphone{ width : 15% }
+.tr-reg-info-email{ width : 20% }
+
+
+/* 報名管理 */
+.m-ma-reg-ta{
+	font-size : 20px;
+	width : 100%;
+}
+.m-ma-reg-ta-th{
+	font-size: 20px;
+}
+.rg-main{
+	font-size : 18.5px;
+}
+.rg-info{
+	padding : 10px;
+}
+/*
+.rg-info-con{
+	margin-left : 15px;
+	margin-right : 5px;
+}
+*/
+.rg-info-head{
+	margin : 5px;
+	width : 100%;
+	display : flex;
+    align-items: center;
+    justify-content: center;
+}
+.rg-info-head div{
+}
+.rg-info-body{
+	margin : 10px;
+	width : 100%;
+}
+.rg-info-body-info{
+	width : 100%;
+	display : flex;
+    align-items: center;
+    justify-content: center;
+	
+}
+.rg-info-body-update{
+	margin : 5px auto;
+	width : 100%;
+	display : flex;
+    align-items: center;
+    justify-content: center;
+}
+.rg-info-body-update div{
+	display : flex;
+    align-items: center;
+    justify-content: center;
+}
+.rg-info-body-update input{
+	width : 95%
+}
+.rg-info-body-info div{
+	display : flex;
+    align-items: center;
+    justify-content: center;
+}
+.rg-info-seqno{ width : 10% }
+.rg-info-name{ width : 12.5%}
+.rg-info-bDay{ width : 10%}
+.rg-info-pID{ width : 12.5%}
+.rg-info-phone{ width : 10%}
+.rg-info-cellphone{ width : 12.5%}
+.rg-info-email{ width : 19%}
+.rg-info-controll{ width : 15%}
+.rg-info-controll div{ margin : 0px 10px;}
+.rg-info-updateCtrl{ width : 14%}
+.rg-info-updateCtrl div{ margin : 0px 10px;}
+

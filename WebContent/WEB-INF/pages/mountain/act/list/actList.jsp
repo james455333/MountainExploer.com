@@ -56,6 +56,9 @@
 <!-- Login Dialog -->
 <script src="//code.jquery.com/jquery-1.9.1.js"></script>
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<!-- jquery.blockUI -->
+<script src="http://malsup.github.io/jquery.blockUI.js"></script>
+
 </head>
 
 
@@ -89,7 +92,12 @@
 		<div class="div_li3"></div>
 		<div class="div_li2">
 			<!-- 每頁不同的內容從這裡開始 -->
-
+			<nav>
+				<ol class="breadcrumb" id="bc">
+					<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
+					<li class="breadcrumb-item active">活動討論區</li>
+				</ol>
+			</nav>
 
 			<div class="searchBar m-list-searchBar">
 				<nav>

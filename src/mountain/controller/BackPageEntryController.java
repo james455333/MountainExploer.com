@@ -20,8 +20,12 @@ public class BackPageEntryController {
 	//前往查詢頁面
 	@RequestMapping("/retrieveEntry")
 	public String retrievePage(RedirectAttributes redirectAttributes,Model model) {
-		
 		return "mountain/back/backMountain";
+	}
+	//	 活動主頁
+	@RequestMapping("/actIndexEntry")
+	public String retrieveActPage(RedirectAttributes redirectAttributes,Model model) {
+		return "mountain/back/activity/index";
 	}
 	
 	

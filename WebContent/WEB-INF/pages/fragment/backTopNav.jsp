@@ -6,7 +6,7 @@
 	</header>
 		<nav id="navbar1">
 			<div><a href='<c:url value="/member/memberBackEntry"/>'>會員資料</a></div>
-			<div><a href="#">活動紀錄(尚未實作)</a></div>
+			<div><a href="/MountainExploer.com/backstage/mountain/actIndexEntry">活動紀錄</a></div>
 			<div><a href='<c:url value="/backstage/mountain/retrieveEntry"/>'>山岳及路線資料</a></div>
 			<div><a href='<c:url value="/mountainCampBack/selectAll?selectarea=&selectcounties=&no=1&page=1"/>'>露營地資料</a></div>
 			<div><a href='<c:url value="/mountainHouseBack/selectAll?page=1&no=1&parkid="/>'>山中小屋資料</a></div>

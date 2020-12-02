@@ -39,9 +39,17 @@ if (urlNow.searchParams.has("search")) {
 
 
 
-
 $(function(){
+	$(document).ajaxStop(function(){
+		setTimeout($.unblockUI,500)
+	}); 
 	
+	$(document).ajaxStart(
+		$.blockUI({ 
+			message: '<div><img src="/MountainExploer.com/images/loading.gif" /><h2>讀取中</h2><div>',
+			css : { backgroundColor : 'transparent', border : 'none', } 
+			})
+	)
 	/*	依照頁面命令變數值(od)，給予呼叫的函式相應的參數	*/
 	ajaxCheckLogin(od)
 	

@@ -9,8 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -93,6 +97,29 @@ public class RespCRUDController {
 		
 	}
 	
-	
+	@GetMapping("/update.{seqno}")
+	public ActResponse getOriginResp(
+			ActResponse actResponse,
+			@PathVariable("seqno")Integer seqno)throws Exception{
+
+		service.save(actResponse);
+		actResponse = (ActResponse) service.select(seqno);
+		return actResponse;
+		
+	}
+	@PutMapping("/update.{seqno}")
+	public Boolean updateResp(
+			ActResponse actResponse,
+			@RequestBody byte[] updateResp,
+			@PathVariable("seqno")Integer seqno)throws Exception{
+		System.out.println("=============== msg : " + new String(updateResp, MountainGlobal.CHARSET));
+		service.save(actResponse);
+		ActResponse originActResponse = (ActResponse) service.select(seqno);
+		originActResponse.setMessage(updateResp);
+		originActResponse.setChangeDate(new Date());
+		service.update(originActResponse);
+		return true;
+		
+	}
 	
 }

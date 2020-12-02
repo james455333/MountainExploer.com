@@ -43,6 +43,8 @@
 	<!-- Login Dialog -->
 	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<!-- jquery.blockUI -->
+	<script src="http://malsup.github.io/jquery.blockUI.js"></script>
 </head>
 
 <body>
@@ -111,26 +113,20 @@
 			    </div>
 			</div>
     	</div>
-        <!-- <div class="導覽列表">
-            <nav>
-                <ul class="second_nav">
-                    <li class="li1"><a href="#">第二導覽列1</a></li>
-
-                    <li class="li1"><a href="#">第二導覽列2</a></li>
-
-                    <li class="li1"><a href="#">第二導覽列3</a></li>
-
-                    <li class="li1"><a href="#">第二導覽列4</a></li>
-                </ul>
-            </nav>
-        </div> -->
+        
         <div class="div_li1">
         </div>
         <div class="div_li3">
         </div>
         <div class="div_li2">
             <!-- 每頁不同的內容從這裡開始 -->
-            
+            <nav>
+				<ol class="breadcrumb" id="bc">
+					<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
+					<li class="breadcrumb-item"><a href="/MountainExploer.com/mountain/list?page=1&od=1">活動討論區</a></li>
+					<li class="breadcrumb-item active">發表活動</li>
+				</ol>
+			</nav>
             <div class="innerContainer">
 				<!--	活動標題 	-->
 				<table class="actTitle">
@@ -160,7 +156,7 @@
 									<!-- 會員頭像 -->
 									<div class="memeberImgContainer">
 										<a href="">
-											<img class="memeberImg" src="https://profunder.com/wp-content/uploads/2016/04/default-male.png">
+											<img class="memeberImg" src="">
 										</a>
 									</div>
 								</td>
@@ -169,7 +165,9 @@
 									<div class="d_time"></div>
 									<!-- 修改 -->
 									<div class="d_ctrl">
-										<button type="button" class="btn-detail-update btn btn-info btn-sm"><i class="fas fa-edit"></i> 編輯</button>
+										<a>
+											<button type="button" class="btn-detail-update btn btn-info btn-sm"><i class="fas fa-edit"></i> 編輯</button>
+										</a>
 									</div>
 									
 									<!-- 發文內容 -->
@@ -184,9 +182,9 @@
 										<div class="d_member_check">
 											<div class="memberLocker">
 												瀏覽完整內容，請先
-												<a href="#dialog-form">註冊</a>
+												<a href="/MountainExploer.com/member/memberRegisterEntry">註冊</a>
 												或
-												<a href="#dialog-form" class="login-alert">登入會員</a>
+												<a href="/MountainExploer.com/member/memberLoginEntry">登入會員</a>
 											</div>
 											<!-- 圖片 (複數:最多5) -->
 											<div class="d_act_img_con">
@@ -202,7 +200,7 @@
 											</div>
 											<!-- 報名鈕 -->
 											<div class="goReg">
-												<a href="#"></a>
+												<a></a>
 											</div>
 											
 										</div>
