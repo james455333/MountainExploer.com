@@ -72,6 +72,7 @@ public class CampInfoBeanDAO implements ICampInfoBeanService {
 
 	@Override
 	public List<CampInfoBean> selectcampid(int campid) {
+		
 		Query<CampInfoBean> query = getSession().createQuery("From CampInfoBean where campbasicid=" + campid, CampInfoBean.class);
 		List<CampInfoBean> list = query.list();
 		return list;
@@ -205,6 +206,8 @@ public class CampInfoBeanDAO implements ICampInfoBeanService {
 			Query query = getSession().createQuery("From CampInfoBean  where counties in (From CountiesBean  where area like '%" + area + "%') ",CampInfoBean.class);
 			result = query.list().size();
 		}
+		
+		
 		return result;		
 			
 	}
@@ -214,6 +217,7 @@ public class CampInfoBeanDAO implements ICampInfoBeanService {
 		long result = (long) query.uniqueResult();
 		return (int)result;		
 	}
+
 //	@Override
 //	public int countcountiesname(String counties) {		
 //		Query query = getSession().createQuery("Select count(*) From CampInfoBean where counties like '%" + counties + "%'");
