@@ -75,8 +75,12 @@ public class ProductCUDController {
 		byte[] descriptionBytes = description.getBytes("UTF-8");
 		itemInfo.setDescription(descriptionBytes);
 		
-		byte[] imageBytes = TransFuction.downloadImage(multipartFile);
-		itemInfo.setImg(imageBytes);
+		if (multipartFile != null && !multipartFile.isEmpty()) {
+			byte[] imageBytes = TransFuction.downloadImage(multipartFile);
+			itemInfo.setImg(imageBytes);
+		}
+		
+		
 		itemInfoService.update(itemInfo);
 		itemBasicService.update(itemBasic);
 		
