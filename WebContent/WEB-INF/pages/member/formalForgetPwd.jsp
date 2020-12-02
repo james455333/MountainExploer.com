@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>岳進者</title>
+    <title>岳進者找回密碼</title>
     <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
     <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
     <link rel="stylesheet" href="/MountainExploer.com/css/personalPage.css">
@@ -27,6 +28,19 @@
 </head>
 
 <body>
+	<c:choose>
+		<c:when test="${!empty errors}">
+			<script type="text/javascript" charset="UTF-8">
+				var errors = "${errors.msg}";
+			</script>
+		</c:when>
+		<c:otherwise>
+			<script type="text/javascript">
+				var errors = null;
+			</script>
+		</c:otherwise>
+	</c:choose>
+	
     
     <div class="count1">
         <div class="count1_img">
@@ -49,60 +63,14 @@
     </header>
     <div class="div_ul">
         <div class="div_li1">
-            <a>保留區</a>
+            <a></a>
         </div>
         <div class="div_li3">
-            <a>保留區</a>
+            <a></a>
         </div>
         <div class="div_li2">
             <!-- 每頁不同的內容從這裡開始 -->
-            <div class="secDivContent">
-                <div id="dialog-form" title="登入/註冊">
-                    <div id="login-div" class="ui-dialog">
-                        <div class="login-body" id="login-panel">
-                            <table class="logintable" style="margin: 0 auto;">
-                                <tbody>
-                                    <tr style="text-align: right;">
-                                        <th>帳號:</th>
-                                        <td><input name="username" type="text" style=" width: 200px;border: 1px #ABADB3 solid;
-                                          padding: 5px 3px 5px; "></td>
-                                    </tr>
-                                    <tr style="text-align: right;">
-                                        <th>密碼:</th>
-                                        <td>
-                                            <div>
-                                                <input type="password"
-                                                    style="width: 200px;border: 1px #ABADB3 solid;padding: 5px 3px 5px; ">
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th></th>
-                                        <td>
-                                            <div>
-                                                <a href="#">忘記密碼</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th></th>
-                                        <td>
-                                            <div>
-                                                <label>
-                                                    記住我<input type="checkbox" name="rememberme" style="float: left;">
-                                                </label>
-                                            </div>
-
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <br>
-                            <div style="text-align: center;">立即<a href="#" style="color:blue;">註冊</a>新帳號</div>
-                        </div>
-                    </div>
-                </div>
-                <button id="create-user">登入/註冊</button>
+            
                 <div class="pageControl">
 
                     
@@ -135,65 +103,20 @@
                         名稱:<br>
                         生日:<br>
                         性別:<br> -->
-                        
-                        <form>
-                            <div class="form-group row" style="margin-right: 15px;
-                            margin-left: 15px; margin-top: 15px;">
-                              <label for="" class="col-2 col-form-label"><a><img src="/MountainExploer.com/images/personal/padlock.png" alt="" style="width:30%;"></a></label> 
+                        <h2>找回密碼：</h2>
+                        <form action="<c:url value='/member/memberPwdFoundAction' />" method="POST">
+                        	<div class="form-group row" style="margin-right: 15px;
+                            margin-left: 15px;">
+                              <label for="text2" class="col-2 col-form-label">帳號：</label> 
                               <div class="col-8">
                                 <div class="input-group">
                                   <div class="input-group-prepend">
                                     <div class="input-group-text">
-                                      <i class="fa fa-id-badge"></i>
+                                      <i class="fa fa-envelope"></i>
                                     </div>
                                   </div> 
-                                  <input id="" name="" placeholder="123" type="text" class="form-control">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="form-group row" style="margin-right: 15px;
-                            margin-left: 15px;">
-                              <label for="" class="col-2 col-form-label">密碼:</label> 
-                              <div class="col-8">
-                                <div class="input-group">
-                                  <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                      <i class="fa fa-lock"></i>
-                                    </div>
-                                  </div> 
-                                  <input id="" name="" placeholder="123" type="text" class="form-control">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="form-group row" style="margin-right: 15px;
-                            margin-left: 15px;">
-                              <label for="text" class="col-2 col-form-label">生日:</label> 
-                              <div class="col-8">
-                                <div class="input-group">
-                                  <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                      <i class="fa fa-birthday-cake"></i>
-                                    </div>
-                                  </div> 
-                                  <input id="text" name="text" placeholder="ex1996.01.01" type="text" class="form-control">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="form-group row" style="margin-right: 15px;
-                            margin-left: 15px;">
-                              <label class="col-2">性別:</label> 
-                              <div class="col-8">
-                                <div class="custom-control custom-radio custom-control-inline">
-                                  <input name="radio" id="radio_0" type="radio" class="custom-control-input" value="boy" required="required"> 
-                                  <label for="radio_0" class="custom-control-label">男</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                  <input name="radio" id="radio_1" type="radio" class="custom-control-input" value="girl" required="required"> 
-                                  <label for="radio_1" class="custom-control-label">女</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                  <input name="radio" id="radio_2" type="radio" class="custom-control-input" value="no" required="required"> 
-                                  <label for="radio_2" class="custom-control-label">不選擇</label>
+                                  <input id="account" name="account" type="text" class="form-control account" placeholder="請輸入您的帳號" required="required">
+                                 
                                 </div>
                               </div>
                             </div>
@@ -207,27 +130,21 @@
                                       <i class="fa fa-envelope"></i>
                                     </div>
                                   </div> 
-                                  <input id="text2" name="text2" placeholder="aaa0111@example.com" type="text" class="form-control">
+                                  <input id="email" name="email" type="text" class="form-control email" placeholder="請輸入您註冊時的Email" required="required">
+                                  
                                 </div>
                               </div>
                             </div>
-                            <div class="form-group row" style="margin-right: 15px;
-                            margin-left: 15px;">
-                              <label class="col-2 col-form-label" for="textarea">個人簡介:</label> 
-                              <div class="col-8">
-                                <textarea id="textarea" name="textarea" cols="40" rows="5" class="form-control"></textarea>
-                              </div>
-                            </div> 
-                            <div class="form-group row" style="margin-right: 15px;
-                            margin-left: 15px;">
+                            
                               <div class="offset-4 col-8" style="margin: 0 auto;">
-                                <button name="submit" type="submit" class="btn btn-primary">確認更改</button>
-                                <button name="submit" type="submit" class="btn btn-primary">取消</button>
+                                <button name="submit" type="submit" class="btn btn-primary submit">送出</button>
+                                <button name="submit" type="reset" class="btn btn-primary">取消</button>
                               </div>
+                              </form>
                             </div>
-                          </form>
-
+                             
                     </div>
+                  
                     <div id="padLock" style="display: none;">
                         安全性<br>
                         帳號:(唯讀)<br>
@@ -272,6 +189,6 @@
 <!--sweet alert-->
 <script src="/MountainExploer.com/js/includejsp.js"></script>
 <script src="/MountainExploer.com/js/personalContrul.js"></script><!-- 個人資料控制列表 -->
-
+<script src="formalForgetPwd.js"></script>
 
 </html>

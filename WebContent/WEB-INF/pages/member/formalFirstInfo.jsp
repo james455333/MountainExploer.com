@@ -58,7 +58,7 @@
                     <fieldset>
                         <legend>${Member.name}的認證資料</legend>
                     </fieldset>
-                    <div>
+                    <div style="display:none">
 						<label>會員編號：</label>
 						<input type="text" name="seqno" id="seqno" value="${Member.seqno}">
 						<label>身分組ID：</label>

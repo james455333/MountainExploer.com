@@ -1,8 +1,22 @@
-//快速註冊
-$(".fastRg").on("click", function(){
-    $("#account").val("nnnnn789");
-    $("#pwd").val("DoingTest123");
-    $("#chkPwd").val("DoingTest123");
-    $("#name").val("布倫希爾德");
-    $("#email").val("lancer100@gmail.com");
+$(".submit").on("click", function(){
+    if(errors != null){
+       swal({
+           title: "登入失敗",
+           icon: "error"
+       });
+    }else{
+        swal({
+            title: "登入成功",
+            icon: "success"
+        });
+    }
+
 })
+
+// $(".test").on("click", function(){
+//     swal({
+//         title: "測試成功",
+//         icon: "success"
+//     })
+
+// })

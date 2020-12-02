@@ -36,6 +36,19 @@
 </head>
 
 <body>
+	<c:choose>
+		<c:when test="${!empty errors}">
+			<script type="text/javascript" charset="UTF-8">
+				var errors = "${errors.msg}";
+			</script>
+		</c:when>
+		<c:otherwise>
+			<script type="text/javascript">
+				var errors = null;
+			</script>
+		</c:otherwise>
+	</c:choose>
+	
     <div class="count1">
         <div class="count1_img">
             <img src="/MountainExploer.com/images/logo1.png">
@@ -107,7 +120,8 @@
                                                     		checked="checked"
                                        	</c:if> value="true">
                                        	<label for="rememberme">記住我</label>
-                                    <input type="submit" class="submit" value="登入">
+                                    <input type="submit" class="submit" id="submit" value="登入">
+<!--                                     <input type="button" class="test" value="test"> -->
                                 </td>
                             </tr>
                         </tbody>
@@ -135,9 +149,10 @@
     </footer>
 </body>
 <script src="/MountainExploer.com/js/upLoadImg.js"></script><!-- 上傳頭像 -->
-<!-- <script src="/MountainExploer.com/js/login.js "></script> -->
 <script src="/MountainExploer.com/js/table.js"></script>
 <script src="/MountainExploer.com/js/topBar.js"></script>
-<script src="/MountainExploer.com/js/sweetalert.js"></script><!--sweet alert-->
+<!-- <script src="/MountainExploer.com/js/sweetalert.js"></script>sweet alert -->
 <script src="/MountainExploer.com/js/includejsp.js"></script>
+<script src="formalLoginAlone.js"></script>
+
 </html>

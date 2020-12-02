@@ -63,10 +63,10 @@
     </header>
     <div class="div_ul">
         <div class="div_li1">
-            <a>保留區</a>
+            <a></a>
         </div>
         <div class="div_li3">
-            <a>保留區</a>
+            <a></a>
         </div>
         <div class="div_li2">
             <!-- 每頁不同的內容從這裡開始 -->
