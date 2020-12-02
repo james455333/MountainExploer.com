@@ -103,7 +103,7 @@
 						<!-- tbody更改從這邊開始 -->
 						<tr>
 						<td  colspan="2">
-						<img src="<c:url value='/backstage/product/search/images?seqno=${ProductBean.seqno}' />"	>
+						<img style="width: 400px" src="<c:url value='/backstage/product/search/images?seqno=${ProductBean.seqno}' />"	>
 						</td>
 						</tr>
 						<tr>
