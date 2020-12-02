@@ -104,22 +104,23 @@ header {
 	/* div置中 */
 }
 
-/* .div_li1 {
-	background-color: rgb(208, 243, 255);
+.div_li1 {
+	/* background-color: rgb(208, 243, 255); */
 	width: 200px;
-	height: 1800px;
+	/* height: 1800px; */
 	text-align: center;
 	line-height: 400px;
 	float: left;
 }
 
 .div_li3 {
+	/* background-color: rgb(208, 243, 255); */
 	width: 200px;
-	height: 1800px;
+	/* height: 1800px; */
 	text-align: center;
 	line-height: 400px;
 	float: right;
-} */
+}
 
 .div_li2 {
 	background-color: rgb(243, 248, 194); 
@@ -201,7 +202,7 @@ header {
 nav ul {
 	list-style-type: none;
 	margin: 0;
-	padding: 0;
+	/* padding: 0; */
 }
 
 .second_nav li a:hover {
@@ -221,11 +222,11 @@ nav ul {
 
 .secDivContent {
 	position: relative;
-	top: 100px;
+	/* top: 100px; */
 	width: 1000px;
 	/*height: 1600px;*/
 	height: auto;
-	margin: 0px auto;
+	margin: 5px auto;
 	/* border: 5px solid black; */
 }
 
@@ -392,9 +393,9 @@ tr:nth-child(odd) {
 	font-size: 15px;
 	font-stretch: 100%;
 	font-weight: 400;
-	height: 30px;
+	/* height: 30px; */
 	line-height: normal;
-	margin: 5px auto;
+	margin: 0px auto;
 	padding-bottom: 5px;
 	padding-left: 5px;
 	padding-right: 5px;
@@ -407,7 +408,7 @@ tr:nth-child(odd) {
 
 .li1 {
 	padding: 0px 20px;
-	float: left;
-	font-size: 25px;
+	/* float: left; */
+	font-size: 20px;
 	/* color: black; */
 }

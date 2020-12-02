@@ -152,7 +152,7 @@
                 </table>
 
                 <nav class="pageControl">
-                    <ul>
+                    <ul style="display: inline-flex;">
                         <li class="li1">
                             <a href="#">«第一頁</a>
                         </li>
