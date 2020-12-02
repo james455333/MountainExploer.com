@@ -1,10 +1,11 @@
 
 var shareURL = "/MountainExploer.com/mountain/public"
 var manageHome = "/MountainExploer.com/mountain/manage/crud"
+var backHome = "/MountainExploer.com/backsatage/mountain"
 var detailURL = "/MountainExploer.com/mountain/act/detail?page=1&actID="
 var status, totalPage, totalData;
 var nowDate = Number(new Date());
-var limitStartDate = new Date(nowDate + ((60*60*24*1000)*14)) ;
+var limitStartDate = new Date(nowDate + ((60*60*24*1000)*21)) ;
 		
 var urlNow = new URL(window.location.href)
 	
@@ -13,18 +14,18 @@ if(urlNow.searchParams.has("status")){
 }
 
 $(function(){
-	checkStatus()
+//	checkStatus()
 
-	$(".m-si-op").eq(0).on("click",function(){
+	$("#btn-post").on("click",function(){
 		post(1);
 	});
-	$(".m-si-op").eq(1).on("click",function(){
+	$("#btn-reg").on("click",function(){
 		registry(1);
 	});
 //	$(".m-si-op").eq(2).on("click",function(){
 //		record(1);
 //	});
-	$(".m-si-op").eq(2).on("click",function(){
+	$("#btn-repo").on("click",function(){
 		report(1);
 	});
 	
@@ -125,4 +126,11 @@ function setSuspend(){
 	$(".sideNav").find(".m-si-op").remove();
 }
 
+function dateFormate(date) {
+	let result = "";
+	result = result.concat(new Date(date).toLocaleDateString())
+		.concat(" " + new Date(date).toLocaleTimeString())
+
+	return result;
+}
 

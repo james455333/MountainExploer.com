@@ -2,10 +2,14 @@ package mountain.controller.act;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -23,7 +27,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -402,7 +405,6 @@ public class ActCRUDController {
 		InterfaceService<GenericTypeObject> service = this.service;
 		service.save(actBasic);
 
-		// set actBean
 		actBasic = (ActivityBasic) service.select(actID);
 		resultMap.put("actBasic", actBasic);
 		service.save(new ActRegInfo());
@@ -421,12 +423,27 @@ public class ActCRUDController {
 
 		// set RespList
 		List<Map<String, Object>> respList = new ArrayList<Map<String, Object>>();
-		String respHql = "From ActResponse where activityBasic = " + actID;
+		String respHql = "From ActResponse where activityBasic = " + actID + "order by postDate";
 		List<ActResponse> returnRespBeans = (List<ActResponse>) service.getwithHQL(respHql, page, respShowData);
 //			System.out.println("================returnRespBeans size :" + returnRespBeans.size());
 		for (ActResponse returnRespBean : returnRespBeans) {
 			// Set acRespMap in respList
 			Map<String, Object> actRespMap = new HashMap<String, Object>();
+			
+			// Set sideResponse's order
+//			Set<ActSideResponse> actSideResponse = returnRespBean.getActSideResponse();
+//			Set<ActSideResponse> orderSetwithDate;
+//			if(actSideResponse.size() != 0) {
+//				orderSetwithDate = orderSetwithDate(actSideResponse);
+//				Iterator<ActSideResponse> iterator = orderSetwithDate.iterator();
+//				int count = 0;
+//				while (iterator.hasNext()) {
+//					System.out.println("No" + count + " : " + iterator.next().getPostDate().getTime());
+//					count++;
+//				}
+//				returnRespBean.setActSideResponse(orderSetwithDate);
+//			}
+			
 			// Set actResp in acRespMap
 			actRespMap.put("actResp", returnRespBean);
 			// Set respMB in acRespMap
@@ -452,6 +469,41 @@ public class ActCRUDController {
 		resultMap.put("images", imgSeqList);
 		return resultMap;
 
+	}
+	/* 依日期排序 */
+	private Set<ActSideResponse> orderSetwithDate(Set<ActSideResponse> actSideResponse) {
+		Iterator<ActSideResponse> iterator = actSideResponse.iterator();
+		long[] timeArray = new long[actSideResponse.size()] ;
+		int i = 0;
+		while (iterator.hasNext()) {
+			ActSideResponse next = iterator.next();
+			timeArray[i] = next.getPostDate().getTime();
+			System.out.println("===================="+ i +  " : " + timeArray[i]);
+			i++;
+		}
+		Arrays.sort(timeArray);
+		Set<ActSideResponse> orderSet = new HashSet<ActSideResponse>();
+		System.out.println("==========before orderSet.size  : " + orderSet.size());
+		for (int j = timeArray.length-1; j >= 0 ; j--) {
+			iterator = actSideResponse.iterator();
+			while (iterator.hasNext()) {
+				ActSideResponse next = iterator.next();
+				long oldOrderTime = next.getPostDate().getTime();
+				if (oldOrderTime == timeArray[j] ) {
+					timeArray[j] = 0;
+					System.out.println("========== order" + j + " : " + oldOrderTime);
+					orderSet.add(next);
+				}
+			}
+		}
+		System.out.println("==========after orderSet.size  : " + orderSet.size());
+		Iterator<ActSideResponse> iterator2 = orderSet.iterator();
+		while (iterator2.hasNext()) {
+			System.out.println(iterator2.next().getPostDate().getTime());
+			
+		}
+		
+		return orderSet;
 	}
 
 	/*

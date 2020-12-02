@@ -1,8 +1,10 @@
 package mountain.controller.back;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -10,15 +12,23 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import main.generic.service.InterfaceService;
+import member.model.MemberBasic;
+import main.generic.model.GenericTypeObject;
 import main.generic.service.GenericService;
 import mountain.MountainGlobal;
+import mountain.model.activity.ActivityBasic;
+import mountain.model.activity.Registry.ActRegInfo;
+import mountain.model.activity.Registry.ActRegistry;
 import mountain.model.route.NationalPark;
 import mountain.model.route.RouteBasic;
 import mountain.model.route.RouteInfo;
@@ -28,6 +38,8 @@ import mountain.model.route.RouteInfo;
 public class BackCUDController {
 	@Autowired
 	private HttpServletRequest request;
+	@Autowired
+	private GenericService<GenericTypeObject> service;
 	@Autowired
 	private GenericService<NationalPark> npService;
 	@Autowired
@@ -215,8 +227,80 @@ public class BackCUDController {
 		
 	}
 	
-
 	
+	/* 後臺活動管理 */
+
+	@GetMapping("/back-post")
+	@ResponseBody
+	public Map<String, Object> postShow(
+			Model model,
+			ActivityBasic actBasic,
+			@RequestParam("page")Integer page){
+		Map<String, Object> resutlMap = new HashMap<String, Object>();
+		
+		String hql = "From ActivityBasic"
+					+ " order by seqno";
+		
+		String all = "select count(*) ".concat(hql);
+		int showData = 10;
+		int totalData = service.countWithHql(all);
+		int totalPage = (int)Math.ceil(totalData*1.0 / showData );
+		service.save(actBasic);
+		List<ActivityBasic> activityBasics = (List<ActivityBasic>) service.getwithHQL(hql, page, showData);
+		List<Map<String, Object>> actList = new ArrayList<Map<String,Object>>();
+		for (ActivityBasic activityBasic : activityBasics) {
+			Map<String, Object> actMap = new HashMap<String, Object>();
+			
+			service.save(new ActRegInfo());
+			String reghql = "Select count(*) From ActRegInfo ari where ari.actRegistry in (From ActRegistry ar where cancelTag is null and ACTIVITY_BASIC_SEQNO = "+ activityBasic.getSeqno() + ")";
+			int nowReg = service.countWithHql(reghql);
+			System.out.println("============== actID : " + activityBasic.getSeqno());
+			actMap.put("actBasic", activityBasic);
+			actMap.put("nowReg", nowReg);
+			actMap.put("routeBasic", activityBasic.getActInfo().getRtBasic());
+			actList.add(actMap);
+		}
+		
+		resutlMap.put("totalData", totalData);
+		resutlMap.put("totalPage", totalPage);
+		resutlMap.put("page", page);
+		resutlMap.put("actList", actList);
+		
+		return resutlMap;
+	}
+	
+	@GetMapping("/back-registry")
+	@ResponseBody
+	public Map<String, Object> memberRegistry(
+			Model model,
+			ActRegistry actRegistry,
+			@RequestParam("page") Integer page){
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		MemberBasic mb =  (MemberBasic) model.getAttribute("Member");
+		service.save(actRegistry);
+		
+		String hql = "From ActRegistry where activityBasic in (select id From ActivityInfo where sysdate < startDate) order by reqDate desc, seqno desc, activityBasic desc";
+		String all = "select count(*) ".concat(hql);
+		int showData = 10;
+		int totalData = service.countWithHql(all);
+		int totalPage = (int)Math.ceil(totalData*1.0 / showData );
+		List<ActRegistry> actRegistryList = (List<ActRegistry>) service.getwithHQL(hql, page, showData);
+		
+		List<Map<String, Object>> regList = new ArrayList<Map<String,Object>>();
+		for (ActRegistry actReg : actRegistryList) {
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("registry", actReg);
+			map.put("actInfo", actReg.getActivityBasic().getActInfo());
+			regList.add(map);
+		}
+		
+		resultMap.put("regList", regList);
+		resultMap.put("totalPage", totalPage);
+		resultMap.put("totalData", totalData);
+		resultMap.put("page", page);
+		
+		return resultMap;
+	}
 	
 	
 }

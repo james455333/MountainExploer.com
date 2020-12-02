@@ -80,7 +80,9 @@ function insertElement(data){
 	}
 	console.log(anchorThis)
 	if(anchorThis != ''){
+		console.log($(anchorThis))
 		let t = $(anchorThis).offset().top
+		console.log(t)
 		$(window).scrollTop(t);
 	}
 }
@@ -91,6 +93,7 @@ function insertTitle(data){
 	let url = actEnterURL + "page=1&actID=" + actID 
 	$(".a_title").find("a").attr("href",url)
 	$(".a_title").find("a").html(data.actBasic.actInfo.title)
+	$("#bc").find("li").eq(2).html(data.actBasic.actInfo.title)
 }
 
 //	函式 : 動態新增 => 會員區域
@@ -109,16 +112,14 @@ function insertMemberTD(thisElm, memberBasic){
 }
 //	函式 : 動態新增 => 回覆與留言
 function insertResp(respElm, respList, posterSeqno){
-	respElm.find("input[name='seqno']")
-			.attr("id","id_" + respList.actResp.seqno)
-			.val(respList.actResp.seqno)
+	respElm.attr("id",respList.actResp.seqno)
 	//	編輯按鈕走向
-	console.log(respElm.find(".d_ctrl").find("button"))
-	respElm.find(".d_ctrl").find("button").on("click",function(){
-		window.location.href= "/MountainExploer.com/mountain/manage/resp/edite?seqno=" + respList.actResp.seqno
-	})
+//	console.log(respElm.find(".d_ctrl").find("button"))
+	respElm.find(".d_ctrl").find("a")
+	.attr("href","/MountainExploer.com/mountain/manage/resp/edite?seqno=" 
+	+ respList.actResp.seqno + "&actID=" + actID + "&page=" + page)
 	//	回覆
-	var postD = dateFormate(respList.actResp.postDate)
+	var postD = dateFormate(respList.actResp.postDate) + new Date(respList.actResp.postDate).toLocaleTimeString()
 	respElm.find(".d_time").html("最後發表於 " + postD)
 	editCheck(respElm,respList.actResp.changeDate);
 	
@@ -178,7 +179,7 @@ function insertMainContent(thisElm, data){
 		$(".d_Main").html("本區域已被隱藏顯示")
 		return;
 	}
-	thisElm.find(".d_time").html("發表於 " + dateFormate(actInfo.postDate));
+	thisElm.find(".d_time").html("發表於 " + dateFormate(actInfo.postDate) + new Date(actInfo.postDate).toLocaleTimeString());
 	insertDefault(thisElm,data)
 
 	//	測試登入與否
@@ -251,8 +252,8 @@ function editCheck(thisElm, changeDate){
 	let update = "";
 	if(changeDate != null){
 		update = update.concat('最後一次編輯於    ')
-					.concat(dateFormate(changeDate))
-		console.log(thisElm.find(".d_text").find("i"))
+					.concat(dateFormate(changeDate) + new Date(changeDate).toLocaleTimeString() )
+//		console.log(thisElm.find(".d_text").find("i"))
 		thisElm.find(".d_text").find("i").html(update).css("display","block")
 	}
 }
@@ -270,12 +271,16 @@ function insertSideResp(respElm, sideRespList){
 	for(let i in sideRespList){
 		let sideRespCon = respElm.find(".d-sr-body").eq(i).clone();
 		respElm.find(".d-sr-body").eq(i).css("display","flex")
-		respElm.find(".d_sr_img").eq(i).find("img").attr("src","https://profunder.com/wp-content/uploads/2016/04/default-male.png")
+		respElm.find(".d_sr_img").eq(i).find("img")
+			.attr("src","/MountainExploer.com/member/showUserImg?userSeq=" + sideRespList[i].memberBasic.memberInfo.seqno)
+			.on("error",function(){
+					$(this).attr("src","/MountainExploer.com/images/預設頭像.png")
+				})
 		respElm.find(".d_sr_img").eq(i).find("a").attr("href","")
 		respElm.find(".d_sr_text").eq(i).find("a").html(sideRespList[i].memberBasic.memberInfo.neck_name)
 				.attr("href","")
 		respElm.find(".d_sr_text").eq(i).find("span").eq(0).html(sideRespList[i].msg)
-		respElm.find(".d_sr_text").eq(i).find("span").eq(1).append(dateFormate(sideRespList[i].postDate))
+		respElm.find(".d_sr_text").eq(i).find("span").eq(1).append(dateFormate(sideRespList[i].postDate) + new Date(sideRespList[i].postDate).toLocaleTimeString())
 		respElm.find(".d_sr").append(sideRespCon)
 	}
 }
@@ -381,8 +386,7 @@ function loginConfirmSWAL(){
 function ajaxAddComment(thisBtn, thisComment){
 	
 	let formData = new FormData();
-	let respSeqno = thisBtn.parents(".actPost")
-			.find("input[name='seqno']").val()
+	let respSeqno = thisBtn.parents(".actPost").attr("id")
 	formData.append("message",thisComment)
 	
 	$.ajax({
@@ -452,10 +456,10 @@ function checkResp(){
 }
 
 function confirmNewResp(data){
-	let goURL = actEnterURL + "page=" + data.totalPage + "&actID=" + actID
+	let goURL = actEnterURL + "page=" + data.totalPage + "&actID=" + actID + "#" + data.respID
 	setTimeout(function(){
-		console.log(goURL)
-		window.location.assign(goURL)
+		window.location.href = goURL
+		window.location.reload()
 	},2800)
 	swal({
 		title : "發布回覆成功",
@@ -464,8 +468,8 @@ function confirmNewResp(data){
 			confirm : "跳轉"
 		}
 	}).then(() => {
-		console.log(goURL)
-		window.location.assign(goURL)
+		window.location.href = goURL
+		window.location.reload()
 	})
 }
 

@@ -1,14 +1,16 @@
 function setOriginResp(){
-	
+	console.log(seqno)
 	$.ajax({
 		url : respHome + "/update."+seqno,
 		type : "GET",
 		dataType : "json",
 		success : function(data){
+			console.log(data)
+			originResp = data.msg
 			CKEDITOR.instances.note.setData(data.msg)
 		},
 		error : function(){
-			swaL("發生錯誤","請聯絡管理員","error")
+			swal("發生錯誤","請聯絡管理員","error")
 		}
 	})
 
@@ -46,19 +48,22 @@ function checkSubmit(thisBtn){
 	}
 }
 function ajaxUpdate(data){
-	
-	formData = new FormData();
-	formData.append("message",data)
+	let goURL = detailHome + "page=" + page + "&actID=" + actID + "#" + seqno
+//	formData = new FormData();
+//	formData.append("message",data)
+	setTimeout(function(){
+		window.location.href = goURL
+	},2800)
+
 	$.ajax({
 		url : respHome + "/update."+seqno,
-		type : "POST",
-		data : formData,
+		type : "PUT",
+		data : data ,
 		dataType : "json",
-		processData : false,
-		contentType : false,
+		contentType: "application/json; charset=UTF-8",
 		success : function(data){
 			swal("修改回覆成功", "三秒後跳轉至活動詳情頁","success").then(() => {
-				window.location.href = window.location.history(-1)
+				window.location.href = goURL
 			})
 		},
 		error : function(){

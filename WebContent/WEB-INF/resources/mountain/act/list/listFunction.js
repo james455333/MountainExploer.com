@@ -158,7 +158,8 @@ function setPostTime(actBasic, thisElm) {
 	
 	let thisTD = thisElm.find("td").eq(2)
 	let postTime = " / <br>"
-		.concat(dateFormate(actBasic.actInfo.postDate));
+		.concat(dateFormate(actBasic.actInfo.postDate))
+		.concat(new Date(actBasic.actInfo.postDate).toLocaleTimeString())
 	
 	thisTD.append(postTime);
 	thisTD.find("a").html(actBasic.memberBasic.memberInfo.neck_name)
@@ -272,7 +273,6 @@ function setTag(check, thisElm) {
 function dateFormate(date) {
 	let result = "";
 	result = result.concat(new Date(date).toLocaleDateString())
-		.concat(" " + new Date(date).toLocaleTimeString())
 
 	return result;
 }

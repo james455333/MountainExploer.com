@@ -15,6 +15,16 @@ if(urlNow.searchParams.has("actID")){
 }
 var anchorThis = window.location.hash
 $(function(){
+	$(document).ajaxStop(function(){
+		setTimeout($.unblockUI,500)
+	}); 
+	
+	$(document).ajaxStart(
+		$.blockUI({ 
+			message: '<div><img src="/MountainExploer.com/images/loading.gif" /><h2>讀取中</h2><div>',
+			css : { backgroundColor : 'transparent', border : 'none' ,} 
+			})
+	)
 	
 	/* 預設畫面 */
 	activeMainAjax(page,"/detail");
@@ -38,16 +48,16 @@ $(function(){
 	/* 快速回覆 */
 	$(".btn-resp").on("click",checkResp)
 	
-	$(".div_ul").on("click",'.login-alert',function(){
-		 $("#dialog-form").dialog("open");
-	})
+//	$(".div_ul").on("click",'.login-alert',function(){
+//		 $("#dialog-form").dialog("open");
+//	})
 	
 	$('.innerContainer').on("click" ,'.btn-detail-update-act', function(){
 		window.location.assign("/MountainExploer.com/mountain/manage/edite?actID="+actID)
 	})
-	$('.innerContainer').on("click" ,'.btn-detail-update', function(){
-		window.location.assign("/MountainExploer.com/mountain/manage/resp/edite?actID="+actID)
-	})
+//	$('.innerContainer').on("click" ,'.btn-detail-update', function(){
+//		window.location.assign("/MountainExploer.com/mountain/manage/resp/edite?actID="+actID)
+//	})
 	
 })
 
