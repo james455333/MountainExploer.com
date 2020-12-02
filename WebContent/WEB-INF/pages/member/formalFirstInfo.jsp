@@ -51,20 +51,18 @@
         </div> -->
         <div class="div_li2" style="background: #ecf5ff; height: auto;">
             <!-- 每頁不同的內容從這裡開始 -->
-            <form
+            <form action="<c:url value='/member/memberFirstInfoInsert' />" method="POST"
                 style="width: 800px; margin: 0 auto; border: 10px solid#ecf5ff; border-radius: 1%; background-color: d#ecf5ff;">
                 <div style="border-radius: 3%; border: 10px solid white; background-color: white;">
 
                     <fieldset>
                         <legend>${Member.name}的認證資料</legend>
                     </fieldset>
-                    <div style="display:none">
+                    <div>
 						<label>會員編號：</label>
-						<span>${Member.seqno}</span><br/>
-						<input type="text" name="seqno" value="${Member.seqno}">
+						<input type="text" name="seqno" id="seqno" value="${Member.seqno}">
 						<label>身分組ID：</label>
-						<span>${Member.memberStatus.seqno}</span>
-						<input type="text" name="memberStatus.seqno" value="${Member.memberStatus.seqno}">
+						<input type="text" name="memberStatus.seqno" id="statusId" value="${Member.memberStatus.seqno}">
 					</div>
                     <div class="form-group">
                         <label for="inputNcName">暱稱：</label>
@@ -73,7 +71,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputGender">性別：</label>
-                            <select id="" class="form-control">
+                            <select id="" class="form-control" name="memberInfo.gender">
                             	<option value="mask" selected>不透露</option>
                             	<option value="male">男</option>
                             	<option value="female">女</option>
@@ -102,7 +100,8 @@
                     </div>
                     <button type="submit" id="submit" name="submit" class="btn btn-outline-success"><i class="fa fa-check-circle-o"></i>
                         確認送出</button>
-                    <button type="reset" class="btn btn-outline-danger"><i class="fa fa-close"></i> 清除</button>
+                     <button type="button" class="btn btn-outline-success fastIn"><i class="fa fa-check-circle-o"></i>快速填寫</button>
+                    <button type="reset" class="btn btn-outline-danger" id="reset"><i class="fa fa-close"></i> 清除</button>
                 </div>
             </form>
             <!-- 每頁不同的內容到這裡結束 -->
@@ -128,5 +127,6 @@
 <script src="../js/sweetalert.js"></script>
 <!--sweet alert-->
 <script src="../js/includejsp.js"></script>
+<script src="formalFirstInfo.js"></script>
 
 </html>

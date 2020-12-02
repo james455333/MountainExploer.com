@@ -251,7 +251,7 @@ public class MemberLoginController {
 					m.addAttribute("Member", mb);
 					m.addAttribute("result", "初次登入成功");
 					System.out.println("=======================登入成功");
-					return "member/memberFirstInfo";
+					return "member/formalFirstInfo";
 				}else {
 					System.out.println("身分組權限不足");
 					return "member/formalLoginAlone";

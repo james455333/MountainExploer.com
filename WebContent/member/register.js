@@ -1,3 +1,21 @@
+//顯示註冊時間
+$(function(){
+    var myDate = new Date();
+    var t = myDate.toLocaleDateString();
+
+    $("#regDate").val(t);
+    // $("#regDate").load("formalRegister.jsp");
+})
+
+
+//防止註冊時間被清空
+document.getElementById("reset").onclick = function(){
+    let regDate = document.getElementById("regDate");
+    regDate.defaultValue = regDate.value;
+    document.forms[0].reset();
+}
+
+
 //驗證帳號
 $(".account").on("blur", function(){
     let AntVal = $.trim($(".account").val());
@@ -161,11 +179,4 @@ $(".email").on("blur", function(){
 })
 
 
-//顯示註冊時間
-$(function(){
-    var myDate = new Date();
-    var t = myDate.toLocaleDateString();
 
-    $("#regDate").val(t);
-    $("#regDate").load("register.jsp");
-})
