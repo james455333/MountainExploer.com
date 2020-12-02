@@ -22,6 +22,9 @@
 
 			<div>
 					<div>
+						<img style="width: 400px" src="<c:url value='/backstage/product/search/images?seqno=${ProductBean.seqno}' />"	>
+					</div>
+					<div>
 						<label >商品編號 :</label> ${ProductBean.seqno}
 					</div>
 					<div>
@@ -44,9 +47,6 @@
 					</div>
 					<div>
 						<label >介紹 :</label> ${ProductBean.description}
-					</div>
-					<div>
-						<img src="<c:url value='/backstage/product/search/images?seqno=${ProductBean.seqno}' />"	>
 					</div>
 					
 
