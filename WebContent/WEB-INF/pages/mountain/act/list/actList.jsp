@@ -20,6 +20,8 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 	<!-- Bootstrap core CSS -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+		    <!-- JQuery UI -->
+	<link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
 	
 	<!-- JQuery -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -37,6 +39,11 @@
 	<script src="/MountainExploer.com/mountain/js/mountain.js"></script>
     <script src="act/list/listFunction.js"></script>
     <script src="act/list/list.js"></script>
+        <!-- active method -->
+	<script src="/MountainExploer.com/js/login.js "></script>
+    	<!-- Login Dialog -->
+	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 </head>
 
 
@@ -194,6 +201,52 @@
             <!-- 每頁不同的內容到這裡結束 -->
         </div>
     </div>
+    <div>
+    	<div id="dialog-form" title="登入/註冊">
+			    <div id="login-div" class="ui-dialog">
+			        <div class="login-body" id="login-panel">
+			            <table class="logintable" style="margin: 0 auto;">
+			                <tbody>
+			                    <tr style="text-align: right;">
+			                        <th>帳號:</th>
+			                        <td><input id="account" name="account" type="text" style=" width: 200px;border: 1px #ABADB3 solid;
+			                          padding: 5px 3px 5px; "></td>
+			                    </tr>
+			                    <tr style="text-align: right;">
+			                        <th>密碼:</th>
+			                        <td>
+			                            <div>
+			                                <input id="password" type="password" style="width: 200px;border: 1px #ABADB3 solid;padding: 5px 3px 5px; ">
+			                            </div>
+			                        </td>
+			                    </tr>
+			                    <tr>
+			                        <th></th>
+			                        <td>
+			                            <div>
+			                                <a href="#">忘記密碼</a>
+			                            </div>
+			                        </td>
+			                    </tr>
+			                    <tr>
+			                        <th></th>
+			                        <td>
+			                            <div>
+			                                <label>
+												記住我<input id="rememberMe" type="checkbox" name="rememberme" style="float: left;">
+			                                </label>
+			                            </div>
+			
+			                        </td>
+			                    </tr>
+			                </tbody>
+			            </table>
+			            <br>
+			            <div style="text-align: center;">立即<a href="#" style="color:blue;">註冊</a>新帳號</div>
+			        </div>
+			    </div>
+			</div>
+    	</div>
 
     <footer id="footer">
         <a>全站導覽</a>

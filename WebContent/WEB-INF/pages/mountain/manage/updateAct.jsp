@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>岳進者</title>
+	<title>岳進者 [ 活動修改 ]</title>
 	<!-- public -->
 	<link rel="stylesheet" href="/MountainExploer.com/css/other.css">
 	<link rel="stylesheet" href="/MountainExploer.com/css/font.css">
@@ -17,7 +17,7 @@
 	<!-- bootstrap-select-->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 	<!-- for this page  style sheet -->
-	<link rel="stylesheet" href="newAct/newAct.css">
+	<link rel="stylesheet" href="updateAct/updateAct.css">
 	
 	<!-- jquery-->
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -39,8 +39,8 @@
 	<script src="/MountainExploer.com/mountain/ckeditor/ckeditor.js"></script>
 	<!-- 自用 -->
 	<script src="/MountainExploer.com/mountain/js/mountain.js"></script>
-	<script src="newAct/newAct.js"></script>
-	<script src="newAct/newActFunction.js"></script>
+	<script src="updateAct/updateAct.js"></script>
+	<script src="updateAct/updateActFunction.js"></script>
 
 
 </head>
@@ -86,18 +86,10 @@
 					<div class="col-md-12">
 						<div class="page-header">
 							<h1>
-								歡迎來到 發表活動頁面 <small>發表一個活動讓大家一起參與吧</small>
+								活動資訊修改 
 							</h1>
 						</div>
-						<ul class="newa-ul">
-							<li class="list-item">
-								填入必要資訊並發送
-							</li>
-							<li class="list-item">
-								除了備註，其餘都是固定必填項
-							</li>
-							
-						</ul>
+						R
 						<div class="row form-container">
 							<form id="newAct-form" class="newAct-form">
 								<div class="col-md-12 newA-back">
@@ -262,11 +254,17 @@
 								</div>
 							</form>
 						</div>
+						<div class="row" style="margin-bottom: 10px;">
+							<div class="col-md-12">
+								<button id="btn-reset"type="button" class="btn btn-lg btn-warning btn-block">
+									重置修改
+								</button>
+							</div>
+						</div>
 						<div class="row">
 							<div class="col-md-12">
-								 
 								<button id="btn-submit"type="button" class="btn btn-lg btn-primary btn-block">
-									Button
+									完成修改
 								</button>
 							</div>
 						</div>

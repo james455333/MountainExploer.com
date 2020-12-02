@@ -205,3 +205,13 @@
 	align-items: left;
 	justify-content: left;
 }
+.d_ctrl{
+	width : 100%;
+	padding : 10px;
+	display : none;
+}
+.d-update-container{
+	padding : 10px;
+	height : 300px;
+	width : 100%;
+}

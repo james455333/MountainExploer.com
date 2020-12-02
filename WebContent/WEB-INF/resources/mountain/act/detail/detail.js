@@ -13,19 +13,23 @@ if(urlNow.searchParams.has("page")){
 if(urlNow.searchParams.has("actID")){
 	actID = urlNow.searchParams.get("actID");
 }
+var anchorThis = window.location.hash
 $(function(){
+	
 	/* 預設畫面 */
 	activeMainAjax(page,"/detail");
 	
 	/* 留言按鈕設定 */
 	$(".innerContainer").on("click", ".btn-sideResp",function(){
 		thisComment = $(this).parents(".comment-container").find("input[name='message']").val()
+		converComment = String(thisComment)
+		console.log(converComment)
 		if(member != null){
 			if(thisComment == ""){
 				swal("留言不得為空","","warning")
 				return;
 			}
-			ajaxAddComment($(this), thisComment);
+			ajaxAddComment($(this), converComment);
 		}else{
 			loginConfirmSWAL()
 		}
@@ -34,4 +38,14 @@ $(function(){
 	/* 快速回覆 */
 	$(".btn-resp").on("click",checkResp)
 	
+	$(".div_ul").on("click",'.login-alert',function(){
+		 $("#dialog-form").dialog("open");
+	})
+	
+	$('.innerContainer').on("click" ,'.btn-detail-update-act', function(){
+		window.location.assign("/MountainExploer.com/mountain/manage/edite?actID="+actID)
+	})
+	
 })
+
+
