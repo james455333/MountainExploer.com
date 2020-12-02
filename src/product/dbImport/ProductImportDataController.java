@@ -144,9 +144,10 @@ public class ProductImportDataController {
 				Set<ItemBasic> itemBasicSet = new HashSet<ItemBasic>();
 				itemBasicSet.add(itemBasic);
 				secondClass.setItemBasics(itemBasicSet);
-				
+				secondClass.setFirstClass(firstClass);
+				itemBasic.setSecondClass(secondClass);
 				itemBasic.setItemInfo(itemInfo);
-//				itemInfo.setItemBasic(itemBasic);
+				itemInfo.setItemBasic(itemBasic);
 				
 				
 //				firstClassDAO.insert(firstClass);
@@ -155,11 +156,12 @@ public class ProductImportDataController {
 				// 先用DAO判斷有無FirstClass_name重複存在
 					FirstClass checkFirstClass = firstClassService.select(firstClass.getName());
 				if (checkFirstClass != null) {
-					
+					secondClass.setFirstClass(checkFirstClass);
 					// 再判斷 secondClass有無重複
 					SecondClass checkSecond = secondClassService.select(secondClass.getName());
 					if (checkSecond!=null) {
 						// insert(itemBasic)
+						itemBasic.setSecondClass(checkSecond);
 						itemBasicService.insert(itemBasic);
 						System.out.println("第" + (++importCounter) +  "筆，完成 :　" + itemBasic.getName() );
 					}else {
