@@ -102,6 +102,7 @@
                     </div>
                     <button type="submit" id="submit" name="submit" class="btn btn-outline-success"><i class="fa fa-check-circle-o"></i>
                         確認送出</button>
+                     <button type="button" class="btn btn-outline-success fastIn"><i class="fa fa-check-circle-o"></i>快速填寫</button>
                     <button type="reset" class="btn btn-outline-danger"><i class="fa fa-close"></i> 清除</button>
                 </div>
             </form>
@@ -128,5 +129,6 @@
 <script src="../js/sweetalert.js"></script>
 <!--sweet alert-->
 <script src="../js/includejsp.js"></script>
+<script src="formalFirstInfo.js"></script>
 
 </html>

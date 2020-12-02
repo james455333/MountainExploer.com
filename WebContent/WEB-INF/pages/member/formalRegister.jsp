@@ -60,36 +60,36 @@
                     </fieldset>
                     <div class="form-group">
                         <label for="inputAddress">帳號:</label>
-                        <input type="text" class="form-control account" name="account" id="inputAddress" placeholder="請輸入帳號" required="required">
+                        <input type="text" class="form-control account" name="account" id="account" placeholder="請輸入帳號" required="required">
                     	<span id="Antsp" class="Antsp"></span>
                     	<span id="chksp"></span><br/>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">密碼:</label>
-                            <input type="password" class="form-control pwd" name="pwd" id="inputEmail4" placeholder="請輸入密碼" required="required">
+                            <input type="password" class="form-control pwd" name="pwd" id="pwd" placeholder="請輸入密碼" required="required">
                             <span class="pwdsp"></span><br/>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputPassword4">確認密碼:</label>
-                            <input type="password" class="form-control chkPwd" id="inputPassword4" placeholder="請再次輸入帳密碼" required="required">
+                            <input type="password" class="form-control chkPwd" id="chkPwd" placeholder="請再次輸入帳密碼" required="required">
                             <span class="chksp"></span><br/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputAddress2">姓名:</label>
-                        <input type="text" class="form-control name" name="name" id="inputAddress2" placeholder="請輸入姓名" required="required">
+                        <input type="text" class="form-control name" name="name" id="name" placeholder="請輸入姓名" required="required">
                         <span class="nmsp"></span><br/>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputCity">Email</label>
-                            <input type="text" class="form-control email" id="inputCity" name="email" placeholder="example@gmail.com" required="required">
+                            <input type="text" class="form-control email" id="email" name="email" placeholder="example@gmail.com" required="required">
                             <span class="emsp"></span><br/>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputState">身分組選擇</label>
-                            <select id="inputState" name="statusId" class="form-control" required="required">
+                            <select id="statusId" name="statusId" class="form-control" required="required">
                                 <option value="110" selected>一般登山者</option>
                                 <option value="130">登山嚮導</option>
                             </select>
@@ -103,6 +103,7 @@
                     </div>
                     <button type="submit" name="submit" class="btn btn-outline-success"><i class="fa fa-check-circle-o"></i>
                         確認送出</button>
+                    <button type="button" name="fastRg" class="btn btn-outline-success fastRg"><i class="fa fa-check-circle-o"></i>快速註冊</button>
                     <button type="reset" class="btn btn-outline-danger"><i class="fa fa-close"></i> 清除</button>
                 </div>
             </form>
@@ -130,5 +131,6 @@
 <!--sweet alert-->
 <script src="../js/includejsp.js"></script>
 <script src="register.js"></script>
+<script src="formalLoginAlone.js"></script>
 
 </html>

@@ -144,6 +144,7 @@ public class MemberInfo {
 
 	
 	@Column(name = "PER_IMG")
+	@JsonIgnore
 	public Blob getPer_img() {
 		return per_img;
 	}
