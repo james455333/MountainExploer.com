@@ -315,17 +315,14 @@ $(function() {
 				//				"<th>" + data[i].seqno + "</th>" +
 				//			  		"<td><div >" + data[i].name + "</div></td>"+
 //				"<td>" + '<a href= "/MountainExploer.com/shop/productInfoEntry">' + data[i].name + '</a>' + "</td>" +
+				
+				
 				"<td>" + 
-//				'<form  action= "/MountainExploer.com/shop/productInfoEntry">' +
-//				'<input type="hidden" name="no" value="' + data[i].seqno + '" readonly>' +
-//				data[i].name +
-//				'<input type="submit"  value="查看"' + data[i].name + '" readonly>' +
-//				'</form>' +
 				'<a href= "/MountainExploer.com/shop/productInfoEntry?no='+data[i].seqno+'">'+ data[i].name  + '</a>' +
 				"<td>" +
 				'<img style="width: 80px; height: 80px;" src="/MountainExploer.com/backstage/product/search/images?seqno=' + data[i].seqno + '" class="productImg" >' +
 				"</td>" +
-				"<td><div >" + data[i].price +"元" + "</div></td>" +
+				"<td><div >" +"$" +data[i].price  + "</div></td>" +
 				//				"<td><div >" + data[i].stock + "</div></td>" +
 				"<td>" +
 				"<div>" +
@@ -341,7 +338,7 @@ $(function() {
 				'<option value="4">4</option>' +
 				'<option value="5">5</option>' +
 				"</select>" +
-				'<input type="submit" value="加入購物車">' +
+				'<input id="demo1" type="submit" value="加入購物車">' +
 				'</form>' +
 				"</div>" +
 				"</td>" +

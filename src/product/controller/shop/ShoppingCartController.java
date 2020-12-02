@@ -125,15 +125,25 @@ public class ShoppingCartController {
 		ShoppingCart shoppingCart = (ShoppingCart) m.getAttribute("ShoppingCart");
 		shoppingCart.getContent().clear();
 
-		return "redirect:/shop/shoppingPage";
+//		return "redirect:/shop/shoppingPage";
+		return "redirect:/shop/shoppingCartEntry";
 
+	}
+	// 訂單送出清空購物車
+	@RequestMapping(path = "/abort2", method = RequestMethod.GET)
+	public String abort2(Model m) {
+		
+		ShoppingCart shoppingCart = (ShoppingCart) m.getAttribute("ShoppingCart");
+		shoppingCart.getContent().clear();
+		
+		return "redirect:/shoppingcart/memberOrders";
+		
 	}
 
 	// 確認訂單
 	@RequestMapping(path = "/saveOrder", method = RequestMethod.POST)
 	public String saveOrder(Model m,
-//				@RequestParam(name = "subtotal") String subtotal,
-//			@RequestParam(name = "memberId") String memberId,
+			@RequestParam(name = "receiver") String receiver,
 			@RequestParam(name = "shippingAddress") String shippingAddress,
 			@RequestParam(name = "invoiceTitle") String invoiceTitle) {
 		Orders orders = new Orders();
@@ -143,6 +153,9 @@ public class ShoppingCartController {
 		orders.setTotalAmount(subtotal);
 
 		orders.setMemberBasic((MemberBasic) m.getAttribute("Member"));
+		
+		orders.setReceiver(receiver);
+		
 		orders.setShippingAddress(shippingAddress);
 		orders.setInvoiceTitle(invoiceTitle);
 		Date today = new Date();
@@ -176,7 +189,7 @@ public class ShoppingCartController {
 		orders.setOrderItemsSet(orderItemsSet);
 		ordersDao.insertOrder(orders);
 
-		return "redirect:/shoppingcart/abort";
+		return "redirect:/shoppingcart/abort2";
 
 	}
 

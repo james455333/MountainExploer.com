@@ -108,8 +108,8 @@
 					<button type="submit" class="priceSubmitButton">價格區間查詢</button>
 				</div>
 				<div>
-					商品名稱搜尋：<input type="search" class="light-table-filter"
-						data-table="order-table" placeholder="請輸入關鍵字"> <img
+					商品名稱搜尋：<input type="text" class="light-table-filter"
+						placeholder="請輸入關鍵字"> <img
 						class="imgSearch" src="/MountainExploer.com/images/放大鏡.png" alt=""
 						width="35px">
 					<!-- <button><img class=imgSearch src="/MountainExploer.com/images/放大鏡.png" alt="" width="35px"></button> -->
@@ -123,11 +123,14 @@
 				</div>
 				<div>
 					<a href='<c:url value="/shop/shoppingCartEntry"/>'>查看購物車</a>
+					<br>
+					<span>品項： ${ShoppingCart.itemNumber} 項</span>
+					<br>
+					<span>金額： $  ${ShoppingCart.subtotal} </span>
 
 				</div>
 				<div>
 					<a href='<c:url value="/shoppingcart/memberOrders"/>'>查看訂單</a>
-
 				</div>
 				<!--table-->
 				<table class="order-table">
@@ -152,6 +155,14 @@
 
 					<tbody class="order-table-tb">
 						<!-- tbody更改從這邊開始 -->
+						<tr>
+							<td>商品名稱</th>
+							<!-- 							<th scope="col">型號</th> -->
+							<th scope="col">圖片</th>
+							<th scope="col">價格</th>
+							<!-- 							<th scope="col">數量</th> -->
+							<th scope="col">選擇數量</th>
+						</tr>
 
 
 						<!-- tbody更改到這邊結束 -->

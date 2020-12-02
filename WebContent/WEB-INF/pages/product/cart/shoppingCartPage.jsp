@@ -83,10 +83,10 @@
 					<td><img style="width: 100px; height: 100px;"
 						src="<c:url value='/backstage/product/search/images?seqno=${anEntry.value.itemBasicSeqno}' />">
 					</td>
-					<td>${anEntry.value.unitPrice}</td>
-					<td>${anEntry.value.amount}</td>
-					<td>${anEntry.value.unitPrice * anEntry.value.discount * anEntry.value.amount}
-						元</td>
+					<td>$${anEntry.value.unitPrice}</td>
+					<td align="center">${anEntry.value.amount}</td>
+					<td>${anEntry.value.unitPrice * anEntry.value.discount * anEntry.value.amount}元
+						</td>
 					<td>
 						<form action="<c:url value='/shoppingcart/modifyCartBean' />">
 							<input type="hidden" name="itemBasicSeqno"
@@ -119,7 +119,12 @@
 				<td colspan="7" align="center">合計金額： ${subtotal} 元</td>
 			</tr>
 			<tr>
-				<td colspan="7" align="center"><A href="<c:url value='/shop/orderConfirmEntry' />">確認訂單</A></td>
+				<td colspan="7" align="center">
+<%-- 				<A  id="demo1" href="<c:url value='/shop/orderConfirmEntry' />">確認訂單</A> --%>
+				<FORM action="<c:url value='/shop/orderConfirmEntry' />"	>
+				<input id="demo1" type="submit"	value="確認訂單">
+				</FORM>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="7" align="center"><A href="<c:url value='/shop/shoppingPage' />">繼續購物</A></td>

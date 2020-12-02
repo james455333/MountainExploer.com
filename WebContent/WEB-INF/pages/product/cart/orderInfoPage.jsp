@@ -76,7 +76,7 @@
 				<tr >
 <%-- 					<td align="center">${aBean.itemBasicSeqno}</td> --%>
 					<td><a
-						href='<c:url value='/shop/productInfoEntry?no=${anEntry.itemBasicSeqno}' />'>
+						href='<c:url value='/shop/productInfoEntry?no=${aBean.itemBasicSeqno}' />'>
 							${aBean.itemBasicSeqno} </a></td>
 <!-- 					<td><a -->
 <%-- 						href='<c:url value='/shop/productInfoEntry?no=${anEntry.itemBasicSeqno}' />'> --%>
@@ -84,7 +84,7 @@
 					<td><img style="width: 100px; height: 100px;"
 						src="<c:url value='/backstage/product/search/images?seqno=${aBean.itemBasicSeqno}' />">
 					</td>
-					<td align="center">${aBean.unitPrice}</td>
+					<td align="center">$${aBean.unitPrice}</td>
 					<td align="center">${aBean.amount}</td>
 					<td align="center">${aBean.discount}</td>
 					<td align="right">${aBean.unitPrice*aBean.discount*aBean.amount}
