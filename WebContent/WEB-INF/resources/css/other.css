@@ -405,6 +405,9 @@ tr:nth-child(odd) {
 	width: 700px;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+.pageControl ul{
+	display: inline-flex;
+}
 
 .li1 {
 	padding: 0px 20px;
