@@ -196,7 +196,7 @@ header {
 	line-height: 60px;
 	/*垂直置中 大小依據當前div而定*/
 	/* float: left; */
-}
+	}
 
 nav ul {
 	list-style-type: none;
