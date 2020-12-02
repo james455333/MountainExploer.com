@@ -143,6 +143,7 @@ height:25px;
 					<input type="submit" value="評分"></form>
 					</div>
 					</div>
+					<div><a href="${j.url}" target="_blank" >前往部落格</a></div>
 					</c:forEach>
                 </div>
 <!-- 左邊 -->
@@ -163,7 +164,7 @@ height:25px;
 	                <div class = "topname"><h2>${i.name}</h2></div>
 					
 	                <div class = "counties">地址 : ${i.counties.area.name}${i.counties.name}</div>
-	               <div><a href="${i.url}" target="_blank" >前往部落格</a></div>
+	               
 	                <div class="body" style="height: 300px">${i.desc}</div>
 	                </c:forEach>
 	                </div>

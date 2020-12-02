@@ -96,7 +96,7 @@ float : right;}
 		</div>
 		
 							<!-- 分頁 -->
-
+			
 					<div class="pageauto">
 				<a href="selectAll?selectarea=${selectarea }&selectcounties=${selectcounties}&no=${no }&page=1">«第一頁</a>	
 				
@@ -122,6 +122,7 @@ float : right;}
 					
 			<div class="totalData">總共<c:out value="${totalData}">${totalData}</c:out>筆資料</div> </div>
 		
+			
 		
 		
 		<div id="mainContainer">
@@ -154,14 +155,14 @@ float : right;}
 							<td><a href="${i.url}">${i.url}</a></td>
 							<td>${i.desc}</td>
 							<c:choose>
-							<c:when test="${empty m.star}"><td>0</td></c:when>
-							<c:otherwise><td>總共${m.star}分</td></c:otherwise>
+							<c:when test="${empty i.star}"><td>0</td></c:when>
+							<c:otherwise><td>總共${i.star}分</td></c:otherwise>
 						</c:choose>
 						<c:choose>
-							<c:when test="${empty m.clickcount}"><td>0</td></c:when>
-							<c:otherwise><td>評分過${m.clickcount}次</td></c:otherwise>
+							<c:when test="${empty i.clickcount}"><td>0</td></c:when>
+							<c:otherwise><td>評分過${i.clickcount}次</td></c:otherwise>
 						</c:choose>
-							<td>平均${m.star/m.clickcount}分</td>
+							<td>平均${i.star/i.clickcount}分</td>
 							<td>
 								<c:choose>
 								<c:when test="${empty i.campimgid.img }">
@@ -220,12 +221,12 @@ float : right;}
 										src="/MountainExploer.com/housecamp/images/campnull.PNG">按</a>
 								</c:when>
 								<c:when test="${not empty m.campimgid.img}">
-								<a href="${i.url}" target="_blank"><img height="100" width="100"
+								<a href="${m.url}" target="_blank"><img height="100" width="100"
 										src="<c:url value='/mountainCampBack/showimg?imgid=${m.campimgid.id}'/>">按</a>
 								</c:when>
 								</c:choose>
 							</td>
-							<td>${i.campimgid.id}</td>
+							<td>${m.campimgid.id}</td>
 							</tr>
 					</c:forEach>
 
