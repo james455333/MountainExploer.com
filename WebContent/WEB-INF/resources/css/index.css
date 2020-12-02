@@ -1,12 +1,12 @@
-* {
+/** {
     margin: 0;
     padding: 0;
-    /* min-width: 600px; */
-}
+     min-width: 600px; 
+}*/
 
 .container1 {
     width: auto;
-    height: 2980px;
+    height: auto;
     text-align: center;
     margin: 0px auto;
         min-width: 600px;
@@ -25,6 +25,7 @@
 .dropdown:hover .dropdown-menu {
     display: block;
 }
+
 
 /* -------下拉選單滑入展開 ---------*/
 
@@ -46,9 +47,9 @@ header {
     top: -60px;
 }
 
-
-/* .bgi {
-    background-image: url(../images/001+.jpg);
+/*
+ .bgi {
+    background-image: url(/MountainExploer.com/images/bgi.jpg);
     background-attachment: scroll;
 } */
 
@@ -60,7 +61,7 @@ header {
     width: 100%;
     padding: 395px;
     margin: 10px auto;
-    background-image: url(../images/bgi.jpg   );
+    /*background-image: url(/MountainExploer.com/images/bgi.jpg   );*/
     background-attachment: fixed;
     /*背景附著*/
     background-repeat: no-repeat;
@@ -120,7 +121,7 @@ header {
     height: 1800px;
     text-align: center;
 }
-
+/*
 #footer {
     clear: both;
     background-color: grey;
@@ -129,5 +130,5 @@ header {
     text-align: center;
     margin:0px auto;
 }
-
+*/
 

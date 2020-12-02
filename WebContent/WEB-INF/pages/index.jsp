@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="zh-tw">
 
@@ -7,14 +8,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>岳進者</title>
-    <link rel="stylesheet" href="/MountainExploer.com/css/index.css">
+     <link rel="stylesheet" href="/MountainExploer.com/css/index.css"> 
     <link rel="stylesheet" href="/MountainExploer.com/css/style.css">
-    <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+     <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
     <link href="/MountainExploer.com/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/MountainExploer.com/assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -22,6 +19,9 @@
     <link href="/MountainExploer.com/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="/MountainExploer.com/assets/vendor/venobox/venobox.css" rel="stylesheet">
     <link href="/MountainExploer.com/assets/vendor/aos/aos.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
@@ -31,22 +31,22 @@
             padding: 1px;
         }
     </style>
-    <script src="/MountainExploer.com/js/includejsp.js"></script>
-    <script src="/MountainExploer.com/js/topBar.js"></script>
+     <script src="/MountainExploer.com/js/includejsp.js"></script>
+     <script src="/MountainExploer.com/js/topBar.js"></script>
 </head>
 
 <body>
     <div class="container1" id="">
         <div class="count1">
-            <div class="count1_img">
-                <a href="#footer">
-                    <img src="images/logo1.png">
+                    <div class="count1_img">
+                <a href="#">
+                    <img src="/MountainExploer.com/images/logo1.png">
                 </a>
                 <hr>
                 <h1 class="font">岳進者</h1>
             </div>
         </div>
-         <header>
+         <header style="z-index:999;">
             <nav class="navbar navbar-expand-lg navbar-light bg-light zline">
                  <a class="navbar-brand" href="#" include-html="/MountainExploer.com/forinclude/includeForIndexLogo.html">
             </a>
@@ -629,8 +629,8 @@
         </footer>
     </div>
 
-    <script src="/MountainExploer.com/assets/vendor/jquery/jquery.min.js"></script>
-    <script src="/MountainExploer.com/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!--     <script src="/MountainExploer.com/assets/vendor/jquery/jquery.min.js"></script> -->
+<!--     <script src="/MountainExploer.com/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
     <script src="/MountainExploer.com/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
     <script src="/MountainExploer.com/assets/vendor/php-email-form/validate.js"></script>
     <script src="/MountainExploer.com/assets/vendor/counterup/counterup.min.js"></script>
@@ -639,7 +639,6 @@
     <script src="/MountainExploer.com/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
     <script src="/MountainExploer.com/assets/vendor/venobox/venobox.min.js"></script>
     <script src="/MountainExploer.com/assets/vendor/aos/aos.js"></script>
-
     <script src="/MountainExploer.com/assets/js/main.js"></script>
 </body>
 
