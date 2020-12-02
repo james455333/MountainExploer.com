@@ -48,7 +48,7 @@
 <ownDataTypeParameters>250,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="house_info_house_basic_id" id="FCB510E5-F591-A37F-31A8-D2308009C3CA">
+<Column name="house_basic_id" id="FCB510E5-F591-A37F-31A8-D2308009C3CA">
 <createdBy>Student</createdBy>
 <createdTime>2020-11-15 06:43:14 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>

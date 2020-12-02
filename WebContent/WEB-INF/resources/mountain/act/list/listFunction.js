@@ -48,7 +48,7 @@ function publishNewAct(){
 			}
 		}).then((value) => {
 			if(value){
-				
+				$("#dialog-form").dialog("open");
 			}
 		})
 	}
