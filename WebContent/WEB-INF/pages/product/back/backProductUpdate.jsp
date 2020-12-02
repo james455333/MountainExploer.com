@@ -29,8 +29,9 @@
 			<div>
 <%-- 				<c:if test="${ !empty result }"> --%>
 					<div>
-						<label for="itemBasicSeqno">編號 : &nbsp&nbsp(無法更改)</label> <input
-							type="text" name="itemBasicSeqno" value="${itemInfo.itemBasicSeqno}" readonly>
+<!-- 						<label for="itemBasicSeqno">編號 : &nbsp&nbsp(無法更改)</label> <input -->
+<%-- 							type="text" name="itemBasicSeqno" value="${itemInfo.itemBasicSeqno}" readonly> --%>
+						編號 : ${itemInfo.itemBasicSeqno}
 					</div>
 					<div>
 						<label for="name"> 產品名稱: (必填)&nbsp</label> <input type="text"

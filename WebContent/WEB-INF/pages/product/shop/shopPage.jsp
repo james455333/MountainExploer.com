@@ -123,11 +123,14 @@
 				</div>
 				<div>
 					<a href='<c:url value="/shop/shoppingCartEntry"/>'>查看購物車</a>
+					<br>
+					<span>品項： ${ShoppingCart.itemNumber} 項</span>
+					<br>
+					<span>金額： $  ${ShoppingCart.subtotal} </span>
 
 				</div>
 				<div>
 					<a href='<c:url value="/shoppingcart/memberOrders"/>'>查看訂單</a>
-
 				</div>
 				<!--table-->
 				<table class="order-table">

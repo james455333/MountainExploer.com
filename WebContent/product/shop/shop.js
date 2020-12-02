@@ -322,7 +322,7 @@ $(function() {
 				"<td>" +
 				'<img style="width: 80px; height: 80px;" src="/MountainExploer.com/backstage/product/search/images?seqno=' + data[i].seqno + '" class="productImg" >' +
 				"</td>" +
-				"<td><div >" + data[i].price +"元" + "</div></td>" +
+				"<td><div >" +"$" +data[i].price  + "</div></td>" +
 				//				"<td><div >" + data[i].stock + "</div></td>" +
 				"<td>" +
 				"<div>" +
@@ -338,7 +338,7 @@ $(function() {
 				'<option value="4">4</option>' +
 				'<option value="5">5</option>' +
 				"</select>" +
-				'<input type="submit" value="加入購物車">' +
+				'<input id="demo1" type="submit" value="加入購物車">' +
 				'</form>' +
 				"</div>" +
 				"</td>" +

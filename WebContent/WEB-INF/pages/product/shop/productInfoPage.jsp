@@ -84,14 +84,14 @@
 							<input type="hidden" name="itemBasicSeqno" value="${ProductBean.seqno}" readonly>
 				<input type="hidden" name="itemBasicName" value="${ProductBean.name}" readonly>
 				<input type="hidden" name="unitPrice" value="${ProductBean.price}" readonly>
-							<select name="amount">
+							選擇數量<select name="amount">
 				<option value="1">1</option>
 				<option value="2">2</option>
 				<option value="3">3</option>
 				<option value="4">4</option>
 				<option value="5">5</option>
 				</select>
-				<input type="submit" value="加入購物車">
+				<input id="demo1" type="submit" value="加入購物車">
 				</form>
 							</th>
 							
@@ -149,7 +149,7 @@
 						<tr>
 						<td>
 						價格 :</td>
-						<td>${ProductBean.price}
+						<td>$${ProductBean.price}
 						</td>
 						</tr>
 						<tr>

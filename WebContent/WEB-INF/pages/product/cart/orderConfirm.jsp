@@ -16,6 +16,10 @@
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<!-- jquery validator -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"></script>
+<!-- 	<script src="registry/registry.js"></script> -->
 </head>
 <body>
 	<div class="count1">
@@ -82,41 +86,41 @@
 					<td><img style="width: 100px; height: 100px;"
 						src="<c:url value='/backstage/product/search/images?seqno=${anEntry.value.itemBasicSeqno}' />">
 					</td>
-					<td>${anEntry.value.unitPrice}</td>
+					<td>$${anEntry.value.unitPrice}</td>
 					<td>${anEntry.value.amount}</td>
 					<td>${anEntry.value.unitPrice * anEntry.value.discount * anEntry.value.amount}元</td>
 				</tr>
 			</c:forEach>
 			<!-- tbody更改到這邊結束 -->
+			<FORM action="<c:url value='/shoppingcart/saveOrder' />"method="POST">
 			<tr>
 				<td colspan="6">合計金額： <span>${subtotal}</span> 元
 				</td>
 			</tr>
-			<FORM action="<c:url value='/shoppingcart/saveOrder' />"
-				method="POST">
 				<tr>
-					<td colspan="6">收貨人姓名： <Input size="15" type="text"
-						name="receiver" placeholder="請輸入收貨人姓名">
+					<td colspan="6">收貨人姓名： 
+						<input size="20" required type="text" name="receiver" pattern="^[\u4e00-\u9fa5_a-zA-Z]+$" placeholder="僅能輸入中文或英文">
 					</td>
 				</tr>
 				<tr>
-					<td colspan="6">收貨地址： <Input size="60" type="text"
+					<td colspan="6">收貨地址： <Input size="60" type="text" required
 						name="shippingAddress" placeholder="請輸入收貨地址">
 					</td>
 				</tr>
 				<tr>
-					<td colspan="6">連絡電話： <Input size="15" type="text"
-						name="invoiceTitle" placeholder="請輸入連絡電話">
+					<td colspan="6">連絡電話：
+					<input   required size="20" type="text" minlength="10" maxlength="10" pattern="^09[0-9]{8}" name="invoiceTitle" placeholder="範例 : 0912345678">
 					</td>
 				</tr>
 				<TR>
-					<TD colspan="6" align="center"><input type="submit"
+					<TD colspan="6" align="center"><input  type="submit"
 						value="送出訂單">
+						</TD>
+						</TR>
 			</FORM>
 			<tr>
 			<td colspan="6" align="center"><input type="button" value="返回上一頁" id="backPreviousPage"></td>
 			</tr>
-			</TR>
 			<tr>
 				<TD colspan="6" align="center"><A
 					href="<c:url value='/shop/shoppingPage' />">繼續購物</A></TD>
