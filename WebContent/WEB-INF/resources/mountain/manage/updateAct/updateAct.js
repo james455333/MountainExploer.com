@@ -32,7 +32,7 @@ $(function(){
 	})
 	$("#newAct-form").validate({
 		submitHandler: function(form){
-			ajaxNewAct(form)
+			ajaxUpdateAct(form)
         }
 	})
 	
@@ -46,11 +46,11 @@ $(function(){
 		}
 	})
 	
-	$("input[name='files']").on("change", function(){
-		$("#previewMultiple").html(""); // 清除預覽
-		readURL(this);
-	})
-	
+//	$("input[name='files']").on("change", function(){
+//		$("#previewMultiple").html(""); // 清除預覽
+//		readURL(this);
+//	})
+	/* 圖片放大預覽 */
 	$(".newAct-form").on("mouseenter",".showImage",function(e){
 		var elm = $(this);
 		var x = e.pageX - elm.offset().left;
@@ -76,8 +76,8 @@ jQuery.extend(jQuery.validator.messages, {
     creditcard: "Please enter a valid credit card number.",
     equalTo: "Please enter the same value again.",
     accept: "Please enter a value with a valid extension.",
-    maxlength: jQuery.validator.format("Please enter no more than {0} characters."),
-    minlength: jQuery.validator.format("請輸入至少 {0} 個字"),
+    maxlength: jQuery.validator.format("字數請勿輸入多於 {0} 個"),
+    minlength: jQuery.validator.format("字數請輸入至少 {0} 個"),
     rangelength: jQuery.validator.format("Please enter a value between {0} and {1} characters long."),
     range: jQuery.validator.format("Please enter a value between {0} and {1}."),
     max: jQuery.validator.format("Please enter a value less than or equal to {0}."),

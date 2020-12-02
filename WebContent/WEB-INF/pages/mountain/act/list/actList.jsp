@@ -144,7 +144,8 @@
 					</button> 
 				</div>
                 <!--table-->
-                <table class="order-table m-ta-aj">
+                <table class="order-table table table-hover" id="tablePreview" style="background-color:white;">
+<!--                 <table class="order-table m-ta-aj"> -->
                     <thead class="order-table-th">
                         <tr>
                             <!-- thead更改從這邊開始 -->

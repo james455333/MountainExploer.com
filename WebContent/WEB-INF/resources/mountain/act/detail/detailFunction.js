@@ -170,7 +170,7 @@ function insertMainContent(thisElm, data){
 		return;
 	}
 	thisElm.find(".d_time").html("發表於 " + dateFormate(actInfo.postDate));
-	insertDefault(thisElm,actInfo)
+	insertDefault(thisElm,data)
 
 	//	測試登入與否
 	if(data.login == null){
@@ -220,8 +220,8 @@ function setGoReg(thisElm, tagMap){
 }
 
 //	函式 : 動態新增 => 預設內容 (擴增 : 可修改)
-function insertDefault(thisElm,actInfo){
-	
+function insertDefault(thisElm,data){
+	let actInfo = data.actBasic.actInfo
 	let result = "";
 	result = result.concat("[ 活動名稱 ] : ").concat(actInfo.title).concat("<br><br>")
 			.concat("[ 活動總天數 ] : ").concat(actInfo.totalDay).concat("<br><br>")
@@ -231,7 +231,7 @@ function insertDefault(thisElm,actInfo){
 			.concat("[ 活動費用 ] : ").concat("$" + actInfo.price).concat("<br><br>")
 			.concat("[ 活動路線名稱 ] : ").concat(actInfo.rtBasic.routeInfo.name).concat("<br><br>")
 			.concat("[ 活動路線介紹 ] : " ).concat(actInfo.rtBasic.routeInfo.desp).concat("<br><br>")
-			.concat("[ 報名人數上限 ] : " ).concat(actInfo.regTop).concat("<br><br>")
+			.concat("[ 報名人數上限 ] : " ).concat(data.nowReg).concat(" / ").concat(actInfo.regTop).concat("<br><br>")
 			.concat("[ 報名截止日期 ] : " ).concat(dateFormate(actInfo.regEndDate)).concat("<br><br>")
 	thisElm.find(".d_text").append(result)
 	

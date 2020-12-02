@@ -79,14 +79,14 @@ function setRouteDesp(routeInfo){
 	$(".route-desp-body").html(routeInfo.desp)
 }
 
-function ajaxNewAct(form){
+function ajaxUpdateAct(form){
 	let formData = new FormData(form)
 	let data = CKEDITOR.instances.note.getData()
 	formData.set("actInfo.note",data)
 	console.log(formData)
 	$.ajax({
-		url : actCRUDHome + "/newAct",
-		type : "POST",
+		url : actCRUDHome + "/updateAct." + actID,
+		type : "Post",
 		data : formData,
 		processData: false,
 	    contentType: false,
@@ -94,8 +94,8 @@ function ajaxNewAct(form){
 		success : function(data){
 			if(data.hasOwnProperty("success")){
 				swal({
-					title : "發表活動成功",
-					text : "新發表活動編號 : " + data.actID + "\n\n跳轉至該篇活動詳情頁面",
+					title : "新增活動成功",
+					text : "活動編號 : " + data.actID + "\n\n跳轉至該篇活動詳情頁面",
 					icon : "success",
 					buttons : {
 						confirm :{
@@ -109,7 +109,7 @@ function ajaxNewAct(form){
 						window.location.assign(goto)
 				})
 			}else{
-				swal("發表活動失敗","請聯絡管理員","error")
+				swal("新增活動失敗","請聯絡管理員","error")
 			}
 		},
 		error : function(){
@@ -425,9 +425,8 @@ function setActInfo(){
 				setDateDefault(data)
 				setRegInfo(data)
 				setImgInfo(data)
-				
+				setNoteInfo(data)
 			}
-//			setNoteInfo(data)
 		}
 	})
 	
@@ -446,6 +445,8 @@ function setRouteDefault(data){
 	console.log($("#npSelect").find(".hideOP").siblings("option"))
 }
 function setDateDefault(data){
+	$("#npSelect").find(".hideOP").siblings("option").remove()
+	$("#rtSelect").find(".hideOP").siblings("option").remove()
 	let actInfo = data.actInfo
 	defaultSD = new Date(actInfo.startDate)
 	defaultED = new Date(actInfo.endDate)
@@ -457,19 +458,21 @@ function setRegInfo(data){
 	$("input[name='actInfo.regTop']").val(data.actInfo.regTop)
 }
 function setImgInfo(data){
+	$("#originIMG").find(".hideElm").siblings("div").remove()
 	let originImages = data.actImage
 	for (let i in originImages){
-		let model = $(".newAct-img-container").eq(i).clone();
+		let model = $("#originIMG").find(".hideElm").clone();
+		model.find(".showImage")
+			.attr("src","/MountainExploer.com/mountain/act/crud/images?seqno=" + originImages[i].seqno)
+		model.find(".extendImage")
+			.attr("src","/MountainExploer.com/mountain/act/crud/images?seqno=" + originImages[i].seqno)
+		model.removeClass("hideElm")
 		$("#originIMG").append(model)
-		$(".newAct-img-container").eq(i).find(".showImage")
-			.attr("src","/MountainExploer.com/mountain/act/crud/images?seqno=" + originImages[i].seqno)
-		$(".newAct-img-container").eq(i).find(".extendImage")
-			.attr("src","/MountainExploer.com/mountain/act/crud/images?seqno=" + originImages[i].seqno)
-		
 	}
-	$(".newAct-img-container").eq(originImages.length).remove()
 }
 function setNoteInfo(data){
+	
+	CKEDITOR.instances.note.setData(data.actInfo.addInfo)
 }
 
 

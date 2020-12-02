@@ -78,4 +78,6 @@ input.error{
 	justify-content: center;
 }
 
-
+.hideElm{
+	display : none;
+}

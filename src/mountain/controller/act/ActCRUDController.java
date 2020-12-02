@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -116,6 +117,45 @@ public class ActCRUDController {
 		}
 		result.put("success", "新增成功");
 		result.put("actID", String.valueOf(actBasic.getSeqno()));
+		return result;
+	}
+	/* 新增活動 */
+	@PostMapping("/updateAct.{actID}")
+	@ResponseBody
+	public Map<String, String> updateActivity(
+			ActivityBasic activityBasic,
+			Model model,
+			@PathVariable("actID")Integer actID) throws Exception {
+		System.out.println("Update Activity");
+		System.out.println("=====================" + activityBasic.getSeqno());
+		Map<String, String> result = new HashMap<String, String>();
+		InterfaceService<GenericTypeObject> service = this.service;
+		try {
+			
+			ActivityInfo actInfo = activityBasic.getActInfo();
+			service.save(actInfo);
+			ActivityInfo originActivityInfo= (ActivityInfo) service.select(actID);
+			
+			originActivityInfo.setTitle(actInfo.getTitle());
+			originActivityInfo.setPrice(actInfo.getPrice());
+			originActivityInfo.setRtBasic(actInfo.getRtBasic());
+			originActivityInfo.setStartDate(actInfo.getStartDate());
+			originActivityInfo.setEndDate(actInfo.getEndDate());
+			originActivityInfo.setTotalDay(actInfo.getTotalDay());
+			originActivityInfo.setRegTop(actInfo.getRegTop());
+			originActivityInfo.setRegEndDate(actInfo.getRegEndDate());
+			originActivityInfo.setNote(actInfo.getNote());
+//			System.out.println("======note : " + new String(actInfo.getNote()));
+			originActivityInfo.setChangeDate(new Date());
+			
+			service.update(originActivityInfo);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			result.put("error", "發生錯誤，請聯絡管理員");
+		}
+		result.put("success", "新增成功");
+		result.put("actID", String.valueOf(actID));
 		return result;
 	}
 	

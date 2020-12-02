@@ -111,7 +111,7 @@
 												活動價格
 												</div>
 												<div class="col-md-4">
-													<input class="form-control" required type="text" maxlength="9" name="actInfo.price" pattern="^[0-9]+$" placeholder="僅能輸數字">
+													<input class="form-control" required type="text" maxlength="5" name="actInfo.price" pattern="^[0-9]+$" placeholder="僅能輸數字">
 												</div>
 											</div>
 										</div>
@@ -200,7 +200,7 @@
 													報名人數上限
 												</div>
 												<div class="col-md-4">
-													<input class="form-control" required type="number" pattern="[0-9]+" name="actInfo.regTop">
+													<input class="form-control" required type="number" maxlength="5" pattern="^[1-9]*[0-9]+" name="actInfo.regTop">
 												</div>
 												<div class="col-md-2">
 													報名截止日期
@@ -221,7 +221,7 @@
 											<div class="row new-form-body">
 												<div class="col-md-12">
 													<div id="originIMG">
-														<div class='newAct-img-container'>
+														<div class='newAct-img-container hideElm'>
 															<img class='showImage' src=''>
 															<img class='extendImage' src=''>
 														</div>

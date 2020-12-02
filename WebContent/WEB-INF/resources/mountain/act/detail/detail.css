@@ -18,6 +18,9 @@
 	position: relative;
 	width: 100%;
 }
+.actPost table{
+	width: 100%;
+}
 
 .memberTD {
 	width: 14%;
@@ -58,7 +61,7 @@
 }
 .d_text i{
 	text-align: left;
-	color : white;
+	color : #808000;
 	font-size : 15px;
 	margin-bottom: 10px;
 	display : none;
@@ -166,7 +169,7 @@
 	display: none;
 } 
 .hideResp{
-	color : white;
+	color : #f0a6f7;
 	font-size : 25px;
 	font-style: italic,oblique;
 }
@@ -196,6 +199,7 @@
 	padding : 25px;
 }
 .resp-container{
+	width : 100%;
 	padding : 15px;
 	margin : 5px;
 	background-color: #e9e8ff;

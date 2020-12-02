@@ -52,7 +52,7 @@ public class RespCRUDController {
 			actSideResponse.setPostDate(new Date());
 			
 			service.save(actSideResponse);
-//			service.insert(actSideResponse);
+			service.insert(actSideResponse);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
