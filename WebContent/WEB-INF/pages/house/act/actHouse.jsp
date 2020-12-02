@@ -126,7 +126,8 @@ height:18px;
 
 			<div class="secDivContent">
 				<!--table-->
-				<table class="order-table">
+				<table class="order-table table table-hover" id="tablePreview"
+					style="background-color: white;">
 					<thead class="order-table-th">
 						<tr>
 							<!-- thead更改從這邊開始 -->
