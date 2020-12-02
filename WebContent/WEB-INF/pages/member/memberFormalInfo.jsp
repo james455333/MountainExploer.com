@@ -71,14 +71,26 @@
                     </div>
                 </div>
                 <div class="personalInfo">
-                    <div id="user" style="display: block;">
-                    	<h2>上傳頭貼</h2>
-                       	<input type="button" name="userImg" class="userImg" value="上傳頭貼">
+                	
+                    <div>
+                    	<input type="hidden" name="userSeq" class="userSeq" value="${Member.seqno}">
+                    	<img src="<c:url value='showUserImg?userSeq=${Member.seqno}'/>">
+                    	
                     </div>
+                    
+                    <form action="<c:url value='/member/imgUpdateAction' />" method="POST" enctype="multipart/form-data">
+                    <div id="user" style="display: block;">
+                    	<input type="hidden" name="userSeqImg" class="userSeqImg" value="${Member.seqno}">
+                    	<h2>會員頭貼</h2>
+                    	<input type="file" name="userFile" class="userFile">
+                       	<input type="submit" name="userImg" class="userImg" value="上傳頭貼">
+                    </div>
+                    </form>
+                    
                     <div id="idCard" style="display: none;">
                        	<h2>${Member.memberInfo.neck_name}的個人資料</h2>
                        	<div style="display:none">
-							<input type="text" name="seqno" value="${Member.seqno}">
+							<input type="text" name="seqno" class="seqno" value="${Member.seqno}">
 						</div>
 						<div>
                         	<label>帳號：</label>
@@ -141,10 +153,10 @@
 								</c:if>
                         	</span><br>
                         </div>
-                        <div>
+                        <div class="otdiv">
                         	<label>個人簡介：</label>
-<%--                         	<span>${Member.memberInfo.other}</span><br/> --%>
-                        	<input type="text" name="memberInfo.other" class="other" value="${Member.memberInfo.other}">
+                        	<span class="otsp"></span><br/>
+                        	<input type="text" name="memberInfo.other" class="other" id="other" readonly="readonly">
                         </div>
                         <div>
                         	<input type="button" class="turnToUpPage" value="修改會員資料"/>

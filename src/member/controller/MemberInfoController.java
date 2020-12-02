@@ -1,8 +1,12 @@
 package member.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.sql.Blob;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +30,7 @@ public class MemberInfoController {
 		return "member/memberFormalInfo";
 	}
 	
+	
 	@RequestMapping(path = "/member/memberInfoUpdateEntry", method = RequestMethod.GET)
 	public String processInfoUpdateTurn() {
 		return "member/memberInfoUpdate";
@@ -45,14 +50,24 @@ public class MemberInfoController {
 	@ResponseBody
 	@GetMapping(value = "/member/memberOther")
 	public String processOtherSelectAction(
-					@RequestParam(name = "seqno")int seqno,
-					@RequestParam(name = "memberInfo.other")byte[] other) throws UnsupportedEncodingException {
+					@RequestParam(name = "seqno")int seqno) throws UnsupportedEncodingException {
 		
 		MemberBasic mb = mService.select(seqno);
-		byte[] otherByte = mb.getMemberInfo().getOther();
-		String otherStr = new String(otherByte, "UTF-8");
+		String otherStr = mb.getMemberInfo().getPreOther();
+		System.out.println("============================" + otherStr);
 		return otherStr;
 		
+	}
+	
+	
+	//讀取圖片
+	@RequestMapping(path = "/member/showUserImg")
+	public ResponseEntity<byte[]> showUserImg(@RequestParam(name = "userSeq")int userSeq){
+		MemberBasic mb = mService.select(userSeq);
+		Blob userImg = mb.getMemberInfo().getPer_img();
+		byte[] imgContent = mService.blobToBytes(userImg);
+		HttpHeaders headers = new HttpHeaders();
+		return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(imgContent);
 		
 	}
 	

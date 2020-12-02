@@ -59,7 +59,7 @@ public class MemberLoginController {
 	
 	@ResponseBody
 	@GetMapping(path = "/member/memberLogin")
-	public boolean processCheckLogin(
+	public int processCheckLogin(
 			@RequestParam(name = "account")String account,
 			@RequestParam(name = "password")String password,
 			@RequestParam(name = "rememberMe", required = false)String rm,
@@ -67,6 +67,7 @@ public class MemberLoginController {
 			Model m,
 			RedirectAttributes redAttr) {
 		
+		System.out.println("========================rememberMe:" + rm);
 		
 		Map<String, String> errors = new HashMap<String, String>();
 		m.addAttribute("errors", errors);
@@ -85,7 +86,7 @@ public class MemberLoginController {
 		}
 		
 		if(errors != null && !errors.isEmpty()) {
-			return false;
+			return 0;
 		}
 		
 		
@@ -118,8 +119,8 @@ public class MemberLoginController {
 			cookiePwd.setMaxAge(0);
 			cookiePwd.setPath("/");
 			
-			String rmCk = "";
-			Cookie cookieRm = new Cookie("rememberMe", rmCk);
+//			String rmCk = "";
+			Cookie cookieRm = new Cookie("rememberMe", "");
 			cookieRm.setMaxAge(0);
 			cookieRm.setPath("/");
 			
@@ -139,24 +140,24 @@ public class MemberLoginController {
 					m.addAttribute("Member", mb);
 					m.addAttribute("result", "登入成功");
 					System.out.println("=======================登入成功");
-					return true;
+					return mb.getMemberStatus().getSeqno();
 				}else if(mb.getMemberStatus().getSeqno() == 110 || mb.getMemberStatus().getSeqno() == 130) {
 					m.addAttribute("Member", mb);
 					m.addAttribute("result", "初次登入成功");
 					System.out.println("=======================登入成功");
-					return true;
+					return mb.getMemberStatus().getSeqno();
 				}else {
 					System.out.println("身分組權限不足");
-					return false;
+					return 0;
 				}
 			} else {
 				errors.put("msg", "帳號或密碼錯誤");
-				return false;
+				return 0;
 			}
 		}
 		
 		errors.put("msg", "帳號或密碼錯誤");
-		return false;
+		return 0;
 		
 	}
 	
@@ -211,7 +212,7 @@ public class MemberLoginController {
 		
 		status.setComplete();
 		
-		return "member/login";
+		return "member/formalLogin";
 	}
 	
 

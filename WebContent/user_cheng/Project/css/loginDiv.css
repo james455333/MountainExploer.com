@@ -3,8 +3,9 @@
     position: relative;
     display: block;
     z-index: 1000;
-    left: 0px;
+    left: 250px;
     height: auto;
+    top: 80px;
 }
 
 .ui-dialog {
@@ -58,4 +59,5 @@ color: white;
 border: 1px #716456 solid;
 cursor: pointer;
 padding: 5px 10px ;
+border-radius: 10%;
 }

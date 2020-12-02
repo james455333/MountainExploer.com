@@ -28,23 +28,24 @@ $(".account").on("blur", function(){
 
 
 //比對帳號
-$("#chkAnt").on("click", function(){
-    var userAnt = $.trim($("#account").val());
-
-    $.ajax({
-        method:"GET",
-        url:"/MountainExploer.com/member/checkAnt",
-        data:{account:userAnt},
-        dataType:"json",
-        complete:function(msg){
-            console.log(msg);
-            if(eval("(" + msg.responseText + ")")){
-                $("#chksp").html("<font color='red'>帳號已經存在</font>")
-            } else{
-                $("#chksp").html("<font color='green'>帳號可以使用</font>");
-            }
-        }
-    })
+$(".account").on("blur", function(){
+    var userAnt = $.trim($(".account").val());
+	if(userAnt != null && userAnt.length != 0){
+	    $.ajax({
+	        method:"GET",
+	        url:"/MountainExploer.com/member/checkAnt",
+	        data:{account:userAnt},
+	        dataType:"json",
+	        complete:function(msg){
+	            console.log(msg);
+	            if(eval("(" + msg.responseText + ")")){
+	                $("#chksp").html("<font color='red'>帳號已經存在</font>")
+	            } else{
+	                $("#chksp").html("<font color='green'>帳號可以使用</font>");
+	            }
+	        }
+	    })
+	}
 });
 
 

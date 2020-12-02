@@ -1,28 +1,23 @@
-*{
-	margin : 0;
-	padding : 0;
-}
-
-.navbar-nav>li>a, .navbar-brand {
+/* .navbar-brand {
 	padding-top: 10px !important;
 	padding-bottom: 0px !important;
 	height: 70px;
-}
+} */
 
 .navbar {
-	min-height: 30px !important;
+	/* min-height: 30px !important; */
 	z-index: 50;
 }
 
 /*---------下拉選單滑入展開---------*/
 
-.dropdown-menu li:hover .sub-menu {
+/* .dropdown-menu li:hover .sub-menu {
 	visibility: visible;
 }
 
 .dropdown:hover .dropdown-menu {
 	display: block;
-}
+} */
 
 /* -------下拉選單滑入展開 ---------*/
 
@@ -40,22 +35,22 @@ header {
 }
 
 .hideUp header {
-	top: -15px;
+	top: -5px;
 }
 
 /* ?? */
 
-.bgi {
+/* .bgi {
 	background-image: url(../images/BGI.jpg);
 	background-attachment: scroll;
-}
+} */
 
 .count1 {
 	column-count: 3;
 	column-rule: 3px double gray;
 	width: auto;
 	padding: 100px;
-	margin: 116px auto 10px auto;
+	margin: 50px auto 5px auto;
 	background-image: url(../images/BGI.jpg);
 	background-attachment: fixed;
 	/*背景附著*/
@@ -101,8 +96,9 @@ header {
 
 .div_ul {
 	text-align: center;
+	box-sizing: border-box;
 	width: 1440px;
-	height : 100%;
+	overflow: auto;
 	margin: 0px auto;
 	/* div置中 */
 }
@@ -110,6 +106,7 @@ header {
 .div_li1 {
 	background-color: rgb(208, 243, 255);
 	width: 200px;
+	height: 1800px;
 	text-align: center;
 	line-height: 400px;
 	float: left;
@@ -118,19 +115,20 @@ header {
 .div_li3 {
 	background-color: rgb(208, 243, 255);
 	width: 200px;
+	height: 1800px;
 	text-align: center;
 	line-height: 400px;
 	float: right;
 }
 
 .div_li2 {
-	background-color: rgb(243, 248, 194);
+	/* background-color: rgb(243, 248, 194); */
 	margin-left: 200px;
 	margin-right: 200px;
+	height: 1800px;
 	width: 1040px;
 	text-align: center;
-	height : 100%;
-	padding-bottom: 10px;
+	z-index: 1;
 }
 
 #footer {
@@ -140,6 +138,16 @@ header {
 	width: 1440px;
 	text-align: center;
 	margin: 0px auto;
+}
+
+.fix {
+	/*此為網頁右方快捷鍵 可直接在任何地方直接加入<div class="fix"><a href="#"><img src="../images/arror.png" alt="" style=" width:60px; height:60px;"></a>
+	</div>標籤*/
+	width: 60px;
+	height: 60px;
+	position: fixed;
+	top: 350px;
+	right: 5px;
 }
 
 /* 會員上傳頭像標籤 */
@@ -173,6 +181,7 @@ header {
 	font-size: 30px;
 	/* display: flex; */
 }
+
 
 .second_nav {
 	list-style: none;
@@ -211,11 +220,12 @@ nav ul {
 }
 
 .secDivContent {
-	position : relative;
+	position: relative;
+	top: 100px;
 	width: 1000px;
+	height: 1600px;
+	margin: 0px auto;
 	border: 5px solid black;
-	display : inline-block;
-	margin-top : 10px;
 }
 
 /* 以下為分類完成 */
@@ -245,7 +255,7 @@ nav ul {
 	width: 1000px;
 	position: relative;
 	/*依據父元素找到絕對位置*/
-	margin-top : 10px;
+	top: 30px;
 	left: 20px;
 	background: linear-gradient(#fef0c9, #fedf84);
 	border: 1px solid #fe9669;
@@ -350,21 +360,21 @@ nav ul {
 	overflow: hidden;
 }
 
-tr:nth-child(even) {
+/* tr:nth-child(even) {
 	background: rgb(204, 204, 204)
 }
 
 tr:nth-child(odd) {
 	background-color: #808080;
-}
+} */
 
-tr {
+/* tr {
 	border: 2px solid rgb(0, 0, 0);
-}
+} */
 
-tbody tr:hover {
+/* tbody tr:hover {
 	background-color: #bde6ee;
-}
+} */
 
 /*secTable底部頁面控制器*/
 
@@ -397,4 +407,3 @@ tbody tr:hover {
 	float: left;
 	font-size: 15px;
 }
-
