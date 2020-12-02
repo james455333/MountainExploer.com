@@ -98,6 +98,8 @@ float : right;}
 							<!-- 分頁 -->
 			
 					<div class="pageauto">
+				
+				
 				<a href="selectAll?selectarea=${selectarea }&selectcounties=${selectcounties}&no=${no }&page=1">«第一頁</a>	
 				
 				<c:choose>
@@ -121,7 +123,9 @@ float : right;}
 					
 					
 			<div class="totalData">總共<c:out value="${totalData}">${totalData}</c:out>筆資料</div> </div>
+				
 		
+				
 			
 		
 		
