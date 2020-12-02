@@ -29,8 +29,7 @@
 			<div>
 <%-- 				<c:if test="${ !empty result }"> --%>
 					<div>
-<!-- 						<label for="itemBasicSeqno">編號 : &nbsp&nbsp(無法更改)</label> <input -->
-<%-- 							type="text" name="itemBasicSeqno" value="${itemInfo.itemBasicSeqno}" readonly> --%>
+					<input	type="hidden" name="itemBasicSeqno" value="${itemInfo.itemBasicSeqno}" readonly>
 						編號 : ${itemInfo.itemBasicSeqno}
 					</div>
 					<div>
