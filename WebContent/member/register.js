@@ -45,6 +45,8 @@ $(".account").on("blur", function(){
 	            }
 	        }
 	    })
+	}else{
+		$("#chksp").html("")
 	}
 });
 

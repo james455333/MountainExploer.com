@@ -195,6 +195,11 @@ public class MemberUpdateController {
 		return "member/memberInfoUpdate";
 	}
 
+	@RequestMapping(path = "/member/memberImageUploadEntry", method = RequestMethod.GET)
+	public String processImageUpdateEntry() {
+		return "member/memberImageUpload";
+	}
+	
 	
 	//上傳、更新圖片
 	@RequestMapping(path = "/member/imgUpdateAction", method = RequestMethod.POST)
@@ -207,10 +212,11 @@ public class MemberUpdateController {
 		Map<String, String> errors = new HashMap<String, String>();
 		m.addAttribute("errors", errors);
 		
+		System.out.println("=================開始上傳圖片");
 		
 		if(userFile == null) {
 			errors.put("msg", "請上傳圖片檔案");
-			return "member/memberFormalInfo";
+			return "member/memberImageUpload";
 		}
 		
 		

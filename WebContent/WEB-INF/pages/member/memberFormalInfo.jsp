@@ -74,18 +74,18 @@
                 	
                     <div>
                     	<input type="hidden" name="userSeq" class="userSeq" value="${Member.seqno}">
-                    	<img src="<c:url value='showUserImg?userSeq=${Member.seqno}'/>">
-                    	
+                    	<img src="<c:url value='showUserImg?userSeq=${Member.seqno}'/>"><br/>
+                    	<a href="/MountainExploer.com/member/memberImageUploadEntry">修改頭像</a>
                     </div>
                     
-                    <form action="<c:url value='/member/imgUpdateAction' />" method="POST" enctype="multipart/form-data">
-                    <div id="user" style="display: block;">
-                    	<input type="hidden" name="userSeqImg" class="userSeqImg" value="${Member.seqno}">
-                    	<h2>會員頭貼</h2>
-                    	<input type="file" name="userFile" class="userFile">
-                       	<input type="submit" name="userImg" class="userImg" value="上傳頭貼">
-                    </div>
-                    </form>
+<%--                     <form action="<c:url value='/member/imgUpdateAction' />" method="POST" enctype="multipart/form-data"> --%>
+<!--                     <div id="user" style="display: block;"> -->
+<!--                     	<h2>會員頭貼</h2> -->
+<%--                     	<input type="hidden" name="userSeqImg" class="userSeqImg" value="${Member.seqno}"> --%>
+<!--                     	<input type="file" name="userFile" class="userFile"> -->
+<!--                        	<input type="submit" name="userImg" class="userImg" value="上傳頭貼"> -->
+<!--                     </div> -->
+<!--                     </form> -->
                     
                     <div id="idCard" style="display: none;">
                        	<h2>${Member.memberInfo.neck_name}的個人資料</h2>
@@ -146,7 +146,7 @@
                         	<label>身分組：</label>
                         	<span>
                         		<c:if test="${Member.memberStatus.seqno eq 100}">
-									一般會員
+									一般登山者
 								</c:if>
 								<c:if test="${Member.memberStatus.seqno eq 120}">
 									登山嚮導						

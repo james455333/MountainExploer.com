@@ -26,16 +26,16 @@ $(function () {
 	          success: function(response){
 	            if(response == 100 || response == 120){
 					alert("登入成功");
-					window.location.href = "/MountainExploer.com/member/memberInfoEntry";
+					window.location.reload();
 	            }else if(response == 110 || response == 130){
 					alert("登入成功");
 					window.location.href = "/MountainExploer.com/member/memberFirstInfoEntry";
 	            }else if(response == 0){
 					alert("登入失敗");
-					window.location.href = "/MountainExploer.com/member/memberLoginEntry";
+					window.location.reload();
 				}else{
 					alert("登入失敗");
-					window.location.href = "/MountainExploer.com/member/memberLoginEntry";
+					window.location.reload();;
 				}
 	          }
 	
