@@ -7,10 +7,10 @@
          url:"/MountainExploer.com/member/memberOther",
          data:{seqno:seqnoPre},
 		 contentType: "application/json; charset=UTF-8",
-         dataType:"text",
-         success: function(otherStr){
-			console.log(otherStr);
-			$(".other").attr("value", otherStr);
+         dataType:"json",
+         success: function(otherLs){
+			console.log(otherLs[0]);
+			$(".other").attr("value", otherLs);
 			
 		 }
      })
@@ -18,7 +18,7 @@
 
 //跳轉會員修改頁面
 $(".turnToUpPage").on("click", function(){
-    window.location.href = "/MountainExploer.com/member/memberInfoUpdateEntry";
+    window.location.href = "/MountainExploer.com/member/formalUpdateInfoEntry";
 })
 
 //舊密碼不得為空

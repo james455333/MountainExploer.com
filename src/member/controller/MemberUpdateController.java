@@ -57,10 +57,10 @@ public class MemberUpdateController {
 	private HttpServletRequest request;
 	
 	
-//	@RequestMapping(path = "/member/memberInfoUpdateEntry1", method = RequestMethod.GET)
-//	public String processUpdateInfoEntry1() {
-//		return "member/memberInfoUpdate";
-//	}
+	@RequestMapping(path = "/member/formalUpdateInfoEntry", method = RequestMethod.GET)
+	public String processFormalUpdateInfoEntry() {
+		return "member/formalUpdateInfo";
+	}
 	
 	
 	@RequestMapping(path = "/member/memberFirstInfoEntry", method = RequestMethod.GET)
@@ -192,7 +192,7 @@ public class MemberUpdateController {
 			System.out.println("會員資料更新失敗");
 		}
 		
-		return "member/memberInfoUpdate";
+		return "member/formalUpdateInfo";
 	}
 
 	@RequestMapping(path = "/member/memberImageUploadEntry", method = RequestMethod.GET)
