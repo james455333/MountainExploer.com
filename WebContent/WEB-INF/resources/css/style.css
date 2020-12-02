@@ -15,8 +15,8 @@ body {
 }
 
 a {
-	color: #007bff;
-	transition: 0.5s;
+  color: #007bff;
+  transition: 0.5s;
 }
 
 a:hover, a:active, a:focus {
@@ -92,34 +92,54 @@ h1, h2, h3, h4, h5, h6 {
 	animation: animate-preloader 1s linear infinite;
 }
 
-@
--webkit-keyframes animate-preloader { 0% {
+@-webkit-keyframes animate-preloader { 0% {
 	transform: rotate(0deg);
 }
 
-100
-%
+100%
 {
 transform
+
+
 :
-rotate(
+
+
+rotate
+(
+
+
 360deg
-);
+
+
+)
+;
+
+
 }
 }
-@
-keyframes animate-preloader { 0% {
+@keyframes animate-preloader { 0% {
 	transform: rotate(0deg);
 }
 
-100
-%
+100%
 {
 transform
+
+
 :
-rotate(
+
+
+rotate
+(
+
+
 360deg
-);
+
+
+)
+;
+
+
 }
 }
 
@@ -1386,34 +1406,54 @@ section {
 	cursor: pointer;
 }
 
-@
--webkit-keyframes animate-loading { 0% {
+@-webkit-keyframes animate-loading { 0% {
 	transform: rotate(0deg);
 }
 
-100
-%
+100%
 {
 transform
+
+
 :
-rotate(
+
+
+rotate
+(
+
+
 360deg
-);
+
+
+)
+;
+
+
 }
 }
-@
-keyframes animate-loading { 0% {
+@keyframes animate-loading { 0% {
 	transform: rotate(0deg);
 }
 
-100
-%
+100%
 {
 transform
+
+
 :
-rotate(
+
+
+rotate
+(
+
+
 360deg
-);
+
+
+)
+;
+
+
 }
 }
 
