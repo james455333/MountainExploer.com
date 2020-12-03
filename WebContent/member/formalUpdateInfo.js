@@ -5,6 +5,7 @@
 //     document.forms[0].reset();
 // }
 
+
 //顯示個人簡介
 $(function(){
     var seqnoPre = $.trim($(".seqno").val());

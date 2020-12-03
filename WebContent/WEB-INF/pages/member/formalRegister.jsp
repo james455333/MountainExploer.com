@@ -138,6 +138,6 @@
 <!--sweet alert-->
 <script src="../js/includejsp.js"></script>
 <script src="register.js"></script>
-<script src="formalLoginAlone.js"></script>
+<script src="formalRegister.js"></script>
 
 </html>

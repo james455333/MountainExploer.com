@@ -72,7 +72,7 @@
                 </div>
                 <div class="personalInfo">
                 	<div>
-<%-- 	                	<h2>${Member.memberInfo.neck_name}的公開頁面</h2>                	 --%>
+	                	<h2>${Member.memberInfo.neck_name}的會員中心</h2>                	
                 	</div>
                 	
                     <div>

@@ -28,6 +28,7 @@
 </head>
 
 <body>
+	
     
     <div class="count1">
         <div class="count1_img">
@@ -93,7 +94,7 @@
                         <h2>修改會員資料</h2>
                         <form action="<c:url value='/member/memberInfoUpdateAction' />" method="POST">
                         
-                        	<div>
+                        	<div style="display:none">
 								<label>會員編號</label>
 								<input type="text" name="seqno" class="seqno" id="seqno" value="${Member.seqno}">
 							</div>
@@ -217,8 +218,8 @@
                             <div class="form-group row" style="margin-right: 15px;
                             margin-left: 15px;">
                               <div class="offset-4 col-8" style="margin: 0 auto;">
-                                <button name="submit" type="submit" class="btn btn-primary">確認更改</button>
-                                <button name="submit" type="submit" class="btn btn-primary">取消</button>
+                                <button name="submit" type="submit" class="btn btn-primary submit">確認更改</button>
+                                <button name="submit" type="reset" class="btn btn-primary">取消</button>
                               </div>
                             </div>
                           </form>

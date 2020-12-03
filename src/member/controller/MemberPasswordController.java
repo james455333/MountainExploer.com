@@ -29,7 +29,7 @@ public class MemberPasswordController {
 	
 	@RequestMapping(path = "/member/memberPwdFoundEntry", method = RequestMethod.GET)
 	public String processPwdFoundEntry() {
-		return "member/memberForgetPwd";
+		return "member/formalForgetPwd";
 	}
 	
 	
@@ -62,11 +62,11 @@ public class MemberPasswordController {
 			
 			m.addAttribute("result", "暫時密碼已發送到您的信箱，請盡快更新您的密碼。");
 			
-			return "member/login";
+			return "member/formalLoginAlone";
 		} else {
 			errors.put("msg", "帳號、Email錯誤或不存在");
 		}
-		return "member/login";
+		return "member/formalLoginAlone";
 	}
 	
 	
@@ -140,7 +140,7 @@ public class MemberPasswordController {
 				m.addAttribute("Member", updateMb);
 				m.addAttribute("result", "密碼修改成功");
 				System.out.println("密碼修改成功");
-				return "member/memberInfo";
+				return "member/memberFormalInfo";
 			}else {
 				errors.put("errors", "舊密碼不正確，修改失敗");
 				System.out.println("舊密碼不正確，修改失敗");

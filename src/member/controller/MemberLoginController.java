@@ -61,6 +61,43 @@ public class MemberLoginController {
 //		return "member/formalLoginAlone";
 //	}
 	
+	@ResponseBody
+	@GetMapping(value = "/member/FastLoginOne")
+	public boolean processFastLogin1(@RequestParam(name = "userLog1")String userLog1,
+									Model m) {
+		if(userLog1 != null) {
+			MemberBasic mb = mbService.select(1000000);
+			m.addAttribute("Member", mb);			
+			return true;
+		}
+		return false;
+		
+	}
+	
+	@ResponseBody
+	@GetMapping(value = "/member/FastLoginTwo")
+	public boolean processFastLogin2(@RequestParam(name = "userLog2")String userLog2,
+									 Model m) {
+		if(userLog2 != null) {
+			MemberBasic mb = mbService.select(1000004);
+			m.addAttribute("Member", mb);
+			return true;
+		}
+		return false;
+	}
+	
+	@ResponseBody
+	@GetMapping(value = "/member/FastLoginAdmin")
+	public boolean processFastLogin3(@RequestParam(name = "adminLog")String adminLog,
+							 			Model m) {
+		if(adminLog != null) {
+			MemberBasic mb = mbService.select(1000010);
+			m.addAttribute("Member", mb);
+			return true;
+		}
+		return false;
+	}
+	
 	
 	@ResponseBody
 	@GetMapping(path = "/member/memberLogin")
