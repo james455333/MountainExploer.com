@@ -71,4 +71,6 @@ input.error{
 	justify-content: center;
 }
 
-
+#btn-click-auto{
+	margin : 10px;
+}

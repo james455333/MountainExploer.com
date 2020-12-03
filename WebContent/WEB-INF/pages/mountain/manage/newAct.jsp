@@ -266,10 +266,15 @@
 						</div>
 						<div class="row">
 							<div class="col-md-12">
-								 
 								<button id="btn-submit"type="button" class="btn btn-lg btn-primary btn-block">
 									Button
 								</button>
+								
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<button type="button" id='btn-click-auto' class="btn btn-dark btn-lg"> 一鍵輸入資料</button>
 							</div>
 						</div>
 					</div>
