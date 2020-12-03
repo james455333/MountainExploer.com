@@ -93,6 +93,7 @@ $(function(){
 		regInfoDeleteSWAL_RG($(this))
 	})
 	
+	$.unblockUI();
 	
 })
 
