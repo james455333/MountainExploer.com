@@ -54,12 +54,12 @@ $(".adminLog").on("click", function(){
 
     $.ajax({
         method:"GET",
-        url:"",
-        data:{userLog:adminLog},
+        url:"/MountainExploer.com/member/FastLoginAdmin",
+        data:{adminLog:adminLog},
         dataType:"json",
         success:function(flag){
             if(flag){
-                window.location.href="/MountainExploer.com/";
+                window.location.href="/MountainExploer.com/backStageEntry";
             }else{
                 window.location.reload();
             }
