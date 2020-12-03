@@ -191,21 +191,100 @@ function reloadReg(){
 }
 
 function autoInfo(){
-//	let length = $(".regInfo-form").length
-//	for(let i in length ){
-//		let i = Math.round(Math.random()*10)
-//		let nameArray = ['王重陽','宋遠橋','俞蓮舟','俞岱岩','張松溪','張翠山','殷梨亭','莫聲谷','張三丰','張無忌']
-//		
-//		let year = 1970 + Math.round(Math.random()*100)
-//		while(true){
-//			year = 1970 + Math.round(Math.random()*100)
-//			if(year > 1971 && year < 2015) break;
-//		}
-//		let month, day;
-//		while(true){
-//			month = Math.round(Math.random()*10)
-//		}
-//		
-//	}
-//	console.log(year)
+	let length = $(".reg-mainCon").find(".regInfo-form").length
+	console.log(length)
+	for(let num = 0 ; num < length ; num ++ ){
+		
+		let nameArray = ['王重陽','宋遠橋','俞蓮舟','俞岱岩','張松溪','張翠山','殷梨亭','莫聲谷','張三丰','張無忌']
+		let nameLength = $(".reg-mainCon").find("input[name='name']").length
+		for(let j = 0 ; j <nameLength ; j++ ){
+			let i = Math.round(Math.random()*10)
+			let name = nameArray[i]
+			$(".reg-mainCon").find("input[name='name']").eq(j).val(name)
+			
+		}
+		
+		
+		let dayLength = $(".reg-mainCon").find("input[name='birthDay']").length
+		for(let j = 0 ; j < dayLength ; j++){
+			let year ;
+			while(true){
+				year = 1970 + Math.round(Math.random()*100)
+				if(year > 1971 && year < 2015) break;
+			}
+			console.log(year)
+			let month, day;
+			while(true){
+				month = Math.round(Math.random()*10) + Math.round(Math.random()*10)
+				if(month >= 1 && month <= 12) break;
+			}
+			console.log("month : " + month)
+			while(true){
+				day = Math.round(Math.random()*100) + Math.round(Math.random()*10)
+				if(day>=1 && day <= 30) break;
+			}
+			console.log("day : " + day)
+			let setDate = year + "/" + month + "/" +day
+			$(".reg-mainCon").find("input[name='birthDay']").eq(j).data('daterangepicker').setStartDate(setDate);
+		}
+		
+		let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+		let idLength = $(".reg-mainCon").find("input[name='personID']").length
+		for(let j = 0 ; j < idLength ; j++){
+			let startChar = possible.charAt(Math.floor(Math.random() * possible.length));
+			let bodyStart;
+			while(true){
+				bodyStart = Math.round(Math.random()*10)
+				if(bodyStart >0 && bodyStart <3){
+					bodyStart *= 100000000
+					break;
+				} 
+			}
+			let body
+			while(true){
+				body = Math.round(Math.random()*100000000)
+				if(body > 10000000) break;
+			}
+			bodyStart += body
+			let final = startChar+bodyStart
+			$(".reg-mainCon").find("input[name='personID']").eq(j).val(final)
+		}
+		
+		let cpLength = $(".reg-mainCon").find("input[name='contactPhone']").length
+		for(let j = 0 ; j < cpLength ; j++){
+			let head0 = '0';
+			let head2;
+			while(true){
+				head2 = Math.round(Math.random()*10)
+				if(head2 > 0 && head2 <10) break;
+			}
+			let head = head0+head2+'-'
+			let body = Math.round(Math.random()*100000000)
+				
+			$(".reg-mainCon").find("input[name='contactPhone']").eq(j).val(head+body)
+		}
+		
+		let ccpLength = $(".reg-mainCon").find("input[name='contactCellphone']").length
+		for(let j = 0 ; j < ccpLength ; j++){
+			let head = '09'
+			let body;
+			while(true){
+				body = Math.round(Math.random()*100000000)
+				if(body < 100000000 && body > 10000000)	
+				break;		
+			}
+			$(".reg-mainCon").find("input[name='contactCellphone']").eq(j).val(head+body)
+		}
+		
+		possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+		let mailLength = $(".reg-mainCon").find("input[name='contactEmail']").length
+		for(let j = 0 ; j < mailLength ; j++){
+			let head = ''
+			for(let y = 0 ; y <10 ; y++){
+				head += possible.charAt(Math.floor(Math.random() * possible.length));
+			}
+			head += '@gmail.com'
+			$(".reg-mainCon").find("input[name='contactEmail']").eq(j).val(head)
+		}
+	}
 }
