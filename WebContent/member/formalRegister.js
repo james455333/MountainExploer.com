@@ -4,5 +4,5 @@ $(".fastRg").on("click", function(){
     $("#pwd").val("DoingTest123");
     $("#chkPwd").val("DoingTest123");
     $("#name").val("布倫希爾德");
-    $("#email").val("lancer100@gmail.com");
+    $("#email").val("edwardareis@gmail.com");
 })
