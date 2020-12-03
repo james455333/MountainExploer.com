@@ -467,37 +467,35 @@ body {
 									<div class="owl-carousel testimonials-carousel">
 
 										<div class="testimonial-item">
-											<img src="images/預設頭像.png"
-												class="testimonial-img" alt="">
-											<h3>劉 玉玲</h3>
+											<img src="images/預設頭像.png" class="testimonial-img" alt="">
+											<h3>劉 怡廷</h3>
 											<h4>組長</h4>
-											<p>請支援收銀</p>
+											<h4>Management Information System</h4>
+											<p>說一些想說的話</p>
 										</div>
 
 										<div class="testimonial-item">
-											<img src="images/預設頭像.png"
-												class="testimonial-img" alt="">
+											<img src="images/預設頭像.png" class="testimonial-img" alt="">
 											<h3>潘 威承</h3>
 											<h4>技術長</h4>
-											<p>請支援收銀</p>
+											<h4>Project Manager</h4>
+											<p>說一些想說的話</p>
 										</div>
 
 										<div class="testimonial-item">
-										
-										<!-- <img src="assets/img/testimonial-3.jpg"-->
-										<img src="images/預設頭像.png"
-												class="testimonial-img" alt="">
+
+											<!-- <img src="assets/img/testimonial-3.jpg"-->
+											<img src="images/預設頭像.png" class="testimonial-img" alt="">
 											<h3>劉 士豪</h3>
 											<h4>組員</h4>
-											<p>請支援收銀</p>
+											<p>說一些想說的話</p>
 										</div>
 
 										<div class="testimonial-item">
-											<img src="images/預設頭像.png"
-												class="testimonial-img" alt="">
+											<img src="images/預設頭像.png" class="testimonial-img" alt="">
 											<h3>洪 上尚</h3>
 											<h4>組員</h4>
-											<p>請支援收銀</p>
+											<p>說一些想說的話</p>
 										</div>
 
 										<div class="testimonial-item">
@@ -534,7 +532,7 @@ body {
 										<!-- <img src="assets/img/team-1.jpg" class="img-fluid" alt="">-->
 										<div class="member-info">
 											<div class="member-info-content">
-												<h4>劉 玉玲</h4>
+												<h4>劉 怡廷</h4>
 												<span>組長</span>
 												<div class="social">
 													<a href=""><i class="fa fa-twitter"></i></a> <a href=""><i
