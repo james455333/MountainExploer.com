@@ -35,6 +35,8 @@
 	<script src="/MountainExploer.com/mountain/js/mountain.js"></script>
 	<script src="registry/registry.js"></script>
 	<script src="registry/registryFunction.js"></script>
+	<!-- jquery.blockUI -->
+	<script src="http://malsup.github.io/jquery.blockUI.js"></script>
 </head>
 <body>
 
@@ -183,6 +185,7 @@
 								</div>
 								<button type="button" id="regInfo-submit" class="btn btn-primary btn-block"
 									type="button"><i class="fa fa-cloud-upload"></i>確認報名</button>
+<!-- 								<button type="button" id='btn-click-auto' class="btn btn-outline-dark btn-lg"> 一鍵輸入資料</button> -->
 							</div>
 						</div>
 					</div>

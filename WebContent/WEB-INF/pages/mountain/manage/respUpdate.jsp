@@ -41,7 +41,8 @@
 	<script src="/MountainExploer.com/mountain/js/mountain.js"></script>
 	<script src="../respUpdate/respUpdate.js"></script>
 	<script src="../respUpdate/respUpdateFunction.js"></script>
-
+	<!-- jquery.blockUI -->
+	<script src="http://malsup.github.io/jquery.blockUI.js"></script>
 
 </head>
 <body>
