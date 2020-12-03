@@ -2,15 +2,18 @@ package member.controller;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.http.client.utils.HttpClientUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,10 +31,12 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken.Payload;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.gson.JsonObject;
 
 import member.MemberGlobal;
 import member.model.MemberBasic;
 import member.model.MemberService;
+import net.sf.json.JSONObject;
 
 @Controller
 @SessionAttributes(names = {"Member", "beforeCheckURL"})
@@ -42,7 +47,7 @@ public class MemberLoginController {
 	private static String client_id = "578428677346-4jvc65cma0hl66a9vvv9ka9iijjh2l6a.apps.googleusercontent.com";
 	private static String client_key = "4nwYIYzwvLL9RDjDMcnIyjdY";
 	private static String scope = "https://www.googleapis.com/auth/drive.metadata.readonly";
-	private static String redirect_url = "http://gntina.iok.la/GoogleUserInfo";
+	private static String redirect_uri = "http://gntina.iok.la/GoogleUserInfo";
 	private static String code_url = "https://accounts.google.com/o/oauth2/v2/auth";
 	private static String token_url = "https://www.googleapis.com/oauth2/v4/token";
 	private static String user_url = "https://www.googleapis.com/oauth2/v2/userinfo";
@@ -312,53 +317,27 @@ public class MemberLoginController {
 		return "member/socailLoginGoogleTest";
 	}
 	
-	
-	@RequestMapping(path = "/member/googleVerify", method = RequestMethod.POST)
-	public void verifyToken(String idTokenStr) {
-		System.out.println(idTokenStr);
-		GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(new NetHttpTransport(), JacksonFactory.getDefaultInstance()).setAudience(Collections.singletonList(client_id)).build();
+	@RequestMapping(value = "/member/googleVerify", method = RequestMethod.POST)
+	public void verifyToken(String idtokenStr) {
+		System.out.println(idtokenStr);
+		GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(
+				new NetHttpTransport(), JacksonFactory.getDefaultInstance()).setAudience(Collections.singletonList(client_id)).build();
 		GoogleIdToken idToken = null;
 		try {
-			idToken = verifier.verify(idTokenStr);
+			idToken = verifier.verify(idtokenStr);
 		} catch (GeneralSecurityException e) {
 			e.printStackTrace();
-			System.out.println("驗證時出現GeneralSecurityException例外");
 		} catch (IOException e) {
 			e.printStackTrace();
-			System.out.println("驗證時出現IOException例外");
 		}
 		
 		if(idToken != null) {
 			System.out.println("驗證成功");
 			Payload payload = idToken.getPayload();
 			String userId = payload.getSubject();
-			System.out.println("=================UserId:" + userId);
-			
-			String email = payload.getEmail();
-			System.out.println("=================Email:" + email);
-			
-			String name = (String)payload.get("name");
-			System.out.println("=================Name:" + name);
 		} else {
 			System.out.println("Invalid ID token");
 		}
 	}
-	
-	
-	
-
-	@RequestMapping(path = "/member/memberLogout", method = RequestMethod.GET)
-	public String processLogout(HttpSession session, HttpServletRequest request, SessionStatus status) {
-		session.removeAttribute("Member");
-		
-		System.out.println("logout:" + session.getAttribute("Member"));
-		System.out.println("==================Session:" + (session != null));
-		
-		status.setComplete();
-		
-		return "member/formalLoginAlone";
-	}
-	
-
 	
 }
