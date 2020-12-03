@@ -219,7 +219,7 @@
                             margin-left: 15px;">
                               <div class="offset-4 col-8" style="margin: 0 auto;">
                                 <button name="submit" type="submit" class="btn btn-primary submit">確認更改</button>
-                                <button name="submit" type="reset" class="btn btn-primary">取消</button>
+                                <button name="submit" id="reset" type="reset" class="btn btn-primary">取消</button>
                               </div>
                             </div>
                           </form>

@@ -1,9 +1,9 @@
 //防止預設資料被清空
-// document.getElementById("reset").onclick = function(){
-//     let userSeq = document.getElementById("seqno");
-//     userSeq.defaultValue = userSeq.value;
-//     document.forms[0].reset();
-// }
+document.getElementById("reset").onclick = function(){
+    let userOther = document.getElementById("other");
+    userOther.defaultValue = userOther.value;
+    document.forms[0].reset();
+}
 
 
 //顯示個人簡介
@@ -14,7 +14,6 @@ $(function(){
         method:"GET",
         url:"/MountainExploer.com/member/memberOther",
         data:{seqno:seqnoPre},
-        contentType: "application/json; charset=UTF-8",
         dataType:"json",
         success: function(otherLs){
            console.log(otherLs[0]);
