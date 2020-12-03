@@ -85,7 +85,7 @@ public class MemberBackLoginController {
 	public String processLogout(SessionStatus status, HttpSession session) {
 		System.out.println("session hascode before clean : " + session.hashCode());
 		status.setComplete();
-		return "member/backLogin";
+		return "member/formalLoginAlone";
 		
 		
 	}
