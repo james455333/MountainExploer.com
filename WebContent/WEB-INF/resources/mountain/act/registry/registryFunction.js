@@ -190,3 +190,22 @@ function reloadReg(){
 	registry(page);
 }
 
+function autoInfo(){
+//	let length = $(".regInfo-form").length
+//	for(let i in length ){
+//		let i = Math.round(Math.random()*10)
+//		let nameArray = ['王重陽','宋遠橋','俞蓮舟','俞岱岩','張松溪','張翠山','殷梨亭','莫聲谷','張三丰','張無忌']
+//		
+//		let year = 1970 + Math.round(Math.random()*100)
+//		while(true){
+//			year = 1970 + Math.round(Math.random()*100)
+//			if(year > 1971 && year < 2015) break;
+//		}
+//		let month, day;
+//		while(true){
+//			month = Math.round(Math.random()*10)
+//		}
+//		
+//	}
+//	console.log(year)
+}

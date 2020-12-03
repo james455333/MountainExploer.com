@@ -95,6 +95,7 @@ $(function(){
 			}
         }
 	})
+	$("#btn-click-auto").on("click", autoInfo)
 	
 })
 

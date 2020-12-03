@@ -16,6 +16,9 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="route/routeFunction.js"></script>
     <script src="route/route.js"></script>
+    <script src="js/mountain.js"></script>
+    <!-- jquery.blockUI -->
+	<script src="http://malsup.github.io/jquery.blockUI.js"></script>
     
     <style>
 

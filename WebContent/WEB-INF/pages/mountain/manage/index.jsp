@@ -27,6 +27,8 @@
     <script src="manage/manageReportFunction.js"></script>
     <script src="manage/checkFunction.js"></script>
     <script src="manage/manage.js"></script>
+    <!-- jquery.blockUI -->
+	<script src="http://malsup.github.io/jquery.blockUI.js"></script>
     <style>
 
     </style>
