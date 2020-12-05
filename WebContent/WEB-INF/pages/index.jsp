@@ -467,7 +467,8 @@ body {
 									<div class="owl-carousel testimonials-carousel">
 
 										<div class="testimonial-item">
-											<img src="images/預設頭像.png" class="testimonial-img" alt="">
+											<img src="images/personalImg/劉怡廷.jpg" class="testimonial-img"
+												alt="">
 											<h3>劉 怡廷</h3>
 											<h4>組長</h4>
 											<h4>Management Information System</h4>
@@ -475,7 +476,8 @@ body {
 										</div>
 
 										<div class="testimonial-item">
-											<img src="images/預設頭像.png" class="testimonial-img" alt="">
+											<img src="images/personalImg/潘威丞.jpg" class="testimonial-img"
+												alt="">
 											<h3>潘 威承</h3>
 											<h4>技術長</h4>
 											<h4>Project Manager</h4>
@@ -485,21 +487,24 @@ body {
 										<div class="testimonial-item">
 
 											<!-- <img src="assets/img/testimonial-3.jpg"-->
-											<img src="images/預設頭像.png" class="testimonial-img" alt="">
+											<img src="images/personalImg/劉士豪.jpg" class="testimonial-img"
+												alt="">
 											<h3>劉 士豪</h3>
 											<h4>組員</h4>
 											<p>說一些想說的話</p>
 										</div>
 
 										<div class="testimonial-item">
-											<img src="images/預設頭像.png" class="testimonial-img" alt="">
+											<img src="images/personalImg/洪上尚.jpg" class="testimonial-img"
+												alt="">
 											<h3>洪 上尚</h3>
 											<h4>組員</h4>
 											<p>說一些想說的話</p>
 										</div>
 
 										<div class="testimonial-item">
-											<img src="images/預設頭像.png" class="testimonial-img" alt="">
+											<img src="images/personalImg/程文杰.jpg" class="testimonial-img"
+												alt="">
 											<h3>程 文杰</h3>
 											<h4>組員</h4>
 											<p>說一些想說的話</p>
@@ -527,7 +532,7 @@ body {
 								<div class="col-lg-3 col-md-6" data-aos="zoom-out"
 									data-aos-delay="100">
 									<div class="member">
-										<img src="images/預設頭像450.png" class="img-fluid" alt="">
+										<img src="images/personalImg/劉怡廷.jpg" class="img-fluid" alt="">
 										<!--使用正方形400*400以上的照片-->
 										<!-- <img src="assets/img/team-1.jpg" class="img-fluid" alt="">-->
 										<div class="member-info">
@@ -548,7 +553,7 @@ body {
 								<div class="col-lg-3 col-md-6" data-aos="zoom-out"
 									data-aos-delay="200">
 									<div class="member">
-										<img src="images/預設頭像450.png" class="img-fluid" alt="">
+										<img src="images/personalImg/潘威丞.jpg" class="img-fluid" alt="">
 										<div class="member-info">
 											<div class="member-info-content">
 												<h4>潘 威承</h4>
@@ -567,7 +572,7 @@ body {
 								<div class="col-lg-3 col-md-6" data-aos="zoom-out"
 									data-aos-delay="300">
 									<div class="member">
-										<img src="images/預設頭像450.png" class="img-fluid" alt="">
+										<img src="images/personalImg/劉士豪.jpg" class="img-fluid" alt="">
 										<div class="member-info">
 											<div class="member-info-content">
 												<h4>劉 士豪</h4>
@@ -586,7 +591,7 @@ body {
 								<div class="col-lg-3 col-md-6" data-aos="zoom-out"
 									data-aos-delay="400">
 									<div class="member">
-										<img src="images/預設頭像450.png" class="img-fluid" alt="">
+										<img src="images/personalImg/洪上尚.jpg" class="img-fluid" alt="">
 										<div class="member-info">
 											<div class="member-info-content">
 												<h4>洪 上尚</h4>
@@ -605,16 +610,16 @@ body {
 								<div class="col-lg-3 col-md-6" data-aos="zoom-out"
 									data-aos-delay="400">
 									<div class="member">
-										<img src="images/預設頭像450.png" class="img-fluid" alt="">
+										<img src="images/personalImg/程文杰.jpg" class="img-fluid" alt="">
 										<div class="member-info">
 											<div class="member-info-content">
 												<h4>程 文杰</h4>
 												<span>組員</span>
 												<div class="social">
-													<a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i
+													<a href="#"><i class="fa fa-instagram"></i></a> <a href="#"><i
 														class="fa fa-facebook"></i></a> <a href="#"><i
 														class="fa fa-google"></i></a> <a href="#"><i
-														class="fa fa-linkedin"></i></a>
+														class="fa fa-twitter"></i></a>
 												</div>
 											</div>
 										</div>
