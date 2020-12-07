@@ -1,5 +1,7 @@
 package house.mountainhouseList.model;
 
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -48,6 +51,8 @@ public class HouseInfoBean {
 	@OneToOne(fetch = FetchType.LAZY , mappedBy = "houseid" ,cascade = CascadeType.ALL)
 	private HouseImgBean imgid;
 	
+	@OneToMany(fetch = FetchType.LAZY , mappedBy = "housebasicid",cascade = CascadeType.ALL)
+	private Set<HouseOrderBean> houseorder;
 	
 	public Integer getHousebasicid() {
 		return housebasicid;
@@ -114,6 +119,12 @@ public class HouseInfoBean {
 	}
 	public void setClickcount(Integer clickcount) {
 		this.clickcount = clickcount;
+	}
+	public Set<HouseOrderBean> getHouseorder() {
+		return houseorder;
+	}
+	public void setHouseorder(Set<HouseOrderBean> houseorder) {
+		this.houseorder = houseorder;
 	}
 	
 	
