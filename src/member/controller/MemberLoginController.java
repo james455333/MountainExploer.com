@@ -341,15 +341,20 @@ public class MemberLoginController {
 	//FB
 	@RequestMapping(value = "/member/userInfo")
 	@ResponseBody
-	public String getFbUserInfo(String userInfo) {
+	public String getFbUserInfo(String name, String email) {
 		
-		System.out.println(userInfo);
+		System.out.println("==========name:" + name);
+		System.out.println("==========email:" + email);
 		
 		MemberBasic mb = new MemberBasic();
+		mb.setName(name);
+		mb.setEmail(email);
+		mbService.insert(mb);
 		
 		
 		
-		return userInfo;
+		
+		return "success";
 	}
 	
 }
