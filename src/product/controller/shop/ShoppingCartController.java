@@ -151,7 +151,7 @@ public class ShoppingCartController {
 		ShoppingCart shoppingCart = (ShoppingCart) m.getAttribute("ShoppingCart");
 		double subtotal = shoppingCart.getSubtotal();
 		orders.setTotalAmount(subtotal);
-
+		
 		orders.setMemberBasic((MemberBasic) m.getAttribute("Member"));
 		
 		orders.setReceiver(receiver);

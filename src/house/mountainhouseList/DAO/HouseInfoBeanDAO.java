@@ -130,8 +130,7 @@ public class HouseInfoBeanDAO implements IHouseInfoBeanService  {
 	
 	@Override
 	public HouseInfoBean insertHouse(HouseInfoBean bean) {
-		System.out.println("beanID : " + bean.getHousebasicid());
-		System.out.println("beanName : " + bean.getName());
+		
 		getSession().save(bean);
 		return bean;
 			
