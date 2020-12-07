@@ -7,7 +7,7 @@ var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    labels: ["Direct", "Referral", "Social"],
+    labels: ["一般會員", "登山響導", "未註冊用戶"],
     datasets: [{
       data: [55, 30, 15],
       backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
@@ -21,14 +21,14 @@ var myPieChart = new Chart(ctx, {
       backgroundColor: "rgb(255,255,255)",
       bodyFontColor: "#858796",
       borderColor: '#dddfeb',
-      borderWidth: 1,
+      borderWidth: 5,
       xPadding: 15,
       yPadding: 15,
       displayColors: false,
       caretPadding: 10,
     },
     legend: {
-      display: false
+      display: true
     },
     cutoutPercentage: 80,
   },
