@@ -73,4 +73,10 @@ input.error{
 
 #btn-click-auto{
 	margin : 10px;
+	display : none;
+}
+#row-auto-btn{
+	position : fixed;
+	top : 500px;
+	left : 0 px;
 }

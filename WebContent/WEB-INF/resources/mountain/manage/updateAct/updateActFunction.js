@@ -54,18 +54,22 @@ function setRouteSelect(npID){
 		data : { npID : npID},
 		dataType : "json",
 		type : "GET",
-		success : function(data){
-			for(let i in data){
+		success : function(result){
+//			console.log(data.length)
+			for(let j =0 ; j < result.length ; j++){
+				let routeInfo = result[j].routeInfo
 				let rtOption = rtSelect.find(".hideOP").clone()
-				rtOption.html(data[i].routeInfo.name).val(data[i].id)
+				console.log(j)
+				console.log(routeInfo.name)
+				rtOption.html(routeInfo.name).val(result[j].id)
 						.removeClass("hideOP")
-				if(data[i].id == rtID){
+				if(result[j].id == rtID){
 					rtOption.attr("selected", true)
 					rtOption.siblings("option").attr("selected",false)
-					setRouteDesp(data[i].routeInfo)
-				} else if(i==0){
+					setRouteDesp(result[j].routeInfo)
+				} else if(j==0){
 					rtOption.attr("selected", true)
-					setRouteDesp(data[i].routeInfo)
+					setRouteDesp(result[j].routeInfo)
 				}
 				rtSelect.append(rtOption)
 			}
@@ -458,17 +462,18 @@ function setRegInfo(data){
 	$("input[name='actInfo.regTop']").val(data.actInfo.regTop)
 }
 function setImgInfo(data){
-	$("#originIMG").find(".hideElm").siblings("div").remove()
 	let originImages = data.actImage
 	for (let i in originImages){
-		let model = $("#originIMG").find(".hideElm").clone();
-		model.find(".showImage")
-			.attr("src","/MountainExploer.com/mountain/act/crud/images?seqno=" + originImages[i].seqno)
-		model.find(".extendImage")
-			.attr("src","/MountainExploer.com/mountain/act/crud/images?seqno=" + originImages[i].seqno)
+		let model = $("#img-container").find(".hideElm").clone();
+		model.attr({
+			"href" : "?seqno=" + originImages[i].seqno,
+			"data-ngthumb" : "?seqno=" + originImages[i].seqno,
+		})
 		model.removeClass("hideElm")
-		$("#originIMG").append(model)
+		$("#img-container").append(model)
 	}
+	$("#img-container").nanogallery2('resize')
+	
 }
 function setNoteInfo(data){
 	

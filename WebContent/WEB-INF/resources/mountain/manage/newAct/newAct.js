@@ -2,6 +2,8 @@ var mountainHome = "/MountainExploer.com/mountain/route/search"
 var actCRUDHome = "/MountainExploer.com/mountain/act/crud"
 var detailHome = "/MountainExploer.com/mountain/act/detail?"
 
+var originSD;
+
 $(function(){
 	setDefaultRouteSelect( $(".newAct-form") )
 	setDatePicker($(".newAct-form"))
@@ -42,7 +44,10 @@ $(function(){
 	
 	
 	$("#btn-click-auto").on("click",autoNewAct)
-	
+	$("#btn-menu-auto").on("click",function(){
+		console.log(123)
+		$("#btn-click-auto").toggle()
+	})
 })
 
 

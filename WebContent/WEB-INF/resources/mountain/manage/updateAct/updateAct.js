@@ -51,15 +51,14 @@ $(function(){
 //		readURL(this);
 //	})
 	/* 圖片放大預覽 */
-	$(".newAct-form").on("mouseenter",".showImage",function(e){
-		var elm = $(this);
-		var x = e.pageX - elm.offset().left;
-	    var y = e.pageY - elm.offset().top;
-		$(this).siblings().show();
-	}).on("mouseleave",".showImage",function(){
-		$(this).siblings().hide();
-	})
-	
+//	$(".newAct-form").on("mouseenter",".showImage",function(e){
+//		var elm = $(this);
+//		var x = e.pageX - elm.offset().left;
+//	    var y = e.pageY - elm.offset().top;
+//		$(this).siblings().show();
+//	}).on("mouseleave",".showImage",function(){
+//		$(this).siblings().hide();
+//	})
 })
 
 

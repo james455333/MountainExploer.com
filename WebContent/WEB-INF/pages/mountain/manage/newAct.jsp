@@ -267,21 +267,26 @@
 						<div class="row">
 							<div class="col-md-12">
 								<button id="btn-submit"type="button" class="btn btn-lg btn-primary btn-block">
-									Button
+									發布活動
 								</button>
 								
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<button type="button" id='btn-click-auto' class="btn btn-dark btn-lg"> 一鍵輸入資料</button>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 			</div>
 			
+			
 			<!-- 每頁不同的內容到這裡結束 -->
+		</div>
+	</div>
+	<div class="row" id="row-auto-btn">
+		<div class="col-md-8">
+			<button type="button" id='btn-click-auto' class="btn btn-dark btn-lg"> 一鍵輸入資料</button>
+		</div>
+		<div class="col-md-4">
+			<button type="button" id="btn-menu-auto" class="btn btn-outline-info"><i class="fa fa-align-justify"></i> </button>
 		</div>
 	</div>
 	<div class="hideDIV" style="display:none;">

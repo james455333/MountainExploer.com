@@ -16,6 +16,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- bootstrap-select-->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+	<!-- nanogallery2 -->
+	<link href="https://cdn.jsdelivr.net/npm/nanogallery2@3/dist/css/nanogallery2.min.css" rel="stylesheet" type="text/css">
 	<!-- for this page  style sheet -->
 	<link rel="stylesheet" href="updateAct/updateAct.css">
 	
@@ -43,7 +45,8 @@
 	<script src="updateAct/updateActFunction.js"></script>
 	<!-- jquery.blockUI -->
 	<script src="http://malsup.github.io/jquery.blockUI.js"></script>
-
+	<!-- nanogallery2 -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/nanogallery2@3/dist/jquery.nanogallery2.min.js"></script>
 </head>
 <body>
 <header>
@@ -216,17 +219,38 @@
 										<div class="col-md-12">
 											<div class="row new-form-head">
 												<div class="col-md-12">
-													原本圖片預覽
+													圖片預覽
 												</div>
 											</div>
 											<div class="row new-form-body">
 												<div class="col-md-12">
-													<div id="originIMG">
-														<div class='newAct-img-container hideElm'>
-															<img class='showImage' src=''>
-															<img class='extendImage' src=''>
-														</div>
-													</div>
+													<div id="img-container" data-nanogallery2='{
+												        "itemsBaseURL": "http://localhost:8080/MountainExploer.com/mountain/act/crud/images/",
+												        "thumbnailWidth": "auto",
+												        "thumbnailHeight": "350",
+												        "thumbnailBorderVertical": 5,
+												        "colorScheme": {
+												          "thumbnail": {
+												            "background": "rgba(195,220,187,1)"
+												          }
+												        },
+												        "thumbnailDisplayTransition": "flipDown",
+												        "thumbnailDisplayTransitionDuration": 500,
+												        "thumbnailLabel": {
+												          "position": "overImageOnBottom",
+												          "align": "left"
+												        },
+												        "thumbnailHoverEffect2": "borderLighter|scale120|labelAppear75",
+												        "galleryDisplayMode": "pagination",
+												        "galleryMaxRows": 1,
+												        "galleryDisplayMoreStep": 1,
+												        "galleryLastRowFull": true,
+												        "galleryPaginationMode": "numbers",
+												        "thumbnailAlignment": "center",
+												        "thumbnailOpenImage": true
+												      }'>
+												
+												    </div>
 												</div>
 											</div>
 										</div>

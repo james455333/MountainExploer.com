@@ -100,17 +100,17 @@ public class ActCRUDController {
 			service.save(actBasic);
 			actBasic = (ActivityBasic) service.insert(actBasic);
 			/* 新增活動圖片 */
-			if(files.length>0) {
-				for (MultipartFile multipartFile : files) {
+			System.out.println("============= files.length : " + files.length);
+			for (MultipartFile multipartFile : files) {
+				if(!multipartFile.getOriginalFilename().isEmpty()) {
 					ActImage actImage = new ActImage();
 					actImage.setActivityBasic(actBasic);
 					actImage.setName(multipartFile.getOriginalFilename());
-					byte[] imgeBytes = MountainGlobal.downloadImage(multipartFile, request);
-					actImage.setImg(imgeBytes);
-					service.save(actImage);
-					service.insert(actImage);
+					byte[] imgeBytes = MountainGlobal.downloadImage(multipartFile, request);						actImage.setImg(imgeBytes);
+					service.save(actImage);						service.insert(actImage);
 				}
 			}
+			
 			
 			
 		} catch (Exception e) {
