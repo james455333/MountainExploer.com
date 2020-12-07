@@ -403,3 +403,46 @@ function setDatePicker(thisElm){
 		}, function(start, end, label) {
 		});		    
 }
+
+function autoNewAct(){
+	
+	let thisForm = $(".newAct-form")
+	/* title */
+	let title = thisForm.find("input[name='actInfo.title']")
+	let titleTextArray = [ '登高一探無雲處', '天處一方似無常', '蔥蔥無徑參天路', '遠炊誰人家', '橫看成嶺側成峰', '遠近高低各不同', '不適廬山真面目', '只緣身在此山中', '天若有情天亦老', '月若無恨月長圓']
+	let random1;
+	while(true){
+		random1 = Math.round(Math.random()*10)
+		if(random1 < 10) break;
+	}
+	title.val(titleTextArray[random1])
+	/* price */
+	let price = thisForm.find("input[name='actInfo.price']")
+	let randomPrice;
+	randomPrice = Math.round(Math.random()*10000) + Math.round(Math.random()*1000) + Math.round(Math.random()*100)
+	price.val(randomPrice)
+	
+	/* npSelect */
+	
+	let npOptions = $("#npSelect").find("option").not(".hideOP")
+	let rtOptions = $("#rtSelect").find("option").not(".hideOP")
+	let randomNp = Math.round(Math.random()*10)
+	while(true){
+		randomNp = Math.round(randomNp/2)
+		if( randomNp < npOptions.length && randomNp >= 0 ){
+			break;
+		}
+	}
+	console.log( npOptions.eq(randomNp).val() )
+	let randomRt = Math.round(Math.random()*10)
+	while(true){
+		randomRt = Math.round(randomNp/2)
+		if( randomRt < rtOptions.length && randomRt >= 0 ){
+			break;
+		}
+	}
+	console.log( rtOptions.eq(randomRt).val() )
+	
+	
+}
+

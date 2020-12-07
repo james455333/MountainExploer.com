@@ -40,6 +40,9 @@ $(function(){
 		$(this).siblings().hide();
 	})
 	
+	
+	$("#btn-click-auto").on("click",autoNewAct)
+	
 })
 
 
