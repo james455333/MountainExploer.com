@@ -28,11 +28,18 @@
 			var accessToken = response.authResponse.accessToken;
 			console.log(response.authResponse.accessToken);
 			if(response.status === "connected"){
-				FB.api("/me", "GET", {fields: "name,email"}, function(response){
+				FB.api("/me", "GET", {fields:"name,email"},function(response){
 // 					window.location.href = "http://localhost:8080/MountainExploer.com/member/userInfo?userInfo=" + JSON.stringify(response);
+					let name = response.name;
+					let email = response.email;
+					
+					
 					$.ajax({
 						url:"/MountainExploer.com/member/userInfo",
-						data:{userInfo:JSON.stringify(response)},
+						data:{
+							name: name,
+							email: email
+						},
 						dataType:"json",
 						async:false,
 						success:function(data){
