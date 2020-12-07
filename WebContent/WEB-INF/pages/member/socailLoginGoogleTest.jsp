@@ -10,7 +10,7 @@
 <title>Google Login test</title>
 </head>
 <body>
-	<div class="g-signin2" data-onsuccess="onSignIn"></div>
+	<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
 	<a href="/MountainExploer.com" onclick="signOut();">Sign Out</a>
 	
 	<script>

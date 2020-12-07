@@ -11,9 +11,8 @@ import java.util.UUID;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.apache.http.client.utils.HttpClientUtils;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
@@ -31,7 +29,6 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken.Payload;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
-import com.google.gson.JsonObject;
 
 import member.MemberGlobal;
 import member.model.MemberBasic;
@@ -314,7 +311,7 @@ public class MemberLoginController {
 	//第三方登入
 	@RequestMapping(path = "/member/socialLoginEntry", method = RequestMethod.GET)
 	public String socialLoginEntry() {
-		return "member/socailLoginGoogleTest";
+		return "member/FBLoginTest";
 	}
 	
 	@RequestMapping(value = "/member/googleVerify", method = RequestMethod.POST)
@@ -338,6 +335,21 @@ public class MemberLoginController {
 		} else {
 			System.out.println("Invalid ID token");
 		}
+	}
+	
+	
+	//FB
+	@RequestMapping(value = "/member/userInfo")
+	@ResponseBody
+	public String getFbUserInfo(String userInfo) {
+		
+		System.out.println(userInfo);
+		
+		MemberBasic mb = new MemberBasic();
+		
+		
+		
+		return userInfo;
 	}
 	
 }
