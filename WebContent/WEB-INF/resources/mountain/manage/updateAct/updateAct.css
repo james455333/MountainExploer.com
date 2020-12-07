@@ -52,32 +52,46 @@ input.error{
 .showImage {
 	width: 100%;
 	height: 100%;
-}
-
-.extendImage {
-	position: absolute;
-	height : 300px;
-	width : 400px;
-	display: none;
-	z-index: 10;
+	border-radius : 10px;
 }
 .newAct-img-container{
 	margin : 0 20px;
 	border : 1px solid green;
+	border-radius : 10px;
 	padding : 2.5px;
-	width : 15%;
+	width : 17.5%;
+	height : 50%;
 }
+
 #previewMultiple{
 	display : flex;
 	align-items: center;
 	justify-content: center;
 }
-#originIMG{
+
+
+.hideElm{
+	display : none;
+}
+.img-controller{
+	position : relative;
 	display : flex;
 	align-items: center;
 	justify-content: center;
 }
-
-.hideElm{
-	display : none;
+.btn-img-cancel{
+	border : none;
+}
+.btn-img-cancel i{
+	width : 15px;
+	height : 15px;
+}
+.btn-img-upload{
+	border : none;
+}
+.btn-img-default{
+	border : none;
+}
+.tooltip {
+  font-size: 25px;
 }

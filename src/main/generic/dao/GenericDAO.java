@@ -225,13 +225,14 @@ public class GenericDAO<T extends GenericTypeObject> implements InterfaceDAO<T> 
 
 	}
 
-	public int countWithHql(String hql) {
+	public Integer countWithHql(String hql) {
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery(hql);
 
-		long result = (Long) query.uniqueResult();
-
-		return (int) result;
+		Long result = (Long) query.uniqueResult();
+		System.out.println("================== result Long : " + result);
+		if(result == null) result = (long)0;
+		return result.intValue();
 	}
 
 	public List<? extends GenericTypeObject> getAllWithHql(String hql) {

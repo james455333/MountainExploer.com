@@ -16,8 +16,12 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- bootstrap-select-->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+	<!-- Fancy Box 3 -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
 	<!-- nanogallery2 -->
 	<link href="https://cdn.jsdelivr.net/npm/nanogallery2@3/dist/css/nanogallery2.min.css" rel="stylesheet" type="text/css">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 	<!-- for this page  style sheet -->
 	<link rel="stylesheet" href="updateAct/updateAct.css">
 	
@@ -39,14 +43,22 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"></script>
 	<!-- CKeditor 4 -->
 	<script src="/MountainExploer.com/mountain/ckeditor/ckeditor.js"></script>
+	<!-- jquery.blockUI -->
+	<script src="http://malsup.github.io/jquery.blockUI.js"></script>
+	<!-- Fancy Box 3  -->
+	<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+	<!-- nanogallery2 -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/nanogallery2@3/dist/jquery.nanogallery2.min.js"></script>
+	<!-- MDB core JavaScript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/js/mdb.min.js"></script>
+	<!-- Bootstrap tooltips -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script type="text/javascript"src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
 	<!-- 自用 -->
 	<script src="/MountainExploer.com/mountain/js/mountain.js"></script>
 	<script src="updateAct/updateAct.js"></script>
 	<script src="updateAct/updateActFunction.js"></script>
-	<!-- jquery.blockUI -->
-	<script src="http://malsup.github.io/jquery.blockUI.js"></script>
-	<!-- nanogallery2 -->
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/nanogallery2@3/dist/jquery.nanogallery2.min.js"></script>
 </head>
 <body>
 <header>
@@ -219,38 +231,35 @@
 										<div class="col-md-12">
 											<div class="row new-form-head">
 												<div class="col-md-12">
-													圖片預覽
+													上傳圖片修改(上限五張)
+												</div>
+											</div>
+											
+											<div class="row new-form-body">
+												<div class="col-md-12" id="previewMultiple">
+													<div class='newAct-img-container hideElm'>
+														<a ><img data-toggle="tooltip" title='點擊放大' src="" alt="" class='showImage'/></a>
+														<div class="img-controller">
+															<button  data-toggle="tooltip" type="button" title='設為預設' class="btn btn-outline-success btn-img-default">
+																<i class="fas fa-anchor"></i>
+															</button>
+															<button  data-toggle="tooltip" type="button" title='更新圖片' class="btn btn-outline-info btn-img-upload">
+																<i class="fas fa-file-upload"></i>
+															</button>
+															<button  data-toggle="tooltip" type="button" title='刪除本圖片' class="btn btn-outline-danger btn-img-cancel">
+																<i class="fas fa-times"></i>
+															</button>
+															
+														</div>
+													</div>
 												</div>
 											</div>
 											<div class="row new-form-body">
-												<div class="col-md-12">
-													<div id="img-container" data-nanogallery2='{
-												        "itemsBaseURL": "http://localhost:8080/MountainExploer.com/mountain/act/crud/images/",
-												        "thumbnailWidth": "auto",
-												        "thumbnailHeight": "350",
-												        "thumbnailBorderVertical": 5,
-												        "colorScheme": {
-												          "thumbnail": {
-												            "background": "rgba(195,220,187,1)"
-												          }
-												        },
-												        "thumbnailDisplayTransition": "flipDown",
-												        "thumbnailDisplayTransitionDuration": 500,
-												        "thumbnailLabel": {
-												          "position": "overImageOnBottom",
-												          "align": "left"
-												        },
-												        "thumbnailHoverEffect2": "borderLighter|scale120|labelAppear75",
-												        "galleryDisplayMode": "pagination",
-												        "galleryMaxRows": 1,
-												        "galleryDisplayMoreStep": 1,
-												        "galleryLastRowFull": true,
-												        "galleryPaginationMode": "numbers",
-												        "thumbnailAlignment": "center",
-												        "thumbnailOpenImage": true
-												      }'>
-												
-												    </div>
+												<div class="col-md-12" >
+													<div class="custom-file">
+													    <input type="file" class="custom-file-input" id="files">
+													    <label class="custom-file-label" for="files">選擇新增圖片</label>
+													</div>
 												</div>
 											</div>
 										</div>

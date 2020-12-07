@@ -12,6 +12,7 @@ if(urlNow.searchParams.has("actID")){
 
 $(function(){
 	setActInfo();
+	   
 	$("#npSelect").on("change",changeRtOption)
 	$("#rtSelect").on("change",changeRtDesp)
 	$("#btn-submit").on("click",function(){

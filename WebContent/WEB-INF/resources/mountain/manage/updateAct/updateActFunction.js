@@ -59,8 +59,6 @@ function setRouteSelect(npID){
 			for(let j =0 ; j < result.length ; j++){
 				let routeInfo = result[j].routeInfo
 				let rtOption = rtSelect.find(".hideOP").clone()
-				console.log(j)
-				console.log(routeInfo.name)
 				rtOption.html(routeInfo.name).val(result[j].id)
 						.removeClass("hideOP")
 				if(result[j].id == rtID){
@@ -422,7 +420,6 @@ function setActInfo(){
 		type : "GET",
 		dataType : "json",
 		success : function(data){
-			console.log( data )
 			if( !data.hasOwnProperty('error')){
 				setBasicInfo(data)	
 				setRouteDefault(data)
@@ -446,7 +443,6 @@ function setRouteDefault(data){
 	npID = data.npID;
 	rtID = actInfo.rtBasic.id
 	setDefaultRouteSelect( $("#newAct-form") )
-	console.log($("#npSelect").find(".hideOP").siblings("option"))
 }
 function setDateDefault(data){
 	$("#npSelect").find(".hideOP").siblings("option").remove()
@@ -462,17 +458,26 @@ function setRegInfo(data){
 	$("input[name='actInfo.regTop']").val(data.actInfo.regTop)
 }
 function setImgInfo(data){
+//	$("#img-container").remove()
 	let originImages = data.actImage
+	let baseURL = '/MountainExploer.com/mountain/act/crud/images?seqno='
 	for (let i in originImages){
-		let model = $("#img-container").find(".hideElm").clone();
-		model.attr({
-			"href" : "?seqno=" + originImages[i].seqno,
-			"data-ngthumb" : "?seqno=" + originImages[i].seqno,
+		
+		let model = $(".hideElm").clone()
+		model.find("a").attr({
+			"data-fancybox":'gallery',
+			"href" : baseURL+ originImages[i].seqno
 		})
+		.find("img").attr("src",baseURL+ originImages[i].seqno)
 		model.removeClass("hideElm")
-		$("#img-container").append(model)
+		if( originImages[i].defaultImage != null ){
+			model.css("border","3px solid #551b96")
+			model.find("img").attr("title",'(預設圖)\n\n點擊放大')
+			model.find(".btn-img-default").remove()
+		}
+		$("#previewMultiple").append(model)
 	}
-	$("#img-container").nanogallery2('resize')
+	$('[data-toggle="tooltip"]').tooltip();
 	
 }
 function setNoteInfo(data){

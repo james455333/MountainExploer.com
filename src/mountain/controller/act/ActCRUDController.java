@@ -512,7 +512,7 @@ public class ActCRUDController {
 	 */
 	@GetMapping(path = "/images")
 	@ResponseBody
-	public ResponseEntity<byte[]> showImage(ActImage actImage, SystemImage sysImage,
+	public ResponseEntity<byte[]> showImage(ActImage actImage,
 			@RequestParam(name = "seqno", required = false) Integer seqno,
 			@RequestParam(name = "actID", required = false) Integer actID,
 			@RequestParam(name = "defImage", required = false) Integer defImage) {
@@ -525,9 +525,15 @@ public class ActCRUDController {
 		String hql = "From ActImage where seqno = " + seqno;
 		if (defImage != null && actID != null) {
 			hql = "From ActImage where activityBasic = " + actID + " and defaultImage is not null";
+			int count = service.countWithHql("select count(*) " + hql);
+			if(count == 0) {
+				hql = "From ActImage where activityBasic = " + actID ;
+			}
 		}
 		try {
-			List<ActImage> imgList = (List<ActImage>) service.getwithHQL(hql, 1, 1);
+			List<ActImage> imgList = (List<ActImage>) service.getwithHQL(hql, 1,1);
+			System.out.println("=============================== actID : " + actID);
+			System.out.println("=============================== imgList.isEmpty() : " + imgList.isEmpty());
 			if (!imgList.isEmpty()) {
 				for (GenericTypeObject genericTypeObject : imgList) {
 					actImage = (ActImage) genericTypeObject;
