@@ -31,6 +31,14 @@ public class MemberRegisterController {
 	@Autowired
 	private MemberStatusService mbstService;
 	
+	
+	@RequestMapping(path = "/member/testRegisterEntry", method = RequestMethod.GET)
+	public String processTestRegisterEntry() {
+		return "member/register";
+	}
+	
+	
+	
 	@RequestMapping(path = "/member/memberRegisterEntry", method = RequestMethod.GET)
 	public String processRegisterEntry() {
 		return "member/formalRegister";

@@ -13,6 +13,7 @@ import java.util.UUID;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
@@ -307,6 +309,17 @@ public class MemberLoginController {
 		return "member/formalLoginAlone";
 		
 	}
+	
+	
+	@RequestMapping("/member/memberLogout")
+	public String processLogout(
+			HttpSession session, HttpServletRequest request, HttpServletResponse response, SessionStatus status) {
+		session.removeAttribute("Member");
+		status.setComplete();
+		return "index";
+	}
+	
+	
 	
 	
 	

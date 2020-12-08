@@ -24,35 +24,28 @@ $(".turnToUpPage").on("click", function(){
 //舊密碼不得為空
 $(".pwd").on("blur", function(){
     let OldPwdVal = $(".pwd").val();
-    let OldPwdValLen = OldPwdVal.length;
+    let userSeq = $.trim($(".seqnoPwd").val());
+    // let OldPwdValLen = OldPwdVal.length;
 
     if(OldPwdVal == ""){
         $(".pwdsp").html("<font color='red'>請輸入舊密碼</font>");
     }else{
-        $(".pwdsp").html("");
+        $.ajax({
+            method:"GET",
+            url:"/MountainExploer.com/member/checkPwd",
+            data:{seqno:userSeq, password:OldPwdVal},
+            dataType:"json",
+            success:function(res){
+                if(res){
+                    $(".pwdsp").html("<font color='green'>舊密碼正確</font>");
+                }else{
+                    $(".pwdsp").html("<font color='red'>舊密碼不正確</font>");
+                }
+            },
+        })
     }
 });
 
-//查詢密碼
-$(".pwd").on("blur", function(){
-    var userSeq = $.trim($(".seqnoPwd").val());
-    var userPwd = $.trim($(".pwd").val());
-
-    $.ajax({
-        method:"GET",
-        url:"/MountainExploer.com/member/checkPwd",
-        data:{seqno:userSeq, password:userPwd},
-        dataType:"json",
-        success: function(response){
-            if(response == true){
-                $(".pwdsp").html("<font color='green'>舊密碼正確</font>");
-            }else{
-                $(".pwdsp").html("<font color='red'>舊密碼不正確</font>");
-            }
-
-        }
-    })
-});
 
 
 //驗證密碼
