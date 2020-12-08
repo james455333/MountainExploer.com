@@ -2,9 +2,11 @@ package member.controller;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -341,20 +343,21 @@ public class MemberLoginController {
 	//FB
 	@RequestMapping(value = "/member/userInfo")
 	@ResponseBody
-	public String getFbUserInfo(String name, String email) {
+	public List<String> getFbUserInfo(String name, String email) {
 		
 		System.out.println("==========name:" + name);
 		System.out.println("==========email:" + email);
 		
-		MemberBasic mb = new MemberBasic();
-		mb.setName(name);
-		mb.setEmail(email);
-		mbService.insert(mb);
+//		MemberBasic mb = new MemberBasic();
+//		mb.setName(name);
+//		mb.setEmail(email);
+//		mbService.insert(mb);
 		
+		List<String> test = new ArrayList<String>();
+		test.add(name);
+		test.add(email);
 		
-		
-		
-		return "success";
+		return test;
 	}
 	
 }
