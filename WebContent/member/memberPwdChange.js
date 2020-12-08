@@ -13,13 +13,13 @@
 			$(".other").attr("value", otherLs);
 			
 		 }
-     })
- })
+     });
+ });
 
 //跳轉會員修改頁面
 $(".turnToUpPage").on("click", function(){
     window.location.href = "/MountainExploer.com/member/formalUpdateInfoEntry";
-})
+});
 
 //舊密碼不得為空
 $(".pwd").on("blur", function(){
@@ -31,7 +31,7 @@ $(".pwd").on("blur", function(){
     }else{
         $(".pwdsp").html("");
     }
-})
+});
 
 //查詢密碼
 $(".pwd").on("blur", function(){
@@ -52,7 +52,7 @@ $(".pwd").on("blur", function(){
 
         }
     })
-})
+});
 
 
 //驗證密碼
@@ -82,7 +82,7 @@ $(".updatePwd").on("blur", function(){
     }else{
         $(".upsp").html("<font color='red'>密碼長度至少8個字元</font>");
     }
-})
+});
 
 
 //比對密碼
@@ -108,29 +108,6 @@ $(".chkPwd").on("blur", function(){
     }else{
         $(".chksp").html("<font color='red'>密碼驗證必須與先前輸入之密碼相同</font>");
     }
-})
+});
 
 
-//上傳頭貼
-//$(".userImg").on("click", function(){
-//    var userSeqImg = $.trim($(".userSeqImg").val());
-//    var userFile = $.trim($(".userFile").val());
-//
-//    $.ajax({
-//        method:"POST",
-//        url:"/MountainExploer.com/member/imgUpdateAction",
-//        data:{seqno:userSeqImg, multipartFile:userFile},
-//        dataType:"json",
-//        success: function(response){
-//            if(response == true){
-//                alert("圖片上傳成功");
-//                window.location.href = "/MountainExploer.com/member/memberInfoEntry";
-//            }else{
-//                alert("圖片上傳失敗");
-//            }
-//        },
-//        error: function(){
-//            alert("圖片上傳出現問題");
-//        }
-//    })
-//})

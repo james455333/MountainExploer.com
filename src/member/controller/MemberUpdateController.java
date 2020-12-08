@@ -59,7 +59,7 @@ public class MemberUpdateController {
 	
 	@RequestMapping(path = "/member/formalUpdateInfoEntry", method = RequestMethod.GET)
 	public String processFormalUpdateInfoEntry() {
-		return "member/formalUpdateInfo";
+		return "member/info/formalUpdateInfo";
 	}
 	
 	
@@ -119,7 +119,7 @@ public class MemberUpdateController {
 				m.addAttribute("result", "認證成功");
 				System.out.println("一般會員認證成功");
 				
-				return "member/memberFormalInfo";
+				return "member/info/memberFormalInfo";
 				
 			}else if(queryMb.getMemberStatus().getSeqno() == 130) {
 				MemberStatus mbStId = mbStService.select(120);
@@ -135,13 +135,13 @@ public class MemberUpdateController {
 				m.addAttribute("result", "認證成功");
 				System.out.println("登山嚮導認證成功");
 				
-				return "member/memberFormalInfo";
+				return "member/info/memberFormalInfo";
 			}
 		} else {
 			errors.put("errors", "找不到會員基本資料");
 			System.out.println("找不到會員基本資料");
 		}	
-		return "member/formalLogin";
+		return "member/formalLoginAlone";
 	}
 	
 	
@@ -186,18 +186,18 @@ public class MemberUpdateController {
 			m.addAttribute("result", "會員資料更新成功");
 			System.out.println("會員資料更新成功");
 			
-			return "member/memberFormalInfo";
+			return "member/info/memberFormalInfo";
 		} else {
 			errors.put("errors", "會員資料更新失敗");
 			System.out.println("會員資料更新失敗");
 		}
 		
-		return "member/formalUpdateInfo";
+		return "member/info/formalUpdateInfo";
 	}
 
 	@RequestMapping(path = "/member/memberImageUploadEntry", method = RequestMethod.GET)
 	public String processImageUpdateEntry() {
-		return "member/memberImageUpload";
+		return "member/info/memberImageUpload";
 	}
 	
 	
@@ -216,7 +216,7 @@ public class MemberUpdateController {
 		
 		if(userFile == null) {
 			errors.put("msg", "請上傳圖片檔案");
-			return "member/memberImageUpload";
+			return "member/info/memberImageUpload";
 		}
 		
 		
@@ -229,7 +229,7 @@ public class MemberUpdateController {
 		m.addAttribute("result", "圖片上傳成功");
 		System.out.println("圖片上傳成功");
 		
-		return "member/memberFormalInfo";
+		return "member/info/memberFormalInfo";
 		
 	}
 

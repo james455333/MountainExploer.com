@@ -139,6 +139,6 @@
 <script src="../js/sweetalert.js"></script>
 <!--sweet alert-->
 <script src="../js/includejsp.js"></script>
-<script src="socailLoginInfo.js"></script>
+<script src="/MountainExploer.com/member/socailLoginInfo.js"></script>
 
 </html>

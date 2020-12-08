@@ -18,7 +18,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,12 +39,12 @@ public class MemberInfoController {
 	
 	@RequestMapping(path = "/member/memberInfoEntry", method = RequestMethod.GET)
 	public String processInfoEntry() {
-		return "member/memberFormalInfo";
+		return "member/info/memberFormalInfo";
 	}
 	
 	@RequestMapping(path = "/member/memberFormalFirstInfoEntry", method = RequestMethod.GET)
 	public String processFormalInfoEntry() {
-		return "member/formalFirstInfo";
+		return "member/info/formalFirstInfo";
 	}
 	
 	
@@ -80,9 +79,13 @@ public class MemberInfoController {
 		
 		MemberBasic mb = mbService.select(seqno);
 		String otherStr = mb.getMemberInfo().getPreOther();
-		otherLs.add(otherStr);
-		System.out.println("============================" + otherStr);
-		return otherLs;
+		if (otherStr != null) {
+			otherLs.add(otherStr);
+			System.out.println("============================" + otherStr);
+			return otherLs;			
+		} else {
+			return null;
+		}
 		
 	}
 	

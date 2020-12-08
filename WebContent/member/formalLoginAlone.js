@@ -23,7 +23,7 @@ $(".userLog1").on("click", function(){
         dataType:"json",
         success:function(flag){
             if(flag){
-                window.location.href="/MountainExploer.com/member/memberInfoEntry";
+                window.location.href="/MountainExploer.com";
             }else{
                 window.location.reload();
             }
