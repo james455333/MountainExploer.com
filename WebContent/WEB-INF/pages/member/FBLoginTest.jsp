@@ -32,7 +32,6 @@
 // 					window.location.href = "http://localhost:8080/MountainExploer.com/member/userInfo?userInfo=" + JSON.stringify(response);
 					let name = response.name;
 					let email = response.email;
-					let profile_pic = response.profile_pic;
 					
 					
 					$.ajax({

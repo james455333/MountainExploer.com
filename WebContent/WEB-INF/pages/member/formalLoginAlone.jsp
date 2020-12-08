@@ -36,6 +36,8 @@
 </head>
 
 <body>
+	<div id="fb-root"></div>
+	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v9.0&appId=679603812750961&autoLogAppEvents=1" nonce="2cmTiiay"></script>
 	<c:choose>
 		<c:when test="${!empty errors}">
 			<script type="text/javascript" charset="UTF-8">
@@ -131,11 +133,15 @@
                     <div style="text-align: center;">立即<a href="/MountainExploer.com/member/memberRegisterEntry">註冊</a>帳號</div>
                 </div>
                 </form>
+                <div>
+	            	<div scope="public_profile,email" onlogin="checkLoginState();" class="fb-login-button" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width=""></div>
+	            </div>
 	            <div>
 		          	<input type="button" name="userLog1" class="userLog1" value="一般登入">
 		          	<input type="button" name="userLog2" class="userLog2" value="登山嚮導登入">
 		          	<input type="button" name="adminLog" class="adminLog" value="管理員登入">
 	            </div>
+	            
             </div>
             <!-- 每頁不同的內容到這裡結束 -->
         </div>

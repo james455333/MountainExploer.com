@@ -343,21 +343,33 @@ public class MemberLoginController {
 	//FB
 	@RequestMapping(value = "/member/userInfo")
 	@ResponseBody
-	public List<String> getFbUserInfo(String name, String email) {
+	public int getFbUserInfo(String name, String email, Model m) {
+		
+		Map<String, String> errors = new HashMap<String, String>();
+		m.addAttribute("errors", errors);
 		
 		System.out.println("==========name:" + name);
 		System.out.println("==========email:" + email);
 		
-//		MemberBasic mb = new MemberBasic();
-//		mb.setName(name);
-//		mb.setEmail(email);
-//		mbService.insert(mb);
-		
-		List<String> test = new ArrayList<String>();
-		test.add(name);
-		test.add(email);
-		
-		return test;
+		MemberBasic mQuery = mbService.select(email);
+		if(mQuery != null) {
+			m.addAttribute("Member", mQuery);
+			System.out.println("=======================登入成功");
+			return 1;
+		} else {
+			
+			MemberBasic mb = new MemberBasic();
+			mb.setAccount(email);
+			mb.setName(name);
+			mb.setEmail(email);
+			
+			m.addAttribute("Member", mb);
+			
+			System.out.println("=======================初次登入成功，請填寫會員基本資料");
+			
+			return 2;
+			
+		}	
 	}
 	
 }
