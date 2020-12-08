@@ -16,7 +16,7 @@ public interface InterfaceService<T extends GenericTypeObject> {
 	
 	int countWith(Integer id,String coulmnName);
 
-	List<T> selectAll();
+	List<? extends GenericTypeObject> selectAll();
 
 	T insert(T entity);
 

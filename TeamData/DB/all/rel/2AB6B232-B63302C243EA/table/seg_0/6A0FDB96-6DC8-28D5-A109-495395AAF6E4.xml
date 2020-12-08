@@ -46,6 +46,7 @@
 <createdBy>Student</createdBy>
 <createdTime>2020-11-04 06:22:33 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>

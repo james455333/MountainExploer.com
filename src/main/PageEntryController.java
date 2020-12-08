@@ -20,8 +20,12 @@ public class PageEntryController {
 	private HttpSession session;
 	
 	@RequestMapping(path = "/backStageEntry" , method = RequestMethod.GET)
-	public String BackStageEntry(Model model) {
+	public String backStageEntry(Model model) {
 		return "backStage";
+	}
+	@RequestMapping(path = "/back" , method = RequestMethod.GET)
+	public String backEntry(Model model) {
+		return "backIndex";
 	}
 	@RequestMapping(path = "/" , method = RequestMethod.GET)
 	public String IndexEntry(Model model) {

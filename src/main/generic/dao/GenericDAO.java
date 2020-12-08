@@ -92,7 +92,7 @@ public class GenericDAO<T extends GenericTypeObject> implements InterfaceDAO<T> 
 	public List<T> selectAll() {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "From " + entity.getClass().getName();
-		Query<T> query = (Query<T>) session.createQuery(hql, entity.getClass());
+		Query query = session.createQuery(hql, entity.getClass());
 		List<T> list = query.setReadOnly(true).list();
 		return list;
 	}

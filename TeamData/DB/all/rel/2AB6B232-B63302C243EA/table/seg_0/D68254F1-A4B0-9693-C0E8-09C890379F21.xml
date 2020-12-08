@@ -84,10 +84,11 @@
 <ownerDesignName>all</ownerDesignName>
 <importedID>D50F03A5-2FDD-6655-7020-34215F900AC0</importedID>
 <nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<domain>2C45A144-3AC3-1C5E-4DC7-42D9E20FB884</domain>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>150</dataTypeSize>
+<ownDataTypeParameters>150,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="per_img" id="0EB489A9-8C71-B2CA-E7C7-44C48E66ABC7">
