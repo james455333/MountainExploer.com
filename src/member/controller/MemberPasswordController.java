@@ -73,18 +73,24 @@ public class MemberPasswordController {
 	//確認密碼
 	@ResponseBody
 	@GetMapping(value = "/member/checkPwd")
-	public boolean processCheckPwd(
-			@RequestParam(name = "seqnoPwd")int seqno,
-			@RequestParam(name = "password")String password,
-			Model m) {
-		MemberBasic mb = mbService.select(seqno);
-		password = MemberGlobal.getSHA1Endocing(MemberGlobal.encryptString(password));
+	public boolean processPwdIsExist(int seqno, String password, Model m) {
 		
-		if(password.equals(mb.getPassword())) {
-			return true;
-		}else {
+		if(password != null) {
+			password = MemberGlobal.getSHA1Endocing(MemberGlobal.encryptString(password));
+			
+			MemberBasic mb = mbService.select(seqno);
+			
+			String mbPwd = mb.getPassword();
+			
+			if(password.equals(mbPwd)) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
 			return false;
 		}
+		
 	}
 	
 	
