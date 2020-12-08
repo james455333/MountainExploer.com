@@ -3,6 +3,7 @@ package product.controller.back;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,11 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import member.model.MemberBasic;
+import product.dao.OrdersDAO;
 import product.function.ShoppingTransFuction;
 import product.model.FirstClass;
 import product.model.ItemBasic;
+import product.model.OrderItems;
+import product.model.Orders;
 import product.model.ProductBean;
 import product.model.SecondClass;
+import product.model.ShoppingCart;
 import product.service.FirstClassService;
 import product.service.ItemBasicService;
 import product.service.SecondClassService;
@@ -30,6 +36,9 @@ public class ProductPageEntryController {
 	
 	@Autowired
 	private ItemBasicService itemBasicService;
+	
+	@Autowired
+	private OrdersDAO ordersDao;
 	
 	//前往查詢頁面
 	@RequestMapping(path = "/retrievePage")
@@ -61,12 +70,6 @@ public class ProductPageEntryController {
 		return "product/back/backProductUpdate";
 	}
 	
-	//前往商品資訊頁面
-//		@RequestMapping(path = "/productInfoEntry", method = RequestMethod.GET)
-//		public String productInfo(Model model) {
-//
-//			return "product/back/productInfoPage";
-//		}
 
 		// 前往商品細項頁面
 		@RequestMapping(path = "/productInfoEntry",method = RequestMethod.GET)
@@ -79,6 +82,38 @@ public class ProductPageEntryController {
 			model.addAttribute("ProductBean",productBean);
 			
 			return "product/back/productInfoPage";
+		}
+		
+		
+		// 查詢訂單
+		@RequestMapping(path = "/allOrders", method = RequestMethod.GET)
+		public String allOrders(Model m) {
+
+
+			List<Orders> selectAllOrders = ordersDao.selectAllOrders();
+
+			
+			m.addAttribute("AllOrders", selectAllOrders);
+			
+
+			return "product/back/allOrderPage";
+
+		}
+		// 查詢訂單明細
+		@RequestMapping(path = "/orderInfo", method = RequestMethod.GET)
+		public String orderInfo(Model m, @RequestParam(name = "orderId") String orderId) {
+
+			Integer orderIdInt = Integer.parseInt(orderId);
+			Orders odersSelect = ordersDao.selectSeqno(orderIdInt);
+
+			Set<OrderItems> orderItemsSet = odersSelect.getOrderItemsSet();
+
+			m.addAttribute("OrderInfo", orderItemsSet);
+			m.addAttribute("orderId", orderId);
+			
+
+			return "product/back/orderInfoPage";
+
 		}
 	
 

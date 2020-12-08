@@ -67,6 +67,7 @@
 				<th scope="col">連絡電話</th>
 				<th scope="col">訂貨日期</th>
 				<th scope="col">出貨日期</th>
+				<th scope="col">訂單狀態</th>
 				<!-- thead更改到這邊結束 -->
 			</tr>
 		</thead>
@@ -84,6 +85,7 @@
 			<TD >${anOrderBean.invoiceTitle}</TD>
 			<TD >${anOrderBean.orderDate}</TD>
 			<TD >${anOrderBean.shippingDate}</TD>
+			<TD >${anOrderBean.cancelTag}</TD>
 							
 		</TR>
 		</c:forEach>

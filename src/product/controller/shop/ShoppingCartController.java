@@ -162,9 +162,10 @@ public class ShoppingCartController {
 
 		orders.setOrderDate(today);
 
-		Date date = new Date(120, 11, 25);
+//		Date date = new Date(120, 11, 25);
 
-		orders.setShippingDate(date);
+//		orders.setShippingDate(date);
+		orders.setShippingDate(null);
 
 		orders.setCancelTag(null);
 

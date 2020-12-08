@@ -1,6 +1,7 @@
 package product.controller.back;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import mountain.MountainGlobal;
+import product.dao.OrdersDAO;
 import product.function.TransFuction;
 import product.model.ItemBasic;
 import product.model.ItemInfo;
+import product.model.Orders;
 import product.model.SecondClass;
 import product.service.FirstClassService;
 import product.service.ItemBasicService;
@@ -32,6 +35,8 @@ public class ProductCUDController {
 	private ItemBasicService itemBasicService;
 	@Autowired
 	private ItemInfoService itemInfoService;
+	@Autowired
+	private OrdersDAO ordersDao;
 
 	// 資料刪除
 	@RequestMapping(path = "/deleteData", method = RequestMethod.GET)
@@ -128,6 +133,40 @@ public class ProductCUDController {
 		itemInfoService.insert(itemInfo);
 		
 		}
+	
+	
+	
+	// 訂單狀態修改
+	
+	@RequestMapping(path = "/updateOrder")
+	public String updateOrder(Model m,
+			@RequestParam(name = "update", required = false) String update,
+			@RequestParam(name = "cancel" , required = false) String cancel
+			) {
+		
+		
+		
+		if (update != null) {
+			Integer seqInt = Integer.parseInt(update);
+			Orders selectSeqno = ordersDao.selectSeqno(seqInt);
+			selectSeqno.setCancelTag("已出貨");
+			Date date = new Date();
+			selectSeqno.setShippingDate(date);
+			ordersDao.update(selectSeqno);
+		}
+		
+		if (cancel != null) {
+			Integer cancelInt = Integer.parseInt(cancel);
+			Orders selectSeqno = ordersDao.selectSeqno(cancelInt);
+			selectSeqno.setCancelTag("已取消");
+			selectSeqno.setShippingDate(null);
+			ordersDao.update(selectSeqno);
+		}
+		
+		
+		return "redirect:/backstage/product/allOrders";
+	}
+	
 
 
 }
