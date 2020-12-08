@@ -56,11 +56,17 @@ function setRouteSelect(npID){
 		dataType : "json",
 		type : "GET",
 		success : function(data){
+			let random
+			while(true){
+				random = Math.round(Math.random()*data.length)
+				if(random > 0) break;				
+			}
 			for(let i in data){
 				let rtOption = rtSelect.find(".hideOP").clone()
 				rtOption.html(data[i].routeInfo.name).val(data[i].id)
 						.removeClass("hideOP")
-				if(i==0){
+				
+				if(i==random){
 					rtOption.attr("selected", true)
 					setRouteDesp(data[i].routeInfo)
 				} 
@@ -401,7 +407,8 @@ function setDatePicker(thisElm){
 		"minDate" : today,
 		"maxDate" : regLimit
 		}, function(start, end, label) {
-		});		    
+		});
+	originSD = $("input[name='actInfo.startDate']").val()		    
 }
 
 function autoNewAct(){
@@ -424,25 +431,55 @@ function autoNewAct(){
 	
 	/* npSelect */
 	
-	let npOptions = $("#npSelect").find("option").not(".hideOP")
-	let rtOptions = $("#rtSelect").find("option").not(".hideOP")
-	let randomNp = Math.round(Math.random()*10)
+	let npOptions = $("#npSelect").find("option")
 	while(true){
+		let randomNp = Math.round(Math.random()*10)
 		randomNp = Math.round(randomNp/2)
-		if( randomNp < npOptions.length && randomNp >= 0 ){
+		if( randomNp < npOptions.length && randomNp > 0 ){
+			npOptions.eq(randomNp).attr("selected",true).siblings("option").attr("selected",false)
+			$("#npSelect").selectpicker('refresh')
+			$("#rtSelect").find(".hideOP").siblings("option").remove()
+			setRouteSelect(npOptions.eq(randomNp).val())
 			break;
 		}
 	}
-	console.log( npOptions.eq(randomNp).val() )
-	let randomRt = Math.round(Math.random()*10)
+	
+	console.log(originSD)
+	let sdoArray = originSD.split("/")
+	let year =  Math.round( Number(sdoArray[0])+ Math.random())
+	console.log(year)
+	let month, day;
 	while(true){
-		randomRt = Math.round(randomNp/2)
-		if( randomRt < rtOptions.length && randomRt >= 0 ){
-			break;
+		if(year > Number(sdoArray[0])){
+			month = Math.round(Math.random()*120)
+			if(month >= 1 && month <= 12) break;			
+		}else{
+			month = Math.round(Math.random()*120)
+			if(month >= Number(sdoArray[1]) && month <= 12) break;
 		}
 	}
-	console.log( rtOptions.eq(randomRt).val() )
-	
-	
+	while(true){
+		if(year > Number(sdoArray[0])){
+			day = Math.round(Math.random()*31)
+			if(day>=1 && day <= 31) break;
+		}else{
+			day = Math.round(Math.random()*31)
+			if(day>=Number(sdoArray[2]) && day <= 31) break;
+		}
+	}
+	let setStartDate = year + "/" + month + "/" +day
+	$("input[name='actInfo.startDate']").data('daterangepicker').setStartDate(setStartDate);
+	let randomTotalDay = Math.round(Math.random()*3)
+	if( randomTotalDay>0){
+		$("input[name='actInfo.totalDay']").val( (randomTotalDay+1) + "天" + randomTotalDay + "夜" )
+	}else{
+		$("input[name='actInfo.totalDay']").val( "單日返還" )
+	}
+//	let setEndDate = year + "/" + month + "/" + (day+randomTotalDay)
+	let setEndDate = new Date(year,month-1,(day+randomTotalDay))
+	$("input[name='actInfo.endDate']").data('daterangepicker').setStartDate(setEndDate);
+	let setRegEndDate = new Date(year,month-1,(day-7))
+	$("input[name='actInfo.regEndDate']").val(setRegEndDate.toLocaleDateString());
+	$("input[name='actInfo.regTop']").val( Math.round( Math.random()*15 ) )
 }
 

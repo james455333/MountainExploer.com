@@ -54,18 +54,20 @@ function setRouteSelect(npID){
 		data : { npID : npID},
 		dataType : "json",
 		type : "GET",
-		success : function(data){
-			for(let i in data){
+		success : function(result){
+//			console.log(data.length)
+			for(let j =0 ; j < result.length ; j++){
+				let routeInfo = result[j].routeInfo
 				let rtOption = rtSelect.find(".hideOP").clone()
-				rtOption.html(data[i].routeInfo.name).val(data[i].id)
+				rtOption.html(routeInfo.name).val(result[j].id)
 						.removeClass("hideOP")
-				if(data[i].id == rtID){
+				if(result[j].id == rtID){
 					rtOption.attr("selected", true)
 					rtOption.siblings("option").attr("selected",false)
-					setRouteDesp(data[i].routeInfo)
-				} else if(i==0){
+					setRouteDesp(result[j].routeInfo)
+				} else if(j==0){
 					rtOption.attr("selected", true)
-					setRouteDesp(data[i].routeInfo)
+					setRouteDesp(result[j].routeInfo)
 				}
 				rtSelect.append(rtOption)
 			}
@@ -418,7 +420,6 @@ function setActInfo(){
 		type : "GET",
 		dataType : "json",
 		success : function(data){
-			console.log( data )
 			if( !data.hasOwnProperty('error')){
 				setBasicInfo(data)	
 				setRouteDefault(data)
@@ -442,7 +443,6 @@ function setRouteDefault(data){
 	npID = data.npID;
 	rtID = actInfo.rtBasic.id
 	setDefaultRouteSelect( $("#newAct-form") )
-	console.log($("#npSelect").find(".hideOP").siblings("option"))
 }
 function setDateDefault(data){
 	$("#npSelect").find(".hideOP").siblings("option").remove()
@@ -458,17 +458,27 @@ function setRegInfo(data){
 	$("input[name='actInfo.regTop']").val(data.actInfo.regTop)
 }
 function setImgInfo(data){
-	$("#originIMG").find(".hideElm").siblings("div").remove()
+//	$("#img-container").remove()
 	let originImages = data.actImage
+	let baseURL = '/MountainExploer.com/mountain/act/crud/images?seqno='
 	for (let i in originImages){
-		let model = $("#originIMG").find(".hideElm").clone();
-		model.find(".showImage")
-			.attr("src","/MountainExploer.com/mountain/act/crud/images?seqno=" + originImages[i].seqno)
-		model.find(".extendImage")
-			.attr("src","/MountainExploer.com/mountain/act/crud/images?seqno=" + originImages[i].seqno)
+		
+		let model = $(".hideElm").clone()
+		model.find("a").attr({
+			"data-fancybox":'gallery',
+			"href" : baseURL+ originImages[i].seqno
+		})
+		.find("img").attr("src",baseURL+ originImages[i].seqno)
 		model.removeClass("hideElm")
-		$("#originIMG").append(model)
+		if( originImages[i].defaultImage != null ){
+			model.css("border","3px solid #551b96")
+			model.find("img").attr("title",'(預設圖)\n\n點擊放大')
+			model.find(".btn-img-default").remove()
+		}
+		$("#previewMultiple").append(model)
 	}
+	$('[data-toggle="tooltip"]').tooltip();
+	
 }
 function setNoteInfo(data){
 	
