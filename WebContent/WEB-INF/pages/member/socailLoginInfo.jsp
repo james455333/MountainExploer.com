@@ -13,7 +13,7 @@
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/....../font-awesome.min.css">
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
@@ -57,21 +57,26 @@
         </div> -->
         <div class="div_li2" style="background: #ecf5ff; height: auto;">
             <!-- 每頁不同的內容從這裡開始 -->
-            <form action="<c:url value='/member/memberRegister'/>" method="POST"
+            <form
                 style="width: 800px; margin: 0 auto; border: 10px solid#ecf5ff; border-radius: 1%; background-color: d#ecf5ff;">
                 <div style="border-radius: 3%; border: 10px solid white; background-color: white;">
 				
                     <fieldset>
-                        <legend>請輸入個人資料</legend>
+                        <legend>請選擇身分組</legend>
                     </fieldset>
-                    <div class="form-group">
-                        <label for="inputAddress">帳號:</label>
-                        <span>${Member.account}</span>
-                        <input type="hidden" class="form-control account" name="account" id="account" readonly="readonly">
-                        <label for="inputAddress2">姓名:</label>
-                        <span>${Member.name}</span>
-                        <input type="hidden" class="form-control name" name="name" id="name" readonly="readonly">
+                    <div class="form-row">
+                    	<div class="form-group col-md-6">
+		                    <label for="inputAddress">帳號:</label>
+		                    <span>${Member.account}</span><br/>
+		                    <input type="hidden" class="form-control account" name="account" id="account" value="${Member.account}" readonly="readonly">                    	
+                    	</div>
+                    	<div class="form-group col-md-6">
+	                        <label for="inputAddress2">姓名:</label>
+	                        <span>${Member.name}</span><br/>
+	                        <input type="hidden" class="form-control name" name="name" id="name" value="${Member.name}" readonly="readonly">
+                    	</div>
                     </div>
+	                   
 <!--                     <div class="form-row"> -->
 <!--                         <div class="form-group col-md-6"> -->
 <!--                             <label for="inputEmail4">密碼:</label> -->
@@ -86,15 +91,15 @@
 <!--                     </div> -->
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputCity">Email</label>
+                            <label for="inputCity">Email：</label>
                             <span>${Member.email}</span>
-                            <input type="hidden" class="form-control email" id="email" name="email" placeholder="example@gmail.com" readonly="readonly">
+                            <input type="hidden" class="form-control email" id="email" name="email" value="${Member.email}" readonly="readonly">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputState">身分組選擇</label>
-                            <select id="statusId" name="statusId" class="form-control" required="required">
-                                <option value="110" selected>一般登山者</option>
-                                <option value="130">登山嚮導</option>
+                            <select id="statusId" name="statusId" class="form-control statusId" required="required">
+                                <option value="100" selected>一般登山者</option>
+                                <option value="120">登山嚮導</option>
                             </select>
                         </div>
                         <div style="display:none">
@@ -103,7 +108,7 @@
                     	</div>
 
                     </div>
-                    <button type="submit" name="submit" class="btn btn-outline-success"><i class="fa fa-check-circle-o"></i>
+                    <button type="submit" name="submit" class="btn btn-outline-success submit"><i class="fa fa-check-circle-o"></i>
                         確認送出</button>
 <!--                     <button type="button" name="fastRg" class="btn btn-outline-success fastRg"><i class="fa fa-check-circle-o"></i>快速註冊</button> -->
                     <button type="reset" class="btn btn-outline-danger reset" id="reset"><i class="fa fa-close"></i> 清除</button>
@@ -134,7 +139,6 @@
 <script src="../js/sweetalert.js"></script>
 <!--sweet alert-->
 <script src="../js/includejsp.js"></script>
-<script src="register.js"></script>
-<script src="formalRegister.js"></script>
+<script src="socailLoginInfo.js"></script>
 
 </html>

@@ -80,9 +80,15 @@ $(".pwd").on("blur", function(){
     }else if(PwdValLen >= 8){
         let re = new RegExp(/[A-Za-z]+[0-9]/);
         let re2 = new RegExp(/[0-9]+[A-Za-z]/);
+        let re3 = new RegExp(/[A-Za-z0-9_] + [!@#$%^&*]/);
+        let re4 = new RegExp(/[!@#$%^&*] + [A-Za-z0-9_]/);
         if(PwdVal.match(re)){
             flag = true;
         }else if(PwdVal.match(re2)){
+            flag = true;
+        }else if(PwdVal.match(re3)){
+            flag = true;
+        }else if(PwdVal.match(re4)){
             flag = true;
         }else{
             flag = false;
@@ -91,7 +97,7 @@ $(".pwd").on("blur", function(){
         if(flag){
             $(".pwdsp").html("<font color='green'>正確</font>");
         }else{
-            $(".pwdsp").html("<font color='red'>密碼必須包含英文字母與數字</font>");
+            $(".pwdsp").html("<font color='red'>密碼必須包含英文字母與數字，或特殊字元</font>");
         }
     }else{
         $(".pwdsp").html("<font color='red'>密碼長度至少8個字元</font>");
