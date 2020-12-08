@@ -312,21 +312,22 @@ $(function() {
 		for (let i in data) {
 			$(".order-table-tb").append(
 				"<tr>" +
-				//				"<th>" + data[i].seqno + "</th>" +
-				//			  		"<td><div >" + data[i].name + "</div></td>"+
-//				"<td>" + '<a href= "/MountainExploer.com/shop/productInfoEntry">' + data[i].name + '</a>' + "</td>" +
-				
-				
-				"<td>" + 
-				'<a href= "/MountainExploer.com/shop/productInfoEntry?no='+data[i].seqno+'">'+ data[i].name  + '</a>' +
 				"<td>" +
 				'<img style="width: 80px; height: 80px;" src="/MountainExploer.com/backstage/product/search/images?seqno=' + data[i].seqno + '" class="productImg" >' +
 				"</td>" +
-				"<td><div >" +"$" +data[i].price  + "</div></td>" +
-				//				"<td><div >" + data[i].stock + "</div></td>" +
+				"</tr>"+
+				"<tr width='100'>" +
+				"<td>" + 
+				'<a href= "/MountainExploer.com/shop/productInfoEntry?no='+data[i].seqno+'">'+ data[i].name  + '</a>' +
+				"</td>"+
+				"</tr>"+
+				"<tr>" +
+				"<td>" + 
+				"$" +data[i].price  +
+				"</td>"+
+				"</tr>"+
+				"<tr>" +
 				"<td>" +
-				"<div>" +
-//				'<form  action= "<c:url value=/shoppingcart/addCartBean">">' +
 				'<form  action= "/MountainExploer.com/shoppingcart/addShoppingCart">' +
 				'<input type="hidden" name="itemBasicSeqno" value="' + data[i].seqno + '" readonly>' +
 				'<input type="hidden" name="itemBasicName" value="' + data[i].name + '" readonly>' +
@@ -340,7 +341,6 @@ $(function() {
 				"</select>" +
 				'<input id="demo1" type="submit" value="加入購物車">' +
 				'</form>' +
-				"</div>" +
 				"</td>" +
 				"</tr>"
 			)

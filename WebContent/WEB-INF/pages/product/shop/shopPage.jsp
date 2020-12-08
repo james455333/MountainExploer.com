@@ -134,34 +134,40 @@
 				</div>
 				<!--table-->
 				<table class="order-table">
-					<thead class="order-table-th">
-<!-- 						<tr> -->
-<%-- 							<th colspan="4" align="center"><a href='<c:url value="/shop/shoppingCartEntry"/>'>查看購物車</a></th> --%>
+<!-- 					<thead class="order-table-th"> -->
+<!-- 							<th scope="col">商品名稱</th> -->
+<!-- 							<th scope="col">圖片</th> -->
+<!-- 							<th scope="col">價格</th> -->
+<!-- 							<th scope="col">選擇數量</th> -->
+<!-- 							thead更改到這邊結束 -->
 <!-- 						</tr> -->
-<!-- 						<tr> -->
-<%-- 							<th colspan="4" align="center"><a href='<c:url value="/shoppingcart/memberOrders"/>'>查看訂單</a></th> --%>
-<!-- 						</tr> -->
-						<tr>
-							<!-- thead更改從這邊開始 -->
-							<th scope="col">商品名稱</th>
-							<!-- 							<th scope="col">型號</th> -->
-							<th scope="col">圖片</th>
-							<th scope="col">價格</th>
-							<!-- 							<th scope="col">數量</th> -->
-							<th scope="col">選擇數量</th>
-							<!-- thead更改到這邊結束 -->
-						</tr>
-					</thead>
-
+<!-- 					</thead> -->
+					
 					<tbody class="order-table-tb">
 						<!-- tbody更改從這邊開始 -->
 						<tr>
-							<td>商品名稱</th>
-							<!-- 							<th scope="col">型號</th> -->
-							<th scope="col">圖片</th>
-							<th scope="col">價格</th>
-							<!-- 							<th scope="col">數量</th> -->
-							<th scope="col">選擇數量</th>
+							<td>商品名稱</td>
+							<td >圖片</td>
+							<td>價格</td>
+							<td >選擇數量</td>
+						</tr>
+						<tr>
+							<td>商品名稱</td>
+							<td >圖片</td>
+							<td>價格</td>
+							<td >選擇數量</td>
+						</tr>
+						<tr>
+							<td>商品名稱</td>
+							<td >圖片</td>
+							<td>價格</td>
+							<td >選擇數量</td>
+						</tr>
+						<tr>
+							<td>商品名稱</td>
+							<td >圖片</td>
+							<td>價格</td>
+							<td >選擇數量</td>
 						</tr>
 
 
