@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- import -->
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.min.js"></script><scrip tsrc="https://cdn.jsdelivr.net/npm/canvas2image@1.0.5/canvas2image.min.js"></script>
+
+<!-- import -->
+
+
+<button type="button" class="btn btn-success" onclick="createPDF();">pdf</button>
+ 
+<div id="renderPDF" class="container">
+	<div class="jumbotron">
+		<h1>Bootstrap Tutorial</h1>
+		<p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p>
+	</div>
+	<div id="customers">
+		<table id="tab_customers" class="table table-striped">
+			<thead>
+				<tr class='btn-danger'>
+					<th>#</th>
+					<th>Population</th>
+					<th>Date</th>
+					<th>Age</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+				<tr>
+					<td>51</td>
+					<td>1,363,480,000</td>
+					<td>March 24, 2014</td>
+					<td>19.1</td>
+				</tr>
+				<tr>
+					<td>52</td>
+					<td>1,241,900,000</td>
+					<td>March 24, 2014</td>
+					<td>17.4</td>
+				</tr>
+				<tr>
+					<td>53</td>
+					<td>317,746,000</td>
+					<td>March 24, 2014</td>
+					<td>4.44</td>
+				</tr>
+				<tr>
+					<td>54</td>
+					<td>249,866,000</td>
+					<td>July 1, 2013</td>
+					<td>3.49</td>
+				</tr>
+				<tr>
+					<td>55</td>
+					<td>201,032,714</td>
+					<td>July 1, 2013</td>
+					<td>2.81</td>
+				</tr>
+				<tr>
+					<td>56</td>
+					<td>1,363,480,000</td>
+					<td>March 24, 2014</td>
+					<td>19.1</td>
+				</tr>
+				<tr>
+					<td>57</td>
+					<td>1,241,900,000</td>
+					<td>March 24, 2014</td>
+					<td>17.4</td>
+				</tr>
+				<tr>
+					<td>58</td>
+					<td>317,746,000</td>
+					<td>March 24, 2014</td>
+					<td>4.44</td>
+				</tr>
+				<tr>
+					<td>59</td>
+					<td>249,866,000</td>
+					<td>July 1, 2013</td>
+					<td>3.49</td>
+				</tr>
+				<tr>
+					<td>60</td>
+					<td>201,032,714</td>
+					<td>July 1, 2013</td>
+					<td>2.81</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+
+<script src="js/divtopdf.js"></script>
+</body>
+</html>
