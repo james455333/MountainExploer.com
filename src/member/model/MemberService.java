@@ -24,6 +24,10 @@ public class MemberService {
 		return mbDao.select(seqno);
 	}
 	
+	public MemberBasic select(String account) {
+		return mbDao.select(account);
+	}
+	
 	public MemberBasic select(String account, String email) {
 		return mbDao.select(account, email);
 	}

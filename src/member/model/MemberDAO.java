@@ -81,6 +81,18 @@ public class MemberDAO {
 		return null;
 	}
 	
+	public MemberBasic select(String account) {
+		Session session = sessionFactory.getCurrentSession();
+		Query<MemberBasic> query = session.createQuery("From MemberBasic where account = ?0", MemberBasic.class);
+		query.setParameter(0, account);
+		
+		MemberBasic mb = query.uniqueResult();
+		if(mb != null) {
+			return mb;
+		}
+		
+		return null;
+	}
 	
 	public MemberBasic select(String account, String email) {
 		Session session = sessionFactory.getCurrentSession();

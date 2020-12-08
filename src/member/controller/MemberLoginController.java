@@ -2,9 +2,11 @@ package member.controller;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -285,12 +287,12 @@ public class MemberLoginController {
 					m.addAttribute("Member", mb);
 					m.addAttribute("result", "登入成功");
 					System.out.println("=======================登入成功");
-					return "member/memberFormalInfo";
+					return "member/info/memberFormalInfo";
 				}else if(mb.getMemberStatus().getSeqno() == 110 || mb.getMemberStatus().getSeqno() == 130) {
 					m.addAttribute("Member", mb);
 					m.addAttribute("result", "初次登入成功");
 					System.out.println("=======================登入成功");
-					return "member/formalFirstInfo";
+					return "member/info/formalFirstInfo";
 				}else {
 					System.out.println("身分組權限不足");
 					return "member/formalLoginAlone";
@@ -341,20 +343,33 @@ public class MemberLoginController {
 	//FB
 	@RequestMapping(value = "/member/userInfo")
 	@ResponseBody
-	public String getFbUserInfo(String name, String email) {
+	public int getFbUserInfo(String name, String email, Model m) {
+		
+		Map<String, String> errors = new HashMap<String, String>();
+		m.addAttribute("errors", errors);
 		
 		System.out.println("==========name:" + name);
 		System.out.println("==========email:" + email);
 		
-		MemberBasic mb = new MemberBasic();
-		mb.setName(name);
-		mb.setEmail(email);
-		mbService.insert(mb);
-		
-		
-		
-		
-		return "success";
+		MemberBasic mQuery = mbService.select(email);
+		if(mQuery != null) {
+			m.addAttribute("Member", mQuery);
+			System.out.println("=======================登入成功");
+			return 1;
+		} else {
+			
+			MemberBasic mb = new MemberBasic();
+			mb.setAccount(email);
+			mb.setName(name);
+			mb.setEmail(email);
+			
+			m.addAttribute("Member", mb);
+			
+			System.out.println("=======================初次登入成功，請填寫會員基本資料");
+			
+			return 2;
+			
+		}	
 	}
 	
 }

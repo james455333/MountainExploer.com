@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../css/other.css">
     <link rel="stylesheet" href="../css/font.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/....../font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
@@ -110,12 +110,12 @@
 
     <footer id="footer">
         <a>全站導覽</a>
-        <button id="demo1">確認demo1</button>
-        <button id="demo2">錯誤demo2</button>
-        <button id="demo3">確認提醒demo3</button>
-        <button id="demo4">多重選項&提醒視窗demo4</button>
-        <button id="demo5">Demo5</button>
-        <button id="demo6">Demo6</button>
+<!--         <button id="demo1">確認demo1</button> -->
+<!--         <button id="demo2">錯誤demo2</button> -->
+<!--         <button id="demo3">確認提醒demo3</button> -->
+<!--         <button id="demo4">多重選項&提醒視窗demo4</button> -->
+<!--         <button id="demo5">Demo5</button> -->
+<!--         <button id="demo6">Demo6</button> -->
 
 
 
@@ -127,6 +127,6 @@
 <script src="../js/sweetalert.js"></script>
 <!--sweet alert-->
 <script src="../js/includejsp.js"></script>
-<script src="formalFirstInfo.js"></script>
+<script src="/MountainExploer.com/member/formalFirstInfo.js"></script>
 
 </html>

@@ -119,7 +119,7 @@ public class MemberPasswordController {
 		}
 		
 		if(errors != null && !errors.isEmpty()) {
-			return "member/memberFormalInfo";
+			return "member/info/memberFormalInfo";
 		}
 		
 		
@@ -140,14 +140,14 @@ public class MemberPasswordController {
 				m.addAttribute("Member", updateMb);
 				m.addAttribute("result", "密碼修改成功");
 				System.out.println("密碼修改成功");
-				return "member/memberFormalInfo";
+				return "member/info/memberFormalInfo";
 			}else {
 				errors.put("errors", "舊密碼不正確，修改失敗");
 				System.out.println("舊密碼不正確，修改失敗");
 			}
 		}
 		
-		return "member/memberFormalInfo";
+		return "member/info/memberFormalInfo";
 	}
 	
 

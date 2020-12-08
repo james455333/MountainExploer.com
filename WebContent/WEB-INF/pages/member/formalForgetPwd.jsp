@@ -168,12 +168,12 @@
     </div>
     <footer id="footer">
         <a>全站導覽</a>
-        <button id="demo1">確認demo1</button>
-        <button id="demo2">錯誤demo2</button>
-        <button id="demo3">確認提醒demo3</button>
-        <button id="demo4">多重選項&提醒視窗demo4</button>
-        <button id="demo5">Demo5</button>
-        <button id="demo6">Demo6</button>
+<!--         <button id="demo1">確認demo1</button> -->
+<!--         <button id="demo2">錯誤demo2</button> -->
+<!--         <button id="demo3">確認提醒demo3</button> -->
+<!--         <button id="demo4">多重選項&提醒視窗demo4</button> -->
+<!--         <button id="demo5">Demo5</button> -->
+<!--         <button id="demo6">Demo6</button> -->
         <button id="button7"><a href=""><img src="/MountainExploer.com/images/personal/user.png" alt="" style="width: 30px;"
                     id="logInButton"></a></button>
 
