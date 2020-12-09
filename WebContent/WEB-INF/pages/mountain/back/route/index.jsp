@@ -28,8 +28,15 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 	<!-- dataTable -->
 	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+	<!-- bootstrap-toggle -->
+	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 	<!-- for this page -->    
     <link href="/MountainExploer.com/mountain/back/css/route.css" rel="stylesheet">
+	<!-- Fancy Box 3 -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+	<!-- sweetalert2 -->
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css">
+	
 	<!-- JQuery -->
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<!-- Bootstrap tooltips -->
@@ -38,10 +45,14 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
-	<!-- sweetalert -->
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<!-- sweetalert2 -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   	<!-- dataTable -->
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+	<!-- bootstrap-toggle -->
+	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+	<!-- Fancy Box 3  -->
+	<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 	<!-- for this page -->
 	<script src="/MountainExploer.com/mountain/back/js/route.js"></script>
 	<script src="/MountainExploer.com/mountain/back/js/routeFunction.js"></script>
@@ -165,12 +176,12 @@
                         <h1 class="h3 mb-2 text-gray-800">路線資料維護</h1>
     
                         <!-- DataTales Example -->
-                        <div class="card shadow mb-4">
+                        <div class="card shadow mb-4" id="tb-container">
                             <div class="card-header py-3">
                             </div>
     						<div class="card-body">
     							<div class="row">
-	                            	<div class="col-md-3 justify-content-end d-flex align-items-center ">
+	                            	<div class="col-md-5 justify-content-end d-flex align-items-center ">
 	                            		<div class="input-group">
 										  <div class="input-group-prepend">
 										    <label class="input-group-text" for="inputGroupSelect01">國家公園</label>
@@ -179,7 +190,7 @@
 										  </select>
 										</div>
 	                            	</div>
-	                            	<div class="col-md-3 justify-content-end d-flex align-items-center ">	                                 
+	                            	<div class="col-md-5 justify-content-end d-flex align-items-center ">	                                 
 	                            		<div class="input-group">
 										  <div class="input-group-prepend">
 										    <label class="input-group-text" for="inputGroupSelect01">路線選項</label>
@@ -188,21 +199,15 @@
 										  </select>
 										</div>
 	    							</div>
-	                            	<div class="col-md-6 justify-content-end d-flex align-items-center ">
-	                            		<div class="form-inline">
-	                            			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      										<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-	                            		</div>
-	    							</div>
     							</div>
 	                            <hr>
 	                             
-	                                <a href="#" class="btn btn-primary btn-icon-split">
+	                                <button id="selectAll" class="btn btn-primary btn-icon-split">
 	                                    <span class="icon text-white-50">
 	                                        <i class="fas fa-flag"></i>
 	                                    </span>
-	                                    <span class="text">按鈕1</span>
-	                                </a>
+	                                    <span class="text">重置查詢</span>
+	                                </button>
 	                                <a href="#" class="btn btn-primary btn-icon-split">
 	                                    <span class="icon text-white-50">
 	                                        <i class="fas fa-flag"></i>
@@ -218,50 +223,39 @@
     						</div>
                             <div class="card-body">
                                 <div class="table-responsive">
-<!--                                 	<div class="justify-content-between d-flex align-items-center"> -->
-<!-- 	                                	<div class="dataTables_length" id="example_length"> -->
-<!-- 	                                		<label>Show  -->
-<!-- 	                                			<select name="example_length" aria-controls="example" class=""> -->
-<!-- 	                                				<option value="10">10</option> -->
-<!-- 	                                				<option value="25">25</option> -->
-<!-- 	                                				<option value="50">50</option> -->
-<!-- 	                                				<option value="100">100</option> -->
-<!-- 	                                			</select> entries -->
-<!-- 	                                		</label> -->
-<!-- 	                                	</div> -->
-<!--                                 	</div> -->
                                     <table id="routeTable">
                                     	<thead>
                                     		<tr>
-                                    			<td style='width: 10%'>路線編號     </td>
-												<td style='width: 10%'>路線名稱     </td>
-												<td style='width: 15%'>國家公園名稱 </td>
-												<td style='width: 20%'>路線介紹     </td>
-												<td style='width: 20%'>建議路線     </td>
-												<td style='width: 20%'>交通資訊	 </td>
+                                    			<td style='width: 7.5%'>狀態項</td>
+                                    			<td style='width: 15%'>路線圖</td>
+                                    			<td style='width: 12.5%'>路線編號</td>
+												<td style='width: 15%'>路線名稱</td>
+												<td style='width: 15%'>國家公園</td>
+												<td style='width: 35%'>控制項</td>
                                     		</tr>
                                     	</thead>
 										
 									</table>
-<!-- 									<div class="justify-content-between d-flex align-items-center"> -->
-<!-- 										<div class="dataTables_info" id="example_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div> -->
-<!-- 										<div class="dataTables_paginate paging_simple_numbers" id="example_paginate"> -->
-<!-- 											<a class="paginate_button previous disabled" aria-controls="example" data-dt-idx="0" tabindex="-1" id="example_previous">Previous</a><span> -->
-<!-- 											<a class="paginate_button current" aria-controls="example" data-dt-idx="1" tabindex="0">1</a> -->
-<!-- 											<a class="paginate_button " aria-controls="example" data-dt-idx="2" tabindex="0">2</a> -->
-<!-- 											<a class="paginate_button " aria-controls="example" data-dt-idx="3" tabindex="0">3</a> -->
-<!-- 											<a class="paginate_button " aria-controls="example" data-dt-idx="4" tabindex="0">4</a> -->
-<!-- 											<a class="paginate_button " aria-controls="example" data-dt-idx="5" tabindex="0">5</a> -->
-<!-- 											<a class="paginate_button " aria-controls="example" data-dt-idx="6" tabindex="0">6</a></span> -->
-<!-- 											<a class="paginate_button next" aria-controls="example" data-dt-idx="7" tabindex="0" id="example_next">Next</a> -->
-<!-- 										</div> -->
-<!-- 									</div> -->
                                 </div>
                             </div>
                         </div>
     
                     </div>
-                    
+                    <div class='hideDIV'>
+                    	<button class="btn btn-info btn-rt-image">
+                    		<i class="fas fa-image"></i>路線圖
+						</button>
+                    	<button class="btn btn-orange btn-rt-info">
+                    		<i class="fas fa-info"></i>詳情
+						</button>
+                    	<button class="btn btn-warning btn-rt-update">
+                    		<i class="fas fa-exclamation-triangle"></i>修改
+						</button>
+                    	<button class="btn btn-danger btn-rt-delete">
+                    		<i class="fas fa-trash"></i>刪除
+						</button>
+						<input type="checkbox" class='btn-ctrl ' data-toggle="toggle" data-on="<i class='fas fa-power-off'></i> 啟用" data-off="<i class='fas fa-ban'></i> 禁用" data-onstyle="success" data-offstyle="danger">
+                    </div>
 
                    
 

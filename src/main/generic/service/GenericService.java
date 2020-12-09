@@ -100,8 +100,11 @@ public class GenericService<T extends GenericTypeObject> implements InterfaceSer
 	public int countWithHql(String hql) {
 		return genericDAO.countWithHql(hql);
 	}
-
-	public List<? extends GenericTypeObject> getAllWithHql(String hql) {
+	@Override
+	public List<? extends GenericTypeObject> getAllwithHQL(String hql) {
 		return genericDAO.getAllWithHql(hql);
 	}
+
+	
+	
 }

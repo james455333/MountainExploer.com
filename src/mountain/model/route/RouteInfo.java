@@ -39,6 +39,7 @@ public class RouteInfo extends GenericTypeObject implements Serializable{
 	private byte[] traffic;
 	private byte[] imgUrl;
 	private RouteBasic route_basic;
+	private Integer toggle;
 	
 	@OneToOne( fetch = FetchType.LAZY )
 	@PrimaryKeyJoinColumn
@@ -120,6 +121,13 @@ public class RouteInfo extends GenericTypeObject implements Serializable{
 	@Override
 	public void setId(Integer rbPK) {
 		this.rbPK = rbPK;
+	}
+	@Column(name = "toggle")
+	public Integer getToggle() {
+		return toggle;
+	}
+	public void setToggle(Integer toggle) {
+		this.toggle = toggle;
 	}
 
 }

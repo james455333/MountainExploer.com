@@ -34,5 +34,9 @@ public interface InterfaceService<T extends GenericTypeObject> {
 	
 	List<? extends GenericTypeObject> getwithHQL(String hql, Integer page, Integer showData);
 	
+	List<? extends GenericTypeObject> getAllwithHQL(String hql);
+	
 	int countWithHql(String hql);
+	
+	
 }

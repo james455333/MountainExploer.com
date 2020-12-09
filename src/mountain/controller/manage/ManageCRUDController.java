@@ -134,7 +134,7 @@ public class ManageCRUDController {
 		
 		service.save(actRegistry);
 		String hql = "From ActRegistry where activityBasic = " + actID;
-		actRegList = (List<ActRegistry>) service.getAllWithHql(hql);
+		actRegList = (List<ActRegistry>) service.getAllwithHQL(hql);
 		
 		return actRegList;
 	}
