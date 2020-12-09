@@ -23,6 +23,15 @@ document.getElementById("reset").onclick = function(){
 }
 
 
+//測試
+$(".testBt").on("click", function(){
+	swal({
+		title: "測試成功",
+		icon: "success"
+	});
+})
+
+
 //第三方登入資料儲存
 $(".submit").on("click", function(){
     let userAnt = $.trim($(".account").val());
@@ -31,38 +40,45 @@ $(".submit").on("click", function(){
     let userStId = $.trim($(".statusId").val());
     let regDate = $.trim($(".regDate").val());
 
-    $.ajax({
-        method:"GET",
-        url:"/MountainExploer.com/member/socailInfoAdd",
-        data:{
-            account:userAnt,
-            name:userNm,
-            email:userEm,
-            statusId:userStId,
-            regDate:regDate
-        },
-        dataType:"json",
-        success:function(data){
-            if(data){
-                swal({
-                    title: "註冊成功，請重新登入使用本系統",
-                    icon: "success"
-                });
-                window.location.href="/MountainExploer.com/member/memberLoginEntry";
-            }else{
-                swal({
-                    title: "註冊失敗，請聯絡管理員",
-                    icon: "error"
-                });
-                window.location.href="/MountainExploer.com";
-            }
-        },
-        error:function(){
-            swal({
-                title: "註冊失敗，請聯絡管理員",
-                icon: "error"
-            });
-            window.location.href="/MountainExploer.com";
-        }
-    });
+	$.ajax({
+		method:"GET",
+	    url:"/MountainExploer.com/member/socailInfoAdd",
+	    data:{
+			account:userAnt,
+			name:userNm,
+	        email:userEm,
+	        statusId:userStId,
+	        regDate:regDate
+		},
+	    dataType:"json",
+	    success:function(data){
+			if(data){
+				console.log(data);
+				swal({
+					title: "註冊成功，請重新登入使用本系統",
+	                icon: "success"
+	            }).then(function(){
+					window.location.href="/MountainExploer.com/member/memberLoginEntry";
+				})
+	        }else{
+				console.log(data);
+	            swal({
+	                title: "註冊失敗，請聯絡管理員",
+	                icon: "error"
+	            }).then(function(){
+					window.location.href="/MountainExploer.com";
+				})
+	        }
+	    },
+	    error:function(){
+			console.log("error");
+	        swal({
+				title: "註冊失敗，請聯絡管理員",
+	            icon: "error"
+	        }).then(function(){
+				window.location.href="/MountainExploer.com";
+			})
+	    }
+	});
+	
 })
