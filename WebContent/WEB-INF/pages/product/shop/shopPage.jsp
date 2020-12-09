@@ -18,6 +18,21 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript" charset="UTF-8"
 	src='<c:url value="/product/shop/shop.js"/>'></script>
+		<style>
+        
+
+        .order-table-tb {
+            display: flex;
+            margin: auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .div {
+            margin: 15px;
+            font-size: 18px;
+        }
+
+        </style>
 </head>
 <body>
 	<div class="count1">
@@ -41,6 +56,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent"
 				include-html="/MountainExploer.com/forinclude/includeForIndex.html"></div>
 		</nav>
+		
 	</header>
 	<div class="div_ul">
 		<div class="secNavbar">
@@ -134,41 +150,51 @@
 				</div>
 				<!--table-->
 				<table class="order-table">
-					<thead class="order-table-th">
+<!-- 					<thead class="order-table-th"> -->
+<!-- 							<th scope="col">商品名稱</th> -->
+<!-- 							<th scope="col">圖片</th> -->
+<!-- 							<th scope="col">價格</th> -->
+<!-- 							<th scope="col">選擇數量</th> -->
+<!-- 							thead更改到這邊結束 -->
+<!-- 						</tr> -->
+<!-- 					</thead> -->
+					
+					<div class="order-table-tb">
+					
+					</div>
+					
+<!-- 					<tbody class="order-table-tb"> -->
+<!-- 						tbody更改從這邊開始 -->
 <!-- 						<tr> -->
-<%-- 							<th colspan="4" align="center"><a href='<c:url value="/shop/shoppingCartEntry"/>'>查看購物車</a></th> --%>
+<!-- 							<td>商品名稱</td> -->
+<!-- 							<td >圖片</td> -->
+<!-- 							<td>價格</td> -->
+<!-- 							<td >選擇數量</td> -->
 <!-- 						</tr> -->
 <!-- 						<tr> -->
-<%-- 							<th colspan="4" align="center"><a href='<c:url value="/shoppingcart/memberOrders"/>'>查看訂單</a></th> --%>
+<!-- 							<td>商品名稱</td> -->
+<!-- 							<td >圖片</td> -->
+<!-- 							<td>價格</td> -->
+<!-- 							<td >選擇數量</td> -->
 <!-- 						</tr> -->
-						<tr>
-							<!-- thead更改從這邊開始 -->
-							<th scope="col">商品名稱</th>
-							<!-- 							<th scope="col">型號</th> -->
-							<th scope="col">圖片</th>
-							<th scope="col">價格</th>
-							<!-- 							<th scope="col">數量</th> -->
-							<th scope="col">選擇數量</th>
-							<!-- thead更改到這邊結束 -->
-						</tr>
-					</thead>
-
-					<tbody class="order-table-tb">
-						<!-- tbody更改從這邊開始 -->
-						<tr>
-							<td>商品名稱</th>
-							<!-- 							<th scope="col">型號</th> -->
-							<th scope="col">圖片</th>
-							<th scope="col">價格</th>
-							<!-- 							<th scope="col">數量</th> -->
-							<th scope="col">選擇數量</th>
-						</tr>
+<!-- 						<tr> -->
+<!-- 							<td>商品名稱</td> -->
+<!-- 							<td >圖片</td> -->
+<!-- 							<td>價格</td> -->
+<!-- 							<td >選擇數量</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<td>商品名稱</td> -->
+<!-- 							<td >圖片</td> -->
+<!-- 							<td>價格</td> -->
+<!-- 							<td >選擇數量</td> -->
+<!-- 						</tr> -->
 
 
-						<!-- tbody更改到這邊結束 -->
-					</tbody>
+<!-- 						tbody更改到這邊結束 -->
+<!-- 					</tbody> -->
 
-				</table>
+<!-- 				</table> -->
 
 				<nav class="pageControl">
 					<!-- 					<div> -->
