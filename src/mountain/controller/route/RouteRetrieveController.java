@@ -1,8 +1,10 @@
 package mountain.controller.route;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -34,8 +36,7 @@ public class RouteRetrieveController {
 		List<NationalPark> nationParkList = new ArrayList<NationalPark>();
 		service.save(nPark);
 		String hql = "from NationalPark order by id";
-		nationParkList = (List<NationalPark>) service.getwithHQL(hql, 1, 10);
-		
+		nationParkList = (List<NationalPark>) service.getwithHQL(hql, 1, 100);
 		
 		return nationParkList;
 	}

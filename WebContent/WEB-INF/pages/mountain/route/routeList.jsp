@@ -87,7 +87,11 @@
             <!-- 每頁不同的內容到這裡結束 -->
         </div>
     </div>
-
+	<div id='hideElm'>
+		<li class="li2">
+		<button type="button" class="btn btn-outline-info">
+		</button></li>
+	</div>
     <footer id="footer">
         <a>全站導覽</a>
         <button id="demo1">確認demo1</button>

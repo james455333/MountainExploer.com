@@ -16,7 +16,7 @@ public interface InterfaceService<T extends GenericTypeObject> {
 	
 	int countWith(Integer id,String coulmnName);
 
-	List<T> selectAll();
+	List<? extends GenericTypeObject> selectAll();
 
 	T insert(T entity);
 
@@ -34,5 +34,9 @@ public interface InterfaceService<T extends GenericTypeObject> {
 	
 	List<? extends GenericTypeObject> getwithHQL(String hql, Integer page, Integer showData);
 	
+	List<? extends GenericTypeObject> getAllwithHQL(String hql);
+	
 	int countWithHql(String hql);
+	
+	
 }

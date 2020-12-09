@@ -8,7 +8,6 @@ function ajaxDefault() {
 		dataType: "json",
 		success: function(data) {
 			setTN(data);
-
 		},
 		error: function() {
 			showErrorSwal();
@@ -52,13 +51,14 @@ function ajaxVTN(rtID) {
 
 /* 新增主項元素 */
 function setTN(data) {
+	console.log(data)
 	let npList = $(".npList")
 	for (let i in data) {
 		npList.append(buttonModel);
 		npList.find("button").eq(i)
 			.val(data[i].id).html(data[i].name)
-		if (i == 0) {
-			ajaxTN(data[0].id);
+		if(i == 0){
+			setVTN(data[i].routeBasic)
 		}
 	}
 	let num = data.length
@@ -70,25 +70,26 @@ function setVTN(data) {
 	let routeList = $(".routeList")
 	routeList.empty();
 	for (let i in data) {
-		routeList.append(buttonModel)
-		routeList.find("button").eq(i)
-			.val(data[i].id).html(data[i].routeInfo.name)
+		if(data[i].routeInfo.toggle == null){
+			let model = $("#hideElm").find("li").clone();
+			model.find("button").val(data[i].id).html(data[i].routeInfo.name)
+			routeList.append(model)
+		}
 	}
-
-
-
+	let firstRtID = routeList.find("button").eq(0).val()
+	ajaxVTN(firstRtID)
 	//	$(".routeNav").show(1000);
 }
 
 /* 新增主內容元素 */
 function setMainContent(routeInfo) {
-
+	
 	let imgContent = $(".forImage")
 	let imgSet = '<img class="imgSet" src="" alt="">'
 	let text = $(".sec-div-text")
 	imgContent.empty();
 	imgContent.append(imgSet)
-	let imgURL = rtSearchURL + "/images?rtID=" + routeInfo.id
+	let imgURL = rtSearchURL + "/images?rtID=" + routeInfo.id + "&timestamp=" + new Date().getTime()
 	$(".imgSet").attr("src", imgURL)
 	text.empty();
 	text.eq(0).text(routeInfo.desp)

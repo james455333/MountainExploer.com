@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import main.generic.dao.GenericDAO;
 import main.generic.model.GenericTypeObject;
-import mountain.model.activity.Registry.ActRegistry;
 
 
 
@@ -54,7 +53,7 @@ public class GenericService<T extends GenericTypeObject> implements InterfaceSer
 		return genericDAO.select(name);
 	}
 	@Override
-	public List<T> selectAll(){
+	public List<? extends GenericTypeObject> selectAll(){
 		return genericDAO.selectAll();
 	}
 	@Override
@@ -101,8 +100,11 @@ public class GenericService<T extends GenericTypeObject> implements InterfaceSer
 	public int countWithHql(String hql) {
 		return genericDAO.countWithHql(hql);
 	}
-
-	public List<? extends GenericTypeObject> getAllWithHql(String hql) {
+	@Override
+	public List<? extends GenericTypeObject> getAllwithHQL(String hql) {
 		return genericDAO.getAllWithHql(hql);
 	}
+
+	
+	
 }

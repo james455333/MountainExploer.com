@@ -121,7 +121,7 @@ public class BackRetrieveController {
 		
 		if (npID == null ) {
 			service.save(nationPark);
-			List<GenericTypeObject> before = service.selectAll();
+			List<GenericTypeObject> before = (List<GenericTypeObject>) service.selectAll();
 			List<NationalPark> returnList = new ArrayList<NationalPark>();
 			for (GenericTypeObject genericTypeObject : before) {
 				returnList.add((NationalPark)genericTypeObject);
@@ -213,7 +213,7 @@ public class BackRetrieveController {
 			try {
 				InterfaceService<GenericTypeObject> abstractService = genericService;
 				abstractService.save(nationPark);
-				List<GenericTypeObject> returnAll = abstractService.selectAll();
+				List<GenericTypeObject> returnAll = (List<GenericTypeObject>) abstractService.selectAll();
 				for (GenericTypeObject genericTypeObject : returnAll) {
 					all.add( (NationalPark)genericTypeObject);
 				}
