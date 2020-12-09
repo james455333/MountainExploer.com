@@ -52,8 +52,9 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">岳進者後台</h1>
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50" onclick="createPDF();"></i>匯出資料表</a>
+                                class="fas fa-download fa-sm text-white-50"></i>匯出資料表</a>
                     </div>
+
 
 
                     <!-- Content Row -->
@@ -236,18 +237,11 @@
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">折線圖範例1</h6>
                                     <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">下拉選單標題:</div>
-                                            <a class="dropdown-item" href="#">匯出為PDF</a>
-                                            <a class="dropdown-item" href="#">內容2</a>
-                                            <div class="dropdown-divider">分隔線</div>
-                                            <a class="dropdown-item" href="#">還是內容</a>
-                                        </div>
+                                        <button id="downloadDemo1" type="button"
+                                            class="btn btn-outline-primary btn-sm active"
+                                            style="background-color: #4e73df;"><i class="fa fa-download"></i>
+                                            匯出PDF</button>
+                                           
                                     </div>
                                 </div>
                                 <!-- Card Body -->
@@ -264,18 +258,10 @@
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">折線圖範例2</h6>
                                     <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">下拉選單標題:</div>
-                                            <a class="dropdown-item" href="#">匯出為PDF</a>
-                                            <a class="dropdown-item" href="#">內容2</a>
-                                            <div class="dropdown-divider">分隔線</div>
-                                            <a class="dropdown-item" href="#">還是內容</a>
-                                        </div>
+                                        <button id="downloadDemo2" type="button"
+                                        class="btn btn-outline-primary btn-sm active"
+                                        style="background-color: #4e73df;"><i class="fa fa-download"></i>
+                                        匯出PDF2</button>
                                     </div>
                                 </div>
                                 <!-- Card Body -->
@@ -651,11 +637,9 @@
 
 
     <!-- div to jpg -->
-    <!-- <script src="js/divtopdf.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas2image@1.0.5/canvas2image.min.js"></script> -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>
+
+    <script src="js/divtopdf.js"></script>
 </body>
 
 </html>

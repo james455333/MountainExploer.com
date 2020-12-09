@@ -1,25 +1,41 @@
-var doc = new jsPDF();
+//----------- 1.新增button開始--------------
 
- function saveDiv(divId, title) {
- doc.fromHTML(`<html><head><title>${title}</title></head><body>` + document.getElementById(divId).innerHTML + `</body></html>`);
- doc.save('div.pdf');
-}
+var canvas = document.getElementById('myAreaChart');
+var canvas = document.getElementById('myAreaChart2');
+//----------- 1.新增button結束--------------
+var context = canvas.getContext('2d');
 
-function printDiv(divId,
-  title) {
+// draw a blue cloud
+context.beginPath();
+context.moveTo(170, 80);
+context.bezierCurveTo(130, 100, 130, 150, 230, 150);
+context.bezierCurveTo(250, 180, 320, 180, 340, 150);
+context.bezierCurveTo(420, 150, 420, 120, 390, 100);
+context.bezierCurveTo(430, 40, 370, 30, 340, 50);
+context.bezierCurveTo(320, 5, 250, 20, 250, 50);
+context.bezierCurveTo(200, 5, 150, 20, 170, 80);
+context.closePath();
+context.lineWidth = 5;
+context.fillStyle = '#8ED6FF';
+context.fill();
+context.strokeStyle = '#0000ff';
+context.stroke();
 
-  let mywindow = window.open('', 'PRINT', 'height=650,width=900,top=100,left=150');
+downloadDemo1.addEventListener("click", function() {
+  // only jpeg is supported by jsPDF
+  var imgData = canvas.toDataURL("image/jpeg", 1.0);
+  var pdf = new jsPDF();
 
-  mywindow.document.write(`<html><head><title>${title}</title>`);
-  mywindow.document.write('</head><body >');
-  mywindow.document.write(document.getElementById(divId).innerHTML);
-  mywindow.document.write('</body></html>');
+  pdf.addImage(imgData, 'JPEG', 0, 0);
+  pdf.save("折線圖.pdf");
+}, false);
+//----------- 2.更改buttonId & 輸出檔案名稱開始--------------
+downloadDemo2.addEventListener("click", function() {
+  // only jpeg is supported by jsPDF
+  var imgData = canvas.toDataURL("image/jpeg", 1.0);
+  var pdf = new jsPDF();
 
-  mywindow.document.close(); // necessary for IE >= 10
-  mywindow.focus(); // necessary for IE >= 10*/
-
-  mywindow.print();
-  mywindow.close();
-
-  return true;
-}
+  pdf.addImage(imgData, 'JPEG', 0, 0);
+  pdf.save("折線圖2.pdf");
+}, false);
+//----------- 2.更改buttonId & 輸出檔案名稱結束--------------
