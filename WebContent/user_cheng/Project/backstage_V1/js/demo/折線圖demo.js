@@ -208,7 +208,7 @@ var myLineChart = new Chart(ctx, {
         }
       }],
     },
-     //是否顯示 tooltip
+     //是否顯示 toptip
     legend: {
       display: true
     },
