@@ -21,6 +21,20 @@
 </head>
 
 <body>
+	<div>
+		<c:choose>
+			<c:when test="${!empty errors}">
+				<script type="text/javascript" charset="UTF-8">
+					var errors = "${errors.msg}";
+				</script>
+			</c:when>
+			<c:otherwise>
+				<script type="text/javascript">
+					var errors = null;
+				</script>
+			</c:otherwise>
+		</c:choose>
+	</div>
     <div class="count1">
         <div class="count1_img">
             <img src="/MountainExploer.com/images/logo1.png">
@@ -51,12 +65,18 @@
             <div class="secDivContent">
                 
                    <!--上傳影像div開始-->
-                <img id="output" src="/MountainExploer.com/images/預設頭像.png" />
+                <c:choose>
+                	<c:when test="${empty Member.memberInfo.img_name}">
+		                <img id="output" src="/MountainExploer.com/images/preset.png" />                		
+                	</c:when>
+                	<c:otherwise><img src="<c:url value='showUserImg?userSeq=${Member.seqno}'/>"></c:otherwise>
+                </c:choose>
+                <br/>
                 
                 <form action="<c:url value='/member/imgUpdateAction' />" method="POST" enctype="multipart/form-data">
                 <div class="upLoadImg">
                     <input type="hidden" name="userSeqImg" class="userSeqImg" value="${Member.seqno}">
-	                <input type="file" name="userFile" class="userFile" accept="image/*" onchange="loadFile(event)">
+	                <input type="file" name="userFile" class="userFile" accept="image/*" onchange="loadFile(event)" required="required">
 					<input type="submit" name="userImg" class="userImg" value="上傳頭貼">
 	                <br>
                 </div>
@@ -87,6 +107,7 @@
 <script src="/MountainExploer.com/js/upLoadImg.js"></script><!-- 上傳頭像 -->
 <script src="/MountainExploer.com/js/table.js"></script>
 <script src="/MountainExploer.com/js/topBar.js"></script>
-<script src="/MountainExploer.com/js/sweetalert.js"></script><!--sweet alert-->
+<!-- <script src="/MountainExploer.com/js/sweetalert.js"></script>sweet alert -->
 <script src="/MountainExploer.com/js/includejsp.js"></script>
+<script src="/MountainExploer.com/member/memberImageUpload.js"></script>
 </html>

@@ -1,17 +1,4 @@
-$(".submit").on("click", function(){
-    if(errors != null){
-       swal({
-           title: "登入失敗",
-           icon: "error"
-       });
-    }else{
-        swal({
-            title: "登入成功",
-            icon: "success"
-        });
-    }
 
-})
 
 $(".userLog1").on("click", function(){
     let userNo1 = $(".userLog1").val();

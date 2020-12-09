@@ -108,6 +108,10 @@ public class MemberInfoController {
 	public boolean processSocailInfoAction(
 			String account, String name, String email, int statusId, String regDate, Model m) throws ParseException {
 		
+		if(account == "" || name == "" || email == "") {
+			return false;
+		}
+		
 		MemberBasic mb = new MemberBasic();
 		mb.setAccount(account);
 		mb.setName(name);

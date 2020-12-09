@@ -108,8 +108,9 @@
                     	</div>
 
                     </div>
-                    <button type="submit" name="submit" class="btn btn-outline-success submit"><i class="fa fa-check-circle-o"></i>
+                    <button type="button" name="submit" class="btn btn-outline-success submit"><i class="fa fa-check-circle-o"></i>
                         確認送出</button>
+                        <button type="button" class="btn btn-outline-success testBt"><i class="fa fa-check-circle-o"></i>測試</button>
 <!--                     <button type="button" name="fastRg" class="btn btn-outline-success fastRg"><i class="fa fa-check-circle-o"></i>快速註冊</button> -->
                     <button type="reset" class="btn btn-outline-danger reset" id="reset"><i class="fa fa-close"></i> 清除</button>
                 </div>
@@ -136,9 +137,9 @@
 <!-- 上傳頭像 -->
 <script src="../js/table.js"></script>
 <script src="../js/topBar.js"></script>
-<script src="../js/sweetalert.js"></script>
+<!-- <script src="../js/sweetalert.js"></script> -->
 <!--sweet alert-->
 <script src="../js/includejsp.js"></script>
-<script src="/MountainExploer.com/member/socailLoginInfo.js"></script>
+<script src="socailLoginInfo.js"></script>
 
 </html>

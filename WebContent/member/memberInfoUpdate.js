@@ -100,7 +100,7 @@ $(".email").on("blur", function(){
 })
 
  $(function(){
-     var seqnoPre = $.trim($(".seqno").val());
+     let seqnoPre = $.trim($(".seqno").val());
 //     var other = $(".other").val();
 
      $.ajax({

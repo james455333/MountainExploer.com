@@ -38,18 +38,18 @@
 <body>
 	<div id="fb-root"></div>
 	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v9.0&appId=679603812750961&autoLogAppEvents=1" nonce="2cmTiiay"></script>
-	<c:choose>
-		<c:when test="${!empty errors}">
-			<script type="text/javascript" charset="UTF-8">
-				var errors = "${errors.msg}";
-			</script>
-		</c:when>
-		<c:otherwise>
-			<script type="text/javascript">
-				var errors = null;
-			</script>
-		</c:otherwise>
-	</c:choose>
+<%-- 	<c:choose> --%>
+<%-- 		<c:when test="${!empty errors}"> --%>
+<!-- 			<script type="text/javascript" charset="UTF-8"> -->
+<%-- // 				var errors = "${errors.msg}"; --%>
+<!-- 			</script> -->
+<%-- 		</c:when> --%>
+<%-- 		<c:otherwise> --%>
+<!-- 			<script type="text/javascript"> -->
+<!-- // 				var errors = null; -->
+<!-- 			</script> -->
+<%-- 		</c:otherwise> --%>
+<%-- 	</c:choose> --%>
 	
     <div class="count1">
         <div class="count1_img">
@@ -87,7 +87,7 @@
                             alt=""></a>
                     <hr>
                 </div>
-                <form action="<c:url value='/member/memberLoginAlone' />" method="POST">
+                <form id="loginForm" action="<c:url value='/member/memberLoginAlone' />" method="POST">
                 
                 <div class="login-body" id="login-panel">
                     <table class="logintable" style="margin: 0 auto;">
