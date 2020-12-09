@@ -1,3 +1,31 @@
+function setTopCard(){
+	$.ajax({
+		url : routeBaseURL + "/allRoute",
+		type : "GET",
+		dataType : "json",
+		success : function(data){
+			let able = 0; 
+			let forbid = 0;
+			for(let i in data){
+				let routeInfo = data[i].routeInfo
+				if(routeInfo.toggle != null){
+					forbid++;
+				}else{
+					able++;
+				}
+			}	
+			
+			$("#rt-total-num").html(data.length)
+			$("#rt-able-num").html(able)
+			$("#rt-forbid-num").html(forbid)
+		},
+		error : function(){
+			Swal.fire.fire("發生錯誤","","error")
+		}
+	})
+	
+}
+
 
 function setSearchBar(){
 	$("#npSelect").find("option").remove()
@@ -35,7 +63,6 @@ function setTable(){
 		type : "GET",
 		dataType : "json",
 		success : function(data){
-			if(typeof dataTable != 'undefined') dataTable.destroy()
 			let result = setResultToDT(data)
 			setDataTable(result)
 		},
@@ -155,6 +182,7 @@ function setRtToggle(thisRtID, thisToggle){
 		url : routeBaseURL + "/update-toggle." + thisRtID + "-" + thisToggle,
 		type : "PUT",
 		success : function(){
+			setTopCard()
 		},
 		error : function(jqXHR){
 			Swal.fire("發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
@@ -188,7 +216,7 @@ function updateBox(btn){
 				}
 			}
 			final += '</select>'
-					+ '</labe>'
+					+ '</label>'
 					+ '<hr>' 
 					+ '<label class="swal2-label">路線名稱' 
 						+'<input required id="update-name" type="text" class="swal2-input" value="'+ data[0].routeInfo.name +'" >'
@@ -248,6 +276,7 @@ function ajaxUpdate(result){
 				icon : "success",
   				confirmButtonText: '了解',
 			})
+			dataTable.destroy()
 			setTable()
 			setSearchBar()
 		},
@@ -261,9 +290,9 @@ function deleteAlert(btn){
 	let rtID = btn.parents("tr").find("td").eq(2).text()
 	
 	Swal.fire({
-		title : "即將刪除 =>  路線編號 : " + rtID,
+		title : '即將刪除 <i class="fas fa-arrow-right"></i> 路線編號 : ' + rtID,
 		icon : "warning",
-		text : "!! 警告 !! \n\n本動作將刪除本路線，並且無法回復",
+		html : "!! 警告 !!  <hr>本動作將刪除本路線，並且無法回復",
 		showCancelButton: true, 
 	  	confirmButtonColor: '#3085d6',
 		cancelButtonColor: '#d33',
@@ -279,8 +308,10 @@ function deleteAlert(btn){
 				url : routeBaseURL + "/rtSelect." + rtID,
 				type : "Delete",
 				success:function(){
+					dataTable.destroy()
 					setTable()
 					setSearchBar()
+					setTopCard()
 					Swal.fire({
 						title : "刪除成功",
 						icon : "success",
@@ -301,7 +332,35 @@ function deleteAlert(btn){
 
 function showMoreInfo(btn){
 	let rtID = btn.parents("tr").find("td").eq(2).text()
-	console.log(rtID)
+	let nextTr = btn.parents("tr").next()
+	if(nextTr.attr("class") == "append-info") {
+		nextTr.toggle(500)
+		nextTr.next().toggle(500)
+		nextTr.siblings(".append-info").not(nextTr).not(nextTr.next()).hide(500)
+		return;
+	}
+	$(".append-info").hide(500)
+	$.ajax({
+		url : routeBaseURL + "/rtSelect." + rtID,
+		type : "GET",
+		dataType: 'json',
+		success : function(data){
+			let routeInfo = data[0].routeInfo;
+			let appendInfo = "<tr class='append-info'>"
+								+ "<th colspan='3'>路線介紹</th>"
+								+ "<th colspan='2'>建議行程</th>"
+								+ "<th colspan='1'>交通資訊</th>"
+							+ "</tr>"
+							+ "<tr class='append-info'>"
+								+ "<td colspan='3'><div>" + routeInfo.desp + "</div></th>"
+								+ "<td colspan='2'><div>" + routeInfo.adv + "</div></th>"
+								+ "<td colspan='1'><div>" + routeInfo.traf + "</div></th>"
+							+ "</tr>"
+			
+			btn.parents("tr").after(appendInfo)
+			btn.parents("tr").nextAll().slice(0,2).show(500)
+		}
+	})
 }
 function updateImage(btn){
 	let rtID = btn.parents("tr").find("td").eq(2).text()
@@ -314,10 +373,9 @@ function updateImage(btn){
 	})
 	Swal.fire({
 		title : rtName + "\n路線圖",
-		imageUrl: '/MountainExploer.com/backstage/mountain/search/images?seqno=' + rtID,
+		imageUrl: '/MountainExploer.com/backstage/mountain/search/images?seqno=' + rtID + "&timestamp=" + new Date().getTime(),
 		imageHeight: "auto",
 		imageWidth: 500,
-		imageAlt: 'A tall image',
 		width : "750px",
 		html : innerHtml,
 		showCancelButton: true, 
@@ -382,4 +440,311 @@ function preview(input) {
         // 因為上面定義好讀取成功的事情，所以這裡可以放心讀取檔案
         reader.readAsDataURL(input.files[0]);
     }
+}
+function newNp(){
+	Swal.fire({
+		title : '新增 -- 國家公園',
+		icon : "info",
+		text : '最多輸入50中文字，不得為空白',
+		input: 'text',
+		inputAttributes: {
+			required : true,
+			maxlength : 50,
+			pattern : "^[\u4e00-\u9fa5]+$"
+		},
+		inputPlaceholder: '最多輸入50中文字，不得為空白',
+		validationMessage : "格式錯誤或空白",
+		showCancelButton: true, 
+	  	confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: '確定新增', 
+		cancelButtonText: '取消',
+		confirmButtonClass: 'btn btn-success',
+		cancelButtonClass: 'btn btn-danger',
+		buttonsStyling: false
+	}).then(function(result){
+		if(result.isConfirmed){
+			let formData = new FormData()
+			formData.append("name",result.value)
+			$.ajax({
+				url : routeBaseURL + "/np",
+				data : formData,
+				type : "POST",
+				processData : false,
+				contentType : false,
+				success : function(){
+					setSearchBar()
+					Swal.fire({
+						title : result.value +  " 新增成功",
+						icon : "success",
+						confirmButtonText: '返回', 
+						confirmButtonClass: 'btn btn-primary',
+						buttonsStyling: false
+					})
+				},
+				error : function(jqXHR){
+					Swal.fire("發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
+				}
+			})
+		}
+	})
+}
+function updateNp(){
+	let nps = {};
+	$.ajax({
+		url : oldBackStageURL + "/navNP",
+		method : "GET",
+		dataType: 'json',
+		success:function(data){
+			for(let i in data){
+				nps[data[i].seqno] = data[i].npName 
+			}
+			Swal.fire({
+				title : '修改 -- 國家公園',
+				icon : "info",
+				text : "選擇你所要修改的國家公園",
+				input: 'select',
+				inputOptions : nps, 
+				showCancelButton: true, 
+			  	confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: '選擇', 
+				cancelButtonText: '取消',
+				confirmButtonClass: 'btn btn-success',
+				cancelButtonClass: 'btn btn-danger',
+				buttonsStyling: false
+			}).then(function(result){
+				if(result.isConfirmed){
+					let value = result.value
+					let npName ;
+					for(let i in data ){
+						if(data[i].seqno == value) npName = data[i].npName
+					}
+					Swal.fire({
+						title : "修改 -- " + npName,
+						icon : "info",
+						text : '最多輸入50中文字，不得為空白',
+						input: 'text',
+						inputAttributes: {
+							required : true,
+							maxlength : 50,
+							pattern : "^[\u4e00-\u9fa5]+$"
+						},
+						inputPlaceholder: '最多輸入50中文字，不得為空白',
+						validationMessage : "格式錯誤或空白",
+						showCancelButton: true, 
+					  	confirmButtonColor: '#3085d6',
+						cancelButtonColor: '#d33',
+						confirmButtonText: '確定修改', 
+						cancelButtonText: '取消',
+						confirmButtonClass: 'btn btn-success',
+						cancelButtonClass: 'btn btn-danger',
+						buttonsStyling: false
+					}).then(function(final){
+						if(final.isConfirmed){
+							let finalData = { name : final.value}
+							$.ajax({
+								url : routeBaseURL + "/np-" + value,
+								type : "PUT",
+								data : JSON.stringify(finalData),
+								contentType: "application/json; charset=UTF-8",
+								success : function(){
+									setSearchBar()
+									if(typeof dataTable != 'undefined') dataTable.destroy()
+									setTable()
+									Swal.fire({
+										title : "修改成功",
+										icon : "success",
+										html : "<div>" 
+											+ "<h3 class='text-warning'>" + npName 
+											+ "</h3><hr>"
+											+ '<i class="fas fa-arrow-down"></i>'
+											+ "<hr>"
+											+ "<h3 class='text-success'>" 
+											+ final.value 
+												+ "</h3></div>",
+										confirmButtonText: '返回', 
+										confirmButtonClass: 'btn btn-primary',
+										buttonsStyling: false
+									})
+								},
+								error : function(jqXHR){
+									Swal.fire("發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
+								}
+							})
+						}
+					})
+					
+					
+				}
+			})
+		}
+	})
+}
+function deleteNp(){
+	let nps = {};
+	$.ajax({
+		url : oldBackStageURL + "/navNP",
+		method : "GET",
+		dataType: 'json',
+		success:function(data){
+			for(let i in data){
+				nps[data[i].seqno] = data[i].npName 
+			}
+			Swal.fire({
+				title : '<h2 class="text-danger">刪除 -- 國家公園</h2>',
+				icon : "warning",
+				html :  "<h2 class='text-warning'>" 
+						+ '<i class="fas fa-skull-crossbones fa-lg fa-pulse"></i>' 
+						+ "  警告  "
+						+ '<i class="fas fa-skull-crossbones fa-lg fa-pulse"></i>'
+						+ "</h2>"
+						+ "<hr>"
+						+ "本動作將永久刪除主類別及其下所有路線，並且<br>"
+						+ "<i class='text-lg text-danger'>永久無法回復"
+						+ "<hr>"
+						+ "您是否確認執行?",
+				showCancelButton: true, 
+			  	confirmButtonColor: '#d33',
+				cancelButtonColor: '#3085d6',
+				confirmButtonText: '確定', 
+				cancelButtonText: '取消',
+				confirmButtonClass: 'btn btn-danger',
+				showLoaderOnConfirm: true,
+				cancelButtonClass: 'btn btn-success',
+				buttonsStyling: false
+			}).then(function(firstWarning){
+				if(firstWarning.isConfirmed){
+					Swal.fire({
+						title : '<h2 class="text-danger">刪除 -- 國家公園</h2>',
+						icon : "warning",
+						text : "選擇你所要刪除的國家公園",
+						input: 'select',
+						inputOptions : nps, 
+						showCancelButton: true, 
+						showLoaderOnConfirm: true,
+					  	confirmButtonColor: '#d33',
+						cancelButtonColor: '#3085d6',
+						confirmButtonText: '選擇', 
+						cancelButtonText: '取消',
+						confirmButtonClass: 'btn btn-danger',
+						cancelButtonClass: 'btn btn-success',
+						buttonsStyling: false
+					}).then(function(selectNP){
+						
+						if(selectNP.isConfirmed){
+							let value = selectNP.value
+							let npName;
+							for(let i in data ){
+								if(data[i].seqno == value) npName = data[i].npName
+							}
+							Swal.fire({
+								title : "即將刪除 : " 
+										+ "<h2 class='text-danger'> "
+										+ npName
+										+ "</h2>",
+								icon : "warning",
+								html : "<h3>"
+										+ "現在回頭還來得及...</h3>",
+								background: '#fff url(/MountainExploer.com/images/regret.jpg)',
+								showCancelButton: true, 
+							  	confirmButtonColor: '#d33',
+								cancelButtonColor: '#3085d6',
+								confirmButtonText: '墮落成魔', 
+								cancelButtonText: '回頭是岸',
+								confirmButtonClass: 'btn btn-danger',
+								cancelButtonClass: 'btn btn-success',
+								showLoaderOnConfirm: true,
+								buttonsStyling: false
+							}).then(function(final){
+								if(final.isConfirmed){
+									$.ajax({
+										url : routeBaseURL + "/np-" + value,
+										type : "DELETE",
+										success : function(){
+											Swal.fire({
+												title : "<h1 class='text-light'>刪除成功</h1>",
+												html : "<h3 class='text-danger'>一切都已太遲...</h3>",
+												showConfirmButton: false,
+												background: '#fff url(/MountainExploer.com/images/no-regret.jpg)',
+												timer : 2500,
+												showLoaderOnConfirm: true,
+												timerProgressBar: true, 
+											})
+										},
+										error : function(jqXHR){
+											Swal.fire("發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
+										}
+									})
+								}
+							})
+						}
+					})
+				}
+			})
+		}
+	})
+}
+
+function newRoute(){
+	let nps;
+	$.ajax({
+		url : oldBackStageURL + "/navNP",
+		method : "GET",
+		dataType: 'json',
+		success:function(result){
+			nps = result
+			let final = '<form id="newRt-form">'
+						+'<label class="swal2-label">國家公園'
+						+ '<select name="npName" class="swal2-select">'
+			for(let i in nps){
+				if(i == 0 ) {
+					final +='<option selected value="' + nps[i].seqno +'">' + nps[i].npName + "</option>"
+				}else{
+					final +='<option value="' + nps[i].seqno +'">' + nps[i].npName + "</option>" 
+				}
+			}
+			
+			final += '</select></label>'
+					+ '<hr>'
+					+ '<label class="swal2-label">路線名稱'
+					+ '<input required pattern="^[\u4e00-\u9fa5]+$" type="text" name="name" class="swal2-input">'
+					+ '</label>'
+					+ '<hr>'
+					+ '<label class="swal2-label">路線介紹'
+					+ '<textarea cols="100" style="resize:none" required type="text" name="desp" class="swal2-textarea"></textarea>'
+					+ '</label>'
+					+ '<hr>'
+					+ '<label class="swal2-label">建議行程'
+					+ '<textarea cols="100" style="resize:none" required name="adv" class="swal2-textarea"></textarea>'
+					+ '</label>'
+					+ '<hr>'
+					+ '<label class="swal2-label">交通資訊'
+					+ '<textarea cols="100" style="resize:none" required name="traf" class="swal2-textarea"></textarea>'
+					+ '</label>'
+					+ '<hr>'
+					+ '<div class="custom-file">'
+					+ '<input type="file" accept="*/image" class="custom-file-input" name="fileImge" id="imageFile">'
+					+ '<label class="custom-file-label" for="imageFile">選擇圖片</label>'
+					+ '</div>'
+					+ '</form>'
+			
+			Swal.fire({
+				title : "新增 -- 路線資料",
+				html : final,
+				validationMessage : "格式錯誤或空白",
+				showCancelButton: true, 
+				width : "1000px",
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: '確定修改', 
+				cancelButtonText: '取消',
+				confirmButtonClass: 'btn btn-success',
+				cancelButtonClass: 'btn btn-danger',
+				buttonsStyling: false
+			})
+		}
+	})
+	
+	
 }

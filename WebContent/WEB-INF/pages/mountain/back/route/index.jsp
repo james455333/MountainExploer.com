@@ -93,17 +93,49 @@
                     
                     <div class='row'>
                     	
-                    	<div class="col-xl-6 col-md-6 mb-4">
+                    	<div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-s font-weight-bold text-primary text-uppercase mb-1">
+                                              	  路線總數量</div>
+                                            <div id="rt-total-num" class="h5 mb-0 font-weight-bold text-gray-600"></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i  class="fa fa-flag fa-2x" style="color: #339af0;" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    	<div class="col-xl-4 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-s font-weight-bold text-success text-uppercase mb-1">
-                                              	  路線總數量</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-600" id='route-total-num'></div>
+                                              	  路線啟用量</div>
+                                            <div id="rt-able-num" class="h5 mb-0 font-weight-bold text-gray-600"></div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fa fa-bookmark fa-2x text-gray-300" aria-hidden="true"></i>
+                                            <i class="fa fa-check-circle fa-2x" style="color: #51cf66;" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    	<div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card border-left-danger shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-s font-weight-bold text-danger text-uppercase mb-1">
+                                              	  路線禁用量</div>
+                                            <div id="rt-forbid-num" class="h5 mb-0 font-weight-bold text-gray-600"></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i  class="fa fa-times-circle fa-2x" style="color: #ff6b6b;" aria-hidden="true"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -180,8 +212,8 @@
                             <div class="card-header py-3">
                             </div>
     						<div class="card-body">
-    							<div class="row">
-	                            	<div class="col-md-5 justify-content-end d-flex align-items-center ">
+    							<div class="d-flex">
+	                            	<div class="col-md-4 justify-content-end d-flex align-items-center ">
 	                            		<div class="input-group">
 										  <div class="input-group-prepend">
 										    <label class="input-group-text" for="inputGroupSelect01">國家公園</label>
@@ -190,7 +222,7 @@
 										  </select>
 										</div>
 	                            	</div>
-	                            	<div class="col-md-5 justify-content-end d-flex align-items-center ">	                                 
+	                            	<div class="col-md-4 justify-content-end d-flex align-items-center ">	                                 
 	                            		<div class="input-group">
 										  <div class="input-group-prepend">
 										    <label class="input-group-text" for="inputGroupSelect01">路線選項</label>
@@ -199,27 +231,48 @@
 										  </select>
 										</div>
 	    							</div>
+	                            	<a href="#selectAll" class="ml-auto">
+		                                <button id="selectAll" class="btn btn-primary btn-icon-split">
+		                                    <span class="icon text-white-50">
+		                                        <i class="fas fa-redo"></i>
+		                                    </span>
+		                                    <span class="text">重置查詢</span>
+		                                </button>
+	                            	</a>
     							</div>
-	                            <hr>
-	                             
-	                                <button id="selectAll" class="btn btn-primary btn-icon-split">
+	                             <hr>
+	                             	<div class="d-flex">
+		                            	<h3>國家公園 -- 主類別控制</h3>
+		                                <button id="newNp" class="btn btn-success btn-icon-split ml-auto">
+		                                    <span class="icon text-white-50">
+		                                        <i class="fas fa-mountain"></i>
+		                                    </span>
+		                                    <span class="text">新增國家公園</span>
+		                                </button>
+		                                <button id="updateNp" class="btn btn-warning btn-icon-split ml-auto">
+		                                    <span class="icon text-white-50">
+		                                        <i class="fas fa-mountain"></i>
+		                                    </span>
+		                                    <span class="text">編輯國家公園</span>
+		                                </button>
+		                                <button id="deleteNp" class="btn btn-danger btn-icon-split ml-auto">
+		                                    <span class="icon text-white-50">
+		                                        <i class="fas fa-trash-alt"></i>
+		                                    </span>
+		                                    <span class="text">刪除國家公園</span>
+		                                </button>
+	                             	</div>
+	                             <hr>
+	                             <div class='d-flex'>
+	                                <h3>路線選項</h3>
+	                                <button id="newRoute" class="btn btn-success btn-icon-split ml-auto">
 	                                    <span class="icon text-white-50">
 	                                        <i class="fas fa-flag"></i>
 	                                    </span>
-	                                    <span class="text">重置查詢</span>
+	                                    <span class="text">新增路線</span>
 	                                </button>
-	                                <a href="#" class="btn btn-primary btn-icon-split">
-	                                    <span class="icon text-white-50">
-	                                        <i class="fas fa-flag"></i>
-	                                    </span>
-	                                    <span class="text">按鈕2</span>
-	                                </a>
-	                                <a href="#" class="btn btn-primary btn-icon-split">
-	                                    <span class="icon text-white-50">
-	                                        <i class="fas fa-flag"></i>
-	                                    </span>
-	                                    <span class="text">按鈕3</span>
-	                                </a>
+	                             </div>
+	                             <hr>
     						</div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -255,6 +308,12 @@
                     		<i class="fas fa-trash"></i>刪除
 						</button>
 						<input type="checkbox" class='btn-ctrl ' data-toggle="toggle" data-on="<i class='fas fa-power-off'></i> 啟用" data-off="<i class='fas fa-ban'></i> 禁用" data-onstyle="success" data-offstyle="danger">
+                    	<form>
+						  <div class="custom-file">
+						    <input type="file" class="custom-file-input" id="customFile">
+						    <label class="custom-file-label" for="customFile">Choose file</label>
+						  </div>
+						</form>
                     </div>
 
                    

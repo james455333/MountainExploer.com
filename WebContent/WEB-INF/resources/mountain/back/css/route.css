@@ -22,3 +22,6 @@
 .tooltip{
 	font-size : 25px;
 }
+.append-info{
+	display : none;
+}

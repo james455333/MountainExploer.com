@@ -37,6 +37,9 @@
 	border: 5px solid rgb(95, 26, 26);
 	margin : 5px;
 }
+#hideElm{
+	display : none;
+}
 .sec-div-title{
 	font-size : 25px;
 	border-bottom: 3px solid #EA7500;

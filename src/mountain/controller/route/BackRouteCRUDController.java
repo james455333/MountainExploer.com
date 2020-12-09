@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.hibernate.sql.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -64,6 +65,51 @@ public class BackRouteCRUDController {
 		}
 		
 		return result;
+		
+	}
+	
+	@PostMapping("/np")
+	public void insertNewNp(
+			NationalPark nationalPark) {
+		InterfaceService<GenericTypeObject> service = this.service;
+		try {
+			System.out.println("=============name : " + nationalPark.getName());
+			service.save(nationalPark);
+			service.insert(nationalPark);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	@PutMapping("/np-{npID}")
+	public void updateNp(
+			@RequestBody NationalPark nationalPark,
+			@PathVariable("npID") Integer npID) {
+		InterfaceService<GenericTypeObject> service = this.service;
+		try {
+			String name = new String(nationalPark.getName());
+			nationalPark = (NationalPark) service.select(npID);
+			nationalPark.setName(name);
+			service.update(nationalPark);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	@DeleteMapping("/np-{npID}")
+	public void deleteNp(
+			NationalPark nationalPark,
+			@PathVariable("npID") Integer npID){
+		InterfaceService<GenericTypeObject> service = this.service;
+		try {
+			service.save(nationalPark);
+//			service.delete(npID);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
 		
 	}
 	
