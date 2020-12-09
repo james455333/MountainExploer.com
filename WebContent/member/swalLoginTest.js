@@ -1,15 +1,21 @@
+$(function(){
+	let rmAnt = $.cookie("rmAnt");
+	console.log(rmAnt);
+})
+
 $(".swalLogin").on("click", function(){
 
     Swal.fire({
         title: "登入測試",
         html: `<input type="text" id="account" class="swal2-input account" placeholder="請輸入帳號">
                 <input type="password" id="password" class="swal2-input password" placeholder="請輸入密碼">
-                <input type="checkbox" id="rememberMe" name="rememberMe" value="true"><label for="rememberMe">記住我</label>`,
+                <input type="checkbox" id="rememberMe" name="rememberMe" class="rememberMe" value="true"><label for="rememberMe">記住我</label>`,
         confirmButtonText: "登入",
         focusConfirm: false,
         preConfirm: function(){
             const account = Swal.getPopup().querySelector("#account").value;
             const password = Swal.getPopup().querySelector("#password").value;
+//			const rm = Swal.getPopup().querySelector("#rememberMe").value;
             if(!account || !password){
                 Swal.showValidationMessage(`請輸入帳號和密碼`);
             }
@@ -21,14 +27,18 @@ $(".swalLogin").on("click", function(){
     }).then(function(){
         let account = $(".account").val();
         let password = $(".password").val();
-        let rm = $("#rememberMe").val();
+		let isChecked = $(".rememberMe").prop("checked");
+		var rm = "";
+		if(isChecked){
+			rm = $(".rememberMe").val();
+		}
         $.ajax({
             method:"GET",
-            url:"/MountainExploer.com",
+            url:"/MountainExploer.com/member/memberLogin",
             data:{
                 account:account,
                 password:password,
-                rm:rm
+				rememberMe:rm
             },
             dataType:"json",
             success:function(data){

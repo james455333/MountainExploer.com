@@ -224,18 +224,25 @@ public class MemberLoginController {
 	
 //	@ResponseBody
 //	@GetMapping(path = "/member/cookieSelect")
-//	public Map<String, String> processCookieSelect(HttpServletRequest request, String name){
-//		Map<String, String> cookies = ReadCookieMap(request);
-//		if(cookies.containsKey(name)) {
-//			
-//		}
+//	public Cookie processCookieSelect(HttpServletRequest request, 
+//			String rmAnt,
+//			String rmPwd,
+//			String rememberMe){
+//		
+//		
 //	}
 	
 	
 	
-	private Map<String, String> ReadCookieMap(HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+	private Map<String, Cookie> ReadCookieMap(HttpServletRequest request) {
+		Map<String, Cookie> cookieMap = new HashMap<String, Cookie>();
+		Cookie[] cookies = request.getCookies();
+		if(null != cookies) {
+			for (Cookie cookie : cookies) {
+				cookieMap.put(cookie.getName(), cookie);
+			}
+		}
+		return cookieMap;
 	}
 
 
