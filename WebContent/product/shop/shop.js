@@ -311,23 +311,26 @@ $(function() {
 		$(".order-table-tb").empty();
 		for (let i in data) {
 			$(".order-table-tb").append(
-				"<tr>" +
-				"<td>" +
-				'<img style="width: 80px; height: 80px;" src="/MountainExploer.com/backstage/product/search/images?seqno=' + data[i].seqno + '" class="productImg" >' +
-				"</td>" +
+				"<div class='div'>"+
+		
+				"<table>"+
+				
+				"<tr>"+
+				"<td>"+		
+				'<img style="width: 120px; height: 120px;" src="/MountainExploer.com/backstage/product/search/images?seqno=' + data[i].seqno + '" class="productImg" >' +
 				"</tr>"+
-				"<tr width='100'>" +
-				"<td>" + 
+				"</td>"+		
+				
+				"<tr>"+
+				"<td width='20' height='5'>"+		
 				'<a href= "/MountainExploer.com/shop/productInfoEntry?no='+data[i].seqno+'">'+ data[i].name  + '</a>' +
-				"</td>"+
 				"</tr>"+
-				"<tr>" +
-				"<td>" + 
+				"</td>"+		
+				
+				"<tr>"+
+				"<td>"+		
 				"$" +data[i].price  +
-				"</td>"+
-				"</tr>"+
-				"<tr>" +
-				"<td>" +
+
 				'<form  action= "/MountainExploer.com/shoppingcart/addShoppingCart">' +
 				'<input type="hidden" name="itemBasicSeqno" value="' + data[i].seqno + '" readonly>' +
 				'<input type="hidden" name="itemBasicName" value="' + data[i].name + '" readonly>' +
@@ -341,8 +344,11 @@ $(function() {
 				"</select>" +
 				'<input id="demo1" type="submit" value="加入購物車">' +
 				'</form>' +
-				"</td>" +
-				"</tr>"
+				
+				"</tr>"+
+				"</td>"+		
+				
+				"</div>"
 			)
 		}
 	}
@@ -382,7 +388,12 @@ $(function() {
 	//		
 	//	})
 	//	
-
+	
+	
+// demo1 確認/完成按鍵
+document.getElementById("demo1").addEventListener("click", function () {
+  swal("確認!", "已完成!", "success")
+});
 
 
 

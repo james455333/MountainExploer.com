@@ -18,6 +18,21 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript" charset="UTF-8"
 	src='<c:url value="/product/shop/shop.js"/>'></script>
+		<style>
+        
+
+        .order-table-tb {
+            display: flex;
+            margin: auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .div {
+            margin: 15px;
+            font-size: 18px;
+        }
+
+        </style>
 </head>
 <body>
 	<div class="count1">
@@ -41,6 +56,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent"
 				include-html="/MountainExploer.com/forinclude/includeForIndex.html"></div>
 		</nav>
+		
 	</header>
 	<div class="div_ul">
 		<div class="secNavbar">
@@ -143,38 +159,42 @@
 <!-- 						</tr> -->
 <!-- 					</thead> -->
 					
-					<tbody class="order-table-tb">
-						<!-- tbody更改從這邊開始 -->
-						<tr>
-							<td>商品名稱</td>
-							<td >圖片</td>
-							<td>價格</td>
-							<td >選擇數量</td>
-						</tr>
-						<tr>
-							<td>商品名稱</td>
-							<td >圖片</td>
-							<td>價格</td>
-							<td >選擇數量</td>
-						</tr>
-						<tr>
-							<td>商品名稱</td>
-							<td >圖片</td>
-							<td>價格</td>
-							<td >選擇數量</td>
-						</tr>
-						<tr>
-							<td>商品名稱</td>
-							<td >圖片</td>
-							<td>價格</td>
-							<td >選擇數量</td>
-						</tr>
+					<div class="order-table-tb">
+					
+					</div>
+					
+<!-- 					<tbody class="order-table-tb"> -->
+<!-- 						tbody更改從這邊開始 -->
+<!-- 						<tr> -->
+<!-- 							<td>商品名稱</td> -->
+<!-- 							<td >圖片</td> -->
+<!-- 							<td>價格</td> -->
+<!-- 							<td >選擇數量</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<td>商品名稱</td> -->
+<!-- 							<td >圖片</td> -->
+<!-- 							<td>價格</td> -->
+<!-- 							<td >選擇數量</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<td>商品名稱</td> -->
+<!-- 							<td >圖片</td> -->
+<!-- 							<td>價格</td> -->
+<!-- 							<td >選擇數量</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<td>商品名稱</td> -->
+<!-- 							<td >圖片</td> -->
+<!-- 							<td>價格</td> -->
+<!-- 							<td >選擇數量</td> -->
+<!-- 						</tr> -->
 
 
-						<!-- tbody更改到這邊結束 -->
-					</tbody>
+<!-- 						tbody更改到這邊結束 -->
+<!-- 					</tbody> -->
 
-				</table>
+<!-- 				</table> -->
 
 				<nav class="pageControl">
 					<!-- 					<div> -->
