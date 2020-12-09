@@ -57,6 +57,13 @@ public class MemberLoginController {
 	@Autowired
 	private MemberService mbService;
 	
+	
+	@RequestMapping(path = "/member/swalLoginTestEntry", method = RequestMethod.GET)
+	public String processSwalLoginTestEntry() {
+		return "member/swalLoginTest";
+	}
+	
+	
 	@RequestMapping(path = "/member/memberLoginEntry", method = RequestMethod.GET)
 	public String processLoginEntry() {
 		return "member/formalLoginAlone";
@@ -193,6 +200,12 @@ public class MemberLoginController {
 					m.addAttribute("result", "初次登入成功");
 					System.out.println("=======================登入成功");
 					return mb.getMemberStatus().getSeqno();
+				}else if(mb.getMemberStatus().getSeqno() == 140 || mb.getMemberStatus().getSeqno() == 160) {
+					m.addAttribute("Member", mb);
+					return mb.getMemberStatus().getSeqno();
+				}else if(mb.getMemberStatus().getSeqno() == 150) {
+					m.addAttribute("Member", mb);
+					return mb.getMemberStatus().getSeqno();
 				}else {
 					System.out.println("身分組權限不足");
 					return 0;
@@ -208,6 +221,24 @@ public class MemberLoginController {
 		
 	}
 	
+	
+//	@ResponseBody
+//	@GetMapping(path = "/member/cookieSelect")
+//	public Map<String, String> processCookieSelect(HttpServletRequest request, String name){
+//		Map<String, String> cookies = ReadCookieMap(request);
+//		if(cookies.containsKey(name)) {
+//			
+//		}
+//	}
+	
+	
+	
+	private Map<String, String> ReadCookieMap(HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 	@RequestMapping(path = "/member/memberLoginAlone", method = RequestMethod.POST)
 	public String processCheckLoginAlone(
 			@RequestParam(name = "account")String account,
