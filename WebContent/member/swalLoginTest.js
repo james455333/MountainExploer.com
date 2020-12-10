@@ -1,17 +1,43 @@
-$(function(){
-	let rmAnt = $.cookie("rmAnt");
-	console.log(rmAnt);
-})
-
 $(".swalLogin").on("click", function(){
 
     Swal.fire({
-        title: "登入測試",
+        title: "註冊／登入",
         html: `<input type="text" id="account" class="swal2-input account" placeholder="請輸入帳號">
                 <input type="password" id="password" class="swal2-input password" placeholder="請輸入密碼">
-                <input type="checkbox" id="rememberMe" name="rememberMe" class="rememberMe" value="true"><label for="rememberMe">記住我</label>`,
+                <input type="checkbox" id="rememberMe" name="rememberMe" class="rememberMe" value="true"><label>記住我</label>`,
         confirmButtonText: "登入",
         focusConfirm: false,
+		allowOutsideClick: false,
+		onOpen:function(){
+			$.ajax({
+					method:"GET",
+					url:"/MountainExploer.com/member/cookieSelect",
+					dataType:"json",
+					success:function(cookieMap){
+						if(cookieMap.length != 0 || cookieMap.length != null){
+								$.each(cookieMap, function(key, value){
+								if(key == "rmAnt"){
+									$(".account").val(value);
+								}
+								if(key == "rmPwd"){
+									$(".password").val(value);
+								}
+								if(key == "rememberMe"){
+									if(value != null){
+										console.log(value);
+										$(".rememberMe").prop("checked", true);										
+									}else{
+										console.log(value);
+										$(".rememberMe").prop("checked", false);
+									}
+								}
+							})
+						}
+						
+					}
+					
+				})			
+		},
         preConfirm: function(){
             const account = Swal.getPopup().querySelector("#account").value;
             const password = Swal.getPopup().querySelector("#password").value;
@@ -28,10 +54,12 @@ $(".swalLogin").on("click", function(){
         let account = $(".account").val();
         let password = $(".password").val();
 		let isChecked = $(".rememberMe").prop("checked");
-		var rm = "";
 		if(isChecked){
-			rm = $(".rememberMe").val();
+			var rm = "true";
+		}else{
+			var rm = null;
 		}
+		
         $.ajax({
             method:"GET",
             url:"/MountainExploer.com/member/memberLogin",
@@ -55,7 +83,7 @@ $(".swalLogin").on("click", function(){
                         icon:"success",
                         title:"登入成功",
                     }).then(function(){
-                        window.location.href="/MountainExploer.com";
+                        window.location.reload();
                     })
                 }else if(data == 110 || data == 130){
                     Swal.fire({
@@ -78,7 +106,7 @@ $(".swalLogin").on("click", function(){
                         icon:"success",
                         title:"管理員登入成功"
                     }).then(function(){
-                        window.location.href="/MountainExploer.com";
+                        window.location.href="/MountainExploer.com/back";
                     })
                 }else{
                     Swal.fire({
@@ -100,4 +128,21 @@ $(".swalLogin").on("click", function(){
             }
         })
     })
+})
+
+
+$(".test").on("click", function(){
+	Swal.fire({
+		title:"標籤測試",
+		html:`<input type="text" class="test">`,
+		confirmButtonText: "登入",
+        focusConfirm: false,
+		allowOutsideClick: true,
+		allowEscapeKey:true,
+		allowEnterKey:true,
+		showCancelButton:true,
+		onOpen:function(){
+			$(".test").val("open");
+		}
+	})
 })
