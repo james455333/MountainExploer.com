@@ -150,7 +150,7 @@ $(".test").on("click", function(){
 		title:"標籤測試",
 		html:`<input type="text" class="test">`,
 		confirmButtonText: "登入",
-        focusConfirm: false,
+       focusConfirm: false,
 		allowOutsideClick: true,
 		allowEscapeKey:true,
 		allowEnterKey:true,

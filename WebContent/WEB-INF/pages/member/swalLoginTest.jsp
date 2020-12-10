@@ -20,6 +20,6 @@
 	
 	
 	
-	<script src="swalLoginTest.js"></script>
+	<script src="swalLogin.js"></script>
 </body>
 </html>
