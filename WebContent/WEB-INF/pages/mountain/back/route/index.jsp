@@ -157,18 +157,26 @@
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">活動路線選擇--國家公園使用率</h6>
+                                    <div class="ml-auto px-2 no-arrow">
+	                                    <a href="" role="button" class="chart-reset">
+	                                       	<i class="fas fa-sm fa-fw fa-sync"></i>
+	                                    </a>
+                                    </div>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-800"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                                             aria-labelledby="dropdownMenuLink">
                                             <div class="dropdown-header">顯示圖像變化</div>
                                             <button class="dropdown-item usePer-chart" value='pie' >圓餅圖</button>
+                                            <button class="dropdown-item usePer-chart" value='doughnut' >甜甜圈圖</button>
                                             <button class="dropdown-item usePer-chart" value='bar' >長條圖(直)</button>
                                             <button class="dropdown-item usePer-chart" value='horizontalBar' >長條圖(橫)</button>
-                                            <button class="dropdown-item usePer-chart" value='doughnut' >甜甜圈圖</button>
+                                        	<div class="dropdown-divider">分隔線</div>
+											<button class="dropdown-item" id="usePer-export">輸出目前圖像PNG檔</button>
+											<button class="dropdown-item" id="usePer-export-json">輸出目前圖像為JSON檔</button>
                                         </div>
                                     </div>
                                 </div>
@@ -184,19 +192,28 @@
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">各國家公園路線數量及佔比</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">各國家公園路線總數量及佔比</h6>
+                                    <div class="ml-auto px-2 no-arrow">
+	                                    <a href="#" role="button" class="chart-reset">
+	                                       	<i class="fas fa-sm fa-fw fa-sync"></i>
+	                                    </a>
+                                    </div>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-800"></i>
                                         </a>
+                                        
                                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                                             aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
+                                            <div class="dropdown-header">顯示圖像變化</div>
+                                            <button class="dropdown-item countRt-chart" value='pie' >圓餅圖</button>
+											<button class="dropdown-item countRt-chart" value='doughnut' >甜甜圈圖</button>
+											<button class="dropdown-item countRt-chart" value='bar' >長條圖(直)</button>
+											<button class="dropdown-item countRt-chart" value='horizontalBar' >長條圖(橫)</button>
+                                       		<div class="dropdown-divider">分隔線</div>
+											<button class="dropdown-item" id="countRt-export">輸出目前圖像為PNG檔</button>
+                                        	<button class="dropdown-item" id="countRt-export-json">輸出目前圖像為JSON檔</button>
                                         </div>
                                     </div>
                                 </div>
@@ -303,25 +320,7 @@
     
                         <!-- DataTales Example -->
                     <div class='hideDIV'>
-                    	<button class="btn btn-info btn-rt-image">
-                    		<i class="fas fa-image"></i>路線圖
-						</button>
-                    	<button class="btn btn-orange btn-rt-info">
-                    		<i class="fas fa-info"></i>詳情
-						</button>
-                    	<button class="btn btn-warning btn-rt-update">
-                    		<i class="fas fa-exclamation-triangle"></i>修改
-						</button>
-                    	<button class="btn btn-danger btn-rt-delete">
-                    		<i class="fas fa-trash"></i>刪除
-						</button>
-						<input type="checkbox" class='btn-ctrl ' data-toggle="toggle" data-on="<i class='fas fa-power-off'></i> 啟用" data-off="<i class='fas fa-ban'></i> 禁用" data-onstyle="success" data-offstyle="danger">
-                    	<form>
-						  <div class="custom-file">
-						    <input type="file" class="custom-file-input" id="customFile">
-						    <label class="custom-file-label" for="customFile">Choose file</label>
-						  </div>
-						</form>
+                    	<a class="hideElm export" href="" ></a>
                     </div>
 
                    

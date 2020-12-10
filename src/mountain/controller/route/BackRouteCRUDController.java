@@ -377,7 +377,7 @@ public class BackRouteCRUDController {
 				Integer rtCount = map.get(rtName);
 				Integer npCount = map.get("npNums");
 				map.put(rtName, ++rtCount);
-				map.put(npName, ++npCount);
+				map.put("npNums", ++npCount);
 			}
 			
 		} catch (Exception e) {

@@ -40,18 +40,7 @@ $(function(){
 	$("#rtSelect").on("change",changeTbByRt)
 	
 	/* 表格重置按鈕 */
-	$("#selectAll").on("click",function(){
-		countRtChartData()
-		usePerNpChartData()
-		if(typeof dataTable != 'undefined') dataTable.destroy()
-		$('#routeTable').find("tbody").remove()
-		let btn = $(this)
-		btn.find("i").addClass("fa-spin")
-		setTimeout(function(){
-			setTable()
-			btn.find("i").removeClass("fa-spin")
-		}, 1000)
-	})
+	$("#selectAll").on("click",reRender)
 	$("#tb-container").find("*").on("click",function(){
 		$('.btn-ctrl').bootstrapToggle({});
 		$('.btn-rt-delete').tooltip();
@@ -75,7 +64,6 @@ $(function(){
 			thisToggle = 0;
 		}
 		setRtToggle(thisRtID, thisToggle)
-	
 	})
 	
 	$("#tb-container").on("click", '.btn-rt-update', function(){
@@ -101,7 +89,27 @@ $(function(){
 	$("#usePerNpChart").parents(".row").find(".usePer-chart").on("click",function(){
 		usePerNpChartData($(this).val())
 	})
-	
+	$("#countRtChart").parents(".row").find(".countRt-chart").on("click",function(){
+		countRtChartData($(this).val())
+	})
+	$("#usePer-export").on("click",function(){
+		downloadChart(usePerNpChart)
+	})
+	$("#countRt-export").on("click",function(){
+		downloadChart(countRtChart)
+	})
+	$("#usePer-export-json").on("click",function(){
+		downloadChartJson(1)
+	})
+	$("#countRt-export-json").on("click",function(){
+		downloadChartJson(2)
+	})
+	$("a.chart-reset").on("click",function(e){
+		let thisElm = $(this)
+		let canvasID = thisElm.parents("div.card").find("canvas").attr("id")
+		resetChart(canvasID)
+		e.preventDefault()
+	})
 	$.fancybox.defaults.infobar = true;
 	$.fancybox.defaults.buttons = [
 	    "zoom",

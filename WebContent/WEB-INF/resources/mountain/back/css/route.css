@@ -38,3 +38,6 @@
 .swal2-content label span{
 	font-size : 25px;
 }
+.hideElm{
+	display : none;
+}

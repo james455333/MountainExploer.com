@@ -22,7 +22,56 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   }
   return s.join(dec);
 }
+function downloadChart(chartElm){
+	const openURL = chartElm.toBase64Image()
+	const chartType = chartElm.config.type
+//	console.log(openURL)
+	const a = $("a.export")[0]
+	console.log(a)
+	// 設定下載的檔名
+	a.download = chartType+"_countRtChart.png"
+	// 設定網址
+	a.href = openURL
+	// 模擬使用者按下連結
+	a.click()
+	// 5 秒後清除產生的網址，這時候使用者應該按下了下載的按鈕了
+	// 不清除的話會造成記憶體的浪費，這不會中斷使用者的下載
+	// 不過若你下載完就要跳轉到下一頁的話，其實這個可以不用
+	setTimeout(() => window.URL.revokeObjectURL(openURL), 5000)
+}
+function downloadChartJson(order){
+	if( order == 1 ){
+		$.ajax({
+			url
+		})
+	}else if( order == 2 ){
+		$.ajax({
+			
+		})
+	}
+}
+function reRender(){
+	setTopCard()
+	countRtChartData()
+	usePerNpChartData()
+	setSearchBar()
+	if(typeof dataTable != 'undefined') dataTable.destroy()
+	$('#routeTable').find("tbody").remove()
+	let btn = $(this)
+	btn.find("i").addClass("fa-spin")
+	setTimeout(function(){
+		setTable()
+		btn.find("i").removeClass("fa-spin")
+	}, 1000)
+}
 
+function resetChart(canvasID){
+	if(canvasID == 'usePerNpChart'){
+		usePerNpChartData()
+	}else if(canvasID == 'countRtChart'){
+		countRtChartData()
+	}
+}
 
 function setTopCard(){
 	$.ajax({
@@ -306,14 +355,12 @@ function ajaxUpdate(result){
 		data : JSON.stringify(result),
 	    contentType: "application/json; charset=UTF-8",
 		success : function(){
+			reRender()
 			Swal.fire({
 				title : "修改成功",
 				icon : "success",
   				confirmButtonText: '了解',
 			})
-			dataTable.destroy()
-			setTable()
-			setSearchBar()
 		},
 		error : function(jqXHR){
 			Swal.fire("發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
@@ -345,10 +392,7 @@ function deleteAlert(btn){
 				url : routeBaseURL + "/rt-" + rtID,
 				type : "Delete",
 				success:function(){
-					dataTable.destroy()
-					setTable()
-					setSearchBar()
-					setTopCard()
+					reRender()
 					Swal.fire({
 						customClass: {
 							confirmButton: 'btn btn-success',
@@ -519,7 +563,7 @@ function newNp(){
 				processData : false,
 				contentType : false,
 				success : function(){
-					setSearchBar()
+					reRender()
 					Swal.fire({
 						customClass: {
 							confirmButton: 'btn btn-success',
@@ -602,9 +646,7 @@ function updateNp(){
 								data : JSON.stringify(finalData),
 								contentType: "application/json; charset=UTF-8",
 								success : function(){
-									setSearchBar()
-									if(typeof dataTable != 'undefined') dataTable.destroy()
-									setTable()
+									reRender()
 									Swal.fire({
 										customClass: {
 											confirmButton: 'btn btn-success',
@@ -724,9 +766,7 @@ function deleteNp(){
 										url : routeBaseURL + "/np-" + value,
 										type : "DELETE",
 										success : function(){
-											setSearchBar()
-											if(typeof dataTable != 'undefined') dataTable.destroy()
-											setTable()
+											reRender()
 											Swal.fire({
 												title : "<h1 class='text-light'>刪除成功</h1>",
 												html : "<h3 class='text-danger'>一切都已太遲...</h3>",
@@ -847,9 +887,7 @@ function ajaxNewRt(form){
 		processData : false,
 		contentType : false,
 		success : function(){
-			setSearchBar()
-			if(typeof dataTable != 'undefined') dataTable.destroy()
-			setTable()
+			reRender()
 			Swal.fire({
 				customClass: {
 					confirmButton: 'btn btn-success',
@@ -866,20 +904,20 @@ function ajaxNewRt(form){
 		}
 	})
 }
-function countRtChartData(){
+function countRtChartData(cType){
 	$.ajax({
 		url : routeBaseURL + "/countRt",
 		type : "GET",
 		dataType : "json",
 		success : function(data){
-			setCountRtChart(data)
+			setCountRtChart(data,cType)
 		},
 		error : function(jqXHR){
 			Swal.fire("設定路線圓餅圖發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
 		}
 	})
 }
-function setCountRtChart(data){
+function setCountRtChart(data,cType){
 	let names = []
 	let rtNums = []
 	for(let i in data){
@@ -887,12 +925,12 @@ function setCountRtChart(data){
 		rtNums.push(data[i])
 	}
 	var ctx = $("#countRtChart");
-	var ctxClass = ctx.attr("class")
 	if(countRtChart != null ) countRtChart.destroy()
-	countRtChart = new Chart(ctx, {
-	  type: 'pie',
+	let setType = 'doughnut';
+	if(typeof cType != 'undefined') setType = cType
+	var chartSet =  {
+	  type: setType,
 	  data: {
-	
 	    labels: names,
 	    datasets: [{
 	      data: rtNums,
@@ -914,7 +952,10 @@ function setCountRtChart(data){
 	      display: true
 	    },
 	  },
-	});
+	}
+	if(setType == 'bar' || setType == 'horizontalBar') chartSet.options.legend.display = false;
+	countRtChart = new Chart(ctx,chartSet);
+//	$("#countRtChart")[0].toDataURL("image/jpg")
 }
 
 function usePerNpChartData(cType){
@@ -932,24 +973,25 @@ function usePerNpChartData(cType){
 	})
 }
 function setUsePerNpChart(data,cType){
-	let setType = 'pie';
-	if(typeof cType != 'undefined') setType = cType
 	let names = []
 	let usePer =[]
 	for(let i in data){
 		names.push([i])
 		usePer.push(data[i].npNums)
 	}
+	
 	var ctx = $("#usePerNpChart");
-	var ctxClass = ctx.attr("class")
 	if(usePerNpChart != null ) usePerNpChart.destroy()
-	usePerNpChart = new Chart(ctx, {
+	let setType = 'pie';
+	if(typeof cType != 'undefined') setType = cType
+	
+	let chartSet =  {
 	  type: setType,
 	  data: {
 		  labels: names,
 	    datasets: [
 			{
-		      data: [3,6,9,12],
+		      data: usePer,
 		      backgroundColor: chartBackColors,
 		      hoverBackgroundColor: chatyBackHoverColors,
 		      hoverBorderColor: "rgba(234, 236, 244, 1)",
@@ -967,8 +1009,10 @@ function setUsePerNpChart(data,cType){
 	      caretPadding: 10,
 	    },
 	    legend: {
-	      display: false
+	      display: true
 	    },
 	  },
-	});
+	}
+	if(setType == 'bar' || setType == 'horizontalBar') chartSet.options.legend.display = false;
+	usePerNpChart = new Chart(ctx,chartSet);
 }
