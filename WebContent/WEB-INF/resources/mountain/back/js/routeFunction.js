@@ -22,6 +22,41 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   }
   return s.join(dec);
 }
+function downloadAllJson(){
+	$.ajax({
+		url : routeBaseURL + "/allRoute",
+		type : "GET",
+		dataType : "json",
+		success : function(data){
+			console.log(data)
+			let newData = {}
+			for(let i in data){
+					let npName = data[i].np
+				if( newData[npName] == null){
+					newData[npName] = []
+				}
+				let routeInfo = data[i].routeInfo
+				let status = "啟用";
+				if(routeInfo.toggle != null) status = "禁用"
+				let newRoute = {
+					路線編號 : routeInfo.id,
+					路線名稱 : routeInfo.name,
+					路線介紹 : routeInfo.desp,
+					建議行程 : routeInfo.adv,
+					交通資訊 : routeInfo.traf,
+					狀態 : status
+				}
+				newData[npName].push(newRoute)
+			}
+			activeJsonDownload(newData,"路線總資料表")
+		},
+		error : function(jqXHR){
+			console.log(jqXHR)
+			Swal.fire("發生錯誤", "下載時發生錯誤，錯誤代碼 : " + jqXHR.status, "error")
+		}
+	})
+}
+
 function downloadChart(chartElm){
 	const openURL = chartElm.toBase64Image()
 	const chartType = chartElm.config.type
@@ -42,15 +77,62 @@ function downloadChart(chartElm){
 function downloadChartJson(order){
 	if( order == 1 ){
 		$.ajax({
-			url
+			url : routeBaseURL+"/usePerNp",
+			type : "GET",
+			dataType : "json",
+			success : function(data){
+				let newData = {}
+				for(let i in data){
+					let rt = data[i]
+					let newRt = {路線總數 : 0}
+					newData[i] = newRt
+					for(let j in rt){
+						if(j == "npNums"){
+							newRt["路線總數"] = rt[j]
+						}else{
+							newRt[j] = {路線被選取數 : rt[j] }
+						}
+					}
+				}
+				activeJsonDownload(newData,"活動選擇_國家公園及路線使用率")
+			},
+			error : function(jqXHR){
+				console.log(jqXHR)
+				Swal.fire("發生錯誤", "下載時發生錯誤，錯誤代碼 : " + jqXHR.status, "error")
+			}
 		})
 	}else if( order == 2 ){
 		$.ajax({
-			
+			url : routeBaseURL+"/countRt",
+			type : "GET",
+			dataType : "json",
+			success : function(data){
+				console.log(data)
+				let newData = {}
+				for(let i in data){
+					newData[i] = {路線總數 : data[i]}
+				}
+				activeJsonDownload(newData,"各國家公園路線總數量")
+			},
+			error : function(jqXHR){
+				Swal.fire("發生錯誤", "下載時發生錯誤，錯誤代碼 : " + jqXHR.status, "error")
+			}
 		})
 	}
 }
+
+function activeJsonDownload(jsonObj,fileName){
+	$("<a />", {
+	    "download": fileName+".json",
+	    "href" : "data:application/json," + encodeURIComponent(JSON.stringify(jsonObj))
+	}).appendTo("body")
+	.click(function() {
+		$(this).remove()
+	})[0].click()	
+}
+
 function reRender(){
+	usePerRtChart = null;
 	setTopCard()
 	countRtChartData()
 	usePerNpChartData()
@@ -67,6 +149,7 @@ function reRender(){
 
 function resetChart(canvasID){
 	if(canvasID == 'usePerNpChart'){
+		usePerRtChart = null;
 		usePerNpChartData()
 	}else if(canvasID == 'countRtChart'){
 		countRtChartData()
@@ -103,6 +186,7 @@ function setTopCard(){
 
 
 function setSearchBar(){
+	$("#npChartSelect").find("option").remove()
 	$("#npSelect").find("option").remove()
 	$("#rtSelect").find("option").remove()
 	$.ajax({
@@ -110,10 +194,11 @@ function setSearchBar(){
 	method : "GET",
 	dataType: 'json',
 	success:function(result){
+		$("#npChartSelect").append("<option selected disabled>請選擇指定國家公園</option>")
+		$("#npSelect").append("<option selected disabled>請選擇指定國家公園</option>")
 		for(let i = 0 ; i < result.length ; i++){
-			
+			$("#npChartSelect").append('<option value="' + result[i].seqno +'">' + result[i].npName + "</option>" )
 			$("#npSelect").append('<option value="' + result[i].seqno +'">' + result[i].npName + "</option>" )
-			
 		}
 		
 		let firstNP = $("#npSelect").find("option").eq(0).val()
@@ -123,6 +208,7 @@ function setSearchBar(){
 			dataType : "json",
 			success:function(data){
 				//console.log(data)
+				$("#rtSelect").append("<option selected disabled>請選擇特定路線</option>")
 				for(let i in data) $("#rtSelect").append("<option value='" + data[i].seqno + "'>" + data[i].name +"</option>")
 			}
 		})
@@ -973,6 +1059,11 @@ function usePerNpChartData(cType){
 	})
 }
 function setUsePerNpChart(data,cType){
+	if(usePerRtChart != null){
+		setUsePerRtChart(data,cType)
+		return
+	}
+	
 	let names = []
 	let usePer =[]
 	for(let i in data){
@@ -1015,4 +1106,63 @@ function setUsePerNpChart(data,cType){
 	}
 	if(setType == 'bar' || setType == 'horizontalBar') chartSet.options.legend.display = false;
 	usePerNpChart = new Chart(ctx,chartSet);
+}
+
+function setUsePerRtChart(data,cType){
+	let rtNames = []
+	let usePerRt =[]
+	for(let i in data){
+		if( i == usePerRtChart){
+			let rt = data[i]
+			for(let j in rt){
+				if(j != "npNums"){
+					
+					rtNames.push(j)
+					usePerRt.push(rt[j])
+				}
+			}
+		}
+	}
+	var ctx = $("#usePerNpChart");
+	if(usePerNpChart != null ) usePerNpChart.destroy()
+	let setType = 'pie';
+	if(typeof cType != 'undefined') setType = cType
+	
+	let chartRtSet =  {
+	  type: setType,
+	  data: {
+		  labels: rtNames,
+	    datasets: [
+			{
+		      data: usePerRt,
+		      backgroundColor: chartBackColors,
+		      hoverBackgroundColor: chatyBackHoverColors,
+		      hoverBorderColor: "rgba(234, 236, 244, 1)",
+	    	},
+		],
+	  },
+	  options: {
+	    maintainAspectRatio: false,
+	    tooltips: {
+		  bodyFontSize : 20,
+	      borderWidth: 5,
+	      xPadding: 15,
+	      yPadding: 15,
+		  displayColors: false,
+	      caretPadding: 10,
+	    },
+	    legend: {
+	      display: true
+	    },
+		scales: {
+            yAxes: [{
+                ticks: {
+                    suggestedMin: 0,
+                }
+            }]
+        }
+	  },
+	}
+	if(setType == 'bar' || setType == 'horizontalBar') chartRtSet.options.legend.display = false;
+	usePerNpChart = new Chart(ctx,chartRtSet);
 }

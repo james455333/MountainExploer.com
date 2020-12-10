@@ -44,7 +44,7 @@
 	<!-- Bootstrap tooltips -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
 	    <!-- Bootstrap core JavaScript-->
-<!--     <script src="/MountainExploer.com/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+    <script src="/MountainExploer.com/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<!-- Bootstrap core JavaScript -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
@@ -96,7 +96,7 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">路線資料維護</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                        <a href="#" id="exportAll" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i>匯出資料表</a>
                     </div>
                     
@@ -155,29 +155,40 @@
 						  <div class="col-xl-6 col-lg-7">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
-                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">活動路線選擇--國家公園使用率</h6>
-                                    <div class="ml-auto px-2 no-arrow">
-	                                    <a href="" role="button" class="chart-reset">
-	                                       	<i class="fas fa-sm fa-fw fa-sync"></i>
-	                                    </a>
+                                <div class="card-header py-3 ">
+                                    <div class="d-flex flex-row align-items-center justify-content-between">
+	                                    <h6 class="m-0 font-weight-bold text-primary">活動選擇--國家公園及路線使用率</h6>
+	                                    <div class="ml-auto px-2 no-arrow">
+		                                    <a href="" role="button" class="chart-reset">
+		                                       	<i class="fas fa-sm fa-fw fa-sync"></i>
+		                                    </a>
+	                                    </div>
+	                                    <div class="dropdown no-arrow">
+	                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+	                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-800"></i>
+	                                        </a>
+	                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+	                                            aria-labelledby="dropdownMenuLink">
+	                                            <div class="dropdown-header">顯示圖像變化</div>
+	                                            <button class="dropdown-item usePer-chart" value='pie' >圓餅圖</button>
+	                                            <button class="dropdown-item usePer-chart" value='doughnut' >甜甜圈圖</button>
+	                                            <button class="dropdown-item usePer-chart" value='bar' >長條圖(直)</button>
+	                                            <button class="dropdown-item usePer-chart" value='horizontalBar' >長條圖(橫)</button>
+	                                        	<div class="dropdown-divider"></div>
+												<button class="dropdown-item" id="usePerNp-export">輸出為PNG檔</button>
+												<button class="dropdown-item" id="usePerNp-export-json">輸出為JSON檔</button>
+	                                        </div>
+	                                    </div>
                                     </div>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-800"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">顯示圖像變化</div>
-                                            <button class="dropdown-item usePer-chart" value='pie' >圓餅圖</button>
-                                            <button class="dropdown-item usePer-chart" value='doughnut' >甜甜圈圖</button>
-                                            <button class="dropdown-item usePer-chart" value='bar' >長條圖(直)</button>
-                                            <button class="dropdown-item usePer-chart" value='horizontalBar' >長條圖(橫)</button>
-                                        	<div class="dropdown-divider">分隔線</div>
-											<button class="dropdown-item" id="usePer-export">輸出目前圖像PNG檔</button>
-											<button class="dropdown-item" id="usePer-export-json">輸出目前圖像為JSON檔</button>
-                                        </div>
+                                    <div class="mt-3 d-flex flex-row align-items-center justify-content-between">
+                                    	<div class="input-group">
+											  <div class="input-group-prepend">
+											    <label class="input-group-text" for="npChartSelect">選擇切換</label>
+											  </div>
+											  <select id="npChartSelect" class="custom-select">
+											  </select>
+											</div>
                                     </div>
                                 </div>
                                 <!-- Card Body -->
@@ -188,6 +199,7 @@
                                 </div>
                             </div>
                         </div>
+						
 						<div class="col-xl-6 col-lg-7">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
@@ -212,8 +224,8 @@
 											<button class="dropdown-item countRt-chart" value='bar' >長條圖(直)</button>
 											<button class="dropdown-item countRt-chart" value='horizontalBar' >長條圖(橫)</button>
                                        		<div class="dropdown-divider">分隔線</div>
-											<button class="dropdown-item" id="countRt-export">輸出目前圖像為PNG檔</button>
-                                        	<button class="dropdown-item" id="countRt-export-json">輸出目前圖像為JSON檔</button>
+											<button class="dropdown-item" id="countRt-export">輸出為PNG檔</button>
+                                        	<button class="dropdown-item" id="countRt-export-json">輸出為JSON檔</button>
                                         </div>
                                     </div>
                                 </div>
@@ -237,18 +249,18 @@
 		                            	<div class="col-md-4 justify-content-end d-flex align-items-center ">
 		                            		<div class="input-group">
 											  <div class="input-group-prepend">
-											    <label class="input-group-text" for="inputGroupSelect01">國家公園</label>
+											    <label class="input-group-text" for="npSelect">國家公園</label>
 											  </div>
-											  <select id="npSelect" class="custom-select" id="inputGroupSelect01">
+											  <select id="npSelect" class="custom-select">
 											  </select>
 											</div>
 		                            	</div>
 		                            	<div class="col-md-4 justify-content-end d-flex align-items-center ">	                                 
 		                            		<div class="input-group">
 											  <div class="input-group-prepend">
-											    <label class="input-group-text" for="inputGroupSelect01">路線選項</label>
+											    <label class="input-group-text" for="rtSelect">路線選項</label>
 											  </div>
-											  <select id="rtSelect" class="custom-select" id="inputGroupSelect01">
+											  <select id="rtSelect" class="custom-select" >
 											  </select>
 											</div>
 		    							</div>
