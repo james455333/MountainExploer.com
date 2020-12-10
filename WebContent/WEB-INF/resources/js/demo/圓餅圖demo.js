@@ -7,6 +7,7 @@ var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
+
     labels: ["一般會員", "登山響導", "未註冊用戶"],
     datasets: [{
       data: [55, 30, 15],

@@ -3,14 +3,20 @@ package mountain.controller.route;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.hibernate.sql.Update;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,14 +26,17 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 
 import main.generic.model.GenericTypeObject;
 import main.generic.service.GenericService;
 import main.generic.service.InterfaceService;
 import mountain.MountainGlobal;
+import mountain.model.activity.ActivityInfo;
 import mountain.model.route.NationalPark;
 import mountain.model.route.RouteBasic;
 import mountain.model.route.RouteInfo;
@@ -66,6 +75,30 @@ public class BackRouteCRUDController {
 		
 		return result;
 		
+	}
+	@GetMapping("/countRt")
+	public Map<String, Integer> countRt(
+			NationalPark nationalPark){
+		Map<String, Integer> resultMap = new HashMap<String, Integer>();
+		InterfaceService<GenericTypeObject> service = this.service;
+		try {
+			
+			service.save(nationalPark);
+			
+			List<NationalPark> npList = (List<NationalPark>) service.selectAll();
+			
+			for (NationalPark nationalPark2 : npList) {
+				Set<RouteBasic> routeBasicSet = nationalPark2.getRouteBasic();
+				int rtNum = routeBasicSet.size();
+				resultMap.put(nationalPark2.getName(), rtNum);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		
+		return resultMap;
 	}
 	
 	@PostMapping("/np")
@@ -137,7 +170,7 @@ public class BackRouteCRUDController {
 		
 		return result;
 	}
-	@GetMapping("/rtSelect.{rtID}")
+	@GetMapping("/rt-{rtID}")
 	public List<Map<String, Object>> rtSelect(
 			RouteBasic routeBasic,
 			@PathVariable("rtID") Integer rtID) {
@@ -163,7 +196,41 @@ public class BackRouteCRUDController {
 		
 		return result;
 	}
-	@DeleteMapping("/rtSelect.{rtID}")
+	
+	@PostMapping("/rt")
+	public void inserNewRt(
+			RouteInfo routeInfo,
+			@RequestParam("npID") Integer npID,
+			@RequestParam(name = "fileImge", required = false) MultipartFile multipartFile ) throws UnsupportedEncodingException{
+		System.out.println("======================= routeInfo Name " + routeInfo.getName());
+		System.out.println("======================= npID " + npID );
+		InterfaceService<GenericTypeObject> service = this.service;
+		
+		try {
+			
+			service.save(new NationalPark());
+			NationalPark nationalPark = (NationalPark) service.select(npID);
+			RouteBasic routeBasic = new RouteBasic();
+			routeBasic.setNational_park(nationalPark);
+			routeInfo.setRoute_basic(routeBasic);
+			if(multipartFile != null && !multipartFile.getOriginalFilename().trim().isEmpty()) {
+				byte[] downloadImage = MountainGlobal.downloadImage(multipartFile, request);
+				routeInfo.setImgUrl(downloadImage);
+			}
+			routeInfo.setToggle(1);
+			routeBasic.setRouteInfo(routeInfo);
+			service.save(routeBasic);
+			service.insert(routeBasic);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+	}
+	
+	
+	@DeleteMapping("/rt-{rtID}")
 	public void deleteRt(
 			RouteBasic routeBasic,
 			@PathVariable("rtID") Integer rtID) {
@@ -257,6 +324,69 @@ public class BackRouteCRUDController {
 			e.printStackTrace();
 			throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+	}
+	
+	
+	@GetMapping("/images")
+	public ResponseEntity<byte[]> image(
+			RouteInfo routeInfo,
+			@RequestParam("seqno")Integer seqno) throws HttpClientErrorException{
+		ResponseEntity<byte[]> result = null;
+		service.save(routeInfo);
+		String hql = "From RouteInfo where ROUTE_BASIC_ID = " + seqno;
+		List<RouteInfo> routeInfos = (List<RouteInfo>) service.getwithHQL(hql, 1, 1);
+		byte[] imgBytes = routeInfos.get(0).getImgUrl();
+		if (imgBytes != null && imgBytes.length != 0) {
+			HttpHeaders headers = new HttpHeaders();
+			headers.setContentType(MediaType.IMAGE_JPEG);
+			result = new ResponseEntity<byte[]>(imgBytes, headers, HttpStatus.OK);
+			return result;
+		}else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	@GetMapping("/usePerNp")
+	public Map<String, Map<String, Integer>> usePerNp(){
+		Map<String, Map<String, Integer>> resultMap = new HashMap<String, Map<String, Integer>>();
+		
+		InterfaceService<GenericTypeObject> service = this.service;
+		try {
+			service.save(new NationalPark());
+			List<NationalPark> npList = (List<NationalPark>) service.selectAll();
+			for (NationalPark nationalPark : npList) {
+				Map<String, Integer> map = new HashMap<String, Integer>();
+				Iterator<RouteBasic> npIt = nationalPark.getRouteBasic().iterator();
+				while (npIt.hasNext()) {
+					RouteBasic routeBasic = (RouteBasic) npIt.next();
+					String rtName = routeBasic.getRouteInfo().getName();
+					map.put(rtName, 0);
+				}
+				map.put("npNums", 0);
+				resultMap.put(nationalPark.getName(), map);
+			}
+			service.save(new ActivityInfo());
+			List<ActivityInfo> actInfoList = (List<ActivityInfo>) service.selectAll();
+			for (ActivityInfo activityInfo2 : actInfoList) {
+				RouteBasic rtBasic = activityInfo2.getRtBasic();
+				RouteInfo routeInfo = rtBasic.getRouteInfo();
+				NationalPark national_park = rtBasic.getNational_park();
+				String npName = national_park.getName();
+				String rtName = routeInfo.getName();
+				Map<String, Integer> map = resultMap.get(npName);
+				Integer rtCount = map.get(rtName);
+				Integer npCount = map.get("npNums");
+				map.put(rtName, ++rtCount);
+				map.put(npName, ++npCount);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		
+		return resultMap;
 	}
 	
 }
