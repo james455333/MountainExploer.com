@@ -24,7 +24,14 @@ function ajaxTN(npID) {
 		dataType: "json",
 		success: function(data) {
 			setVTN(data);
-			setMainContent(data[0].routeInfo);
+			if(data.length > 0){
+				let display = $(".secDivContent ").attr("display")
+				if(display == "none") $(".secDivContent ").show(500)
+				setMainContent(data[0].routeInfo);
+			}
+			else{
+				$(".secDivContent ").hide()
+			}
 		},
 		error: function() {
 			showErrorSwal();
@@ -90,7 +97,7 @@ function setMainContent(routeInfo) {
 	imgContent.empty();
 	imgContent.append(imgSet)
 	let imgURL = rtSearchURL + "/images?rtID=" + routeInfo.id + "&timestamp=" + new Date().getTime()
-	$(".imgSet").attr("src", imgURL)
+	$(".imgSet").attr("src", imgURL).attr("onerror","imgError( $(this) )")
 	text.empty();
 	text.eq(0).text(routeInfo.desp)
 	text.eq(1).text(routeInfo.adv)
@@ -103,4 +110,8 @@ function setMainContent(routeInfo) {
 /* 錯誤訊息 */
 function showErrorSwal(data) {
 
+}
+
+function imgError(thisElm){
+	thisElm.attr("src", "/MountainExploer.com/images/defaultMountain.jpg")
 }

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.HttpClientErrorException;
 
 import main.generic.model.GenericTypeObject;
 import main.generic.service.GenericService;
@@ -35,7 +36,10 @@ public class RouteRetrieveController {
 			NationalPark nPark){
 		List<NationalPark> nationParkList = new ArrayList<NationalPark>();
 		service.save(nPark);
-		String hql = "from NationalPark order by id";
+		String hql = "from NationalPark where id in " 
+					+ "(select national_park from RouteBasic where id in " 
+					+ "(select id from RouteInfo where toggle is null) ) "
+					+ "order by id";
 		nationParkList = (List<NationalPark>) service.getwithHQL(hql, 1, 100);
 		
 		return nationParkList;
@@ -53,7 +57,8 @@ public class RouteRetrieveController {
 		/* 依照國家公園ID */
 		if( npID!=null ) {
 			service.save(routeBasic);
-			String hql = "from RouteBasic where national_park = " + npID + " order by id";
+			String hql = "from RouteBasic where id in (select id from RouteInfo where toggle is null) "
+					+ "and national_park = " + npID + " order by id";
 			rBasicList = (List<RouteBasic>) service.getwithHQL(hql, 1, 50);
 		}
 		/* 依照路線ID */
@@ -74,14 +79,25 @@ public class RouteRetrieveController {
 		ResponseEntity<byte[]> result = null;
 		service.save(routeInfo);
 		String hql = "From RouteInfo where ROUTE_BASIC_ID = " + rtID;
-		
-		List<RouteInfo> routeInfos = (List<RouteInfo>) service.getwithHQL(hql, 1, 1);
-		byte[] imgBytes = routeInfos.get(0).getImgUrl();
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.IMAGE_JPEG);
-		result = new ResponseEntity<byte[]>(imgBytes, headers, HttpStatus.OK);
-		
-		return result;
-	}
+		try {
+			List<RouteInfo> routeInfos = (List<RouteInfo>) service.getwithHQL(hql, 1, 1);
+			byte[] imgBytes = routeInfos.get(0).getImgUrl();
+			if (imgBytes != null && imgBytes.length != 0) {
+				System.out.println("==================");
+				System.out.println("無圖片");
+				System.out.println("==================");
+				HttpHeaders headers = new HttpHeaders();
+				headers.setContentType(MediaType.IMAGE_JPEG);
+				result = new ResponseEntity<byte[]>(imgBytes, headers, HttpStatus.OK);
+				return result;
+			}
+			throw new HttpClientErrorException(HttpStatus.NOT_FOUND);
+		} catch (HttpClientErrorException e) {
+			throw e;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR);
+		} 
+	} 
 	
 }
