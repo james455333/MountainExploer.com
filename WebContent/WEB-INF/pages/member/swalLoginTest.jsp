@@ -18,8 +18,14 @@
 		<input type="button" class="test" value="標籤測試">
 	</div>
 	
+<!-- 	<div> -->
+<!-- 		<input type="text" class="account"> -->
+<!-- 		<input type="text" class="password"> -->
+<!-- 		<input type="button" class="submit" value="送出"> -->
+<!-- 	</div> -->
 	
 	
-	<script src="swalLogin.js"></script>
+	
+	<script src="swal2Test.js"></script>
 </body>
 </html>

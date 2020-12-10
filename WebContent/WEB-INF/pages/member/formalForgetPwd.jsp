@@ -20,7 +20,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.all.min.js"></script>
 
     <style>
 
@@ -28,18 +29,6 @@
 </head>
 
 <body>
-	<c:choose>
-		<c:when test="${!empty errors}">
-			<script type="text/javascript" charset="UTF-8">
-				var errors = "${errors.msg}";
-			</script>
-		</c:when>
-		<c:otherwise>
-			<script type="text/javascript">
-				var errors = null;
-			</script>
-		</c:otherwise>
-	</c:choose>
 	
     
     <div class="count1">
@@ -137,7 +126,7 @@
                             </div>
                             
                               <div class="offset-4 col-8" style="margin: 0 auto;">
-                                <button name="submit" type="submit" class="btn btn-primary submit">送出</button>
+                                <button name="submit" type="button" class="btn btn-primary submit">送出</button>
                                 <button name="submit" type="reset" class="btn btn-primary">取消</button>
                               </div>
                               </form>

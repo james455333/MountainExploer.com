@@ -1,13 +1,19 @@
 $(".submit").on("click", function(){
-    if(errors != null){
-        swal({
-            title: "找回密碼信件發送失敗，請重新輸入",
-            icon: "error"
-        });
+    let account = $(".account").val();
+    let email = $(".email").val();
+
+    if(!account || !email){
+        Swal.fire({
+            icon:"error",
+            title:"尋找密碼失敗",
+            text:"請輸入帳號與註冊時用的密碼"
+        }).then(function(){
+            window.location.reload();
+        })
     }else{
-        swal({
-            title: "暫時密碼已發送到您的信箱，請盡快更新您的密碼。",
-            icon: "success"
-        });
+        $.ajax({
+            method:"GET",
+            url:"",
+        })
     }
 })

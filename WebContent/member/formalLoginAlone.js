@@ -1,5 +1,4 @@
 
-
 $(".userLog1").on("click", function(){
     let userNo1 = $(".userLog1").val();
 

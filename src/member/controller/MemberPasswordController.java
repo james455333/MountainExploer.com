@@ -35,38 +35,47 @@ public class MemberPasswordController {
 	
 	//忘記密碼
 	@RequestMapping(path = "/member/memberPwdFoundAction", method = RequestMethod.POST)
-	public String processPwdFound(@RequestParam(name = "account")String account,
+	public int processPwdFound(@RequestParam(name = "account")String account,
 								  @RequestParam(name = "email")String email,
 								  Model m) throws GeneralSecurityException {
 		
-		Map<String, String> errors = new HashMap<String, String>();
-		m.addAttribute("errors", errors);
+		boolean status = account.contains("@");
 		
-		
-		MemberBasic mb = mbService.select(account, email);
-		if(mb != null) {
+		if(status) {
+			return 0;
+		}else {
 			
-			//隨機生成10位字母與數字亂數作為暫時密碼
-			String rndPwd = MemberPwdStringRandom.tempPwd();
-			System.out.println(rndPwd);
+//			Map<String, String> errors = new HashMap<String, String>();
+//			m.addAttribute("errors", errors);
 			
-			String password = MemberGlobal.getSHA1Endocing(MemberGlobal.encryptString(rndPwd));
 			
-			mb.setPassword(password);
-			mbService.updateData(mb);
-			
-			String emailmessage = "<div><h3>親愛的會員您好：</h3>此郵件為系統自動發送，請勿回覆此郵件。<br/><br/><br/></div>" + "<div>您的暫時密碼為：" + rndPwd + "<br/>登入後請盡快更新您的密碼。<br/></div><div><font color='red'>請點此回到岳進者：</font><br/>"
-					+ "http://localhost:8080/MountainExploer.com/member/memberLoginEntry</div>";
-			MailUtils.sendMail(email, emailmessage);
-			System.out.println(emailmessage);
-			
-			m.addAttribute("result", "暫時密碼已發送到您的信箱，請盡快更新您的密碼。");
-			
-			return "member/formalLoginAlone";
-		} else {
-			errors.put("msg", "帳號、Email錯誤或不存在");
+			MemberBasic mb = mbService.select(account, email);
+			if(mb != null) {
+				
+				//隨機生成10位字母與數字亂數作為暫時密碼
+				String rndPwd = MemberPwdStringRandom.tempPwd();
+				System.out.println(rndPwd);
+				
+				String password = MemberGlobal.getSHA1Endocing(MemberGlobal.encryptString(rndPwd));
+				
+				mb.setPassword(password);
+				mbService.updateData(mb);
+				
+				String emailmessage = "<div><h3>親愛的會員您好：</h3>此郵件為系統自動發送，請勿回覆此郵件。<br/><br/><br/></div>" + "<div>您的暫時密碼為：" + rndPwd + "<br/>登入後請盡快更新您的密碼。<br/></div><div><font color='red'>請點此回到岳進者：</font><br/>"
+						+ "http://localhost:8080/MountainExploer.com/member/memberLoginEntry</div>";
+				MailUtils.sendMail(email, emailmessage);
+				System.out.println(emailmessage);
+				
+				m.addAttribute("result", "暫時密碼已發送到您的信箱，請盡快更新您的密碼。");
+				
+				return 1;
+			} else {
+//				errors.put("msg", "帳號、Email錯誤或不存在");
+				return 2;
+			}
 		}
-		return "member/formalLoginAlone";
+		
+//		return "member/formalLoginAlone";
 	}
 	
 	

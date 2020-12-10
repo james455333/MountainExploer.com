@@ -29,7 +29,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css" rel="stylesheet" />
     <style>
 
     </style>
@@ -95,7 +96,7 @@
                             <tr style="text-align: right;">
                                 <th>帳號:</th>
                                 <td>
-                                	<input name="account" id="account" type="text" value="${cookie.rmAnt.value}" style=" width: 200px;border: 1px #ABADB3 solid;
+                                	<input name="account" id="account" class="account" type="text" value="${cookie.rmAnt.value}" style=" width: 200px;border: 1px #ABADB3 solid;
                                     	padding: 5px 3px 5px; ">
                                     <span>${errors.account}${errors.msg}</span>
                                 </td>
@@ -105,7 +106,7 @@
                                 <th>密碼:</th>
                                 <td>
                                     <div>
-                                        <input type="password" id="password" name="password" value="<%=value1%>"
+                                        <input type="password" id="password" name="password" class="password" value="<%=value1%>"
                                             style="width: 200px;border: 1px #ABADB3 solid;padding: 5px 3px 5px; ">
                                         <span>${errors.password}${errors.msg}</span>
                                     </div>
@@ -117,12 +118,12 @@
                             <tr>
                                 <th></th>
                                 <td>
-                                    <input type="checkbox" name="rememberMe"
+                                    <input type="checkbox" name="rememberMe" class="rememberMe"
                                     	<c:if test="${cookie.rememberMe.value == 'check'}">
                                                     		checked="checked"
                                        	</c:if> value="true">
                                        	<label for="rememberme">記住我</label>
-                                    <input type="submit" class="submit" id="submit" value="登入">
+                                    <input type="button" class="submit" id="submit" value="登入">
                                     
                                 </td>
                             </tr>
