@@ -123,7 +123,7 @@
                                                     		checked="checked"
                                        	</c:if> value="true">
                                        	<label for="rememberme">記住我</label>
-                                    <input type="button" class="submit" id="submit" value="登入">
+                                    <input type="submit" class="submit" id="submit" value="登入">
                                     
                                 </td>
                             </tr>

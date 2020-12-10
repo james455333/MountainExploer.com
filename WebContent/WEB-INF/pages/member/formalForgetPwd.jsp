@@ -93,7 +93,8 @@
                         生日:<br>
                         性別:<br> -->
                         <h2>找回密碼：</h2>
-                        <form action="<c:url value='/member/memberPwdFoundAction' />" method="POST">
+                        <form >
+<%--                         action="<c:url value='/member/memberPwdFoundAction' />" method="POST" --%>
                         	<div class="form-group row" style="margin-right: 15px;
                             margin-left: 15px;">
                               <label for="text2" class="col-2 col-form-label">帳號：</label> 
@@ -174,7 +175,7 @@
 <script src="/MountainExploer.com/js/table.js"></script>
 <script src="/MountainExploer.com/js/login.js "></script>
 <script src="/MountainExploer.com/js/topBar.js"></script>
-<script src="/MountainExploer.com/js/sweetalert.js"></script>
+<!-- <script src="/MountainExploer.com/js/sweetalert.js"></script> -->
 <!--sweet alert-->
 <script src="/MountainExploer.com/js/includejsp.js"></script>
 <script src="/MountainExploer.com/js/personalContrul.js"></script><!-- 個人資料控制列表 -->

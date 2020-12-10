@@ -34,7 +34,8 @@ public class MemberPasswordController {
 	
 	
 	//忘記密碼
-	@RequestMapping(path = "/member/memberPwdFoundAction", method = RequestMethod.POST)
+	@GetMapping(path = "/member/memberPwdFoundAction")
+	@ResponseBody
 	public int processPwdFound(@RequestParam(name = "account")String account,
 								  @RequestParam(name = "email")String email,
 								  Model m) throws GeneralSecurityException {
@@ -66,7 +67,7 @@ public class MemberPasswordController {
 				MailUtils.sendMail(email, emailmessage);
 				System.out.println(emailmessage);
 				
-				m.addAttribute("result", "暫時密碼已發送到您的信箱，請盡快更新您的密碼。");
+//				m.addAttribute("result", "暫時密碼已發送到您的信箱，請盡快更新您的密碼。");
 				
 				return 1;
 			} else {
