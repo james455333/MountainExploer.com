@@ -15,6 +15,7 @@
 	<h2>跳窗登入測試</h2>
 	<div>
 		<input type="button" class="swalLogin" name="swalLogin" id="swalLogin" value="登入"/>
+		<input type="button" class="test" value="標籤測試">
 	</div>
 	
 	

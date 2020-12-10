@@ -145,7 +145,8 @@ public class MemberLoginController {
 		}
 		
 		
-		if(rm != null) {
+		if(rm != "") {
+			System.out.println("A");
 			Cookie cookieAnt = new Cookie("rmAnt", account);
 			cookieAnt.setMaxAge(30*24*60*60);
 			cookieAnt.setPath("/");
@@ -165,6 +166,7 @@ public class MemberLoginController {
 			response.addCookie(cookieRm);
 			
 		} else {
+			System.out.println("B");
 			Cookie cookieAnt = new Cookie("rmAnt", "");
 			cookieAnt.setMaxAge(0);
 			cookieAnt.setPath("/");
@@ -221,21 +223,45 @@ public class MemberLoginController {
 		
 	}
 	
-	
-//	@ResponseBody
-//	@GetMapping(path = "/member/cookieSelect")
-//	public Map<String, String> processCookieSelect(HttpServletRequest request, String name){
-//		Map<String, String> cookies = ReadCookieMap(request);
-//		if(cookies.containsKey(name)) {
-//			
-//		}
-//	}
+
 	
 	
-	
-	private Map<String, String> ReadCookieMap(HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+	@ResponseBody
+	@GetMapping(path =  "/member/cookieSelect")
+	public Map<String, String> ReadCookieMap(HttpServletRequest request) {
+		Map<String, String> cookieMap = new HashMap<String, String>();
+		String value1 = "";
+		String value2 = "";
+		String value3 = "";
+		Cookie[] cookies = request.getCookies();
+		if(null != cookies) {
+			for (Cookie cookie : cookies) {
+				if(cookie.getName().equals("rmAnt")) {
+					value1 = cookie.getValue();
+					cookieMap.put("rmAnt", value1);
+					System.out.println(value1);
+				}
+				if(cookie.getName().equals("rmPwd")) {
+					value2 = MemberGlobal.decryptString(MemberGlobal.KEY, cookie.getValue());
+					cookieMap.put("rmPwd", value2);
+					System.out.println(value2);
+				}
+				if(cookie.getName().equals("rememberMe")) {
+					value3 = cookie.getValue();
+					if(value3 != null) {
+						cookieMap.put("rememberMe", value3);						
+						System.out.println(value3);
+					} else {
+						value3 = null;
+						cookieMap.put("rememberMe", value3);
+						System.out.println(value3);
+					}
+				}
+			}
+			return cookieMap;
+		}else {
+			return null;
+		}
 	}
 
 
@@ -248,7 +274,7 @@ public class MemberLoginController {
 			Model m,
 			RedirectAttributes redAttr) {
 		
-		System.out.println("========================password:" + password);
+		System.out.println("========================rememberMe:" + rm);
 		
 		Map<String, String> errors = new HashMap<String, String>();
 		m.addAttribute("errors", errors);
