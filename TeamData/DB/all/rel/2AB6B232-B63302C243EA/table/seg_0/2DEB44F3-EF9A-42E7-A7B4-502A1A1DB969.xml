@@ -107,6 +107,18 @@
 <ownDataTypeParameters>,30,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="campamount" id="58255E8C-3FC3-902E-11C7-84A20899C4F1">
+<createdBy>Student</createdBy>
+<createdTime>2020-12-08 06:19:44 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="F8508609-E84D-024E-BD2B-243C0541B70E" name="camp_pk">

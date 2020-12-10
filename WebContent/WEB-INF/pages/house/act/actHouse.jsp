@@ -73,6 +73,7 @@ transition: all 0.6s;}
 <!-- 		</div> -->
 		<div class="div_li1">
 <!-- 			<a>保留區</a> -->
+		
 		</div>
 		<div class="div_li3">
 <!-- 			<a>保留區</a> -->
@@ -127,6 +128,14 @@ transition: all 0.6s;}
 			</div>
 
 			<div class="secDivContent">
+<!-- datepicker -->
+			<form action="<c:url value=''></c:url>">
+			<div>入住日期 : <input type="date" name="calendar" id="datepicker">
+				   退房日期 : <input type="date" name="calendar" id="datepicker">
+				   <input type="submit" value="查詢">
+			</div>
+			</form>
+         
 				<!--table-->
 				<table class="order-table table table-hover" id="tablePreview"
 					style="background-color: white;">
@@ -286,6 +295,19 @@ transition: all 0.6s;}
 </body>
 
 <script type="text/javascript">
+$(function() 
+	    { 
+	    $("#datepicker").datepicker(
+	    { 
+	    showOn:"both", 
+	    buttonImage:"image.jpg", 
+	    dateFormat:"yy-mm-dd", 
+	    buttonImageOnly:false, 
+	    minDate:+0, //you do not want to show previous date. 
+	    maxDate:+0 // you do not want to show next day. 
+	    }); 
+	    }); 
+
 $(function() {
 	var houseUrl = "/MountainExploer.com/mountainHouseBack";
 
@@ -305,6 +327,7 @@ $(function() {
 
 	})
 </script>
+
 <script src="/MountainExploer.com/js/upLoadImg.js"></script>
 <!-- 上傳頭像 -->
 <script src="/MountainExploer.com/js/table.js"></script>

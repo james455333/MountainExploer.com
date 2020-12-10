@@ -1,5 +1,6 @@
 package house.act;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,6 @@ import house.mountainhouseList.model.HouseOrderBean;
 import house.mountainhouseList.service.HouseInfoBeanService;
 import house.mountainhouseList.service.HouseOrderService;
 import member.model.MemberBasic;
-import oracle.net.aso.m;
 
 @Controller
 @RequestMapping("/mountainHouseActOrder")
@@ -29,8 +29,8 @@ public class ActHouseOrderController {
 	//新增訂單  訂房
 	@GetMapping("/inserhouseorder")
 	public String inserHouseOrder(HouseOrderBean houseorder,Model m,
-			@RequestParam(name = "houseorder_amount")Integer amount,@RequestParam(name = "houseorder_shoppingDate") String shoppingDate,
-			@RequestParam(name = "houseorder_bookDate")String bookDate ,@RequestParam(name = "houseorder_price") Integer price ,
+			@RequestParam(name = "houseorder_amount")Integer amount,@RequestParam(name = "houseorder_shoppingDate") Date shoppingDate,
+			@RequestParam(name = "houseorder_bookDate")Date bookDate ,@RequestParam(name = "houseorder_price") Integer price ,
 			@RequestParam(name = "houseorder_houseid")Integer houseid ) {
 			
 			if (m.getAttribute("Member") == null) {
@@ -54,7 +54,7 @@ public class ActHouseOrderController {
 	@GetMapping("/selecthouseorderid")
 	public String selectHouseOrder(@RequestParam(name = "houseorder_id") Integer houseorderid,Model m) {
 		
-		List<HouseOrderBean> list = houseOrderService.selecthouseid(houseorderid);
+		List<HouseOrderBean> list = houseOrderService.selectorderid(houseorderid);
 		m.addAttribute("list",list);
 		return "house/act/actHouseOrder";
 	}
@@ -73,12 +73,13 @@ public class ActHouseOrderController {
 		
 	}
 	@GetMapping("/deletehouseorder")
-	public String deleteHouseOrder(Model m,@RequestParam(name = "delete_houseorderid") Integer houseorderid,@RequestParam(name = "select_houseid")Integer houseid) {
+	public String deleteHouseOrder(Model m,@RequestParam(name = "delete_houseorderid") Integer houseorderid) {
 		houseOrderService.deleteHouseOrder(houseorderid);
-		List<HouseInfoBean> list = houseService.selecthouseid(houseid);
-		m.addAttribute("selecthouseid",list);
+		
 		return "house/act/Deschouse";
 	}
+	
+	//book house select date
 	
 	
 	

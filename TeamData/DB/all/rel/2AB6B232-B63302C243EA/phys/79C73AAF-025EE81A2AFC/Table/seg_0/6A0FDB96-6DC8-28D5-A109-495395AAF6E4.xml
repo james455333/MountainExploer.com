@@ -30,6 +30,11 @@
 <ownerDesignName>all</ownerDesignName>
 <autoIncrementDDL>IDENTITY_CLAUSE</autoIncrementDDL>
 </ColumnProxy>
+<ColumnProxy name="password" id="6A415654-E9AF-BB8E-5FEE-C23D4B0884C3">
+<createdBy>Student</createdBy>
+<createdTime>2020-12-08 02:41:07 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
 <ColumnProxy name="member_status_id" id="B2A8C5A8-6B9F-D351-398B-AA23297E24D0">
 <createdBy>Student</createdBy>
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>
