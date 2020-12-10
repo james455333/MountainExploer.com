@@ -94,6 +94,8 @@ public class ImportHouseCamp {
 				String campName = csvRecord.get("名字");
 				String url = csvRecord.get("description");
 				String desc = csvRecord.get("描述");
+				String amount = csvRecord.get("營地數量");
+				String price = csvRecord.get("營地價錢");
 				
 				AreaBean areabean = new AreaBean();
 				CountiesBean countiesbean = new CountiesBean();
@@ -118,6 +120,11 @@ public class ImportHouseCamp {
 				campbean.setCounties(countiesbean);
 				campbean.setDesc(desc);
 				campbeanSet.add(campbean);
+				Integer campamount = Integer.parseInt(amount);
+				campbean.setCampamount(campamount);
+				Integer campprice = Integer.parseInt(price);
+				campbean.setCampprice(campprice);
+				
 				
 				CampImgBean campImgBean = new CampImgBean();
 				campbean.setCampimgid(campImgBean);

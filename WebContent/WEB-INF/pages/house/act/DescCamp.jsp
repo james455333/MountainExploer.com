@@ -26,8 +26,7 @@ height:25px;
 	}
 	.body{margin : 20px;
 	clear : left;
-	
-	width:500px;
+	width:90%;
 	height :50px;
 	}
 	.counties{float:left;
@@ -86,8 +85,19 @@ height:25px;
             <div class="secDivContent">
 
                 <div class="forImage">
-                    <img src="/MountainExploer.com/images/BGI.jpg" alt="" class="forImagesImg">
+<!--                     <img src="/MountainExploer.com/images/BGI.jpg" alt="" class="forImagesImg"> -->
                     <!-- 調整參考網址 https://segmentfault.com/q/1010000018971940 -->
+               			<c:forEach var="i" items="${selectcamp}">
+					<c:choose>
+								<c:when test="${ empty i.campimgid.img}">
+								<img style="height: 100%" src="/MountainExploer.com/housecamp/images/campnull.PNG">
+								</c:when>
+								<c:when test="${not empty i.campimgid.img}">
+								<img style="height: 100%"
+								src="<c:url value='/mountainCampBack/showimg?imgid=${i.campimgid.id}'/>">
+								</c:when>
+					</c:choose>
+						</c:forEach>
                 </div>
 <!-- 右邊 -->
                 <div class="forFrom ">
@@ -140,10 +150,17 @@ height:25px;
 							</c:choose>
 					(${j.clickcount }人評分過)
 					<div>
-					<form action="<c:url value='/mountainCampAct/jumpupdatestar'></c:url>">
-					<input type="hidden" name="selectcampid" value="${j.campbasicid}">
-					<input type="submit" value="評分"></form>
+						<form action="<c:url value='/mountainCampAct/jumpupdatestar'></c:url>">
+						<input type="hidden" name="selectcampid" value="${j.campbasicid}">
+						<input type="submit" value="評分"></form>
 					</div>
+						<div style="margin: 10px">
+							<form action="<c:url value='/mountaincCampActOrder/orderjump'></c:url>">
+							<input type="hidden" name="orderjump_campid" value="${j.campbasicid}">
+							<input type="hidden" name="orderjump_bookdate" value="${selectdate}">
+							<input type="submit" value="現在預定房間">
+							</form>					
+						</div>	
 					</div>
 					<div><a href="${j.url}" target="_blank" >前往部落格</a></div>
 					</c:forEach>
@@ -152,27 +169,39 @@ height:25px;
                 <div class="forText">
 	                <div>
 	                <c:forEach var="i" items="${selectcamp}">
-	                <div style="float: left ; margin : 30px" >
-					<c:choose>
-								<c:when test="${ empty i.campimgid.img}">
-								<img height="250" width="250" src="/MountainExploer.com/housecamp/images/campnull.PNG">
-								</c:when>
-								<c:when test="${not empty i.campimgid.img}">
-								<img height="250" width="250"
-								src="<c:url value='/mountainCampBack/showimg?imgid=${i.campimgid.id}'/>">
-								</c:when>
-								</c:choose>
-					</div>
+	                
 	                <div class = "topname"><h3>${i.name}</h3></div>
 					
 	                <div class = "counties">地址 : ${i.counties.area.name}${i.counties.name}</div>
 	               
-	                <div class="body" style="height: 300px">${i.desc}</div>
+	                <div class="body" style="height: 200px">${i.desc}</div>
 	                </c:forEach>
 	                </div>
                 
                 </div>
             </div>
+<!-- 下框 -->
+             <div class="secDivContent">
+             <h1>1111</h1>
+             	<form action="<c:url value='/mountaincCampActOrder/selectamount'></c:url>">
+             	<div>入住時間</div>
+             <c:forEach var="i" items="${selectcamp}">
+ <!-- 營地編號 -->
+				<input type="hidden" name="selectcampid" value="${i.campbasicid}">
+             </c:forEach>	
+				<div><input type="text" id="from" name="select_bookdate" size="45" readonly></div>             
+             	<div><input type="submit" value="查詢"></div>
+             	</form>
+             <div>
+             <div><h1>${selectdate}</h1></div> 
+<!-- 日期查詢 -->
+             <c:forEach var="i" items="${selectdateamount}">
+             <div>訂了幾間房${i.amount}</div>
+             <div>總數量${i.campbasicid.campamount}</div>
+             <div>剩餘${i.campbasicid.campamount-i.amount}</div>
+             </c:forEach>
+             </div>
+             </div>
 
 
 
@@ -193,6 +222,55 @@ height:25px;
 
 
     </footer>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+    
+<script type="text/javascript">
+$("#from").daterangepicker({
+//  "singleDatePicker": true,
+ "autoApply": true,
+	"locale": {
+ "format": "YYYY年MM月DD日",
+ "separator": " ~ ",
+ "applyLabel": "確認",
+ "cancelLabel": "取消",
+ "customRangeLabel": "自訂義範圍",
+ "daysOfWeek": [
+     "日",
+     "一",
+     "二",
+     "三",
+     "四",
+     "五",
+     "日"
+ ],
+ "monthNames": [
+     "1 月",
+     "2 月",
+     "3 月",
+     "4 月",
+     "5 月",
+     "6 月",
+     "7 月",
+     "8 月",
+     "9 月",
+     "10 月",
+     "11 月",
+     "12 月"
+ ],
+ "firstDay": 1
+	},
+	"startDate": 0,
+	"endDate": moment().subtract(-1, 'days'),
+	"minDate": moment(),
+	"maxDate": moment().subtract(-6, 'month')
+	});
+</script>    
+    
 </body>
 
 <script src="/MountainExploer.com/js/upLoadImg.js"></script><!-- 上傳頭像 -->

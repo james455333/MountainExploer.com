@@ -45,6 +45,10 @@ public class CampInfoBean {
 	private Integer star;
 	@Column(name = "CLICKCOUNT")
 	private Integer clickcount;
+	@Column(name = "CAMPAMOUNT")
+	private Integer campamount;
+	@Column(name = "CAMPPRICE")
+	private Integer campprice;
 	@Transient
 	private String countiesname;
 	
@@ -111,6 +115,18 @@ public class CampInfoBean {
 	}
 	public void setClickcount(Integer clickcount) {
 		this.clickcount = clickcount;
+	}
+	public Integer getCampamount() {
+		return campamount;
+	}
+	public void setCampamount(Integer campamount) {
+		this.campamount = campamount;
+	}
+	public Integer getCampprice() {
+		return campprice;
+	}
+	public void setCampprice(Integer campprice) {
+		this.campprice = campprice;
 	}
 	
 }

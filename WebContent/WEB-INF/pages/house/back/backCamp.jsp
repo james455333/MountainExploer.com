@@ -30,8 +30,7 @@ float : right;}
 		<jsp:include page="../../fragment/backTopNav.jsp"></jsp:include>
 		<div id="searchBar">
 			<div class="searchAll">
-				<form action="<c:url value='/mountainCampBack/selectAll'></c:url>"
-					method='get'>					
+				<form action="<c:url value='/mountainCampBack/selectAll'></c:url>"method='get'>					
 					<input type="hidden" value="" name="selectarea" >
 					<input type="hidden" value="" name="selectcounties" >
 					<input type="hidden" value=1 name="no" >

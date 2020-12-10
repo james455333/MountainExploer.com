@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,15 +15,65 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<!-- 日曆     -->
+	<link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+	<script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+	<script charset="utf-8" src="resources/js/jquery/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="resources/js/jquery/jquery-ui.js"></script>
+	<script type="text/javascript" src="resources/js/jquery/jquery.ui.datepicker-zh-CN.js"></script>
+  <script>
+  $(function() {
+	  $.datepicker.regional['zh-CN'] = {
+				closeText: '關閉',
+				prevText: '<上月',
+				nextText: '下月>',
+				currentText: '今天',
+				monthNames: ['一月','二月','三月','四月','五月','六月',
+				'七月','八月','九月','十月','十一月','十二月'],
+				monthNamesShort: ['一月','二月','三月','四月','五月','六月',
+				'七月','八月','九月','十月','十一月','十二月'],
+				dayNames: ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],
+				dayNamesShort: ['周日','周一','周二','周三','周四','周五','周六'],
+				dayNamesMin: ['日','一','二','三','四','五','六'],
+				weekHeader: '周',
+				dateFormat: 'yy-mm-dd',
+				firstDay: 1,
+				isRTL: false,
+				showMonthAfterYear: true,
+				yearSuffix: '年'};
+			$.datepicker.setDefaults($.datepicker.regional['zh-CN']);
+    $( "#from" ).datepicker({
+    	minDate: -20, 
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 2,
+//       altField:"#to",
+      onClose: function( selectedDate ) {
+        $( "#to" ).datepicker( "option", "minDate", selectedDate );
+      }
+    });
+    $( "#to" ).datepicker({
+    	maxDate: "+1M",
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 2,
+      onClose: function( selectedDate ) {
+        $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+  });
+  </script>
+<!--     日曆end -->
     
     <style>
     .images{
 width:25px;
 height:25px;
 }
-	.topname{margin : 50px 50px 50px 5px;
+	.topname{margin : 50px 30px 50px 5px;
 	float: left;
-	padding : 50px 50px 50px 5px;
+	padding : 50px 30px 50px 5px;
 	}
 	.body{margin : 10px;
 	clear : left;
@@ -31,6 +82,7 @@ height:25px;
 	height :50px;
 	}
     </style>
+ 
 </head>
 
 <body>
@@ -137,12 +189,24 @@ height:25px;
 							</c:choose>
 					(${j.clickcount }人評分過)
 					<div>
+					(平均<fmt:formatNumber type="number" value="${j.star*1.0 / j.clickcount} " maxFractionDigits="1"/>分)		
 					<form action="<c:url value='/mountainHouseAct/jumpupdatestart'></c:url>">
 					<input type="hidden" name="selecthouseid" value="${j.housebasicid}">
 					<input type="submit" value="評分"></form>
 					</div>
 					</div>
 					</c:forEach>
+		<!-- datepicker jump-->
+						<div>
+						<form class="topname" action="<c:url value=''></c:url>">
+							<label for="from">入住時間</label>
+							<input type="text" id="from" name="from" readonly>
+							<label for="to">退房時間</label>
+							<input type="text" id="to" name="to" readonly>
+							   <input type="submit" value="查詢">
+						
+						</form>
+						</div>
                 </div>
 <!-- 左邊 -->
                 <div class="forText">
@@ -160,8 +224,8 @@ height:25px;
 								</c:choose>
 					</div>
 	                <div class = "topname"><h3>${i.name}</h3></div>
+	                <div class="body" style="height: 250px">${i.desc}</div>
 	                <div class="body">山屋床位${i.bed}  營地數量${i.camp}</div>					
-	                <div class="body" style="height: 300px">${i.desc}</div>
 	                </c:forEach>
 	                </div>
                 
@@ -188,7 +252,7 @@ height:25px;
 
     </footer>
 </body>
-
+ 
 <script src="/MountainExploer.com/js/upLoadImg.js"></script><!-- 上傳頭像 -->
 <script src="/MountainExploer.com/js/table.js"></script>
 <script src="/MountainExploer.com/js/topBar.js"></script>

@@ -1,6 +1,9 @@
 package house.mountainhouseList.model;
 
 
+import java.util.Date;
+
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
@@ -27,10 +32,14 @@ public class HouseOrderBean {
 	private Integer orderid;
 	@Column(name = "AMOUNT")
 	private Integer amount;//數量
+	@Basic
 	@Column(name = "SHOPINGDATE")
-	private String shoppingdate;
+	@Temporal(TemporalType.DATE)
+	private Date shoppingdate;
+	@Basic
 	@Column(name = "BOOKDATE")
-	private String bookdate;
+	@Temporal(TemporalType.DATE)
+	private Date bookdate;
 	@Column(name = "PRICE")
 	private Integer price;
 	@Transient
@@ -62,19 +71,19 @@ public class HouseOrderBean {
 		this.amount = amount;
 	}
 
-	public String getShoppingdate() {
+	public Date getShoppingdate() {
 		return shoppingdate;
 	}
 
-	public void setShoppingdate(String shoppingdate) {
+	public void setShoppingdate(Date shoppingdate) {
 		this.shoppingdate = shoppingdate;
 	}
 
-	public String getBookdate() {
+	public Date getBookdate() {
 		return bookdate;
 	}
 
-	public void setBookdate(String bookdate) {
+	public void setBookdate(Date bookdate) {
 		this.bookdate = bookdate;
 	}
 

@@ -15,9 +15,29 @@
 <ownerDesignName>all</ownerDesignName>
 <autoIncrementDDL>IDENTITY_CLAUSE</autoIncrementDDL>
 </ColumnProxy>
+<ColumnProxy name="clickcount" id="0FEBB2AE-680D-FBC1-1652-2ACCC85C77C0">
+<createdBy>Student</createdBy>
+<createdTime>2020-12-08 02:41:07 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
 <ColumnProxy name="name" id="10A576FA-424E-A24A-D5D6-7B84BE5C4662">
 <createdBy>Student</createdBy>
 <createdTime>2020-10-23 13:41:05 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="starrange" id="45A0B8AB-8D77-F62A-842A-2E10EA332515">
+<createdBy>Student</createdBy>
+<createdTime>2020-12-08 02:41:07 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="description" id="500C2400-44A9-8393-CA71-C9E67007B0BE">
+<createdBy>Student</createdBy>
+<createdTime>2020-12-08 02:41:07 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="campamount" id="58255E8C-3FC3-902E-11C7-84A20899C4F1">
+<createdBy>Student</createdBy>
+<createdTime>2020-12-08 06:19:44 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
 </ColumnProxy>
 <ColumnProxy name="url" id="65050137-25DA-6BFC-54EB-159C82C04001">
