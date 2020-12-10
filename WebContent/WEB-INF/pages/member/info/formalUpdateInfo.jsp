@@ -20,7 +20,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.all.min.js"></script>
 
     <style>
 
@@ -92,7 +93,7 @@
                         生日:<br>
                         性別:<br> -->
                         <h2>修改會員資料</h2>
-                        <form action="<c:url value='/member/memberInfoUpdateAction' />" method="POST">
+                        <form id="upInForm" action="<c:url value='/member/memberInfoUpdateAction' />" method="POST">
                         
                         	<div style="display:none">
 								<label>會員編號</label>
@@ -218,7 +219,7 @@
                             <div class="form-group row" style="margin-right: 15px;
                             margin-left: 15px;">
                               <div class="offset-4 col-8" style="margin: 0 auto;">
-                                <button name="submit" type="submit" class="btn btn-primary submit">確認更改</button>
+                                <button name="submit" type="button" class="btn btn-primary submit">確認更改</button>
                                 <button name="submit" id="reset" type="reset" class="btn btn-primary">取消</button>
                               </div>
                             </div>
@@ -265,7 +266,7 @@
 <script src="/MountainExploer.com/js/table.js"></script>
 <script src="/MountainExploer.com/js/login.js "></script>
 <script src="/MountainExploer.com/js/topBar.js"></script>
-<script src="/MountainExploer.com/js/sweetalert.js"></script>
+<!-- <script src="/MountainExploer.com/js/sweetalert.js"></script> -->
 <!--sweet alert-->
 <script src="/MountainExploer.com/js/includejsp.js"></script>
 <script src="/MountainExploer.com/js/personalContrul.js"></script><!-- 個人資料控制列表 -->

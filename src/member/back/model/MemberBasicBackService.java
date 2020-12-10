@@ -33,6 +33,10 @@ public class MemberBasicBackService {
 		return mbDAO.select(seqno);
 	}
 	
+	public MemberBasic select(String account, String password) {
+		return mbDAO.select(account, password);
+	}
+	
 	public List<MemberBasic> selectAll() {
 		return mbDAO.selectAll();
 	}

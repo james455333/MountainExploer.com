@@ -9,9 +9,10 @@
 		 contentType: "application/json; charset=UTF-8",
          dataType:"json",
          success: function(otherLs){
-			console.log(otherLs[0]);
-			$(".other").attr("value", otherLs);
-			
+            if(otherLs != null){
+                console.log(otherLs[0]);
+                $(".other").attr("value", otherLs);
+            }
 		 }
      });
  });

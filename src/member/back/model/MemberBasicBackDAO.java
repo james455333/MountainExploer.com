@@ -30,7 +30,7 @@ public class MemberBasicBackDAO {
 		
 		MemberBasic qBean = query.uniqueResult();
 		
-		if(qBean != null) {
+		if(qBean.getMemberStatus().getSeqno() == 150) {
 			return true;
 		}
 		return false;
@@ -82,6 +82,19 @@ public class MemberBasicBackDAO {
 		
 	}
 	
+	
+	public MemberBasic select(String account, String password) {
+		Session session = sessionFactory.getCurrentSession();
+		Query<MemberBasic> query = session.createQuery("From MemberBasic where account = ?0 and password = ?1", MemberBasic.class);
+		query.setParameter(0, account);
+		query.setParameter(1, password);
+		
+		MemberBasic qBean = query.uniqueResult();
+		if(qBean != null) {
+			return qBean;
+		}
+		return null;
+	}
 	
 	public MemberBasic select(int seqno) {
 		Session session = sessionFactory.getCurrentSession();

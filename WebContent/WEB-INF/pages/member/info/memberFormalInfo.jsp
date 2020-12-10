@@ -72,7 +72,15 @@
                 </div>
                 <div class="personalInfo">
                 	<div>
-	                	<h2>${Member.memberInfo.neck_name}的會員中心</h2>                	
+	                	<h2>
+	                		<c:choose>
+	                			<c:when test="${empty Member.memberInfo.neck_name}">
+	                				${Member.account}
+	                			</c:when>
+	                			<c:otherwise>${Member.memberInfo.neck_name}</c:otherwise>
+	                		</c:choose>
+	                		的會員中心
+	                	</h2>                	
                 	</div>
                 	
                     <div>
@@ -145,7 +153,15 @@
 <!--                     </form> -->
                     
                     <div id="idCard" style="display: none;">
-                       	<h2>${Member.memberInfo.neck_name}的個人資料</h2>
+                       	<h2>
+                       		<c:choose>
+                       			<c:when test="${empty Member.memberInfo.neck_name}">
+                       				${Member.account}
+                       			</c:when>
+                       			<c:otherwise>${Member.memberInfo.neck_name}</c:otherwise>
+                       		</c:choose>
+                       		的個人資料
+                       	</h2>
                        	<div style="display:none">
 							<input type="text" name="seqno" class="seqno" value="${Member.seqno}">
 						</div>
@@ -156,7 +172,14 @@
 						</div>
 						<div>
                       	  	<label>暱稱：</label>
-                      	  	<span>${Member.memberInfo.neck_name}</span><br>
+                      	  	<span>
+                      	  		<c:choose>
+                      	  			<c:when test="${empty Member.memberInfo.neck_name}">
+                      	  				取個暱稱讓大家認識你
+                      	  			</c:when>
+                      	  			<c:otherwise>${Member.memberInfo.neck_name}</c:otherwise>
+                      	  		</c:choose>
+                      	  	</span><br>
                       		<input type="hidden" name="memberInfo.neck_name" value="${Member.memberInfo.neck_name}">
 						</div>
 						<div>
@@ -181,12 +204,26 @@
 						</div>
 						<div>
                         	<label>生日：</label>
-                        	<span>${Member.memberInfo.birthday}</span><br/>
+                        	<span>
+                        		<c:choose>
+                        			<c:when test="${empty Member.memberInfo.birthday}">
+                        				輸入生日以完善個人資料
+                        			</c:when>
+                        			<c:otherwise>${Member.memberInfo.birthday}</c:otherwise>
+                        		</c:choose>
+                        	</span><br/>
 							<input type="hidden" name="memberInfo.birthday" value="${Member.memberInfo.birthday}">
 						</div>
                         <div>
                         	<label>手機號碼：</label>
-                        	<span>${Member.memberInfo.phone}</span><br/>
+                        	<span>
+                        		<c:choose>
+                        			<c:when test="${empty Member.memberInfo.phone}">
+                        				輸入手機號碼以完善個人資料
+                        			</c:when>
+                        			<c:otherwise>${Member.memberInfo.phone}</c:otherwise>
+                        		</c:choose>
+                        	</span><br/>
 							<input type="hidden" name="memberInfo.phone" value="${Member.memberInfo.phone}">
                         </div>
                         <div>
@@ -196,7 +233,14 @@
                         </div>
                         <div>
                         	<label>登山經驗：</label>
-							<span>${Member.memberInfo.climb_ex}</span><br/>
+							<span>
+								<c:choose>
+									<c:when test="${empty Member.memberInfo.climb_ex}">
+										輸入登山經驗讓大家認識你
+									</c:when>
+									<c:otherwise>${Member.memberInfo.climb_ex}</c:otherwise>
+								</c:choose>
+							</span><br/>
 							<input type="hidden" name="memberInfo.climb_ex" value="${Member.memberInfo.climb_ex}">
                         </div>
                         <div>
@@ -213,7 +257,7 @@
                         <div class="otdiv">
                         	<label>個人簡介：</label>
                         	<span class="otsp"></span><br/>
-                        	<input type="text" name="memberInfo.other" class="other" id="other">
+                        	<input type="text" name="memberInfo.other" class="other" id="other" placeholder="撰寫個人簡介讓大家認識你">
                         </div>
                         <div>
                         	<input type="button" class="turnToUpPage" value="修改會員資料"/>
@@ -280,7 +324,7 @@
 <script src="/MountainExploer.com/js/upLoadImg.js"></script><!-- 上傳頭像 -->
 <script src="/MountainExploer.com/js/table.js"></script>
 <script src="/MountainExploer.com/js/topBar.js"></script>
-<script src="/MountainExploer.com/js/sweetalert.js"></script>
+<!-- <script src="/MountainExploer.com/js/sweetalert.js"></script> -->
 <!--sweet alert-->
 <script src="/MountainExploer.com/js/includejsp.js"></script>
 <script src="/MountainExploer.com/js/personalContrul.js"></script><!-- 個人資料控制列表 -->

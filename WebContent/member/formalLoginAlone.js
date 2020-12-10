@@ -79,14 +79,16 @@ $(".adminLog").on("click", function(){
 								swal({
 									title: "登入成功",
 									icon: "success"
-								});
-								window.location.href="/MountainExploer.com";								
+								}).then(function(){
+									window.location.href="/MountainExploer.com";								
+								})
 							} else if(data == 2){
 								swal({
 									title: "初次登入成功，請填寫會員資料",
 									icon: "success"
-								});
-								window.location.href="/MountainExploer.com/member/socailInfoEntry";
+								}).then(function(){
+									window.location.href="/MountainExploer.com/member/socailInfoEntry";
+								})
 							}
 						},
 						
