@@ -21,6 +21,8 @@ pageEncoding="UTF-8"%>
 
     <!-- Custom styles for this template-->
     <link href="/MountainExploer.com/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.all.min.js"></script>
 
 </head>
 
@@ -162,6 +164,7 @@ pageEncoding="UTF-8"%>
 
 
     <script src="/MountainExploer.com/js/includejsp.js"></script>
+    <script src="/MountainExploer.com/member/loginBack.js"></script>
 </body>
 
 </html>
