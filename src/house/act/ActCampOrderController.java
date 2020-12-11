@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import house.mountainhouseList.model.CampInfoBean;
@@ -25,6 +26,7 @@ import house.mountainhouseList.model.CampOrderBean;
 import house.mountainhouseList.service.CampInfoBeanService;
 import house.mountainhouseList.service.CampOrderService;
 import member.model.MemberBasic;
+import oracle.net.aso.m;
 
 @Controller
 @RequestMapping("/mountaincCampActOrder")
@@ -120,13 +122,21 @@ public class ActCampOrderController {
 
 	//inser order jump
 	@GetMapping("/orderjump")
-	public String jumptoorder(@RequestParam(name = "orderjump_campid") Integer campid, Model m,@RequestParam(name = "orderjump_bookdate")String bookdate) {
+	public String jumptoorder(@RequestParam(name = "orderjump_campid") Integer campid, Model m,@RequestParam(name = "orderjump_bookdate")String bookdate,
+			@RequestParam(name = "orderjump_totalprice")Integer totalprice,@RequestParam(name = "orderjump_amount")Integer amount) {
 		if (m.getAttribute("Member") == null) {
 			return "redirect:/member/memberLoginEntry";
 		}
-
+		List<String> days = getDays(bookdate);
+		Integer bookneight = (days.size()-1); 
+	m.addAttribute("bookneight",bookneight); //訂幾晚
+		
+		
 		List<CampInfoBean> list = campService.selectcampid(campid);
 		
+		
+		m.addAttribute("totalprice",totalprice);
+		m.addAttribute("amount",amount);
 		m.addAttribute("list", list);
 		m.addAttribute("selectdate",bookdate);
 		return "house/act/actCampOrder";
@@ -171,39 +181,54 @@ public class ActCampOrderController {
 			return "redirect:/member/memberLoginEntry";
 		}
 		CampInfoBean campInfoBean = campService.select(campid);
-		Integer campamount = campInfoBean.getCampamount(); //總庫存
+		Integer campamount = campInfoBean.getCampamount(); //總營地數
 //印出查詢~日期
-		m.addAttribute("selectdate",bookdate); 
+	m.addAttribute("selectdate",bookdate); //日期~
 		
-		CampOrderBean campOrderBean = new CampOrderBean();
-		Integer orderamount = campOrderBean.getAmount();
+
 		// 日期查詢
 		List<String> days = getDays(bookdate);
-				
+		Integer bookneight = (days.size()-1); 
+	m.addAttribute("bookneight",bookneight); //訂幾晚
+
 //已訂房數量		
 		int hotel = 0;
 		for (String string : days) {
 			
-			System.out.println("+++++++++++++++++"+(days.size()-1));
 			Integer bookorderdate = campOrderService.selectdate(string,campid);
 			if(bookorderdate>hotel) {
-				hotel = bookorderdate;
+				hotel = bookorderdate; //區間訂房數
 			}
-			System.out.println("................."+bookorderdate);
-			System.out.println("----------------------"+hotel);
+//			System.out.println("................."+bookorderdate);//當天訂房數量
 		}
-		
-		
+//			System.out.println("................."+hotel);//區間訂房最大數量
+		Integer leftcampamount = (campamount-hotel);
+	m.addAttribute("leftcampamount",leftcampamount); //庫存
+				
 		
 //露營地資訊		
 		List<CampInfoBean> list = campService.selectcampid(campid); //原本資料
-		
+		Integer price  = campInfoBean.getCampprice();
+		m.addAttribute("campid",campid);
 		m.addAttribute("selectcamp",list);
+		m.addAttribute("camp",list);
+		m.addAttribute("campprice",price);
+		
 		
 		return "house/act/DescCamp";
 	}
 	
 	
+	
+//選擇數量	
+	@GetMapping("/ordercampamount")
+	@ResponseBody
+	public List<CampInfoBean> camptotalprice(@RequestParam(name = "selectcampid")Integer campid){
+		List<CampInfoBean> list = campService.selectcampid(campid);
+		
+		
+		return list;
+	}
 	
 	
 }
