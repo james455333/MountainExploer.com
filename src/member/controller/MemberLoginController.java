@@ -352,6 +352,15 @@ public class MemberLoginController {
 					m.addAttribute("result", "初次登入成功");
 					System.out.println("=======================登入成功");
 					return "member/info/formalFirstInfo";
+				}else if(mb.getMemberStatus().getSeqno() == 150) {
+					m.addAttribute("Member", mb);
+					m.addAttribute("result", "管理員登入成功");
+					System.out.println("======================管理員登入成功");
+					return "backIndex";
+				}else if(mb.getMemberStatus().getSeqno() == 160 || mb.getMemberStatus().getSeqno() == 140) {
+					m.addAttribute("errors", "您已被停權，無法使用本系統");
+					System.out.println("======================停權帳號");
+					return "index";
 				}else {
 					System.out.println("身分組權限不足");
 					return "member/formalLoginAlone";
