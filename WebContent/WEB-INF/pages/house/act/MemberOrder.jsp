@@ -111,7 +111,7 @@ transition: all 0.6s;}
 							<!-- thead更改從這邊開始 -->
 							<th scope="col">訂單編號</th>
 							<th scope="col">訂單姓名</th>
-							<th scope="col">訂房數量</th>
+							<th scope="col">訂位數量</th>
 							<th scope="col">訂單日期</th>
 							<th scope="col">入住日期</th>
 							<th scope="col">縣市鄉鎮</th>

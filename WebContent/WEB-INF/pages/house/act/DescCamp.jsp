@@ -27,11 +27,14 @@ height:25px;
 	.body{margin : 20px;
 	clear : left;
 	width:90%;
-	height :50px;
+	height :100%;
 	}
 	.counties{float:left;
 	padding : 0px 20px 40px 50px;
 	clear:left;}
+.img{width:100%;
+	transition: all 0.6s;}
+.img:hover{transform: scale(1.5);}
     </style>
 </head>
 
@@ -155,11 +158,9 @@ height:25px;
 						<input type="submit" value="評分"></form>
 					</div>
 						<div style="margin: 10px">
-							<form action="<c:url value='/mountaincCampActOrder/orderjump'></c:url>">
-							<input type="hidden" name="orderjump_campid" value="${j.campbasicid}">
-							<input type="hidden" name="orderjump_bookdate" value="${selectdate}">
-							<input type="submit" value="現在預定房間">
-							</form>					
+							
+							<a href="#selecttoorder"><input type="button" class="btn btn-outline-success" value="現在預定房間"></a>
+											
 						</div>	
 					</div>
 					<div><a href="${j.url}" target="_blank" >前往部落格</a></div>
@@ -170,11 +171,11 @@ height:25px;
 	                <div>
 	                <c:forEach var="i" items="${selectcamp}">
 	                
-	                <div class = "topname"><h3>${i.name}</h3></div>
+	                <div class = "topname"><h3>${i.name}</h3>地址 : ${i.counties.area.name}${i.counties.name}</div>
 					
-	                <div class = "counties">地址 : ${i.counties.area.name}${i.counties.name}</div>
+<%-- 	                <div class = "counties">地址 : ${i.counties.area.name}${i.counties.name}</div> --%>
 	               
-	                <div class="body" style="height: 200px">${i.desc}</div>
+	                <div class="body" style="height: px">${i.desc}</div>
 	                </c:forEach>
 	                </div>
                 
@@ -182,27 +183,69 @@ height:25px;
             </div>
 <!-- 下框 -->
              <div class="secDivContent">
-             <h1>1111</h1>
+             <div style="padding: 20px 0 0 0 "><h3>查詢住宿日期</h3>
              	<form action="<c:url value='/mountaincCampActOrder/selectamount'></c:url>">
-             	<div>入住時間</div>
+             	
              <c:forEach var="i" items="${selectcamp}">
  <!-- 營地編號 -->
 				<input type="hidden" name="selectcampid" value="${i.campbasicid}">
              </c:forEach>	
-				<div><input type="text" id="from" name="select_bookdate" size="45" readonly></div>             
+				<div>入住時間 : <input type="text" id="from" name="select_bookdate" size="45" readonly></div>             
              	<div><input type="submit" value="查詢"></div>
              	</form>
-             <div>
-             <div><h1>${selectdate}</h1></div> 
-<!-- 日期查詢 -->
-             <c:forEach var="i" items="${selectdateamount}">
-             <div>訂了幾間房${i.amount}</div>
-             <div>總數量${i.campbasicid.campamount}</div>
-             <div>剩餘${i.campbasicid.campamount-i.amount}</div>
-             </c:forEach>
+             </div>	
+<!-- 顯示查詢日期 -->  
+				<div id="selecttoorder" >
+			<form action="<c:url value='/mountaincCampActOrder/orderjump'></c:url>">
+				 <c:forEach var="i" items="${camp}">
+				 	<input type="hidden" name = "orderjump_campid" value="${i.campbasicid}">
+				 	<input type="hidden" name = "orderjump_bookdate" value="${selectdate}">
+		             <div><h2>${selectdate}</h2>
+		             <h4>共選了${bookneight}晚</h4></div>
+					 <table class="order-table table table-hover" id="tablePreview"
+							style="background-color: white;">
+							<thead class="order-table-th">
+							<tr>
+									<!-- thead更改從這邊開始 -->
+									<th scope="col">營地類型</th>
+		            				<th scope="col">價格</th>
+		            				<th scope="col">選擇數量</th>
+		            				<th scope="col"></th>
+		            		</tr>
+							</thead>
+		
+							<tbody class="order-table-tb">
+							<tr>
+					             <td class="img">
+					             <c:choose>
+						             <c:when test="${leftcampamount <= 3 && leftcampamount >= 1}">
+						             	<p style="color: red">剩餘${leftcampamount}區</p>
+						             </c:when>
+						             <c:when test="${leftcampamount <= 0}">
+						           	 	 <p style="color: red">無剩餘區域</p>
+						             </c:when>
+						             <c:when test="${leftcampamount > 3}">
+						          		   <p style="color: blue">剩餘5區</p>
+						             </c:when>
+					             </c:choose>
+					             <img style="height: 60%" src="/MountainExploer.com/housecamp/images/tent1.jpg">
+					             </td>		                       
+					             
+					             <c:choose>
+						           	 <c:when test="${leftcampamount <= 0}"> </c:when>
+						             <c:when test="${leftcampamount > 0}">
+							             <td>TWD. ${i.campprice}</td> 
+							             <td><select id="campleftamount" name="orderjump_amount"></select></td>
+							             <td><select name="orderjump_totalprice" id="camporderprice" ></select><p><input class="btn btn-outline-success" type="submit" value="立即下訂"></p></td>
+						             </c:when>
+					             </c:choose>
+			             	</tr>
+			             </tbody>
+					 </table>
+				 </c:forEach>
+				</form> 
+				 </div>
              </div>
-             </div>
-
 
 
 
@@ -233,6 +276,9 @@ height:25px;
 $("#from").daterangepicker({
 //  "singleDatePicker": true,
  "autoApply": true,
+ "maxSpan": {
+     "days": 7
+ },
 	"locale": {
  "format": "YYYY年MM月DD日",
  "separator": " ~ ",
@@ -269,7 +315,49 @@ $("#from").daterangepicker({
 	"minDate": moment(),
 	"maxDate": moment().subtract(-6, 'month')
 	});
-</script>    
+
+</script>  
+
+<script type="text/javascript">
+$(document).ready(function(){
+	var campleftamount = "${leftcampamount}";
+	if (campleftamount >= 5){
+		campleftamount = "5"
+		};
+	var campid = "${campid}";
+	var campprice = "${campprice}"
+	
+	var ordercamp = "/MountainExploer.com/mountaincCampActOrder";
+
+	
+	$.ajax({
+		url:ordercamp + "/ordercampamount?selectcampid=" + campid,
+		method: "GET",
+		dateType:"json",
+		success : function(order){
+			for(var i = -1 ; i < campleftamount ; i++){
+				$("#campleftamount").append(
+					"<option value='"+(i+1)+"' >"+ (i+1)+"&nbsp&nbsp&nbsp"+"(" +"TWD:"+ (i+1)*campprice+")" +"</option>")
+					
+			
+				}
+			let str = $("#campleftamount").find("option").eq(0).val();
+			
+			}
+	
+})	
+$("#campleftamount").change(function(){
+	var str = $("#campleftamount").val();
+	$("#camporderprice").empty();
+	$("#camporderprice").append("<option value='"+(campprice*str)+"'>"+"金額總和 : "+campprice*str+"</option>");
+	
+	
+})
+
+		
+})
+</script>
+
     
 </body>
 

@@ -45,6 +45,7 @@
 	padding: 0px 20px 40px 50px;
 	clear: left;
 }
+div{margin: 20px;}
 </style>
 </head>
 
@@ -99,8 +100,7 @@
 
 				<!--    新增訂單   	inserorder -->
 
-				<form
-					action="<c:url value='/mountaincCampActOrder/insercamporder'></c:url>"
+				<form	action="<c:url value='/mountaincCampActOrder/insercamporder'></c:url>"
 					method='get'>
 					<div class="forImage">
 
@@ -124,27 +124,38 @@
 
 					</div>
 					<!-- 右邊 -->
-					<div class="forFrom "></div>
+<!-- 					<div class="forFrom "></div> -->
 					<!-- 左邊 -->
-					<div class="forText">
+					<div class="secDivContent ">
 						<!-- 訂單填寫 -->
-						<div>
+						<div align="left"><h4>
 							<c:forEach var="j" items="${list}">
-								<div>
-									房間數<input type="text" name="camporder_amount" value="1">
-								</div>
-								<div>
-									姓名 : <input type="text" name="camporder_peoplename" value="我是誰">
-								</div>
-
 								<!-- 訂房日期 -->
+								<div><h5>${j.counties.area.name}&nbsp${j.counties.name}&nbsp${j.name}</h5></div>
 								<div>
-									入住時間<input type="hidden" name="camporder_bookdate" value="${selectdate}">${selectdate} 
+									入住時間 : <input type="hidden" name="camporder_bookdate" value="${selectdate}"><a style="color: blue">${selectdate}</a>&nbsp&nbsp 共 ${bookneight} 晚
 										<input type="hidden" id="shoppingdate" name="camporder_shoppingdate" size="45" readonly>
 								</div>
+								
+								<div>
+									預定營區數 :&nbsp <input type="hidden" name="camporder_amount" value="${amount}">${amount}區
+								</div><div>
+									價錢 :&nbsp <input type="hidden" name="" value="${totalprice}">TWD&nbsp:&nbsp${totalprice}
+								</div>
+								
+								<div>
+									姓名 : <input type="text" name="camporder_peoplename" value="我是誰">
+								<div></div>
+									電話 : <input type="text" name="" value="0912345678">
+								</div>
+								<div>
+									特別要求 :
+								</div> 
+								<div><textarea rows="4" cols="50" name=""></textarea></div>
+
 								<input type="submit" value="送出">
 							</c:forEach>
-						</div>
+						</h4></div>
 
 					</div>
 				</form>

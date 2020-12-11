@@ -64,11 +64,11 @@ transition: all 0.6s;}
 					 
 						<div class="second_nav">
 <!-- 		更改內容從這邊開始 -->
-							<div class="li1"><a href="#">第二導覽列1</a></div>
+<!-- 							<div class="li1"><a href="#">第二導覽列1</a></div> -->
 
-							<div class="li1"><a href="#">第二導覽列2</a></div>
+<!-- 							<div class="li1"><a href="#">第二導覽列2</a></div> -->
 
-							<div class="li1"><a href="">第二導覽列3</a></div>
+<!-- 							<div class="li1"><a href="">第二導覽列3</a></div> -->
 							
 							<div class="li1"><a href="/MountainExploer.com/mountaincCampActOrder/selectcamporder?Member=Member">訂單查詢</a></div>
 
@@ -366,9 +366,7 @@ transition: all 0.6s;}
 		})
 		//縣市選單變更	
 
-		$("#selectArea").on(
-				"change",
-				function() {
+		$("#selectArea").on("change",function() {
 					var areaselect = $("#selectArea").val();
 					$("#selectCounties").empty();
 					$.ajax({
