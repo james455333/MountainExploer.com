@@ -1,13 +1,13 @@
 package member.back.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -137,6 +137,30 @@ public class MemberBackStageController {
 			return null;
 		}
 	}
+	
+	
+	//會員名單列表
+	@RequestMapping(path = "/memberListIndexEntry")
+	public String processMemberListIndexEntry() {
+		return "member/back/memberInfoListBack";
+	}
+	
+	//會員名單總查詢
+	@ResponseBody
+	@GetMapping(path = "/memberListIndexAction")
+	public List<MemberBasic> processListIndexAction(){
+		List<MemberBasic> mbList = mbService.selectAll();
+		return mbList;
+	}
+	
+	//會員名單登山者查詢
+	@ResponseBody
+	@GetMapping(path = "/memberListGmSelect")
+	public List<MemberBasic> processListGmSelectAction(int statusId){
+		List<MemberBasic> mbList = mbService.selectST(statusId);
+		return mbList;
+	}
+	
 	
 
 }
