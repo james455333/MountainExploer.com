@@ -82,6 +82,17 @@ public class MemberBasicBackDAO {
 		
 	}
 	
+	public List<MemberBasic> selectST(int statusId){
+		Session session = sessionFactory.getCurrentSession();
+		Query<MemberBasic> query = session.createQuery("From MemberBasic where memberStatus.seqno = ?0", MemberBasic.class);
+		query.setParameter(0, statusId);
+		
+		List<MemberBasic> mb = query.list();
+		for(MemberBasic mblist : mb) {
+			
+		}
+		return mb;
+	}
 	
 	public MemberBasic select(String account, String password) {
 		Session session = sessionFactory.getCurrentSession();
@@ -95,6 +106,8 @@ public class MemberBasicBackDAO {
 		}
 		return null;
 	}
+	
+	
 	
 	public MemberBasic select(int seqno) {
 		Session session = sessionFactory.getCurrentSession();

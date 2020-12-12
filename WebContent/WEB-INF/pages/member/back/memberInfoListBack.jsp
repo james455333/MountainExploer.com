@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="zh-tw">
 
@@ -11,7 +12,7 @@ pageEncoding="UTF-8"%>
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title> Dashboard</title>
+    <title>會員資料列表</title>
 
     <!-- Custom fonts for this template-->
     <link href="/MountainExploer.com/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -59,40 +60,77 @@ pageEncoding="UTF-8"%>
                                 class="fas fa-download fa-sm text-white-50"></i>匯出資料表</a>
                     </div>
 
-                    <div class="container-fluid">
-						<div class="row">
-							<div class="col-md-12">
-								<form role="form" style="position:fixed;width:400px;left:40%;top:30%">
-									<div class="form-group">
-										 
-										<label for="account">
-											帳號：
-										</label>
-										<input type="text" class="form-control account" id="account" name="account" />
-									</div>
-									<div class="form-group">
-										 
-										<label for="exampleInputPassword1">
-											密碼：
-										</label>
-										<input type="password" class="form-control password" id="password" name="password"/>
-									</div>
-									
-									<div class="checkbox" style="text-align:center">
-										 
-										<label>
-											<input type="checkbox" id="rememberMe" name="rememberMe" class="rememberMe" value="true"/>記住我
-										</label>
+                <div class="container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-2">
+									<div>
+										<button type="button" class="btn active btn-md btn-success reSelect">
+											重置會員列表
+										</button>									
 									</div> 
-									<div style="text-align:center">									
-										<button type="button" class="btn btn-primary submit" style="width:100px">
-											登入
+								</div>
+								<div class="col-md-6">
+									<form class="form-inline" >
+										<div>
+											<span>會員查詢：</span>
+											<input class="form-control mr-sm-2" type="text" placeholder="請輸入會員帳號"/> 
+											<button class="btn btn-primary my-2 my-sm-0" type="submit">
+												查詢
+											</button>										
+										</div>
+									</form>									
+								</div>
+								<div class="col-md-4">
+									<div>
+										<button type="button" class="btn disabled btn-outline-primary seGM" value="100">
+											一般登山者
+										</button>
+										<button type="button" class="btn disabled btn-outline-success seGU">
+											登山嚮導
+										</button>
+										<button type="button" class="btn disabled btn-outline-danger banGroup">
+											停權會員
+										</button>
+										<button type="button" class="btn disabled btn-outline-secondary admin">
+											管理員
 										</button>
 									</div>
-								</form>
+								</div>
 							</div>
+							<br>
+<!-- 							<br> -->
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th>
+											停權／復權
+										</th>
+										<th>
+											會員編號
+										</th>
+										<th>
+											會員帳號
+										</th>
+										<th>
+											會員Email
+										</th>
+										<th>
+											會員身分組
+										</th>
+										<th>
+											閱覽／修改資料
+										</th>
+									</tr>
+								</thead>
+								<tbody id="allMember">
+
+								</tbody>
+							</table>
 						</div>
 					</div>
+				</div>   
                     
 
                    
@@ -164,7 +202,8 @@ pageEncoding="UTF-8"%>
 
 
     <script src="/MountainExploer.com/js/includejsp.js"></script>
-    <script src="/MountainExploer.com/member/loginBack.js"></script>
+    
+    <script src="/MountainExploer.com/member/memberInfoListBack.js"></script>
 </body>
 
 </html>

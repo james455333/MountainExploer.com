@@ -45,7 +45,6 @@ $(function(){
 	
 	$("#btn-click-auto").on("click",autoNewAct)
 	$("#btn-menu-auto").on("click",function(){
-		console.log(123)
 		$("#btn-click-auto").toggle()
 	})
 })
