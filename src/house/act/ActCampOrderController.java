@@ -55,10 +55,11 @@ public class ActCampOrderController {
 	public String inserCampOrder(CampOrderBean camporder, Model m,
 			@RequestParam(name = "camporder_amount") Integer amount,
 			@RequestParam(name = "camporder_shoppingdate") String shoppingdate,
-			@RequestParam(name = "camporder_bookdate") String bookdate, Integer price,
+			@RequestParam(name = "camporder_bookdate") String bookdate,
 			@RequestParam(name = "camporder_campid") Integer campid,
 			@RequestParam(name = "camporder_peoplename")String peoplename,
-			@RequestParam(name = "camporder_bookdate")String daterange) {
+			@RequestParam(name = "camporder_bookdate")String daterange,
+			@RequestParam(name = "camporder_price") Integer price) {
 
 		if (m.getAttribute("Member") == null) {
 			return "redirect:/member/memberLoginEntry";

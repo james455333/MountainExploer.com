@@ -140,7 +140,7 @@ div{margin: 20px;}
 								<div>
 									預定營區數 :&nbsp <input type="hidden" name="camporder_amount" value="${amount}">${amount}區
 								</div><div>
-									價錢 :&nbsp <input type="hidden" name="" value="${totalprice}">TWD&nbsp:&nbsp${totalprice}
+									價錢 :&nbsp <input type="hidden" name="camporder_price" value="${totalprice}">TWD&nbsp:&nbsp${totalprice}
 								</div>
 								
 								<div>
