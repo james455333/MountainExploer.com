@@ -162,5 +162,12 @@ public class MemberBackStageController {
 	}
 	
 	
+	//停權
+//	@ResponseBody
+//	@GetMapping(path = "/memberDisable")
+//	public boolean processMemberDisable() {
+//		
+//	}
+	
 
 }
