@@ -86,7 +86,7 @@ $(function(){
     })
 })
 
-
+//重製查詢
 $(".reSelect").on("click", function(){
     $.ajax({
         method:"GET",
@@ -176,7 +176,10 @@ $(".reSelect").on("click", function(){
 })
 
 
+//一般登山者
 $(".seGM").on("click", function(){
+	$("#allMember").html("");
+	
     let statusId = $(".seGM").val();
     let $allMember = $("#allMember");
     $.ajax({
@@ -201,4 +204,127 @@ $(".seGM").on("click", function(){
             })
         }
     }) 
+})
+
+
+//登山嚮導
+$(".seGU").on("click", function(){
+	$("#allMember").html("");
+	
+    let statusId = $(".seGU").val();
+    let $allMember = $("#allMember");
+    $.ajax({
+        method:"GET",
+        url:"/MountainExploer.com/back/member/memberListGmSelect",
+        data:{statusId:statusId},
+        dataType:"json",
+        success:function(mbList){
+            $.each(mbList, function(index, item){
+                if(mbList != null){
+                    let Gg = "登山嚮導";
+                    $allMember.append(
+                        "<tr><td><button type='button' class='btn btn-danger ban'>停權</button></td>" + 
+                        "<td>" + item.seqno + "</td>" + 
+                        "<td>" + item.account + "</td>" +
+                        "<td>" + item.email + "</td>" + 
+                        "<td>" + Gg + "</td>" + 
+                        "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                    )
+                }
+
+            })
+        }
+    }) 
+})
+
+
+//停權會員
+$(".banGroup").on("click", function(){
+	$("#allMember").html("");
+	
+    let statusSM = 140;
+    let statusSG = 150;
+    let $allMember = $("#allMember");
+    $.ajax({
+        method:"GET",
+        url:"/MountainExploer.com/back/member/memberListGmSelect",
+        data:{statusId:statusSM},
+        dataType:"json",
+        success:function(mbList){
+            $.each(mbList, function(index, item){
+                if(mbList != null){
+                    let Sm = "停權登山者";
+                    $allMember.append(
+                        "<tr><td><button type='button' class='btn btn-warning recover'>復權</button></td>" + 
+                        "<td>" + item.seqno + "</td>" + 
+                        "<td>" + item.account + "</td>" +
+                        "<td>" + item.email + "</td>" + 
+                        "<td>" + Sm + "</td>" + 
+                        "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                    )
+                }
+
+            })
+        }
+    })
+    
+    $.ajax({
+        method:"GET",
+        url:"/MountainExploer.com/back/member/memberListGmSelect",
+        data:{statusId:statusSG},
+        dataType:"json",
+        success:function(mbList){
+            $.each(mbList, function(index, item){
+                if(mbList != null){
+                    let Sg = "停權嚮導";
+                    $allMember.append(
+                        "<tr><td><button type='button' class='btn btn-warning recover'>復權</button></td>" + 
+                        "<td>" + item.seqno + "</td>" + 
+                        "<td>" + item.account + "</td>" +
+                        "<td>" + item.email + "</td>" + 
+                        "<td>" + Sg + "</td>" + 
+                        "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                    )
+                }
+
+            })
+        }
+    })
+})
+
+
+//管理者
+$(".admin").on("click", function(){
+	$("#allMember").html("");
+	
+    let statusId = $(".admin").val();
+    let $allMember = $("#allMember");
+    $.ajax({
+        method:"GET",
+        url:"/MountainExploer.com/back/member/memberListGmSelect",
+        data:{statusId:statusId},
+        dataType:"json",
+        success:function(mbList){
+            $.each(mbList, function(index, item){
+                if(mbList != null){
+                    let admin = "管理者";
+                    $allMember.append(
+                        "<tr><td><button type='button' class='btn btn-danger disabled'>停權</button></td>" + 
+                        "<td>" + item.seqno + "</td>" + 
+                        "<td>" + item.account + "</td>" +
+                        "<td>" + item.email + "</td>" + 
+                        "<td>" + admin + "</td>" + 
+                        "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                    )
+                }
+
+            })
+        }
+    }) 
+})
+
+
+//停權
+$(".disabled").on("click", function(){
+    
 })
