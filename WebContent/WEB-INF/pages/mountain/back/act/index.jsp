@@ -72,6 +72,8 @@
 	<!-- dateRangePicker -->
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+	<!-- CKeditor 4 -->
+	<script src="/MountainExploer.com/mountain/ckeditor/ckeditor.js"></script>
 	<!-- for this page -->
 	<script src="/MountainExploer.com/mountain/back/js/act.js"></script>
 	<script src="/MountainExploer.com/mountain/back/js/actFunction.js"></script>
@@ -382,13 +384,14 @@
 	                                    <table id="routeTable" class="table-hover table-striped">
 	                                    	<thead>
 	                                    		<tr>
-	                                    			<td style='width: 15%'>狀態項</td>
+	                                    			<td style='width: 10%'>狀態項</td>
 	                                    			<td style='width: 10%'>發布日期</td>
-	                                    			<td style='width: 10%'>編號</td>
+	                                    			<td style='width: 7.5%'>編號</td>
 													<td style='width: 10%'>名稱</td>
 	                                    			<td style='width: 15%'>開始-結束日期</td>
-	                                    			<td style='width: 10%'>報名期限</td>
-													<td style='width: 30%'>控制項</td>
+	                                    			<td style='width: 12.5%'>報名期限</td>
+	                                    			<td style='width: 10%'>報名狀態</td>
+													<td style='width: 25%'>控制項</td>
 	                                    		</tr>
 	                                    	</thead>
 											

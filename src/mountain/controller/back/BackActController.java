@@ -23,6 +23,7 @@ import org.springframework.web.server.ResponseStatusException;
 import main.generic.model.GenericTypeObject;
 import main.generic.service.GenericService;
 import main.generic.service.InterfaceService;
+import mountain.MountainGlobal;
 import mountain.function.TagSelector;
 import mountain.model.activity.ActivityBasic;
 import mountain.model.activity.ActivityInfo;
@@ -185,6 +186,11 @@ public class BackActController {
 			if(startDate != null) originActInfo.setStartDate(startDate);
 			Date endDate = activityInfo.getEndDate();
 			if(endDate != null) originActInfo.setEndDate(endDate);
+			if(startDate != null && endDate!= null ) {
+				long day = (long) Math.ceil( (endDate.getTime()*1.0 - startDate.getTime()) / MountainGlobal.ONEDAY ) +1 ;
+				String totalDay = day!= 1 ? day + "天" + (day-1) + "夜" : "單日返還";
+				originActInfo.setTotalDay(totalDay);
+			}
 			Date regEndDate = activityInfo.getRegEndDate();
 			if (regEndDate != null) originActInfo.setRegEndDate(regEndDate);
 			

@@ -137,9 +137,7 @@ function resetChart(canvasID){
 	window[canvasID].destroy()
 	let syncSign = $("#"+canvasID).parents(".card").find(".chart-reset").find("i")
 	syncSign.addClass("fa-spin")
-	canvasID = "set" 
-		+ canvasID.charAt(0).toUpperCase() 
-		+ canvasID.slice(1)
+	
 	
 	$.ajax({
 		url : baseURL + "/all",
@@ -153,7 +151,19 @@ function resetChart(canvasID){
 				dataType : "json",
 				success : function(data){
 					allData_reg = data
-					executeFunctionByName(canvasID,window)
+					switch(canvasID){
+						case "actModeChart" : 
+							setActModeChart();
+							break;
+						case "tagModeChart" :
+							setTagModeChart();
+							break;
+						case "actTrendChart" :
+							setActMonthSlider()
+							setActYearSelect()
+							setActTrendChart()
+							break;													
+					}
 					syncSign.removeClass("fa-spin")
 				}
 			})
@@ -212,7 +222,6 @@ var setTopCard = function setTopCard(){
 			}
 			active++
 			continue;
-			
 		}
 		expired++;
 	}
@@ -278,6 +287,7 @@ function setResultToDT(data){
                     		<i class="fas fa-image"></i> 修改路線圖
 						</button>`
 	let actList = data.actList
+	console.log(actList)
 	for(let i in actList){
 		let hideToogle = `<input type="checkbox" class='btn-ctrl btn-toggle-hide' `
 				+ `checked data-toggle="toggle"`
@@ -303,7 +313,7 @@ function setResultToDT(data){
 //			+ '" class="routeImg" onerror="imgError($(this))"></a>'
 		
 		let riGroup = {
-			"狀態項" : "<div>" + hideToogle + "</div>" + "<div class='mt-3'>" + deleteToogle + "</div>",
+			"狀態項" : "<div>" + hideToogle + "</div>" + "<div class='mt-2'>" + deleteToogle + "</div>",
 			"活動發布日期" : new Date(actInfo.postDate).toLocaleDateString(),
 			"活動編號" : actBasic.seqno,
 			"活動名稱" : actInfo.title + '<button class="btn update-single" ><i href="#" class="fas fa-edit"  style="color: #ff922b;" ></i></button >',
@@ -312,6 +322,7 @@ function setResultToDT(data){
 						+'<button class="btn update-single" ><i href="#" class="fas fa-edit"  style="color: #ff922b;" ></i></button >',
 			"活動報名期限" : new Date(actInfo.regEndDate).toLocaleDateString()
 						+ '<button class="btn update-single" ><i href="#" class="fas fa-edit"  style="color: #ff922b;" ></i></button >',
+			"報名狀態" : actList[i].nowReg + " / " + actInfo.regTop,
 			"控制項" :"<div class='d-flex justify-content-between align-items-center' >" + updateBtn + deleteBtn + infoBtn + "</div>",		
 			}
 //			"<div class='d-flex justify-content-between align-items-center' >" + updateBtn + deleteBtn + infoBtn + upImgBtn +"</div>"
@@ -335,6 +346,7 @@ function setDataTable(result){
             { "data": "活動名稱" },
             { "data": "活動開始-結束日期" },
             { "data": "活動報名期限" },
+            { "data": "報名狀態" },
             { "data": "控制項" },
         ],
 		"drawCallback": function( settings ) {
@@ -541,6 +553,7 @@ function reDrawRow(btn,newData){
 	let originHtml = btn.parents("td").html()
 	let newHtml = newData + originHtml.substring(originHtml.indexOf("<button"))
 	btn.parents("td").html(newHtml)
+	setTopCard()
 }
 function changeRtAndTb(){
 	var npID = $("#npSelect").val();
@@ -600,77 +613,144 @@ function setRtToggle(thisRtID, thisToggle){
 	})
 }
 function updateBox(btn){
-	let rtID = btn.parents("tr").find("td").eq(2).text()
-	let npName = btn.parents("tr").find("td").eq(4).text()
+	let actID = btn.parents("tr").find("td").eq(2).text()
+	let actTitle = btn.parents("tr").find("td").eq(3).text()
 	let nps;
 	$.ajax({
-		url : oldBackStageURL + "/navNP",
+		url : baseRouteURL + "/allRoute",
 		method : "GET",
 		dataType: 'json',
 		success:function(result){
 			nps = result
 		}
-	})
-	$.ajax({
-		url : baseURL + "/rt-" + rtID,
-		type : "GET",
-		dataType: 'json',
-		success:function(data){
-			let final = '<label class="swal2-label">國家公園'
-						+ '<select id="update-np" class="swal2-select">'
-			for(let i in nps){
-				if(npName == nps[i].npName ) {
-					final +='<option selected value="' + nps[i].seqno +'">' + nps[i].npName + "</option>"
-				}else{
-					final +='<option value="' + nps[i].seqno +'">' + nps[i].npName + "</option>" 
+	}).then( () => {
+		
+		$.ajax({
+			url : baseURL + "/act-" + actID,
+			type : "GET",
+			dataType: 'json',
+			success:function(data){
+				let thisRtID = data.rtBasic.id
+				console.log(data)
+				console.log(nps)
+				let npArray = []
+				let routeArray = []
+				let final = "<div class='row  justify-content-between'>"
+							+ "<div class='col-md-6'>"
+							+ '<label class="swal2-label">國家公園'
+							+ '<select id="update-np" class="swal2-select">'
+				for(let i in nps){
+					if(thisRtID == nps[i].routeInfo.id ) {
+						routeArray.push( nps[i].routeInfo.id + ":" + nps[i].routeInfo.name+ ":" + "selected" )
+						for(let j in nps){
+							if(nps[i].np == nps[j].np && nps[i].routeInfo.id != nps[j].routeInfo.id)
+							routeArray.push( nps[j].routeInfo.id + ":" + nps[j].routeInfo.name )
+						}
+						if(!npArray.includes(nps[i].np)){
+							npArray.push(nps[i].np)
+							final +='<option selected value="' + nps[i].npID +'">' + nps[i].np + "</option>"
+						}
+					}else {
+						if(!npArray.includes(nps[i].np)){
+							npArray.push(nps[i].np)
+							final +='<option value="' + nps[i].npID +'">' + nps[i].np + "</option>" 
+						}
+					}
 				}
-			}
-			final += '</select>'
-					+ '</label>'
-					+ '<hr>' 
-					+ '<label class="swal2-label">路線名稱' 
-						+'<input required id="update-name" type="text" class="swal2-input" value="'+ data[0].routeInfo.name +'" >'
-					+ '</labe>'
-					+ '<hr>' 
-					+ '<label class="swal2-label">路線介紹' 
-						+'<textarea id="update-desp" style="resize : none;" cols="150" class="swal2-textarea">'+ data[0].routeInfo.desp +'</textarea >'
-					+ '</labe>'
-					+ '<hr>' 
-					+ '<label class="swal2-label">建議行程' 
-						+'<textarea id="update-adv" style="resize : none;" cols="150" class="swal2-textarea">'+ data[0].routeInfo.adv +'</textarea >'
-					+ '</labe>'
-					+ '<hr>' 
-					+ '<label class="swal2-label">交通資訊' 
-						+'<textarea id="update-traf" style="resize : none;" cols="150" class="swal2-textarea">'+ data[0].routeInfo.traf +'</textarea >'
-					+ '</labe>'
-					+ '<hr>' ;
-				Swal.fire({
-					title : "資料修改 --- 路線編號 : " + data[0].routeInfo.id ,
-					html : final,
-					width : "1000px",
-					focusConfirm: false,
-					preConfirm : function(){
-					    return new Promise(function (resolve) {
-						    resolve({
-								rtID : data[0].routeInfo.id,
-						    	npID : Number($('#update-np').val()),
-								name : $('#update-name').val(),
-								desp : $('#update-desp').val(),
-								adv : $('#update-adv').val(),
-								traf : $('#update-traf').val(),
-								
+				final += '</select>'
+						+ '</label>'
+						+ '</div>'
+						+ '<div class="col-md-6">'
+						+  '<label class="swal2-label">路線選擇'
+						+ '<select id="update-rt" class="swal2-select">'
+				for(let i in routeArray){
+					let routeOption = routeArray[i].split(":")
+					if(routeOption.length>2){
+						final += '<option selected value="' + routeOption[0] +'">' + routeOption[1] + "</option>"
+					}else{
+						final += '<option value="' + routeOption[0] +'">' + routeOption[1] + "</option>"
+					}
+				}
+				let regColumn = btn.parents("tr").find("td").eq(6).text()
+				let regTop = regColumn.substring(regColumn.indexOf("/")+1)
+				final += '</select>'
+						+ '</label>'
+						+ '</div>'
+						+ '</div>'
+						+ '<hr>' 
+						+ '<div class="row justify-content-between">'
+							+ "<div class='col-md-4'>"
+								+ '<label class="swal2-label">名稱' 
+									+'<input required id="update-name" type="text" class="swal2-input" value="'+ data.title +'" >'
+								+ '</labe>'
+							+ "</div>"
+							+ "<div class='col-md-4'>"
+								+ '<label class="swal2-label">報名價格' 
+									+'<input required id="update-price" pattern="^[0-9]+$" type="text" class="swal2-input" value="'+ data.price +'" >'
+								+ '</labe>'
+							+ "</div>"
+							+ "<div class='col-md-4'>"
+								+ '<label class="swal2-label">報名人數上限' 
+									+'<input required id="update-regTop" pattern="^[0-9]+$" type="text" class="swal2-input" value="'+ regTop +'" >'
+								+ '</labe>'
+							+ "</div>"
+						+ '</div>'
+						+ '<hr>' 
+						+ '<label class="swal2-label col-md-12 pb-3">訊息<br>' 
+						
+							+'<textarea id="updateNote" style="resize : none;" cols="150" class="swal2-textarea"></textarea >'
+						+ '</labe>'
+					console.log(data)
+					Swal.fire({
+						title : "資料修改 --- 活動編號 : " + data.id ,
+						html : final,
+						width : "1000px",
+						focusConfirm: false,
+						preConfirm : function(){
+						    return new Promise(function (resolve) {
+							    resolve({
+									id : data[0].routeInfo.id,
+							    	actBasic : Number($('#update-np').val()),
+									name : $('#update-name').val(),
+									desp : $('#update-desp').val(),
+									adv : $('#update-adv').val(),
+									traf : $('#update-traf').val(),
+									
+							    })
 						    })
-					    })
-					},
-					showCancelButton: true,
-					cancelButtonText: '取消修改',
-  					confirmButtonText: '確認修改',
-				}).then(function(result){
-					if(result.isConfirmed)
-					ajaxUpdate(result.value)
-				})
+						},
+						didOpen : function(){
+							$("#update-np").on("change",changeUpdateAllRt)
+							CKEDITOR.replace("updateNote")
+							CKEDITOR.instances.updateNote.setData(data.addInfo)
+						},
+						showCancelButton: true,
+						cancelButtonText: '取消修改',
+	  					confirmButtonText: '確認修改',
+					}).then(function(result){
+	//					if(result.isConfirmed)
+	//					ajaxUpdate(result.value)
+					})
+			}
+		})
+	})
+}
+function changeUpdateAllRt(){
+	let npValue = $(this).val()
+	$("#update-rt").find("option").remove()
+	$.ajax({
+		url : baseRouteURL + "/npSelect." + npValue,
+		type : "GET",
+		dataType : "json",
+		success : function(data){
+			for(let i in data){
+				let rtID = data[i].routeInfo.id
+				let rtName = data[i].routeInfo.name
+				$("#update-rt").append("<option value='" + rtID + "'>" + rtName + "</option>")
+			}
 		}
 	})
+	console.log( $(this).val() )
 }
 
 function ajaxUpdate(result){
@@ -1238,6 +1318,7 @@ var setActModeChart = function setActModeChart(cType){
 	if(actModeChart != null ) actModeChart.destroy()
 	let setType = 'pie';
 	if(typeof cType != 'undefined') setType = cType
+	
 	var chartSet =  {
 	  type: setType,
 	  data: {

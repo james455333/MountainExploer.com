@@ -32,6 +32,8 @@ public class RouteBasic extends GenericTypeObject implements Serializable{
 	private Integer id;
 	private NationalPark national_park;
 	private RouteInfo routeInfo;
+	private Integer npID;
+	
 	
 	@Override
 	@Id
@@ -61,6 +63,10 @@ public class RouteBasic extends GenericTypeObject implements Serializable{
 	}
 	public void setRouteInfo(RouteInfo routeInfo) {
 		this.routeInfo = routeInfo;
+	}
+	@Transient
+	public Integer getNpID() {
+		return national_park.getId();
 	}
 			
 }

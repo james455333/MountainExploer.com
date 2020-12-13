@@ -65,7 +65,9 @@ public class BackRouteCRUDController {
 				Map<String, Object> map = new HashMap<String, Object>();
 				map.put("routeInfo", routeInfo2);
 				String name = routeInfo2.getRoute_basic().getNational_park().getName(); 
+				Integer npID = routeInfo2.getRoute_basic().getNational_park().getId();
 				map.put("np", name);
+				map.put("npID", npID);
 				result.add(map);
 			}
 		} catch (Exception e) {

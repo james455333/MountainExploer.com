@@ -1,4 +1,5 @@
 var baseURL = "/MountainExploer.com/back/mountain/act/crud"
+var baseRouteURL = "/MountainExploer.com/back/mountain/route/crud"
 var oldBackStageURL = "/MountainExploer.com/backstage/mountain/search";
 var allData,allData_reg, actMode, dataTable, actModeChart, tagModeChart,actTrendChart,monthSliders,actTrend_actData,actTrend_regData;
 var tagNames = ["新活動", "熱門活動", "歷史活動", "報名已滿", "報名截止", "尚可報名", "報名將截止","報名將滿"]
