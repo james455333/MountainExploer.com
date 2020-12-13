@@ -1,6 +1,7 @@
 package mountain.controller.back;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,9 +13,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -113,5 +115,90 @@ public class BackActController {
 		}
 		return resultList;
 	}
+	
+	@PutMapping("/toggle-{rtID}-{toggleTag}")
+	public void changeToggleTag(
+			ActivityInfo activityInfo,
+			@PathVariable("rtID") Integer rtID,
+			@PathVariable("toggleTag") String toggleTag) {
+		
+		InterfaceService<GenericTypeObject> service = this.service;
+		try {
+			service.save(activityInfo);
+			activityInfo = (ActivityInfo)service.select(rtID);
+			if (toggleTag.equals("hideTag")) {
+				System.out.println(activityInfo.getHideTag() != null);
+				Integer set =(activityInfo.getHideTag() != null) ? null : 1 ;
+				activityInfo.setHideTag(set);
+			}else if (toggleTag.equals("deleteTag")) {
+				if(activityInfo.getDeleteTag() != null) {
+					activityInfo.setDeleteTag(null);
+				}else {
+					activityInfo.setDeleteTag(1);
+				}
+			}else {
+				throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+	}
+	@GetMapping("/act-{actID}")
+	public ActivityInfo getSingleActivityInfo(
+			ActivityInfo activityInfo,
+			@PathVariable("actID") Integer actID) {
+		
+		InterfaceService<GenericTypeObject> service = this.service;
+		try {
+			System.out.println("========== actID : " + actID );
+			service.save(activityInfo);
+			activityInfo = (ActivityInfo) service.select(actID);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		
+		
+		
+		return activityInfo;
+	}
+	@PutMapping("/act-{actID}")
+	public void updateSingleActivityInfo(
+			@RequestBody ActivityInfo activityInfo,
+			@PathVariable("actID") Integer actID) {
+		
+		InterfaceService<GenericTypeObject> service = this.service;
+		try {
+			service.save(new ActivityInfo());
+			ActivityInfo originActInfo = (ActivityInfo) service.select(actID);
+			String title = activityInfo.getTitle();
+			if(title != null) {
+				System.out.println("title : " + title);
+				originActInfo.setTitle(title);
+			}
+			Date startDate = activityInfo.getStartDate();
+			if(startDate != null) originActInfo.setStartDate(startDate);
+			Date endDate = activityInfo.getEndDate();
+			if(endDate != null) originActInfo.setEndDate(endDate);
+			Date regEndDate = activityInfo.getRegEndDate();
+			if (regEndDate != null) originActInfo.setRegEndDate(regEndDate);
+			
+			
+			service.update(originActInfo);
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+	}
+	
+	
 	
 }

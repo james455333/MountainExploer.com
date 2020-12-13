@@ -94,33 +94,74 @@ function activeJsonDownload(jsonObj,fileName){
 }
 
 function reRender(){
-	usePerRtChart = null;
-	setTopCard()
-	countRtChartData()
-	usePerNpChartData()
-	setSearchBar()
-	if(typeof dataTable != 'undefined') dataTable.destroy()
-	$('#routeTable').find("tbody").remove()
-	let btn = $(this)
-	btn.find("i").addClass("fa-spin")
-	setTimeout(function(){
-		setTable()
-		btn.find("i").removeClass("fa-spin")
-	}, 1000)
+	var callbacks = $.Callbacks( "once" );
+	$("#resetAll").addClass("fa-spin")
+	if(typeof dataTable != 'undefined') {
+		dataTable.destroy()
+		$('#routeTable').find("tbody").remove()
+	}
+	$.ajax({
+		url : baseURL + "/all",
+		type : "GET",
+		dataType : "json",
+		success : function(data){
+			allData = data
+			$.ajax({
+				url : baseURL + "/reg/all",
+				type : "GET",
+				dataType : "json",
+				success : function(data){
+					allData_reg = data
+					setTopCard()
+					setActModeChart()
+					setTagModeChart()
+					setActMonthSlider()
+					setActYearSelect()
+					setActTrendChart()
+					setTimeout(function(){
+						callbacks.add(setTable)
+						callbacks.fire()
+						$("#resetAll").removeClass("fa-spin")
+					}, 500)
+				}
+			})
+		},
+		error : function(jqXHR){
+			Swal.fire("getAllData發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
+		}
+	})
+
 }
 
 function resetChart(canvasID){
+	window[canvasID].destroy()
+	let syncSign = $("#"+canvasID).parents(".card").find(".chart-reset").find("i")
+	syncSign.addClass("fa-spin")
 	canvasID = "set" 
 		+ canvasID.charAt(0).toUpperCase() 
 		+ canvasID.slice(1)
-	executeFunctionByName(canvasID,window)
-//	if(canvasID == 'tagModeChart'){
-//		setTagModeChart()
-//	}else if(canvasID == 'actModeChart'){
-//		setActModeChart()
-//	}else if(canvasID == 'actTrendChart'){
-//		setActTrendChart()
-//	}
+	
+	$.ajax({
+		url : baseURL + "/all",
+		type : "GET",
+		dataType : "json",
+		success : function(data){
+			allData = data
+			$.ajax({
+				url : baseURL + "/reg/all",
+				type : "GET",
+				dataType : "json",
+				success : function(data){
+					allData_reg = data
+					executeFunctionByName(canvasID,window)
+					syncSign.removeClass("fa-spin")
+				}
+			})
+		},
+		error : function(jqXHR){
+			Swal.fire("getAllData發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
+		}
+	})
 }
 function executeFunctionByName(functionName, context /*, args */) {
   var args = Array.prototype.slice.call(arguments, 2);
@@ -132,7 +173,7 @@ function executeFunctionByName(functionName, context /*, args */) {
   return context[func].apply(context, args);
 }
 
-function getAllData(){
+var getAllData = function getAllData(){
 	$.ajax({
 		url : baseURL + "/all",
 		type : "GET",
@@ -144,9 +185,21 @@ function getAllData(){
 			Swal.fire("getAllData發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
 		}
 	})
-	
 }
-function setTopCard(){
+var getAllData_Reg = function getAllData_Reg(){
+	$.ajax({
+		url : baseURL + "/reg/all",
+		type : "GET",
+		dataType : "json",
+		success : function(data){
+			allData_reg = data
+		},
+		error : function(jqXHR){
+			Swal.fire("getAllData發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
+		}
+	})
+}
+var setTopCard = function setTopCard(){
 	let active = 0;
 	let inactive = 0;
 	let expired = 0;
@@ -171,40 +224,40 @@ function setTopCard(){
 }
 
 
-function setSearchBar(){
-	$("#npChartSelect").find("option").remove()
-	$("#npSelect").find("option").remove()
-	$("#rtSelect").find("option").remove()
-	$.ajax({
-	url : oldBackStageURL + "/navNP",
-	method : "GET",
-	dataType: 'json',
-	success:function(result){
-		$("#npChartSelect").append("<option selected disabled>請選擇指定國家公園</option>")
-		$("#npSelect").append("<option selected disabled>請選擇指定國家公園</option>")
-		for(let i = 0 ; i < result.length ; i++){
-			$("#npChartSelect").append('<option value="' + result[i].seqno +'">' + result[i].npName + "</option>" )
-			$("#npSelect").append('<option value="' + result[i].seqno +'">' + result[i].npName + "</option>" )
-		}
-		
-		let firstNP = $("#npSelect").find("option").eq(0).val()
-		$.ajax({
-			url : oldBackStageURL + "/navRT?nationalPark=" + firstNP,
-			method : "GET",
-			dataType : "json",
-			success:function(data){
-				//console.log(data)
-				$("#rtSelect").append("<option selected disabled>請選擇特定路線</option>")
-				for(let i in data) $("#rtSelect").append("<option value='" + data[i].seqno + "'>" + data[i].name +"</option>")
-			}
-		})
-	}
-})
+var setSearchBar = function setSearchBar(){
+//	$("#npChartSelect").find("option").remove()
+//	$("#npSelect").find("option").remove()
+//	$("#rtSelect").find("option").remove()
+//	$.ajax({
+//	url : oldBackStageURL + "/navNP",
+//	method : "GET",
+//	dataType: 'json',
+//	success:function(result){
+//		$("#npChartSelect").append("<option selected disabled>請選擇指定國家公園</option>")
+//		$("#npSelect").append("<option selected disabled>請選擇指定國家公園</option>")
+//		for(let i = 0 ; i < result.length ; i++){
+//			$("#npChartSelect").append('<option value="' + result[i].seqno +'">' + result[i].npName + "</option>" )
+//			$("#npSelect").append('<option value="' + result[i].seqno +'">' + result[i].npName + "</option>" )
+//		}
+//		
+//		let firstNP = $("#npSelect").find("option").eq(0).val()
+//		$.ajax({
+//			url : oldBackStageURL + "/navRT?nationalPark=" + firstNP,
+//			method : "GET",
+//			dataType : "json",
+//			success:function(data){
+//				//console.log(data)
+//				$("#rtSelect").append("<option selected disabled>請選擇特定路線</option>")
+//				for(let i in data) $("#rtSelect").append("<option value='" + data[i].seqno + "'>" + data[i].name +"</option>")
+//			}
+//		})
+//	}
+//})
 	
 	
 }
 
-function setTable(){
+var setTable = function setTable(){
 	console.log(allData)
 	result = setResultToDT(allData)
 	setDataTable(result)
@@ -213,7 +266,7 @@ function setTable(){
 function setResultToDT(data){
 	let result = [];
 	let updateBtn = `<button data-toggle='tooltip'  title='修改本筆路線資料'  class="btn btn-warning btn-rt-update">
-                    		<i class="fas fa-exclamation-triangle"></i> 修改
+                    		<i class="fas fa-edit"></i> 修改
 						</button>`
 	let deleteBtn = `<button data-toggle='tooltip'  title='刪除本筆路線資料'  class="btn btn-danger btn-rt-delete">
                     		<i class="fas fa-trash"></i> 刪除
@@ -224,23 +277,23 @@ function setResultToDT(data){
 	let upImgBtn = `<button data-toggle='tooltip'  title='修改路線地圖'   class="btn btn-dark btn-rt-upImg">
                     		<i class="fas fa-image"></i> 修改路線圖
 						</button>`
-	let hideToogle = `<input type="checkbox" class='btn-ctrl mx-3' `
-			+ `checked data-toggle="toggle"`
-			+ ` data-on="<i class='fas fa-power-off'></i> 顯示" `
-			+ ` data-off="<i class='fas fa-ban'></i> 隱藏" data-onstyle="success" data-offstyle="danger">`
-	let deleteToogle = `<input type="checkbox" class='btn-ctrl  mx-3' `
-			+ `checked data-toggle="toggle"`
-			+ ` data-on="<i class='fas fa-power-off'></i> 正常" `
-			+ ` data-off="<i class='fas fa-ban'></i> 取消" data-onstyle="success" data-offstyle="danger">`
 	let actList = data.actList
 	for(let i in actList){
+		let hideToogle = `<input type="checkbox" class='btn-ctrl btn-toggle-hide' `
+				+ `checked data-toggle="toggle"`
+				+ ` data-on="<i class='fas fa-power-off'></i> 顯示" `
+				+ ` data-off="<i class='fas fa-ban'></i> 隱藏" data-onstyle="success" data-offstyle="danger">`
+		let deleteToogle = `<input type="checkbox" class='btn-ctrl btn-toggle-delete' `
+				+ `checked data-toggle="toggle"`
+				+ ` data-on="<i class='fas fa-power-off'></i> 正常" `
+				+ ` data-off="<i class='fas fa-ban'></i> 取消" data-onstyle="success" data-offstyle="danger">`
 		let actBasic = actList[i].actBasic
 		let actInfo = actBasic.actInfo
 		if(actInfo.hideTag != null){
-			hideToogle = `<input type="checkbox" class='btn-ctrl' data-toggle="toggle"  data-on="<i class='fas fa-power-off'></i> 顯示" data-off="<i class='fas fa-ban'></i> 隱藏" data-onstyle="success" data-offstyle="danger">`
+			hideToogle = `<input type="checkbox" class='btn-ctrl btn-toggle-hide' data-toggle="toggle"  data-on="<i class='fas fa-power-off'></i> 顯示" data-off="<i class='fas fa-ban'></i> 隱藏" data-onstyle="success" data-offstyle="danger">`
 		}
 		if(actInfo.deleteTag != null){
-			deleteToogle = `<input type="checkbox" class='btn-ctrl' data-toggle="toggle"  data-on="<i class='fas fa-power-off'></i> 正常" data-off="<i class='fas fa-ban'></i> 取消" data-onstyle="success" data-offstyle="danger">`
+			deleteToogle = `<input type="checkbox" class='btn-ctrl btn-toggle-delete' data-toggle="toggle"  data-on="<i class='fas fa-power-off'></i> 正常" data-off="<i class='fas fa-ban'></i> 取消" data-onstyle="success" data-offstyle="danger">`
 		}
 //		let rtImage = '<a data-fancybox="' + "gallery" + routeInfo.id + '" href="' 
 //			+ '/MountainExploer.com/back/mountain/route/crud/images?seqno=' + routeInfo.id + "&timestamp=" + new Date().getTime()
@@ -249,16 +302,17 @@ function setResultToDT(data){
 //			+ routeInfo.id + "&timestamp=" + new Date().getTime()
 //			+ '" class="routeImg" onerror="imgError($(this))"></a>'
 		
-		
 		let riGroup = {
-			"狀態項" : "<div class='d-flex justify-content-between align-items-center'>" + hideToogle + deleteToogle + "</div>",
-			"活動發布日期" : new Date(actInfo.postData).toLocaleDateString(),
+			"狀態項" : "<div>" + hideToogle + "</div>" + "<div class='mt-3'>" + deleteToogle + "</div>",
+			"活動發布日期" : new Date(actInfo.postDate).toLocaleDateString(),
 			"活動編號" : actBasic.seqno,
-			"活動名稱" : actInfo.title,
-			"活動開始-結束日期" : new Date(actInfo.startDate).toLocaleDateString() + "~" + new Date(actInfo.endDate).toLocaleDateString(),
-			"活動報名期限" : new Date(actInfo.regEndDate).toLocaleDateString(),
-			"活動報名人數/上限" : actList[i].nowReg + " / " + actInfo.regTop,
-			"控制項" : "",		
+			"活動名稱" : actInfo.title + '<button class="btn update-single" ><i href="#" class="fas fa-edit"  style="color: #ff922b;" ></i></button >',
+			"活動開始-結束日期" : new Date(actInfo.startDate).toLocaleDateString() + " - " 
+						+ new Date(actInfo.endDate).toLocaleDateString()
+						+'<button class="btn update-single" ><i href="#" class="fas fa-edit"  style="color: #ff922b;" ></i></button >',
+			"活動報名期限" : new Date(actInfo.regEndDate).toLocaleDateString()
+						+ '<button class="btn update-single" ><i href="#" class="fas fa-edit"  style="color: #ff922b;" ></i></button >',
+			"控制項" :"<div class='d-flex justify-content-between align-items-center' >" + updateBtn + deleteBtn + infoBtn + "</div>",		
 			}
 //			"<div class='d-flex justify-content-between align-items-center' >" + updateBtn + deleteBtn + infoBtn + upImgBtn +"</div>"
 		result.push(riGroup)
@@ -281,18 +335,212 @@ function setDataTable(result){
             { "data": "活動名稱" },
             { "data": "活動開始-結束日期" },
             { "data": "活動報名期限" },
-            { "data": "活動報名人數/上限" },
             { "data": "控制項" },
         ],
+		"drawCallback": function( settings ) {
+			$('.btn-ctrl').bootstrapToggle()
+			$('.btn-rt-delete').tooltip();
+			$('.btn-rt-update').tooltip();
+			$('.btn-rt-info').tooltip();
+			$('.btn-rt-upImg').tooltip();
+	    }
     } )
 	
+}
+function updateSingleRow(btn, updateDate){
+	let thisBtn = btn != null ? btn : $(this);
+	let thisData = updateDate != null? updateDate : thisBtn.parent().text()
+	let thisSeqno = thisBtn.parents("tr").find("td").eq(2).text()
+	let thisTdIndex = thisBtn.parents("tr").find("td").index( thisBtn.parent() )
+	let thisTrIndex = thisBtn.parents("tbody").find("tr").index( thisBtn.parents("tr") )
+	let thisHead = $("#routeTable").find("thead").find("td").eq(thisTdIndex).text()
+	let thisHtml = "<h3>" + thisHead + "</h3>" 
+				+ "<hr>最多輸入50中文字，不得為空白"
+	let readOnly = thisData.match(/[0-9]{4}\/[0-9]+\/[0-9]+/)
+	let thisType = getThisDataType(thisHead)
+	let swal = {
+		title : "修改活動編號 : " + thisSeqno,
+		html : thisHtml,
+		icon : "info",
+		input : "text",
+		inputValue :  thisData,
+		inputAttributes: {
+			required : true,
+			maxlength : 50,
+		},
+		inputPlaceholder: '最多輸入50中文字，不得為空白',
+		validationMessage : "請勿輸入空白",
+		customClass: {
+			confirmButton: 'btn btn-success',
+		    cancelButton: 'btn btn-danger',
+		},
+		buttonsStyling: false,
+		showCancelButton: true, 
+	  	confirmButtonColor: '#3085d6',
+		reverseButtons: true,
+		cancelButtonColor: '#d33',
+		confirmButtonText: '修改', 
+		cancelButtonText: '取消',
+		didOpen : function(){
+			!readOnly ? null : setDatePicker($(".swal2-input"),thisData)
+		},
+	}
+	readOnly ? swal.inputAttributes.readonly = true : null
 	
-	$('.btn-ctrl').bootstrapToggle();
-	$('.btn-rt-delete').tooltip();
-	$('.btn-rt-update').tooltip();
-	$('.btn-rt-info').tooltip();
-	$('.btn-rt-upImg').tooltip();
+	Swal.fire(swal).then((result) => {
+		if(result.isConfirmed){
+			let newData = result.value
+			Swal.fire({
+				title : "確認修改? ",
+				icon : "question",
+				html : "<i class='text-primary'>"
+					+  thisData + "</i>"
+					+ "為<hr>"
+					+ "<i class='text-danger'>"
+					+ result.value + "</i>",
+					showCancelButton: true, 
+					confirmButtonColor: '#3085d6',
+					reverseButtons: true,
+					cancelButtonColor: '#d33',
+					confirmButtonText: '確認修改', 
+					cancelButtonText: '返回',
+			}).then((result) => {
+				if(result.isConfirmed){
+					activeUpdateAjax(newData,thisSeqno,thisType)
+					reDrawRow(btn,newData)
+				}else {
+					updateSingleRow(thisBtn,newData)
+				}
+				
+			})
+		}
+	})
+}
+
+function getThisDataType(thisHead){
+	let result ;
+	switch(thisHead){
+		case "名稱" :
+			return result = "title";
+		case "開始-結束日期" :
+			return result = "startEndDate";
+		case "報名期限" :
+			return result = "regEndDate";
+	}
+}
+
+function setDatePicker(thisElm,date){
+	let dateArray = date.split("-")
+	let startDate = dateArray[0].trim()
+	let endDate = dateArray.length > 1 ? dateArray[1].trim() : null
+	console.log(startDate)
+	console.log(endDate)
+	let today = new Date()
+	thisElm.daterangepicker({
+		"singleDatePicker": dateArray.length > 1 ? false : true,
+		"showDropdowns": true,
+		"drops": "up",
+		"minYear": 1970,
+		"maxYear": 2099,
+		"maxSpan": {
+		    "days": dateArray.length > 1 ? 365 : 1
+		},
+		"locale": {
+		    "format": "YYYY/MM/DD",
+		    "separator": " - ",
+		    "applyLabel": "確認",
+		    "cancelLabel": "取消",
+		    "fromLabel": "自",
+		    "toLabel": "到",
+		    "customRangeLabel": "Custom",
+		    "weekLabel": "W",
+		    "daysOfWeek": [
+		        "日",
+		        "一",
+		        "二",
+		        "三",
+		        "四",
+		        "五",
+		        "六"
+		    ],
+		    "monthNames": [
+		        "一月",
+		        "二月",
+		        "三月",
+		        "四月",
+		        "五月",
+		        "六月",
+		        "七月",
+		        "八月",
+		        "九月",
+		        "十月",
+		        "十一月",
+		        "十二月"
+		    ],
+		    "firstDay": 1
+		},
+		"minDate" : today,
+		"startDate" : new Date(startDate),
+		"endDate" : dateArray.length > 1 ? new Date(endDate) : null,
+		}, function(start, end, label) {
+		});		    
+}
+
+
+function activeUpdateAjax(newData,actID,dataType){
+	console.log(dataType)
+	let name, startDate, endDate, regEndDate, sentData;
+	switch(dataType){
+		case "title" :
+			sentData = {
+				title : newData
+			}
+			break;
+		case "startEndDate" :
+			let dateArray = newData.split("-")
+			sentData = {
+				startDate : new Date(dateArray[0].trim()),
+				endDate : new Date(dateArray[1].trim()),
+			}
+			break;
+		case "regEndDate" :
+			sentData = {
+				regEndDate : new Date(newData)
+			}
+			break;
+	}
+	console.log(sentData)
+	$.ajax({
+		url : baseURL + "/act-" + actID,
+		type : "PUT",
+		data : JSON.stringify(sentData),
+		contentType: "application/json; charset=UTF-8",
+		success : function(){
+			Swal.fire({
+				title : "修改成功" ,
+				icon : "success",
+				customClass: {
+					confirmButton: 'btn btn-success',
+				},
+				buttonsStyling: false,
+			  	confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: '返回', 
+			})
+			
+			
+		},
+		error : function(jqXHR){
+			Swal.fire("修改" + dataType + "發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
+		}		
+	})
 	
+//	Swal.fire(newData)
+}
+function reDrawRow(btn,newData){
+	let originHtml = btn.parents("td").html()
+	let newHtml = newData + originHtml.substring(originHtml.indexOf("<button"))
+	btn.parents("td").html(newHtml)
 }
 function changeRtAndTb(){
 	var npID = $("#npSelect").val();
@@ -341,7 +589,7 @@ function changeTbByRt(){
 
 function setRtToggle(thisRtID, thisToggle){
 	$.ajax({
-		url : baseURL + "/update-toggle." + thisRtID + "-" + thisToggle,
+		url : baseURL + "/toggle-" + thisRtID + "-" + thisToggle,
 		type : "PUT",
 		success : function(){
 			setTopCard()
@@ -450,14 +698,14 @@ function deleteAlert(btn){
 	let rtID = btn.parents("tr").find("td").eq(2).text()
 	
 	Swal.fire({
+		title : '即將刪除 <i class="fas fa-arrow-right"></i> 路線編號 : ' + rtID,
+		icon : "warning",
+		html : "!! 警告 !!  <hr>本動作將刪除本路線，並且無法回復",
 		customClass: {
 			confirmButton: 'btn btn-success',
 		    cancelButton: 'btn btn-danger'
 		},
 		buttonsStyling: false,
-		title : '即將刪除 <i class="fas fa-arrow-right"></i> 路線編號 : ' + rtID,
-		icon : "warning",
-		html : "!! 警告 !!  <hr>本動作將刪除本路線，並且無法回復",
 		showCancelButton: true, 
 	  	confirmButtonColor: '#3085d6',
 		cancelButtonColor: '#d33',
@@ -491,8 +739,9 @@ function deleteAlert(btn){
 	})
 }
 
-function showMoreInfo(btn){
-	let rtID = btn.parents("tr").find("td").eq(2).text()
+function showMoreInfo(){
+	let btn = $(this)
+	let actID = btn.parents("tr").find("td").eq(2).text()
 	let nextTr = btn.parents("tr").next()
 	if(nextTr.attr("class") == "append-info") {
 		nextTr.toggle(500)
@@ -502,24 +751,25 @@ function showMoreInfo(btn){
 	}
 	$(".append-info").hide(500)
 	$.ajax({
-		url : baseURL + "/rt-" + rtID,
+		url : baseURL + "/act-" + actID,
 		type : "GET",
 		dataType: 'json',
 		success : function(data){
-			let routeInfo = data[0].routeInfo;
-			let appendInfo = "<tr class='append-info'>"
-								+ "<th colspan='3'>路線介紹</th>"
-								+ "<th colspan='2'>建議行程</th>"
-								+ "<th colspan='1'>交通資訊</th>"
-							+ "</tr>"
-							+ "<tr class='append-info'>"
-								+ "<td colspan='3'><div>" + routeInfo.desp + "</div></th>"
-								+ "<td colspan='2'><div>" + routeInfo.adv + "</div></th>"
-								+ "<td colspan='1'><div>" + routeInfo.traf + "</div></th>"
-							+ "</tr>"
-			
-			btn.parents("tr").after(appendInfo)
-			btn.parents("tr").nextAll().slice(0,2).show(500)
+			console.log(data)
+//			let routeInfo = data[0].routeInfo;
+//			let appendInfo = "<tr class='append-info'>"
+//								+ "<th colspan='3'>路線介紹</th>"
+//								+ "<th colspan='2'>建議行程</th>"
+//								+ "<th colspan='1'>交通資訊</th>"
+//							+ "</tr>"
+//							+ "<tr class='append-info'>"
+//								+ "<td colspan='3'><div>" + routeInfo.desp + "</div></th>"
+//								+ "<td colspan='2'><div>" + routeInfo.adv + "</div></th>"
+//								+ "<td colspan='1'><div>" + routeInfo.traf + "</div></th>"
+//							+ "</tr>"
+//			
+//			btn.parents("tr").after(appendInfo)
+//			btn.parents("tr").nextAll().slice(0,2).show(500)
 		}
 	})
 }
@@ -983,7 +1233,7 @@ function ajaxNewRt(form){
 	})
 }
 
-function setActModeChart(cType){
+var setActModeChart = function setActModeChart(cType){
 	var ctx = $("#actModeChart");
 	if(actModeChart != null ) actModeChart.destroy()
 	let setType = 'pie';
@@ -1018,26 +1268,10 @@ function setActModeChart(cType){
 //	$("#actModeChart")[0].toDataURL("image/jpg")
 }
 
-function usePerNpChartData(cType){
-	
-	$.ajax({
-		url : baseURL + "/usePerNp",
-		type : "GET",
-		dataType : "json",
-		success : function(data){
-			setUsePerNpChart(data,cType)
-		},
-		error : function(jqXHR){
-			Swal.fire("設定路線圓餅圖發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
-		}
-	})
-}
-function setTagModeChart(cType){
+var setTagModeChart = function setTagModeChart(cType){
 	
 	let actList = allData.actList
 	let tagData = setTagData(actList)
-	console.log(tagData)
-	
 	
 	var ctx = $("#tagModeChart");
 	if(tagModeChart != null ) tagModeChart.destroy()
@@ -1123,7 +1357,7 @@ function setTagData(actList){
 	return [newAct, hotAct, oldAct, regClz, regFull, regAvl, regAlmClz, regAlmFull];
 }
 
-function setActTrendChart(cType,month,year){
+var setActTrendChart = function setActTrendChart(cType,month,year){
 	var ctx = $("#actTrendChart");
 	let setType = 'line'; 
 	if(actTrendChart != null ) {
@@ -1290,7 +1524,7 @@ function setActTrendChart(cType,month,year){
 	actTrendChart = new Chart(ctx,chartSet);
 }
 
-function setActMonthSlider(){
+var setActMonthSlider = function setActMonthSlider(){
 	if(monthSliders!=null) monthSliders.destroy()
 	monthSliders = new Slider("#monthSlider",{
 		min : 0,
@@ -1308,7 +1542,7 @@ function setActMonthSlider(){
 		setActTrendChart(null,month,year)
 	})
 }
-function setActYearSelect(){
+var setActYearSelect = function setActYearSelect(){
 	let thisYear = new Date().getFullYear()
 	$("#actTrend-select").empty()
 	for(let i = 1970 ; i <= 2099 ; i++){

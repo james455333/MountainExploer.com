@@ -28,7 +28,8 @@
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 	<!-- dataTable -->
-	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/af-2.3.5/b-1.6.5/b-colvis-1.6.5/b-html5-1.6.5/b-print-1.6.5/fh-3.1.7/datatables.min.css"/>
+<!-- 	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"> -->
 	<!-- bootstrap-toggle -->
 	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 	<!-- Fancy Box 3 -->
@@ -37,6 +38,8 @@
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css">
 	<!-- bootstrap-slider -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/css/bootstrap-slider.css">
+	<!-- dateRangePicker -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 	<!-- for this page -->    
     <link href="/MountainExploer.com/mountain/back/css/act.css" rel="stylesheet">
 	
@@ -55,7 +58,8 @@
 	<!-- sweetalert2 -->
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   	<!-- dataTable -->
-	<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+  	<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.22/af-2.3.5/b-1.6.5/b-colvis-1.6.5/b-html5-1.6.5/b-print-1.6.5/fh-3.1.7/datatables.min.js"></script>
+<!-- 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> -->
 	<!-- bootstrap-toggle -->
 	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 	<!-- Fancy Box 3  -->
@@ -65,6 +69,9 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"></script>
 	<!-- Page level plugins -->
     <script src="/MountainExploer.com/vendor/chart.js/Chart.min.js"></script>
+	<!-- dateRangePicker -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 	<!-- for this page -->
 	<script src="/MountainExploer.com/mountain/back/js/act.js"></script>
 	<script src="/MountainExploer.com/mountain/back/js/actFunction.js"></script>
@@ -330,7 +337,7 @@
 		                            	<a href="#selectAll" class="ml-auto">
 			                                <button id="selectAll" class="btn btn-primary btn-icon-split">
 			                                    <span class="icon text-white-50">
-			                                        <i class="fas fa-redo"></i>
+			                                        <i id="resetAll" class="fas fa-redo"></i>
 			                                    </span>
 			                                    <span class="text">重置查詢</span>
 			                                </button>
@@ -372,16 +379,15 @@
 	    						</div>
 	                            <div class="card-body">
 	                                <div class="table-responsive">
-	                                    <table id="routeTable">
+	                                    <table id="routeTable" class="table-hover table-striped">
 	                                    	<thead>
 	                                    		<tr>
 	                                    			<td style='width: 15%'>狀態項</td>
-	                                    			<td style='width: 7.5%'>活動發布日期</td>
-	                                    			<td style='width: 7.5%'>活動編號</td>
-													<td style='width: 10%'>活動名稱</td>
-	                                    			<td style='width: 15%'>活動開始-結束日期</td>
-	                                    			<td style='width: 7.5%'>活動報名期限</td>
-	                                    			<td style='width: 7.5%'>活動報名人數/上限</td>
+	                                    			<td style='width: 10%'>發布日期</td>
+	                                    			<td style='width: 10%'>編號</td>
+													<td style='width: 10%'>名稱</td>
+	                                    			<td style='width: 15%'>開始-結束日期</td>
+	                                    			<td style='width: 10%'>報名期限</td>
 													<td style='width: 30%'>控制項</td>
 	                                    		</tr>
 	                                    	</thead>

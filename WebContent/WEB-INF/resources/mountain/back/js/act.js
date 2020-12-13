@@ -23,7 +23,6 @@ var chatyBackHoverColors = [
 $(function(){
 	
 	$. noConflict()
-//		getAllData()
 	$.ajax({
 		url : baseURL + "/all",
 		type : "GET",
@@ -57,28 +56,20 @@ $(function(){
 	
 	/* 表格重置按鈕 */
 	$("#selectAll").on("click",reRender)
-	$("#tb-container").find("*").on("click",function(){
-		$('.btn-ctrl').bootstrapToggle({});
-		$('.btn-rt-delete').tooltip();
-		$('.btn-rt-update').tooltip();
-		$('.btn-rt-info').tooltip();
-		$('.btn-rt-upImg').tooltip();
+	$("#routeTable").on("error","img",function(){
+		$(this).attr("src","/MountainExploer.com/mountain/images/defaultMountain.jpg")
 	})
-//	$("#routeTable").on("error","img",function(){
-//		console.log(123)
-//		$(this).attr("src","/MountainExploer.com/mountain/images/defaultMountain.jpg")
-//	})
 	
 	$("#tb-container").on("click", '.toggle', function(){
 		let thisRtID = $(this).parents("tr").find("td").eq(2).text()
-		let thisToggle ;
-		if( !$(this).attr("class").includes("off")){
-			console.log(thisRtID + " set to off")
-			thisToggle = 1;
-		}else{
-			console.log(thisRtID + " set to on")
-			thisToggle = 0;
-		}
+		let thisToggle = $(this).find("input").attr("class");
+		let toggleClass = thisToggle.split(" ")
+		toggleClass.forEach(function(item){
+			item = item.replace(/-/,"")
+			if(item.match('btntoggle-') != null ){
+				thisToggle = item.replace('btntoggle-',"") + "Tag"
+			}
+		})
 		setRtToggle(thisRtID, thisToggle)
 	})
 	
@@ -88,9 +79,7 @@ $(function(){
 	$("#tb-container").on("click", '.btn-rt-delete', function(){
 		deleteAlert($(this))
 	})
-	$("#tb-container").on("click", '.btn-rt-info', function(){
-		showMoreInfo($(this))
-	})
+	$("#tb-container").on("click", '.btn-rt-info', showMoreInfo)
 	$("#tb-container").on("click", '.btn-rt-upImg', function(){
 		updateImage($(this))
 	})
@@ -101,6 +90,9 @@ $(function(){
 	$("body").on("change", "#imageFile", function() {
 		var fileName = $(this).val().split("\\").pop();
 		$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+	});
+	$("body").on("click", ".update-single",function(){
+		updateSingleRow($(this))
 	});
 	$(".act-mode-chart").on("click",function(){
 		setActModeChart($(this).val())
