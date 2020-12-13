@@ -14,12 +14,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.sun.mail.handlers.message_rfc822;
+
 import member.MemberGlobal;
 import member.back.model.MemberBasicBackService;
+import member.back.model.MemberStatusBackService;
 import member.model.MemberBasic;
+import member.model.MemberStatus;
 
 @Controller
 @RequestMapping("/back/member")
@@ -29,6 +34,8 @@ public class MemberBackStageController {
 	@Autowired
 	private MemberBasicBackService mbService;
 	
+	@Autowired
+	private MemberStatusBackService mbStService;
 	
 	//後台登入
 	@RequestMapping(path = "/loginEntry", method = RequestMethod.GET)
@@ -153,6 +160,16 @@ public class MemberBackStageController {
 		return mbList;
 	}
 	
+	
+	//單獨查詢
+	@ResponseBody
+	@GetMapping(path = "/memberSingleAction")
+	public List<MemberBasic> processMemberSingle(@RequestParam(name = "account")String account) {
+		List<MemberBasic> mb = mbService.select(account);
+		return mb;
+	}
+	
+	
 	//會員名單登山者查詢
 	@ResponseBody
 	@GetMapping(path = "/memberListGmSelect")
@@ -163,11 +180,56 @@ public class MemberBackStageController {
 	
 	
 	//停權
-//	@ResponseBody
-//	@GetMapping(path = "/memberDisable")
-//	public boolean processMemberDisable() {
-//		
-//	}
+	@RequestMapping(path = "/memberBanAction", method = RequestMethod.POST)
+	public String processBanAction(@RequestParam(name = "mbBan")int banSeqno) {
+		MemberBasic mb = mbService.select(banSeqno);
+		if (mb.getMemberStatus().getSeqno() == 100 || mb.getMemberStatus().getSeqno() == 110) {
+			MemberStatus mbStId = mbStService.select(140);
+			mb.setMemberStatus(mbStId);
+			mbService.update(mb);
+			
+			System.out.println("=================會員已被停權");
+			return "member/back/memberInfoListBack";
+			
+		}else if(mb.getMemberStatus().getSeqno() == 120 || mb.getMemberStatus().getSeqno() == 130) {
+			MemberStatus mbStId = mbStService.select(150);
+			mb.setMemberStatus(mbStId);
+			mbService.update(mb);
+			
+			System.out.println("=================會員已被停權");
+			return "member/back/memberInfoListBack";
+			
+		}
+		System.out.println("================停權程序出現問題");
+		return "member/back/memberInfoListBack";
+	}
+	
+	
+	//復權
+	@RequestMapping(path = "/memberRecoverAction", method = RequestMethod.POST)
+	public String processRecoverAction(@RequestParam(name = "reSeqno")int reSeqno) {
+		MemberBasic mb = mbService.select(reSeqno);
+		if(mb.getMemberStatus().getSeqno() == 140) {
+			MemberStatus mbStId = mbStService.select(100);
+			mb.setMemberStatus(mbStId);
+			mbService.update(mb);
+			
+			System.out.println("=================會員已復權");
+			return "member/back/memberInfoListBack";
+			
+		}else if(mb.getMemberStatus().getSeqno() == 150) {
+			MemberStatus mbStId = mbStService.select(120);
+			mb.setMemberStatus(mbStId);
+			mbService.update(mb);
+			
+			System.out.println("=================會員已復權");
+			return "member/back/memberInfoListBack";
+			
+		}
+		
+		System.out.println("================復權程序出現問題");
+		return "member/back/memberInfoListBack";
+	}
 	
 
 }

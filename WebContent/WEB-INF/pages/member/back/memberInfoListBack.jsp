@@ -75,8 +75,8 @@ pageEncoding="UTF-8"%>
 									<form class="form-inline" >
 										<div>
 											<span>會員查詢：</span>
-											<input class="form-control mr-sm-2" type="text" placeholder="請輸入會員帳號"/> 
-											<button class="btn btn-primary my-2 my-sm-0" type="submit">
+											<input class="form-control mr-sm-2 account" name="account" type="text" placeholder="請輸入會員帳號"/> 
+											<button class="btn btn-primary my-2 my-sm-0 sgSelect" type="button">
 												查詢
 											</button>										
 										</div>
