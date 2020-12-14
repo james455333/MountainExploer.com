@@ -1,5 +1,7 @@
 package member.back.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -242,10 +244,29 @@ public class MemberBackStageController {
 	
 	
 	//修改會員資料
-//	public List<MemberBasic> processUpdateBack(
-//			int seqno, String name, String ncName,){
-//		
-//	}
+	@RequestMapping(path = "/updateInfoBack", method = RequestMethod.POST)
+	public String processUpdateBack(
+			@RequestParam(name = "seqno")int seqno,
+			@RequestParam(name = "name")String name,
+			@RequestParam(name = "ncName")String ncName,
+			@RequestParam(name = "email")String email,
+			@RequestParam(name = "phone")String phone){
+		
+		MemberBasic queryMb = mbService.select(seqno);
+		if(queryMb != null) {
+			queryMb.setName(name);
+			queryMb.setEmail(email);
+			queryMb.getMemberInfo().setNeck_name(ncName);
+			queryMb.getMemberInfo().setPhone(phone);
+			
+			mbService.update(queryMb);
+			
+			
+			return "member/back/memberInfoListBack";
+		}
+		
+		return "member/back/memberInfoListBack";
+	}
 	
 	
 	

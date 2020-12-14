@@ -704,7 +704,13 @@ $(".allMember").on("click", ".sgInfo", function(){
                     if(item.memberStatus.seqno == 100){
                         let Gm = "一般登山者";
                         let reDate = new Date(item.reg_Date);
-                        let birDate = new Date(item.memberInfo.birthday);
+                        let birDate = item.memberInfo.birthday;
+                        if(birDate == ""){
+                            birDate = "尚未填寫";
+                        }else{
+                            birDate = new Date(item.memberInfo.birthday);
+                        }
+
                         let imgMb = item.memberInfo.img_name;
                         if(imgMb == ""){
                             let imgMb = "preset.png";
@@ -731,7 +737,7 @@ $(".allMember").on("click", ".sgInfo", function(){
                                     <input type="text" name="email" class="swal2-input email" value="` + item.email + `" readonly>
                                     <br/>
                                     <label>手機：</label>
-                                    <input type="text" name="email" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
+                                    <input type="text" name="phone" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
                                     <br/>
                                     <label>性別：</label>
                                     <input type="text" name="gender" class="swal2-input gender" value="` + item.memberInfo.gender + `" readonly>
@@ -756,7 +762,13 @@ $(".allMember").on("click", ".sgInfo", function(){
                     }else if(item.memberStatus.seqno == 110){
                         let Um = "未認證登山者";
                         let reDate = new Date(item.reg_Date);
-                        let birDate = new Date(item.memberInfo.birthday);
+                        let birDate = item.memberInfo.birthday;
+                        if(birDate == ""){
+                            birDate = "尚未填寫";
+                        }else{
+                            birDate = new Date(item.memberInfo.birthday);
+                        }
+                        
                         let imgMb = item.memberInfo.img_name;
                         if(imgMb == ""){
                             let imgMb = "preset.png";
@@ -783,7 +795,7 @@ $(".allMember").on("click", ".sgInfo", function(){
                                     <input type="text" name="email" class="swal2-input email" value="` + item.email + `" readonly>
                                     <br/>
                                     <label>手機：</label>
-                                    <input type="text" name="email" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
+                                    <input type="text" name="phone" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
                                     <br/>
                                     <label>性別：</label>
                                     <input type="text" name="gender" class="swal2-input gender" value="` + item.memberInfo.gender + `" readonly>
@@ -809,7 +821,13 @@ $(".allMember").on("click", ".sgInfo", function(){
                     }else if(item.memberStatus.seqno == 120){
                         let Gg = "登山嚮導";
                         let reDate = new Date(item.reg_Date);
-                        let birDate = new Date(item.memberInfo.birthday);
+                        let birDate = item.memberInfo.birthday;
+                        if(birDate == ""){
+                            birDate = "尚未填寫";
+                        }else{
+                            birDate = new Date(item.memberInfo.birthday);
+                        }
+                        
                         let imgMb = item.memberInfo.img_name;
                         if(imgMb == ""){
                             let imgMb = "preset.png";
@@ -836,7 +854,7 @@ $(".allMember").on("click", ".sgInfo", function(){
                                     <input type="text" name="email" class="swal2-input email" value="` + item.email + `" readonly>
                                     <br/>
                                     <label>手機：</label>
-                                    <input type="text" name="email" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
+                                    <input type="text" name="phone" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
                                     <br/>
                                     <label>性別：</label>
                                     <input type="text" name="gender" class="swal2-input gender" value="` + item.memberInfo.gender + `" readonly>
@@ -862,7 +880,13 @@ $(".allMember").on("click", ".sgInfo", function(){
                     }else if(item.memberStatus.seqno == 130){
                         let Ug = "未認證登山嚮導";
                         let reDate = new Date(item.reg_Date);
-                        let birDate = new Date(item.memberInfo.birthday);
+                        let birDate = item.memberInfo.birthday;
+                        if(birDate == ""){
+                            birDate = "尚未填寫";
+                        }else{
+                            birDate = new Date(item.memberInfo.birthday);
+                        }
+                        
                         let imgMb = item.memberInfo.img_name;
                         if(imgMb == ""){
                             let imgMb = "preset.png";
@@ -889,7 +913,7 @@ $(".allMember").on("click", ".sgInfo", function(){
                                     <input type="text" name="email" class="swal2-input email" value="` + item.email + `" readonly>
                                     <br/>
                                     <label>手機：</label>
-                                    <input type="text" name="email" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
+                                    <input type="text" name="phone" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
                                     <br/>
                                     <label>性別：</label>
                                     <input type="text" name="gender" class="swal2-input gender" value="` + item.memberInfo.gender + `" readonly>
@@ -915,7 +939,13 @@ $(".allMember").on("click", ".sgInfo", function(){
                     }else if(item.memberStatus.seqno == 140){
                         let Sm = "已停權登山者";
                         let reDate = new Date(item.reg_Date);
-                        let birDate = new Date(item.memberInfo.birthday);
+                        let birDate = item.memberInfo.birthday;
+                        if(birDate == ""){
+                            birDate = "尚未填寫";
+                        }else{
+                            birDate = new Date(item.memberInfo.birthday);
+                        }
+                        
                         let imgMb = item.memberInfo.img_name;
                         if(imgMb == ""){
                             let imgMb = "preset.png";
@@ -942,7 +972,7 @@ $(".allMember").on("click", ".sgInfo", function(){
                                     <input type="text" name="email" class="swal2-input email" value="` + item.email + `" readonly>
                                     <br/>
                                     <label>手機：</label>
-                                    <input type="text" name="email" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
+                                    <input type="text" name="phone" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
                                     <br/>
                                     <label>性別：</label>
                                     <input type="text" name="gender" class="swal2-input gender" value="` + item.memberInfo.gender + `" readonly>
@@ -968,7 +998,13 @@ $(".allMember").on("click", ".sgInfo", function(){
                     }else if(item.memberStatus.seqno == 150){
                         let Sg = "已停權嚮導";
                         let reDate = new Date(item.reg_Date);
-                        let birDate = new Date(item.memberInfo.birthday);
+                        let birDate = item.memberInfo.birthday;
+                        if(birDate == ""){
+                            birDate = "尚未填寫";
+                        }else{
+                            birDate = new Date(item.memberInfo.birthday);
+                        }
+                        
                         let imgMb = item.memberInfo.img_name;
                         if(imgMb == ""){
                             let imgMb = "preset.png";
@@ -995,7 +1031,7 @@ $(".allMember").on("click", ".sgInfo", function(){
                                     <input type="text" name="email" class="swal2-input email" value="` + item.email + `" readonly>
                                     <br/>
                                     <label>手機：</label>
-                                    <input type="text" name="email" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
+                                    <input type="text" name="phone" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
                                     <br/>
                                     <label>性別：</label>
                                     <input type="text" name="gender" class="swal2-input gender" value="` + item.memberInfo.gender + `" readonly>
@@ -1028,4 +1064,59 @@ $(".allMember").on("click", ".sgInfo", function(){
 //修改資料
 $(".allMember").on("click", ".chInfo", function(){
     let chInfo = $(this).siblings(".sgSeqno").val();
+
+    $.ajax({
+        method:"GET",
+        url:"/MountainExploer.com/back/member/memberInfoBackListAction",
+        data:{sgSeqno:chInfo},
+        dataType:"json",
+        success:function(mbList){
+            $.each(mbList, function(index, item){
+                if(item.memberStatus.seqno == 100){
+                    Swal.fire({
+                        title: "會員編號" + item.seqno + "的會員資料",
+                        html:`<div>
+                                <form id="upForm" action="/MountainExploer.com/back/member/updateInfoBack" method="POST">
+                                <label>會員編號：</label>
+                                <input type="text" name="seqno" class="swal2-input seqno" value="` + item.seqno + `" readonly>
+                                <br/>
+                                <label>帳號：</label>
+                                <input type="text" name="account" class="swal2-input account" value="` + item.account + `" readonly>
+                                <br/>
+                                <label>姓名：</label>
+                                <input type="text" name="name" class="swal2-input name" value="` + item.name + `">
+                                <br/>
+                                <label>暱稱：</label>
+                                <input type="text" name="ncName" class="swal2-input ncName" value="` + item.memberInfo.neck_name + `">
+                                <br/>
+                                <label>Email：</label>
+                                <input type="text" name="email" class="swal2-input email" value="` + item.email + `">
+                                <br/>
+                                <label>手機：</label>
+                                <input type="text" name="phone" class="swal2-input phone" value="` + item.memberInfo.phone + `">
+                                <br/>
+                                </form>
+                                </div>`,
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "修改會員資料",
+                        cancelButtonText: "取消"
+                    }).then(function(result){
+                        if(result.isConfirmed){
+                            $("#upForm").submit();        
+                            Swal.fire(
+                                "會員資料修改成功"
+                            )
+                        }
+
+                        if(result.isDismissed){
+
+                        }
+                    })
+                }
+            })
+
+        }
+    })
 })
