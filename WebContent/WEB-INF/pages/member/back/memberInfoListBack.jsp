@@ -90,6 +90,9 @@ pageEncoding="UTF-8"%>
 										<button type="button" class="btn disabled btn-outline-success seGU" value="120">
 											登山嚮導
 										</button>
+										<button type="button" class="btn disabled btn-outline-danger unGroup">
+											未認證會員
+										</button>
 										<button type="button" class="btn disabled btn-outline-danger banGroup">
 											停權會員
 										</button>
@@ -124,7 +127,7 @@ pageEncoding="UTF-8"%>
 										</th>
 									</tr>
 								</thead>
-								<tbody id="allMember">
+								<tbody id="allMember" class="allMember">
 
 								</tbody>
 							</table>

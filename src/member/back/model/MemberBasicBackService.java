@@ -33,6 +33,10 @@ public class MemberBasicBackService {
 		return mbDAO.select(seqno);
 	}
 	
+	public List<MemberBasic> selectLT(int seqno){
+		return mbDAO.selectLT(seqno);
+	}
+	
 	public List<MemberBasic> selectST(int statusId){
 		return mbDAO.selectST(statusId);
 	}
