@@ -14,6 +14,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.all.min.js"></script>
     
     <style>
     .images{
@@ -109,7 +111,7 @@ height:25px;
                 <div class="topname">
                 				<c:choose>
 									<c:when test="${(j.star*1.0 / j.clickcount) lt 1 || empty j.star}">
-												<span><jmg class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
 												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
 												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
 												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
@@ -151,11 +153,20 @@ height:25px;
 												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
 									</c:when>
 							</c:choose>
-					(${j.clickcount }人評分過)
+					<c:choose>
+					<c:when test="${j.clickcount <= 0 || empty j.clickcount}">(0人評分過)</c:when>
+					<c:otherwise>(${j.clickcount }人評分過)</c:otherwise>
+					</c:choose>
 					<div>
 						<form action="<c:url value='/mountainCampAct/jumpupdatestar'></c:url>">
 						<input type="hidden" name="selectcampid" value="${j.campbasicid}">
-						<input type="submit" value="評分"></form>
+						<c:choose>
+								<c:when test="${empty Member}">
+									<input type="button" class="swalLogin" value="評分">
+								</c:when>
+							<c:otherwise><input type="submit" value="評分"></c:otherwise>
+						</c:choose>					
+						</form>
 					</div>
 						<div style="margin: 10px">
 							
@@ -191,7 +202,14 @@ height:25px;
 				<input type="hidden" name="selectcampid" value="${i.campbasicid}">
              </c:forEach>	
 				<div>入住時間 : <input type="text" id="from" name="select_bookdate" size="45" readonly></div>             
-             	<div><input type="submit" value="查詢"></div>
+             	<div>
+             		<c:choose>
+						<c:when test="${empty Member}">
+             				<input type="button" class="swalLogin" value="查詢">
+             			</c:when>	
+						<c:otherwise><input type="submit"  value="查詢"></c:otherwise>             		
+             		</c:choose>
+             	</div>
              	</form>
              </div>	
 <!-- 顯示查詢日期 -->  
@@ -364,6 +382,7 @@ $("#campleftamount").change(function(){
     
 </body>
 
+<script src="/MountainExploer.com/housecamp/js/swalLogin.js"></script>
 <script src="/MountainExploer.com/js/upLoadImg.js"></script><!-- 上傳頭像 -->
 <script src="/MountainExploer.com/js/table.js"></script>
 <script src="/MountainExploer.com/js/topBar.js"></script>

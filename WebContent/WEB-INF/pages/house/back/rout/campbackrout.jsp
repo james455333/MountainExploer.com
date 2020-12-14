@@ -365,8 +365,7 @@
 											<form action="<c:url value='/Rout/mountainCampBack/selectCamp'></c:url>"
 												method='get' id="form1" name="form1">
 												營地名稱 :&nbsp <input type="text" class="light-table-filter"placeholder="請輸入關鍵字" name="selectcampname" >
-												<input type="image" class=imgSearch
-													src="/MountainExploer.com/images/放大鏡.png" width="35px"
+												<input type="image" class="imgSearch" src="/MountainExploer.com/images/放大鏡.png" width="35px"
 													onClick="document.form1.submit()">
 											</form>
 										</div>
@@ -398,9 +397,6 @@
 									
 									
 										<div class="col-xl-4 col-md-6 mb-4">
-											<div class="card border-left-primary shadow h-100 py-2">
-												<div class="card-body">
-													<div class="row no-gutters align-items-center">
 														<div class="col mr-2">
 															<div
 																class="text-s font-weight-bold text-primary text-uppercase mb-1">
@@ -408,18 +404,11 @@
 															<div id="rt-forbid-num"
 																class="h5 mb-0 font-weight-bold text-gray-600">${totalData}區</div>
 														</div>
-														<div class="col-auto">
-															<i class="fa fa-flag fa-2x" style="color: #ff6b6b;"
-																aria-hidden="true"></i>
-														</div>
-													</div>
-												</div>
-											</div>
 										</div>									
 									
 									
 									
-										<div class="ml-auto">									
+										<div class="">									
 															<a href="selectAll?selectarea=${selectarea }&selectcounties=${selectcounties}&no=${no }&page=1">«第一頁</a>	
 									
 													<c:choose>
@@ -649,7 +638,6 @@
 	<script type="text/javascript">
 		$(function() {
 			
-			$('.tooltip-a').tooltip()
 			
 			var campUrl = "/MountainExploer.com/Rout/mountainCampBack";
 
@@ -702,7 +690,8 @@
 				  $(".show").slideToggle();
 				});
 			
-	
+// 			$('.tooltip-a').tooltip()
+			
 	
 			// 縣市圓餅圖	
 			Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
