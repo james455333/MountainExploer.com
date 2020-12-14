@@ -333,7 +333,8 @@
 												<input type="button" value="次類別查詢" class="scSubmit">
 											</div>
 										</div>
-										<div>
+										<div class="d-flex">
+										<div >
 											<span>價格區間 : </span> <input type="radio" name="radioGroup"
 												id="radioA" value="1" checked="checked" /><label>0-1000元</label>
 											<input type="radio" name="radioGroup" id="radioB" value="2" /><label>1001-2000元</label>
@@ -341,9 +342,11 @@
 											<input type="radio" name="radioGroup" id="radioD" value="4" /><label>3000元以上</label>
 											<button type="submit" class="priceSubmitButton">價格區間查詢</button>
 										</div>
-										<div>
+										
+										<div >
 											<input type="search" name="nameSelect" class="nameSelect">
 											<input type="button" value="商品名稱查詢" class="nameSubmit">
+										</div>
 										</div>
 										<!-- 										<a href="#selectAll" class="ml-auto"> -->
 										<!-- 											<button id="selectAll" class="btn btn-primary btn-icon-split"> -->
