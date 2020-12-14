@@ -1,5 +1,6 @@
 package main.generic.dao;
 
+import java.io.Console;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -119,6 +120,7 @@ public class GenericDAO<T extends GenericTypeObject> implements InterfaceDAO<T> 
 				T result = (T) session.get(entity.getClass(), entity.getId());
 				System.out.println("id : " + result.getId());
 				if (result != null) {
+					System.out.println("active update");
 					session.update(entity);
 					return entity;
 				}

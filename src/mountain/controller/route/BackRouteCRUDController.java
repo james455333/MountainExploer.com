@@ -65,12 +65,14 @@ public class BackRouteCRUDController {
 				Map<String, Object> map = new HashMap<String, Object>();
 				map.put("routeInfo", routeInfo2);
 				String name = routeInfo2.getRoute_basic().getNational_park().getName(); 
+				Integer npID = routeInfo2.getRoute_basic().getNational_park().getId();
 				map.put("np", name);
+				map.put("npID", npID);
 				result.add(map);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR);
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
 		return result;
@@ -94,7 +96,7 @@ public class BackRouteCRUDController {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR);
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
 		
@@ -112,7 +114,7 @@ public class BackRouteCRUDController {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR);
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	@PutMapping("/np-{npID}")
@@ -127,7 +129,7 @@ public class BackRouteCRUDController {
 			service.update(nationalPark);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR);
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	@DeleteMapping("/np-{npID}")
@@ -140,7 +142,7 @@ public class BackRouteCRUDController {
 //			service.delete(npID);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR);
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
 		
@@ -165,7 +167,7 @@ public class BackRouteCRUDController {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR);
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
 		return result;
@@ -183,7 +185,7 @@ public class BackRouteCRUDController {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR);
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
 		List<RouteBasic> allwithHQL = (List<RouteBasic>) service.getAllwithHQL(hql);
@@ -301,7 +303,7 @@ public class BackRouteCRUDController {
 			service.update(routeinfo);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR);
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
 		
@@ -322,7 +324,7 @@ public class BackRouteCRUDController {
 			service.update(routeInfo);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR);
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	
@@ -382,7 +384,7 @@ public class BackRouteCRUDController {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR);
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
 		

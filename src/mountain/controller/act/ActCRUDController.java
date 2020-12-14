@@ -122,7 +122,7 @@ public class ActCRUDController {
 		result.put("actID", String.valueOf(actBasic.getSeqno()));
 		return result;
 	}
-	/* 新增活動 */
+	/* 修改活動 */
 	@PostMapping("/updateAct.{actID}")
 	@ResponseBody
 	public Map<String, String> updateActivity(
