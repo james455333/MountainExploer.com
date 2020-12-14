@@ -20,6 +20,7 @@ import product.model.CartBean;
 import product.model.OrderItems;
 import product.model.Orders;
 import product.model.ShoppingCart;
+import ecpay.payment.*;;
 
 @RequestMapping(path = "/shoppingcart")
 @Controller
@@ -189,6 +190,10 @@ public class ShoppingCartController {
 
 		orders.setOrderItemsSet(orderItemsSet);
 		ordersDao.insertOrder(orders);
+		
+		
+		new allin
+		
 
 		return "redirect:/shoppingcart/abort2";
 
@@ -223,11 +228,11 @@ public class ShoppingCartController {
 	public String orderInfo(Model m, @RequestParam(name = "orderId") String orderId) {
 
 		Integer orderIdInt = Integer.parseInt(orderId);
-		Orders odersSelect = ordersDao.selectSeqno(orderIdInt);
+//		Orders odersSelect = ordersDao.selectSeqno(orderIdInt);
+//
+//		Set<OrderItems> orderItemsSet = odersSelect.getOrderItemsSet();
 
-		Set<OrderItems> orderItemsSet = odersSelect.getOrderItemsSet();
-
-		m.addAttribute("OrderInfo", orderItemsSet);
+//		m.addAttribute("OrderInfo", orderItemsSet);
 		m.addAttribute("orderId", orderId);
 		
 

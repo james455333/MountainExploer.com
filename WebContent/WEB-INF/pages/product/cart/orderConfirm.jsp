@@ -20,6 +20,38 @@
 	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"></script>
 	<script src="registry/registry.js"></script>
+	<script>
+		function sendOrder() {
+			$.ajax({
+				  method: "POST",
+				  url: "https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5",
+				  data: { 
+					  MerchantID: "2000132",
+					  MerchantTradeNo: "ecPay1234",
+					  MerchantTradeDate: "2012/03/21 15:40:18",
+					  PaymentType: "aio",
+					  TotalAmount: 5000,
+					  TradeDesc:"ecpay 商城購物",
+					  ItemName:"手機 20 元 X2#隨身碟60 元 X1",
+					  ReturnURL:"http://localhost:8080/MountainExploer.com/shop/shoppingPage",
+					  ChoosePayment:"Credit",
+					  CheckMacValue:
+					  
+					  
+			 	  }
+				})
+				  .done(function( msg ) {
+				    alert( "Data Saved: " + msg );
+				  })
+				  .fail(function( jqXHR, textStatus ) {
+					  console.log(jqXHR)
+					  console.log(textStatus)
+					 
+				  });
+			  
+		
+		}
+	</script>
 </head>
 <body>
 	<div class="count1">
@@ -113,8 +145,10 @@
 					</td>
 				</tr>
 				<TR>
-					<TD colspan="6" align="center"><input  type="submit"
-						value="送出訂單">
+					<TD colspan="6" align="center" onclick="sendOrder()">
+					送出訂單
+<!-- 					<input  type="submit" -->
+<!-- 						value="送出訂單"> -->
 						</TD>
 						</TR>
 			</FORM>
