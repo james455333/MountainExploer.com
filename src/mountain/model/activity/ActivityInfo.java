@@ -22,6 +22,7 @@ import org.hibernate.annotations.Parameter;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 import main.generic.model.GenericTypeObject;
 import mountain.MountainGlobal;

@@ -1,5 +1,6 @@
 package mountain.controller.back;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -9,15 +10,24 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 import main.generic.model.GenericTypeObject;
@@ -25,10 +35,12 @@ import main.generic.service.GenericService;
 import main.generic.service.InterfaceService;
 import mountain.MountainGlobal;
 import mountain.function.TagSelector;
+import mountain.model.activity.ActImage;
 import mountain.model.activity.ActivityBasic;
 import mountain.model.activity.ActivityInfo;
 import mountain.model.activity.Registry.ActRegInfo;
 import mountain.model.activity.Registry.ActRegistry;
+import mountain.model.route.RouteBasic;
 
 @Controller
 @RestController
@@ -162,10 +174,6 @@ public class BackActController {
 			e.printStackTrace();
 			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
-		
-		
-		
 		return activityInfo;
 	}
 	@PutMapping("/act-{actID}")
@@ -204,6 +212,122 @@ public class BackActController {
 		}
 		
 	}
+	@DeleteMapping("/act-{actID}")
+	public void deleteActivityBasic(
+			ActivityBasic activityBasic,
+			@PathVariable("actID") Integer actID) {
+		InterfaceService<GenericTypeObject> service = this.service;
+		
+		try {
+			service.save(activityBasic);
+			activityBasic = (ActivityBasic) service.select(actID);
+			service.delete(actID);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		
+	}
+	
+	@PutMapping("/act-all-{actID}")
+	public void updateActivityInfo(
+			ActivityInfo activityInfo,
+			@RequestBody Map<String, String> map,
+			@PathVariable("actID") Integer actID) throws UnsupportedEncodingException {
+		
+		InterfaceService<GenericTypeObject> service = this.service;
+		
+		try {
+			service.save(activityInfo);
+			activityInfo = (ActivityInfo) service.select(actID);
+			RouteBasic routeBasic = new RouteBasic();
+			service.save(routeBasic);
+			routeBasic = (RouteBasic) service.select(Integer.parseInt(map.get("rtID")));
+			
+			activityInfo.setRtBasic(routeBasic);
+			if (map.get("title")!= null) activityInfo.setTitle(map.get("title"));
+			if (map.get("price")!= null) activityInfo.setPrice(Integer.parseInt(map.get("price")));
+			if (map.get("regTop")!= null) activityInfo.setNote(map.get("note").getBytes(MountainGlobal.CHARSET));
+			
+			service.update(activityInfo);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+	}
+	
+	@GetMapping("/images-list-{actID}")
+	public List<Integer> getActivityImageIDList(
+			ActImage actImage,
+			@PathVariable("actID") Integer actID){
+		List<Integer> result = new ArrayList<Integer>();
+		
+		InterfaceService<GenericTypeObject> service = this.service;
+		try {
+			service.save(actImage);
+			String hql = "From ActImage where activityBasic = " + actID + "and hidetag is null order by seqno";
+			String count = "Select count(*) " + hql ;
+			int nums = service.countWithHql(count);
+			System.out.println("====== nums : " + nums);
+			List<ActImage> actImgList = nums>0 ? (List<ActImage>)service.getAllwithHQL(hql) : null ;
+			if (actImgList != null && !actImgList.isEmpty()) {
+				for (ActImage actImage2 : actImgList) {
+					System.out.println("actImage2 seqno : " + actImage2.getSeqno());
+					result.add(actImage2.getSeqno());
+				}
+			}
+			System.out.println("complete");
+			return result;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	
+	/*
+	 * 活動圖片顯示 回傳 : ResponseEntity<byte[]>
+	 */
+	@GetMapping("/image-{imgID}")
+	public ResponseEntity<byte[]> showImage(ActImage actImage,
+			@PathVariable("imgID") Integer imgID) {
+		/* 回傳物件 */
+		/* 設定service */
+		InterfaceService<GenericTypeObject> service = this.service;
+		try {
+			service.save(actImage);
+			actImage = (ActImage) service.select(imgID);
+			byte[] imgBytes = actImage.getImg();
+			HttpHeaders headers = new HttpHeaders();
+			headers.setContentType(MediaType.IMAGE_JPEG);
+			return new ResponseEntity<byte[]>(imgBytes, headers, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	@PostMapping("/image-{imgID}")
+	public void updateImage(ActImage actImage,
+			@PathVariable("imgID") Integer imgID,
+			@RequestParam("image") MultipartFile multipartFile) {
+		/* 回傳物件 */
+		/* 設定service */
+		InterfaceService<GenericTypeObject> service = this.service;
+		System.out.println("multipartFile name : " + multipartFile.getOriginalFilename());
+		try {
+			service.save(actImage);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
+	
+	
 	
 	
 	

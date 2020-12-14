@@ -274,13 +274,13 @@ var setTable = function setTable(){
 }
 function setResultToDT(data){
 	let result = [];
-	let updateBtn = `<button data-toggle='tooltip'  title='修改本筆路線資料'  class="btn btn-warning btn-rt-update">
+	let updateBtn = `<button data-toggle='tooltip'  title='修改本筆路線資料'  class="btn btn-warning btn-act-update">
                     		<i class="fas fa-edit"></i> 修改
 						</button>`
-	let deleteBtn = `<button data-toggle='tooltip'  title='刪除本筆路線資料'  class="btn btn-danger btn-rt-delete">
+	let deleteBtn = `<button data-toggle='tooltip'  title='刪除本筆路線資料'  class="btn btn-danger btn-act-delete">
                     		<i class="fas fa-trash"></i> 刪除
 						</button>`
-	let infoBtn = `<button data-toggle='tooltip'  title='查看更多資訊'   class="btn btn-info btn-rt-info">
+	let infoBtn = `<button data-toggle='tooltip'  title='查看更多資訊'   class="btn btn-info btn-act-info">
                     		<i class="fas fa-info"></i> 更多
 						</button>`
 	let upImgBtn = `<button data-toggle='tooltip'  title='修改路線地圖'   class="btn btn-dark btn-rt-upImg">
@@ -351,9 +351,9 @@ function setDataTable(result){
         ],
 		"drawCallback": function( settings ) {
 			$('.btn-ctrl').bootstrapToggle()
-			$('.btn-rt-delete').tooltip();
-			$('.btn-rt-update').tooltip();
-			$('.btn-rt-info').tooltip();
+			$('.btn-act-delete').tooltip();
+			$('.btn-act-update').tooltip();
+			$('.btn-act-info').tooltip();
 			$('.btn-rt-upImg').tooltip();
 	    }
     } )
@@ -614,7 +614,6 @@ function setRtToggle(thisRtID, thisToggle){
 }
 function updateBox(btn){
 	let actID = btn.parents("tr").find("td").eq(2).text()
-	let actTitle = btn.parents("tr").find("td").eq(3).text()
 	let nps;
 	$.ajax({
 		url : baseRouteURL + "/allRoute",
@@ -631,11 +630,12 @@ function updateBox(btn){
 			dataType: 'json',
 			success:function(data){
 				let thisRtID = data.rtBasic.id
-				console.log(data)
-				console.log(nps)
+//				console.log(data)
+//				console.log(nps)
 				let npArray = []
 				let routeArray = []
-				let final = "<div class='row  justify-content-between'>"
+				let final = '<form id="newAct-form">'
+							+ "<div class='row  justify-content-between'>"
 							+ "<div class='col-md-6'>"
 							+ '<label class="swal2-label">國家公園'
 							+ '<select id="update-np" class="swal2-select">'
@@ -672,7 +672,7 @@ function updateBox(btn){
 					}
 				}
 				let regColumn = btn.parents("tr").find("td").eq(6).text()
-				let regTop = regColumn.substring(regColumn.indexOf("/")+1)
+				let regTop = regColumn.substring(regColumn.indexOf("/")+1).trim()
 				final += '</select>'
 						+ '</label>'
 						+ '</div>'
@@ -681,17 +681,17 @@ function updateBox(btn){
 						+ '<div class="row justify-content-between">'
 							+ "<div class='col-md-4'>"
 								+ '<label class="swal2-label">名稱' 
-									+'<input required id="update-name" type="text" class="swal2-input" value="'+ data.title +'" >'
+									+'<input required id="updatetitle" pattern="^[\u4e00-\u9fa5_a-zA-Z0-9]+$" type="text" class="swal2-input" value="'+ data.title +'" >'
 								+ '</labe>'
 							+ "</div>"
 							+ "<div class='col-md-4'>"
 								+ '<label class="swal2-label">報名價格' 
-									+'<input required id="update-price" pattern="^[0-9]+$" type="text" class="swal2-input" value="'+ data.price +'" >'
+									+'<input required id="updateprice" pattern="^[0-9]+$" maxlength="8" type="text" class="swal2-input" value="'+ data.price +'" >'
 								+ '</labe>'
 							+ "</div>"
 							+ "<div class='col-md-4'>"
 								+ '<label class="swal2-label">報名人數上限' 
-									+'<input required id="update-regTop" pattern="^[0-9]+$" type="text" class="swal2-input" value="'+ regTop +'" >'
+									+'<input required id="updateregTop" pattern="^[0-9]+$" maxlength="5" type="text" class="swal2-input" value="'+ regTop +'" >'
 								+ '</labe>'
 							+ "</div>"
 						+ '</div>'
@@ -700,37 +700,82 @@ function updateBox(btn){
 						
 							+'<textarea id="updateNote" style="resize : none;" cols="150" class="swal2-textarea"></textarea >'
 						+ '</labe>'
-					console.log(data)
-					Swal.fire({
-						title : "資料修改 --- 活動編號 : " + data.id ,
-						html : final,
-						width : "1000px",
-						focusConfirm: false,
-						preConfirm : function(){
-						    return new Promise(function (resolve) {
-							    resolve({
-									id : data[0].routeInfo.id,
-							    	actBasic : Number($('#update-np').val()),
-									name : $('#update-name').val(),
-									desp : $('#update-desp').val(),
-									adv : $('#update-adv').val(),
-									traf : $('#update-traf').val(),
-									
-							    })
-						    })
-						},
-						didOpen : function(){
-							$("#update-np").on("change",changeUpdateAllRt)
-							CKEDITOR.replace("updateNote")
-							CKEDITOR.instances.updateNote.setData(data.addInfo)
+						+ '</form>'
+//					console.log(data)
+					Swal.queue([{
+						customClass: {
+							confirmButton: 'btn btn-success',
+						    cancelButton: 'btn btn-danger'
 						},
 						showCancelButton: true,
 						cancelButtonText: '取消修改',
 	  					confirmButtonText: '確認修改',
-					}).then(function(result){
-	//					if(result.isConfirmed)
-	//					ajaxUpdate(result.value)
-					})
+						title : "資料修改 --- 活動編號 : " + data.id ,
+						html : final,
+						width : "1000px",
+						focusConfirm: false,
+						preConfirm : (result) => {
+							console.log(result)
+							result = {
+								id : actID,
+								rtID : $('#update-rt').val(),
+								title : $('#updatetitle').val(),
+								price : $('#updateprice').val(),
+								regTop : $('#updateregTop').val(),
+								note : CKEDITOR.instances.updateNote.getData(),
+							}
+							ajaxUpdate(result)
+//							$("#newAct-form").on("submit",function(e){ 
+//								e.preventDefault()
+//								return true
+//							})
+//							
+//							$("#newAct-form").submit()
+//							console.log("go false")
+//							return false;
+						},
+						didOpen : function(){
+							console.log($("#newAct-form"))
+//							$("#newAct-form").validate({
+//								rules : {
+//									updatetitle : {
+//										required : true,
+//										pattern : /^[\u4e00-\u9fa5_a-zA-Z0-9]+$/,
+//									},
+//									updateprice : {
+//										required : true,
+//										pattern : /^[0-9]+$/,
+//										maxlength : 8,
+//										min : 1,
+//									},
+//									updateregTop : {
+//										required : true,
+//										pattern : /^[0-9]+$/,
+//										min : 1,
+//									},
+//								},
+//								submitHandler: function(form){
+////									console.log(form)
+//									let result = {
+//										id : actID,
+//								    	rtID : $('#update-rt').val(),
+//										title : $('#updatetitle').val(),
+//										price : $('#updateprice').val(),
+//										regTop : $('#updateregTop').val(),
+//										note : CKEDITOR.instances.updateNote.getData(),
+//								    }
+//									console.log("go active")
+//									console.log(result)
+////									ajaxUpdate(result)
+//								}
+//							})
+							$("#update-np").on("change",changeUpdateAllRt)
+							CKEDITOR.replace("updateNote")
+							CKEDITOR.instances.updateNote.setData(data.addInfo)
+							
+						},
+						
+					}])
 			}
 		})
 	})
@@ -750,18 +795,17 @@ function changeUpdateAllRt(){
 			}
 		}
 	})
-	console.log( $(this).val() )
 }
 
 function ajaxUpdate(result){
-	console.log(result)
+	let data = JSON.stringify(result)
 	$.ajax({
-		url : baseURL + "/update." + result.rtID,
+	url : baseURL + "/act-all-" + result.id ,
 		type : "PUT",
-		data : JSON.stringify(result),
+		data : data,
 	    contentType: "application/json; charset=UTF-8",
 		success : function(){
-			reRender()
+//			reRender()
 			Swal.fire({
 				title : "修改成功",
 				icon : "success",
@@ -778,9 +822,9 @@ function deleteAlert(btn){
 	let rtID = btn.parents("tr").find("td").eq(2).text()
 	
 	Swal.fire({
-		title : '即將刪除 <i class="fas fa-arrow-right"></i> 路線編號 : ' + rtID,
+		title : '即將刪除 <i class="fas fa-arrow-right"></i> 活動編號 : ' + rtID,
 		icon : "warning",
-		html : "!! 警告 !!  <hr>本動作將刪除本路線，並且無法回復",
+		html : "!! 警告 !!  <hr>本動作將刪除本活動，並且無法回復",
 		customClass: {
 			confirmButton: 'btn btn-success',
 		    cancelButton: 'btn btn-danger'
@@ -795,7 +839,7 @@ function deleteAlert(btn){
 		console.log(e)
 		if(e.isConfirmed){
 			$.ajax({
-				url : baseURL + "/rt-" + rtID,
+				url : baseURL + "/act-" + rtID,
 				type : "Delete",
 				success:function(){
 					reRender()
@@ -819,9 +863,9 @@ function deleteAlert(btn){
 	})
 }
 
-function showMoreInfo(){
-	let btn = $(this)
+function showMoreInfo(btn){
 	let actID = btn.parents("tr").find("td").eq(2).text()
+	console.log(actID)
 	let nextTr = btn.parents("tr").next()
 	if(nextTr.attr("class") == "append-info") {
 		nextTr.toggle(500)
@@ -836,20 +880,48 @@ function showMoreInfo(){
 		dataType: 'json',
 		success : function(data){
 			console.log(data)
-//			let routeInfo = data[0].routeInfo;
-//			let appendInfo = "<tr class='append-info'>"
-//								+ "<th colspan='3'>路線介紹</th>"
-//								+ "<th colspan='2'>建議行程</th>"
-//								+ "<th colspan='1'>交通資訊</th>"
-//							+ "</tr>"
-//							+ "<tr class='append-info'>"
-//								+ "<td colspan='3'><div>" + routeInfo.desp + "</div></th>"
-//								+ "<td colspan='2'><div>" + routeInfo.adv + "</div></th>"
-//								+ "<td colspan='1'><div>" + routeInfo.traf + "</div></th>"
-//							+ "</tr>"
-//			
-//			btn.parents("tr").after(appendInfo)
-//			btn.parents("tr").nextAll().slice(0,2).show(500)
+			let note = data.addInfo
+			
+			$.ajax({
+				url : baseURL + "/images-list-" + actID,
+				type : "GET",
+				dataType : "json",
+				success : function(imgList){
+					console.log(imgList)
+					let appendInfo = "<tr class='append-info'>"
+										+ "<th colspan='4'>備註</th>"
+										+ "<th colspan='4'>圖片庫</th>"
+									+ "</tr>"
+									+ "<tr class='append-info'>"
+										+ "<td colspan='4'>"
+										+ "<div>" + note + "</div>"
+										+ "</th>"
+					appendInfo +=	"<td colspan='4'><div class='row mx-2'>"
+					if(imgList.length != 0){
+						let containerWidth = Math.floor(100/imgList.length)-5
+						for(let i in imgList){
+							appendInfo += "<div style='margin : 0 2.5%;padding : 5px; border : 3px solid green; height : 150px; width:" + containerWidth + "%;'>"
+										+ "<a data-toggle='tooltip' title='點擊放大'  data-fancybox='gallery" + actID + "' href='" 
+										+ baseURL + "/image-" + imgList[i] + "?timestamp=" + new Date().getTime() + "'>"
+										+ "<img style='width:100%;height:100%' src='" + baseURL + "/image-" + imgList[i] + "?timestamp=" + new Date().getTime() +  "'></a>"
+										+ "</div>"
+						}
+					}else{
+						appendInfo += "<h3 class='text-primary'>無上傳圖片</h3>"
+					} 
+					appendInfo +=	"</div></th>"
+									+ "</tr>"
+					
+					btn.parents("tr").after(appendInfo)
+					btn.parents("tr").nextAll().slice(0,2).show(500)
+				},
+				error : function(jqXHR){
+					Swal.fire("更多資訊 : 發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
+				}
+			})
+		},
+		error : function(jqXHR){
+			Swal.fire("更多資訊 : 發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
 		}
 	})
 }
@@ -931,7 +1003,7 @@ function preview(input) {
             $('.swal2-image').attr('src', e.target.result);
 			$(".swal2-title").html("狀態 : 修改圖片")
 			$("#update-Image").siblings("*").remove()
-			$("#swal2-content").append("<div>檔案名稱 <hr>" + input.files[0].name + "</div>")
+			$(".custom-file-label").html(input.files[0].name)
         }
         // 因為上面定義好讀取成功的事情，所以這裡可以放心讀取檔案
         reader.readAsDataURL(input.files[0]);
@@ -1678,4 +1750,112 @@ function actTrend_setRegData(month,defaultYear,dateLabel){
 	}
 	actTrend_regData = result
 	return result
+}
+
+function imageDelete(src, aTag){
+	$.fancybox.close();
+	Swal.fire({
+		title : "警告",
+		icon : "warning",
+		html : "<h3>即將刪除圖片</h3>",
+		imageUrl:src,
+		imageHeight: "auto",
+		imageWidth: 500,
+		customClass: {
+			confirmButton: 'btn btn-success',
+			cancelButton: 'btn btn-danger'
+		},
+		buttonsStyling: false,
+		showCancelButton: true, 
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: '確定刪除', 
+		cancelButtonText: '取消',
+		showLoaderOnConfirm: true,
+	}).then((result) => {
+		if(result.isConfirmed){
+			Swal("刪除成功")
+		}else{
+			$.fancybox.open({
+				src : src,
+				type : "image"
+			})
+		}
+	})
+	
+}
+
+function imageUpdate(src, aTag){
+	console.log(aTag)
+	let innerHtml = "<form id='update-Image'><div class='custom-file'><input type='file' accept='*/image' name='image' class='custom-file-input' id='files'><label class='custom-file-label' for='files'>選擇圖片</label></div></form>"
+	$.fancybox.close();
+	Swal.fire({
+		title : "修改圖片",
+		icon : "warning",
+		html : innerHtml,										    
+		imageUrl:src,
+		imageHeight: "auto",
+		imageWidth: 500,
+		customClass: {
+			confirmButton: 'btn btn-success',
+			cancelButton: 'btn btn-danger'
+		},
+		preConfirm : (result) => {
+			if(result){
+				let form = $("#update-Image")
+				ajaxUpdateImg(form,aTag)
+			}
+		},
+		buttonsStyling: false,
+		showCancelButton: true, 
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: '確定修改', 
+		cancelButtonText: '取消',
+		showLoaderOnConfirm: true,
+	}).then((result) => {
+		if(!result.isConfirmed){
+			$.fancybox.open({
+				src : src,
+				type : "image"
+			})
+		}else{
+			Swal.fire({
+				title : "修改成功",
+				icon : "success",
+				timer : 1500,
+				timerProgressBar : true,
+				allowOutsideClick : false,
+				allowEscapeKey : false,
+				allowEnterKey : false,
+				showConfirmButton : false,
+			}).then(() => {
+				$.fancybox.open({
+					src : src,
+					type : "image"
+				})
+			})	
+		} 
+	})
+}
+function ajaxUpdateImg(form,aTag){
+	console.log(aTag)
+	let href = aTag.attr("href")
+	let catchID = href.match(/\-[0-9]+\?/)[0].replace(/[-?]/g,"")
+	$.ajax({
+		url : baseURL + "/image-" + catchID,
+		type : "POST",
+		data : new FormData(form[0]),
+		processData: false,
+		contentType : false,
+		success : function(){
+			let newURL = baseURL + "/image-" + catchID + "?timestamp=" + new Date().getTime()
+			aTag.attr("href",newURL)
+			aTag.find("img").attr("src",newURL)			
+		},
+		error : function(jqXHR){
+			Swal.fire("發生錯誤 : 修改圖片", "錯誤代碼 : " + jqXHR.status, "error")
+		}
+		
+	})
 }

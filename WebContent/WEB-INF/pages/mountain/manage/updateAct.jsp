@@ -238,7 +238,7 @@
 											<div class="row new-form-body">
 												<div class="col-md-12" id="previewMultiple">
 													<div class='newAct-img-container hideElm'>
-														<a ><img data-toggle="tooltip" title='點擊放大' src="" alt="" class='showImage'/></a>
+														<a ><img data-toggle='tooltip' title='點擊放大' src="" alt="" class='showImage'/></a>
 														<div class="img-controller">
 															<button  data-toggle="tooltip" type="button" title='設為預設' class="btn btn-outline-success btn-img-default">
 																<i class="fas fa-anchor"></i>

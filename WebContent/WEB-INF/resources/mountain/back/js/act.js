@@ -74,13 +74,16 @@ $(function(){
 		setRtToggle(thisRtID, thisToggle)
 	})
 	
-	$("#tb-container").on("click", '.btn-rt-update', function(){
+	$("#tb-container").on("click", '.btn-act-update', function(){
 		updateBox($(this))
 	})
-	$("#tb-container").on("click", '.btn-rt-delete', function(){
+	$("#tb-container").on("click", '.btn-act-delete', function(){
 		deleteAlert($(this))
 	})
-	$("#tb-container").on("click", '.btn-rt-info', showMoreInfo)
+	$("#tb-container").on("click", '.btn-act-info', function(){
+		console.log(123)		
+		showMoreInfo($(this))
+	})
 	$("#tb-container").on("click", '.btn-rt-upImg', function(){
 		updateImage($(this))
 	})
@@ -149,15 +152,37 @@ $(function(){
 //		console.log(usePerRtChart) 
 		usePerNpChartData()
 	})
+	$("body").on("change","input[type='file']",function(){
+		form = $("#update-Image")
+		preview($(this)[0])
+	})
+	$('body').on('click', '[data-fancybox-delete]', function(e) {
+    	var src = $.fancybox.getInstance().current.src;
+    	var idx = $.fancybox.getInstance().current.opts.$orig;
+		imageDelete(src, idx)               
+	})
+	$('body').on('click', '[data-fancybox-update]', function(e) {
+    	var src = $.fancybox.getInstance().current.src;
+    	var idx = $.fancybox.getInstance().current.opts.$orig;
+		imageUpdate(src, idx)                 
+	});
+	
+	
+	$.fancybox.defaults.btnTpl.delete = 
+	'<button data-fancybox-delete class="fancybox-button fancybox-button--delete" data-toggle="tooltip" title="刪除"><i class="fas fa-trash" style="color: #ff6b6b;"></i></button>';
+	$.fancybox.defaults.btnTpl.update = 
+	'<button data-fancybox-update class="fancybox-button fancybox-button--update" data-toggle="tooltip" title="修改"><i class="fas fa-tools" style="color: #ff922b;"></i></button>';
 	$.fancybox.defaults.infobar = true;
 	$.fancybox.defaults.buttons = [
 	    "zoom",
+		"update",
+		"delete",
 //	    "share",
 	    "slideShow",
 	    "fullScreen",
 	    "download",
 	    "thumbs",
-	    "close"
+	    "close",
 	  ];
 	
 })

@@ -64,9 +64,6 @@
 	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 	<!-- Fancy Box 3  -->
 	<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-	<!-- jquery validator -->
-	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"></script>
 	<!-- Page level plugins -->
     <script src="/MountainExploer.com/vendor/chart.js/Chart.min.js"></script>
 	<!-- dateRangePicker -->
@@ -74,6 +71,9 @@
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 	<!-- CKeditor 4 -->
 	<script src="/MountainExploer.com/mountain/ckeditor/ckeditor.js"></script>
+	<!-- jquery validator -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"></script>
 	<!-- for this page -->
 	<script src="/MountainExploer.com/mountain/back/js/act.js"></script>
 	<script src="/MountainExploer.com/mountain/back/js/actFunction.js"></script>
