@@ -19,7 +19,6 @@ $(function(){
 	
 	/* 預設畫面 */
 	activeMainAjax(page,"/detail");
-	
 	/* 留言按鈕設定 */
 	$(".innerContainer").on("click", ".btn-sideResp",function(){
 		thisComment = $(this).parents(".comment-container").find("input[name='message']").val()
