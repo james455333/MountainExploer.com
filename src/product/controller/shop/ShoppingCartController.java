@@ -20,7 +20,8 @@ import product.model.CartBean;
 import product.model.OrderItems;
 import product.model.Orders;
 import product.model.ShoppingCart;
-import ecpay.payment.*;;
+import ecpay.payment.*;
+import ecpay.payment.integration.AllInOne;;
 
 @RequestMapping(path = "/shoppingcart")
 @Controller
@@ -192,7 +193,7 @@ public class ShoppingCartController {
 		ordersDao.insertOrder(orders);
 		
 		
-		new allin
+//		new AllInOne(log4jPropertiesPath)
 		
 
 		return "redirect:/shoppingcart/abort2";
