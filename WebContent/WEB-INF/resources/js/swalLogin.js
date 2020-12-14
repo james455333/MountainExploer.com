@@ -99,7 +99,7 @@ $(".swalLogin").on("click", function(){
 					}).then(function(){
 						window.location.href="/MountainExploer.com/member/memberFormalFirstInfoEntry";
 					})
-				}else if(data == 140 || data == 160){
+				}else if(data == 140 || data == 150){
 					Swal.fire({
 						icon:"warning",
 						title:"登入失敗，帳號已被停權",
@@ -107,7 +107,7 @@ $(".swalLogin").on("click", function(){
 					}).then(function(){
 						window.location.href="/MountainExploer.com";
 					})
-				}else if(data == 150){
+				}else if(data == 160){
 					Swal.fire({
 						icon:"success",
 						title:"管理員登入成功"
