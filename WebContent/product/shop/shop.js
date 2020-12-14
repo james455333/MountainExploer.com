@@ -322,9 +322,11 @@ $(function() {
 				"</td>"+		
 				
 				"<tr>"+
-				"<td width='20' height='5'>"+		
+				"<td>"+	
+				"<div style= 'height:50 px'>"+	
 				'<a href= "/MountainExploer.com/shop/productInfoEntry?no='+data[i].seqno+'">'+ data[i].name  + '</a>' +
 				"</tr>"+
+				"</div>"+	
 				"</td>"+		
 				
 				"<tr>"+
