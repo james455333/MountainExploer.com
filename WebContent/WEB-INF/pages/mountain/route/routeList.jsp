@@ -58,7 +58,7 @@
         </div>
         <div class="div_li2 m-dl2-adj">
         	<div class="npNav">
-                <nav><ul class="npList"> </ul></nav>
+                <div class="my-3"><div class="npList d-flex align-items-center justify-content-around"> </div></div>
         	</div>
         	<div class="routeNav">
                 <nav><ul class="routeList"></ul></nav>

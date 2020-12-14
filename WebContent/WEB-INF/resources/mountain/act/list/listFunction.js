@@ -99,7 +99,7 @@ function activeMainAjax(page, as) {
 			//	呼叫動態新增資料函式
 			insertTable(data.actList);
 			//	設定按鈕
-			setPageController(data.page)
+			setPageController(data.page,totalPage)
 
 
 		}
@@ -194,7 +194,7 @@ function activeTagAS(tag) {
 /* 函式 : 
 	計算傳入參數，並於網頁動態新增或修改頁面控制項 
 */
-function setPageController(page) {
+function setPageController(page, totalPage) {
 	//判別目前
 	let url;
 	if (od == 1) {
@@ -203,27 +203,49 @@ function setPageController(page) {
 	if (od == 2) {
 		url = actEnterURL + "od=2&tag=" + tag + "&"
 	}
-	let pageCtrl = $(".pageControl")
-	for(let i in pageCtrl){
+	let maxShow = 5
+	let thisPage = Number(page)
+	let pageController = $(".pageController")
+	for(let j = 0; j < pageController.length ; j++){
+		let pageCtrl = pageController.eq(j).find("li")
+		let first = url + "page=1"
+		let previous = url + "page=" + (thisPage - 1);
+		let next = url + "page=" + (thisPage + 1);
+		let final = url + "page=" + (Number(totalPage));
+		let morePage = '<li class="page-item page-number disabled"><a class="page-link"  href="">...</a></li>'
 		
-		pageCtrl.eq(i).find("a").eq(2).html("目前 " + page + ' / ' + totalPage + " 頁")
-		if (page != 1) {
-			let first = url + "page=1"
-			let previous = url + "page=" + (Number(page) - 1);
-			pageCtrl.eq(i).find("a").eq(0).attr("href", first).css("display", "block")
-			pageCtrl.eq(i).find("a").eq(1).attr("href", previous).css("display", "block")
-		} else {
-			pageCtrl.eq(i).find("a").eq(0).css("display", "none")
-			pageCtrl.eq(i).find("a").eq(1).css("display", "none")
+		if (page == 1) {
+			pageCtrl.eq(0).addClass("disabled")
+			pageCtrl.eq(1).addClass("disabled")
+		}else{
+			pageCtrl.eq(0).find("a").attr("href", first)
+			pageCtrl.eq(1).find("a").attr("href", previous)
 		}
-		if (page < totalPage) {
-			let next = url + "page=" + (Number(page) + 1);
-			let final = url + "page=" + (Number(totalPage));
-			pageCtrl.eq(i).find("a").eq(3).attr("href", next).css("display", "block")
-			pageCtrl.eq(i).find("a").eq(4).attr("href", final).css("display", "block")
-		} else {
-			pageCtrl.eq(i).find("a").eq(3).css("display", "none")
-			pageCtrl.eq(i).find("a").eq(4).css("display", "none")
+		if (page >= totalPage){
+			pageCtrl.eq(2).addClass("disabled")
+			pageCtrl.eq(3).addClass("disabled")
+		}else{
+			pageCtrl.eq(2).find("a").attr("href", next)
+			pageCtrl.eq(3).find("a").attr("href", final)
+		}
+		let startPage = page-2 > 1 ? page-2 : 1
+		let endPage = page+2 < totalPage ? page+2 : totalPage
+		let startPot = pageCtrl.eq(1)
+		if(startPage > 1){
+			startPot.after(morePage)
+			startPot = startPot.next()
+		}
+		console.log(startPot)
+		console.log(startPage)
+		console.log(endPage)
+		for(let i =startPage; i <= endPage ; i++){
+			let pageNumElm = '<li class="page-item page-number"><a class="page-link"  href="'+ url +"page="+ i +'">' + i + '</a></li>'
+			if(i == thisPage)pageNumElm = '<li class="page-item active page-number"><a class="page-link"  href="'+ url +"page="+ i +'">' + i + '</a></li>'
+			startPot.after(pageNumElm)
+			startPot = startPot.next()
+		}
+		if(endPage < totalPage ){
+			startPot.after(morePage)
 		}
 	}
 }

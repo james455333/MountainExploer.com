@@ -6,54 +6,52 @@
 <html lang="zh-tw">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>岳進者 - 活動</title>
-<!-- public -->
-<link rel="stylesheet" href="/MountainExploer.com/css/other.css">
-<link rel="stylesheet" href="/MountainExploer.com/css/font.css">
-<!-- for this page -->
-<link rel="stylesheet"
-	href="/MountainExploer.com/mountain/css/mountain.css">
-<link rel="stylesheet"
-	href="/MountainExploer.com/mountain/act/list/list.css">
-<!-- bootstrap 4 core -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-<!-- Bootstrap core CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-<!-- JQuery UI -->
-<link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
-
-<!-- JQuery -->
-<script type="text/javascript"
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- Bootstrap tooltips -->
-<script type="text/javascript"
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript"
-	src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<!-- MDB core JavaScript -->
-<script type="text/javascript"
-	src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/js/mdb.min.js"></script>
-<!-- sweetalert -->
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<!-- daterangepicker -->
-<script type="text/javascript"
-	src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-<!-- for this page -->
-<script src="/MountainExploer.com/mountain/js/mountain.js"></script>
-<script src="act/list/listFunction.js"></script>
-<script src="act/list/list.js"></script>
-<!-- active method -->
-<script src="/MountainExploer.com/js/login.js "></script>
-<!-- Login Dialog -->
-<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<!-- jquery.blockUI -->
-<script src="http://malsup.github.io/jquery.blockUI.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>岳進者 - 活動</title>
+	<!-- public -->
+	<link rel="stylesheet" href="/MountainExploer.com/css/other.css">
+	<link rel="stylesheet" href="/MountainExploer.com/css/font.css">
+	<!-- for this page -->
+	<link rel="stylesheet" href="/MountainExploer.com/mountain/css/mountain.css">
+	<link rel="stylesheet" href="/MountainExploer.com/mountain/act/list/list.css">
+	<!-- bootstrap 4 core -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+	<!-- Bootstrap core CSS -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+	<!-- JQuery UI -->
+	<link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+	
+	<!-- JQuery -->
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Bootstrap tooltips -->
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<!-- MDB core JavaScript -->
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/js/mdb.min.js"></script>
+	<!-- sweetalert -->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<!-- daterangepicker -->
+	<script type="text/javascript"
+		src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+	<!-- active method -->
+	<script src="/MountainExploer.com/js/login.js "></script>
+	<!-- Login Dialog -->
+	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<!-- jquery.blockUI -->
+	<script src="http://malsup.github.io/jquery.blockUI.js"></script>
+	<!-- for this page -->
+	<script src="/MountainExploer.com/mountain/js/mountain.js"></script>
+	<script src="act/list/listFunction.js"></script>
+	<script src="act/list/list.js"></script>
+	<script src="/MountainExploer.com/js/blockUI.js"></script>
 
 </head>
 
@@ -95,52 +93,67 @@
 				</ol>
 			</nav>
 
-			<div class="searchBar m-list-searchBar">
-				<nav>
-					<ul class="third_nav">
+			<div style="border: 5px" class="m-list-searchBar bg-light rounded m-0 py-2 px-1">
+				<div class="d-flex">
 						<!-- 控制列表內容從這邊開始 -->
-						<li>活動標籤: <select name="aTag">
-								<option value="0" selected disabled>請選擇活動標籤</option>
-								<option value="0">預設顯示</option>
-								<option value="1">新活動</option>
-								<option value="2">熱門活動</option>
-								<option value="3">歷史活動</option>
-						</select></li>
-
-						<li>報名標籤: <select name="rTag">
-								<option value="0" selected disabled>請選擇報名標籤</option>
-								<option value="0">預設顯示</option>
-								<option value="6">尚可報名</option>
-								<option value="8">報名將滿</option>
-								<option value="7">報名將截止</option>
-								<option value="5">報名已滿</option>
-								<option value="4">報名截止</option>
-
-						</select></li>
-						<li>本次查詢總筆數 :</li>
+						<div class="d-flex align-items-center mx-1">
+							<div class="input-group ">
+								<div class="input-group-prepend">
+								   <label class="input-group-text  text-primary" for="aTag-select">活動狀態</label>
+								</div>
+									<select id="aTag-select" name="aTag" class="custom-select">
+										<option value="0" selected disabled>請選擇活動標籤</option>
+										<option value="0">預設顯示</option>
+										<option value="1">新活動</option>
+										<option value="2">熱門活動</option>
+										<option value="3">歷史活動</option>
+									</select>
+							</div>
+						</div>
+						<div class="align-items-center mx-1">
+							<div class="input-group">
+								<div class="input-group-prepend">
+								   <label class="input-group-text text-primary" for="rTag-select">報名狀態</label>
+								</div>
+									<select id="rTag-select" name="rTag" class="custom-select">
+										<option value="0" selected disabled>請選擇報名標籤</option>
+										<option value="0">預設顯示</option>
+										<option value="6">尚可報名</option>
+										<option value="8">報名將滿</option>
+										<option value="7">報名將截止</option>
+										<option value="5">報名已滿</option>
+										<option value="4">報名截止</option>
+									</select>
+							</div>
+						</div>
+						<div class="d-inline-flex align-items-center mx-1">查詢筆數 :</div>
+						<div class="align-items-center ml-auto">
+							<div >
+								<form action="list" id="m-sr-form">
+									<div style="position: static" class="search d-inline-flex">
+										<button class="btn btn-outline-success">
+											<i class="fas fa-search pr-1 mr-1"></i> 搜尋
+										</button>
+										<input type="hidden" name="page" value="1" readonly>
+										<input type="hidden" name="od" value="3" readonly> 
+										<input
+											name="search" type="search" class="form-control"
+											placeholder="請輸入活動名稱">
+									</div>
+								</form>
+							</div>
+						</div>
 						<!-- 控制列表內容到這邊結束 -->
-					</ul>
-				</nav>
-				<form action="list" id="m-sr-form">
-					<div class="search">
-						<input type="hidden" name="page" value="1" readonly> <input
-							type="hidden" name="od" value="3" readonly> 搜尋：<input
-							name="search" type="search" class="light-table-filter"
-							placeholder="請輸入活動名稱">
-						<button>
-							<img class=imgSearch src="/MountainExploer.com/images/放大鏡.png"
-								alt="" width="35px">
-						</button>
-					</div>
-				</form>
+				</div>
+				
+				
 			</div>
-			<nav class="pageControl">
-				<ul>
-					<li class="li1"><a href="#">«第一頁</a></li>
-					<li class="li1"><a href="#">‹上一頁</a></li>
-					<li class="li1"><a href="#"></a></li>
-					<li class="li1"><a href="#">下一頁›</a></li>
-					<li class="li1"><a href="#">最末頁»</a></li>
+			<nav class="my-3" style="background-color:#F0F0F0">
+				<ul class="pagination  pageController justify-content-center ">
+					<li class="page-item "><a class="page-link"  href="#"><i class="fas fa-angle-double-left"></i></a></li>
+					<li class="page-item"><a class="page-link"  href="#"><i class="fas fa-angle-left"></i></a></li>
+					<li class="page-item"><a class="page-link"  href="#"><i class="fas fa-angle-right"></i></a></li>
+					<li class="page-item"><a class="page-link"  href="#"><i class="fas fa-angle-double-right"></i></a></li>
 				</ul>
 			</nav>
 
@@ -160,7 +173,7 @@
                             <!-- thead更改從這邊開始 -->
                             <th scope="col">活動預覽圖</th>
                             <th scope="col" class="d-li-na">活動名稱</th>
-                            <th scope="col">發布時間 / 默認排序</th>
+                            <th scope="col">發布者 / 發布時間</th>
                             <th scope="col">目前人數 / 人數上限</th>
                             <th scope="col">報名截止日</th>
                             <th scope="col">最新回應</th>
@@ -189,70 +202,17 @@
 				</table>
 
 			</div>
-			<nav class="pageControl">
-				<ul>
-					<li class="li1"><a href="#">«第一頁</a></li>
-					<li class="li1"><a href="#">‹上一頁</a></li>
-					<li class="li1"><a href="#"></a></li>
-					<li class="li1"><a href="#">下一頁›</a></li>
-					<li class="li1"><a href="#">最末頁»</a></li>
+			<nav class="my-3" style="background-color:#F0F0F0">
+				<ul class="pagination  pageController justify-content-center">
+					<li class="page-item"><a class="page-link"  href="#"><i class="fas fa-angle-double-left"></i></a></li>
+					<li class="page-item"><a class="page-link"  href="#"><i class="fas fa-angle-left"></i></a></li>
+					<li class="page-item"><a class="page-link"  href="#"><i class="fas fa-angle-right"></i></a></li>
+					<li class="page-item"><a class="page-link"  href="#"><i class="fas fa-angle-double-right"></i></a></li>
 				</ul>
 			</nav>
 			<!-- 每頁不同的內容到這裡結束 -->
 		</div>
 	</div>
-	<div>
-		<div id="dialog-form" title="登入/註冊">
-			<div id="login-div" class="ui-dialog">
-				<div class="login-body" id="login-panel">
-					<table class="logintable" style="margin: 0 auto; width: 250px">
-						<tbody>
-							<tr style="text-align: right;">
-								<th>帳號:</th>
-								<td><div>
-										<input id="account" name="account" type="text"
-											style="width: 200px; border: 1px #ABADB3 solid; padding: 5px 3px 5px;">
-									</div></td>
-							</tr>
-							<tr style="text-align: right;">
-								<th>密碼:</th>
-								<td>
-									<div>
-										<input id="password" type="password"
-											style="width: 200px; border: 1px #ABADB3 solid; padding: 5px 3px 5px;">
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<th></th>
-								<td>
-									<div>
-										<a href="#">忘記密碼</a>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<th></th>
-								<td>
-									<div>
-										<label> 記住我<input id="rememberMe" type="checkbox"
-											name="rememberme" style="float: left;">
-										</label>
-									</div>
-
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<br>
-					<div style="text-align: center;">
-						立即<a href="#" style="color: blue;">註冊</a>新帳號
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
 	<footer id="footer">
 		<a>全站導覽</a>
 		<button id="demo1">確認demo1</button>

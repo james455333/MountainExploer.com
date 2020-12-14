@@ -27,6 +27,7 @@ $(function(){
 	countRtChartData()
 	usePerNpChartData()
 	setSearchBar()
+	console.log(dataTable)
 	setTable()
 	$("#npSelect").on("change",changeRtAndTb)
 	$("#rtSelect").on("change",changeTbByRt)

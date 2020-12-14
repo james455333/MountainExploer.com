@@ -108,7 +108,7 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">活動資料維護</h1>
-                        <a href="#actTrendChart" id="exportAll" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                        <a href="#" id="exportAll" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i>匯出資料表</a>
                     </div>
                     
@@ -314,71 +314,7 @@
                     <div class="row">
 						<div class="col-xl-12">
 	                        <div class="card shadow mb-4" id="tb-container">
-	                            <div class="card-header py-3">
-	                            </div>
-	    						<div class="card-body">
-	    							<div class="d-flex">
-		                            	<div class="col-md-4 justify-content-end d-flex align-items-center ">
-		                            		<div class="input-group">
-											  <div class="input-group-prepend">
-											    <label class="input-group-text" for="npSelect">國家公園</label>
-											  </div>
-											  <select id="npSelect" class="custom-select">
-											  </select>
-											</div>
-		                            	</div>
-		                            	<div class="col-md-4 justify-content-end d-flex align-items-center ">	                                 
-		                            		<div class="input-group">
-											  <div class="input-group-prepend">
-											    <label class="input-group-text" for="rtSelect">路線選項</label>
-											  </div>
-											  <select id="rtSelect" class="custom-select" >
-											  </select>
-											</div>
-		    							</div>
-		                            	<a href="#selectAll" class="ml-auto">
-			                                <button id="selectAll" class="btn btn-primary btn-icon-split">
-			                                    <span class="icon text-white-50">
-			                                        <i id="resetAll" class="fas fa-redo"></i>
-			                                    </span>
-			                                    <span class="text">重置查詢</span>
-			                                </button>
-		                            	</a>
-	    							</div>
-		                             <hr>
-		                             	<div class="d-flex">
-			                            	<h3>國家公園 -- 主類別控制</h3>
-			                                <button id="newNp" class="btn btn-success btn-icon-split ml-auto">
-			                                    <span class="icon text-white-50">
-			                                        <i class="fas fa-mountain"></i>
-			                                    </span>
-			                                    <span class="text">新增國家公園</span>
-			                                </button>
-			                                <button id="updateNp" class="btn btn-warning btn-icon-split ml-auto">
-			                                    <span class="icon text-white-50">
-			                                        <i class="fas fa-mountain"></i>
-			                                    </span>
-			                                    <span class="text">編輯國家公園</span>
-			                                </button>
-			                                <button id="deleteNp" class="btn btn-danger btn-icon-split ml-auto">
-			                                    <span class="icon text-white-50">
-			                                        <i class="fas fa-trash-alt"></i>
-			                                    </span>
-			                                    <span class="text">刪除國家公園</span>
-			                                </button>
-		                             	</div>
-		                             <hr>
-		                             <div class='d-flex'>
-		                                <h3>路線選項</h3>
-		                                <button id="newRoute" class="btn btn-success btn-icon-split ml-auto">
-		                                    <span class="icon text-white-50">
-		                                        <i class="fas fa-flag"></i>
-		                                    </span>
-		                                    <span class="text">新增路線</span>
-		                                </button>
-		                             </div>
-		                             <hr>
-	    						</div>
+	                            <div class="card-header py-3">活動管理維護</div>
 	                            <div class="card-body">
 	                                <div class="table-responsive">
 	                                    <table id="routeTable" class="table-hover table-striped">
