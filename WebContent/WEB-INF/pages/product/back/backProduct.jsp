@@ -91,7 +91,7 @@
 		<span>資料筆數 : </span> <span id="totalData"> </span>
 	</div>
 	<div>
-		<a href='<c:url value="/backstage/product/allOrders"/>'>訂單維護</a>
+		<a href='<c:url value="backstage/product/allOrders"/>'>訂單維護</a>
 
 	</div>
 
