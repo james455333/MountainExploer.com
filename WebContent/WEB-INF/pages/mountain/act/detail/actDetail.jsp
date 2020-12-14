@@ -16,11 +16,12 @@
     <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
     <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
     <link rel="stylesheet" href="/MountainExploer.com/mountain/css/mountain.css">
-    <!-- for this page -->
-    <link rel="stylesheet" href="detail/detail.css">
 	    <!-- JQuery UI -->
 	<link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
-    
+    <!-- sweetalert2 -->
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css">
+    <!-- for this page -->
+    <link rel="stylesheet" href="detail/detail.css">
     <!-- CKeditor4 -->
 	<script src="/MountainExploer.com/mountain/ckeditor/ckeditor.js"></script>
 	<!-- JQuery -->
@@ -34,17 +35,17 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/js/mdb.min.js"></script>
 	<!-- sweetalert -->
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<!-- jquery.blockUI -->
+	<script src="http://malsup.github.io/jquery.blockUI.js"></script>
+	<!-- sweetalert2 -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <!-- for this page -->
     <script src="/MountainExploer.com/mountain/js/mountain.js"></script>
     <script src="detail/detail.js"></script>
     <script src="detail/detailFunction.js"></script>
     <!-- active method -->
-	<script src="/MountainExploer.com/js/login.js "></script>
-	<!-- Login Dialog -->
-	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-	<!-- jquery.blockUI -->
-	<script src="http://malsup.github.io/jquery.blockUI.js"></script>
+	<script src="/MountainExploer.com/js/blockUI.js"></script>
+	<script src="/MountainExploer.com/js/swalLogin.js"></script>
 </head>
 
 <body>
@@ -67,53 +68,6 @@
         </nav>
     </header>
     <div class="div_ul">
-    	<div>
-    	<div id="dialog-form" title="登入/註冊">
-			    <div id="login-div" class="ui-dialog">
-			        <div class="login-body" id="login-panel">
-			            <table class="logintable" style="margin: 0 auto;">
-			                <tbody>
-			                    <tr style="text-align: right;">
-			                        <th>帳號:</th>
-			                        <td><input id="account" name="account" type="text" style=" width: 200px;border: 1px #ABADB3 solid;
-			                          padding: 5px 3px 5px; "></td>
-			                    </tr>
-			                    <tr style="text-align: right;">
-			                        <th>密碼:</th>
-			                        <td>
-			                            <div>
-			                                <input id="password" type="password" style="width: 200px;border: 1px #ABADB3 solid;padding: 5px 3px 5px; ">
-			                            </div>
-			                        </td>
-			                    </tr>
-			                    <tr>
-			                        <th></th>
-			                        <td>
-			                            <div>
-			                                <a href="#">忘記密碼</a>
-			                            </div>
-			                        </td>
-			                    </tr>
-			                    <tr>
-			                        <th></th>
-			                        <td>
-			                            <div>
-			                                <label>
-												記住我<input id="rememberMe" type="checkbox" name="rememberme" style="float: left;">
-			                                </label>
-			                            </div>
-			
-			                        </td>
-			                    </tr>
-			                </tbody>
-			            </table>
-			            <br>
-			            <div style="text-align: center;">立即<a href="#" style="color:blue;">註冊</a>新帳號</div>
-			        </div>
-			    </div>
-			</div>
-    	</div>
-        
         <div class="div_li1">
         </div>
         <div class="div_li3">
@@ -184,7 +138,7 @@
 												瀏覽完整內容，請先
 												<a href="/MountainExploer.com/member/memberRegisterEntry">註冊</a>
 												或
-												<a href="/MountainExploer.com/member/memberLoginEntry">登入會員</a>
+												<a href="" class="swalLogin">登入會員</a>
 											</div>
 											<!-- 圖片 (複數:最多5) -->
 											<div class="d_act_img_con">
