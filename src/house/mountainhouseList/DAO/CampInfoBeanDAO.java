@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import house.mountainhouseList.DAO.Interface.ICampInfoBeanService;
+import house.mountainhouseList.model.AreaBean;
 import house.mountainhouseList.model.CampInfoBean;
 
 @Repository
@@ -212,24 +213,33 @@ public class CampInfoBeanDAO implements ICampInfoBeanService {
 			
 	}
 	@Override
+	public int countCampAll() {		
+		Query query = getSession().createQuery("Select count(*) From CampInfoBean");
+		long result = (long) query.uniqueResult();
+		return (int)result;		
+	}
+	@Override
 	public int countCampname(String campname) {		
 		Query query = getSession().createQuery("Select count(*) From CampInfoBean where name like '%" + campname + "%'");
 		long result = (long) query.uniqueResult();
 		return (int)result;		
 	}
 
-//	@Override
-//	public int countcountiesname(String counties) {		
-//		Query query = getSession().createQuery("Select count(*) From CampInfoBean where counties like '%" + counties + "%'");
-//		long result = (long) query.uniqueResult();
-//		return (int)result;		
-//	}
-//	
-//	@Override
-//	public int countareaname(String area) {		
-//		Query query = getSession().createQuery("Select count(*) From CampInfoBean  where counties in (From CountiesBean  where area like '%" + area + "%') ");
-//		long result = (long) query.uniqueResult();
-//		return (int)result;		
-//	}
+	@Override
+	public int countcountiesname(String counties) {		
+		Query query = getSession().createQuery("Select count(*) From CampInfoBean where counties like '%" + counties + "%'");
+		long result = (long) query.uniqueResult();
+		return (int)result;		
+	}
+	
+	@Override
+	public int countareaname(String area) {		
+		Query query = getSession().createQuery("Select count(*) From CampInfoBean  where counties in (From CountiesBean  where area like '%" + area + "%') ");
+		long result = (long) query.uniqueResult();
+		return (int)result;		
+	}
+	
+	
+	
 	
 }

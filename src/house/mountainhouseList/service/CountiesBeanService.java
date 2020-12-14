@@ -71,4 +71,10 @@ public class CountiesBeanService implements ICountiesBeanService {
 		return counDAO.countArea(area);
 	}
 
+	@Override
+	public int countCountiesAll() {
+		// TODO Auto-generated method stub
+		return counDAO.countCountiesAll();
+	}
+
 }

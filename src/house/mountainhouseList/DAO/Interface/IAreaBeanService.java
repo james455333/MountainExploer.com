@@ -14,5 +14,5 @@ public interface IAreaBeanService {
 	public AreaBean update( AreaBean ABean);
 	public AreaBean deleteCamp(String area);
 	public int countAreaname(String area);
-	
+	public int countAreaAll();
 }

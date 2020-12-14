@@ -54,6 +54,12 @@ public class AreaBeanService implements IAreaBeanService {
 		return ADao.countAreaname(area);
 	}
 
+	@Override
+	public int countAreaAll() {
+		return ADao.countAreaAll();
+	}
+
+
 	
 
 	

@@ -146,12 +146,12 @@ div{margin: 20px;}
 								<div>
 									姓名 : <input type="text" name="camporder_peoplename" value="我是誰">
 								<div></div>
-									電話 : <input type="text" name="" value="0912345678">
+									電話 : <input type="text" name="camporder_cellphone" value="0912345678">
 								</div>
 								<div>
 									特別要求 :
 								</div> 
-								<div><textarea rows="4" cols="50" name=""></textarea></div>
+								<div><textarea rows="4" cols="50" name="camporder_textsuggest"></textarea></div>
 
 								<input type="submit" value="送出">
 							</c:forEach>

@@ -59,7 +59,9 @@ public class ActCampOrderController {
 			@RequestParam(name = "camporder_campid") Integer campid,
 			@RequestParam(name = "camporder_peoplename")String peoplename,
 			@RequestParam(name = "camporder_bookdate")String daterange,
-			@RequestParam(name = "camporder_price") Integer price) {
+			@RequestParam(name = "camporder_price") Integer price,
+			@RequestParam(name = "camporder_cellphone")Integer cellphone,
+			@RequestParam(name = "camporder_textsuggest")String textsuggest) {
 
 		if (m.getAttribute("Member") == null) {
 			return "redirect:/member/memberLoginEntry";
@@ -74,6 +76,8 @@ public class ActCampOrderController {
 		CampInfoBean campInfoBean = campService.select(campid);
 		camporder.setCampbasicid(campInfoBean);
 		
+		camporder.setCellphone(cellphone);
+		camporder.setTextsuggest(textsuggest);
 		camporder.setAmount(amount);
 		camporder.setPeoplename(peoplename);
 		camporder.setBookdate(qewString);
@@ -115,10 +119,10 @@ public class ActCampOrderController {
 
 	// delete order
 	@GetMapping("/deletecamporder")
-	private String deleteCampOrder(Model m, Integer camporderid) {
+	private String deleteCampOrder(Model m,@RequestParam(name = "deleteorderid") Integer camporderid) {
 
 		campOrderService.deleteCampOrder(camporderid);
-		return "house/act/actCampOrder";
+		return "redirect:/mountaincCampActOrder/selectcamporder";
 	}
 
 	//inser order jump

@@ -45,6 +45,11 @@ public class CampOrderBean {
 	private String peoplename;
 	@Column(name = "DATERANGE")
 	private String daterange;
+	@Column(name = "CELLPHONE")
+	private Integer cellphone;
+	@Column(name = "TEXTSUGGEST")
+	private String textsuggest;
+	
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "MEMBER_BASIC_SEQNO")
@@ -119,6 +124,18 @@ public class CampOrderBean {
 	}
 	public void setDaterange(String daterange) {
 		this.daterange = daterange;
+	}
+	public Integer getCellphone() {
+		return cellphone;
+	}
+	public void setCellphone(Integer cellphone) {
+		this.cellphone = cellphone;
+	}
+	public String getTextsuggest() {
+		return textsuggest;
+	}
+	public void setTextsuggest(String textsuggest) {
+		this.textsuggest = textsuggest;
 	}
 	
 }

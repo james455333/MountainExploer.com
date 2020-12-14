@@ -24,6 +24,8 @@ public interface ICountiesBeanService {
 
 	int countArea(String area);
 
+	int countCountiesAll();
+
 	
 	
 

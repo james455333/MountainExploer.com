@@ -2,6 +2,7 @@ package house.mountainhouseList.DAO.Interface;
 
 import java.util.List;
 
+import house.mountainhouseList.model.AreaBean;
 import house.mountainhouseList.model.CampInfoBean;
 
 public interface ICampInfoBeanService {
@@ -23,6 +24,12 @@ public interface ICampInfoBeanService {
 	int countCamp(String area, Integer no ,String counties);
 
 	int countCampname(String campname);
+
+	int countcountiesname(String counties);
+
+	int countareaname(String area);
+
+	int countCampAll();
 
 	
 

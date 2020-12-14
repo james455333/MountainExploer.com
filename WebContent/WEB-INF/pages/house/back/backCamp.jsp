@@ -234,12 +234,12 @@ float : right;}
 					</c:forEach>
 
 					
+	</tbody>
 			</table>
 		</div>
 
 	</div>
 
-	</tbody>
 	<script>
 		function delete_data() {
 			if (confirm("確認刪除?")) {

@@ -136,6 +136,12 @@ public class CountiesBeanDAO implements ICountiesBeanService {
 			long result = (long) query.uniqueResult();
 			return (int)result;		
 		}
+		@Override
+		public int countCountiesAll() {		
+			Query query = getSession().createQuery("select count(*) From CountiesBean");
+			long result = (long) query.uniqueResult();
+			return (int)result;		
+		}
 
 			
 		
