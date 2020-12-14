@@ -184,7 +184,7 @@ height:25px;
 <!-- 下框 -->
              <div class="secDivContent">
              <div style="padding: 20px 0 0 0 "><h3>查詢住宿日期</h3>
-             	<form action="<c:url value='/mountaincCampActOrder/selectamount'></c:url>">
+             	<form action="<c:url value='/mountaincCampActOrder/selectamount#tablePreview'></c:url>">
              	
              <c:forEach var="i" items="${selectcamp}">
  <!-- 營地編號 -->

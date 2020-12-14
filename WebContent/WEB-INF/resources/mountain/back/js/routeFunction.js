@@ -278,6 +278,7 @@ function imgError(thisElm){
 }
 
 function setDataTable(result){
+	$('#routeTable').DataTable()
 	dataTable = $('#routeTable').DataTable( {
 		"data" : result,
         "pagingType": "full_numbers",

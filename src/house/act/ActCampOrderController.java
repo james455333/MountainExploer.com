@@ -207,7 +207,8 @@ public class ActCampOrderController {
 //			System.out.println("................."+bookorderdate);//當天訂房數量
 		}
 //			System.out.println("................."+hotel);//區間訂房最大數量
-		Integer leftcampamount = (campamount-hotel);
+		System.out.println("======== campamount-hotel) : " + (campamount-hotel));
+		Integer leftcampamount = campamount-hotel;
 	m.addAttribute("leftcampamount",leftcampamount); //庫存
 				
 		

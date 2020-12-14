@@ -452,8 +452,6 @@
 							
 							</div>
 									</div>
-									<hr>
-								</div>
 								<div class="card-body">
 									<div class="table-responsive">
 										<table id="routeTable">
@@ -501,12 +499,12 @@
 							<td>
 								<c:choose>
 								<c:when test="${empty i.campimgid.img }">
-								<a href="${i.url}"target="_blank"><img height="100" width="100"
-										src="/MountainExploer.com/housecamp/images/campnull.PNG">按</a>
+								<a class="tooltip-a" data-toggle='tooltip' href="${i.url}"target="_blank"><img alt='按'  height="100" width="100"
+										src="/MountainExploer.com/housecamp/images/campnull.PNG"></a>
 								</c:when>
 								<c:when test="${not empty i.campimgid.img }">
-								<a href="${i.url}"target="_blank"><img height="100" width="100"
-										src="<c:url value='/mountainCampBack/showimg?imgid=${i.campimgid.id}'/>">按</a>
+								<a class="tooltip-a" data-toggle='tooltip' title="點擊" href="${i.url}"target="_blank"><img alt='按'  height="100" width="100"
+										src="<c:url value='/mountainCampBack/showimg?imgid=${i.campimgid.id}'/>"></a>
 								</c:when>
 								</c:choose>
 								</td>
@@ -572,6 +570,9 @@
 									</div>
 								</div>
 							</div>
+								
+								
+						</div>
 
 						</div>
 					</div>
@@ -647,7 +648,9 @@
 	
 	<script type="text/javascript">
 		$(function() {
-
+			
+			$('.tooltip-a').tooltip()
+			
 			var campUrl = "/MountainExploer.com/Rout/mountainCampBack";
 
 			//所有縣市	
