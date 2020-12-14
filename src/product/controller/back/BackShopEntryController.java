@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BackShopEntryController {
 	
 	@GetMapping("/product/index")
-	public String backActEntry() {
+	public String backProductEntry() {
 		return "/product/back/productIndex";
 	}
-	@GetMapping("/order/index")
-	public String backRouteEntry() {
+	@GetMapping("/order")
+	public String backOrderEntry() {
 		return "/product/back/orderIndex";
 	}
 	

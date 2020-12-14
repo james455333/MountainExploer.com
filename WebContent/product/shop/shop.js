@@ -322,11 +322,11 @@ $(function() {
 				"</td>"+		
 				
 				"<tr>"+
-				"<td>"+	
-				"<div style= 'height:50 px'>"+	
+				'<td style= "width: 150px ;height:500 px">'+	
+//				'<div style= "width: 120px ;height:400 px">'+	
 				'<a href= "/MountainExploer.com/shop/productInfoEntry?no='+data[i].seqno+'">'+ data[i].name  + '</a>' +
 				"</tr>"+
-				"</div>"+	
+//				"</div>"+	
 				"</td>"+		
 				
 				"<tr>"+
@@ -344,6 +344,15 @@ $(function() {
 				'<option value="4">4</option>' +
 				'<option value="5">5</option>' +
 				"</select>" +
+//				"<c:choose>"+
+//			'<c:when test="${empty Member}">'+
+//									'<input type="button" class="swalLogin" value="評分">'+
+//								"</c:when>"+
+//							'<c:otherwise><input id="demo1" type="submit" value="加入購物車">'+
+//							"</c:otherwise>"+
+//						"</c:choose>"+
+				
+				
 				'<input id="demo1" type="submit" value="加入購物車">' +
 				'</form>' +
 				
