@@ -666,6 +666,7 @@ $(".allMember").on("click", ".ban", function(){
 
 //復權
 $(".allMember").on("click", ".recover", function(){
+    
     Swal.fire({
         title: "確定要恢復此會員的權限？",
         icon: "warning",
@@ -1072,7 +1073,18 @@ $(".allMember").on("click", ".chInfo", function(){
         dataType:"json",
         success:function(mbList){
             $.each(mbList, function(index, item){
-                if(item.memberStatus.seqno == 100){
+                let itNm = item.name;
+                if(itNm == ""){
+                    itNm = "尚未填入";
+                }
+                let itNc = item.memberInfo.neck_name;
+                if(itNc == null){
+                    itNc = "尚未填入";
+                }
+                let itPh = item.memberInfo.phone;
+                if(itPh == ""){
+                    itPh = "尚未填入";
+                }
                     Swal.fire({
                         title: "會員編號" + item.seqno + "的會員資料",
                         html:`<div>
@@ -1084,16 +1096,16 @@ $(".allMember").on("click", ".chInfo", function(){
                                 <input type="text" name="account" class="swal2-input account" value="` + item.account + `" readonly>
                                 <br/>
                                 <label>姓名：</label>
-                                <input type="text" name="name" class="swal2-input name" value="` + item.name + `">
+                                <input type="text" name="name" class="swal2-input name" value="` + itNm + `">
                                 <br/>
                                 <label>暱稱：</label>
-                                <input type="text" name="ncName" class="swal2-input ncName" value="` + item.memberInfo.neck_name + `">
+                                <input type="text" name="ncName" class="swal2-input ncName" value="` + itNc + `">
                                 <br/>
                                 <label>Email：</label>
                                 <input type="text" name="email" class="swal2-input email" value="` + item.email + `">
                                 <br/>
                                 <label>手機：</label>
-                                <input type="text" name="phone" class="swal2-input phone" value="` + item.memberInfo.phone + `">
+                                <input type="text" name="phone" class="swal2-input phone" value="` + itPh + `">
                                 <br/>
                                 </form>
                                 </div>`,
@@ -1114,7 +1126,7 @@ $(".allMember").on("click", ".chInfo", function(){
 
                         }
                     })
-                }
+                
             })
 
         }

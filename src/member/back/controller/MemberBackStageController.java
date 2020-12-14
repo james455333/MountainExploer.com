@@ -1,7 +1,5 @@
 package member.back.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -247,10 +245,10 @@ public class MemberBackStageController {
 	@RequestMapping(path = "/updateInfoBack", method = RequestMethod.POST)
 	public String processUpdateBack(
 			@RequestParam(name = "seqno")int seqno,
-			@RequestParam(name = "name")String name,
-			@RequestParam(name = "ncName")String ncName,
+			@RequestParam(name = "name", required = false)String name,
+			@RequestParam(name = "ncName", required = false)String ncName,
 			@RequestParam(name = "email")String email,
-			@RequestParam(name = "phone")String phone){
+			@RequestParam(name = "phone", required = false)String phone){
 		
 		MemberBasic queryMb = mbService.select(seqno);
 		if(queryMb != null) {

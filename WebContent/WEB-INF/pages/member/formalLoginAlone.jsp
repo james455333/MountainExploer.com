@@ -136,10 +136,11 @@
                 <div>
 	            	<div scope="public_profile,email" onlogin="checkLoginState();" class="fb-login-button" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width=""></div>
 	            </div>
+	            <br>
 	            <div>
-		          	<input type="button" name="userLog1" class="userLog1" value="一般登入">
-		          	<input type="button" name="userLog2" class="userLog2" value="登山嚮導登入">
-		          	<input type="button" name="adminLog" class="adminLog" value="管理員登入">
+		          	<input type="button" name="userLog1" class="btn btn-info userLog1" value="一般登入">
+		          	<input type="button" name="userLog2" class="btn btn-warning userLog2" value="登山嚮導登入">
+		          	<input type="button" name="adminLog" class="btn btn-secondary adminLog" value="管理員登入">
 	            </div>
 	            
             </div>
