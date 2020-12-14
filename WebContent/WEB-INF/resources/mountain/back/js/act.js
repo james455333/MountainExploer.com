@@ -121,6 +121,11 @@ $(function(){
 		setActYearSelect()
 		setActTrendChart($(this).val())
 	})
+	$("#actTrend-select").on("change",function(){
+		let year = $(this).val()
+		console.log("year : " + year)
+		setActTrendChart(null,null,year)
+	})
 	$("#actTrend-export").on("click",function(){
 		let titleName = actTrendChart.options.title.text
 		titleName = titleName.replace(/[\u4e00-\u9fa5]/g,"")
@@ -136,10 +141,10 @@ $(function(){
 		resetChart(canvasID)
 		e.preventDefault()
 	})
-//	$("#exportAll").on("click",function(e){
-//		downloadAllJson()
-//		e.preventDefault()
-//	})
+	$("#exportAll").on("click",function(e){
+		downloadAllJson()
+		e.preventDefault()
+	})
 	
 	
 	$("#npChartSelect").on("change",function(){

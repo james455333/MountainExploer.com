@@ -1,5 +1,5 @@
 var rtSearchURL = "/MountainExploer.com/mountain/route/search"
-var buttonModel = '<li class="li2"><button type="button" class="btn btn-outline-info"></button></li>'
+var buttonModel = '<div class="float-left"><button type="button" class="btn btn-outline-info"></button></div>'
 /* 預設AJAX */
 function ajaxDefault() {
 	$.ajax({

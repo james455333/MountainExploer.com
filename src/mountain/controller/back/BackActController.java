@@ -1,5 +1,6 @@
 package mountain.controller.back;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -249,7 +250,8 @@ public class BackActController {
 			activityInfo.setRtBasic(routeBasic);
 			if (map.get("title")!= null) activityInfo.setTitle(map.get("title"));
 			if (map.get("price")!= null) activityInfo.setPrice(Integer.parseInt(map.get("price")));
-			if (map.get("regTop")!= null) activityInfo.setNote(map.get("note").getBytes(MountainGlobal.CHARSET));
+			if (map.get("regTop")!= null) activityInfo.setRegTop(Integer.parseInt(map.get("regTop")));;
+			if (map.get("note")!= null) activityInfo.setNote(map.get("note").getBytes(MountainGlobal.CHARSET));
 			
 			service.update(activityInfo);
 		} catch (Exception e) {
@@ -313,13 +315,38 @@ public class BackActController {
 	@PostMapping("/image-{imgID}")
 	public void updateImage(ActImage actImage,
 			@PathVariable("imgID") Integer imgID,
-			@RequestParam("image") MultipartFile multipartFile) {
+			@RequestParam("image") MultipartFile multipartFile) throws IOException {
 		/* 回傳物件 */
 		/* 設定service */
 		InterfaceService<GenericTypeObject> service = this.service;
-		System.out.println("multipartFile name : " + multipartFile.getOriginalFilename());
+//		System.out.println("multipartFile name : " + multipartFile.getOriginalFilename());
+//		System.out.println("multipartFile path : " + multipartFile.getBytes());
 		try {
 			service.save(actImage);
+			if(multipartFile.getOriginalFilename() != null) {
+				byte[] image = MountainGlobal.downloadImage(multipartFile, request);
+				actImage = (ActImage) service.select(imgID);
+				actImage.setImg(image);
+				actImage.setName(multipartFile.getOriginalFilename());
+				service.update(actImage);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	@DeleteMapping("/image-{imgID}")
+	public void deleteImage(ActImage actImage,
+			@PathVariable("imgID") Integer imgID) throws IOException {
+		/* 回傳物件 */
+		/* 設定service */
+		InterfaceService<GenericTypeObject> service = this.service;
+//		System.out.println("multipartFile name : " + multipartFile.getOriginalFilename());
+//		System.out.println("multipartFile path : " + multipartFile.getBytes());
+		try {
+			service.save(actImage);
+			actImage = (ActImage) service.select(imgID);
+			service.delete(imgID);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
