@@ -202,10 +202,10 @@ public class MemberLoginController {
 					m.addAttribute("result", "初次登入成功");
 					System.out.println("=======================登入成功");
 					return mb.getMemberStatus().getSeqno();
-				}else if(mb.getMemberStatus().getSeqno() == 140 || mb.getMemberStatus().getSeqno() == 160) {
+				}else if(mb.getMemberStatus().getSeqno() == 140 || mb.getMemberStatus().getSeqno() == 150) {
 					m.addAttribute("Member", mb);
 					return mb.getMemberStatus().getSeqno();
-				}else if(mb.getMemberStatus().getSeqno() == 150) {
+				}else if(mb.getMemberStatus().getSeqno() == 160) {
 					m.addAttribute("Member", mb);
 					return mb.getMemberStatus().getSeqno();
 				}else {
@@ -352,12 +352,12 @@ public class MemberLoginController {
 					m.addAttribute("result", "初次登入成功");
 					System.out.println("=======================登入成功");
 					return "member/info/formalFirstInfo";
-				}else if(mb.getMemberStatus().getSeqno() == 150) {
+				}else if(mb.getMemberStatus().getSeqno() == 160) {
 					m.addAttribute("Member", mb);
 					m.addAttribute("result", "管理員登入成功");
 					System.out.println("======================管理員登入成功");
 					return "backIndex";
-				}else if(mb.getMemberStatus().getSeqno() == 160 || mb.getMemberStatus().getSeqno() == 140) {
+				}else if(mb.getMemberStatus().getSeqno() == 150 || mb.getMemberStatus().getSeqno() == 140) {
 					m.addAttribute("errors", "您已被停權，無法使用本系統");
 					System.out.println("======================停權帳號");
 					return "index";

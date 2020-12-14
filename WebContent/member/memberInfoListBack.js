@@ -19,7 +19,9 @@ $(function(){
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
                             "<td>" + Gm + "</td>" + 
-                            "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                            "<td>" + 
+                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                                "<button type='button' id='sgInfo' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 110){
                         let Um = "未認證登山者";
@@ -32,7 +34,9 @@ $(function(){
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
                             "<td>" + Um + "</td>" + 
-                            "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                            "<td>" + 
+                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 120){
                         let Gg = "登山嚮導";
@@ -45,7 +49,9 @@ $(function(){
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
                             "<td>" + Gg + "</td>" + 
-                            "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                            "<td>" + 
+                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 130){
                         let Ug = "未認證嚮導";
@@ -58,7 +64,9 @@ $(function(){
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
                             "<td>" + Ug + "</td>" + 
-                            "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                            "<td>" + 
+                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 140){
                         let Sm = "停權登山者";
@@ -71,7 +79,9 @@ $(function(){
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
                             "<td>" + Sm + "</td>" + 
-                            "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                            "<td>" + 
+                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 150){
                         let Sg = "停權嚮導";
@@ -84,7 +94,9 @@ $(function(){
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
                             "<td>" + Sg + "</td>" + 
-                            "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                            "<td>" + 
+                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 160){
                         let admin = "管理者";
@@ -94,7 +106,9 @@ $(function(){
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
                             "<td>" + admin + "</td>" + 
-                            "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                            "<td>" + 
+                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
                         )
                     }
                 })
@@ -104,7 +118,7 @@ $(function(){
     })
 })
 
-//重製查詢
+//重置查詢
 $(".reSelect").on("click", function(){
     $("#allMember").html("");
 
@@ -128,7 +142,9 @@ $(".reSelect").on("click", function(){
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
                             "<td>" + Gm + "</td>" + 
-                            "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                            "<td>" + 
+                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 110){
                         let Um = "未認證登山者";
@@ -141,7 +157,9 @@ $(".reSelect").on("click", function(){
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
                             "<td>" + Um + "</td>" + 
-                            "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                            "<td>" + 
+                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 120){
                         let Gg = "登山嚮導";
@@ -154,7 +172,9 @@ $(".reSelect").on("click", function(){
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
                             "<td>" + Gg + "</td>" + 
-                            "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                            "<td>" + 
+                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 130){
                         let Ug = "未認證嚮導";
@@ -167,7 +187,9 @@ $(".reSelect").on("click", function(){
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
                             "<td>" + Ug + "</td>" + 
-                            "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                            "<td>" + 
+                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 140){
                         let Sm = "停權登山者";
@@ -177,7 +199,9 @@ $(".reSelect").on("click", function(){
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
                             "<td>" + Sm + "</td>" + 
-                            "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                            "<td>" + 
+                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 150){
                         let Sg = "停權嚮導";
@@ -187,7 +211,9 @@ $(".reSelect").on("click", function(){
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
                             "<td>" + Sg + "</td>" + 
-                            "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                            "<td>" + 
+                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 160){
                         let admin = "管理者";
@@ -197,7 +223,9 @@ $(".reSelect").on("click", function(){
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
                             "<td>" + admin + "</td>" + 
-                            "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                            "<td>" + 
+                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
                         )
                     }
                 })
@@ -234,7 +262,9 @@ $(".sgSelect").on("click", function(){
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
                             "<td>" + Gm + "</td>" + 
-                            "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                            "<td>" + 
+                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 110){
                         let Um = "未認證登山者";
@@ -247,7 +277,9 @@ $(".sgSelect").on("click", function(){
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
                             "<td>" + Um + "</td>" + 
-                            "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                            "<td>" + 
+                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 120){
                         let Gg = "登山嚮導";
@@ -260,7 +292,9 @@ $(".sgSelect").on("click", function(){
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
                             "<td>" + Gg + "</td>" + 
-                            "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                            "<td>" + 
+                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 130){
                         let Ug = "未認證嚮導";
@@ -273,7 +307,9 @@ $(".sgSelect").on("click", function(){
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
                             "<td>" + Ug + "</td>" + 
-                            "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                            "<td>" + 
+                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 140){
                         let Sm = "停權登山者";
@@ -286,7 +322,9 @@ $(".sgSelect").on("click", function(){
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
                             "<td>" + Sm + "</td>" + 
-                            "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                            "<td>" + 
+                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 150){
                         let Sg = "停權嚮導";
@@ -299,7 +337,9 @@ $(".sgSelect").on("click", function(){
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
                             "<td>" + Sg + "</td>" + 
-                            "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                            "<td>" + 
+                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 160){
                         let admin = "管理者";
@@ -309,7 +349,9 @@ $(".sgSelect").on("click", function(){
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
                             "<td>" + admin + "</td>" + 
-                            "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                            "<td>" + 
+                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
                         )
                     }
                 })
@@ -331,8 +373,6 @@ $(".sgSelect").on("click", function(){
 
     })
 })
-
-
 
 
 //一般登山者
@@ -359,7 +399,9 @@ $(".seGM").on("click", function(){
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
                             "<td>" + Gm + "</td>" + 
-                            "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                            "<td>" + 
+                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
                     )
                 }
 
@@ -393,13 +435,80 @@ $(".seGU").on("click", function(){
                         "<td>" + item.account + "</td>" +
                         "<td>" + item.email + "</td>" + 
                         "<td>" + Gg + "</td>" + 
-                        "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                        "<td>" + 
+                            "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                            "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
                     )
                 }
 
             })
         }
     }) 
+})
+
+
+//未認證會員
+$(".unGroup").on("click", function(){
+    $("#allMember").html("");
+
+    let statusUM = 110;
+    let statusUG = 130;
+    let $allMember = $("#allMember");
+    $.ajax({
+        method:"GET",
+        url:"/MountainExploer.com/back/member/memberListGmSelect",
+        data:{statusId:statusUM},
+        dataType:"json",
+        success:function(mbList){
+            if(mbList != null){
+                $.each(mbList, function(index, item){
+                    let Um = "未認證登山者";
+                        $allMember.append(
+                            "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
+                                "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
+                                "<button type='button' class='btn btn-danger ban'>停權</button></td>" + 
+                                "</form>" + 
+                            "<td>" + item.seqno + "</td>" + 
+                            "<td>" + item.account + "</td>" +
+                            "<td>" + item.email + "</td>" + 
+                            "<td>" + Um + "</td>" + 
+                            "<td>" + 
+                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                        )
+                })
+            }
+        }
+    })
+
+    $.ajax({
+        method:"GET",
+        url:"/MountainExploer.com/back/member/memberListGmSelect",
+        data:{statusId:statusUG},
+        dataType:"json",
+        success:function(mbList){
+            if(mbList != null){
+                $.each(mbList, function(index, item){
+                    let Ug = "未認證嚮導";
+                        $allMember.append(
+                            "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
+                                "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
+                                "<button type='button' class='btn btn-danger ban'>停權</button></td>" + 
+                                "</form>" + 
+                            "<td>" + item.seqno + "</td>" + 
+                            "<td>" + item.account + "</td>" +
+                            "<td>" + item.email + "</td>" + 
+                            "<td>" + Ug + "</td>" + 
+                            "<td>" + 
+                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                        )
+                })
+            }
+        }
+    })
+
+
 })
 
 
@@ -419,17 +528,19 @@ $(".banGroup").on("click", function(){
             $.each(mbList, function(index, item){
                 if(mbList != null){
                     let Sm = "停權登山者";
-                    $allMember.append(
-                        "<tr><td>" + "<form id='reForm' action='/MountainExploer.com/back/member/memberRecoverAction' method='POST'>" +
-                            "<input type='hidden' name='reSeqno' class='reSeqno' value='" + item.seqno +"'>" + 
-                            "<button type='button' class='btn btn-danger recover'>復權</button></td>" +
-                            "</form>" + + 
-                        "<td>" + item.seqno + "</td>" + 
-                        "<td>" + item.account + "</td>" +
-                        "<td>" + item.email + "</td>" + 
-                        "<td>" + Sm + "</td>" + 
-                        "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
-                    )
+                        $allMember.append(
+                            "<tr><td>" + "<form id='reForm' action='/MountainExploer.com/back/member/memberRecoverAction' method='POST'>" +
+                                "<input type='hidden' name='reSeqno' class='reSeqno' value='" + item.seqno +"'>" + 
+                                "<button type='button' class='btn btn-warning recover'>復權</button></td>" +
+                                "</form>" + 
+                            "<td>" + item.seqno + "</td>" + 
+                            "<td>" + item.account + "</td>" +
+                            "<td>" + item.email + "</td>" + 
+                            "<td>" + Sm + "</td>" + 
+                            "<td>" + 
+                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                        )
                 }
 
             })
@@ -445,17 +556,19 @@ $(".banGroup").on("click", function(){
             $.each(mbList, function(index, item){
                 if(mbList != null){
                     let Sg = "停權嚮導";
-                    $allMember.append(
-                        "<tr><td>" + "<form id='reForm' action='/MountainExploer.com/back/member/memberRecoverAction' method='POST'>" +
-                            "<input type='hidden' name='reSeqno' class='reSeqno' value='" + item.seqno +"'>" + 
-                            "<button type='button' class='btn btn-danger recover'>復權</button></td>" +
-                            "</form>" + + 
-                        "<td>" + item.seqno + "</td>" + 
-                        "<td>" + item.account + "</td>" +
-                        "<td>" + item.email + "</td>" + 
-                        "<td>" + Sg + "</td>" + 
-                        "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
-                    )
+                        $allMember.append(
+                            "<tr><td>" + "<form id='reForm' action='/MountainExploer.com/back/member/memberRecoverAction' method='POST'>" +
+                                "<input type='hidden' name='reSeqno' class='reSeqno' value='" + item.seqno +"'>" + 
+                                "<button type='button' class='btn btn-warning recover'>復權</button></td>" +
+                                "</form>" + 
+                            "<td>" + item.seqno + "</td>" + 
+                            "<td>" + item.account + "</td>" +
+                            "<td>" + item.email + "</td>" + 
+                            "<td>" + Sg + "</td>" + 
+                            "<td>" + 
+                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                        )
                 }
 
             })
@@ -485,7 +598,9 @@ $(".admin").on("click", function(){
                         "<td>" + item.account + "</td>" +
                         "<td>" + item.email + "</td>" + 
                         "<td>" + admin + "</td>" + 
-                        "<td><button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                        "<td>" + 
+                            "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
+                            "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
                     )
                 }
 
@@ -496,7 +611,7 @@ $(".admin").on("click", function(){
 
 
 //停權
-$(".ban").on("click", function(){
+$(".allMember").on("click", ".ban", function(){
     Swal.fire({
         title: "確定要停權此會員？",
         icon: "warning",
@@ -508,8 +623,7 @@ $(".ban").on("click", function(){
     }).then(function(result){
         if(result.isConfirmed){
             Swal.fire(
-                "該會員已停權",
-                "success"
+                "該會員已停權"
             ).then(function(){
                 $("#banForm").submit();
             })
@@ -523,7 +637,7 @@ $(".ban").on("click", function(){
 
 
 //復權
-$(".recover").on("click", function(){
+$(".allMember").on("click", ".recover", function(){
     Swal.fire({
         title: "確定要恢復此會員的權限？",
         icon: "warning",
@@ -535,8 +649,7 @@ $(".recover").on("click", function(){
     }).then(function(result){
         if(result.isConfirmed){
             Swal.fire(
-                "該會員已復權",
-                "success"
+                "該會員已復權"
             ).then(function(){
                 $("#reForm").submit();
             })
@@ -544,6 +657,341 @@ $(".recover").on("click", function(){
 
         if(result.isDismissed){
             window.location.reload();
+        }
+    })
+})
+
+//詳細資料閱覽
+$(".allMember").on("click", ".sgInfo", function(){
+    let sgSeqno = $(this).prev(".sgSeqno").val();
+
+    $.ajax({
+        method:"GET",
+        url:"/MountainExploer.com/back/member/memberInfoBackListAction",
+        data:{sgSeqno:sgSeqno},
+        dataType:"json",
+        success:function(mbList){
+            $.each(mbList, function(index, item){
+                if(mbList != null){
+                    if(item.memberStatus.seqno == 100){
+                        let Gm = "一般登山者";
+                        let reDate = new Date(item.reg_Date);
+                        let birDate = new Date(item.memberInfo.birthday);
+                        let imgMb = item.memberInfo.img_name;
+                        if(imgMb == ""){
+                            let imgMb = "preset.png";
+                        }
+                        Swal.fire({
+                            title: "會員編號" + item.seqno + "的會員資料",
+                            html:`<div>
+                                    <label>會員編號：</label>
+                                    <input type="text" name="seqno" class="swal2-input seqno" value="` + item.seqno + `" readonly>
+                                    <br/>
+                                    <label>帳號：</label>
+                                    <input type="text" name="account" class="swal2-input account" value="` + item.account + `" readonly>
+                                    <br/>
+                                    <label>姓名：</label>
+                                    <input type="text" name="name" class="swal2-input name" value="` + item.name + `" readonly>
+                                    <br/>
+                                    <label>暱稱：</label>
+                                    <input type="text" name="ncName" class="swal2-input ncName" value="` + item.memberInfo.neck_name + `" readonly>
+                                    <br/>
+                                    <label>身分組：</label>
+                                    <input type="text" name="statusId" class="swal2-input statusId" value="` + Gm + `" readonly>
+                                    <br/>
+                                    <label>Email：</label>
+                                    <input type="text" name="email" class="swal2-input email" value="` + item.email + `" readonly>
+                                    <br/>
+                                    <label>手機：</label>
+                                    <input type="text" name="email" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
+                                    <br/>
+                                    <label>性別：</label>
+                                    <input type="text" name="gender" class="swal2-input gender" value="` + item.memberInfo.gender + `" readonly>
+                                    <br/>
+                                    <label>生日：</label>
+                                    <input type="text" name="birthday" class="swal2-input birthday" value="` + birDate + `" readonly>
+                                    <br/>
+                                    <label>註冊日期：</label>
+                                    <input type="text" name="rgDate" class="swal2-input rgDate" value="` + reDate + `" readonly>
+                                    <br/>
+                                    <label>登山經驗：</label>
+                                    <input type="text" name="exp" class="swal2-input exp" value="` + item.memberInfo.climb_ex + `" readonly>
+                                    <br/>
+                                    <label>個人簡介：</label>
+                                    <input type="text" name="other" class="swal2-input other" value="` + item.memberInfo.other + `" readonly>
+                                    <br/>
+                                    <label>頭貼：</label>
+                                    <img src="/MountainExploer.com/images/` + imgMb + `">
+                                    <br/>
+                                    </div>` 
+                        })
+                    }else if(item.memberStatus.seqno == 110){
+                        let Um = "未認證登山者";
+                        let reDate = new Date(item.reg_Date);
+                        let birDate = new Date(item.memberInfo.birthday);
+                        let imgMb = item.memberInfo.img_name;
+                        if(imgMb == ""){
+                            let imgMb = "preset.png";
+                        }
+                        Swal.fire({
+                            title: "會員編號" + item.seqno + "的會員資料",
+                            html:`<div>
+                                    <label>會員編號：</label>
+                                    <input type="text" name="seqno" class="swal2-input seqno" value="` + item.seqno + `" readonly>
+                                    <br/>
+                                    <label>帳號：</label>
+                                    <input type="text" name="account" class="swal2-input account" value="` + item.account + `" readonly>
+                                    <br/>
+                                    <label>姓名：</label>
+                                    <input type="text" name="name" class="swal2-input name" value="` + item.name + `" readonly>
+                                    <br/>
+                                    <label>暱稱：</label>
+                                    <input type="text" name="ncName" class="swal2-input ncName" value="` + item.memberInfo.neck_name + `" readonly>
+                                    <br/>
+                                    <label>身分組：</label>
+                                    <input type="text" name="statusId" class="swal2-input statusId" value="` + Um + `" readonly>
+                                    <br/>
+                                    <label>Email：</label>
+                                    <input type="text" name="email" class="swal2-input email" value="` + item.email + `" readonly>
+                                    <br/>
+                                    <label>手機：</label>
+                                    <input type="text" name="email" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
+                                    <br/>
+                                    <label>性別：</label>
+                                    <input type="text" name="gender" class="swal2-input gender" value="` + item.memberInfo.gender + `" readonly>
+                                    <br/>
+                                    <label>生日：</label>
+                                    <input type="text" name="birthday" class="swal2-input birthday" value="` + birDate + `" readonly>
+                                    <br/>
+                                    <label>註冊日期：</label>
+                                    <input type="text" name="rgDate" class="swal2-input rgDate" value="` + reDate + `" readonly>
+                                    <br/>
+                                    <label>登山經驗：</label>
+                                    <input type="text" name="exp" class="swal2-input exp" value="` + item.memberInfo.climb_ex + `" readonly>
+                                    <br/>
+                                    <label>個人簡介：</label>
+                                    <input type="text" name="other" class="swal2-input other" value="` + item.memberInfo.other + `" readonly>
+                                    <br/>
+                                    <label>頭貼：</label>
+                                    <img src="/MountainExploer.com/images/` + imgMb + `">
+                                    <br/>
+                                    </div>` 
+                        })
+
+                    }else if(item.memberStatus.seqno == 120){
+                        let Gg = "登山嚮導";
+                        let reDate = new Date(item.reg_Date);
+                        let birDate = new Date(item.memberInfo.birthday);
+                        let imgMb = item.memberInfo.img_name;
+                        if(imgMb == ""){
+                            let imgMb = "preset.png";
+                        }
+                        Swal.fire({
+                            title: "會員編號" + item.seqno + "的會員資料",
+                            html:`<div>
+                                    <label>會員編號：</label>
+                                    <input type="text" name="seqno" class="swal2-input seqno" value="` + item.seqno + `" readonly>
+                                    <br/>
+                                    <label>帳號：</label>
+                                    <input type="text" name="account" class="swal2-input account" value="` + item.account + `" readonly>
+                                    <br/>
+                                    <label>姓名：</label>
+                                    <input type="text" name="name" class="swal2-input name" value="` + item.name + `" readonly>
+                                    <br/>
+                                    <label>暱稱：</label>
+                                    <input type="text" name="ncName" class="swal2-input ncName" value="` + item.memberInfo.neck_name + `" readonly>
+                                    <br/>
+                                    <label>身分組：</label>
+                                    <input type="text" name="statusId" class="swal2-input statusId" value="` + Gg + `" readonly>
+                                    <br/>
+                                    <label>Email：</label>
+                                    <input type="text" name="email" class="swal2-input email" value="` + item.email + `" readonly>
+                                    <br/>
+                                    <label>手機：</label>
+                                    <input type="text" name="email" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
+                                    <br/>
+                                    <label>性別：</label>
+                                    <input type="text" name="gender" class="swal2-input gender" value="` + item.memberInfo.gender + `" readonly>
+                                    <br/>
+                                    <label>生日：</label>
+                                    <input type="text" name="birthday" class="swal2-input birthday" value="` + birDate + `" readonly>
+                                    <br/>
+                                    <label>註冊日期：</label>
+                                    <input type="text" name="rgDate" class="swal2-input rgDate" value="` + reDate + `" readonly>
+                                    <br/>
+                                    <label>登山經驗：</label>
+                                    <input type="text" name="exp" class="swal2-input exp" value="` + item.memberInfo.climb_ex + `" readonly>
+                                    <br/>
+                                    <label>個人簡介：</label>
+                                    <input type="text" name="other" class="swal2-input other" value="` + item.memberInfo.other + `" readonly>
+                                    <br/>
+                                    <label>頭貼：</label>
+                                    <img src="/MountainExploer.com/images/` + imgMb + `">
+                                    <br/>
+                                    </div>` 
+                        })
+
+                    }else if(item.memberStatus.seqno == 130){
+                        let Ug = "未認證登山嚮導";
+                        let reDate = new Date(item.reg_Date);
+                        let birDate = new Date(item.memberInfo.birthday);
+                        let imgMb = item.memberInfo.img_name;
+                        if(imgMb == ""){
+                            let imgMb = "preset.png";
+                        }
+                        Swal.fire({
+                            title: "會員編號" + item.seqno + "的會員資料",
+                            html:`<div>
+                                    <label>會員編號：</label>
+                                    <input type="text" name="seqno" class="swal2-input seqno" value="` + item.seqno + `" readonly>
+                                    <br/>
+                                    <label>帳號：</label>
+                                    <input type="text" name="account" class="swal2-input account" value="` + item.account + `" readonly>
+                                    <br/>
+                                    <label>姓名：</label>
+                                    <input type="text" name="name" class="swal2-input name" value="` + item.name + `" readonly>
+                                    <br/>
+                                    <label>暱稱：</label>
+                                    <input type="text" name="ncName" class="swal2-input ncName" value="` + item.memberInfo.neck_name + `" readonly>
+                                    <br/>
+                                    <label>身分組：</label>
+                                    <input type="text" name="statusId" class="swal2-input statusId" value="` + Ug + `" readonly>
+                                    <br/>
+                                    <label>Email：</label>
+                                    <input type="text" name="email" class="swal2-input email" value="` + item.email + `" readonly>
+                                    <br/>
+                                    <label>手機：</label>
+                                    <input type="text" name="email" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
+                                    <br/>
+                                    <label>性別：</label>
+                                    <input type="text" name="gender" class="swal2-input gender" value="` + item.memberInfo.gender + `" readonly>
+                                    <br/>
+                                    <label>生日：</label>
+                                    <input type="text" name="birthday" class="swal2-input birthday" value="` + birDate + `" readonly>
+                                    <br/>
+                                    <label>註冊日期：</label>
+                                    <input type="text" name="rgDate" class="swal2-input rgDate" value="` + reDate + `" readonly>
+                                    <br/>
+                                    <label>登山經驗：</label>
+                                    <input type="text" name="exp" class="swal2-input exp" value="` + item.memberInfo.climb_ex + `" readonly>
+                                    <br/>
+                                    <label>個人簡介：</label>
+                                    <input type="text" name="other" class="swal2-input other" value="` + item.memberInfo.other + `" readonly>
+                                    <br/>
+                                    <label>頭貼：</label>
+                                    <img src="/MountainExploer.com/images/` + imgMb + `">
+                                    <br/>
+                                    </div>` 
+                        })
+
+                    }else if(item.memberStatus.seqno == 140){
+                        let Sm = "已停權登山者";
+                        let reDate = new Date(item.reg_Date);
+                        let birDate = new Date(item.memberInfo.birthday);
+                        let imgMb = item.memberInfo.img_name;
+                        if(imgMb == ""){
+                            let imgMb = "preset.png";
+                        }
+                        Swal.fire({
+                            title: "會員編號" + item.seqno + "的會員資料",
+                            html:`<div>
+                                    <label>會員編號：</label>
+                                    <input type="text" name="seqno" class="swal2-input seqno" value="` + item.seqno + `" readonly>
+                                    <br/>
+                                    <label>帳號：</label>
+                                    <input type="text" name="account" class="swal2-input account" value="` + item.account + `" readonly>
+                                    <br/>
+                                    <label>姓名：</label>
+                                    <input type="text" name="name" class="swal2-input name" value="` + item.name + `" readonly>
+                                    <br/>
+                                    <label>暱稱：</label>
+                                    <input type="text" name="ncName" class="swal2-input ncName" value="` + item.memberInfo.neck_name + `" readonly>
+                                    <br/>
+                                    <label>身分組：</label>
+                                    <input type="text" name="statusId" class="swal2-input statusId" value="` + Sm + `" readonly>
+                                    <br/>
+                                    <label>Email：</label>
+                                    <input type="text" name="email" class="swal2-input email" value="` + item.email + `" readonly>
+                                    <br/>
+                                    <label>手機：</label>
+                                    <input type="text" name="email" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
+                                    <br/>
+                                    <label>性別：</label>
+                                    <input type="text" name="gender" class="swal2-input gender" value="` + item.memberInfo.gender + `" readonly>
+                                    <br/>
+                                    <label>生日：</label>
+                                    <input type="text" name="birthday" class="swal2-input birthday" value="` + birDate + `" readonly>
+                                    <br/>
+                                    <label>註冊日期：</label>
+                                    <input type="text" name="rgDate" class="swal2-input rgDate" value="` + reDate + `" readonly>
+                                    <br/>
+                                    <label>登山經驗：</label>
+                                    <input type="text" name="exp" class="swal2-input exp" value="` + item.memberInfo.climb_ex + `" readonly>
+                                    <br/>
+                                    <label>個人簡介：</label>
+                                    <input type="text" name="other" class="swal2-input other" value="` + item.memberInfo.other + `" readonly>
+                                    <br/>
+                                    <label>頭貼：</label>
+                                    <img src="/MountainExploer.com/images/` + imgMb + `">
+                                    <br/>
+                                    </div>` 
+                        })
+
+                    }else if(item.memberStatus.seqno == 150){
+                        let Sg = "已停權嚮導";
+                        let reDate = new Date(item.reg_Date);
+                        let birDate = new Date(item.memberInfo.birthday);
+                        let imgMb = item.memberInfo.img_name;
+                        if(imgMb == ""){
+                            let imgMb = "preset.png";
+                        }
+                        Swal.fire({
+                            title: "會員編號" + item.seqno + "的會員資料",
+                            html:`<div>
+                                    <label>會員編號：</label>
+                                    <input type="text" name="seqno" class="swal2-input seqno" value="` + item.seqno + `" readonly>
+                                    <br/>
+                                    <label>帳號：</label>
+                                    <input type="text" name="account" class="swal2-input account" value="` + item.account + `" readonly>
+                                    <br/>
+                                    <label>姓名：</label>
+                                    <input type="text" name="name" class="swal2-input name" value="` + item.name + `" readonly>
+                                    <br/>
+                                    <label>暱稱：</label>
+                                    <input type="text" name="ncName" class="swal2-input ncName" value="` + item.memberInfo.neck_name + `" readonly>
+                                    <br/>
+                                    <label>身分組：</label>
+                                    <input type="text" name="statusId" class="swal2-input statusId" value="` + Sg + `" readonly>
+                                    <br/>
+                                    <label>Email：</label>
+                                    <input type="text" name="email" class="swal2-input email" value="` + item.email + `" readonly>
+                                    <br/>
+                                    <label>手機：</label>
+                                    <input type="text" name="email" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
+                                    <br/>
+                                    <label>性別：</label>
+                                    <input type="text" name="gender" class="swal2-input gender" value="` + item.memberInfo.gender + `" readonly>
+                                    <br/>
+                                    <label>生日：</label>
+                                    <input type="text" name="birthday" class="swal2-input birthday" value="` + birDate + `" readonly>
+                                    <br/>
+                                    <label>註冊日期：</label>
+                                    <input type="text" name="rgDate" class="swal2-input rgDate" value="` + reDate + `" readonly>
+                                    <br/>
+                                    <label>登山經驗：</label>
+                                    <input type="text" name="exp" class="swal2-input exp" value="` + item.memberInfo.climb_ex + `" readonly>
+                                    <br/>
+                                    <label>個人簡介：</label>
+                                    <input type="text" name="other" class="swal2-input other" value="` + item.memberInfo.other + `" readonly>
+                                    <br/>
+                                    <label>頭貼：</label>
+                                    <img src="/MountainExploer.com/images/` + imgMb + `">
+                                    <br/>
+                                    </div>` 
+                        })
+                    }
+                }
+            })
         }
     })
 })

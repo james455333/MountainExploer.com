@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.sun.mail.handlers.message_rfc822;
 
 import member.MemberGlobal;
 import member.back.model.MemberBasicBackService;
@@ -179,6 +178,15 @@ public class MemberBackStageController {
 	}
 	
 	
+	//詳閱會員資料
+	@ResponseBody
+	@GetMapping(path = "/memberInfoBackListAction")
+	public List<MemberBasic> processMemberInfoAction(@RequestParam(name = "sgSeqno")int sgSeqno) {
+		List<MemberBasic> mbList = mbService.selectLT(sgSeqno);
+		return mbList;
+	}
+	
+	
 	//停權
 	@RequestMapping(path = "/memberBanAction", method = RequestMethod.POST)
 	public String processBanAction(@RequestParam(name = "mbBan")int banSeqno) {
@@ -205,11 +213,11 @@ public class MemberBackStageController {
 	}
 	
 	
-	//復權
+	//復權&認證
 	@RequestMapping(path = "/memberRecoverAction", method = RequestMethod.POST)
 	public String processRecoverAction(@RequestParam(name = "reSeqno")int reSeqno) {
 		MemberBasic mb = mbService.select(reSeqno);
-		if(mb.getMemberStatus().getSeqno() == 140) {
+		if(mb.getMemberStatus().getSeqno() == 140 || mb.getMemberStatus().getSeqno() == 110) {
 			MemberStatus mbStId = mbStService.select(100);
 			mb.setMemberStatus(mbStId);
 			mbService.update(mb);
@@ -217,7 +225,7 @@ public class MemberBackStageController {
 			System.out.println("=================會員已復權");
 			return "member/back/memberInfoListBack";
 			
-		}else if(mb.getMemberStatus().getSeqno() == 150) {
+		}else if(mb.getMemberStatus().getSeqno() == 150 || mb.getMemberStatus().getSeqno() == 130) {
 			MemberStatus mbStId = mbStService.select(120);
 			mb.setMemberStatus(mbStId);
 			mbService.update(mb);
