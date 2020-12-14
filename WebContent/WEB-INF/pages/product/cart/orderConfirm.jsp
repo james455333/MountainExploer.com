@@ -146,9 +146,9 @@
 				</tr>
 				<TR>
 					<TD colspan="6" align="center" onclick="sendOrder()">
-					送出訂單
-<!-- 					<input  type="submit" -->
-<!-- 						value="送出訂單"> -->
+<!-- 					送出訂單 -->
+					<input  type="submit"
+						value="送出訂單">
 						</TD>
 						</TR>
 			</FORM>

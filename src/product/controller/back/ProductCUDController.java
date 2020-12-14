@@ -149,7 +149,7 @@ public class ProductCUDController {
 		if (update != null) {
 			Integer seqInt = Integer.parseInt(update);
 			Orders selectSeqno = ordersDao.selectSeqno(seqInt);
-			selectSeqno.setCancelTag("已出貨");
+			selectSeqno.setCancelTag("Done");
 			Date date = new Date();
 			selectSeqno.setShippingDate(date);
 			ordersDao.update(selectSeqno);
@@ -158,7 +158,7 @@ public class ProductCUDController {
 		if (cancel != null) {
 			Integer cancelInt = Integer.parseInt(cancel);
 			Orders selectSeqno = ordersDao.selectSeqno(cancelInt);
-			selectSeqno.setCancelTag("已取消");
+			selectSeqno.setCancelTag("");
 			selectSeqno.setShippingDate(null);
 			ordersDao.update(selectSeqno);
 		}
