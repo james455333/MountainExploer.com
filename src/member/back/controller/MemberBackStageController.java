@@ -241,6 +241,14 @@ public class MemberBackStageController {
 	}
 	
 	
+	//修改會員資料
+//	public List<MemberBasic> processUpdateBack(
+//			int seqno, String name, String ncName,){
+//		
+//	}
+	
+	
+	
 	//管理員登出
 	@RequestMapping("/backLogout")
 	public String processLogout(

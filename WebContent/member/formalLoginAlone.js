@@ -45,7 +45,7 @@ $(".adminLog").on("click", function(){
         dataType:"json",
         success:function(flag){
             if(flag){
-                window.location.href="/MountainExploer.com/backStageEntry";
+                window.location.href="/MountainExploer.com/back";
             }else{
                 window.location.reload();
             }

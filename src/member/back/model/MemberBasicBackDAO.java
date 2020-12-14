@@ -1,5 +1,6 @@
 package member.back.model;
 
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -156,4 +157,18 @@ public class MemberBasicBackDAO {
 		return null;
 	}
 	
+	
+	public List<MemberBasic> updateLT(MemberBasic mb) {
+		Session session = sessionFactory.getCurrentSession();
+		Query<MemberBasic> query = session.createQuery("From MemberBasic where seqno = ?0", MemberBasic.class);
+		query.setParameter(0, mb.getSeqno());
+		
+		List<MemberBasic> qList = query.list();
+		
+		if(qList != null) {
+			session.update(qList);
+			return qList;
+		}
+		return null;
+	}
 }

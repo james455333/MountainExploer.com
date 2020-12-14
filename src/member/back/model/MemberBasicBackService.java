@@ -52,4 +52,8 @@ public class MemberBasicBackService {
 	public MemberBasic update(MemberBasic mb) {
 		return mbDAO.update(mb);
 	}
+	
+	public List<MemberBasic> updateLT(MemberBasic mb) {
+		return mbDAO.updateLT(mb);
+	}
 }

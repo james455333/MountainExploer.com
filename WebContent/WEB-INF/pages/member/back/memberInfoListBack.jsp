@@ -23,6 +23,12 @@ pageEncoding="UTF-8"%>
     <!-- Custom styles for this template-->
     <link href="/MountainExploer.com/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.all.min.js"></script>
 
 </head>
@@ -34,9 +40,10 @@ pageEncoding="UTF-8"%>
 
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar"
-            include-html="/MountainExploer.com/include/sidebar.html">
+            include-html="/MountainExploer.com/back/include/sidebar.html">
         </ul>
         <!-- End of Sidebar -->
+        
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -71,7 +78,7 @@ pageEncoding="UTF-8"%>
 										</button>									
 									</div> 
 								</div>
-								<div class="col-md-6">
+								<div class="col-md-5">
 									<form class="form-inline" >
 										<div>
 											<span>會員查詢：</span>
@@ -82,7 +89,7 @@ pageEncoding="UTF-8"%>
 										</div>
 									</form>									
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-5">
 									<div>
 										<button type="button" class="btn disabled btn-outline-primary seGM" value="100">
 											一般登山者
