@@ -89,8 +89,14 @@ public class AreaBeanDAO {
 		}
 		
 		
+		
 		public int countAreaname(String area) {		
 			Query query = getSession().createQuery("Select count(*) From AreaBean where name like '%" + area + "%'");
+			long result = (long) query.uniqueResult();
+			return (int)result;		
+		}
+		public int countAreaAll() {		
+			Query query = getSession().createQuery("Select count(*) From AreaBean");
 			long result = (long) query.uniqueResult();
 			return (int)result;		
 		}

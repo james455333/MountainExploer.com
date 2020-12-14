@@ -236,7 +236,8 @@ height:25px;
 						             <c:when test="${leftcampamount > 0}">
 							             <td>TWD. ${i.campprice}</td> 
 							             <td><select id="campleftamount" name="orderjump_amount"></select></td>
-							             <td><select name="orderjump_totalprice" id="camporderprice" ></select><p><input class="btn btn-outline-success" type="submit" value="立即下訂"></p></td>
+							             <td><input type="text" readonly class=" border-0 text-dark" name="orderjump_totalprice" id="camporderprice" ><p><input class="btn btn-outline-success" type="submit" value="立即下訂"></p></td>
+<!-- 						             		 <td name="orderjump_totalprice"></td> -->
 						             </c:when>
 					             </c:choose>
 			             	</tr>
@@ -349,7 +350,9 @@ $(document).ready(function(){
 $("#campleftamount").change(function(){
 	var str = $("#campleftamount").val();
 	$("#camporderprice").empty();
-	$("#camporderprice").append("<option value='"+(campprice*str)+"'>"+"金額總和 : "+campprice*str+"</option>");
+	console.log(str)
+	$("#camporderprice").val(campprice*str);
+// 	$("#camporderprice").append("<option value='"+(campprice*str)+"'>"+"金額總和 : "+campprice*str+"</option>");
 	
 	
 })

@@ -76,8 +76,8 @@
 				  	<form action="<c:url value='/mountainCampBack/insertCamp'></c:url>"method='post' enctype="multipart/form-data">			 
 					  <td><input type="hidden" name="insercamp_id" size="10"></td>		
 					  		      
-				      <td><select name="insercamp_area" id="selectArea" ><option>請選擇縣市</option></select></td>
-				      <td><select name="insercamp_counties" id="selectCounties"><option>先選擇縣市</option></select></td>
+				      <td><select name="insercamp_area" id="selectArea" required="required"><option>請選擇縣市</option></select></td>
+				      <td><select name="insercamp_counties" id="selectCounties" required="required"></select></td>
 				      
 				      <td><input type="text" name="insercamp_name" size="20" value="小小露營區"></td>
 				      <td><input type="text" name="insercamp_url" size="50" value="https://evshhips.pixnet.net/blog"></td>
@@ -132,11 +132,12 @@ $("#imgInp").change(function() {
 
 			}
 		})
+		
+		
+	
 		//縣市選單變更	
 
-		$("#selectArea").on(
-				"change",
-				function() {
+		$("#selectArea").on("change",function() {
 					var areaselect = $("#selectArea").val();
 					$("#selectCounties").empty();
 					$.ajax({

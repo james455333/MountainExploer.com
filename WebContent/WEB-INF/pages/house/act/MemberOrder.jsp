@@ -118,6 +118,7 @@ transition: all 0.6s;}
 							<th scope="col">營地名稱</th>
 							<th scope="col">部落格</th>
 							<th scope="col">星級</th>
+							<th scope="col"></th>
 							<!-- thead更改到這邊結束 -->
 						</tr>
 					</thead>
@@ -235,6 +236,13 @@ transition: all 0.6s;}
 											<p class="clickcount">${i.campbasicid.clickcount}人評分過</p>
 										</c:otherwise>
 									</c:choose>
+								</td>
+								<td>
+								<form action="<c:url value='/mountaincCampActOrder/deletecamporder'></c:url>">
+									<input type="hidden" name="deleteorderid" value="${i.camporderid}">
+									<input type="button" value="刪除"
+										onclick="if(confirm('確認要刪除嗎？')) this.form.submit();">
+								</form>
 								</td>
 							</tr>
 						</c:forEach>

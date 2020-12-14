@@ -1,48 +1,37 @@
-package house.back.controller;
+package house.back.routcontroller;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.hibernate.SessionFactory;
-import org.jsoup.select.Evaluator.IsEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import house.CampGlobal;
 import house.mountainhouseList.model.AreaBean;
 import house.mountainhouseList.model.CampImgBean;
 import house.mountainhouseList.model.CampInfoBean;
 import house.mountainhouseList.model.CountiesBean;
 import house.mountainhouseList.service.AreaBeanService;
-import house.mountainhouseList.service.CampInfoBeanService;
 import house.mountainhouseList.service.CampImgBeanService;
+import house.mountainhouseList.service.CampInfoBeanService;
 import house.mountainhouseList.service.CountiesBeanService;
-import mountain.MountainGlobal;
 
 @Controller
-@RequestMapping("/mountainCampBack")
-public class CampServletAction {
-
+@RequestMapping("/Rout/mountainCampBack")
+public class CampRoutAction {
 	@Autowired
 	private CampInfoBeanService campService;
 	@Autowired
@@ -54,16 +43,33 @@ public class CampServletAction {
 	@Autowired
 	private HttpServletRequest httprequest;
 
-	@RequestMapping(path = "/selectAll", method = RequestMethod.GET)
-//	@RequestMapping(path = "/mountainCampBack/selectAll", method = RequestMethod.GET)
+	
+//	@GetMapping("/Rout/mountainCampBack/selectAll")
+	@GetMapping("/selectAll")
 	public String selectAll(Model m ,@RequestParam(name = "page") Integer page,@RequestParam(name = "selectarea") String area ,@RequestParam(name = "no") Integer no,@RequestParam(name = "selectcounties") String counties ) {
-		//總比數 1.全部 2. 鄉鎮 3. 縣市
-		int totalData = campService.countCamp(area, no ,counties);			
-				
-		//總頁數
+		
+		int totalData = campService.countCamp(area, no, counties);
+		
 		int totalPage = (int) Math.ceil(totalData*1.0/10);
 		
 		List<CampInfoBean> list = campService.selectAllCamp( page ,  10, no , area,counties );
+		
+		
+	//顯示總比數	
+		Integer campcount = campService.countCampAll();
+		Integer areacount = areaService.countAreaAll();
+		Integer countiescount = countiesService.countCountiesAll();
+
+		m.addAttribute("areacount", areacount);
+		m.addAttribute("countiescount", countiescount);
+		m.addAttribute("campcount", campcount);
+	//	
+	
+	// 顯示area all	
+		List<AreaBean> areanameall = areaService.selectAllArea();
+	
+	//area camp amount
+//		Integer areacamp = campService.countareaname(areanameall);
 		
 		m.addAttribute("camp_all", list);
 		m.addAttribute("totalData",totalData);
@@ -73,69 +79,24 @@ public class CampServletAction {
 		m.addAttribute("selectarea",area);
 		m.addAttribute("selectcounties",counties);
 		
-		return "house/back/backCamp";
+		return "house/back/rout/campbackrout";
+		
 	}
-
-//	@PostMapping("/selectArea")
-//	public String selectArea(@RequestParam(name = "selectarea") String area, Model m,Integer page ) {
-//		List<AreaBean> list = new ArrayList<AreaBean>();
-//		List<CountiesBean>list1 = new ArrayList<CountiesBean>();
-//		List<CampInfoBean> list2 = new ArrayList<CampInfoBean>();
-//		list = areaService.selectArea(area, page, 10);
-//		for (AreaBean a : list) {
-//			
-//			for (CountiesBean b : a.getCounties()) {
-//			
-//				for (CampInfoBean c : b.getCamp()) {
-//					list2.add(c);
-//				}
-//			}
-//		}
-//		
-//		int totalData =  campService.countareaname(area);
-//		int totalPage = (int) Math.ceil(totalData*1.0 /10);
-//		
-//		m.addAttribute("camp_all", list2);
-//		m.addAttribute("totalData",totalData);
-//		m.addAttribute("totalPage",totalPage);
-//		m.addAttribute("page",page);
-//		return "house/back/backCamp";
-//
-//	}
-
-//	@PostMapping("/selectCounties")
-//	public String selectCounties(@RequestParam(name = "selectcounties") String counties, Model m,Integer page) {
-//		int totalData = campService.countCampname(counties);
-//		int totalPage = (int) Math.ceil(totalData*1.0 / 10);
-//		List<CountiesBean> list = new ArrayList<CountiesBean>();
-////		ArrayList<CampInfoBean> list2 = (ArrayList<CampInfoBean>) campService.selectcounties(counties, page, 10);
-//		for (CountiesBean countiesBean : list) {
-//			for (CampInfoBean campInfoBean : countiesBean.getCamp()) {
-//				list2.add(campInfoBean);
-//			}
-//		}
-//		System.out.println("..........." + totalData);
-//		m.addAttribute("camp_all",list2);
-//		m.addAttribute("totalData",totalData);
-//		m.addAttribute("totalPage",totalPage);
-//		m.addAttribute("page",page);
-//		return "house/back/backCamp";
-//
-//	}
-
+	
 	@GetMapping("/selectCamp")
 	public String selectCampName(@RequestParam(name = "selectcampname") String campname, Model m,Integer page) {
 		//總比數		
 		int totalData = campService.countCampname(campname);
 		//總頁數
 		int totalPage = (int) Math.ceil(totalData*1.0/10);		
+				
 		
 		List<CampInfoBean> list = campService.selectCampName(campname,page,10);
 		m.addAttribute("camp_all", list);
 		m.addAttribute("totalData",totalData);
 		m.addAttribute("totalPage",totalPage);		
 		m.addAttribute("page",page);
-		return "house/back/backCamp";
+		return "house/back/rout/campbackrout";
 
 	}
 
@@ -144,7 +105,9 @@ public class CampServletAction {
 			CampImgBean campimgBean, @RequestParam(name = "insercamp_area") String area,
 			@RequestParam(name = "insercamp_counties") String counties,
 			@RequestParam(name = "insercamp_name") String name, @RequestParam(name = "insercamp_url") byte[] url,
-			@RequestParam(name = "mFile") MultipartFile mFile,@RequestParam(name = "insercamp_desc") String desc) throws IllegalStateException, IOException {
+			@RequestParam(name = "mFile") MultipartFile mFile,@RequestParam(name = "insercamp_desc") String desc,
+			@RequestParam(name = "insercamp_campamount")Integer campamount,
+			@RequestParam(name = "insercamp_campprice")Integer campprice) throws IllegalStateException, IOException {
 		
 		if (mFile != null && !mFile.isEmpty()) {
 			
@@ -189,7 +152,9 @@ public class CampServletAction {
 		countiesBean.setArea(areaBean);
 		countiesBean.setCamp(campbeanSet);
 		countiesbeanSet.add(countiesBean);
-
+		
+		campBean.setCampamount(campamount);
+		campBean.setCampprice(campprice);
 		campBean.setCampimgid(campimgBean);
 		campBean.setName(name);
 		campBean.setUrl(url);
@@ -218,7 +183,7 @@ public class CampServletAction {
 			areaService.insertArea(areaBean);
 		}
 
-		return "redirect:/mountainCampBack/selectAll?selectarea=&selectcounties=&no=1&page=1";
+		return "redirect:/Rout/mountainCampBack/selectAll?selectarea=&selectcounties=&no=1&page=1";
 	}
 
 	@RequestMapping(path = "/deleteCamp", method = RequestMethod.POST)
@@ -227,7 +192,7 @@ public class CampServletAction {
 		System.out.println("刪除" + campid);
 		campService.deleteCamp(deletecampid);
 
-		return "house/back/backCamp";
+		return "house/back/rout/campbackrout";
 
 	}
 
@@ -238,7 +203,9 @@ public class CampServletAction {
 			@RequestParam(name = "updatecamp_city") String area,
 			@RequestParam(name = "updatecamp_town") String counties,
 			@RequestParam(name = "updatecamp_name") String name, @RequestParam(name = "hotelnumber") String hotelnum,
-			@RequestParam(name = "updatecamp_url") byte[] url,@RequestParam(name = "updatecamp_desc") String desc) throws IllegalStateException, IOException {
+			@RequestParam(name = "updatecamp_url") byte[] url,@RequestParam(name = "updatecamp_desc") String desc,
+			@RequestParam(name = "updatecamp_campamount")Integer campamount,
+			@RequestParam(name = "updatecamp_campprice")Integer campprice) throws IllegalStateException, IOException {
 		
 		CampImgBean campimgBean = campBean.getCampimgid();
 //		Integer imgid = campimgBean.getId();
@@ -258,6 +225,8 @@ public class CampServletAction {
 		int campid = Integer.parseInt(id);
 		campBean.setCampbasicid(campid);
 		campBean.setName(name);
+		campBean.setCampamount(campamount);
+		campBean.setCampprice(campprice);
 		campBean.setUrl(url);
 		campBean.setDesc(desc);
 		campBean.setCountiesname(counties);
@@ -324,21 +293,22 @@ public class CampServletAction {
 		
 		
 		
-		return "house/back/backCamp";
+		return "house/back/rout/campbackrout";
 	}
 
 	@RequestMapping(path = "/inserjump", method = RequestMethod.GET)
 	public String jumpinser() {
-		return "house/back/backinserCamp";
+		return "house/back/rout/campbackroutinser";
 	}
 
 	@RequestMapping(path = "/updatejump", method = RequestMethod.GET)
-	public String jumpupdate(@RequestParam(name = "jumpupdate") int id, Model m) {
+	public String jumpupdate(@RequestParam(name = "jumpupdate") Integer id, Model m) {
 //		int campid = Integer.parseInt(id);
 		List<CampInfoBean> list = campService.selectcampid(id);
 		m.addAttribute("jumpupdatename", list);
 		
-		return "house/back/backupdateCamp";
+		
+		return "house/back/rout/campbackroutupdate";
 	}
 //counties ajax option	
 	@GetMapping("/countiesoption")
@@ -359,5 +329,19 @@ public class CampServletAction {
 		return list;
 	}
 
+//	//計算 縣市 營地數量  
+//		@GetMapping("/areacount")
+//		@ResponseBody
+//		public int AreaAllCampCount() {
+//			List<AreaBean> areanameall = areaService.selectAllArea();
+//			for (AreaBean areaBean : areanameall) {
+//				
+//			}
+//			
+//			
+//			
+//		}
 
+
+	
 }

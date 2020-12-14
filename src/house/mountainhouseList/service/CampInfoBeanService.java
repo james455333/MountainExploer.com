@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import house.mountainhouseList.DAO.CampInfoBeanDAO;
 import house.mountainhouseList.DAO.Interface.ICampInfoBeanService;
+import house.mountainhouseList.model.AreaBean;
 import house.mountainhouseList.model.CampInfoBean;
 
 @Service
@@ -73,6 +74,24 @@ public class CampInfoBeanService implements ICampInfoBeanService {
 	public int countCampname(String campname) {
 		return cDao.countCampname(campname);
 	}
+
+	@Override
+	public int countcountiesname(String counties) {
+		return cDao.countcountiesname(counties);
+	}
+
+	@Override
+	public int countareaname(String area) {
+		return cDao.countareaname(area);
+	}
+
+	@Override
+	public int countCampAll() {
+		// TODO Auto-generated method stub
+		return cDao.countCampAll();
+	}
+
+	
 
 
 
