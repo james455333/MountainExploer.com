@@ -241,6 +241,33 @@ public class MemberBackStageController {
 	}
 	
 	
+	//修改會員資料
+	@RequestMapping(path = "/updateInfoBack", method = RequestMethod.POST)
+	public String processUpdateBack(
+			@RequestParam(name = "seqno")int seqno,
+			@RequestParam(name = "name", required = false)String name,
+			@RequestParam(name = "ncName", required = false)String ncName,
+			@RequestParam(name = "email")String email,
+			@RequestParam(name = "phone", required = false)String phone){
+		
+		MemberBasic queryMb = mbService.select(seqno);
+		if(queryMb != null) {
+			queryMb.setName(name);
+			queryMb.setEmail(email);
+			queryMb.getMemberInfo().setNeck_name(ncName);
+			queryMb.getMemberInfo().setPhone(phone);
+			
+			mbService.update(queryMb);
+			
+			
+			return "member/back/memberInfoListBack";
+		}
+		
+		return "member/back/memberInfoListBack";
+	}
+	
+	
+	
 	//管理員登出
 	@RequestMapping("/backLogout")
 	public String processLogout(

@@ -13,7 +13,7 @@ $(function(){
                         $allMember.append(
                             "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
                                 "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban' id='ban'>停權</button></td>" + 
+                                "<button type='button' class='btn btn-danger ban' id='ban'><i class='fa fa-ban'></i>停權</button></td>" + 
                                 "</form>"+ 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
@@ -21,14 +21,15 @@ $(function(){
                             "<td>" + Gm + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' id='sgInfo' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                                "<button type='button' id='sgInfo' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 110){
                         let Um = "未認證登山者";
                         $allMember.append(
                             "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
                                 "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban'>停權</button></td>" + 
+                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
                                 "</form>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
@@ -36,14 +37,15 @@ $(function(){
                             "<td>" + Um + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 120){
                         let Gg = "登山嚮導";
                         $allMember.append(
                             "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
                                 "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban'>停權</button></td>" + 
+                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
                                 "</form>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
@@ -51,14 +53,15 @@ $(function(){
                             "<td>" + Gg + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 130){
                         let Ug = "未認證嚮導";
                         $allMember.append(
                             "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
                                 "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban'>停權</button></td>" + 
+                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
                                 "</form>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
@@ -66,14 +69,15 @@ $(function(){
                             "<td>" + Ug + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 140){
                         let Sm = "停權登山者";
                         $allMember.append(
                             "<tr><td>" + "<form id='reForm' action='/MountainExploer.com/back/member/memberRecoverAction' method='POST'>" +
                                 "<input type='hidden' name='reSeqno' class='reSeqno' value='" + item.seqno +"'>" + 
-                                "<button type='button' class='btn btn-warning recover'>復權</button></td>" +
+                                "<button type='button' class='btn btn-warning recover'><i class='fa fa-refresh'></i>復權</button></td>" +
                                 "</form>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
@@ -81,14 +85,15 @@ $(function(){
                             "<td>" + Sm + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 150){
                         let Sg = "停權嚮導";
                         $allMember.append(
                             "<tr><td>" + "<form id='reForm' action='/MountainExploer.com/back/member/memberRecoverAction' method='POST'>" +
                                 "<input type='hidden' name='reSeqno' class='reSeqno' value='" + item.seqno +"'>" + 
-                                "<button type='button' class='btn btn-warning recover'>復權</button></td>" +
+                                "<button type='button' class='btn btn-warning recover'><i class='fa fa-refresh'></i>復權</button></td>" +
                                 "</form>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
@@ -96,19 +101,21 @@ $(function(){
                             "<td>" + Sg + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 160){
                         let admin = "管理者";
                         $allMember.append(
-                            "<tr><td><button type='button' class='btn btn-danger disabled'>停權</button></td>" + 
+                            "<tr><td><button type='button' class='btn btn-danger disabled'><i class='fa fa-ban'></i>停權</button></td>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
                             "<td>" + admin + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
                     }
                 })
@@ -136,7 +143,7 @@ $(".reSelect").on("click", function(){
                         $allMember.append(
                             "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
                                 "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban'>停權</button></td>" + 
+                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
                                 "</form>"+ 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
@@ -144,14 +151,15 @@ $(".reSelect").on("click", function(){
                             "<td>" + Gm + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 110){
                         let Um = "未認證登山者";
                         $allMember.append(
                             "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
                                 "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban'>停權</button></td>" + 
+                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
                                 "</form>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
@@ -159,14 +167,15 @@ $(".reSelect").on("click", function(){
                             "<td>" + Um + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 120){
                         let Gg = "登山嚮導";
                         $allMember.append(
                             "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
                                 "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban'>停權</button></td>" + 
+                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
                                 "</form>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
@@ -174,14 +183,15 @@ $(".reSelect").on("click", function(){
                             "<td>" + Gg + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 130){
                         let Ug = "未認證嚮導";
                         $allMember.append(
                             "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
                                 "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban'>停權</button></td>" + 
+                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
                                 "</form>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
@@ -189,43 +199,47 @@ $(".reSelect").on("click", function(){
                             "<td>" + Ug + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 140){
                         let Sm = "停權登山者";
                         $allMember.append(
-                            "<tr><td><button type='button' class='btn btn-warning recover'>復權</button></td>" + 
+                            "<tr><td><button type='button' class='btn btn-warning recover'><i class='fa fa-refresh'></i>復權</button></td>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
                             "<td>" + Sm + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 150){
                         let Sg = "停權嚮導";
                         $allMember.append(
-                            "<tr><td><button type='button' class='btn btn-warning recover'>復權</button></td>" + 
+                            "<tr><td><button type='button' class='btn btn-warning recover'><i class='fa fa-refresh'></i>復權</button></td>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
                             "<td>" + Sg + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 160){
                         let admin = "管理者";
                         $allMember.append(
-                            "<tr><td><button type='button' class='btn btn-danger disabled'>停權</button></td>" + 
+                            "<tr><td><button type='button' class='btn btn-danger disabled'><i class='fa fa-ban'></i>停權</button></td>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
                             "<td>" + admin + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
                     }
                 })
@@ -256,7 +270,7 @@ $(".sgSelect").on("click", function(){
                         $allMember.append(
                             "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
                                 "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban' id='ban'>停權</button></td>" + 
+                                "<button type='button' class='btn btn-danger ban' id='ban'><i class='fa fa-ban'></i>停權</button></td>" + 
                                 "</form>"+ 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
@@ -264,14 +278,15 @@ $(".sgSelect").on("click", function(){
                             "<td>" + Gm + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 110){
                         let Um = "未認證登山者";
                         $allMember.append(
                             "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
                                 "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban'>停權</button></td>" + 
+                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
                                 "</form>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
@@ -279,14 +294,15 @@ $(".sgSelect").on("click", function(){
                             "<td>" + Um + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 120){
                         let Gg = "登山嚮導";
                         $allMember.append(
                             "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
                                 "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban'>停權</button></td>" + 
+                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
                                 "</form>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
@@ -294,14 +310,15 @@ $(".sgSelect").on("click", function(){
                             "<td>" + Gg + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 130){
                         let Ug = "未認證嚮導";
                         $allMember.append(
                             "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
                                 "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban'>停權</button></td>" + 
+                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
                                 "</form>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
@@ -309,14 +326,15 @@ $(".sgSelect").on("click", function(){
                             "<td>" + Ug + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 140){
                         let Sm = "停權登山者";
                         $allMember.append(
                             "<tr><td>" + "<form id='reForm' action='/MountainExploer.com/back/member/memberRecoverAction' method='POST'>" +
                                 "<input type='hidden' name='reSeqno' class='reSeqno' value='" + item.seqno +"'>" + 
-                                "<button type='button' class='btn btn-warning recover'>復權</button></td>" +
+                                "<button type='button' class='btn btn-warning recover'><i class='fa fa-refresh'></i>復權</button></td>" +
                                 "</form>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
@@ -324,14 +342,15 @@ $(".sgSelect").on("click", function(){
                             "<td>" + Sm + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 150){
                         let Sg = "停權嚮導";
                         $allMember.append(
                             "<tr><td>" + "<form id='reForm' action='/MountainExploer.com/back/member/memberRecoverAction' method='POST'>" +
                                 "<input type='hidden' name='reSeqno' class='reSeqno' value='" + item.seqno +"'>" + 
-                                "<button type='button' class='btn btn-warning recover'>復權</button></td>" +
+                                "<button type='button' class='btn btn-warning recover'><i class='fa fa-refresh'></i>復權</button></td>" +
                                 "</form>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
@@ -339,19 +358,21 @@ $(".sgSelect").on("click", function(){
                             "<td>" + Sg + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
                     }else if(item.memberStatus.seqno == 160){
                         let admin = "管理者";
                         $allMember.append(
-                            "<tr><td><button type='button' class='btn btn-danger disabled'>停權</button></td>" + 
+                            "<tr><td><button type='button' class='btn btn-danger disabled'><i class='fa fa-ban'></i>停權</button></td>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
                             "<td>" + admin + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
                     }
                 })
@@ -393,7 +414,7 @@ $(".seGM").on("click", function(){
                     $allMember.append(
                         "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
                                 "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban'>停權</button></td>" + 
+                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
                                 "</form>"+ 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
@@ -401,7 +422,8 @@ $(".seGM").on("click", function(){
                             "<td>" + Gm + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                     )
                 }
 
@@ -429,7 +451,7 @@ $(".seGU").on("click", function(){
                     $allMember.append(
                         "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
                             "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                            "<button type='button' class='btn btn-danger ban'>停權</button></td>" + 
+                            "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
                             "</form>" + 
                         "<td>" + item.seqno + "</td>" + 
                         "<td>" + item.account + "</td>" +
@@ -437,7 +459,8 @@ $(".seGU").on("click", function(){
                         "<td>" + Gg + "</td>" + 
                         "<td>" + 
                             "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                            "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                            "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                            "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                     )
                 }
 
@@ -466,7 +489,7 @@ $(".unGroup").on("click", function(){
                         $allMember.append(
                             "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
                                 "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban'>停權</button></td>" + 
+                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
                                 "</form>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
@@ -474,7 +497,8 @@ $(".unGroup").on("click", function(){
                             "<td>" + Um + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
                 })
             }
@@ -493,7 +517,7 @@ $(".unGroup").on("click", function(){
                         $allMember.append(
                             "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
                                 "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban'>停權</button></td>" + 
+                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
                                 "</form>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
@@ -501,7 +525,8 @@ $(".unGroup").on("click", function(){
                             "<td>" + Ug + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
                 })
             }
@@ -531,7 +556,7 @@ $(".banGroup").on("click", function(){
                         $allMember.append(
                             "<tr><td>" + "<form id='reForm' action='/MountainExploer.com/back/member/memberRecoverAction' method='POST'>" +
                                 "<input type='hidden' name='reSeqno' class='reSeqno' value='" + item.seqno +"'>" + 
-                                "<button type='button' class='btn btn-warning recover'>復權</button></td>" +
+                                "<button type='button' class='btn btn-warning recover'><i class='fa fa-refresh'></i>復權</button></td>" +
                                 "</form>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
@@ -539,7 +564,8 @@ $(".banGroup").on("click", function(){
                             "<td>" + Sm + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
                 }
 
@@ -559,7 +585,7 @@ $(".banGroup").on("click", function(){
                         $allMember.append(
                             "<tr><td>" + "<form id='reForm' action='/MountainExploer.com/back/member/memberRecoverAction' method='POST'>" +
                                 "<input type='hidden' name='reSeqno' class='reSeqno' value='" + item.seqno +"'>" + 
-                                "<button type='button' class='btn btn-warning recover'>復權</button></td>" +
+                                "<button type='button' class='btn btn-warning recover'><i class='fa fa-refresh'></i>復權</button></td>" +
                                 "</form>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
@@ -567,7 +593,8 @@ $(".banGroup").on("click", function(){
                             "<td>" + Sg + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
                 }
 
@@ -593,14 +620,15 @@ $(".admin").on("click", function(){
                 if(mbList != null){
                     let admin = "管理者";
                     $allMember.append(
-                        "<tr><td><button type='button' class='btn btn-danger disabled'>停權</button></td>" + 
+                        "<tr><td><button type='button' class='btn btn-danger disabled'><i class='fa fa-ban'></i>停權</button></td>" + 
                         "<td>" + item.seqno + "</td>" + 
                         "<td>" + item.account + "</td>" +
                         "<td>" + item.email + "</td>" + 
                         "<td>" + admin + "</td>" + 
                         "<td>" + 
                             "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                            "<button type='button' class='btn btn-info sgInfo'>詳細資料</button></td></tr>"
+                            "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                            "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                     )
                 }
 
@@ -630,7 +658,7 @@ $(".allMember").on("click", ".ban", function(){
         }
 
         if(result.isDismissed){
-            window.location.reload();
+            
         }
     })
 })
@@ -638,6 +666,7 @@ $(".allMember").on("click", ".ban", function(){
 
 //復權
 $(".allMember").on("click", ".recover", function(){
+    
     Swal.fire({
         title: "確定要恢復此會員的權限？",
         icon: "warning",
@@ -656,7 +685,7 @@ $(".allMember").on("click", ".recover", function(){
         }
 
         if(result.isDismissed){
-            window.location.reload();
+            
         }
     })
 })
@@ -676,7 +705,13 @@ $(".allMember").on("click", ".sgInfo", function(){
                     if(item.memberStatus.seqno == 100){
                         let Gm = "一般登山者";
                         let reDate = new Date(item.reg_Date);
-                        let birDate = new Date(item.memberInfo.birthday);
+                        let birDate = item.memberInfo.birthday;
+                        if(birDate == ""){
+                            birDate = "尚未填寫";
+                        }else{
+                            birDate = new Date(item.memberInfo.birthday);
+                        }
+
                         let imgMb = item.memberInfo.img_name;
                         if(imgMb == ""){
                             let imgMb = "preset.png";
@@ -703,7 +738,7 @@ $(".allMember").on("click", ".sgInfo", function(){
                                     <input type="text" name="email" class="swal2-input email" value="` + item.email + `" readonly>
                                     <br/>
                                     <label>手機：</label>
-                                    <input type="text" name="email" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
+                                    <input type="text" name="phone" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
                                     <br/>
                                     <label>性別：</label>
                                     <input type="text" name="gender" class="swal2-input gender" value="` + item.memberInfo.gender + `" readonly>
@@ -728,7 +763,13 @@ $(".allMember").on("click", ".sgInfo", function(){
                     }else if(item.memberStatus.seqno == 110){
                         let Um = "未認證登山者";
                         let reDate = new Date(item.reg_Date);
-                        let birDate = new Date(item.memberInfo.birthday);
+                        let birDate = item.memberInfo.birthday;
+                        if(birDate == ""){
+                            birDate = "尚未填寫";
+                        }else{
+                            birDate = new Date(item.memberInfo.birthday);
+                        }
+                        
                         let imgMb = item.memberInfo.img_name;
                         if(imgMb == ""){
                             let imgMb = "preset.png";
@@ -755,7 +796,7 @@ $(".allMember").on("click", ".sgInfo", function(){
                                     <input type="text" name="email" class="swal2-input email" value="` + item.email + `" readonly>
                                     <br/>
                                     <label>手機：</label>
-                                    <input type="text" name="email" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
+                                    <input type="text" name="phone" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
                                     <br/>
                                     <label>性別：</label>
                                     <input type="text" name="gender" class="swal2-input gender" value="` + item.memberInfo.gender + `" readonly>
@@ -781,7 +822,13 @@ $(".allMember").on("click", ".sgInfo", function(){
                     }else if(item.memberStatus.seqno == 120){
                         let Gg = "登山嚮導";
                         let reDate = new Date(item.reg_Date);
-                        let birDate = new Date(item.memberInfo.birthday);
+                        let birDate = item.memberInfo.birthday;
+                        if(birDate == ""){
+                            birDate = "尚未填寫";
+                        }else{
+                            birDate = new Date(item.memberInfo.birthday);
+                        }
+                        
                         let imgMb = item.memberInfo.img_name;
                         if(imgMb == ""){
                             let imgMb = "preset.png";
@@ -808,7 +855,7 @@ $(".allMember").on("click", ".sgInfo", function(){
                                     <input type="text" name="email" class="swal2-input email" value="` + item.email + `" readonly>
                                     <br/>
                                     <label>手機：</label>
-                                    <input type="text" name="email" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
+                                    <input type="text" name="phone" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
                                     <br/>
                                     <label>性別：</label>
                                     <input type="text" name="gender" class="swal2-input gender" value="` + item.memberInfo.gender + `" readonly>
@@ -834,7 +881,13 @@ $(".allMember").on("click", ".sgInfo", function(){
                     }else if(item.memberStatus.seqno == 130){
                         let Ug = "未認證登山嚮導";
                         let reDate = new Date(item.reg_Date);
-                        let birDate = new Date(item.memberInfo.birthday);
+                        let birDate = item.memberInfo.birthday;
+                        if(birDate == ""){
+                            birDate = "尚未填寫";
+                        }else{
+                            birDate = new Date(item.memberInfo.birthday);
+                        }
+                        
                         let imgMb = item.memberInfo.img_name;
                         if(imgMb == ""){
                             let imgMb = "preset.png";
@@ -861,7 +914,7 @@ $(".allMember").on("click", ".sgInfo", function(){
                                     <input type="text" name="email" class="swal2-input email" value="` + item.email + `" readonly>
                                     <br/>
                                     <label>手機：</label>
-                                    <input type="text" name="email" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
+                                    <input type="text" name="phone" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
                                     <br/>
                                     <label>性別：</label>
                                     <input type="text" name="gender" class="swal2-input gender" value="` + item.memberInfo.gender + `" readonly>
@@ -887,7 +940,13 @@ $(".allMember").on("click", ".sgInfo", function(){
                     }else if(item.memberStatus.seqno == 140){
                         let Sm = "已停權登山者";
                         let reDate = new Date(item.reg_Date);
-                        let birDate = new Date(item.memberInfo.birthday);
+                        let birDate = item.memberInfo.birthday;
+                        if(birDate == ""){
+                            birDate = "尚未填寫";
+                        }else{
+                            birDate = new Date(item.memberInfo.birthday);
+                        }
+                        
                         let imgMb = item.memberInfo.img_name;
                         if(imgMb == ""){
                             let imgMb = "preset.png";
@@ -914,7 +973,7 @@ $(".allMember").on("click", ".sgInfo", function(){
                                     <input type="text" name="email" class="swal2-input email" value="` + item.email + `" readonly>
                                     <br/>
                                     <label>手機：</label>
-                                    <input type="text" name="email" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
+                                    <input type="text" name="phone" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
                                     <br/>
                                     <label>性別：</label>
                                     <input type="text" name="gender" class="swal2-input gender" value="` + item.memberInfo.gender + `" readonly>
@@ -940,7 +999,13 @@ $(".allMember").on("click", ".sgInfo", function(){
                     }else if(item.memberStatus.seqno == 150){
                         let Sg = "已停權嚮導";
                         let reDate = new Date(item.reg_Date);
-                        let birDate = new Date(item.memberInfo.birthday);
+                        let birDate = item.memberInfo.birthday;
+                        if(birDate == ""){
+                            birDate = "尚未填寫";
+                        }else{
+                            birDate = new Date(item.memberInfo.birthday);
+                        }
+                        
                         let imgMb = item.memberInfo.img_name;
                         if(imgMb == ""){
                             let imgMb = "preset.png";
@@ -967,7 +1032,7 @@ $(".allMember").on("click", ".sgInfo", function(){
                                     <input type="text" name="email" class="swal2-input email" value="` + item.email + `" readonly>
                                     <br/>
                                     <label>手機：</label>
-                                    <input type="text" name="email" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
+                                    <input type="text" name="phone" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
                                     <br/>
                                     <label>性別：</label>
                                     <input type="text" name="gender" class="swal2-input gender" value="` + item.memberInfo.gender + `" readonly>
@@ -992,6 +1057,78 @@ $(".allMember").on("click", ".sgInfo", function(){
                     }
                 }
             })
+        }
+    })
+})
+
+
+//修改資料
+$(".allMember").on("click", ".chInfo", function(){
+    let chInfo = $(this).siblings(".sgSeqno").val();
+
+    $.ajax({
+        method:"GET",
+        url:"/MountainExploer.com/back/member/memberInfoBackListAction",
+        data:{sgSeqno:chInfo},
+        dataType:"json",
+        success:function(mbList){
+            $.each(mbList, function(index, item){
+                let itNm = item.name;
+                if(itNm == ""){
+                    itNm = "尚未填入";
+                }
+                let itNc = item.memberInfo.neck_name;
+                if(itNc == null){
+                    itNc = "尚未填入";
+                }
+                let itPh = item.memberInfo.phone;
+                if(itPh == ""){
+                    itPh = "尚未填入";
+                }
+                    Swal.fire({
+                        title: "會員編號" + item.seqno + "的會員資料",
+                        html:`<div>
+                                <form id="upForm" action="/MountainExploer.com/back/member/updateInfoBack" method="POST">
+                                <label>會員編號：</label>
+                                <input type="text" name="seqno" class="swal2-input seqno" value="` + item.seqno + `" readonly>
+                                <br/>
+                                <label>帳號：</label>
+                                <input type="text" name="account" class="swal2-input account" value="` + item.account + `" readonly>
+                                <br/>
+                                <label>姓名：</label>
+                                <input type="text" name="name" class="swal2-input name" value="` + itNm + `">
+                                <br/>
+                                <label>暱稱：</label>
+                                <input type="text" name="ncName" class="swal2-input ncName" value="` + itNc + `">
+                                <br/>
+                                <label>Email：</label>
+                                <input type="text" name="email" class="swal2-input email" value="` + item.email + `">
+                                <br/>
+                                <label>手機：</label>
+                                <input type="text" name="phone" class="swal2-input phone" value="` + itPh + `">
+                                <br/>
+                                </form>
+                                </div>`,
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "修改會員資料",
+                        cancelButtonText: "取消"
+                    }).then(function(result){
+                        if(result.isConfirmed){
+                            $("#upForm").submit();        
+                            Swal.fire(
+                                "會員資料修改成功"
+                            )
+                        }
+
+                        if(result.isDismissed){
+
+                        }
+                    })
+                
+            })
+
         }
     })
 })

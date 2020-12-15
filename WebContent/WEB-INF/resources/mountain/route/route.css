@@ -1,21 +1,23 @@
 @charset "UTF-8";
 .m-dl2-adj{
 	transition : 1000ms;
+	background-color : #e7d6bc;
+	padding : 2.5px;
 }
 
 .npNav{
-	position : relative;
-	height : 100px;
-	width : 100%;
-	border: 2px solid red;
+	padding : 2.5px;
+	background-color : #f1e8da;
+	margin : 10px;
 	margin-bottom : 10px;
+	border-radius : 10px;
 }
 .routeNav{
-	position : relative;
 	height : 150px;
-	width : 100%;
-	border: 2px solid red;
+	margin : 10px;
+	background-color : #f1e8da;
 	transition : 1000ms;
+	border-radius : 10px;
 }
 .sdcAdjust{
 	transition : 1000ms;

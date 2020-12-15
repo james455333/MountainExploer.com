@@ -203,7 +203,7 @@ public class MemberLoginController {
 					System.out.println("=======================登入成功");
 					return mb.getMemberStatus().getSeqno();
 				}else if(mb.getMemberStatus().getSeqno() == 140 || mb.getMemberStatus().getSeqno() == 150) {
-					m.addAttribute("Member", mb);
+					
 					return mb.getMemberStatus().getSeqno();
 				}else if(mb.getMemberStatus().getSeqno() == 160) {
 					m.addAttribute("Member", mb);

@@ -278,7 +278,10 @@ function imgError(thisElm){
 }
 
 function setDataTable(result){
-	$('#routeTable').DataTable()
+	console.log(result)
+	console.log(dataTable)
+	console.log("set DataTable")
+	console.log($('#routeTable'))
 	dataTable = $('#routeTable').DataTable( {
 		"data" : result,
         "pagingType": "full_numbers",
@@ -295,7 +298,7 @@ function setDataTable(result){
 //		console.log(123)
 //	})
 	
-	
+	console.log("set Complete")
 	$('.btn-ctrl').bootstrapToggle();
 	$('.btn-rt-delete').tooltip();
 	$('.btn-rt-update').tooltip();

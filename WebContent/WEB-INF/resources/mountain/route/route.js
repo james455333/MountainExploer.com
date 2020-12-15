@@ -2,7 +2,7 @@
 $(function(){
 	
 	$(".npList").on("ready",ajaxDefault())
-	.on("click","li",function(){
+	.on("click","div",function(){
 		let npID = $(this).find("button").val()
 		ajaxTN(npID);
 	})

@@ -85,14 +85,39 @@ function downloadChartJson(order){
 
 function activeJsonDownload(jsonObj,fileName){
 	$("<a />", {
-	    "download": fileName+".json",
+	    "download": fileName+ new Date().toLocaleDateString() +".json",
 	    "href" : "data:application/json," + encodeURIComponent(JSON.stringify(jsonObj))
 	}).appendTo("body")
 	.click(function() {
 		$(this).remove()
 	})[0].click()	
 }
-
+function downloadAllJson(){
+	$.ajax({
+		url : baseURL + "/all",
+		type : "GET",
+		dataType : "json",
+		success : function(data){
+			let actList =data.actList
+			for(let i in actList){
+				let actBasic = actList[i].actBasic
+				let actInfo = actList[i].actBasic.actInfo
+				delete actBasic.memberBasic
+				delete actBasic.id
+				delete actBasic.name
+				delete actInfo.name
+				delete actInfo.seqno
+				delete actInfo.rtBasic.name
+				delete actInfo.rtBasic.seqno
+				delete actInfo.rtBasic.routeInfo.seqno
+			}
+			activeJsonDownload(data,"全活動資料")
+		},
+		error : function(jqXHR){
+			Swal.fire("getAllData發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
+		}
+	})
+}
 function reRender(){
 	var callbacks = $.Callbacks( "once" );
 	$("#resetAll").addClass("fa-spin")
@@ -267,7 +292,6 @@ var setSearchBar = function setSearchBar(){
 }
 
 var setTable = function setTable(){
-	console.log(allData)
 	result = setResultToDT(allData)
 	setDataTable(result)
 		
@@ -287,7 +311,6 @@ function setResultToDT(data){
                     		<i class="fas fa-image"></i> 修改路線圖
 						</button>`
 	let actList = data.actList
-	console.log(actList)
 	for(let i in actList){
 		let hideToogle = `<input type="checkbox" class='btn-ctrl btn-toggle-hide' `
 				+ `checked data-toggle="toggle"`
@@ -702,7 +725,8 @@ function updateBox(btn){
 						+ '</labe>'
 						+ '</form>'
 //					console.log(data)
-					Swal.queue([{
+					let updateData
+					Swal.fire({
 						customClass: {
 							confirmButton: 'btn btn-success',
 						    cancelButton: 'btn btn-danger'
@@ -713,10 +737,11 @@ function updateBox(btn){
 						title : "資料修改 --- 活動編號 : " + data.id ,
 						html : final,
 						width : "1000px",
+						showLoaderOnConfirm: true,
 						focusConfirm: false,
 						preConfirm : (result) => {
 							console.log(result)
-							result = {
+							updateData = {
 								id : actID,
 								rtID : $('#update-rt').val(),
 								title : $('#updatetitle').val(),
@@ -724,58 +749,28 @@ function updateBox(btn){
 								regTop : $('#updateregTop').val(),
 								note : CKEDITOR.instances.updateNote.getData(),
 							}
-							ajaxUpdate(result)
-//							$("#newAct-form").on("submit",function(e){ 
-//								e.preventDefault()
-//								return true
-//							})
-//							
-//							$("#newAct-form").submit()
-//							console.log("go false")
-//							return false;
+							ajaxUpdate(updateData)
 						},
 						didOpen : function(){
 							console.log($("#newAct-form"))
-//							$("#newAct-form").validate({
-//								rules : {
-//									updatetitle : {
-//										required : true,
-//										pattern : /^[\u4e00-\u9fa5_a-zA-Z0-9]+$/,
-//									},
-//									updateprice : {
-//										required : true,
-//										pattern : /^[0-9]+$/,
-//										maxlength : 8,
-//										min : 1,
-//									},
-//									updateregTop : {
-//										required : true,
-//										pattern : /^[0-9]+$/,
-//										min : 1,
-//									},
-//								},
-//								submitHandler: function(form){
-////									console.log(form)
-//									let result = {
-//										id : actID,
-//								    	rtID : $('#update-rt').val(),
-//										title : $('#updatetitle').val(),
-//										price : $('#updateprice').val(),
-//										regTop : $('#updateregTop').val(),
-//										note : CKEDITOR.instances.updateNote.getData(),
-//								    }
-//									console.log("go active")
-//									console.log(result)
-////									ajaxUpdate(result)
-//								}
-//							})
 							$("#update-np").on("change",changeUpdateAllRt)
 							CKEDITOR.replace("updateNote")
 							CKEDITOR.instances.updateNote.setData(data.addInfo)
 							
 						},
 						
-					}])
+					}).then((confirm) => {
+						if(confirm.isConfirmed){
+							let parentTr = btn.parents("tr")
+							let updateTitle = updateData.title + '<button class="btn update-single"><i href="#" class="fas fa-edit" style="color: #ff922b;"></i></button>'
+							parentTr.find("td").eq(3).html(updateTitle)
+							let updateReg = parentTr.find("td").eq(6).text().replace(/\/ [0-9]*/, "/ " + updateData.regTop)
+							parentTr.find("td").eq(6).text(updateReg)
+							if(parentTr.next().attr("class") == "append-info"){
+								parentTr.next().next().find("td").eq(0).html("<div>" + updateData.note + "</div>")
+							}
+						}
+					})
 			}
 		})
 	})
@@ -805,11 +800,11 @@ function ajaxUpdate(result){
 		data : data,
 	    contentType: "application/json; charset=UTF-8",
 		success : function(){
-//			reRender()
+			
 			Swal.fire({
 				title : "修改成功",
 				icon : "success",
-  				confirmButtonText: '了解',
+  				confirmButtonText: '返回',
 			})
 		},
 		error : function(jqXHR){
@@ -890,20 +885,20 @@ function showMoreInfo(btn){
 					console.log(imgList)
 					let appendInfo = "<tr class='append-info'>"
 										+ "<th colspan='4'>備註</th>"
-										+ "<th colspan='4'>圖片庫</th>"
+										+ "<th colspan='4'>圖片庫 (可點擊放大) </th>"
 									+ "</tr>"
 									+ "<tr class='append-info'>"
 										+ "<td colspan='4'>"
 										+ "<div>" + note + "</div>"
 										+ "</th>"
-					appendInfo +=	"<td colspan='4'><div class='row mx-2'>"
+					appendInfo +=	"<td colspan='4'><div style='border-width:3px;' class='row mx-2 '>"
 					if(imgList.length != 0){
-						let containerWidth = Math.floor(100/imgList.length)-5
+						let containerWidth = "17.5"
 						for(let i in imgList){
-							appendInfo += "<div style='margin : 0 2.5%;padding : 5px; border : 3px solid green; height : 150px; width:" + containerWidth + "%;'>"
-										+ "<a data-toggle='tooltip' title='點擊放大'  data-fancybox='gallery" + actID + "' href='" 
+							appendInfo += "<div class='mx-1 border border-dark rounded '   style='height: 50px; width:" + containerWidth + "%;'>"
+										+ "<a data-fancybox='gallery" + actID + "' href='" 
 										+ baseURL + "/image-" + imgList[i] + "?timestamp=" + new Date().getTime() + "'>"
-										+ "<img style='width:100%;height:100%' src='" + baseURL + "/image-" + imgList[i] + "?timestamp=" + new Date().getTime() +  "'></a>"
+										+ "<img class='more-image-a' data-toggle='tooltip' title='點擊放大'  style='width:100%;height:100%' src='" + baseURL + "/image-" + imgList[i] + "?timestamp=" + new Date().getTime() +  "'></a>"
 										+ "</div>"
 						}
 					}else{
@@ -1702,10 +1697,6 @@ var setActYearSelect = function setActYearSelect(){
 		$("#actTrend-select").append(`<option value="${i}">${i}年</option>`)
 		if(i == thisYear) $("#actTrend-select").find("option").last().attr("selected",true)
 	}
-	$("#actTrend-select").find("option").on("click",function(){
-		let year = $(this).val()
-		setActTrendChart(null,null,year)
-	})
 }
 function actTrend_setActData(month,defaultYear,dateLabel){
 	result = []
@@ -1755,7 +1746,7 @@ function actTrend_setRegData(month,defaultYear,dateLabel){
 function imageDelete(src, aTag){
 	$.fancybox.close();
 	Swal.fire({
-		title : "警告",
+		title : "<h1 class='text-danger' ><i class='fas fa-skull-crossbones fa-pulse'></i>警告<i class='fas fa-skull-crossbones fa-pulse'></i></h1>",
 		icon : "warning",
 		html : "<h3>即將刪除圖片</h3>",
 		imageUrl:src,
@@ -1774,7 +1765,7 @@ function imageDelete(src, aTag){
 		showLoaderOnConfirm: true,
 	}).then((result) => {
 		if(result.isConfirmed){
-			Swal("刪除成功")
+			ajaxDeleteImage(aTag)
 		}else{
 			$.fancybox.open({
 				src : src,
@@ -1787,24 +1778,33 @@ function imageDelete(src, aTag){
 
 function imageUpdate(src, aTag){
 	console.log(aTag)
-	let innerHtml = "<form id='update-Image'><div class='custom-file'><input type='file' accept='*/image' name='image' class='custom-file-input' id='files'><label class='custom-file-label' for='files'>選擇圖片</label></div></form>"
+//	let innerHtml = "<form id='update-Image'><div class='custom-file'><input type='file' accept='*/image' name='image' class='custom-file-input' id='files'><label class='custom-file-label' for='files'>選擇圖片</label></div></form>"
 	$.fancybox.close();
 	Swal.fire({
 		title : "修改圖片",
 		icon : "warning",
-		html : innerHtml,										    
+//		html : innerHtml,										    
 		imageUrl:src,
 		imageHeight: "auto",
 		imageWidth: 500,
+		input: 'file',
+  		inputLabel: '選擇圖片',
+		inputAttributes: {
+			required : true,
+			accept : "image/*",
+			name : "image"
+		},
+		inputValidator: (value) => {
+		    if (value) {
+				let fileType = value.type.match(/^\image/)
+				if(!fileType)return "必須為圖片檔"
+		    }else{
+			    return '請選擇圖片'
+			}
+		},
 		customClass: {
 			confirmButton: 'btn btn-success',
 			cancelButton: 'btn btn-danger'
-		},
-		preConfirm : (result) => {
-			if(result){
-				let form = $("#update-Image")
-				ajaxUpdateImg(form,aTag)
-			}
 		},
 		buttonsStyling: false,
 		showCancelButton: true, 
@@ -1814,12 +1814,35 @@ function imageUpdate(src, aTag){
 		cancelButtonText: '取消',
 		showLoaderOnConfirm: true,
 	}).then((result) => {
+		console.log(result)
 		if(!result.isConfirmed){
+			console.log(result.value)
+			
 			$.fancybox.open({
 				src : src,
 				type : "image"
 			})
 		}else{
+			ajaxUpdateImg(result.value,aTag)
+		} 
+	})
+}
+function ajaxUpdateImg(file,aTag){
+	let href = aTag.attr("href")
+	let formData = new FormData()
+	formData.append("image",file)
+	let newURL;
+	let catchID = href.match(/\-[0-9]+\?/)[0].replace(/[-?]/g,"")
+	$.ajax({
+		url : baseURL + "/image-" + catchID,
+		type : "POST",
+		data : formData,
+		processData: false,
+		contentType : false,
+		success : function(){
+			newURL = baseURL + "/image-" + catchID + "?timestamp=" + new Date().getTime()
+			aTag.attr("href",newURL)
+			aTag.find("img").attr("src",newURL)
 			Swal.fire({
 				title : "修改成功",
 				icon : "success",
@@ -1828,34 +1851,44 @@ function imageUpdate(src, aTag){
 				allowOutsideClick : false,
 				allowEscapeKey : false,
 				allowEnterKey : false,
-				showConfirmButton : false,
-			}).then(() => {
-				$.fancybox.open({
-					src : src,
-					type : "image"
+				showConfirmButton : false
+				}).then(() => {
+					$.fancybox.open({
+						src : newURL,
+						type : "image"
 				})
-			})	
-		} 
-	})
-}
-function ajaxUpdateImg(form,aTag){
-	console.log(aTag)
-	let href = aTag.attr("href")
-	let catchID = href.match(/\-[0-9]+\?/)[0].replace(/[-?]/g,"")
-	$.ajax({
-		url : baseURL + "/image-" + catchID,
-		type : "POST",
-		data : new FormData(form[0]),
-		processData: false,
-		contentType : false,
-		success : function(){
-			let newURL = baseURL + "/image-" + catchID + "?timestamp=" + new Date().getTime()
-			aTag.attr("href",newURL)
-			aTag.find("img").attr("src",newURL)			
+			})			
 		},
 		error : function(jqXHR){
 			Swal.fire("發生錯誤 : 修改圖片", "錯誤代碼 : " + jqXHR.status, "error")
 		}
-		
+	})
+}
+
+function ajaxDeleteImage(aTag){
+	let href = aTag.attr("href")
+	let catchID = href.match(/\-[0-9]+\?/)[0].replace(/[-?]/g,"")
+	console.log(catchID)
+	
+	$.ajax({
+		url : baseURL + "/image-" + catchID,
+		type : "Delete",
+		success : function(){
+			Swal.fire({
+				title : "刪除成功",
+				icon : "success",
+				timer : 1500,
+				timerProgressBar : true,
+				allowOutsideClick : false,
+				allowEscapeKey : false,
+				allowEnterKey : false,
+				showConfirmButton : false
+				}).then(() => {
+					aTag.parent("div").remove()
+			})			
+		},
+		error : function(jqXHR){
+			Swal.fire("發生錯誤 : 修改圖片", "錯誤代碼 : " + jqXHR.status, "error")
+		}
 	})
 }
