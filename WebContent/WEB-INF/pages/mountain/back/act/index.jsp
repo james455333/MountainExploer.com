@@ -74,6 +74,7 @@
 	<!-- jquery validator -->
 	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"></script>
+
 	<!-- for this page -->
 	<script src="/MountainExploer.com/mountain/back/js/act.js"></script>
 	<script src="/MountainExploer.com/mountain/back/js/actFunction.js"></script>
@@ -103,7 +104,7 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <div class="container-fluid pageContent">
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -398,7 +399,8 @@
     <script src="/MountainExploer.com/vendor/jquery/jquery.min.js"></script>
     <!-- Core plugin JavaScript-->
     <script src="/MountainExploer.com/vendor/jquery-easing/jquery.easing.min.js"></script>
-
+	<!-- jquery.blockUI -->
+	<script src="http://malsup.github.io/jquery.blockUI.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="/MountainExploer.com/js/sb-admin-2.min.js"></script>
 
