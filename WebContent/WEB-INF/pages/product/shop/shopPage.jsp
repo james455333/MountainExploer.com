@@ -19,7 +19,9 @@
 <script type="text/javascript" charset="UTF-8"
 	src='<c:url value="/product/shop/shop.js"/>'></script>
 	<script src="/MountainExploer.com/js/swalLogin.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.all.min.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.all.min.js"></script>
+    
 		<style>
         
 
@@ -150,6 +152,15 @@
 				</div>
 				<div>
 					<a href='<c:url value="/shoppingcart/memberOrders"/>'>查看訂單</a>
+<%-- 				<form action="<c:url value='/shoppingcart/memberOrders'></c:url>"> --%>
+<%-- 						<input type="hidden" name="selectcampid" value="${j.campbasicid}"> --%>
+<%-- 						<c:choose> --%>
+<%-- 								<c:when test="${empty Member}"> --%>
+<!-- 									<input type="button" class="swalLogin" value="查看訂單"> -->
+<%-- 								</c:when> --%>
+<%-- 							<c:otherwise><input type="submit" value="查看訂單"></c:otherwise> --%>
+<%-- 						</c:choose>					 --%>
+<!-- 						</form> -->
 				</div>
 				<!--table-->
 				<table class="order-table">

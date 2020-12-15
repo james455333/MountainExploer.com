@@ -19,21 +19,18 @@
 <body>
 	<div id="container1">
 		<!-- 引入共同頁首 -->
-		<jsp:include page="../../fragment/backTopNav.jsp"></jsp:include>
+<%-- 		<jsp:include page="../../fragment/backTopNav.jsp"></jsp:include> --%>
 
-		<%-- <c:forEach var="peakName" items="${mountainBean}" varStatus="vs">
-		</c:forEach> --%>
 
 		<form action='<c:url value="/backstage/product/updateData"/>'
 			class="newDataForm" enctype="multipart/form-data" method="post">
 			<div>
-<%-- 				<c:if test="${ !empty result }"> --%>
 					<div>
 					<input	type="hidden" name="itemBasicSeqno" value="${itemInfo.itemBasicSeqno}" readonly>
 						編號 : ${itemInfo.itemBasicSeqno}
 					</div>
 					<div>
-						<label for="name"> 產品名稱: (必填)&nbsp</label> <input type="text"
+						<label for="name"> 產品名稱: (必填)&nbsp</label> <input type="text" style="width: 500px "
 							name="name" value="${itemBasic.name}" required>
 					</div>
 					<div>
@@ -49,12 +46,11 @@
 							type="text" name="stock" value="${itemInfo.stock}" required>
 					</div>
 					<div>
-						<label for="description"> 介紹 :  &nbsp&nbsp(必填)</label> <input style="width: 200px"
+						<label for="description"> 介紹 :  &nbsp&nbsp(必填)</label> <input style="width: 1000px "
 							type="text" name="description" value="${productBean.description}" required>
 					</div>
 					<div>
-						<img style="width: 50px; height: 50px;"
-<%-- 							src="<c:url value='/productBackStage/images?seqno=${itemInfo.itemBasicSeqno}' />"	> --%>
+						<img style="width: 100px; height: 100px;"
 							src="<c:url value='/backstage/product/search/images?seqno=${itemInfo.itemBasicSeqno}' />"	>
 						<br> 
 				
@@ -65,7 +61,6 @@
 						<input type="file" name="productImg" accept="image/*">
 					</div>
 
-<%-- 				</c:if> --%>
 			</div>
 			<div>
 				<div>

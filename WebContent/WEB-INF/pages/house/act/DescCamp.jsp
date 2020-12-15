@@ -159,7 +159,7 @@ height:25px;
 					</c:choose>
 					<div>
 						<form action="<c:url value='/mountainCampAct/jumpupdatestar'></c:url>">
-						<input type="hidden" name="selectcampid" value="${j.campbasicid}">
+<%-- 						<input type="hidden" name="selectcampid" value="${j.campbasicid}"> --%>
 						<c:choose>
 								<c:when test="${empty Member}">
 									<input type="button" class="swalLogin" value="評分">

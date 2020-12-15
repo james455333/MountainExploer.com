@@ -149,7 +149,7 @@ public class ProductCUDController {
 		if (update != null) {
 			Integer seqInt = Integer.parseInt(update);
 			Orders selectSeqno = ordersDao.selectSeqno(seqInt);
-			selectSeqno.setCancelTag("Done");
+			selectSeqno.setCancelTag("D");
 			Date date = new Date();
 			selectSeqno.setShippingDate(date);
 			ordersDao.update(selectSeqno);

@@ -229,11 +229,11 @@ public class ShoppingCartController {
 	public String orderInfo(Model m, @RequestParam(name = "orderId") String orderId) {
 
 		Integer orderIdInt = Integer.parseInt(orderId);
-//		Orders odersSelect = ordersDao.selectSeqno(orderIdInt);
-//
-//		Set<OrderItems> orderItemsSet = odersSelect.getOrderItemsSet();
+		Orders odersSelect = ordersDao.selectSeqno(orderIdInt);
 
-//		m.addAttribute("OrderInfo", orderItemsSet);
+		Set<OrderItems> orderItemsSet = odersSelect.getOrderItemsSet();
+
+		m.addAttribute("OrderInfo", orderItemsSet);
 		m.addAttribute("orderId", orderId);
 		
 
