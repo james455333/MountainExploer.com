@@ -330,13 +330,15 @@ $(function() {
 				"<td>" + data[i].stock + "</td>" +
 				"<td>" +
 				"<div>" +
-				"<form  action='" + homeUrl + "/updateDataPage'>" +
+//				"<form  action='" + homeUrl + "/updateDataPage'>" +
+				"<form  action=' '/MountainExploer.com/back/shop/updateDataPage'>" +
 				'<input type="hidden" name="seqno" value="' + data[i].seqno + '" readonly>' +
 				'<input type="submit" value="修改">' +
 				'</form>' +
 				"</div>" +
 				"<div>" +
-				"<form class='hiddenForm' action='/MountainExploer.com/backstage/product/deleteData'>" +
+//				"<form class='hiddenForm' action='/MountainExploer.com/backstage/product/deleteData'>" +
+				"<form class='hiddenForm' action='/MountainExploer.com/back/shop/deleteData'>" +
 				'<input  type="hidden" name="seqno" value="' + data[i].seqno + '" readonly>' +
 //				'<input id="deleteNp" class="deleteButton" type="button"  value="刪除">' +
 				'</form>' +

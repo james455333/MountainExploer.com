@@ -10,16 +10,14 @@
 <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script type="text/javascript" charset="UTF-8"
-	src='<c:url value="/product/shop/shop.js"/>'></script>
-	<script src="/MountainExploer.com/js/swalLogin.js"></script>
 	<link href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css" rel="stylesheet" />
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	
+	<script type="text/javascript" charset="UTF-8" src='<c:url value="/product/shop/shop.js"/>'></script>
+	<script src="/MountainExploer.com/js/swalLogin.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.all.min.js"></script>
     
 		<style>
@@ -71,10 +69,10 @@
 										<span>主類別 :&nbsp</span>
 										<select name="firstclass" id="fcSelect">
 										</select>
-										<input type="button" value="主類別查詢" class="fcSubmit">
+										<input type="button" value="主類別查詢" class="fcSubmit btn btn-outline-danger">
 										</li>
 									<li class="li1">次類別: <select name="secondclass" class="scSelect"></select>
-							<input type="button" value="次類別查詢" class="scSubmit">
+							<input type="button" value="次類別查詢" class="scSubmit btn btn-outline-danger">
 						</li>
 <%-- 										<li class="li1"><a href="<c:url value='/MountainExploer.com/shop/search/totalData?firstclass=624' />">戶外服飾</a></li> --%>
 <!-- 										<li class="li1"><a href="?firstclass=624">爬山涉水</a></li> -->
@@ -125,7 +123,7 @@
 					<input type="radio" name="radioGroup" id="radioB" value="2" /><label>1001-2000元</label>
 					<input type="radio" name="radioGroup" id="radioC" value="3" /><label>2001-3000元</label>
 					<input type="radio" name="radioGroup" id="radioD" value="4" /><label>3000元以上</label>
-					<button type="submit" class="priceSubmitButton ">價格區間查詢</button>
+					<button type="submit" class="priceSubmitButton btn btn-outline-danger">價格區間查詢</button>
 					<!-- <button type="submit" class="priceSubmitButton btn btn-outline-dark">價格區間查詢</button> -->
 				</div>
 				<div>

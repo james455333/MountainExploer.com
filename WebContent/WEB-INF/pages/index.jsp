@@ -643,7 +643,9 @@ body {
 		</div>
 
 
-		<footer id="footer"> </footer>
+		<footer id="footer"
+			include-html="/MountainExploer.com/forinclude/includeForFooter.html">
+		</footer>
 	</div>
 
 	<!--     <script src="/MountainExploer.com/assets/vendor/jquery/jquery.min.js"></script> -->
