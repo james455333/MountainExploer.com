@@ -5,15 +5,18 @@
 <html>
 
 <head>
-	<meta charset="UTF-8">
-	<title>商品資訊</title>
-	<link rel="stylesheet" href="/MountainExploer.com/css/other.css">
-	<link rel="stylesheet" href="/MountainExploer.com/css/font.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<meta charset="UTF-8">
+<title>商品資訊</title>
+<link rel="stylesheet" href="/MountainExploer.com/css/other.css">
+<link rel="stylesheet" href="/MountainExploer.com/css/font.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -27,10 +30,12 @@
 	</div>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light zline">
-			<a class="navbar-brand" href="#"><img src="/MountainExploer.com/images/logo1.png" height="30%"
-					width="30%"></a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<a class="navbar-brand" href="#"><img
+				src="/MountainExploer.com/images/logo1.png" height="30%" width="30%"></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent"
@@ -64,13 +69,13 @@
 
 			<div class="secDivContent">
 				<div>
-					<a href='<c:url value="/shop/shoppingCartEntry"/>'>查看購物車</a>
-					<!-- <a href='<c:url value="/shop/shoppingCartEntry"/>'><button type="button" class="btn btn-outline-dark">查看購物車</button></a> -->
+					<!--<a href='<c:url value="/shop/shoppingCartEntry"/>'>查看購物車</a>-->
+					 <a href='<c:url value="/shop/shoppingCartEntry"/>'><button type="button" class="btn btn-outline-dark">查看購物車</button></a> 
 				</div>
 				<div>
-					<a href='<c:url value="/shoppingcart/memberOrders"/>'>查看訂單</a>
-					<!-- <a href='<c:url value="/shoppingcart/memberOrders"/>'>	<button type="button" class="btn btn-outline-dark">查看訂單</button></a> -->
-
+					<!--<a href='<c:url value="/shoppingcart/memberOrders"/>'>查看訂單</a>-->
+					<a href='<c:url value="/shoppingcart/memberOrders"/>'>
+						<button type="button" class="btn btn-outline-dark">查看訂單</button>
 				</div>
 				<!--table-->
 				<table class="order-table">
@@ -79,17 +84,18 @@
 							<!-- thead更改從這邊開始 -->
 							<th colspan="2" scope="col">
 								<form action="/MountainExploer.com/shoppingcart/addShoppingCart">
-									<input type="hidden" name="itemBasicSeqno" value="${ProductBean.seqno}" readonly>
-									<input type="hidden" name="itemBasicName" value="${ProductBean.name}" readonly>
-									<input type="hidden" name="unitPrice" value="${ProductBean.price}" readonly>
-									選擇數量<select name="amount">
+									<input type="hidden" name="itemBasicSeqno"
+										value="${ProductBean.seqno}" readonly> <input
+										type="hidden" name="itemBasicName" value="${ProductBean.name}"
+										readonly> <input type="hidden" name="unitPrice"
+										value="${ProductBean.price}" readonly> 選擇數量<select
+										name="amount">
 										<option value="1">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
 										<option value="4">4</option>
 										<option value="5">5</option>
-									</select>
-									<input id="demo1" type="submit" value="加入購物車">
+									</select> <input id="demo1" type="submit" value="加入購物車">
 								</form>
 							</th>
 
@@ -100,72 +106,44 @@
 					<tbody class="order-table-tb">
 						<!-- tbody更改從這邊開始 -->
 						<tr>
-							<td colspan="2">
-								<img style="width: 400px"
-									src="<c:url value='/backstage/product/search/images?seqno=${ProductBean.seqno}' />">
+							<td colspan="2"><img style="width: 400px"
+								src="<c:url value='/backstage/product/search/images?seqno=${ProductBean.seqno}' />">
 							</td>
 						</tr>
 						<tr>
-							<td width="25">
-								商品編號:
-							</td>
-							<td>
-								${ProductBean.seqno}
-							</td>
+							<td width="25">商品編號:</td>
+							<td>${ProductBean.seqno}</td>
 						</tr>
 						<tr>
-							<td>
-								商品名稱 :
-							</td>
-							<td>
-								${ProductBean.name}
-							</td>
+							<td>商品名稱 :</td>
+							<td>${ProductBean.name}</td>
 						</tr>
 						<tr>
-							<td>
-								主類別 :
-							</td>
-							<td>
-								${ProductBean.firstClass}
-							</td>
+							<td>主類別 :</td>
+							<td>${ProductBean.firstClass}</td>
 						</tr>
 						<tr>
-							<td>
-								次類別 :
-							</td>
-							<td>
-								${ProductBean.secondClass}
-							</td>
+							<td>次類別 :</td>
+							<td>${ProductBean.secondClass}</td>
 						</tr>
 						<tr>
-							<td>
-								型號 :
-							</td>
-							<td>
-								${ProductBean.type}
-							</td>
+							<td>型號 :</td>
+							<td>${ProductBean.type}</td>
 						</tr>
 						<tr>
-							<td>
-								價格 :</td>
-							<td>$${ProductBean.price}
-							</td>
+							<td>價格 :</td>
+							<td>$${ProductBean.price}</td>
 						</tr>
 						<tr>
-							<td>
-								庫存 :</td>
-							<td> ${ProductBean.stock}
-							</td>
+							<td>庫存 :</td>
+							<td>${ProductBean.stock}</td>
 						</tr>
 						<tr>
-							<td colspan="2">
-								介紹 : ${ProductBean.description}
-							</td>
+							<td colspan="2">介紹 : ${ProductBean.description}</td>
 						</tr>
 						<tr>
-							<td colspan="2">
-								<input type="button" value="返回上一頁" id="backPreviousPage">
-							</td>
+							<td colspan="2"><input type="button" value="返回上一頁"
+								id="backPreviousPage"></td>
 						</tr>
 
 
@@ -175,10 +153,7 @@
 					<div id="container1">
 						<!-- 引入共同頁首 -->
 
-						<div>
-
-						</div>
-
+						<div></div>
 				</table>
 
 			</div>
@@ -192,12 +167,12 @@
 
 	<footer id="footer">
 		<a>全站導覽</a>
-		<button id="demo1">確認demo1</button>
+		<!-- <button id="demo1">確認demo1</button>
 		<button id="demo2">錯誤demo2</button>
 		<button id="demo3">確認提醒demo3</button>
 		<button id="demo4">多重選項&提醒視窗demo4</button>
 		<button id="demo5">Demo5</button>
-		<button id="demo6">Demo6</button>
+		<button id="demo6">Demo6</button> -->
 
 
 
@@ -211,8 +186,8 @@
 <!--sweet alert-->
 <script src="/MountainExploer.com/js/includejsp.js"></script>
 <script>
-	$(function () {
-		$("#backPreviousPage").on("click", function () {
+	$(function() {
+		$("#backPreviousPage").on("click", function() {
 			window.history.go(-1)
 		})
 	})
