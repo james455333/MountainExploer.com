@@ -24,11 +24,15 @@ var chatyBackHoverColors = [
 $(function(){
 	
 	$. noConflict()
+	openBlock("body")
 	$.ajax({
 		url : baseURL + "/all",
 		type : "GET",
 		dataType : "json",
 		success : function(data){
+			PBBlock({
+				countTimes : data.actList.length
+			})
 			allData = data
 			$.ajax({
 				url : baseURL + "/reg/all",

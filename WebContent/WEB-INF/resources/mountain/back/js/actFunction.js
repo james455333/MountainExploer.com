@@ -148,6 +148,7 @@ function reRender(){
 						callbacks.fire()
 						$("#resetAll").removeClass("fa-spin")
 					}, 500)
+					
 				}
 			})
 		},
@@ -350,6 +351,7 @@ function setResultToDT(data){
 			}
 //			"<div class='d-flex justify-content-between align-items-center' >" + updateBtn + deleteBtn + infoBtn + upImgBtn +"</div>"
 		result.push(riGroup)
+		progressCount()
 	}
 	return result;
 }
