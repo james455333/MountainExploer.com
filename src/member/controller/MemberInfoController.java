@@ -58,6 +58,11 @@ public class MemberInfoController {
 		return "member/socailLoginInfo";	
 	}
 	
+	@RequestMapping(path = "/member/bootstrapInfoEntry", method = RequestMethod.GET)
+	public String processBootstrapInfo() {
+		return "member/info/bootstrapInfoText";
+	}
+	
 	
 	@RequestMapping(path = "/member/memberInfoUpdateChange", method = RequestMethod.POST)
 	public String processInfoUpdateEntry(@ModelAttribute("Member")MemberBasic mb, Model m) {
