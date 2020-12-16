@@ -7,6 +7,7 @@ $(function(){
             if(mbList != null){
                 let $allMember = $("#allMember");
                 $.each(mbList, function(index, item){
+                    //非停權會員
                     if(item.memberStatus.seqno == 100 || item.memberStatus.seqno == 110 || item.memberStatus.seqno == 120 || item.memberStatus.seqno == 130){
                         $allMember.append(
                             "<tr><td>" +
@@ -18,10 +19,11 @@ $(function(){
                             "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' id='sgInfo' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button>" + 
-                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'>更變身分組</button></td></tr>"
+                                "<button type='button' id='sgInfo' class='btn btn-info sgInfo'><i class='fa fa-user-circle' style='margin-right:3px'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text' style='margin-right:3px'></i>修改資料</button>" + 
+                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'><i class='fas fa-users-cog' style='margin-right:3px'></i>更變身分組</button></td></tr>"
                             )
+                    //停權會員
                     }else if(item.memberStatus.seqno == 140 || item.memberStatus.seqno == 150){
                         $allMember.append(
                             "<tr><td>" + "<input type='hidden' name='reSeqno' class='reSeqno' value='" + item.seqno +"'>" +
@@ -32,9 +34,9 @@ $(function(){
                             "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button>" + 
-                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'>更變身分組</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle' style='margin-right:3px'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text' style='margin-right:3px'></i>修改資料</button>" + 
+                                "<button type='button' style='margin-left:10px' class='btn btn-secondary disabled'><i class='fas fa-users-cog' style='margin-right:3px'></i>更變身分組</button></td></tr>"
                         )
                     }else{
                         $allMember.append(
@@ -45,8 +47,9 @@ $(function(){
                             "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle' style='margin-right:3px'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text' style='margin-right:3px'></i>修改資料</button>" + 
+                                "<button type='button' style='margin-left:10px' class='btn btn-secondary disabled'><i class='fas fa-users-cog' style='margin-right:3px'></i>更變身分組</button></td></tr>"
                         )
 
                     }
@@ -80,9 +83,9 @@ $(".reSelect").on("click", function(){
                             "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' id='sgInfo' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button>" + 
-                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'>更變身分組</button></td></tr>"
+                                "<button type='button' id='sgInfo' class='btn btn-info sgInfo'><i class='fa fa-user-circle' style='margin-right:3px'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text' style='margin-right:3px'></i>修改資料</button>" + 
+                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'><i class='fas fa-users-cog' style='margin-right:3px'></i>更變身分組</button></td></tr>"
                             )
                     }else if(item.memberStatus.seqno == 140 || item.memberStatus.seqno == 150){
                         $allMember.append(
@@ -94,9 +97,9 @@ $(".reSelect").on("click", function(){
                             "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button>" + 
-                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'>更變身分組</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle' style='margin-right:3px'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text' style='margin-right:3px'></i>修改資料</button>" + 
+                                "<button type='button' style='margin-left:10px' class='btn btn-secondary disabled'><i class='fas fa-users-cog' style='margin-right:3px'></i>更變身分組</button></td></tr>"
                         )
                     }else{
                         $allMember.append(
@@ -107,8 +110,9 @@ $(".reSelect").on("click", function(){
                             "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle' style='margin-right:3px'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text' style='margin-right:3px'></i>修改資料</button>" + 
+                                "<button type='button' style='margin-left:10px' class='btn btn-secondary disabled'><i class='fas fa-users-cog' style='margin-right:3px'></i>更變身分組</button></td></tr>"
                         )
 
                     }
@@ -145,9 +149,9 @@ $(".sgSelect").on("click", function(){
                             "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' id='sgInfo' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button>" + 
-                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'>更變身分組</button></td></tr>"
+                                "<button type='button' id='sgInfo' class='btn btn-info sgInfo'><i class='fa fa-user-circle' style='margin-right:3px'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text' style='margin-right:3px'></i>修改資料</button>" + 
+                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'><i class='fas fa-users-cog' style='margin-right:3px'></i>更變身分組</button></td></tr>"
                             )
                     }else if(item.memberStatus.seqno == 140 || item.memberStatus.seqno == 150){
                         $allMember.append(
@@ -159,9 +163,9 @@ $(".sgSelect").on("click", function(){
                             "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button>" + 
-                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'>更變身分組</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle' style='margin-right:3px'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text' style='margin-right:3px'></i>修改資料</button>" + 
+                                "<button type='button' style='margin-left:10px' class='btn btn-secondary disabled'><i class='fas fa-users-cog' style='margin-right:3px'></i>更變身分組</button></td></tr>"
                         )
                     }else{
                         $allMember.append(
@@ -172,8 +176,9 @@ $(".sgSelect").on("click", function(){
                             "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle' style='margin-right:3px'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text' style='margin-right:3px'></i>修改資料</button>" + 
+                                "<button type='button' style='margin-left:10px' class='btn btn-secondary disabled'><i class='fas fa-users-cog' style='margin-right:3px'></i>更變身分組</button></td></tr>"
                         )
 
                     }
@@ -222,9 +227,9 @@ $(".seGM").on("click", function(){
                             "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button>" + 
-                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'>更變身分組</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle' style='margin-right:3px'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text' style='margin-right:3px'></i>修改資料</button>" + 
+                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'><i class='fas fa-users-cog' style='margin-right:3px'></i>更變身分組</button></td></tr>"
                     )
                 }
 
@@ -258,9 +263,9 @@ $(".seGU").on("click", function(){
                         "<td>" + item.memberStatus.name + "</td>" + 
                         "<td>" + 
                             "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                            "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                            "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button>" + 
-                            "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'>更變身分組</button></td></tr>"
+                            "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle' style='margin-right:3px'></i>詳細資料</button>" + 
+                            "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text' style='margin-right:3px'></i>修改資料</button>" + 
+                            "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'><i class='fas fa-users-cog' style='margin-right:3px'></i>更變身分組</button></td></tr>"
                     )
                 }
 
@@ -296,9 +301,9 @@ $(".unGroup").on("click", function(){
                             "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button>" + 
-                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'>更變身分組</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle' style='margin-right:3px'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text' style='margin-right:3px'></i>修改資料</button>" + 
+                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'><i class='fas fa-users-cog' style='margin-right:3px'></i>更變身分組</button></td></tr>"
                         )
                 })
             }
@@ -324,9 +329,9 @@ $(".unGroup").on("click", function(){
                             "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button>" + 
-                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'>更變身分組</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle' style='margin-right:3px'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text' style='margin-right:3px'></i>修改資料</button>" + 
+                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'><i class='fas fa-users-cog' style='margin-right:3px'></i>更變身分組</button></td></tr>"
                         )
                 })
             }
@@ -363,9 +368,9 @@ $(".banGroup").on("click", function(){
                             "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button>" + 
-                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'>更變身分組</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle' style='margin-right:3px'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text' style='margin-right:3px'></i>修改資料</button>" + 
+                                "<button type='button' style='margin-left:10px' class='btn btn-secondary disabled'><i class='fas fa-users-cog' style='margin-right:3px'></i>更變身分組</button></td></tr>"
                         )
                 }
 
@@ -392,9 +397,9 @@ $(".banGroup").on("click", function(){
                             "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button>" + 
-                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'>更變身分組</button></td></tr>"
+                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle' style='margin-right:3px'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text' style='margin-right:3px'></i>修改資料</button>" + 
+                                "<button type='button' style='margin-left:10px' class='btn btn-secondary disabled'><i class='fas fa-users-cog' style='margin-right:3px'></i>更變身分組</button></td></tr>"
                         )
                 }
 
@@ -427,8 +432,9 @@ $(".admin").on("click", function(){
                         "<td>" + item.memberStatus.name + "</td>" + 
                         "<td>" + 
                             "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                            "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                            "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
+                            "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle' style='margin-right:3px'></i>詳細資料</button>" + 
+                            "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text' style='margin-right:3px'></i>修改資料</button>" + 
+                            "<button type='button' style='margin-left:10px' class='btn btn-secondary disabled'><i class='fas fa-users-cog' style='margin-right:3px'></i>更變身分組</button></td></tr>"
                     )
                 }
 
@@ -686,8 +692,6 @@ $(".allMember").on("click", ".chGroup", function(){
                 Um:"未認證登山者",
                 Gg:"登山嚮導",
                 Ug:"未認證嚮導",
-                Sm:"停權登山者",
-                Sg:"停權嚮導"
             },
             inputPlaceholder:"身分組",
             showCancelButton:true,
@@ -814,67 +818,6 @@ $(".allMember").on("click", ".chGroup", function(){
                                 )
                             }
                         })
-    
-                    }else if(value === "Sm"){
-                        let statusId = 140;
-                        $.ajax({
-                            method:"GET",
-                            url:"/MountainExploer.com/back/member/memberChangeGroup",
-                            data:{
-                                seqno:seqno,
-                                statusId:statusId
-                            },
-                            dataType:"json",
-                            success:function(data){
-                                if(data){
-                                    Swal.fire(
-                                        "身分組更變成功"
-                                    ).then(function(){
-                                        window.location.reload();
-                                    })
-                                }else{
-                                    Swal.fire(
-                                        "身分組更變失敗"
-                                    )
-                                }
-                            },
-                            error:function(){
-                                Swal.fire(
-                                    "身分組變更出錯"
-                                )
-                            }
-                        })
-    
-                    }else if(value === "Sg"){
-                        let statusId = 150;
-                        $.ajax({
-                            method:"GET",
-                            url:"/MountainExploer.com/back/member/memberChangeGroup",
-                            data:{
-                                seqno:seqno,
-                                statusId:statusId
-                            },
-                            dataType:"json",
-                            success:function(data){
-                                if(data){
-                                    Swal.fire(
-                                        "身分組更變成功"
-                                    ).then(function(){
-                                        window.location.reload();
-                                    })
-                                }else{
-                                    Swal.fire(
-                                        "身分組更變失敗"
-                                    )
-                                }
-                            },
-                            error:function(){
-                                Swal.fire(
-                                    "身分組變更出錯"
-                                )
-                            }
-                        })
-    
                     }
                 })
             }
