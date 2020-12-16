@@ -176,6 +176,7 @@ function setTopCard(){
 			$("#rt-total-num").html(data.length)
 			$("#rt-able-num").html(able)
 			$("#rt-forbid-num").html(forbid)
+			progressCount("圖卡設置完成")
 		},
 		error : function(jqXHR){
 			Swal.fire("發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
@@ -210,6 +211,7 @@ function setSearchBar(){
 				//console.log(data)
 				$("#rtSelect").append("<option selected disabled>請選擇特定路線</option>")
 				for(let i in data) $("#rtSelect").append("<option value='" + data[i].seqno + "'>" + data[i].name +"</option>")
+				progressCount("搜尋列設置完成")
 			}
 		})
 	}
@@ -226,6 +228,8 @@ function setTable(){
 		success : function(data){
 			let result = setResultToDT(data)
 			setDataTable(result)
+			progressCount("資料表格設置完成")
+			progressCount("準備完成")
 		},
 		error : function(jqXHR){
 			Swal.fire("發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
@@ -1001,6 +1005,7 @@ function countRtChartData(cType){
 		dataType : "json",
 		success : function(data){
 			setCountRtChart(data,cType)
+			progressCount("路線數量圖設置完成")
 		},
 		error : function(jqXHR){
 			Swal.fire("設定路線圓餅圖發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
@@ -1056,9 +1061,10 @@ function usePerNpChartData(cType){
 		dataType : "json",
 		success : function(data){
 			setUsePerNpChart(data,cType)
+			progressCount("國家公園與路線選擇圖設置完成")
 		},
 		error : function(jqXHR){
-			Swal.fire("設定路線圓餅圖發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
+			Swal.fire("設定國家公園與路線圓餅圖 發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
 		}
 	})
 }

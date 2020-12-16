@@ -23,12 +23,17 @@ var chatyBackHoverColors = [
 $(function(){
 	
 	$. noConflict()
+	PBBlock({
+		countTimes : 5,
+		startCount : 25,
+	})
+	openBlock("#route-Container")
 	setTopCard()
 	countRtChartData()
 	usePerNpChartData()
 	setSearchBar()
-	console.log(dataTable)
 	setTable()
+	
 	$("#npSelect").on("change",changeRtAndTb)
 	$("#rtSelect").on("change",changeTbByRt)
 	

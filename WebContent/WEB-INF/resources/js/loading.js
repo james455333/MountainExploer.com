@@ -72,17 +72,17 @@ function PBBlock(obj){
 		LoadingCount.eachCoount = Math.round(LoadingCount.max/LoadingCount.countTimes)
 	}
 }
-function progressCount(message){
+/* 觸發進度條前進 */
+function progressCount(message,countLoad){
 	if(LoadingCount.countTimes==0) return
-	
+	LoadingCount.countLoad = countLoad != null ? countLoad : LoadingCount.countLoad
 	/* 設置callback */
 	setTimeout(() => { 
 		if(message != null) $('[data-cb="countMessage"]').html(message)
-		LoadingCount.startCount += LoadingCount.eachCoount
+		LoadingCount.startCount = Number((LoadingCount.eachCoount + LoadingCount.startCount).toFixed(1))
 		$('[data-cb="countNum"]').html(LoadingCount.startCount + "%");
 		$('[data-cb="countBar"]').width(LoadingCount.startCount + "%");
 		$('[data-cb="countBar"]').attr("aria-valuenow", LoadingCount.startCount);
-//		console.log("LoadingCount. : " + LoadingCount.nowCount)
 //		console.log("LoadingCount.endCount : " + LoadingCount.endCount)
 		if(LoadingCount.startCount >= LoadingCount.endCount){
 			if(LoadingCount.startCount != 100){
@@ -102,6 +102,7 @@ function progressCount(message){
 		}
 	},LoadingCount.countLoad)	
 }
+/* 初始化LoadingCount */
 function IntiLoadingCount(){
 	LoadingCount = {
 		countTimes : 1,

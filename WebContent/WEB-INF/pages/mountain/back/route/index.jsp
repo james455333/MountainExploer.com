@@ -31,12 +31,13 @@
 	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
 	<!-- bootstrap-toggle -->
 	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-	<!-- for this page -->    
-    <link href="/MountainExploer.com/mountain/back/css/route.css" rel="stylesheet">
 	<!-- Fancy Box 3 -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
 	<!-- sweetalert2 -->
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css">
+	<!-- for this page -->    
+    <link href="/MountainExploer.com/mountain/back/css/route.css" rel="stylesheet">
+	<link href="/MountainExploer.com/css/loading.css" rel="stylesheet">
 	
 	<!-- JQuery -->
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -62,6 +63,9 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"></script>
 	<!-- Page level plugins -->
     <script src="/MountainExploer.com/vendor/chart.js/Chart.min.js"></script>
+    <!-- jquery loading -->
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easy-loading/1.3.0/jquery.loading.min.js'></script>
+	<script src="/MountainExploer.com/js/loading.js"></script>
 	<!-- for this page -->
 	<script src="/MountainExploer.com/mountain/back/js/route.js"></script>
 	<script src="/MountainExploer.com/mountain/back/js/routeFunction.js"></script>
@@ -91,7 +95,7 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <div class="container-fluid" id="route-Container">
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">

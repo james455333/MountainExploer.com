@@ -41,51 +41,14 @@ $(function(){
 //			})
 //	)
 	$. noConflict()
-	PBBlock({
-		startCount : 50,
-		endCount : 99,
-	})
-	$("body").css("overflow", "hidden")
-	openBlock("#actBack")
-	$("#actBack").loading("resize")
-	$.ajax({
-		url : baseURL + "/all",
-		type : "GET",
-		dataType : "json",
-		success : function(data){
-			$("#actBack").loading("resize")
-			PBBlock({
-				countTimes : data.actList.length,
-			})
-			allData = data
-			$.ajax({
-				url : baseURL + "/reg/all",
-				type : "GET",
-				dataType : "json",
-				success : function(data){
-					allData_reg = data
-					setTopCard()
-					setActModeChart()
-					setTagModeChart()
-					setActMonthSlider()
-					setActYearSelect()
-					setActTrendChart()
-					setTable()
-					$("body").css("overflow", "auto")
-				}
-			})
-		},
-		error : function(jqXHR){
-			Swal.fire("getAllData發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
-		}
-	})
+	reRender()
 	
 //	setSearchBar()
 	$("#npSelect").on("change",changeRtAndTb)
 	$("#rtSelect").on("change",changeTbByRt)
 	
 	/* 表格重置按鈕 */
-	$("#selectAll").on("click",reRender)
+	$("#selectAll").on("click",resetTable)
 	$("#routeTable").on("error","img",function(){
 		$(this).attr("src","/MountainExploer.com/mountain/images/defaultMountain.jpg")
 	})
