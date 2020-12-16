@@ -640,6 +640,10 @@ body {
 			include-html="/MountainExploer.com/forinclude/includeForFooter.html">
 		</footer>
 	</div>
+	
+	<!-- 回到最上層 -->
+	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
 
 	<!--     <script src="/MountainExploer.com/assets/vendor/jquery/jquery.min.js"></script> -->
 	<!--     <script src="/MountainExploer.com/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
