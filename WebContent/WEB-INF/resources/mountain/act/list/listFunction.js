@@ -160,9 +160,7 @@ function setActImg(seqno, thisElm) {
 function setTitle(actBasic, thisElm) {
 	
 	let thisTD = thisElm.find("td").eq(1).find("a")
-	let title = actBasic.actInfo.title + "<br>"
-		+ actBasic.actInfo.totalDay + " / $" + actBasic.actInfo.price;
-	
+	let title = actBasic.actInfo.title 
 	thisTD.attr("href", detailURL + actBasic.seqno)
 	thisTD.append(title)
 }

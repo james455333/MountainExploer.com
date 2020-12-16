@@ -85,18 +85,41 @@
 		</nav>
 	</header>
 	<div class="div_ul" id="text-loading">
-		<div class="secNavbar" include-html="fragment/secondNav.html"></div>
 		<div class="div_li1"></div>
 		<div class="div_li3"></div>
 		<div class="div_li2">
 			<!-- 每頁不同的內容從這裡開始 -->
-			<nav>
+			<nav class="">
 				<ol class="breadcrumb" id="bc">
 					<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
 					<li class="breadcrumb-item active">活動討論區</li>
 				</ol>
 			</nav>
-
+			
+			<div class="d-flex mb-3">
+				<div class="btn-group btn-group-toggle mr-auto mx-2" data-toggle="buttons">
+				    <label class="btn btn-outline-primary active">
+				        <input type="radio" name="options" autocomplete="off" checked> 清單模式
+				    </label>
+				    <label class="btn btn-outline-primary">
+				        <input type="radio" name="options" autocomplete="off"> 圖片模式
+				    </label>
+				</div>
+				<div class="ml-auto mx-2">
+					<form action="list" id="m-sr-form">
+						<div style="position: static" class="search d-inline-flex">
+							<button class="btn btn-outline-success">
+								<i class="fas fa-search pr-1 mr-1"></i> 搜尋
+							</button>
+							<input type="hidden" name="page" value="1" readonly>
+							<input type="hidden" name="od" value="3" readonly> 
+							<input
+								name="search" type="search" class="form-control"
+								placeholder="請輸入活動名稱">
+						</div>
+					</form>
+				</div>
+			</div>
 			<div style="border: 5px" class="m-list-searchBar bg-light rounded m-0 py-2 px-1">
 				<div class="d-flex">
 						<!-- 控制列表內容從這邊開始 -->
@@ -131,82 +154,64 @@
 							</div>
 						</div>
 						<div class="d-inline-flex align-items-center mx-1">查詢筆數 :</div>
-						<div class="align-items-center ml-auto">
-							<div >
-								<form action="list" id="m-sr-form">
-									<div style="position: static" class="search d-inline-flex">
-										<button class="btn btn-outline-success">
-											<i class="fas fa-search pr-1 mr-1"></i> 搜尋
-										</button>
-										<input type="hidden" name="page" value="1" readonly>
-										<input type="hidden" name="od" value="3" readonly> 
-										<input
-											name="search" type="search" class="form-control"
-											placeholder="請輸入活動名稱">
-									</div>
-								</form>
-							</div>
-						</div>
 						<!-- 控制列表內容到這邊結束 -->
 				</div>
 				
 			</div>
-			<nav class="my-3" style="background-color:#F0F0F0">
-				<ul class="pagination  pageController justify-content-center ">
-					<li class="page-item "><a class="page-link"  href="#"><i class="fas fa-angle-double-left"></i></a></li>
-					<li class="page-item"><a class="page-link"  href="#"><i class="fas fa-angle-left"></i></a></li>
-					<li class="page-item"><a class="page-link"  href="#"><i class="fas fa-angle-right"></i></a></li>
-					<li class="page-item"><a class="page-link"  href="#"><i class="fas fa-angle-double-right"></i></a></li>
-				</ul>
-			</nav>
+			<div class="d-flex px-1">
+				<div id="btn-newpost" class="btn-group mr-auto my-3 mx-1" role="group">
+						<button class="list-newPost btn btn-outline-success" type="button">
+							<i class="fas fa-hiking"></i> 舉辦活動 
+						</button>
+				</div>
+				<nav class="my-3 align-items-center">
+					<ul class="pagination pageController justify-content-left ">
+						<li class="page-item "><a class="page-link"  href="#"><i class="fas fa-angle-double-left"></i></a></li>
+						<li class="page-item"><a class="page-link"  href="#"><i class="fas fa-angle-left"></i></a></li>
+						<li class="page-item"><a class="page-link"  href="#"><i class="fas fa-angle-right"></i></a></li>
+						<li class="page-item"><a class="page-link"  href="#"><i class="fas fa-angle-double-right"></i></a></li>
+					</ul>
+				</nav>
+			</div>
 
 			<div class="m-sdc-adj">
-				<!-- btn -->
-
-				<div id="btn-newpost" class="btn-group btn-group-lg" role="group">
-					<button class="list-newPost btn btn-secondary" type="button">
-						發起活動 <i class="fa fa-pencil-square-o"></i>
-					</button>
-				</div>
                 <!--table-->
                 <table class="order-table table table-hover" id="tablePreview" style="background-color:white;">
 <!--                 <table class="order-table m-ta-aj"> -->
                     <thead class="order-table-th">
                         <tr>
                             <!-- thead更改從這邊開始 -->
-                            <th scope="col">活動預覽圖</th>
-                            <th scope="col" class="d-li-na">活動名稱</th>
-                            <th scope="col">發布者 / 發布時間</th>
-                            <th scope="col">目前人數 / 人數上限</th>
-                            <th scope="col">報名截止日</th>
-                            <th scope="col">最新回應</th>
+                            <th scope="col" style="width:10%;">活動預覽圖</th>
+                            <th scope="col" class="d-li-na"  style="width:35%;text-align: left">活動名稱</th>
+                            <th scope="col"  style="width:25%;">發布者 / 發布時間</th>
+                            <th scope="col"  style="width:15%;">目前人數 / 人數上限</th>
+                            <th scope="col"  style="width:15%;">報名截止日</th>
                               <!-- thead更改到這邊結束 -->
                         </tr>
                     </thead>
                     <tbody  class='order-table-tb hideTbody'>
 	                    <tr>
-							<td>
+							<td >
 								<a href="">
 									<img class='showImage'  >
 									<img class='extendImage' src="" >
 								</a>
 							</td>
-							<td>
+							<td class="d-flex align-items-center" style="justify-content: flex-start;">
 								<a class="m-tb-ti" href=""></a>
 							</td>
-							<td>
+							<td style="font-size:10px;">
 							<a href=""></a>
 							</td>
-							<td></td>
-							<td></td>
+							<td class="d-flex align-items-center align-middle"></td>
 							<td></td>
 						</tr>
 					</tbody>
 				</table>
 
 			</div>
-			<nav class="my-3" style="background-color:#F0F0F0">
-				<ul class="pagination  pageController justify-content-center">
+			<nav class="my-3" >
+				<ul class="pagination  pageController justify-content-left">
 					<li class="page-item"><a class="page-link"  href="#"><i class="fas fa-angle-double-left"></i></a></li>
 					<li class="page-item"><a class="page-link"  href="#"><i class="fas fa-angle-left"></i></a></li>
 					<li class="page-item"><a class="page-link"  href="#"><i class="fas fa-angle-right"></i></a></li>
