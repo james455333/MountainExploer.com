@@ -95,9 +95,10 @@
 			                            </div>
 			                        </div>
 			                    </div>
-			                    <div scope="public_profile,email" onlogin="checkLoginState();" class="fb-login-button" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width=""></div>
-					          	
-					          	<br/>
+			                    <div>
+				                    <div scope="public_profile,email" onlogin="checkLoginState();" class="fb-login-button" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width=""></div>
+			                    </div>
+
 					            <div style="margin-top:10px">
 						          	<input type="button" name="userLog1" class="btn btn-info userLog1" value="一般登入">
 						          	<input type="button" name="userLog2" class="btn btn-warning userLog2" value="登山嚮導登入">
