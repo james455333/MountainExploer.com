@@ -3,13 +3,13 @@
     padding: 0;
      min-width: 600px; 
 }*/
-.container1 {
+/* .container1 {
 	width: auto;
 	height: auto;
 	text-align: center;
 	margin: 0px auto;
 	min-width: 600px;
-}
+} */
 
 .p_i_name {
 	text-align: center;
@@ -80,12 +80,12 @@ header {
 	z-index: 99;
 }
 
-.div_ul {
+/* .div_ul {
 	text-align: center;
 	box-sizing: border-box;
 	width: 1440px;
-	margin: 0px auto; /* div置中 */
-}
+	margin: 0px auto; div置中
+} */
 /*
 .div_li1 {
 	background-color: lightblue;
@@ -105,13 +105,13 @@ header {
 	float: right;
 }
 */
-.div_li2 {
+/* .div_li2 {
 	
 	margin-left: 200px;
 	margin-right: 200px;
 	
 	text-align: center;
-}
+} */
 /*
 #footer {
     clear: both;
