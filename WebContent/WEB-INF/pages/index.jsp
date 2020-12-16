@@ -52,10 +52,12 @@ body {
 	<div class="container1" id="">
 		<div class="count1">
 			<div class="count1_img">
-				<a href="#"> <img src="/MountainExploer.com/images/logo1.png">
-				</a>
+				<!-- <a href="#"> -->
+				<!--  <img src="/MountainExploer.com/images/logo1.png" class="animated slideInDown"> -->
+				 <!-- <img src="https://mdbootstrap.com/img/logo/mdb-transparent-250px.png" class="animated bounce slideInDown infinite" alt="Transparent MDB Logo" id="animated-img1"> -->
+			<!-- 	</a>
 				<hr>
-				<h1 class="font">岳進者</h1>
+				<h1 class="font">岳進者</h1> -->
 			</div>
 		</div>
 		<header style="z-index: 999;">
@@ -90,25 +92,20 @@ body {
 								<h3>關於我們</h3>
 								<p>跨域Java軟體工程師就業養成班(Oracle+AWS)</p>
 							</div>
-							<!--  
+							  
 							<div class="row about-container">
 
 								<div class="col-lg-6 content order-lg-1 order-2">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-										sed do eiusmod tempor incididunt ut labore et dolore magna
-										aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-										ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+									<p>致力於讓使用者能把所有登山所需的相關周邊配件、路線規劃、排定行程、及時討論和舉辦活動以及各種囊括登山要素的，都集結在一起。</p>
 
 									<div class="icon-box" data-aos="fade-up" data-aos-delay="100">
 										<div class="icon">
 											<i class="fa fa-shopping-bag"></i>
 										</div>
 										<h4 class="title">
-											<a href="">Eiusmod Tempor</a>
+											<a href="">商城</a>
 										</h4>
-										<p class="description">Et harum quidem rerum facilis est
-											et expedita distinctio. Nam libero tempore, cum soluta nobis
-											est eligendi</p>
+										<p class="description">岳進者精選</p>
 									</div>
 
 									<div class="icon-box" data-aos="fade-up" data-aos-delay="200">
@@ -116,11 +113,9 @@ body {
 											<i class="fa fa-photo"></i>
 										</div>
 										<h4 class="title">
-											<a href="">Magni Dolores</a>
+											<a href="">小屋/露營地</a>
 										</h4>
-										<p class="description">Excepteur sint occaecat cupidatat
-											non proident, sunt in culpa qui officia deserunt mollit anim
-											id est laborum</p>
+										<p class="description">全台露營地&山中小屋查詢預約</p>
 									</div>
 
 									<div class="icon-box" data-aos="fade-up" data-aos-delay="300">
@@ -128,20 +123,18 @@ body {
 											<i class="fa fa-bar-chart"></i>
 										</div>
 										<h4 class="title">
-											<a href="">Dolor Sitema</a>
+											<a href="">活動/路線規劃</a>
 										</h4>
-										<p class="description">Minim veniam, quis nostrud
-											exercitation ullamco laboris nisi ut aliquip ex ea commodo
-											consequat tarad limino ata</p>
+										<p class="description">不定時由登山嚮導舉辦活動</p>
 									</div>
 
 								</div>
 
-								<div class="col-lg-6 background order-lg-2" data-aos="zoom-in">
-									<img src="assets/img/about-img.svg" class="img-fluid" alt="">
+								<div class="col-lg-6 background order-lg-2" data-aos="zoom-in" style="margin-top: 0px">
+									<img src="/MountainExploer.com/images/group (1).png" class="img-fluid" alt="">
 								</div>
 							</div>
-
+<!--
 							<div class="row about-extra">
 								<div class="col-lg-6" data-aos="fade-right">
 									<img src="assets/img/about-extra-1.svg" class="img-fluid"
