@@ -7,16 +7,21 @@ function ajaxCheckLogin(od){
 		type : "GET",
 		dataType : "json",
 		success : function(data){
-			
+			PBBlock({
+				startCount : 25
+			})
+			openBlock("body")
 			member = data.seqno
 			if(od == 1){
 				activeMainAjax(page,"/defaultAS");			
 			}
 			if(od == 2){
+				LoadingCount.nowCount = 50
 				activeMainAjax(page,"/tagAS")
 				setSelectOption();	
 			}
 			if(od == 3){
+				LoadingCount.nowCount = 50
 				activeMainAjax(page,"/searchAS")
 			}
 		},
@@ -80,7 +85,7 @@ function setSelectOption() {
 function activeMainAjax(page, as) {
 //	console.log(member)
 	let sendData = { page: page, tag: tag, search: search }
-	openBlock("body")
+	
 	$.ajax({
 		url: actHomeURL + as,
 		method: "GET",

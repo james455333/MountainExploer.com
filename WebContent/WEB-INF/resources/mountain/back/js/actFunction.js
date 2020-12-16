@@ -160,11 +160,16 @@ function reRender(){
 }
 
 function resetChart(canvasID){
+	let parentDiv = $("#"+canvasID).parent("div")
+	PBBlock({
+		countTimes : 4,
+	})
+	openBlock(parentDiv)
+	progressCount("清除當前畫面")
 	window[canvasID].destroy()
 	let syncSign = $("#"+canvasID).parents(".card").find(".chart-reset").find("i")
+	progressCount("呼叫資料中")
 	syncSign.addClass("fa-spin")
-	
-	
 	$.ajax({
 		url : baseURL + "/all",
 		type : "GET",
@@ -176,15 +181,20 @@ function resetChart(canvasID){
 				type : "GET",
 				dataType : "json",
 				success : function(data){
+					progressCount("資料讀取完成")
 					allData_reg = data
 					switch(canvasID){
 						case "actModeChart" : 
+							progressCount("重新設置完成")
 							setActModeChart();
 							break;
 						case "tagModeChart" :
+							progressCount("重新設置完成")
 							setTagModeChart();
+							
 							break;
 						case "actTrendChart" :
+							progressCount("重新設置完成")
 							setActMonthSlider()
 							setActYearSelect()
 							setActTrendChart()
@@ -1387,7 +1397,7 @@ var setActModeChart = function setActModeChart(cType){
 	if(actModeChart != null ) actModeChart.destroy()
 	let setType = 'pie';
 	if(typeof cType != 'undefined') setType = cType
-	
+
 	var chartSet =  {
 	  type: setType,
 	  data: {

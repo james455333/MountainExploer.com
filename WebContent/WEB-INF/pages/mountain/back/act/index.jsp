@@ -109,7 +109,7 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <div class="container-fluid" id="actBack">
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -320,7 +320,14 @@
                     <div class="row">
 						<div class="col-xl-12">
 	                        <div class="card shadow mb-4" id="tb-container">
-	                            <div class="card-header py-3">活動管理維護</div>
+	                            <div class="card-header d-flex py-3 align-items-center">
+	                            	<h3 class=" text-primary">活動管理維護</h3>
+	                            	<div class="ml-auto px-2 no-arrow">
+		                                <a href="#selectAll"id="selectAll" role="button" class="chart-reset">
+		                                    <i class="fas fa-lg fa-fw fa-sync"></i>
+		                                </a>
+	                                </div>
+	                            </div>
 	                            <div class="card-body">
 	                                <div class="table-responsive">
 	                                    <table id="routeTable" class="table-hover table-striped">
