@@ -23,20 +23,14 @@ var chatyBackHoverColors = [
 ]
 
 $(function(){
-	
 	$. noConflict()
 	setTopCard()
 	setRevenue()
-//	countRtChartData()
-//	usePerNpChartData()
-	setSearchBar()
 	console.log(dataTable)
 	setTable()
 //	$("#npSelect").on("change",changeRtAndTb)
 //	$("#rtSelect").on("change",changeTbByRt)
 	
-	/* 表格重置按鈕 */
-	$("#selectAll").on("click",reRender)
 	$("#tb-container").find("*").on("click",function(){
 		$('.btn-ctrl').bootstrapToggle({});
 		$('.btn-rt-delete').tooltip();
@@ -75,65 +69,65 @@ $(function(){
 	$("#tb-container").on("click", '.btn-rt-upImg', function(){
 		updateImage($(this))
 	})
-	$("#newNp").on('click',newNp)
-	$("#updateNp").on('click',updateNp)
-	$("#deleteNp").on('click',deleteNp)
-	$("#newRoute").on('click',newRoute)
-	$("body").on("change", "#imageFile", function() {
-		var fileName = $(this).val().split("\\").pop();
-		$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-	});
-	$("#usePerNpChart").parents(".row").find(".usePer-chart").on("click",function(){
-		usePerNpChartData($(this).val())
-	})
-	$("#countRtChart").parents(".row").find(".countRt-chart").on("click",function(){
-		countRtChartData($(this).val())
-	})
-	$("#usePerNp-export").on("click",function(){
-		downloadChart(usePerNpChart)
-	})
-	$("#countRt-export").on("click",function(){
-		downloadChart(countRtChart)
-	})
-	$("#usePerNp-export-json").on("click",function(){
-		downloadChartJson(1)
-	})
-	$("#countRt-export-json").on("click",function(){
-		downloadChartJson(2)
-	})
-	$("a.chart-reset").on("click",function(e){
-		let thisElm = $(this)
-		let canvasID = thisElm.parents("div.card").find("canvas").attr("id")
-		resetChart(canvasID)
-		e.preventDefault()
-	})
-	$("#exportAll").on("click",function(e){
-		downloadAllJson()
-		e.preventDefault()
-	})
-	
-	
-	$("#npChartSelect").on("change",function(){
-		let value = $(this).val()
-		let options = $(this).find("option")
-		for(let i =0; i < options.length ; i++){
-			let opValue = options.eq(i).val()
-			if(opValue == value) usePerRtChart = options.eq(i).text()
-		}
-//		console.log(usePerRtChart) 
-		usePerNpChartData()
-	})
-	$.fancybox.defaults.infobar = true;
-	$.fancybox.defaults.buttons = [
-	    "zoom",
-//	    "share",
-	    "slideShow",
-	    "fullScreen",
-	    "download",
-	    "thumbs",
-	    "close"
-	  ];
-	
+//	$("#newNp").on('click',newNp)
+//	$("#updateNp").on('click',updateNp)
+//	$("#deleteNp").on('click',deleteNp)
+//	$("#newRoute").on('click',newRoute)
+//	$("body").on("change", "#imageFile", function() {
+//		var fileName = $(this).val().split("\\").pop();
+//		$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+//	});
+//	$("#usePerNpChart").parents(".row").find(".usePer-chart").on("click",function(){
+//		usePerNpChartData($(this).val())
+//	})
+//	$("#countRtChart").parents(".row").find(".countRt-chart").on("click",function(){
+//		countRtChartData($(this).val())
+//	})
+//	$("#usePerNp-export").on("click",function(){
+//		downloadChart(usePerNpChart)
+//	})
+//	$("#countRt-export").on("click",function(){
+//		downloadChart(countRtChart)
+//	})
+//	$("#usePerNp-export-json").on("click",function(){
+//		downloadChartJson(1)
+//	})
+//	$("#countRt-export-json").on("click",function(){
+//		downloadChartJson(2)
+//	})
+//	$("a.chart-reset").on("click",function(e){
+//		let thisElm = $(this)
+//		let canvasID = thisElm.parents("div.card").find("canvas").attr("id")
+//		resetChart(canvasID)
+//		e.preventDefault()
+//	})
+//	$("#exportAll").on("click",function(e){
+//		downloadAllJson()
+//		e.preventDefault()
+//	})
+//	
+//	
+//	$("#npChartSelect").on("change",function(){
+//		let value = $(this).val()
+//		let options = $(this).find("option")
+//		for(let i =0; i < options.length ; i++){
+//			let opValue = options.eq(i).val()
+//			if(opValue == value) usePerRtChart = options.eq(i).text()
+//		}
+////		console.log(usePerRtChart) 
+//		usePerNpChartData()
+//	})
+//	$.fancybox.defaults.infobar = true;
+//	$.fancybox.defaults.buttons = [
+//	    "zoom",
+////	    "share",
+//	    "slideShow",
+//	    "fullScreen",
+//	    "download",
+//	    "thumbs",
+//	    "close"
+//	  ];
+//	
 })
 
 

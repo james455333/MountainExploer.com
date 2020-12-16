@@ -52,7 +52,7 @@ function openBlock(target){
 		count++;
 		$('[data-cb="countNum"]').html(count + "%");
 		$('[data-cb="countBar"]').width(count+"%");
-		}, LoadingCount.countLoad);
+		}, 0);
 	}
 }
 /* 初始化讀取進度條物件 */
@@ -62,7 +62,10 @@ function PBBlock(obj){
 		LoadingCount.min = obj.hasOwnProperty("min") && obj.min>=0  && obj.min.toString().match(/^[0-9]+$/) ?  obj.min : LoadingCount.min
 		LoadingCount.max = obj.hasOwnProperty("max") && obj.max>=0 && obj.max.toString().match(/^[0-9]+$/) ?  obj.max : LoadingCount.max
 		LoadingCount.startCount = obj.hasOwnProperty("startCount") && obj.startCount >=0 && obj.startCount.toString().match(/^[0-9]+$/) ?  obj.startCount : LoadingCount.startCount
-		LoadingCount.endCount = obj.hasOwnProperty("endCount") && obj.startCount >=0  && obj.endCount.toString().match(/^[0-9]+$/) ?  obj.endCount : LoadingCount.endCount
+		LoadingCount.endCount = obj.hasOwnProperty("endCount") && obj.endCount >=0  && obj.endCount.toString().match(/^[0-9]+$/) ?  obj.endCount : LoadingCount.endCount
+		console.log("LoadingCount.endCount : " + LoadingCount.endCount)
+		console.log("obj.endCount status : " + obj.hasOwnProperty("endCount") && obj.startCount >=0  && obj.endCount.toString().match(/^[0-9]+$/))
+	
 	}
 	if(LoadingCount.startCount > 0 ){
 		let restCount = LoadingCount.max - LoadingCount.startCount
@@ -82,8 +85,8 @@ function progressCount(message){
 		$('[data-cb="countNum"]').html(LoadingCount.startCount + "%");
 		$('[data-cb="countBar"]').width(LoadingCount.startCount + "%");
 		$('[data-cb="countBar"]').attr("aria-valuenow", LoadingCount.startCount);
-//		console.log("LoadingCount. : " + LoadingCount.nowCount)
-//		console.log("LoadingCount.endCount : " + LoadingCount.endCount)
+		console.log("LoadingCount. : " + LoadingCount.startCount)
+		console.log("LoadingCount.endCount : " + LoadingCount.endCount)
 		if(LoadingCount.startCount >= LoadingCount.endCount){
 			if(LoadingCount.startCount != 100){
 				$('[data-cb="countNum"]').html("100%");

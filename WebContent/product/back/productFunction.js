@@ -2,18 +2,37 @@
 
 //改
 function setTable(){
+	PBBlock({
+		countTimes : 3,
+		endCount : 99
+	})
+	console.log(LoadingCount)
+	openBlock("#productBody")
+//	$("#productBody").loading({
+//		showClass : "card"
+//	})
+	progressCount("獲取資料中")
+	$("#productBody").loading("resize")
 	$.ajax({
 		url : routeBaseURL + "/backAll",
 		type : "GET",
 		dataType : "json",
 		success : function(data){
+			$("#productBody").loading("resize")
+			progressCount("成功獲取資料")
 			let result = setResultToDT(data)
 			setDataTable(result)
+			progressCount("表格設置完畢")
+			
 		},
 		error : function(jqXHR){
 			Swal.fire("發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
+		},
+		beforeSend : function(){
+			$("#productBody").loading("resize")
 		}
 	})
+	$("#productBody").loading("resize")
 }
 function setResultToDT(data){
 	let result = [];
@@ -97,6 +116,7 @@ function setDataTable(result){
             { "data": "控制項" },
         ],
     } )
+//	$("#productBody").loading("resize")
 	
 	console.log("set Complete")
 	$('.btn-ctrl').bootstrapToggle();
@@ -332,7 +352,7 @@ $(function() {
 	//	預設頁面
 	$(window).on("load", function() {
 		
-		setTable()
+//		setTable()
 		
 		//查找資料庫總筆數
 		$.ajax({
