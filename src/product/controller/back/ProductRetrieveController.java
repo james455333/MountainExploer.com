@@ -22,11 +22,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.server.ResponseStatusException;
 
 import main.generic.model.GenericTypeObject;
 import main.generic.service.InterfaceService;
 import mountain.model.activity.ActBean;
 import mountain.model.activity.ActivityInfo;
+import mountain.model.route.RouteInfo;
 import product.function.RetrieveFunction;
 import product.function.ShoppingRetrieveFunction;
 import product.function.TransFuction;
@@ -77,6 +79,20 @@ public class ProductRetrieveController {
 
 		return productBeanList;
 	}
+	
+	// back總查詢
+		@GetMapping(value = "/backAll", produces = { "application/json;charset=UTF-8" })
+		@ResponseBody
+		public List<ProductBean> selectBackAll(Model model) throws IOException, SQLException {
+
+			
+			List<ItemBasic> selectAll = itemBasicService.selectAll();
+			List<ProductBean> productBeanList = RetrieveFunction.getProductBeanList(selectAll);
+
+			return productBeanList;
+		}
+		
+		
 
 	// 查找全部資料訊息
 	@GetMapping("/totalData")

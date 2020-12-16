@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="zh-tw">
 
@@ -12,7 +13,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>岳進者 | 後台維護管理系統 | 商品資料維護</title>
+<title>岳進者 | 後台維護管理系統 | 訂單狀態維護</title>
 
 <!-- Custom fonts for this template-->
 <link
@@ -90,8 +91,8 @@
 <!-- Page level plugins -->
 <script src="/MountainExploer.com/vendor/chart.js/Chart.min.js"></script>
 <!-- for this page -->
-<script src="/MountainExploer.com/product/back/product.js"></script>
-<script src="/MountainExploer.com/product/back/productFunction.js"></script>
+<!-- <script src="/MountainExploer.com/product/back/product.js"></script> -->
+<!-- <script src="/MountainExploer.com/product/back/productFunction.js"></script> -->
 
 <script src="/MountainExploer.com/js/swalLogin.js"></script>
 <script>
@@ -146,10 +147,6 @@
 									<!-- 												class="fas fa-flag"></i> -->
 									<!-- 											</span> <span class="text">訂單維護</span> -->
 									<!-- 										</button> -->
-									<div>
-										<A id="demo3" href="<c:url value='/order' />">訂單維護</A>
-
-									</div>
 									<%-- 									<a href='<c:url value="/MountainExploer.com/backstage/product/allOrders"/>'>訂單維護</a> --%>
 								</div>
 								<hr>
@@ -178,7 +175,7 @@
 											<c:forEach var="orderBean" varStatus="stat"	items="${AllOrders}">
 												<TR>
 													<TD><a
-														href='<c:url value='/backstage/product/orderInfo?orderId=${orderBean.seqno}' />'>
+														href='<c:url value='/shoppingcart/orderInfo?orderId=${orderBean.seqno}' />'>
 															${orderBean.seqno} </a></TD>
 													<TD>${orderBean.memberBasic.account}</TD>
 													<TD>${orderBean.totalAmount}元</TD>
@@ -193,7 +190,7 @@
 															<form
 																action="<c:url value='/back/shop/updateOrder' />">
 																<input type="text" name="update"
-																	value="${anOrderBean.seqno}" style="display: none;">
+																	value="${orderBean.seqno}" style="display: none;">
 																<input type="submit" value="確認出貨">
 															</form>
 														</div>
@@ -201,7 +198,7 @@
 															<form
 																action="<c:url value='/back/shop/updateOrder' />">
 																<input type="text" name="cancel"
-																	value="${anOrderBean.seqno}" style="display: none;">
+																	value="${orderBean.seqno}" style="display: none;">
 																<input type="submit" value="取消訂單">
 															</form>
 														</div>

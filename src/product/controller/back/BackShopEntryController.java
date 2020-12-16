@@ -1,6 +1,7 @@
 package product.controller.back;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import product.dao.OrdersDAO;
@@ -44,7 +46,8 @@ public class BackShopEntryController {
 
 	@GetMapping("/product/index")
 	public String backProductEntry() {
-		return " product/back/productIndex";
+		
+		return "product/back/productIndex";
 	}
 
 	@GetMapping("/order")
@@ -60,16 +63,44 @@ public class BackShopEntryController {
 	}
 
 	// 查詢訂單
-//	@RequestMapping(path = "/allOrders", method = RequestMethod.GET)
-//	public String allOrders(Model m) {
-//
-//		List<Orders> selectAllOrders = ordersDao.selectAllOrders();
-//
-//		m.addAttribute("AllOrders", selectAllOrders);
-//
-//		return "product/back/allOrderPage";
-//
-//	}
+	@GetMapping("/waitOrder")
+	@ResponseBody
+	public Integer waitOrders() {
+
+		List<Orders> selectAllOrders = ordersDao.selectAllOrders();
+//		List<Orders> resultList = new ArrayList<Orders>();
+		int i= 0;
+		for (Orders orders : selectAllOrders) {
+			String cancelTag = orders.getCancelTag();
+			if (cancelTag == null) {
+//				resultList.add(orders);
+				i++;
+			}
+			
+			
+		}
+	
+		return i;
+
+	}
+	
+	// 查詢訂單
+		@GetMapping("/revenue")
+		@ResponseBody
+		public Double revenue() {
+
+			List<Orders> selectAllOrders = ordersDao.selectAllOrders();
+			Double i= 0.0;
+			for (Orders orders : selectAllOrders) {
+				 Double totalAmount = orders.getTotalAmount();
+				 
+					i += totalAmount;
+			}
+			return i;
+
+		}
+	
+	
 
 	// 訂單狀態修改
 
