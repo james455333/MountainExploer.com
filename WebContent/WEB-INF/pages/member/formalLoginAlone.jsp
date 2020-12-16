@@ -166,6 +166,6 @@
 <script src="/MountainExploer.com/js/topBar.js"></script>
 <!-- <script src="/MountainExploer.com/js/sweetalert.js"></script>sweet alert -->
 <script src="/MountainExploer.com/js/includejsp.js"></script>
-<script src="formalLoginAlone.js"></script>
+<!-- <script src="formalLoginAlone.js"></script> -->
 
 </html>

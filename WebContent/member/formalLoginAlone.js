@@ -1,3 +1,126 @@
+//cookie
+$(function(){
+	$.ajax({
+		method:"GET",
+		url:"/MountainExploer.com/member/cookieSelect",
+		dataType:"json",
+		success:function(cookieMap){
+			if(cookieMap.length != 0 || cookieMap != null){
+				$.each(cookieMap, function(key, value){
+					if(key == "rmAnt"){
+						$(".account").val(value);
+					}
+					if(key == "rmPwd"){
+						$(".password").val(value);
+					}
+					if(key == "rememberMe"){
+						if(value != null){
+							$(".rememberMe").prop("checked", true);
+						}else{
+							$(".rememberMe").prop("checked", false);
+						}
+					}
+				})
+			}
+		}
+
+	})
+})
+
+
+//登入
+$(".submit").on("click", function(){
+	let account = $(".account").val();
+	let password = $(".password").val();
+	let isChecked = $(".rememberMe").prop("checked");
+	if(isChecked){
+		var rm = "true";
+	}else{
+		var rm = null;
+	}
+	
+	if(account == "" || password == ""){
+		Swal.fire({
+			icon:"error",
+			title:"請輸入帳號密碼"
+		}).then(function(){
+			window.location.reload();
+		})
+	}else{
+
+		$.ajax({
+			method:"GET",
+			url:"/MountainExploer.com/member/memberLogin",
+			data:{
+				account:account,
+				password:password,
+				rememberMe:rm
+			},
+			dataType:"json",
+			success:function(data){
+				if(data == 0){
+					Swal.fire({
+						icon:"error",
+						title:"登入失敗",
+						text:"帳號或密碼錯誤"
+					}).then(function(){
+						window.location.reload();
+					})
+				}else if(data == 100 || data == 120){
+					Swal.fire({
+						icon:"success",
+						title:"登入成功"
+					}).then(function(){
+						window.location..href="/MountainExploer.com/member/memberInfoEntry";
+					})
+				}else if(data == 110 || data == 130){
+					Swal.fire({
+						icon:"success",
+						title:"初次登入成功",
+						text:"請繼續填寫認證資料"
+					}).then(function(){
+						window.location.href="/MountainExploer.com/member/memberFormalFirstInfoEntry";
+					})
+				}else if(data == 140 || data == 150){
+					Swal.fire({
+						icon:"warning",
+						title:"登入失敗，帳號已被停權",
+						text:"您的帳號已被停權，無法使用本系統"
+					}).then(function(){
+						window.location.href="/MountainExploer.com";
+					})
+				}else if(data == 160){
+					Swal.fire({
+						icon:"success",
+						title:"管理員登入成功"
+					}).then(function(){
+						window.location.href="/MountainExploer.com/back";
+					})
+				}else{
+					Swal.fire({
+						icon:"error",
+						title:"登入失敗",
+						text:"帳號或密碼錯誤"
+					}).then(function(){
+						window.location.reload();
+					})
+				}
+			},
+			error:function(){
+				Swal.fire({
+					icon:"error",
+					title:"登入出錯，請聯繫管理員"
+				}).then(function(){
+					window.location.href="/MountainExploer.com";
+				})
+			}
+		})
+
+	}
+
+})
+
+
 
 $(".userLog1").on("click", function(){
     let userNo1 = $(".userLog1").val();
