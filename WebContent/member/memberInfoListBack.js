@@ -9,10 +9,9 @@ $(function(){
                 $.each(mbList, function(index, item){
                     if(item.memberStatus.seqno == 100 || item.memberStatus.seqno == 110 || item.memberStatus.seqno == 120 || item.memberStatus.seqno == 130){
                         $allMember.append(
-                            "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
+                            "<tr><td>" +
                                 "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban' id='ban'><i class='fa fa-ban'></i>停權</button></td>" + 
-                                "</form>"+ 
+                                "<button type='button' class='btn btn-danger ban' id='ban'><i class='fa fa-ban'></i>停權</button></td>" +
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
@@ -25,7 +24,8 @@ $(function(){
                             )
                     }else if(item.memberStatus.seqno == 140 || item.memberStatus.seqno == 150){
                         $allMember.append(
-                            "<tr><td><button type='button' class='btn btn-warning recover'><i class='fa fa-refresh'></i>復權</button></td>" + 
+                            "<tr><td>" + "<input type='hidden' name='reSeqno' class='reSeqno' value='" + item.seqno +"'>" +
+                            "<button type='button' class='btn btn-warning recover'><i class='fa fa-refresh'></i>復權</button></td>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
@@ -71,10 +71,9 @@ $(".reSelect").on("click", function(){
                 $.each(mbList, function(index, item){
                     if(item.memberStatus.seqno == 100 || item.memberStatus.seqno == 110 || item.memberStatus.seqno == 120 || item.memberStatus.seqno == 130){
                         $allMember.append(
-                            "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
+                            "<tr><td>" +
                                 "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban' id='ban'><i class='fa fa-ban'></i>停權</button></td>" + 
-                                "</form>"+ 
+                                "<button type='button' class='btn btn-danger ban' id='ban'><i class='fa fa-ban'></i>停權</button></td>" +
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
@@ -87,7 +86,8 @@ $(".reSelect").on("click", function(){
                             )
                     }else if(item.memberStatus.seqno == 140 || item.memberStatus.seqno == 150){
                         $allMember.append(
-                            "<tr><td><button type='button' class='btn btn-warning recover'><i class='fa fa-refresh'></i>復權</button></td>" + 
+                            "<tr><td>" + "<input type='hidden' name='reSeqno' class='reSeqno' value='" + item.seqno +"'>" +
+                            "<button type='button' class='btn btn-warning recover'><i class='fa fa-refresh'></i>復權</button></td>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
@@ -136,10 +136,9 @@ $(".sgSelect").on("click", function(){
                 $.each(mbList, function(index, item){
                     if(item.memberStatus.seqno == 100 || item.memberStatus.seqno == 110 || item.memberStatus.seqno == 120 || item.memberStatus.seqno == 130){
                         $allMember.append(
-                            "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
+                            "<tr><td>" +
                                 "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban' id='ban'><i class='fa fa-ban'></i>停權</button></td>" + 
-                                "</form>"+ 
+                                "<button type='button' class='btn btn-danger ban' id='ban'><i class='fa fa-ban'></i>停權</button></td>" +
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
@@ -152,7 +151,8 @@ $(".sgSelect").on("click", function(){
                             )
                     }else if(item.memberStatus.seqno == 140 || item.memberStatus.seqno == 150){
                         $allMember.append(
-                            "<tr><td><button type='button' class='btn btn-warning recover'><i class='fa fa-refresh'></i>復權</button></td>" + 
+                            "<tr><td>" + "<input type='hidden' name='reSeqno' class='reSeqno' value='" + item.seqno +"'>" +
+                            "<button type='button' class='btn btn-warning recover'><i class='fa fa-refresh'></i>復權</button></td>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
@@ -213,10 +213,9 @@ $(".seGM").on("click", function(){
             $.each(mbList, function(index, item){
                 if(mbList != null){
                     $allMember.append(
-                        "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
+                        "<tr><td>"+
                                 "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
-                                "</form>"+ 
+                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" +
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
@@ -250,10 +249,9 @@ $(".seGU").on("click", function(){
             $.each(mbList, function(index, item){
                 if(mbList != null){
                     $allMember.append(
-                        "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
+                        "<tr><td>" +
                             "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                            "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
-                            "</form>" + 
+                            "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" +
                         "<td>" + item.seqno + "</td>" + 
                         "<td>" + item.account + "</td>" +
                         "<td>" + item.email + "</td>" + 
@@ -289,10 +287,9 @@ $(".unGroup").on("click", function(){
                 $.each(mbList, function(index, item){
                     
                         $allMember.append(
-                            "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
+                            "<tr><td>" +
                                 "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
-                                "</form>" + 
+                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" +
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
@@ -318,10 +315,9 @@ $(".unGroup").on("click", function(){
                 $.each(mbList, function(index, item){
                     let Ug = "未認證嚮導";
                         $allMember.append(
-                            "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
+                            "<tr><td>" +
                                 "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
-                                "</form>" + 
+                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" +
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
@@ -358,10 +354,9 @@ $(".banGroup").on("click", function(){
                 if(mbList != null){
                     
                         $allMember.append(
-                            "<tr><td>" + "<form id='reForm' action='/MountainExploer.com/back/member/memberRecoverAction' method='POST'>" +
+                            "<tr><td>" +
                                 "<input type='hidden' name='reSeqno' class='reSeqno' value='" + item.seqno +"'>" + 
                                 "<button type='button' class='btn btn-warning recover'><i class='fa fa-refresh'></i>復權</button></td>" +
-                                "</form>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
@@ -388,10 +383,9 @@ $(".banGroup").on("click", function(){
                 if(mbList != null){
                     let Sg = "停權嚮導";
                         $allMember.append(
-                            "<tr><td>" + "<form id='reForm' action='/MountainExploer.com/back/member/memberRecoverAction' method='POST'>" +
+                            "<tr><td>" +
                                 "<input type='hidden' name='reSeqno' class='reSeqno' value='" + item.seqno +"'>" + 
                                 "<button type='button' class='btn btn-warning recover'><i class='fa fa-refresh'></i>復權</button></td>" +
-                                "</form>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
@@ -446,6 +440,7 @@ $(".admin").on("click", function(){
 
 //停權
 $(".allMember").on("click", ".ban", function(){
+    let banSeqno = $(this).prev(".mbBan").val();
     Swal.fire({
         title: "確定要停權此會員？",
         icon: "warning",
@@ -456,10 +451,27 @@ $(".allMember").on("click", ".ban", function(){
         cancelButtonText: "取消"
     }).then(function(result){
         if(result.isConfirmed){
-            Swal.fire(
-                "該會員已停權"
-            ).then(function(){
-                $("#banForm").submit();
+            $.ajax({
+                method:"GET",
+                url:"/MountainExploer.com/back/member/memberBanAction",
+                data:{banSeqno:banSeqno},
+                dataType:"json",
+                success:function(data){
+                    if(data){
+                        Swal.fire(
+                            "該會員已停權"
+                        ).then(function(){
+                            window.location.reload();
+                        })
+                    }else{
+                        Swal.fire(
+                            "停權程序出錯"
+                        ).then(function(){
+                            window.location.reload();
+                        })
+                    }
+                }
+
             })
         }
 
@@ -472,21 +484,37 @@ $(".allMember").on("click", ".ban", function(){
 
 //復權
 $(".allMember").on("click", ".recover", function(){
-    
+    let reSeqno = $(this).prev(".reSeqno").val();
     Swal.fire({
         title: "確定要恢復此會員的權限？",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "確認復權",
+        confirmButtonText: "確認恢復權限",
         cancelButtonText: "取消"
     }).then(function(result){
         if(result.isConfirmed){
-            Swal.fire(
-                "該會員已復權"
-            ).then(function(){
-                $("#reForm").submit();
+            $.ajax({
+                method:"GET",
+                url:"/MountainExploer.com/back/member/memberRecoverAction",
+                data:{reSeqno:reSeqno},
+                dataType:"json",
+                success:function(data){
+                    if(data){
+                        Swal.fire(
+                            "該會員已恢復權限"
+                        ).then(function(){
+                            window.location.reload();
+                        })
+                    }else{
+                        Swal.fire(
+                            "恢復權限程序出錯"
+                        ).then(function(){
+                            window.location.reload();
+                        })
+                    }
+                }
             })
         }
 
@@ -663,6 +691,8 @@ $(".allMember").on("click", ".chGroup", function(){
             },
             inputPlaceholder:"身分組",
             showCancelButton:true,
+            confirmButtonText:"確認變更",
+            cancelButtonText:"取消",
             inputValidator:function(value){
                 return new Promise(function(){
                     if(value === "Gm"){

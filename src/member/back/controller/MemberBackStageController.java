@@ -189,8 +189,9 @@ public class MemberBackStageController {
 	
 	
 	//停權
-	@RequestMapping(path = "/memberBanAction", method = RequestMethod.POST)
-	public String processBanAction(@RequestParam(name = "mbBan")int banSeqno) {
+	@ResponseBody
+	@GetMapping(path = "/memberBanAction")
+	public boolean processBanAction(int banSeqno) {
 		MemberBasic mb = mbService.select(banSeqno);
 		if (mb.getMemberStatus().getSeqno() == 100 || mb.getMemberStatus().getSeqno() == 110) {
 			MemberStatus mbStId = mbStService.select(140);
@@ -198,7 +199,7 @@ public class MemberBackStageController {
 			mbService.update(mb);
 			
 			System.out.println("=================會員已被停權");
-			return "member/back/memberInfoListBack";
+			return true;
 			
 		}else if(mb.getMemberStatus().getSeqno() == 120 || mb.getMemberStatus().getSeqno() == 130) {
 			MemberStatus mbStId = mbStService.select(150);
@@ -206,17 +207,18 @@ public class MemberBackStageController {
 			mbService.update(mb);
 			
 			System.out.println("=================會員已被停權");
-			return "member/back/memberInfoListBack";
+			return true;
 			
 		}
 		System.out.println("================停權程序出現問題");
-		return "member/back/memberInfoListBack";
+		return false;
 	}
 	
 	
-	//復權&認證
-	@RequestMapping(path = "/memberRecoverAction", method = RequestMethod.POST)
-	public String processRecoverAction(@RequestParam(name = "reSeqno")int reSeqno) {
+	//復權
+	@ResponseBody
+	@GetMapping(path = "/memberRecoverAction")
+	public boolean processRecoverAction(int reSeqno) {
 		MemberBasic mb = mbService.select(reSeqno);
 		if(mb.getMemberStatus().getSeqno() == 140 || mb.getMemberStatus().getSeqno() == 110) {
 			MemberStatus mbStId = mbStService.select(100);
@@ -224,7 +226,7 @@ public class MemberBackStageController {
 			mbService.update(mb);
 			
 			System.out.println("=================會員已復權");
-			return "member/back/memberInfoListBack";
+			return true;
 			
 		}else if(mb.getMemberStatus().getSeqno() == 150 || mb.getMemberStatus().getSeqno() == 130) {
 			MemberStatus mbStId = mbStService.select(120);
@@ -232,12 +234,12 @@ public class MemberBackStageController {
 			mbService.update(mb);
 			
 			System.out.println("=================會員已復權");
-			return "member/back/memberInfoListBack";
+			return true;
 			
 		}
 		
 		System.out.println("================復權程序出現問題");
-		return "member/back/memberInfoListBack";
+		return false;
 	}
 	
 	
@@ -267,6 +269,7 @@ public class MemberBackStageController {
 	}
 	
 	
+	//更變身分組
 	@ResponseBody
 	@GetMapping(path = "/memberChangeGroup")
 	public boolean processChangeGroup(int seqno, int statusId) {
