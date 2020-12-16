@@ -6,9 +6,15 @@ var LoadingCount = {
 		endCount : 100,
 		target : "body",
 		title : "讀取中",
+		countLoad : 250
 };
 function openBlock(target){
-	LoadingCount.target = target != null ? target : LoadingCount.target
+	LoadingCount.target = target != "body" ? target : LoadingCount.target
+	if (LoadingCount.target instanceof jQuery){
+		LoadingCount.target.css("overflow", "hidden")
+	}else{
+		$(LoadingCount.target).css("overflow", "hidden")
+	}
 	$(LoadingCount.target).loading({
 		message : "<h2 data-cb='countMessage' class='text-dark'>" + LoadingCount.title + "</h2>" 
 				+ "<h2  data-cb='countNum' class='text-info'>" + LoadingCount.startCount  + "%</h2>" 
@@ -20,24 +26,33 @@ function openBlock(target){
 					+ '"></div>'
 				+ '</div>',
 		onStop: function(loading) {
+				if (LoadingCount.target instanceof jQuery){
+					LoadingCount.target.css("overflow", "auto")
+				}else{
+					$(LoadingCount.target).css("overflow", "auto")
+				}
 			    loading.overlay.slideUp(500);
 		}
 	})
-	$(LoadingCount.target).loading('resize')
-	if(LoadingCount.countTimes == 0){
+	$(LoadingCount.target).loading("resize")
+	if(LoadingCount.countTimes <= 0){
 		var count = 0;
 		var innterval = setInterval(function() {
-		if (count == 99){
+		if (count >=99){
 			clearInterval(innterval);
 			setTimeout(()=>{
-				$("body").loading("stop")
+				setTimeout(()=>{
+					IntiLoadingCount()
+					$(LoadingCount.target).loading("destroy")
+				},850)
+				$(LoadingCount.target).loading("stop")
 				return
 			},750)
 		}
 		count++;
 		$('[data-cb="countNum"]').html(count + "%");
 		$('[data-cb="countBar"]').width(count+"%");
-		}, 0);
+		}, LoadingCount.countLoad);
 	}
 }
 /* 初始化讀取進度條物件 */
@@ -52,21 +67,21 @@ function PBBlock(obj){
 	if(LoadingCount.startCount > 0 ){
 		let restCount = LoadingCount.max - LoadingCount.startCount
 		LoadingCount.eachCoount = Number((restCount/LoadingCount.countTimes).toFixed(1))
+		LoadingCount.endCount
 	}else{
 		LoadingCount.eachCoount = Math.round(LoadingCount.max/LoadingCount.countTimes)
 	}
 }
 function progressCount(message){
+	if(LoadingCount.countTimes==0) return
 	
 	/* 設置callback */
 	setTimeout(() => { 
 		if(message != null) $('[data-cb="countMessage"]').html(message)
-		$(LoadingCount.target).loading('resize')
 		LoadingCount.startCount += LoadingCount.eachCoount
 		$('[data-cb="countNum"]').html(LoadingCount.startCount + "%");
 		$('[data-cb="countBar"]').width(LoadingCount.startCount + "%");
 		$('[data-cb="countBar"]').attr("aria-valuenow", LoadingCount.startCount);
-		LoadingCount.countTimes--;
 //		console.log("LoadingCount. : " + LoadingCount.nowCount)
 //		console.log("LoadingCount.endCount : " + LoadingCount.endCount)
 		if(LoadingCount.startCount >= LoadingCount.endCount){
@@ -77,6 +92,7 @@ function progressCount(message){
 			} 
 			setTimeout(()=>{
 				$(LoadingCount.target).loading("stop")
+				console.log("loading complete")
 				setTimeout(()=>{
 					$(LoadingCount.target).loading("destroy")
 				},500)
@@ -84,7 +100,7 @@ function progressCount(message){
 				return
 			},550)		
 		}
-	},250)	
+	},LoadingCount.countLoad)	
 }
 function IntiLoadingCount(){
 	LoadingCount = {
@@ -95,5 +111,6 @@ function IntiLoadingCount(){
 		endCount : 100,
 		target : "body",
 		title : "讀取中",
+		countLoad : 250
 	};
 }

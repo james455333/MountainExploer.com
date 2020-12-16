@@ -162,14 +162,14 @@ function reRender(){
 function resetChart(canvasID){
 	let parentDiv = $("#"+canvasID).parent("div")
 	PBBlock({
-		countTimes : 4,
+		countTimes :4,
 	})
 	openBlock(parentDiv)
 	progressCount("清除當前畫面")
 	window[canvasID].destroy()
 	let syncSign = $("#"+canvasID).parents(".card").find(".chart-reset").find("i")
-	progressCount("呼叫資料中")
 	syncSign.addClass("fa-spin")
+	progressCount("獲取資料中")
 	$.ajax({
 		url : baseURL + "/all",
 		type : "GET",
@@ -183,18 +183,16 @@ function resetChart(canvasID){
 				success : function(data){
 					progressCount("資料讀取完成")
 					allData_reg = data
+					progressCount("重新設置完成")
 					switch(canvasID){
 						case "actModeChart" : 
-							progressCount("重新設置完成")
 							setActModeChart();
 							break;
 						case "tagModeChart" :
-							progressCount("重新設置完成")
 							setTagModeChart();
 							
 							break;
 						case "actTrendChart" :
-							progressCount("重新設置完成")
 							setActMonthSlider()
 							setActYearSelect()
 							setActTrendChart()

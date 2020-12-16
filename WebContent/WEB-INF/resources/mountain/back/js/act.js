@@ -45,18 +45,18 @@ $(function(){
 		startCount : 50,
 		endCount : 99,
 	})
+	$("body").css("overflow", "hidden")
 	openBlock("#actBack")
-	$("#actBack").loading('resize')
+	$("#actBack").loading("resize")
 	$.ajax({
 		url : baseURL + "/all",
 		type : "GET",
 		dataType : "json",
 		success : function(data){
-			$("#actBack").loading('resize')
+			$("#actBack").loading("resize")
 			PBBlock({
 				countTimes : data.actList.length,
 			})
-			$("#actBack").loading('resize')
 			allData = data
 			$.ajax({
 				url : baseURL + "/reg/all",
@@ -71,6 +71,7 @@ $(function(){
 					setActYearSelect()
 					setActTrendChart()
 					setTable()
+					$("body").css("overflow", "auto")
 				}
 			})
 		},
