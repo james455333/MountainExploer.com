@@ -26,7 +26,7 @@ $(function(){
 		console.log(converComment)
 		if(member != null){
 			if(thisComment == ""){
-				swal("留言不得為空","","warning")
+				Swal.fire("留言不得為空","","warning")
 				return;
 			}
 			ajaxAddComment($(this), converComment);

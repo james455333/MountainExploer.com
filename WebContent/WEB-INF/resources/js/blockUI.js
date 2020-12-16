@@ -12,7 +12,7 @@ $(function(){
 				},
 			overlayCSS:  { 
 				backgroundColor: 'black', 
-				opacity:         0.5, 
+				opacity:         0.25, 
 				cursor:          'wait' 
 			    },
 			bindEvents: true, 

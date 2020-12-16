@@ -38,7 +38,6 @@ if (urlNow.searchParams.has("search")) {
 }
 
 
-
 $(function(){
 	
 	/*	依照頁面命令變數值(od)，給予呼叫的函式相應的參數	*/

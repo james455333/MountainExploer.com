@@ -33,6 +33,7 @@
 
 .d_Main {
 	width: 85%;
+	max-width : 85%;
 	border: 1px solid green;
 	padding: 5px 5px;
 	vertical-align: top;
@@ -67,6 +68,9 @@
 	font-size : 15px;
 	margin-bottom: 10px;
 	display : none;
+}
+.d_text p span{
+	float: left;
 }
 
 .d_act_img {

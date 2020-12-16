@@ -38,20 +38,24 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/js/mdb.min.js"></script>
 	<!-- sweetalert -->
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<!-- jquery loading -->
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easy-loading/1.3.0/jquery.loading.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-loading-overlay/2.1.7/loadingoverlay.min.js'></script>
 	<!-- daterangepicker -->
 	<script type="text/javascript"
 		src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 	<!-- active method -->
-	<script src="/MountainExploer.com/js/login.js "></script>
 	<!-- Login Dialog -->
-	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<!-- 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script> -->
 	<!-- jquery.blockUI -->
 	<script src="http://malsup.github.io/jquery.blockUI.js"></script>
+	<!--  active progressBar + jquery-loading -->
+	<script src="/MountainExploer.com/js/loading.js"></script>
 	<!-- for this page -->
 	<script src="/MountainExploer.com/mountain/js/mountain.js"></script>
 	<script src="act/list/listFunction.js"></script>
 	<script src="act/list/list.js"></script>
-	<script src="/MountainExploer.com/js/blockUI.js"></script>
+<!-- 	<script src="/MountainExploer.com/js/blockUI.js"></script> -->
 
 </head>
 
@@ -80,7 +84,7 @@
 				include-html="/MountainExploer.com/forinclude/includeForIndex.html"></div>
 		</nav>
 	</header>
-	<div class="div_ul">
+	<div class="div_ul" id="text-loading">
 		<div class="secNavbar" include-html="fragment/secondNav.html"></div>
 		<div class="div_li1"></div>
 		<div class="div_li3"></div>
@@ -145,7 +149,6 @@
 						</div>
 						<!-- 控制列表內容到這邊結束 -->
 				</div>
-				
 				
 			</div>
 			<nav class="my-3" style="background-color:#F0F0F0">
@@ -230,7 +233,6 @@
 <script src="../js/table.js"></script>
 <!--sweet alert-->
 <script src="../js/topBar.js"></script>
-<script src="../js/sweetalert.js"></script>
 <script src="../js/includejsp.js"></script>
 <!--sweet alert-->
 </html>

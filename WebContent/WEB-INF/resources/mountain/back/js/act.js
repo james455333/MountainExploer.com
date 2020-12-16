@@ -41,11 +41,22 @@ $(function(){
 //			})
 //	)
 	$. noConflict()
+	PBBlock({
+		startCount : 50,
+		endCount : 99,
+	})
+	openBlock("#actBack")
+	$("#actBack").loading('resize')
 	$.ajax({
 		url : baseURL + "/all",
 		type : "GET",
 		dataType : "json",
 		success : function(data){
+			$("#actBack").loading('resize')
+			PBBlock({
+				countTimes : data.actList.length,
+			})
+			$("#actBack").loading('resize')
 			allData = data
 			$.ajax({
 				url : baseURL + "/reg/all",
@@ -116,6 +127,7 @@ $(function(){
 		updateSingleRow($(this))
 	});
 	$(".act-mode-chart").on("click",function(){
+		
 		setActModeChart($(this).val())
 	})
 	$("#act-mode-export").on("click",function(){

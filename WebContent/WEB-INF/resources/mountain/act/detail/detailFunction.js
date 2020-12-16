@@ -359,7 +359,7 @@ function setTag(check){
 
 // 登入提醒視窗
 function loginConfirmSWAL(){
-	swal({
+	Swal.fire({
 			title : "尚未登入",
 			text : "必須登入才能使用",
 			icon : "warning",
@@ -400,7 +400,7 @@ function ajaxAddComment(thisBtn, thisComment){
 			if(data)appendSideResp(thisBtn, thisComment);	
 		},
 		error : function(){
-			swal("發生錯誤","請通知管理員","error")
+			Swal.fire("發生錯誤","請通知管理員","error")
 		}		
 	})
 	
@@ -447,11 +447,11 @@ function checkResp(){
 				confirmNewResp(data)				
 			},
 			error : function(){
-				swal("發表回覆失敗",'請聯絡管理員','error')
+				Swal.fire("發表回覆失敗",'請聯絡管理員','error')
 			}
 		})
 	}else{
-		swal("回覆不得為空白",'','warning')
+		Swal.fire("回覆不得為空白","","warning")
 	}
 }
 
@@ -461,7 +461,7 @@ function confirmNewResp(data){
 		window.location.href = goURL
 		window.location.reload()
 	},2800)
-	swal({
+	Swal.fire({
 		title : "發布回覆成功",
 		text : "點擊跳轉或3秒鐘後自動跳轉至留言",
 		buttons : {

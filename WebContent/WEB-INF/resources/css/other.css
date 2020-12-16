@@ -96,7 +96,7 @@ header {
 	width: 1440px;
 	overflow: auto;
 	margin: 0px auto;
-	background-color: hsla(89, 43%, 51%, 0.2);
+	/*background-color: hsla(89, 43%, 51%, 0.2);*/
 	/* div置中 */
 }
 

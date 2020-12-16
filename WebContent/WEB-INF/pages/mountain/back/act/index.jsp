@@ -42,6 +42,8 @@
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 	<!-- for this page -->    
     <link href="/MountainExploer.com/mountain/back/css/act.css" rel="stylesheet">
+	<!-- for this page -->    
+    <link href="/MountainExploer.com/css/loading.css" rel="stylesheet">
 	
 	<!-- JQuery -->
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -74,8 +76,11 @@
 	<!-- jquery validator -->
 	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"></script>
-
+	<!-- jquery loading -->
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easy-loading/1.3.0/jquery.loading.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-loading-overlay/2.1.7/loadingoverlay.min.js'></script>
 	<!-- for this page -->
+	<script src="/MountainExploer.com/js/loading.js"></script>
 	<script src="/MountainExploer.com/mountain/back/js/act.js"></script>
 	<script src="/MountainExploer.com/mountain/back/js/actFunction.js"></script>
 </head>
@@ -104,7 +109,7 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid pageContent">
+                <div class="container-fluid" id="actBack">
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -315,7 +320,14 @@
                     <div class="row">
 						<div class="col-xl-12">
 	                        <div class="card shadow mb-4" id="tb-container">
-	                            <div class="card-header py-3">活動管理維護</div>
+	                            <div class="card-header d-flex py-3 align-items-center">
+	                            	<h3 class=" text-primary">活動管理維護</h3>
+	                            	<div class="ml-auto px-2 no-arrow">
+		                                <a href="#selectAll"id="selectAll" role="button" class="chart-reset">
+		                                    <i class="fas fa-lg fa-fw fa-sync"></i>
+		                                </a>
+	                                </div>
+	                            </div>
 	                            <div class="card-body">
 	                                <div class="table-responsive">
 	                                    <table id="routeTable" class="table-hover table-striped">

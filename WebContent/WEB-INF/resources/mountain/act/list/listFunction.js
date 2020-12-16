@@ -1,3 +1,5 @@
+
+
 /* 會員登入檢查 */
 function ajaxCheckLogin(od){
 	$.ajax({
@@ -5,28 +7,33 @@ function ajaxCheckLogin(od){
 		type : "GET",
 		dataType : "json",
 		success : function(data){
-			
+			PBBlock({
+				startCount : 25
+			})
+			openBlock("body")
 			member = data.seqno
 			if(od == 1){
 				activeMainAjax(page,"/defaultAS");			
 			}
 			if(od == 2){
+				LoadingCount.nowCount = 50
 				activeMainAjax(page,"/tagAS")
 				setSelectOption();	
 			}
 			if(od == 3){
+				LoadingCount.nowCount = 50
 				activeMainAjax(page,"/searchAS")
 			}
 		},
 		error : function(){
-			console.log("error")
+//			console.log("error")
 			swal("會員偵測出錯","請聯絡管理員","error")
 		}
 	})
 }
 
 function publishNewAct(){
-	console.log(member)
+//	console.log(member)
 	if(member != null && member != 0 ){
 		window.location.assign("/MountainExploer.com/mountain/manage/new")
 	}else{
@@ -76,15 +83,20 @@ function setSelectOption() {
 	再將結果交給動態新增函式處理 
 */
 function activeMainAjax(page, as) {
-	console.log(member)
+//	console.log(member)
 	let sendData = { page: page, tag: tag, search: search }
+	
 	$.ajax({
 		url: actHomeURL + as,
 		method: "GET",
 		dataType: 'json',
 		data: sendData,
 		success: function(data) {
-			console.log(data)
+			
+			PBBlock({
+				countTimes : data.actList.length
+			})
+//			console.log(data)
 			//參數給值
 			totalPage = data.totalPage;
 			totalData = data.totalData;
@@ -100,7 +112,7 @@ function activeMainAjax(page, as) {
 			insertTable(data.actList);
 			//	設定按鈕
 			setPageController(data.page,totalPage)
-
+			
 
 		}
 	})
@@ -120,9 +132,9 @@ function insertTable(data) {
 		setPostTime(data[i].actBasic, thisElm)
 		setRegNum(data[i], thisElm)
 		setRegEndDate(data[i].actBasic.actInfo, thisElm)
-		
 		$(".order-table").append(model)
-		$(".order-table").find(".order-table-tb").eq(i).removeClass("hideTbody")
+		$(".order-table").find(".order-table-tb").eq(i).removeClass("hideTbody");
+		progressCount()
 	}
 }
 
@@ -235,9 +247,9 @@ function setPageController(page, totalPage) {
 			startPot.after(morePage)
 			startPot = startPot.next()
 		}
-		console.log(startPot)
-		console.log(startPage)
-		console.log(endPage)
+//		console.log(startPot)
+//		console.log(startPage)
+//		console.log(endPage)
 		for(let i =startPage; i <= endPage ; i++){
 			let pageNumElm = '<li class="page-item page-number"><a class="page-link"  href="'+ url +"page="+ i +'">' + i + '</a></li>'
 			if(i == thisPage)pageNumElm = '<li class="page-item active page-number"><a class="page-link"  href="'+ url +"page="+ i +'">' + i + '</a></li>'
