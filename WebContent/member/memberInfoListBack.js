@@ -7,9 +7,7 @@ $(function(){
             if(mbList != null){
                 let $allMember = $("#allMember");
                 $.each(mbList, function(index, item){
-                    if(item.memberStatus.seqno == 100){
-                        let Gm = "一般登山者";
-                        
+                    if(item.memberStatus.seqno == 100 || item.memberStatus.seqno == 110 || item.memberStatus.seqno == 120 || item.memberStatus.seqno == 130){
                         $allMember.append(
                             "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
                                 "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
@@ -18,105 +16,39 @@ $(function(){
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
-                            "<td>" + Gm + "</td>" + 
+                            "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
                                 "<button type='button' id='sgInfo' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
-                        )
-                    }else if(item.memberStatus.seqno == 110){
-                        let Um = "未認證登山者";
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button>" + 
+                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'>更變身分組</button></td></tr>"
+                            )
+                    }else if(item.memberStatus.seqno == 140 || item.memberStatus.seqno == 150){
                         $allMember.append(
-                            "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
-                                "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
-                                "</form>" + 
+                            "<tr><td><button type='button' class='btn btn-warning recover'><i class='fa fa-refresh'></i>復權</button></td>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
-                            "<td>" + Um + "</td>" + 
+                            "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
                                 "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button>" + 
+                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'>更變身分組</button></td></tr>"
                         )
-                    }else if(item.memberStatus.seqno == 120){
-                        let Gg = "登山嚮導";
-                        $allMember.append(
-                            "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
-                                "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
-                                "</form>" + 
-                            "<td>" + item.seqno + "</td>" + 
-                            "<td>" + item.account + "</td>" +
-                            "<td>" + item.email + "</td>" + 
-                            "<td>" + Gg + "</td>" + 
-                            "<td>" + 
-                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
-                        )
-                    }else if(item.memberStatus.seqno == 130){
-                        let Ug = "未認證嚮導";
-                        $allMember.append(
-                            "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
-                                "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
-                                "</form>" + 
-                            "<td>" + item.seqno + "</td>" + 
-                            "<td>" + item.account + "</td>" +
-                            "<td>" + item.email + "</td>" + 
-                            "<td>" + Ug + "</td>" + 
-                            "<td>" + 
-                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
-                        )
-                    }else if(item.memberStatus.seqno == 140){
-                        let Sm = "停權登山者";
-                        $allMember.append(
-                            "<tr><td>" + "<form id='reForm' action='/MountainExploer.com/back/member/memberRecoverAction' method='POST'>" +
-                                "<input type='hidden' name='reSeqno' class='reSeqno' value='" + item.seqno +"'>" + 
-                                "<button type='button' class='btn btn-warning recover'><i class='fa fa-refresh'></i>復權</button></td>" +
-                                "</form>" + 
-                            "<td>" + item.seqno + "</td>" + 
-                            "<td>" + item.account + "</td>" +
-                            "<td>" + item.email + "</td>" + 
-                            "<td>" + Sm + "</td>" + 
-                            "<td>" + 
-                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
-                        )
-                    }else if(item.memberStatus.seqno == 150){
-                        let Sg = "停權嚮導";
-                        $allMember.append(
-                            "<tr><td>" + "<form id='reForm' action='/MountainExploer.com/back/member/memberRecoverAction' method='POST'>" +
-                                "<input type='hidden' name='reSeqno' class='reSeqno' value='" + item.seqno +"'>" + 
-                                "<button type='button' class='btn btn-warning recover'><i class='fa fa-refresh'></i>復權</button></td>" +
-                                "</form>" + 
-                            "<td>" + item.seqno + "</td>" + 
-                            "<td>" + item.account + "</td>" +
-                            "<td>" + item.email + "</td>" + 
-                            "<td>" + Sg + "</td>" + 
-                            "<td>" + 
-                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
-                        )
-                    }else if(item.memberStatus.seqno == 160){
-                        let admin = "管理者";
+                    }else{
                         $allMember.append(
                             "<tr><td><button type='button' class='btn btn-danger disabled'><i class='fa fa-ban'></i>停權</button></td>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
-                            "<td>" + admin + "</td>" + 
+                            "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
                                 "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
                                 "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
+
                     }
                 })
             }
@@ -137,110 +69,48 @@ $(".reSelect").on("click", function(){
             if(mbList != null){
                 var $allMember = $("#allMember");
                 $.each(mbList, function(index, item){
-                    if(item.memberStatus.seqno == 100){
-                        let Gm = "一般登山者";
-                        
+                    if(item.memberStatus.seqno == 100 || item.memberStatus.seqno == 110 || item.memberStatus.seqno == 120 || item.memberStatus.seqno == 130){
                         $allMember.append(
                             "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
                                 "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
+                                "<button type='button' class='btn btn-danger ban' id='ban'><i class='fa fa-ban'></i>停權</button></td>" + 
                                 "</form>"+ 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
-                            "<td>" + Gm + "</td>" + 
+                            "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
-                        )
-                    }else if(item.memberStatus.seqno == 110){
-                        let Um = "未認證登山者";
-                        $allMember.append(
-                            "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
-                                "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
-                                "</form>" + 
-                            "<td>" + item.seqno + "</td>" + 
-                            "<td>" + item.account + "</td>" +
-                            "<td>" + item.email + "</td>" + 
-                            "<td>" + Um + "</td>" + 
-                            "<td>" + 
-                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
-                        )
-                    }else if(item.memberStatus.seqno == 120){
-                        let Gg = "登山嚮導";
-                        $allMember.append(
-                            "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
-                                "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
-                                "</form>" + 
-                            "<td>" + item.seqno + "</td>" + 
-                            "<td>" + item.account + "</td>" +
-                            "<td>" + item.email + "</td>" + 
-                            "<td>" + Gg + "</td>" + 
-                            "<td>" + 
-                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
-                        )
-                    }else if(item.memberStatus.seqno == 130){
-                        let Ug = "未認證嚮導";
-                        $allMember.append(
-                            "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
-                                "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
-                                "</form>" + 
-                            "<td>" + item.seqno + "</td>" + 
-                            "<td>" + item.account + "</td>" +
-                            "<td>" + item.email + "</td>" + 
-                            "<td>" + Ug + "</td>" + 
-                            "<td>" + 
-                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
-                        )
-                    }else if(item.memberStatus.seqno == 140){
-                        let Sm = "停權登山者";
+                                "<button type='button' id='sgInfo' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button>" + 
+                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'>更變身分組</button></td></tr>"
+                            )
+                    }else if(item.memberStatus.seqno == 140 || item.memberStatus.seqno == 150){
                         $allMember.append(
                             "<tr><td><button type='button' class='btn btn-warning recover'><i class='fa fa-refresh'></i>復權</button></td>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
-                            "<td>" + Sm + "</td>" + 
+                            "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
                                 "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button>" + 
+                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'>更變身分組</button></td></tr>"
                         )
-                    }else if(item.memberStatus.seqno == 150){
-                        let Sg = "停權嚮導";
-                        $allMember.append(
-                            "<tr><td><button type='button' class='btn btn-warning recover'><i class='fa fa-refresh'></i>復權</button></td>" + 
-                            "<td>" + item.seqno + "</td>" + 
-                            "<td>" + item.account + "</td>" +
-                            "<td>" + item.email + "</td>" + 
-                            "<td>" + Sg + "</td>" + 
-                            "<td>" + 
-                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
-                        )
-                    }else if(item.memberStatus.seqno == 160){
-                        let admin = "管理者";
+                    }else{
                         $allMember.append(
                             "<tr><td><button type='button' class='btn btn-danger disabled'><i class='fa fa-ban'></i>停權</button></td>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
-                            "<td>" + admin + "</td>" + 
+                            "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
                                 "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
                                 "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
+
                     }
                 })
             }
@@ -264,9 +134,7 @@ $(".sgSelect").on("click", function(){
             if(mbList != null){
                 let $allMember = $("#allMember");
                 $.each(mbList, function(index, item){
-                    if(item.memberStatus.seqno == 100){
-                        let Gm = "一般登山者";
-                        
+                    if(item.memberStatus.seqno == 100 || item.memberStatus.seqno == 110 || item.memberStatus.seqno == 120 || item.memberStatus.seqno == 130){
                         $allMember.append(
                             "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
                                 "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
@@ -275,105 +143,39 @@ $(".sgSelect").on("click", function(){
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
-                            "<td>" + Gm + "</td>" + 
+                            "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
-                        )
-                    }else if(item.memberStatus.seqno == 110){
-                        let Um = "未認證登山者";
+                                "<button type='button' id='sgInfo' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button>" + 
+                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'>更變身分組</button></td></tr>"
+                            )
+                    }else if(item.memberStatus.seqno == 140 || item.memberStatus.seqno == 150){
                         $allMember.append(
-                            "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
-                                "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
-                                "</form>" + 
+                            "<tr><td><button type='button' class='btn btn-warning recover'><i class='fa fa-refresh'></i>復權</button></td>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
-                            "<td>" + Um + "</td>" + 
+                            "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
                                 "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button>" + 
+                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'>更變身分組</button></td></tr>"
                         )
-                    }else if(item.memberStatus.seqno == 120){
-                        let Gg = "登山嚮導";
-                        $allMember.append(
-                            "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
-                                "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
-                                "</form>" + 
-                            "<td>" + item.seqno + "</td>" + 
-                            "<td>" + item.account + "</td>" +
-                            "<td>" + item.email + "</td>" + 
-                            "<td>" + Gg + "</td>" + 
-                            "<td>" + 
-                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
-                        )
-                    }else if(item.memberStatus.seqno == 130){
-                        let Ug = "未認證嚮導";
-                        $allMember.append(
-                            "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
-                                "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
-                                "<button type='button' class='btn btn-danger ban'><i class='fa fa-ban'></i>停權</button></td>" + 
-                                "</form>" + 
-                            "<td>" + item.seqno + "</td>" + 
-                            "<td>" + item.account + "</td>" +
-                            "<td>" + item.email + "</td>" + 
-                            "<td>" + Ug + "</td>" + 
-                            "<td>" + 
-                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
-                        )
-                    }else if(item.memberStatus.seqno == 140){
-                        let Sm = "停權登山者";
-                        $allMember.append(
-                            "<tr><td>" + "<form id='reForm' action='/MountainExploer.com/back/member/memberRecoverAction' method='POST'>" +
-                                "<input type='hidden' name='reSeqno' class='reSeqno' value='" + item.seqno +"'>" + 
-                                "<button type='button' class='btn btn-warning recover'><i class='fa fa-refresh'></i>復權</button></td>" +
-                                "</form>" + 
-                            "<td>" + item.seqno + "</td>" + 
-                            "<td>" + item.account + "</td>" +
-                            "<td>" + item.email + "</td>" + 
-                            "<td>" + Sm + "</td>" + 
-                            "<td>" + 
-                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
-                        )
-                    }else if(item.memberStatus.seqno == 150){
-                        let Sg = "停權嚮導";
-                        $allMember.append(
-                            "<tr><td>" + "<form id='reForm' action='/MountainExploer.com/back/member/memberRecoverAction' method='POST'>" +
-                                "<input type='hidden' name='reSeqno' class='reSeqno' value='" + item.seqno +"'>" + 
-                                "<button type='button' class='btn btn-warning recover'><i class='fa fa-refresh'></i>復權</button></td>" +
-                                "</form>" + 
-                            "<td>" + item.seqno + "</td>" + 
-                            "<td>" + item.account + "</td>" +
-                            "<td>" + item.email + "</td>" + 
-                            "<td>" + Sg + "</td>" + 
-                            "<td>" + 
-                                "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
-                        )
-                    }else if(item.memberStatus.seqno == 160){
-                        let admin = "管理者";
+                    }else{
                         $allMember.append(
                             "<tr><td><button type='button' class='btn btn-danger disabled'><i class='fa fa-ban'></i>停權</button></td>" + 
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
-                            "<td>" + admin + "</td>" + 
+                            "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
                                 "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
                                 "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
                         )
+
                     }
                 })
             }else{
@@ -410,7 +212,6 @@ $(".seGM").on("click", function(){
         success:function(mbList){
             $.each(mbList, function(index, item){
                 if(mbList != null){
-                    let Gm = "一般登山者"; 
                     $allMember.append(
                         "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
                                 "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
@@ -419,11 +220,12 @@ $(".seGM").on("click", function(){
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
-                            "<td>" + Gm + "</td>" + 
+                            "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
                                 "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button>" + 
+                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'>更變身分組</button></td></tr>"
                     )
                 }
 
@@ -447,7 +249,6 @@ $(".seGU").on("click", function(){
         success:function(mbList){
             $.each(mbList, function(index, item){
                 if(mbList != null){
-                    let Gg = "登山嚮導";
                     $allMember.append(
                         "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
                             "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
@@ -456,11 +257,12 @@ $(".seGU").on("click", function(){
                         "<td>" + item.seqno + "</td>" + 
                         "<td>" + item.account + "</td>" +
                         "<td>" + item.email + "</td>" + 
-                        "<td>" + Gg + "</td>" + 
+                        "<td>" + item.memberStatus.name + "</td>" + 
                         "<td>" + 
                             "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
                             "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                            "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
+                            "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button>" + 
+                            "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'>更變身分組</button></td></tr>"
                     )
                 }
 
@@ -485,7 +287,7 @@ $(".unGroup").on("click", function(){
         success:function(mbList){
             if(mbList != null){
                 $.each(mbList, function(index, item){
-                    let Um = "未認證登山者";
+                    
                         $allMember.append(
                             "<tr><td>" + "<form id='banForm' action='/MountainExploer.com/back/member/memberBanAction' method='POST'>" +
                                 "<input type='hidden' name='mbBan' class='mbBan' value='" + item.seqno + "'>" +
@@ -494,11 +296,12 @@ $(".unGroup").on("click", function(){
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
-                            "<td>" + Um + "</td>" + 
+                            "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
                                 "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button>" + 
+                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'>更變身分組</button></td></tr>"
                         )
                 })
             }
@@ -522,11 +325,12 @@ $(".unGroup").on("click", function(){
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
-                            "<td>" + Ug + "</td>" + 
+                            "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
                                 "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button>" + 
+                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'>更變身分組</button></td></tr>"
                         )
                 })
             }
@@ -552,7 +356,7 @@ $(".banGroup").on("click", function(){
         success:function(mbList){
             $.each(mbList, function(index, item){
                 if(mbList != null){
-                    let Sm = "停權登山者";
+                    
                         $allMember.append(
                             "<tr><td>" + "<form id='reForm' action='/MountainExploer.com/back/member/memberRecoverAction' method='POST'>" +
                                 "<input type='hidden' name='reSeqno' class='reSeqno' value='" + item.seqno +"'>" + 
@@ -561,11 +365,12 @@ $(".banGroup").on("click", function(){
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
-                            "<td>" + Sm + "</td>" + 
+                            "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
                                 "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button>" + 
+                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'>更變身分組</button></td></tr>"
                         )
                 }
 
@@ -590,11 +395,12 @@ $(".banGroup").on("click", function(){
                             "<td>" + item.seqno + "</td>" + 
                             "<td>" + item.account + "</td>" +
                             "<td>" + item.email + "</td>" + 
-                            "<td>" + Sg + "</td>" + 
+                            "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
                                 "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button></td></tr>"
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text'></i>修改資料</button>" + 
+                                "<button type='button' style='margin-left:10px' class='btn btn-secondary chGroup'>更變身分組</button></td></tr>"
                         )
                 }
 
@@ -618,13 +424,13 @@ $(".admin").on("click", function(){
         success:function(mbList){
             $.each(mbList, function(index, item){
                 if(mbList != null){
-                    let admin = "管理者";
+                    
                     $allMember.append(
                         "<tr><td><button type='button' class='btn btn-danger disabled'><i class='fa fa-ban'></i>停權</button></td>" + 
                         "<td>" + item.seqno + "</td>" + 
                         "<td>" + item.account + "</td>" +
                         "<td>" + item.email + "</td>" + 
-                        "<td>" + admin + "</td>" + 
+                        "<td>" + item.memberStatus.name + "</td>" + 
                         "<td>" + 
                             "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
                             "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle'></i>詳細資料</button>" + 
@@ -702,8 +508,7 @@ $(".allMember").on("click", ".sgInfo", function(){
         success:function(mbList){
             $.each(mbList, function(index, item){
                 if(mbList != null){
-                    if(item.memberStatus.seqno == 100){
-                        let Gm = "一般登山者";
+                    if(item.memberStatus.seqno == 100 || item.memberStatus.seqno == 110 || item.memberStatus.seqno == 120 || item.memberStatus.seqno == 130 || item.memberStatus.seqno == 140 || item.memberStatus.seqno == 150){
                         let reDate = new Date(item.reg_Date);
                         let birDate = item.memberInfo.birthday;
                         if(birDate == ""){
@@ -732,301 +537,7 @@ $(".allMember").on("click", ".sgInfo", function(){
                                     <input type="text" name="ncName" class="swal2-input ncName" value="` + item.memberInfo.neck_name + `" readonly>
                                     <br/>
                                     <label>身分組：</label>
-                                    <input type="text" name="statusId" class="swal2-input statusId" value="` + Gm + `" readonly>
-                                    <br/>
-                                    <label>Email：</label>
-                                    <input type="text" name="email" class="swal2-input email" value="` + item.email + `" readonly>
-                                    <br/>
-                                    <label>手機：</label>
-                                    <input type="text" name="phone" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
-                                    <br/>
-                                    <label>性別：</label>
-                                    <input type="text" name="gender" class="swal2-input gender" value="` + item.memberInfo.gender + `" readonly>
-                                    <br/>
-                                    <label>生日：</label>
-                                    <input type="text" name="birthday" class="swal2-input birthday" value="` + birDate + `" readonly>
-                                    <br/>
-                                    <label>註冊日期：</label>
-                                    <input type="text" name="rgDate" class="swal2-input rgDate" value="` + reDate + `" readonly>
-                                    <br/>
-                                    <label>登山經驗：</label>
-                                    <input type="text" name="exp" class="swal2-input exp" value="` + item.memberInfo.climb_ex + `" readonly>
-                                    <br/>
-                                    <label>個人簡介：</label>
-                                    <input type="text" name="other" class="swal2-input other" value="` + item.memberInfo.other + `" readonly>
-                                    <br/>
-                                    <label>頭貼：</label>
-                                    <img src="/MountainExploer.com/images/` + imgMb + `">
-                                    <br/>
-                                    </div>` 
-                        })
-                    }else if(item.memberStatus.seqno == 110){
-                        let Um = "未認證登山者";
-                        let reDate = new Date(item.reg_Date);
-                        let birDate = item.memberInfo.birthday;
-                        if(birDate == ""){
-                            birDate = "尚未填寫";
-                        }else{
-                            birDate = new Date(item.memberInfo.birthday);
-                        }
-                        
-                        let imgMb = item.memberInfo.img_name;
-                        if(imgMb == ""){
-                            let imgMb = "preset.png";
-                        }
-                        Swal.fire({
-                            title: "會員編號" + item.seqno + "的會員資料",
-                            html:`<div>
-                                    <label>會員編號：</label>
-                                    <input type="text" name="seqno" class="swal2-input seqno" value="` + item.seqno + `" readonly>
-                                    <br/>
-                                    <label>帳號：</label>
-                                    <input type="text" name="account" class="swal2-input account" value="` + item.account + `" readonly>
-                                    <br/>
-                                    <label>姓名：</label>
-                                    <input type="text" name="name" class="swal2-input name" value="` + item.name + `" readonly>
-                                    <br/>
-                                    <label>暱稱：</label>
-                                    <input type="text" name="ncName" class="swal2-input ncName" value="` + item.memberInfo.neck_name + `" readonly>
-                                    <br/>
-                                    <label>身分組：</label>
-                                    <input type="text" name="statusId" class="swal2-input statusId" value="` + Um + `" readonly>
-                                    <br/>
-                                    <label>Email：</label>
-                                    <input type="text" name="email" class="swal2-input email" value="` + item.email + `" readonly>
-                                    <br/>
-                                    <label>手機：</label>
-                                    <input type="text" name="phone" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
-                                    <br/>
-                                    <label>性別：</label>
-                                    <input type="text" name="gender" class="swal2-input gender" value="` + item.memberInfo.gender + `" readonly>
-                                    <br/>
-                                    <label>生日：</label>
-                                    <input type="text" name="birthday" class="swal2-input birthday" value="` + birDate + `" readonly>
-                                    <br/>
-                                    <label>註冊日期：</label>
-                                    <input type="text" name="rgDate" class="swal2-input rgDate" value="` + reDate + `" readonly>
-                                    <br/>
-                                    <label>登山經驗：</label>
-                                    <input type="text" name="exp" class="swal2-input exp" value="` + item.memberInfo.climb_ex + `" readonly>
-                                    <br/>
-                                    <label>個人簡介：</label>
-                                    <input type="text" name="other" class="swal2-input other" value="` + item.memberInfo.other + `" readonly>
-                                    <br/>
-                                    <label>頭貼：</label>
-                                    <img src="/MountainExploer.com/images/` + imgMb + `">
-                                    <br/>
-                                    </div>` 
-                        })
-
-                    }else if(item.memberStatus.seqno == 120){
-                        let Gg = "登山嚮導";
-                        let reDate = new Date(item.reg_Date);
-                        let birDate = item.memberInfo.birthday;
-                        if(birDate == ""){
-                            birDate = "尚未填寫";
-                        }else{
-                            birDate = new Date(item.memberInfo.birthday);
-                        }
-                        
-                        let imgMb = item.memberInfo.img_name;
-                        if(imgMb == ""){
-                            let imgMb = "preset.png";
-                        }
-                        Swal.fire({
-                            title: "會員編號" + item.seqno + "的會員資料",
-                            html:`<div>
-                                    <label>會員編號：</label>
-                                    <input type="text" name="seqno" class="swal2-input seqno" value="` + item.seqno + `" readonly>
-                                    <br/>
-                                    <label>帳號：</label>
-                                    <input type="text" name="account" class="swal2-input account" value="` + item.account + `" readonly>
-                                    <br/>
-                                    <label>姓名：</label>
-                                    <input type="text" name="name" class="swal2-input name" value="` + item.name + `" readonly>
-                                    <br/>
-                                    <label>暱稱：</label>
-                                    <input type="text" name="ncName" class="swal2-input ncName" value="` + item.memberInfo.neck_name + `" readonly>
-                                    <br/>
-                                    <label>身分組：</label>
-                                    <input type="text" name="statusId" class="swal2-input statusId" value="` + Gg + `" readonly>
-                                    <br/>
-                                    <label>Email：</label>
-                                    <input type="text" name="email" class="swal2-input email" value="` + item.email + `" readonly>
-                                    <br/>
-                                    <label>手機：</label>
-                                    <input type="text" name="phone" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
-                                    <br/>
-                                    <label>性別：</label>
-                                    <input type="text" name="gender" class="swal2-input gender" value="` + item.memberInfo.gender + `" readonly>
-                                    <br/>
-                                    <label>生日：</label>
-                                    <input type="text" name="birthday" class="swal2-input birthday" value="` + birDate + `" readonly>
-                                    <br/>
-                                    <label>註冊日期：</label>
-                                    <input type="text" name="rgDate" class="swal2-input rgDate" value="` + reDate + `" readonly>
-                                    <br/>
-                                    <label>登山經驗：</label>
-                                    <input type="text" name="exp" class="swal2-input exp" value="` + item.memberInfo.climb_ex + `" readonly>
-                                    <br/>
-                                    <label>個人簡介：</label>
-                                    <input type="text" name="other" class="swal2-input other" value="` + item.memberInfo.other + `" readonly>
-                                    <br/>
-                                    <label>頭貼：</label>
-                                    <img src="/MountainExploer.com/images/` + imgMb + `">
-                                    <br/>
-                                    </div>` 
-                        })
-
-                    }else if(item.memberStatus.seqno == 130){
-                        let Ug = "未認證登山嚮導";
-                        let reDate = new Date(item.reg_Date);
-                        let birDate = item.memberInfo.birthday;
-                        if(birDate == ""){
-                            birDate = "尚未填寫";
-                        }else{
-                            birDate = new Date(item.memberInfo.birthday);
-                        }
-                        
-                        let imgMb = item.memberInfo.img_name;
-                        if(imgMb == ""){
-                            let imgMb = "preset.png";
-                        }
-                        Swal.fire({
-                            title: "會員編號" + item.seqno + "的會員資料",
-                            html:`<div>
-                                    <label>會員編號：</label>
-                                    <input type="text" name="seqno" class="swal2-input seqno" value="` + item.seqno + `" readonly>
-                                    <br/>
-                                    <label>帳號：</label>
-                                    <input type="text" name="account" class="swal2-input account" value="` + item.account + `" readonly>
-                                    <br/>
-                                    <label>姓名：</label>
-                                    <input type="text" name="name" class="swal2-input name" value="` + item.name + `" readonly>
-                                    <br/>
-                                    <label>暱稱：</label>
-                                    <input type="text" name="ncName" class="swal2-input ncName" value="` + item.memberInfo.neck_name + `" readonly>
-                                    <br/>
-                                    <label>身分組：</label>
-                                    <input type="text" name="statusId" class="swal2-input statusId" value="` + Ug + `" readonly>
-                                    <br/>
-                                    <label>Email：</label>
-                                    <input type="text" name="email" class="swal2-input email" value="` + item.email + `" readonly>
-                                    <br/>
-                                    <label>手機：</label>
-                                    <input type="text" name="phone" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
-                                    <br/>
-                                    <label>性別：</label>
-                                    <input type="text" name="gender" class="swal2-input gender" value="` + item.memberInfo.gender + `" readonly>
-                                    <br/>
-                                    <label>生日：</label>
-                                    <input type="text" name="birthday" class="swal2-input birthday" value="` + birDate + `" readonly>
-                                    <br/>
-                                    <label>註冊日期：</label>
-                                    <input type="text" name="rgDate" class="swal2-input rgDate" value="` + reDate + `" readonly>
-                                    <br/>
-                                    <label>登山經驗：</label>
-                                    <input type="text" name="exp" class="swal2-input exp" value="` + item.memberInfo.climb_ex + `" readonly>
-                                    <br/>
-                                    <label>個人簡介：</label>
-                                    <input type="text" name="other" class="swal2-input other" value="` + item.memberInfo.other + `" readonly>
-                                    <br/>
-                                    <label>頭貼：</label>
-                                    <img src="/MountainExploer.com/images/` + imgMb + `">
-                                    <br/>
-                                    </div>` 
-                        })
-
-                    }else if(item.memberStatus.seqno == 140){
-                        let Sm = "已停權登山者";
-                        let reDate = new Date(item.reg_Date);
-                        let birDate = item.memberInfo.birthday;
-                        if(birDate == ""){
-                            birDate = "尚未填寫";
-                        }else{
-                            birDate = new Date(item.memberInfo.birthday);
-                        }
-                        
-                        let imgMb = item.memberInfo.img_name;
-                        if(imgMb == ""){
-                            let imgMb = "preset.png";
-                        }
-                        Swal.fire({
-                            title: "會員編號" + item.seqno + "的會員資料",
-                            html:`<div>
-                                    <label>會員編號：</label>
-                                    <input type="text" name="seqno" class="swal2-input seqno" value="` + item.seqno + `" readonly>
-                                    <br/>
-                                    <label>帳號：</label>
-                                    <input type="text" name="account" class="swal2-input account" value="` + item.account + `" readonly>
-                                    <br/>
-                                    <label>姓名：</label>
-                                    <input type="text" name="name" class="swal2-input name" value="` + item.name + `" readonly>
-                                    <br/>
-                                    <label>暱稱：</label>
-                                    <input type="text" name="ncName" class="swal2-input ncName" value="` + item.memberInfo.neck_name + `" readonly>
-                                    <br/>
-                                    <label>身分組：</label>
-                                    <input type="text" name="statusId" class="swal2-input statusId" value="` + Sm + `" readonly>
-                                    <br/>
-                                    <label>Email：</label>
-                                    <input type="text" name="email" class="swal2-input email" value="` + item.email + `" readonly>
-                                    <br/>
-                                    <label>手機：</label>
-                                    <input type="text" name="phone" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
-                                    <br/>
-                                    <label>性別：</label>
-                                    <input type="text" name="gender" class="swal2-input gender" value="` + item.memberInfo.gender + `" readonly>
-                                    <br/>
-                                    <label>生日：</label>
-                                    <input type="text" name="birthday" class="swal2-input birthday" value="` + birDate + `" readonly>
-                                    <br/>
-                                    <label>註冊日期：</label>
-                                    <input type="text" name="rgDate" class="swal2-input rgDate" value="` + reDate + `" readonly>
-                                    <br/>
-                                    <label>登山經驗：</label>
-                                    <input type="text" name="exp" class="swal2-input exp" value="` + item.memberInfo.climb_ex + `" readonly>
-                                    <br/>
-                                    <label>個人簡介：</label>
-                                    <input type="text" name="other" class="swal2-input other" value="` + item.memberInfo.other + `" readonly>
-                                    <br/>
-                                    <label>頭貼：</label>
-                                    <img src="/MountainExploer.com/images/` + imgMb + `">
-                                    <br/>
-                                    </div>` 
-                        })
-
-                    }else if(item.memberStatus.seqno == 150){
-                        let Sg = "已停權嚮導";
-                        let reDate = new Date(item.reg_Date);
-                        let birDate = item.memberInfo.birthday;
-                        if(birDate == ""){
-                            birDate = "尚未填寫";
-                        }else{
-                            birDate = new Date(item.memberInfo.birthday);
-                        }
-                        
-                        let imgMb = item.memberInfo.img_name;
-                        if(imgMb == ""){
-                            let imgMb = "preset.png";
-                        }
-                        Swal.fire({
-                            title: "會員編號" + item.seqno + "的會員資料",
-                            html:`<div>
-                                    <label>會員編號：</label>
-                                    <input type="text" name="seqno" class="swal2-input seqno" value="` + item.seqno + `" readonly>
-                                    <br/>
-                                    <label>帳號：</label>
-                                    <input type="text" name="account" class="swal2-input account" value="` + item.account + `" readonly>
-                                    <br/>
-                                    <label>姓名：</label>
-                                    <input type="text" name="name" class="swal2-input name" value="` + item.name + `" readonly>
-                                    <br/>
-                                    <label>暱稱：</label>
-                                    <input type="text" name="ncName" class="swal2-input ncName" value="` + item.memberInfo.neck_name + `" readonly>
-                                    <br/>
-                                    <label>身分組：</label>
-                                    <input type="text" name="statusId" class="swal2-input statusId" value="` + Sg + `" readonly>
+                                    <input type="text" name="statusId" class="swal2-input statusId" value="` + item.memberStatus.name + `" readonly>
                                     <br/>
                                     <label>Email：</label>
                                     <input type="text" name="email" class="swal2-input email" value="` + item.email + `" readonly>
@@ -1131,4 +642,212 @@ $(".allMember").on("click", ".chInfo", function(){
 
         }
     })
+})
+
+
+//更變身份組
+$(".allMember").on("click", ".chGroup", function(){
+    let seqno = $(this).siblings(".sgSeqno").val();
+    (async () => {
+
+        const {value:group} = await Swal.fire({
+            title:"選擇身分組",
+            input:"select",
+            inputOptions:{
+                Gm:"一般登山者",
+                Um:"未認證登山者",
+                Gg:"登山嚮導",
+                Ug:"未認證嚮導",
+                Sm:"停權登山者",
+                Sg:"停權嚮導"
+            },
+            inputPlaceholder:"身分組",
+            showCancelButton:true,
+            inputValidator:function(value){
+                return new Promise(function(){
+                    if(value === "Gm"){
+                        let statusId = 100;
+                        $.ajax({
+                            method:"GET",
+                            url:"/MountainExploer.com/back/member/memberChangeGroup",
+                            data:{
+                                seqno:seqno,
+                                statusId:statusId
+                            },
+                            dataType:"json",
+                            success:function(data){
+                                if(data){
+                                    Swal.fire(
+                                        "身分組更變成功"
+                                    ).then(function(){
+                                        window.location.reload();
+                                    })
+                                }else{
+                                    Swal.fire(
+                                        "身分組更變失敗"
+                                    )
+                                }
+                            },
+                            error:function(){
+                                Swal.fire(
+                                    "身分組變更出錯"
+                                )
+                            }
+                        })
+    
+                    }else if(value === "Um"){
+                        let statusId = 110;
+                        $.ajax({
+                            method:"GET",
+                            url:"/MountainExploer.com/back/member/memberChangeGroup",
+                            data:{
+                                seqno:seqno,
+                                statusId:statusId
+                            },
+                            dataType:"json",
+                            success:function(data){
+                                if(data){
+                                    Swal.fire(
+                                        "身分組更變成功"
+                                    ).then(function(){
+                                        window.location.reload();
+                                    })
+                                }else{
+                                    Swal.fire(
+                                        "身分組更變失敗"
+                                    )
+                                }
+                            },
+                            error:function(){
+                                Swal.fire(
+                                    "身分組變更出錯"
+                                )
+                            }
+                        })
+    
+                    }else if(value === "Gg"){
+                        let statusId = 120;
+                        $.ajax({
+                            method:"GET",
+                            url:"/MountainExploer.com/back/member/memberChangeGroup",
+                            data:{
+                                seqno:seqno,
+                                statusId:statusId
+                            },
+                            dataType:"json",
+                            success:function(data){
+                                if(data){
+                                    Swal.fire(
+                                        "身分組更變成功"
+                                    ).then(function(){
+                                        window.location.reload();
+                                    })
+                                }else{
+                                    Swal.fire(
+                                        "身分組更變失敗"
+                                    )
+                                }
+                            },
+                            error:function(){
+                                Swal.fire(
+                                    "身分組變更出錯"
+                                )
+                            }
+                        })
+    
+                    }else if(value === "Ug"){
+                        let statusId = 130;
+                        $.ajax({
+                            method:"GET",
+                            url:"/MountainExploer.com/back/member/memberChangeGroup",
+                            data:{
+                                seqno:seqno,
+                                statusId:statusId
+                            },
+                            dataType:"json",
+                            success:function(data){
+                                if(data){
+                                    Swal.fire(
+                                        "身分組更變成功"
+                                    ).then(function(){
+                                        window.location.reload();
+                                    })
+                                }else{
+                                    Swal.fire(
+                                        "身分組更變失敗"
+                                    )
+                                }
+                            },
+                            error:function(){
+                                Swal.fire(
+                                    "身分組變更出錯"
+                                )
+                            }
+                        })
+    
+                    }else if(value === "Sm"){
+                        let statusId = 140;
+                        $.ajax({
+                            method:"GET",
+                            url:"/MountainExploer.com/back/member/memberChangeGroup",
+                            data:{
+                                seqno:seqno,
+                                statusId:statusId
+                            },
+                            dataType:"json",
+                            success:function(data){
+                                if(data){
+                                    Swal.fire(
+                                        "身分組更變成功"
+                                    ).then(function(){
+                                        window.location.reload();
+                                    })
+                                }else{
+                                    Swal.fire(
+                                        "身分組更變失敗"
+                                    )
+                                }
+                            },
+                            error:function(){
+                                Swal.fire(
+                                    "身分組變更出錯"
+                                )
+                            }
+                        })
+    
+                    }else if(value === "Sg"){
+                        let statusId = 150;
+                        $.ajax({
+                            method:"GET",
+                            url:"/MountainExploer.com/back/member/memberChangeGroup",
+                            data:{
+                                seqno:seqno,
+                                statusId:statusId
+                            },
+                            dataType:"json",
+                            success:function(data){
+                                if(data){
+                                    Swal.fire(
+                                        "身分組更變成功"
+                                    ).then(function(){
+                                        window.location.reload();
+                                    })
+                                }else{
+                                    Swal.fire(
+                                        "身分組更變失敗"
+                                    )
+                                }
+                            },
+                            error:function(){
+                                Swal.fire(
+                                    "身分組變更出錯"
+                                )
+                            }
+                        })
+    
+                    }
+                })
+            }
+        })
+    })()
 })

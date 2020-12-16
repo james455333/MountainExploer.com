@@ -267,6 +267,20 @@ public class MemberBackStageController {
 	}
 	
 	
+	@ResponseBody
+	@GetMapping(path = "/memberChangeGroup")
+	public boolean processChangeGroup(int seqno, int statusId) {
+		MemberBasic queryMb = mbService.select(seqno);
+		MemberStatus mbStId = mbStService.select(statusId);
+		queryMb.setMemberStatus(mbStId);
+		
+		mbService.update(queryMb);
+		
+		return true;
+	}
+	
+	
+	
 	
 	//管理員登出
 	@RequestMapping("/backLogout")
