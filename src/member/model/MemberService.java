@@ -40,6 +40,10 @@ public class MemberService {
 		return mbDao.listInfo();
 	}
 	
+	public List<MemberBasic> selectInfo(int seqno){
+		return mbDao.selectInfo(seqno);
+	}
+	
 	public MemberBasic updateData(MemberBasic mb) {
 		return mbDao.updateData(mb);
 	}

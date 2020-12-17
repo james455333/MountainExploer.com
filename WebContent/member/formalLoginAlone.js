@@ -71,7 +71,7 @@ $(".submit").on("click", function(){
 						icon:"success",
 						title:"登入成功"
 					}).then(function(){
-						window.location.href="/MountainExploer.com/member/memberInfoEntry";
+						window.location.href="/MountainExploer.com/member/bootstrapInfoEntry";
 					})
 				}else if(data == 110 || data == 130){
 					Swal.fire({

@@ -95,6 +95,16 @@ public class MemberInfoController {
 	}
 	
 	
+	//單獨查詢
+	@ResponseBody
+	@GetMapping(path = "/member/selectSgInfoAction")
+	public List<MemberBasic> processInfoSelece(int seqno){
+		List<MemberBasic> mbList = mbService.selectInfo(seqno);
+		return mbList;
+	}
+	
+	
+	
 	//讀取圖片
 	@RequestMapping(path = "/member/showUserImg")
 	public ResponseEntity<byte[]> showUserImg(@RequestParam(name = "userSeq")int userSeq){
