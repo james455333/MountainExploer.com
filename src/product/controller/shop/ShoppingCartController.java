@@ -20,8 +20,6 @@ import product.model.CartBean;
 import product.model.OrderItems;
 import product.model.Orders;
 import product.model.ShoppingCart;
-import ecpay.payment.*;
-import ecpay.payment.integration.AllInOne;;
 
 @RequestMapping(path = "/shoppingcart")
 @Controller
@@ -148,6 +146,8 @@ public class ShoppingCartController {
 			@RequestParam(name = "receiver") String receiver,
 			@RequestParam(name = "shippingAddress") String shippingAddress,
 			@RequestParam(name = "invoiceTitle") String invoiceTitle) {
+		
+		
 		Orders orders = new Orders();
 
 		ShoppingCart shoppingCart = (ShoppingCart) m.getAttribute("ShoppingCart");
@@ -193,7 +193,6 @@ public class ShoppingCartController {
 		ordersDao.insertOrder(orders);
 		
 		
-//		new AllInOne(log4jPropertiesPath)
 		
 
 		return "redirect:/shoppingcart/abort2";
@@ -240,5 +239,16 @@ public class ShoppingCartController {
 		return "product/cart/orderInfoPage";
 
 	}
+	
+	
+	
+	
+	//綠界
+//	@RequestMapping(path = "/credit", method = RequestMethod.GET)
+////	@ResponseBody
+//	public String credit() {
+//		String genAioCheckOutCVS = ExampleAllInOne.genAioCheckOutCVS();
+//		return genAioCheckOutCVS;
+//		}
 
 }

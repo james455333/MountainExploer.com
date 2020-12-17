@@ -13,7 +13,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>岳進者 | 後台維護管理系統 | 訂單狀態維護</title>
+<title>岳進者 | 後台維護管理系統 | 新增商品</title>
 
 <!-- Custom fonts for this template-->
 <link
@@ -164,20 +164,20 @@
 								</select>
 							</div>
 							<div>
-								<label for="name">* 產品名稱 : &nbsp&nbsp</label> <input type="text"
-									name="name" value="新增商品" required>
+								<label for="name">* 產品名稱 : &nbsp&nbsp</label> <input type="text" id="name"
+									name="name"  required>
 							</div>
 							<div>
-								<label for="type">* 型號 : &nbsp&nbsp</label> <input type="text"
-									name="type" value="新增型號" required>
+								<label for="type">* 型號 : &nbsp&nbsp</label> <input type="text" id="type"
+									name="type"  required>
 							</div>
 							<div>
-								<label for="price">* 價格 : &nbsp&nbsp</label> <input type="text"
-									name="price" value="999" required>
+								<label for="price">* 價格 : &nbsp&nbsp</label> <input type="text" id="price"
+									name="price"  required>
 							</div>
 							<div>
-								<label for="stock">* 庫存 : &nbsp&nbsp</label> <input type="text"
-									name="stock" value="99" required>
+								<label for="stock">* 庫存 : &nbsp&nbsp</label> <input type="text" id="stock"
+									name="stock"  required>
 							</div>
 							<div>
 								<label for="productImg">* 產品圖檔案 : &nbsp&nbsp</label> <input
@@ -185,7 +185,7 @@
 							</div>
 							<div>
 								<label for="description">介紹 : &nbsp&nbsp</label>
-								<textarea rows="2.5%" cols="50%"  name="description" value="新增產品介紹"  ></textarea>
+								<textarea rows="2.5%" cols="50%"  name="description"  id="description"  ></textarea>
 							</div>
 
 							<div>
@@ -197,6 +197,9 @@
 								</div>
 								<div>
 									<input type="button" value="返回上一頁" id="backPreviousPage">
+								</div>
+								<div>
+									<input type="button" value="快速輸入" id="fast">
 								</div>
 							</div>
 						</form>
@@ -278,13 +281,14 @@
 	<script src="/MountainExploer.com/js/includejsp.js"></script>
 
 	<script>
-		$(function() {
-			$("#newRoute")
-					.on(
-							"click",
-							function() {
-								window.location = "MountainExploer.com/backstage/product/createDataPage"
-							})
+	$(function() {
+		$("#fast").on("click", function() {
+			$('#name').val("岳進者結業紀念排汗衫");
+			$('#type').val("mountain100");
+			$('#price').val("999");
+			$('#stock').val("5");
+			$('#description').val("慶祝結業限量款");
 		})
+	})
 	</script>
 </body>
