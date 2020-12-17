@@ -35,6 +35,12 @@ $(function(){
                 let regDateJS = new Date(regDate);
                 $(".rgTr").find(".regDate").text(getFormattedDate(regDateJS));
 
+                let imgMb = item.memberInfo.img_name;
+                if(imgMb != null){
+                    let imgMbNm = item.memberInfo.img_name
+                    $(".userFile").attr("src", "/MountainExploer.com/images/" + imgMbNm);
+                }
+
             })
             $.ajax({
                 method:"GET",
@@ -49,6 +55,7 @@ $(function(){
                 }
 
             })
+            
 
         }
     })

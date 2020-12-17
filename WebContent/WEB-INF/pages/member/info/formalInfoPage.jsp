@@ -81,7 +81,7 @@
 				                            </strong>
 				                        </td>
 				                        <td class="text-primary account">
-				                            	預設
+				                            	尚未填寫
 				                        </td>
 				                    </tr>
 				                    <tr class="nmTr">    
@@ -92,7 +92,7 @@
 				                            </strong>
 				                        </td>
 				                        <td class="text-primary name">
-				                                 	預設
+				                                 	尚未填寫
 				                        </td>
 				                    </tr>
 				                    <tr class="ncTr">        
@@ -103,7 +103,7 @@
 				                            </strong>
 				                        </td>
 				                        <td class="text-primary ncName">
-				                           	預設
+				                           	尚未填寫
 				                        </td>
 				                    </tr>
 				                    <tr class="gnTr">        
@@ -114,7 +114,7 @@
 				                            </strong>
 				                        </td>
 				                        <td class="text-primary gender">
-				                           	預設
+				                           	尚未填寫
 				                        </td>
 				                    </tr>
 				
@@ -126,7 +126,7 @@
 				                            </strong>
 				                        </td>
 				                        <td class="text-primary email">
-				                            	預設
+				                            	尚未填寫
 				                        </td>
 				                    </tr>
 				
@@ -139,7 +139,7 @@
 				                            </strong>
 				                        </td>
 				                        <td class="text-primary group">
-				                            	預設
+				                            	尚未填寫
 				                        </td>
 				                    </tr>
 				                    <tr class="exTr">        
@@ -150,7 +150,7 @@
 				                            </strong>
 				                        </td>
 				                        <td class="text-primary exp">
-				                            	預設
+				                            	尚未填寫
 				                        </td>
 				                    </tr>
 				                    <tr class="otTr">        
@@ -161,7 +161,7 @@
 				                            </strong>
 				                        </td>
 				                        <td class="text-primary other">
-				                            	預設
+				                            	尚未填寫
 				                        </td>
 				                    </tr>
 				                    <tr class="brTr">        
@@ -172,7 +172,7 @@
 				                            </strong>
 				                        </td>
 				                        <td class="text-primary birDate">
-				                             	預設
+				                             	尚未填寫
 				                        </td>
 				                    </tr>
 				                    <tr class="rgTr">        
@@ -183,7 +183,7 @@
 				                            </strong>
 				                        </td>
 				                        <td class="text-primary regDate">
-				                             	預設
+				                             	尚未填寫
 				                        </td>
 				                    </tr>
 				                    <tr>        
