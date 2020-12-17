@@ -8,27 +8,46 @@ $(function(){
         success:function(mbList){
             $.each(mbList, function(index, item){
                 $(".acTr").find(".account").text(item.account);
+                
                 $(".nmTr").find(".name").text(item.name);
+                $(".nmTr").find(".nmInp").val(item.name);
+
+
                 $(".ncTr").find(".ncName").text(item.memberInfo.neck_name);
+                $(".ncTr").find(".ncInp").val(item.memberInfo.neck_name);
+
                 let gender = item.memberInfo.gender;
                 if(gender == "male"){
                     $(".gnTr").find(".gender").text("男");
+                    $(".gnTr").find("#gnInp1").prop("checked", true);
                 }else if(gender == "female"){
                     $(".gnTr").find(".gender").text("女");
+                    $(".gnTr").find("#gnInp2").prop("checked", true);
                 }else if(gender == "x"){
                     $(".gnTr").find(".gender").text("X");
+                    $(".gnTr").find("#gnInp3").prop("checked", true);
                 }else if(gender == "mask"){
                     $(".gnTr").find(".mask").text("不透露");
+                    $(".gnTr").find("#gnInp4").prop("checked", true);
                 }
                 
                 $(".emTr").find(".email").text(item.email);
+                $(".emTr").find(".emInp").val(item.email);
+
+                $(".phTr").find(".phone").text(item.memberInfo.phone);
+                $(".phTr").find(".phInp").val(item.memberInfo.phone);
+
                 $(".gpTr").find(".group").text(item.memberStatus.name);
+                
                 $(".exTr").find(".exp").text(item.memberInfo.climb_ex);
+                $(".exTr").find(".exInp").val(item.memberInfo.climb_ex);
 
                 let birDate = item.memberInfo.birthday;
                 if(birDate != null){
                     let birDateJS = new Date(birDate);
                     $(".brTr").find(".birDate").text(getFormattedDate(birDateJS));
+                    $(".brTr").find(".brInp").val(getFormattedDate(birDateJS));
+
                 }
 
                 let regDate = item.reg_Date;
@@ -51,6 +70,7 @@ $(function(){
                 success:function(otherLs){
                     if(otherLs != null){
                         $(".otTr").find(".other").text(otherLs);
+                        $(".otTr").find(".otInp").text(otherLs);
                     }
                 }
 
@@ -67,7 +87,7 @@ function getFormattedDate(date){
     let month = (1 + date.getMonth()).toString().padStart(2, "0");
     let day = date.getDate().toString().padStart(2, "0");
 
-    return year + "/" + month + "/" + day;
+    return year + "-" + month + "-" + day;
 }
 
 
@@ -225,3 +245,40 @@ function confirmPwd(confirmPwd){
     }
 
 }
+
+
+//點擊修改會員資料按鈕
+$(".updateInfobtn").on("click", function(){
+    //toggle() 隱藏的顯示，顯示的隱藏
+    $(".nmTr").find(".hiddeninp").toggle();
+    $(".nmTr").find(".name").toggle();
+
+    $(".ncTr").find(".hiddeninp").toggle();
+    $(".ncTr").find(".ncName").toggle();
+
+    $(".gnTr").find(".hiddeninp").toggle();
+    $(".gnTr").find(".gender").toggle();
+
+    $(".emTr").find(".hiddeninp").toggle();
+    $(".emTr").find(".email").toggle();
+
+    $(".exTr").find(".hiddeninp").toggle();
+    $(".exTr").find(".exp").toggle();
+
+    $(".otTr").find(".hiddeninp").toggle();
+    $(".otTr").find(".other").toggle();
+
+    $(".brTr").find(".hiddeninp").toggle();
+    $(".brTr").find(".birDate").toggle();
+
+    $(".btnAction").find("#updateInfobtn").toggle();
+    $(".btnAction").find(".hiddeninp").toggle();
+})
+
+
+//修改會員資料
+$(".updateAction").on("click", function(){
+    let seqno = $(".seqno").val();
+
+
+})

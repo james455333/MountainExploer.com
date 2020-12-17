@@ -93,6 +93,11 @@
 				                        </td>
 				                        <td class="text-primary name">
 				                                 	尚未填寫
+				                            <div>
+				                            </div>
+				                        </td>
+				                        <td style="display:none" class="hiddeninp">
+					                        <input type="text" class="form-control nmInp">				                            	
 				                        </td>
 				                    </tr>
 				                    <tr class="ncTr">        
@@ -105,6 +110,9 @@
 				                        <td class="text-primary ncName">
 				                           	尚未填寫
 				                        </td>
+				                        <td style="display:none" class="hiddeninp">
+					                        <input type="text" class="form-control ncInp">				                            	
+				                        </td>
 				                    </tr>
 				                    <tr class="gnTr">        
 				                        <td>
@@ -115,6 +123,12 @@
 				                        </td>
 				                        <td class="text-primary gender">
 				                           	尚未填寫
+				                        </td>
+				                        <td style="display:none" class="hiddeninp">
+					                        <input type="radio" name="gnInp" id="gnInp1" class="gnInp" value="male">男
+					                        <input type="radio" name="gnInp" id="gnInp2" class="gnInp" value="female">女
+					                        <input type="radio" name="gnInp" id="gnInp3" class="gnInp" value="x">X
+					                        <input type="radio" name="gnInp" id="gnInp4" class="gnInp" value="mask">不透露				                            	
 				                        </td>
 				                    </tr>
 				
@@ -127,6 +141,23 @@
 				                        </td>
 				                        <td class="text-primary email">
 				                            	尚未填寫
+				                        </td>
+				                        <td style="display:none" class="hiddeninp">
+					                        <input type="text" class="form-control emInp">				                            	
+				                        </td>
+				                    </tr>
+				                    <tr class="phTr">        
+				                        <td>
+				                            <strong>
+				                                <span class="glyphicon glyphicon-bookmark text-primary"></span> 
+				                                	手機
+				                            </strong>
+				                        </td>
+				                        <td class="text-primary phone">
+				                            	尚未填寫
+				                        </td>
+				                        <td style="display:none" class="hiddeninp">
+					                        <input type="text" class="form-control phInp">				                            	
 				                        </td>
 				                    </tr>
 				
@@ -152,6 +183,9 @@
 				                        <td class="text-primary exp">
 				                            	尚未填寫
 				                        </td>
+				                        <td style="display:none" class="hiddeninp">
+					                        <input type="text" class="form-control exInp">				                            	
+				                        </td>
 				                    </tr>
 				                    <tr class="otTr">        
 				                        <td>
@@ -163,6 +197,9 @@
 				                        <td class="text-primary other">
 				                            	尚未填寫
 				                        </td>
+				                        <td style="display:none" class="hiddeninp">
+					                        <textarea name="otInp" rows="5" cols="20" class="form-control otInp"></textarea>				                            	
+				                        </td>
 				                    </tr>
 				                    <tr class="brTr">        
 				                        <td>
@@ -173,6 +210,9 @@
 				                        </td>
 				                        <td class="text-primary birDate">
 				                             	尚未填寫
+				                        </td>
+				                        <td style="display:none" class="hiddeninp">
+					                        <input type="text" class="form-control brInp">				                            	
 				                        </td>
 				                    </tr>
 				                    <tr class="rgTr">        
@@ -186,10 +226,14 @@
 				                             	尚未填寫
 				                        </td>
 				                    </tr>
-				                    <tr>        
+				                    <tr class="btnAction">        
 				                        <td>
 				                            
-				                            	<button type="button" class="btn btn-secondary updateInfo">修改會員資訊</button>
+				                            	<button type="button" id="updateInfobtn" class="btn btn-info updateInfobtn">修改會員資訊</button>
+				                            	<div style="display:none;inline" class="hiddeninp">
+				                            		<button type="button" id="updateAction" class="btn btn-primary updateAction">確認修改</button>
+				                            		<button type="button" style="margin-left:5px" id="reset" class="btn btn-danger reset">取消</button>
+				                            	</div>
 				                            
 				                        </td>
 				                        <td>				                             	
