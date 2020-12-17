@@ -64,7 +64,7 @@
 				        <div class="col-md-4">
 				            <img alt="會員頭貼" style="width:600px;" title="點此上傳頭貼" class="img-circle img-thumbnail isTooltip userFile" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" data-original-title="Usuario">
 				            <div style="display:none">
-				            	<input type="file" class="upFile">
+				            	<input type="file" class="userImg">
 				            	<input type="text" class="seqno" value="${Member.seqno}">
 				            </div>
 				        </div>
@@ -97,7 +97,7 @@
 				                            </div>
 				                        </td>
 				                        <td style="display:none" class="hiddeninp">
-					                        <input type="text" class="form-control nmInp" required="required">				                            	
+					                        <input type="text" class="form-control nmInp" placeholder="請填入至少兩個中文字元" required="required">				                            	
 				                        </td>
 				                    </tr>
 				                    <tr class="ncTr">        
@@ -157,7 +157,7 @@
 				                            	尚未填寫
 				                        </td>
 				                        <td style="display:none" class="hiddeninp">
-					                        <input type="text" class="form-control phInp" required="required">				                            	
+					                        <input type="text" class="form-control phInp" placeholder="09xxxxxxxx" required="required">				                            	
 				                        </td>
 				                    </tr>
 				
@@ -184,7 +184,7 @@
 				                            	尚未填寫
 				                        </td>
 				                        <td style="display:none" class="hiddeninp">
-					                        <input type="text" class="form-control exInp" required="required">				                            	
+					                        <input type="text" class="form-control exInp" placeholder="請填寫您的登山經驗" required="required">				                            	
 				                        </td>
 				                    </tr>
 				                    <tr class="otTr">        

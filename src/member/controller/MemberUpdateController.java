@@ -204,34 +204,33 @@ public class MemberUpdateController {
 	
 	
 	//上傳、更新圖片
-	@RequestMapping(path = "/member/imgUpdateAction", method = RequestMethod.POST)
-	public String processImageUpdate(
-						@RequestParam(name = "userSeqImg")int seqno,
-						@RequestParam(name = "userFile")MultipartFile userFile,
+	@ResponseBody
+	@GetMapping(path = "/member/imgUpdateAction")
+	public boolean processImageUpdate(
+						int seqno,
+						MultipartFile userImg,
 						Model m) throws SerialException, IOException, SQLException {
 		
 		MemberBasic mb = mbService.select(seqno);
-		Map<String, String> errors = new HashMap<String, String>();
-		m.addAttribute("errors", errors);
+		
 		
 		System.out.println("=================開始上傳圖片");
 		
-		if(userFile == null) {
-			errors.put("msg", "請上傳圖片檔案");
-			return "member/info/memberImageUpload";
+		if(userImg == null) {
+			return false;
 		}
 		
 		
-		String fileName = userFile.getOriginalFilename();
+		String fileName = userImg.getOriginalFilename();
 		mb.getMemberInfo().setImg_name(fileName);
-		mb.getMemberInfo().setMultipartFile(userFile);
+		mb.getMemberInfo().setMultipartFile(userImg);
 		
 		mbService.updateData(mb);
 		m.addAttribute("Member", mb);
 		m.addAttribute("result", "圖片上傳成功");
 		System.out.println("圖片上傳成功");
 		
-		return "member/info/memberFormalInfo";
+		return true;
 		
 	}
 

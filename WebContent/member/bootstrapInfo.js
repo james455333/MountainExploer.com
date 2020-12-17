@@ -494,3 +494,50 @@ function chkBirDate(chkBirDate){
         return false;
     }
 }
+
+
+//上傳圖片
+$(".userFile").on("click", function(){
+    // $(".userImg").click();
+    $(".userImg").on("click", function(){
+        let seqno = $(".seqno").val();
+        let userImg = $(".userImg").val();
+
+        $.ajax({
+            method:"GET",
+            url:"/MountainExploer.com/member/imgUpdateAction",
+            data:{
+                seqno:seqno,
+                userImg:userImg
+            },
+            dataType:"json",
+            success:function(data){
+                if(data){
+                    Swal.fire({
+                        icon:"success",
+                        title:"上傳成功"
+                    }).then(function(){
+                        window.location.reload();
+                    })
+                }else{
+                    Swal.fire({
+                        icon:"error",
+                        title:"上傳失敗",
+                        text:"請重新選擇檔案再次上傳或聯絡管理員"  
+                    }).then(function(){
+                        window.location.reload();
+                    })
+                }
+            },
+            error:function(){
+                Swal.fire({
+                    icon:"error",
+                    title:"上傳過程出現錯誤請聯絡管理員"
+                }).then(function(){
+                    window.location.reload();
+                })
+            }
+
+        })
+    })
+})
