@@ -131,17 +131,17 @@
 			</tr>
 				<tr>
 					<td colspan="6">收貨人姓名： 
-						<input size="20" required type="text" name="receiver" pattern="^[\u4e00-\u9fa5_a-zA-Z]+$" placeholder="僅能輸入中文或英文">
+						<input size="20" required type="text" id="name" name="receiver" pattern="^[\u4e00-\u9fa5_a-zA-Z]+$" placeholder="僅能輸入中文或英文">
 					</td>
 				</tr>
 				<tr>
-					<td colspan="6">收貨地址： <Input size="60" type="text" required
+					<td colspan="6">收貨地址： <Input size="60" id="address" type="text" required
 						name="shippingAddress" placeholder="請輸入收貨地址">
 					</td>
 				</tr>
 				<tr>
 					<td colspan="6">連絡電話：
-					<input   required size="20" type="text" minlength="10" maxlength="10" pattern="^09[0-9]{8}" name="invoiceTitle" placeholder="範例 : 0912345678">
+					<input   required size="20" type="text" id="cell" minlength="10" maxlength="10" pattern="^09[0-9]{8}" name="invoiceTitle" placeholder="範例 : 0912345678">
 					</td>
 				</tr>
 				<TR>
@@ -162,6 +162,10 @@
 			<TR>
 				<TD colspan="6" align="center"><A id="demo3"
 					href="<c:url value='/shoppingcart/abort' />">刪除訂單</A></TD>
+			</TR>
+			<TR>
+				<TD colspan="6" align="center">
+									<input type="button" value="快速輸入" id="fast">
 			</TR>
 	</TABLE>
 
@@ -196,6 +200,14 @@
 	$(function() {
 		$("#backPreviousPage").on("click", function() {
 			window.history.go(-1)
+		})
+	})
+	
+	$(function() {
+		$("#fast").on("click", function() {
+			$('#name').val("資策會");
+			$('#address').val("桃園市中壢區中大路");
+			$('#cell').val("0912345678");
 		})
 	})
 </script>
