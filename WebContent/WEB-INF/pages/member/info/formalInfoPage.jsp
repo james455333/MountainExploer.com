@@ -188,13 +188,12 @@
 				                    </tr>
 				                    <tr>        
 				                        <td>
-				                            <strong>
+				                            
 				                            	<button type="button" class="btn btn-secondary updateInfo">修改會員資訊</button>
-				                                
-				                            </strong>
+				                            
 				                        </td>
-				                        <td class="text-primary">
-				                             	
+				                        <td>				                             	
+				                                <button type="button" class="btn btn-secondary updatePwd">修改密碼</button>
 				                        </td>
 				                    </tr>                                  
 				                </tbody>

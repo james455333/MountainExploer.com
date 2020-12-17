@@ -111,32 +111,12 @@ public class MemberPasswordController {
 	}
 	
 	
-	@RequestMapping(path = "/member/memberPwdChangeAction", method = RequestMethod.POST)
-	public String processUpdatePwd(@RequestParam(name = "seqnoPwd")int seqno,
+	@ResponseBody
+	@GetMapping(path = "/member/memberPwdChangeAction")
+	public boolean processUpdatePwd(@RequestParam(name = "seqnoPwd")int seqno,
 								   @RequestParam(name = "password")String password,
 								   @RequestParam(name = "updatePwd")String updatePwd,
-								   @RequestParam(name = "chkPwd")String chkPwd,
 								   Model m) {
-		Map<String, String> errors = new HashMap<String, String>();
-		m.addAttribute("errors", errors);
-//		MemberBasic mb = new MemberBasic();
-		
-		
-		if(password == null || password.length() == 0) {
-			errors.put("password", "請輸入舊密碼");
-		}
-		
-		if(updatePwd == null || updatePwd.length() == 0) {
-			errors.put("updatePwd", "請輸入新密碼");
-		}
-		
-		if(chkPwd == null || chkPwd.length() == 0) {
-			errors.put("chkPwd", "請再次輸入新密碼");
-		}
-		
-		if(errors != null && !errors.isEmpty()) {
-			return "member/info/memberFormalInfo";
-		}
 		
 		
 		System.out.println("=============user seqno:" + seqno);
@@ -154,16 +134,16 @@ public class MemberPasswordController {
 				queryMb.setPassword(updatePwd);
 				MemberBasic updateMb = mbService.updateData(queryMb);
 				m.addAttribute("Member", updateMb);
-				m.addAttribute("result", "密碼修改成功");
+				
 				System.out.println("密碼修改成功");
-				return "member/info/memberFormalInfo";
+				return true;
 			}else {
-				errors.put("errors", "舊密碼不正確，修改失敗");
-				System.out.println("舊密碼不正確，修改失敗");
+				
+				return false;
 			}
 		}
 		
-		return "member/info/memberFormalInfo";
+		return false;
 	}
 	
 
