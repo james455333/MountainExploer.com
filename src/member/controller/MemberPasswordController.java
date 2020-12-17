@@ -113,9 +113,9 @@ public class MemberPasswordController {
 	
 	@ResponseBody
 	@GetMapping(path = "/member/memberPwdChangeAction")
-	public boolean processUpdatePwd(@RequestParam(name = "seqnoPwd")int seqno,
-								   @RequestParam(name = "password")String password,
-								   @RequestParam(name = "updatePwd")String updatePwd,
+	public boolean processUpdatePwd(int seqno,
+								   String password,
+								   String updatePwd,
 								   Model m) {
 		
 		

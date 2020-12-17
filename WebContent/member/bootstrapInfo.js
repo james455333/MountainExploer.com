@@ -72,7 +72,7 @@ function getFormattedDate(date){
 
 
 //修改密碼
-$(".updatePwd").on("click", function(){
+$(".updatePwdbtn").on("click", function(){
     let seqno = $(".seqno").val();
     Swal.fire({
         title:"修改密碼",
@@ -94,6 +94,11 @@ $(".updatePwd").on("click", function(){
             if(!oldPwd || !updatePwd || !chkPwd){
                 Swal.showValidationMessage(`請輸入舊密碼與新密碼`);
             }
+
+            if(confirmPwd(updatePwd) == false){
+                Swal.showValidationMessage(`密碼必須包含大小寫英文字母與數字，可包含特殊字元!@#$%^&*`);
+            }
+
 
             if(updatePwd != chkPwd){
                 Swal.showValidationMessage(`驗證密碼與新密碼不相符`);
@@ -181,7 +186,7 @@ $(".updatePwd").on("click", function(){
             })
 
         }else{
-            window.location.reload();
+            
         }
 
     })
@@ -189,7 +194,34 @@ $(".updatePwd").on("click", function(){
 
 
 //驗證密碼
-function confirmPwd(password){
-    
+function confirmPwd(confirmPwd){
+    let re = new RegExp(/[A-Za-z]+[0-9]/);
+    let re2 = new RegExp(/[0-9]+[A-Za-z]/);
+    let re3 = new RegExp(/[A-Za-z0-9]+[!@#$%^&*]/);
+    let re4 = new RegExp(/[!@#$%^&*]+[A-Za-z0-9]/);
+    let flag = false;
+
+    if(confirmPwd.match(re)){
+        flag = true;
+        console.log("re");
+    }else if(confirmPwd.match(re2)){
+        flag = true;
+        console.log("re2");
+    }else if(confirmPwd.match(re3)){
+        flag = true;
+        console.log("re3");
+    }else if(confirmPwd.match(re4)){
+        flag = true;
+        console.log("re4");
+    }else{
+        flag = false;
+        console.log("false");
+    }
+
+    if(flag){
+        return true;
+    }else{
+        return flag;
+    }
 
 }

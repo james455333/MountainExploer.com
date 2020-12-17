@@ -193,7 +193,7 @@
 				                            
 				                        </td>
 				                        <td>				                             	
-				                                <button type="button" class="btn btn-secondary updatePwd">修改密碼</button>
+				                                <button type="button" class="btn btn-secondary updatePwdbtn">修改密碼</button>
 				                        </td>
 				                    </tr>                                  
 				                </tbody>
