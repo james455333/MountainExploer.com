@@ -126,6 +126,20 @@ public class MemberDAO {
 		return list;
 	}
 	
+	public List<MemberBasic> selectInfo(int seqno){
+		Session session = sessionFactory.getCurrentSession();
+		Query<MemberBasic> query = session.createQuery("From MemberBasic where seqno = ?0", MemberBasic.class);
+		query.setParameter(0, seqno);
+		
+		List<MemberBasic> mb = query.list();
+		
+		for(MemberBasic mbList : mb) {
+			
+		}
+		
+		return mb;
+		
+	}
 	
 	
 	

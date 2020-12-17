@@ -145,19 +145,20 @@ public class MemberUpdateController {
 	}
 	
 	
-	@RequestMapping(path = "/member/memberInfoUpdateAction", method = RequestMethod.POST)
-	public String processInfoUpdate(@RequestParam(name = "seqno")int seqno,
-									@RequestParam(name = "memberInfo.neck_name")String ncName,
-									@RequestParam(name = "name")String name,
-									@RequestParam(name = "memberInfo.gender")String gender,
-									@RequestParam(name = "memberInfo.birthday", required = false)String birDate,
-									@RequestParam(name = "memberInfo.phone")String phone,
-									@RequestParam(name = "email")String email,
-									@RequestParam(name = "memberInfo.climb_ex")String exp,
-									@RequestParam(name = "memberInfo.other", required = false)String other,
+	@ResponseBody
+	@GetMapping(path = "/member/memberInfoUpdateAction")
+	public boolean processInfoUpdate(int seqno,
+									String name,
+									String ncName,
+									String gender,
+									String email,
+									String phone,
+									String exp,
+									String other,
+									String birDate,
 									Model m
 									) throws ParseException {
-		Map<String, String> errors = new HashMap<String, String>();
+		
 	
 		//String Data(sql)轉型
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -183,16 +184,17 @@ public class MemberUpdateController {
 			
 			mbService.updateData(queryMb);
 			m.addAttribute("Member", queryMb);
-			m.addAttribute("result", "會員資料更新成功");
+			
 			System.out.println("會員資料更新成功");
 			
-			return "member/info/memberFormalInfo";
+			return true;
 		} else {
-			errors.put("errors", "會員資料更新失敗");
+			
 			System.out.println("會員資料更新失敗");
+			return false;
 		}
 		
-		return "member/info/formalUpdateInfo";
+		
 	}
 
 	@RequestMapping(path = "/member/memberImageUploadEntry", method = RequestMethod.GET)
@@ -202,34 +204,33 @@ public class MemberUpdateController {
 	
 	
 	//上傳、更新圖片
-	@RequestMapping(path = "/member/imgUpdateAction", method = RequestMethod.POST)
-	public String processImageUpdate(
-						@RequestParam(name = "userSeqImg")int seqno,
-						@RequestParam(name = "userFile")MultipartFile userFile,
+	@ResponseBody
+	@GetMapping(path = "/member/imgUpdateAction")
+	public boolean processImageUpdate(
+						int seqno,
+						MultipartFile userImg,
 						Model m) throws SerialException, IOException, SQLException {
 		
 		MemberBasic mb = mbService.select(seqno);
-		Map<String, String> errors = new HashMap<String, String>();
-		m.addAttribute("errors", errors);
+		
 		
 		System.out.println("=================開始上傳圖片");
 		
-		if(userFile == null) {
-			errors.put("msg", "請上傳圖片檔案");
-			return "member/info/memberImageUpload";
+		if(userImg == null) {
+			return false;
 		}
 		
 		
-		String fileName = userFile.getOriginalFilename();
+		String fileName = userImg.getOriginalFilename();
 		mb.getMemberInfo().setImg_name(fileName);
-		mb.getMemberInfo().setMultipartFile(userFile);
+		mb.getMemberInfo().setMultipartFile(userImg);
 		
 		mbService.updateData(mb);
 		m.addAttribute("Member", mb);
 		m.addAttribute("result", "圖片上傳成功");
 		System.out.println("圖片上傳成功");
 		
-		return "member/info/memberFormalInfo";
+		return true;
 		
 	}
 

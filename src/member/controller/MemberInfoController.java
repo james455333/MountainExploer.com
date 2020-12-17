@@ -39,7 +39,7 @@ public class MemberInfoController {
 	
 	@RequestMapping(path = "/member/memberInfoEntry", method = RequestMethod.GET)
 	public String processInfoEntry() {
-		return "member/info/memberFormalInfo";
+		return "member/info/formalInfoPage";
 	}
 	
 	@RequestMapping(path = "/member/memberFormalFirstInfoEntry", method = RequestMethod.GET)
@@ -90,10 +90,21 @@ public class MemberInfoController {
 	}
 	
 	
+	//單獨查詢
+	@ResponseBody
+	@GetMapping(path = "/member/selectSgInfoAction")
+	public List<MemberBasic> processInfoSelece(int seqno){
+		List<MemberBasic> mbList = mbService.selectInfo(seqno);
+		return mbList;
+	}
+	
+	
+	
 	//讀取圖片
-	@RequestMapping(path = "/member/showUserImg")
-	public ResponseEntity<byte[]> showUserImg(@RequestParam(name = "userSeq")int userSeq){
-		MemberBasic mb = mbService.select(userSeq);
+	@ResponseBody
+	@GetMapping(path = "/member/showUserImg")
+	public ResponseEntity<byte[]> showUserImg(@RequestParam(name = "seqno")int seqno){
+		MemberBasic mb = mbService.select(seqno);
 		Blob userImg = mb.getMemberInfo().getPer_img();
 		byte[] imgContent = mbService.blobToBytes(userImg);
 		HttpHeaders headers = new HttpHeaders();
