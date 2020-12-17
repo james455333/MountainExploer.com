@@ -187,6 +187,13 @@ public class HouseInfoBeanDAO implements IHouseInfoBeanService  {
 		return result;
 	}
 	
+	@Override
+	public List<HouseInfoBean> allhouseid(){
+		Query<HouseInfoBean> query = getSession().createQuery("From HouseInfoBean", HouseInfoBean.class);
+		List<HouseInfoBean> list = query.list();
+		return list;
+		
+	}
 	
 }	
 		

@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>露營小天地</title>
+<title>會員  露營地 訂單</title>
 <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
 <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
 <link rel="stylesheet"
@@ -126,6 +126,7 @@ transition: all 0.6s;}
 					<tbody class="order-table-tb">
 						<!-- tbody更改從這邊開始 -->
 <!-- 	露營star					 -->
+						<div><h1>露營地訂單</h1></div>
 						<c:forEach var="i" items="${memberorder}">
 						
 							<tr>
@@ -251,125 +252,125 @@ transition: all 0.6s;}
 <!-- 露營end -->
 
  <!-- 小屋star -->
-						<c:forEach var="i" items="${memberhouseorder}">
-						<div><h1>山屋訂單</h1></div>
-							<tr>
-								<td>${i.orderid}</td>
-								<td>${i.peoplename}</td>
-								<td>露營地&nbsp:&nbsp${i.campamount}區<p>小屋&nbsp:&nbsp${i.bedamount}床</p></td>
+<%-- 						<c:forEach var="i" items="${memberhouseorder}"> --%>
+<!-- 						<div><h1>山屋訂單</h1></div> -->
+<!-- 							<tr style="font-size:20px"> -->
+<%-- 								<td>${i.orderid}</td> --%>
+<%-- 								<td>${i.peoplename}</td> --%>
+<!-- 								<td>露營地&nbsp:&nbsp${i.campamount}區<p>小屋&nbsp:&nbsp${i.bedamount}床</p></td> -->
 								
-								<td>${i.shoppingdate}</td>
-								<td>${i.daterange}</td>
-								<td>${i.housebasicid.nationalPark.name}</td>
-								<td><a href="jumpCampDesc?selectcampid=${i.housebasicid.housebasicid}">${i.housebasicid.name}</a></td>
-								<td class="img"><c:choose>
-										<c:when test="${empty i.housebasicid.imgid.img }">
-											<img height="100" width="100"src="/MountainExploer.com/housecamp/images/campnull.PNG">
-										</c:when>
-										<c:when test="${not empty i.housebasicid.imgid.img }">
-											<img height="100"width="100"src="<c:url value='/mountainCampBack/showimg?imgid=${i.housebasicid.imgid.id}'/>">
-										</c:when>
-									</c:choose></td>
-<!-- 								星星評分 -->
-								<td>
-									<p>
-										<c:choose>
-											<c:when
- 												test="${(i.housebasicid.star*1.0 / i.housebasicid.clickcount) lt 1 || empty i.housebasicid.star}"> 
-												<span><img class="images"
- 													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span> 
- 											</c:when> 
- 											<c:when 
- 												test="${ i.housebasicid.star*1.0/i.housebasicid.clickcount ge 1 && i.housebasicid.star*1.0/i.housebasicid.clickcount lt 2}"> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span> 
- 											</c:when> 
- 											<c:when 
- 												test="${i.housebasicid.star*1.0/i.housebasicid.clickcount ge 2 && i.housebasicid.star*1.0/i.housebasicid.clickcount lt 3}"> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span> 
- 											</c:when> 
- 											<c:when 
- 												test="${i.housebasicid.star*1.0/i.housebasicid.clickcount ge 3 && i.housebasicid.star*1.0/i.housebasicid.clickcount lt 4}"> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span> 
- 											</c:when> 
- 											<c:when 
- 												test="${i.housebasicid.star*1.0/i.housebasicid.clickcount ge 4 && i.housebasicid.star*1.0/i.housebasicid.clickcount lt 4.8}"> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span> 
- 											</c:when> 
- 											<c:when test="${i.housebasicid.star*1.0/i.housebasicid.clickcount ge 4.8}"> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span> 
- 												<span><img class="images" 
- 													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span> 
- 											</c:when> 
- 										</c:choose> 
- 									</p>  星星結束  <c:choose> 
- 										<c:when test="${empty i.housebasicid.clickcount}"> 
- 											<p class="clickcount">無人評分</p> 
- 										</c:when> 
- 										<c:otherwise> 
- 											<p class="clickcount">${i.housebasicid.clickcount}人評分過</p> 
- 										</c:otherwise> 
- 									</c:choose> 
- 								</td> 
- 								<td> 
- 								<form action="<c:url value='/mountaincCampActOrder/deletecamporder'></c:url>"> 
- 									<input type="hidden" name="deleteorderid" value="${i.orderid}"> 
- 									<input type="button" value="刪除" 
- 										onclick="if(confirm('確認要刪除嗎？')) this.form.submit();"> 
- 								</form> 
- 								</td> 
- 							</tr> 
- 						</c:forEach> 
+<%-- 								<td>${i.shoppingdate}</td> --%>
+<%-- 								<td>${i.daterange}</td> --%>
+<%-- 								<td>${i.housebasicid.nationalPark.name}</td> --%>
+<%-- 								<td><a href="jumpCampDesc?selectcampid=${i.housebasicid.housebasicid}">${i.housebasicid.name}</a></td> --%>
+<%-- 								<td class="img"><c:choose> --%>
+<%-- 										<c:when test="${empty i.housebasicid.imgid.img }"> --%>
+<!-- 											<img height="100" width="100"src="/MountainExploer.com/housecamp/images/campnull.PNG"> -->
+<%-- 										</c:when> --%>
+<%-- 										<c:when test="${not empty i.housebasicid.imgid.img }"> --%>
+<%-- 											<img height="100"width="100"src="<c:url value='/mountainCampBack/showimg?imgid=${i.housebasicid.imgid.id}'/>"> --%>
+<%-- 										</c:when> --%>
+<%-- 									</c:choose></td> --%>
+<!-- <!-- 								星星評分 --> -->
+<!-- 								<td> -->
+<!-- 									<p> -->
+<%-- 										<c:choose> --%>
+<%-- 											<c:when --%>
+<%--  												test="${(i.housebasicid.star*1.0 / i.housebasicid.clickcount) lt 1 || empty i.housebasicid.star}">  --%>
+<!-- 												<span><img class="images" -->
+<!--  													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>  -->
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>  -->
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>  -->
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>  -->
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>  -->
+<%--  											</c:when>  --%>
+<%--  											<c:when  --%>
+<%--  												test="${ i.housebasicid.star*1.0/i.housebasicid.clickcount ge 1 && i.housebasicid.star*1.0/i.housebasicid.clickcount lt 2}">  --%>
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>  -->
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>  -->
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>  -->
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>  -->
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>  -->
+<%--  											</c:when>  --%>
+<%--  											<c:when  --%>
+<%--  												test="${i.housebasicid.star*1.0/i.housebasicid.clickcount ge 2 && i.housebasicid.star*1.0/i.housebasicid.clickcount lt 3}">  --%>
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>  -->
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>  -->
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>  -->
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>  -->
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>  -->
+<%--  											</c:when>  --%>
+<%--  											<c:when  --%>
+<%--  												test="${i.housebasicid.star*1.0/i.housebasicid.clickcount ge 3 && i.housebasicid.star*1.0/i.housebasicid.clickcount lt 4}">  --%>
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>  -->
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>  -->
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>  -->
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>  -->
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>  -->
+<%--  											</c:when>  --%>
+<%--  											<c:when  --%>
+<%--  												test="${i.housebasicid.star*1.0/i.housebasicid.clickcount ge 4 && i.housebasicid.star*1.0/i.housebasicid.clickcount lt 4.8}">  --%>
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>  -->
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>  -->
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>  -->
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>  -->
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>  -->
+<%--  											</c:when>  --%>
+<%--  											<c:when test="${i.housebasicid.star*1.0/i.housebasicid.clickcount ge 4.8}">  --%>
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>  -->
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>  -->
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>  -->
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>  -->
+<!--  												<span><img class="images"  -->
+<!--  													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>  -->
+<%--  											</c:when>  --%>
+<%--  										</c:choose>  --%>
+<%--  									</p>  星星結束  <c:choose>  --%>
+<%--  										<c:when test="${empty i.housebasicid.clickcount}">  --%>
+<!--  											<p class="clickcount">無人評分</p>  -->
+<%--  										</c:when>  --%>
+<%--  										<c:otherwise>  --%>
+<%--  											<p class="clickcount">${i.housebasicid.clickcount}人評分過</p>  --%>
+<%--  										</c:otherwise>  --%>
+<%--  									</c:choose>  --%>
+<!--  								</td>  -->
+<!--  								<td>  -->
+<%--  								<form action="<c:url value='/mountaincCampActOrder/deletecamporder'></c:url>">  --%>
+<%--  									<input type="hidden" name="deleteorderid" value="${i.orderid}">  --%>
+<!--  									<input type="button" value="刪除"  -->
+<!--  										onclick="if(confirm('確認要刪除嗎？')) this.form.submit();">  -->
+<!--  								</form>  -->
+<!--  								</td>  -->
+<!--  							</tr>  -->
+<%--  						</c:forEach>  --%>
  <!-- 小屋end --> 
 
 					

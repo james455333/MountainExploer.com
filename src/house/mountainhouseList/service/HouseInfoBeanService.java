@@ -87,4 +87,11 @@ public class HouseInfoBeanService implements IHouseInfoBeanService {
 
 
 
+	@Override
+	public List<HouseInfoBean> allhouseid() {
+		return hDAO.allhouseid();
+	}
+
+
+
 }

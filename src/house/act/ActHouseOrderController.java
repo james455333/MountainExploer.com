@@ -111,12 +111,17 @@ public class ActHouseOrderController {
 		if (m.getAttribute("Member") == null) {
 			return "redirect:/member/memberLoginEntry";
 		}
+		
 		MemberBasic mb = (MemberBasic) m.getAttribute("Member");
 		Integer memberid = mb.getSeqno();
 		List<HouseOrderBean> list = houseOrderService.selectmemberid(memberid);
 		System.out.println("+++++++++++++++++++" + list);
+		String membername = mb.getName();
+		
+		
+		m.addAttribute("membername",membername);
 		m.addAttribute("memberhouseorder",list);
-		return "house/act/MemberOrder";
+		return "house/act/HouseMemberOrder";
 
 	}
 	
@@ -124,7 +129,7 @@ public class ActHouseOrderController {
 	public String deleteHouseOrder(Model m,@RequestParam(name = "deleteorderid")Integer houseorderid) {
 		
 		houseOrderService.deleteHouseOrder(houseorderid);
-		return "redirect:/mountaincCampActOrder/selecthouseorder";
+		return "redirect:/mountainHouseActOrder/selecthouseorder";
 
 	}
 	

@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>露營地</title>
+<title>岳進小屋訂單</title>
 <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
 <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
 <link rel="stylesheet"
@@ -131,7 +131,7 @@ div{margin: 20px;}
 						<div align="left"><h4>
 							<c:forEach var="j" items="${list}">
 								<!-- 訂房日期 -->
-								<div><h5>${j.nationalPark.name}&nbsp${j.name}</h5></div>
+								<div><h3>${j.nationalPark.name}&nbsp${j.name}</h3></div>
 								<div>
 									入住時間 : <input type="hidden" name="houseorder_bookdate" value="${selectdate}"><a style="color: blue">${selectdate}</a>&nbsp&nbsp 共 ${bookneight} 晚
 										<input type="hidden" id="shoppingdate" name="houseorder_shoppingdate" size="45" readonly>

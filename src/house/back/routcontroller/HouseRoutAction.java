@@ -57,9 +57,18 @@ public class HouseRoutAction {
 		int totalPage = (int) Math.ceil(totalData * 1.0 / 10);
 		List<HouseInfoBean> list = houseService.selectAllHouse(page, 10, no, parkid, star, clickcount);
 		
+		int AllHouse = houseService.countParkHouse();
+		
+		m.addAttribute("AllHouse",AllHouse);
+		
+//		List<HouseInfoBean> allhouse  = houseService.allhouseid();
+//		for (HouseInfoBean houseInfoBean : allhouse) {
+//			Integer allhouseid = houseInfoBean.getHousebasicid();
+//			System.out.println("++++++++++++++++"+allhouseid);
+//			m.addAttribute("allhouseid",allhouseid);
+//		}
 		
 		
-	
 		m.addAttribute("House_All", list);
 		m.addAttribute("totalData", totalData);
 		m.addAttribute("totalPage", totalPage);

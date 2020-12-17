@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="javax.naming.Context"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="zh-tw">
 
@@ -146,44 +147,6 @@
 					<div class='row'>
 
 						<div class="col-xl-4 col-md-6 mb-4">
-							<div class="card border-left-primary shadow h-100 py-2">
-								<div class="card-body">
-									<div class="row no-gutters align-items-center">
-										<div class="col mr-2">
-											<div
-												class="text-s font-weight-bold text-primary text-uppercase mb-1">
-												縣市總數量</div>
-											<div id="rt-total-num"
-												class="h5 mb-0 font-weight-bold text-gray-600">${areacount}區</div>
-										</div>
-										<div class="col-auto">
-											<i class="fa fa-flag fa-2x" style="color: #339af0;"
-												aria-hidden="true"></i>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-4 col-md-6 mb-4">
-							<div class="card border-left-success shadow h-100 py-2">
-								<div class="card-body">
-									<div class="row no-gutters align-items-center">
-										<div class="col mr-2">
-											<div
-												class="text-s font-weight-bold text-success text-uppercase mb-1">
-												鄉鎮總數量</div>
-											<div id="rt-able-num"
-												class="h5 mb-0 font-weight-bold text-gray-600">${countiescount}區</div>
-										</div>
-										<div class="col-auto">
-											<i class="fa fa-flag fa-2x" style="color: #51cf66;"
-												aria-hidden="true"></i>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-4 col-md-6 mb-4">
 							<div class="card border-left-danger shadow h-100 py-2">
 								<div class="card-body">
 									<div class="row no-gutters align-items-center">
@@ -192,7 +155,7 @@
 												class="text-s font-weight-bold text-danger text-uppercase mb-1">
 												岳進小屋總數量</div>
 											<div id="rt-forbid-num"
-												class="h5 mb-0 font-weight-bold text-gray-600">${Alldata}區</div>
+												class="h5 mb-0 font-weight-bold text-gray-600">${AllHouse}區</div>
 										</div>
 										<div class="col-auto">
 											<i class="fa fa-flag fa-2x" style="color: #ff6b6b;"
@@ -257,48 +220,7 @@
 							</div>
 						</div>
 
-						<div class="col-xl-6 col-lg-7">
-							<div class="card shadow mb-4">
-								<!-- Card Header - Dropdown -->
-								<div
-									class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-									<h6 class="m-0 font-weight-bold text-primary">鄉鎮 - 露營地比例</h6>
-									<div class="ml-auto px-2 no-arrow">
-										<a href="#" role="button" class="chart-reset"> <i
-											class="fas fa-sm fa-fw fa-sync"></i>
-										</a>
-									</div>
-									<div class="dropdown no-arrow">
-										<a class="dropdown-toggle" href="#" role="button"
-											id="dropdownMenuLink" data-toggle="dropdown"
-											aria-haspopup="true" aria-expanded="false"> <i
-											class="fas fa-ellipsis-v fa-sm fa-fw text-gray-800"></i>
-										</a>
-
-										<div
-											class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-											aria-labelledby="dropdownMenuLink">
-											<div class="dropdown-header">顯示圖像變化</div>
-											<button class="dropdown-item countRt-chart" value='pie'>圓餅圖</button>
-											<button class="dropdown-item countRt-chart" value='doughnut'>甜甜圈圖</button>
-											<button class="dropdown-item countRt-chart" value='bar'>長條圖(直)</button>
-											<button class="dropdown-item countRt-chart"
-												value='horizontalBar'>長條圖(橫)</button>
-											<div class="dropdown-divider">分隔線</div>
-											<button class="dropdown-item" id="countRt-export">輸出為PNG檔</button>
-											<button class="dropdown-item" id="countRt-export-json">輸出為JSON檔</button>
-										</div>
-									</div>
-								</div>
-								<!-- Card Body -->
-								<div class="card-body">
-									<div class="chart-area">
-										<canvas id="countRtChart"></canvas>
-									</div>
-
-								</div>
-							</div>
-						</div>
+						
 					</div>
 					<div class="row">
 						<!-- 下面開始 -->
@@ -450,8 +372,10 @@
 							<td>${i.camp}區&nbspTWD&nbsp:&nbsp${i.campprice}</td>
 							<td>${i.height}</td>
 							
-							<td><a class="show" href="#show"  style="color: blue">點我看詳情.....more</a>
-							<span class="showme" id="showme" style="display:none">${i.desc}<a href="#showme"  style="color: red">隱藏內容</a></span></td>
+							<td>
+								<a class="show" href="#show"  style="color: blue">點我看詳情.....more</a>
+								<span class="showme" style="display:none">${i.desc}<a href="#showme"  style="color: red">隱藏內容</a></span>
+							</td>
 							
 							<c:choose>
 								<c:when test="${empty i.star}"><td>0</td></c:when>
@@ -463,7 +387,15 @@
 									<td>評分過${i.clickcount}次</td>
 								</c:otherwise>
 							</c:choose>
-							<td>平均${i.star/i.clickcount}分</td>
+							<td>
+								<c:choose>
+									<c:when test="${empty j.star}">0</c:when>
+									<c:otherwise>
+										(平均<fmt:formatNumber type="number"
+											value="${j.star*1.0 / j.clickcount} " maxFractionDigits="1" />分)		
+									</c:otherwise>
+								</c:choose>
+							</td>	
 							<td>
 								<c:choose>
 									<c:when test="${empty i.imgid.img }">
@@ -634,60 +566,66 @@
 				
 				}
 			})
+			$("body").on("click",".show",function(){
+				let thisShowme = $(this).siblings(".showme")
+// 				$(".showme").not(thisShowme).slideUp(250)
+				thisShowme.slideToggle();
+				$(this).toggle();
+			});
 
-				
-
-	$(".show").click(function(){
-		$(".show").slideToggle();
-		  $(".showme").slideToggle();
-		});
-
-			$(".showme").click(function(){
-				$(".showme").slideToggle();
-				  $(".show").slideToggle();
-				});
 			
+		
+
+		$("body").on("click",".showme",function(){
+			let thisShow = $(this).siblings(".show")
+			thisShow.slideToggle();
+			$(this).toggle();
+			
+		});
+			
+
+					
 // 			$('.tooltip-a').tooltip()
 			
 	
 			// 國家公園圓餅圖	
-			Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-			Chart.defaults.global.defaultFontColor = '#858796';
+// 			Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+// 			Chart.defaults.global.defaultFontColor = '#858796';
 
 		
 
-			// Pie Chart Example
-			var ctx = document.getElementById("myPieChart");
-			var myPieChart = new Chart(ctx, {
-			  type: 'doughnut',
-			  data: {
+// 			// Pie Chart Example
+// 			var ctx = document.getElementById("myPieChart");
+// 			var myPieChart = new Chart(ctx, {
+// 			  type: 'doughnut',
+// 			  data: {
 
-			    labels: [ "雪霸國家公園","太魯閣國家公園","玉山國家公園" ],
-			    datasets: [{
-			      data: [55, 30, 15],
-			      backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
-			      hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
-			      hoverBorderColor: "rgba(234, 236, 244, 1)",
-			    }],
-			  },
-			  options: {
-			    maintainAspectRatio: false,
-			    tooltips: {
-			      backgroundColor: "rgb(255,255,255)",
-			      bodyFontColor: "#858796",
-			      borderColor: '#dddfeb',
-			      borderWidth: 5,
-			      xPadding: 15,
-			      yPadding: 15,
-			      displayColors: false,
-			      caretPadding: 10,
-			    },
-			    legend: {
-			      display: true
-			    },
-			    cutoutPercentage: 80,
-			  },
-			});
+// 			    labels: [ "雪霸國家公園","太魯閣國家公園","玉山國家公園" ],
+// 			    datasets: [{
+// 			      data: [55, 30, 15],
+// 			      backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
+// 			      hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+// 			      hoverBorderColor: "rgba(234, 236, 244, 1)",
+// 			    }],
+// 			  },
+// 			  options: {
+// 			    maintainAspectRatio: false,
+// 			    tooltips: {
+// 			      backgroundColor: "rgb(255,255,255)",
+// 			      bodyFontColor: "#858796",
+// 			      borderColor: '#dddfeb',
+// 			      borderWidth: 5,
+// 			      xPadding: 15,
+// 			      yPadding: 15,
+// 			      displayColors: false,
+// 			      caretPadding: 10,
+// 			    },
+// 			    legend: {
+// 			      display: true
+// 			    },
+// 			    cutoutPercentage: 80,
+// 			  },
+// 			});
 		});
 // 圓餅圖	end -->		
 	</script>
