@@ -97,7 +97,7 @@
 				                            </div>
 				                        </td>
 				                        <td style="display:none" class="hiddeninp">
-					                        <input type="text" class="form-control nmInp">				                            	
+					                        <input type="text" class="form-control nmInp" required="required">				                            	
 				                        </td>
 				                    </tr>
 				                    <tr class="ncTr">        
@@ -111,7 +111,7 @@
 				                           	尚未填寫
 				                        </td>
 				                        <td style="display:none" class="hiddeninp">
-					                        <input type="text" class="form-control ncInp">				                            	
+					                        <input type="text" class="form-control ncInp" required="required">				                            	
 				                        </td>
 				                    </tr>
 				                    <tr class="gnTr">        
@@ -125,10 +125,10 @@
 				                           	尚未填寫
 				                        </td>
 				                        <td style="display:none" class="hiddeninp">
-					                        <input type="radio" name="gnInp" id="gnInp1" class="gnInp" value="male">男
-					                        <input type="radio" name="gnInp" id="gnInp2" class="gnInp" value="female">女
-					                        <input type="radio" name="gnInp" id="gnInp3" class="gnInp" value="x">X
-					                        <input type="radio" name="gnInp" id="gnInp4" class="gnInp" value="mask">不透露				                            	
+					                        <input type="radio" style="margin-left:3px" name="gnInp" id="gnInp1" class="gnInp" value="male" required="required">男
+					                        <input type="radio" style="margin-left:3px" name="gnInp" id="gnInp2" class="gnInp" value="female" required="required">女
+					                        <input type="radio" style="margin-left:3px" name="gnInp" id="gnInp3" class="gnInp" value="x" required="required">X
+					                        <input type="radio" style="margin-left:3px" name="gnInp" id="gnInp4" class="gnInp" value="mask" required="required">不透露				                            	
 				                        </td>
 				                    </tr>
 				
@@ -143,7 +143,7 @@
 				                            	尚未填寫
 				                        </td>
 				                        <td style="display:none" class="hiddeninp">
-					                        <input type="text" class="form-control emInp">				                            	
+					                        <input type="text" class="form-control emInp" required="required">				                            	
 				                        </td>
 				                    </tr>
 				                    <tr class="phTr">        
@@ -157,7 +157,7 @@
 				                            	尚未填寫
 				                        </td>
 				                        <td style="display:none" class="hiddeninp">
-					                        <input type="text" class="form-control phInp">				                            	
+					                        <input type="text" class="form-control phInp" required="required">				                            	
 				                        </td>
 				                    </tr>
 				
@@ -184,7 +184,7 @@
 				                            	尚未填寫
 				                        </td>
 				                        <td style="display:none" class="hiddeninp">
-					                        <input type="text" class="form-control exInp">				                            	
+					                        <input type="text" class="form-control exInp" required="required">				                            	
 				                        </td>
 				                    </tr>
 				                    <tr class="otTr">        
@@ -212,7 +212,7 @@
 				                             	尚未填寫
 				                        </td>
 				                        <td style="display:none" class="hiddeninp">
-					                        <input type="text" class="form-control brInp">				                            	
+					                        <input type="text" class="form-control brInp" placeholder="YYYY-MM-DD">				                            	
 				                        </td>
 				                    </tr>
 				                    <tr class="rgTr">        

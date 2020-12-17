@@ -145,19 +145,20 @@ public class MemberUpdateController {
 	}
 	
 	
-	@RequestMapping(path = "/member/memberInfoUpdateAction", method = RequestMethod.POST)
-	public String processInfoUpdate(@RequestParam(name = "seqno")int seqno,
-									@RequestParam(name = "memberInfo.neck_name")String ncName,
-									@RequestParam(name = "name")String name,
-									@RequestParam(name = "memberInfo.gender")String gender,
-									@RequestParam(name = "memberInfo.birthday", required = false)String birDate,
-									@RequestParam(name = "memberInfo.phone")String phone,
-									@RequestParam(name = "email")String email,
-									@RequestParam(name = "memberInfo.climb_ex")String exp,
-									@RequestParam(name = "memberInfo.other", required = false)String other,
+	@ResponseBody
+	@GetMapping(path = "/member/memberInfoUpdateAction")
+	public boolean processInfoUpdate(int seqno,
+									String name,
+									String ncName,
+									String gender,
+									String email,
+									String phone,
+									String exp,
+									String other,
+									String birDate,
 									Model m
 									) throws ParseException {
-		Map<String, String> errors = new HashMap<String, String>();
+		
 	
 		//String Data(sql)轉型
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -183,16 +184,17 @@ public class MemberUpdateController {
 			
 			mbService.updateData(queryMb);
 			m.addAttribute("Member", queryMb);
-			m.addAttribute("result", "會員資料更新成功");
+			
 			System.out.println("會員資料更新成功");
 			
-			return "member/info/memberFormalInfo";
+			return true;
 		} else {
-			errors.put("errors", "會員資料更新失敗");
+			
 			System.out.println("會員資料更新失敗");
+			return false;
 		}
 		
-		return "member/info/formalUpdateInfo";
+		
 	}
 
 	@RequestMapping(path = "/member/memberImageUploadEntry", method = RequestMethod.GET)
