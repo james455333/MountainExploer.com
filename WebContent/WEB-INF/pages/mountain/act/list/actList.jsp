@@ -23,7 +23,8 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
 	<!-- JQuery UI -->
 	<link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
-	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 	<!-- JQuery -->
 	<script type="text/javascript"
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -84,25 +85,25 @@
 				include-html="/MountainExploer.com/forinclude/includeForIndex.html"></div>
 		</nav>
 	</header>
+	<nav class="">
+		<ol class="breadcrumb" id="bc">
+			<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
+			<li class="breadcrumb-item active">活動討論區</li>
+		</ol>
+	</nav>
 	<div class="div_ul" id="text-loading">
 		<div class="div_li1"></div>
 		<div class="div_li3"></div>
-		<div class="div_li2">
+		<div class="div_li2 mt-3">
 			<!-- 每頁不同的內容從這裡開始 -->
-			<nav class="">
-				<ol class="breadcrumb" id="bc">
-					<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
-					<li class="breadcrumb-item active">活動討論區</li>
-				</ol>
-			</nav>
 			
 			<div class="d-flex mb-3">
 				<div class="btn-group btn-group-toggle mr-auto mx-2" data-toggle="buttons">
-				    <label class="btn btn-outline-primary active">
-				        <input type="radio" name="options" autocomplete="off" checked> 清單模式
+				    <label class="showMode btn btn-outline-primary">
+				        <input type="radio" name="mode" autocomplete="off" value="list"> 清單模式
 				    </label>
-				    <label class="btn btn-outline-primary">
-				        <input type="radio" name="options" autocomplete="off"> 圖片模式
+				    <label class="showMode btn btn-outline-primary active">
+				        <input type="radio" name="mode" autocomplete="off" value="image" checked> 圖片模式
 				    </label>
 				</div>
 				<div class="ml-auto mx-2">
@@ -153,7 +154,7 @@
 									</select>
 							</div>
 						</div>
-						<div class="d-inline-flex align-items-center mx-1">查詢筆數 :</div>
+						<div class="d-inline-flex align-items-center ml-auto mx-1" id="totalData">查詢筆數 :</div>
 						<!-- 控制列表內容到這邊結束 -->
 				</div>
 				
@@ -174,11 +175,34 @@
 				</nav>
 			</div>
 
-			<div class="m-sdc-adj">
+			<div class="m-sdc-adj" id="mode-container">
+                <div id="table-image" class="show-mode animate__animated  animate__zoomIn">
+					<div style="width:1000px; max-width: 1000px" class="p-2 border act-container d-none" >
+						<div style="width: auto;" class="p-1">
+							<div style="min-height: 200px;"class="image border">
+								<a><img style="width:100%; height:auto; min-height: 200px;" src=""></a>
+							</div>
+							<div class="title d-flex justify-content-start">
+								<div style="max-width:75%; overflow: hidden;"> 
+				    				<a style="font-size: 35px;"class="m-tb-ti act-title"></a>
+								</div>
+								<div style="font-size:15px" class="post-info ml-auto align-items-end">
+									<div class="mr-auto text-left postDate">發布時間 :</div>
+									<div class="mr-auto text-left author">發布者 :  <a href=""></a></div>
+								</div>
+							</div>
+							<div style="font-size:20px" class="date-info d-flex m-1 justify-content-start">
+								<div class="regEndData">報名截止日 : </div>
+								<div class="regInfo ml-5">目前人數 / 人數上限 : </div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
                 <!--table-->
-                <table class="order-table table table-hover" id="tablePreview" style="background-color:white;">
+                <table class="show-mode order-table table table-hover animate__animated animate__zoomOut d-none" id="table-list" style="background-color:white;">
 <!--                 <table class="order-table m-ta-aj"> -->
-                    <thead class="order-table-th">
+                    <thead class="order-table-th" id="tableHeader">
                         <tr>
                             <!-- thead更改從這邊開始 -->
                             <th scope="col" style="width:10%;">活動預覽圖</th>
@@ -203,7 +227,7 @@
 							<td style="font-size:10px;">
 							<a href=""></a>
 							</td>
-							<td class="d-flex align-items-center align-middle"></td>
+							<td></td>
 							<td></td>
 						</tr>
 					</tbody>

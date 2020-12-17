@@ -67,6 +67,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent" include-html="/MountainExploer.com/forinclude/includeForIndex.html"></div>
         </nav>
     </header>
+     <nav>
+		<ol class="breadcrumb" id="bc">
+			<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
+			<li class="breadcrumb-item"><a href="/MountainExploer.com/mountain/list?page=1&od=1">活動討論區</a></li>
+			<li class="breadcrumb-item active">發表活動</li>
+		</ol>
+	</nav>
     <div class="div_ul">
         <div class="div_li1">
         </div>
@@ -74,23 +81,19 @@
         </div>
         <div class="div_li2">
             <!-- 每頁不同的內容從這裡開始 -->
-            <nav>
-				<ol class="breadcrumb" id="bc">
-					<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
-					<li class="breadcrumb-item"><a href="/MountainExploer.com/mountain/list?page=1&od=1">活動討論區</a></li>
-					<li class="breadcrumb-item active">發表活動</li>
-				</ol>
-			</nav>
+           
             <div class="innerContainer">
 				<!--	活動標題 	-->
 				<table class="actTitle">
 					<tbody>
 						<tr>
 							<td>
-								<!-- 標籤 -->
-								<div class="tagContainer"></div>
 								<!-- 標題 -->
-								<div class="a_title"><a></a></div>
+								<div class="d-flex">
+									<div class="a_title" style="max-width: 50%; overflow: hidden"><a></a></div>
+									<div class="tagContainer"></div>
+									<div></div>
+								</div>
 							</td>
 						</tr>
 					</tbody>
@@ -104,7 +107,7 @@
 						<tbody>
 							<tr>
 								<!-- 會員資訊 -->
-								<td class="memberTD">
+								<td class="memberTD mr-2">
 									<!-- 會員暱稱 -->
 									<div><a href=""></a></div>
 									<!-- 會員頭像 -->

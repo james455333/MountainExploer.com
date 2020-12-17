@@ -14,7 +14,7 @@ var detailURL = "/MountainExploer.com/mountain/act/detail?page=1&actID="
 	tag			=	本次查詢標籤號碼
 	search		=	本次搜尋內容
 */
-var totalPage, totalData, page, od, tag, search, member;
+var showData,totalPage, totalData, page, od, tag, search, member,mode;
 
 /* 抓取網域提供參數 */
 var urlNow = new URL(window.location.href)
@@ -37,12 +37,15 @@ if (urlNow.searchParams.has("search")) {
 	search = urlNow.searchParams.get("search");
 }
 
-
+mode = urlNow.searchParams.has("mode") ? urlNow.searchParams.get("mode") : "image";
+actEnterURL += ("mode=" + mode + "&")
+var defaultMode = "image"
 $(function(){
-	
+	if(mode != defaultMode){
+		toggleShowMode()
+	}
 	/*	依照頁面命令變數值(od)，給予呼叫的函式相應的參數	*/
 	ajaxCheckLogin(od)
-	
 
 	/* 掛載活動狀態標籤查詢方法，讓點擊選單選項執行查詢函式 */
 	$("select[name='aTag']").on("change",function(){
@@ -71,49 +74,6 @@ $(function(){
 	
 	$("#btn-newpost").on("click",publishNewAct)
 	
+	$("input[name='mode']").on("click",modeSwitch)
 	
 })
-	/*
-//		函式 : 取得指定位置的元素進行條件檢查，並設定參數Boolean值
-	function checkBefore(){
-		var inputs = $("#newAct").find("input")
-			for(let i =0 ; i < inputs.length ; i++ ){
-				let j = inputs[i].value;
-				if( j.length <= 0){
-					checkEmpty = false;
-					break;	
-				}
-			}
-			var errorArray = $("#newAct").find(".errorSpan")
-			for(let i = 0 ; i < errorArray.length ; i++){
-				let j = $("#newAct").find(".errorSpan").eq(i).html();
-				if(j.length > 0){
-					checkError = false;
-				}
-			}
-		
-	}
-	*/
-	/*url : actHomeURL + "/crud/newAct",
-				method : "POST",
-				data : {
-							memberID : $("input[name='memberID']").val(),
-							routeID : $("select[name='routeID']").val(),
-							title : $("input[name='title']").val(),
-							price : $('input[name="price"]').val(),
-							StEndDate : $("input[name='StEndDate']").val(),
-							totalDay : $("input[name='totalDay']").val(),
-							TopReg : $("input[name='TopReg']").val(),
-							RegEndDate : $("input[name='RegEndDate']").val(),
-							note : $("input[name='note']").val()
-						},
-				dataType : "json",
-				success : function(data){
-					let actID = data.actID;
-					$("#imgForm").find("input[name='actID']").val(actID)
-					$("#imgForm").submit();
-				},
-				error : function(data){
-					swal("Oops! 出現錯誤囉", "新增活動出現錯誤", "error")
-				},*/
-			

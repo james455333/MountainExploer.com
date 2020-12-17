@@ -5,15 +5,37 @@
 	height: 100%;
 	padding : 15px;
 }
-
+.div_ul{
+	background-image: linear-gradient(
+      90deg,
+      rgba(0, 255, 213, 0.15) 10%,
+      rgba(0, 0, 0, 0) 10%
+    ),
+    linear-gradient(rgba(0, 255, 213, 0.15) 10%, rgba(0, 0, 0, 0) 10%);
+  background-size: 5px 5px;
+}
 .actTitle {
 	position: relative;
 	font-size: 25px;
 	width: 100%;
 	background-color : white;
 	margin-bottom : 10px;
-	border : 3px solid #007500;
 	border-radius: 30px;
+}
+.a_title{
+	font-size : 35px;
+}
+.a_title a{
+	transition : 500ms
+}
+.a_title a:hover{
+	font-size : 37.5px;
+}
+.a_title a:link{
+	color : black;
+}
+.a_title a:visited{
+	color : black;
 }
 
 .actPost {
@@ -26,7 +48,6 @@
 
 .memberTD {
 	width: 14%;
-	border: 1px solid green;
 	padding: 5px;
 	vertical-align: top;
 }
@@ -34,9 +55,9 @@
 .d_Main {
 	width: 85%;
 	max-width : 85%;
-	border: 1px solid green;
 	padding: 5px 5px;
 	vertical-align: top;
+	box-shadow : 0px 2px 4px rgba(0, 0, 0, 0.33)
 }
 
 .memeberImg {
@@ -50,10 +71,12 @@
 	width: 100%;
 	height: 150px;
 }
+.d_content{
+	
+}
 
 .d_time {
 	width: auto;
-	border-bottom: 1px solid blue;
 	text-align: left;
 }
 

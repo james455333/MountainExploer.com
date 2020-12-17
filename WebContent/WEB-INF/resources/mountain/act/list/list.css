@@ -9,6 +9,7 @@
 	top : 0;
 	margin : 20px;
 	height : atuo;
+	min-height: 500px;
 }
 .m-ta-aj{
 	width : 100%;
@@ -22,17 +23,17 @@ tbody td {
 }
 .m-tb-ti{
 	font-size: 20px;
- 	display: inline-flex;
-	align-items: center;
-	justify-content: center;
+	white-space: nowrap;
+	overflow: hidden;
+	text-align: left;
 }
 .d-li-na{
 	width:30%;
 }
 
 .showImage {
-	width: 50px;
-	height: 50px;
+	width: 35px;
+	height: 35px;
 }
 
 .extendImage {
