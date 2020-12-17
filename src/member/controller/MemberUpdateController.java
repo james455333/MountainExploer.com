@@ -204,11 +204,10 @@ public class MemberUpdateController {
 	
 	
 	//上傳、更新圖片
-	@ResponseBody
-	@GetMapping(path = "/member/imgUpdateAction")
-	public boolean processImageUpdate(
-						int seqno,
-						MultipartFile userImg,
+	@RequestMapping(path = "/member/imgUpdateAction", method = RequestMethod.POST)
+	public String processImageUpdate(
+						@RequestParam(name = "seqno")int seqno,
+						@RequestParam(name = "userImg")MultipartFile userImg,
 						Model m) throws SerialException, IOException, SQLException {
 		
 		MemberBasic mb = mbService.select(seqno);
@@ -217,7 +216,7 @@ public class MemberUpdateController {
 		System.out.println("=================開始上傳圖片");
 		
 		if(userImg == null) {
-			return false;
+			return "member/info/formalInfoPage";
 		}
 		
 		
@@ -230,7 +229,7 @@ public class MemberUpdateController {
 		m.addAttribute("result", "圖片上傳成功");
 		System.out.println("圖片上傳成功");
 		
-		return true;
+		return "member/info/formalInfoPage";
 		
 	}
 

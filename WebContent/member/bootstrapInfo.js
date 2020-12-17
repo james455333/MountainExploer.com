@@ -27,7 +27,7 @@ $(function(){
                     $(".gnTr").find(".gender").text("X");
                     $(".gnTr").find("#gnInp3").prop("checked", true);
                 }else if(gender == "mask"){
-                    $(".gnTr").find(".mask").text("不透露");
+                    $(".gnTr").find(".gender").text("不透露");
                     $(".gnTr").find("#gnInp4").prop("checked", true);
                 }
                 
@@ -498,46 +498,24 @@ function chkBirDate(chkBirDate){
 
 //上傳圖片
 $(".userFile").on("click", function(){
-    // $(".userImg").click();
-    $(".userImg").on("click", function(){
-        let seqno = $(".seqno").val();
-        let userImg = $(".userImg").val();
-
-        $.ajax({
-            method:"GET",
-            url:"/MountainExploer.com/member/imgUpdateAction",
-            data:{
-                seqno:seqno,
-                userImg:userImg
-            },
-            dataType:"json",
-            success:function(data){
-                if(data){
-                    Swal.fire({
-                        icon:"success",
-                        title:"上傳成功"
-                    }).then(function(){
-                        window.location.reload();
-                    })
-                }else{
-                    Swal.fire({
-                        icon:"error",
-                        title:"上傳失敗",
-                        text:"請重新選擇檔案再次上傳或聯絡管理員"  
-                    }).then(function(){
-                        window.location.reload();
-                    })
-                }
-            },
-            error:function(){
-                Swal.fire({
-                    icon:"error",
-                    title:"上傳過程出現錯誤請聯絡管理員"
-                }).then(function(){
-                    window.location.reload();
-                })
-            }
-
-        })
-    })
+    $(".hiddenImg").toggle();
 })
+
+$(".updateImg").on("click", function(){
+    if($(".userImg").val() != null){
+        Swal.fire({
+            icon:"warning",
+            title:"圖片上傳中"
+        }).then(function(){
+            $("#imgForm").submit();
+        })
+    }else{
+        Swal.fire({
+            icon:"error",
+            title:"上傳失敗",
+            text:"請重試一次或聯絡管理員"
+        })
+    }
+
+})
+
