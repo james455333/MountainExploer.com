@@ -28,4 +28,6 @@ public interface IHouseInfoBeanService {
 
 	int countParkHouse();
 
+	List<HouseInfoBean> allhouseid();
+
 }
