@@ -61,4 +61,15 @@ public class HouseOrderService implements IHouseOrderService {
 		return horderDAO.deleteHouseOrder(houseorderid);
 	}
 
+	@Override
+	public Integer selectdatebed(String bookdate, Integer houseid) {
+		
+		return horderDAO.selectdatebed(bookdate, houseid);
+	}
+
+	@Override
+	public Integer selectdatecamp(String bookdate, Integer houseid) {
+		return horderDAO.selectdatecamp(bookdate, houseid);
+	}
+
 }

@@ -20,8 +20,13 @@
 <ownerDesignName>all</ownerDesignName>
 </ColumnProxy>
 <ColumnProxy name="textsuggest" id="28FD73F0-FF18-7BDC-F36C-C579F42ABB7F">
+<<<<<<< Updated upstream
 <createdBy>potte</createdBy>
 <createdTime>2020-12-15 02:07:36 UTC</createdTime>
+=======
+<createdBy>Student</createdBy>
+<createdTime>2020-12-15 02:11:06 UTC</createdTime>
+>>>>>>> Stashed changes
 <ownerDesignName>all</ownerDesignName>
 </ColumnProxy>
 <ColumnProxy name="camp_orderid" id="3A2301BB-A02D-3B36-6815-C66747C2729D">
@@ -29,6 +34,10 @@
 <createdTime>2020-12-08 02:47:20 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
 <autoIncrementDDL>IDENTITY_CLAUSE</autoIncrementDDL>
+<<<<<<< Updated upstream
+=======
+<notnullConstraintnameChanged>true</notnullConstraintnameChanged>
+>>>>>>> Stashed changes
 </ColumnProxy>
 <ColumnProxy name="amount" id="739DD1F1-42AA-FE1E-3BA8-249C0467818D">
 <createdBy>Student</createdBy>
@@ -41,6 +50,7 @@
 <ownerDesignName>all</ownerDesignName>
 </ColumnProxy>
 <ColumnProxy name="daterange" id="90B5C86B-03A3-FA1E-AF49-2BE3FF3F0403">
+<<<<<<< Updated upstream
 <createdBy>potte</createdBy>
 <createdTime>2020-12-15 02:07:36 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
@@ -48,6 +58,15 @@
 <ColumnProxy name="cellphone" id="A03E7807-D832-D69E-01FF-1400B64B1653">
 <createdBy>potte</createdBy>
 <createdTime>2020-12-15 02:07:36 UTC</createdTime>
+=======
+<createdBy>Student</createdBy>
+<createdTime>2020-12-15 02:11:06 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="cellphone" id="A03E7807-D832-D69E-01FF-1400B64B1653">
+<createdBy>Student</createdBy>
+<createdTime>2020-12-15 02:11:06 UTC</createdTime>
+>>>>>>> Stashed changes
 <ownerDesignName>all</ownerDesignName>
 </ColumnProxy>
 <ColumnProxy name="campbasic_id" id="B1CB7B96-310F-C8B7-5B45-5FE73061FA5A">
@@ -56,8 +75,13 @@
 <ownerDesignName>all</ownerDesignName>
 </ColumnProxy>
 <ColumnProxy name="people_name" id="C814335F-CF0C-624A-2833-C4FA4BFAD18D">
+<<<<<<< Updated upstream
 <createdBy>potte</createdBy>
 <createdTime>2020-12-15 02:07:36 UTC</createdTime>
+=======
+<createdBy>Student</createdBy>
+<createdTime>2020-12-15 02:11:06 UTC</createdTime>
+>>>>>>> Stashed changes
 <ownerDesignName>all</ownerDesignName>
 </ColumnProxy>
 <ColumnProxy name="bookdate" id="EEDAF407-F781-3809-B6E1-9EB15A9FA6EF">

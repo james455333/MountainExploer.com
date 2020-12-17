@@ -88,8 +88,17 @@ public class CampRoutAction {
 		//總比數		
 		int totalData = campService.countCampname(campname);
 		//總頁數
-		int totalPage = (int) Math.ceil(totalData*1.0/10);		
-				
+		int totalPage = (int) Math.ceil(totalData*1.0/10);	
+		
+	//顯示總比數		
+		Integer campcount = campService.countCampAll();
+		Integer areacount = areaService.countAreaAll();
+		Integer countiescount = countiesService.countCountiesAll();
+
+		m.addAttribute("areacount", areacount);
+		m.addAttribute("countiescount", countiescount);
+		m.addAttribute("campcount", campcount);
+	//	
 		
 		List<CampInfoBean> list = campService.selectCampName(campname,page,10);
 		m.addAttribute("camp_all", list);

@@ -14,7 +14,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>露營地 | 後台維護管理系統</title>
+<title>岳進小屋 | 後台維護管理系統</title>
 
 <!-- Custom fonts for this template-->
 <link
@@ -190,9 +190,9 @@
 										<div class="col mr-2">
 											<div
 												class="text-s font-weight-bold text-danger text-uppercase mb-1">
-												露營地總數量</div>
+												岳進小屋總數量</div>
 											<div id="rt-forbid-num"
-												class="h5 mb-0 font-weight-bold text-gray-600">${campcount}區</div>
+												class="h5 mb-0 font-weight-bold text-gray-600">${Alldata}區</div>
 										</div>
 										<div class="col-auto">
 											<i class="fa fa-flag fa-2x" style="color: #ff6b6b;"
@@ -210,7 +210,7 @@
 								<div class="card-header py-3 ">
 									<div
 										class="d-flex flex-row align-items-center justify-content-between">
-										<h6 class="m-0 font-weight-bold text-primary">縣市 - 露營地比例</h6>
+										<h6 class="m-0 font-weight-bold text-primary">國家公園 - 小屋比例</h6>
 										<div class="ml-auto px-2 no-arrow">
 											<a href="" role="button" class="chart-reset"> <i
 												class="fas fa-sm fa-fw fa-sync"></i>
@@ -311,17 +311,16 @@
 											
 											<div class="input-group">
 												<div class="input-group-prepend">
-													<label class="input-group-text">縣市</label>
+													<label class="input-group-text">國家公園</label>
 												</div>
 												 
-												<form class="form-inline" action="<c:url value='/Rout/mountainCampBack/selectAll#toseesee'></c:url>"method='get'>
-													<select id="selectArea" class="form-control" name="selectarea">
-														<option>請選擇指定縣市</option>
+												<form class="form-inline" action="<c:url value='/Rout/mountainHouseBack/selectAll#toseesee'></c:url>"method='get'>
+													<select id="selectnPark" class="form-control" name="parkid">
+														<option value="">請選擇指定國家公園</option>
 													</select>
 														<div  class=" input-group-prepend ">
-														<input type="hidden" value="" name="selectcounties">
-														<input type="hidden" value=3 name="no"> 
-														<input type="hidden" value=1 name="page"> 
+														<input type="hidden" value="1" name="page">
+														<input type="hidden" value="2" name="no">
 														<input type="submit" class="btn btn-outline-success" value="查詢">
 														</div>
 												
@@ -331,42 +330,22 @@
 										</div>
 										
 										
-										
-										<div class="col-md-4 justify-content-end d-flex align-items-center ">
-											<div class="input-group ml-auto">
-												<div class="input-group-prepend">
-													<label class="input-group-text" >鄉鎮</label>
-												</div>
-												
-												<form class="form-inline" action="<c:url value='/Rout/mountainCampBack/selectAll#toseesee'></c:url>"method='get'>
-												
-												<select id="selectCounties" class="form-control" name="selectcounties">
-														<option>請選擇指定鄉鎮</option>
-													</select>
-												<div  class=" input-group-prepend ml-auto">
-														<input type="hidden" value="" name="selectarea" >
-														<input type="hidden" value=2 name="no" >
-														<input type="hidden" value=1 name="page" >				
-														<input type="submit" class="btn btn-outline-success" value="查詢">
-														</div>
-												</form>
-											</div>
-										</div>
 										<div class="ml-auto">
-											<form action="<c:url value='/Rout/mountainCampBack/selectAll#toseesee'></c:url>"method='get'>					
-												<input type="hidden" value="" name="selectarea" >
-												<input type="hidden" value="" name="selectcounties" >
-												<input type="hidden" value=1 name="no" >
-												<input type="hidden" value=1 name="page" >
-												<input type="submit" id="toseesee" class="btn btn-outline-info" value="全部觀看">
-											</form>
-										</div>
-										<div class="ml-auto">
-											<form action="<c:url value='/Rout/mountainCampBack/selectCamp'></c:url>"
+											<form action="<c:url value='/Rout/mountainHouseBack/selectHouse'></c:url>"
 												method='get' id="form1" name="form1">
-												營地名稱 :&nbsp <input type="text" class="light-table-filter"placeholder="請輸入關鍵字" name="selectcampname" >
+												小屋名稱 :&nbsp <input type="text" class="light-table-filter"placeholder="請輸入關鍵字" name="selecthouse" >
 												<input type="image" class="imgSearch" src="/MountainExploer.com/images/放大鏡.png" width="35px"
 													onClick="document.form1.submit()">
+											</form>
+										</div>
+										
+									
+										<div class="ml-auto">
+											<form action="<c:url value='/Rout/mountainHouseBack/selectAll#toseesee'></c:url>"method='get'>					
+												<input type="hidden" value="1" name="page">
+												<input type="hidden" value="1" name="no">
+												<input type="hidden" value="" name="parkid">
+												<input type="submit" id="toseesee" class="btn btn-outline-info" value="全部觀看">
 											</form>
 										</div>
 									</div>
@@ -409,30 +388,29 @@
 									
 									
 										<div class="">									
-															<a href="selectAll?selectarea=${selectarea }&selectcounties=${selectcounties}&no=${no }&page=1">«第一頁</a>	
-									
+														<a href="selectAll?parkid=${parkid }&no=${no }&page=1">«第一頁</a>
 													<c:choose>
 													<c:when test="${page <= 1}"><a href="#">‹上一頁</a></c:when>
-													<c:otherwise><a href="selectAll?selectarea=${selectarea}&selectcounties=${selectcounties}&no=${no }&page=${page-1}">‹上一頁</a></c:otherwise>
+													<c:otherwise><a href="selectAll?parkid=${parkid }&no=${no }&page=${page-1}">‹上一頁</a></c:otherwise>
 													</c:choose>					
 													
 														<select onChange="location = this.options[this.selectedIndex].value">
 															<c:forEach var="toPage" begin="1" end="${totalPage}">
-															<option value="selectAll?selectarea=${selectarea }&selectcounties=${selectcounties}&no=${no }&page=${toPage}" <c:if test="${toPage==page}">selected="selected"</c:if>>第${toPage}頁</option>
+															<option value="selectAll?parkid=${parkid }&no=${no }&page=${toPage}" <c:if test="${toPage==page}">selected="selected"</c:if>>第${toPage}頁</option>
 															</c:forEach>
 														</select>
 													
 													<c:choose>
 													<c:when test="${page == totalPage}"><a href="#">下一頁›</a></c:when>
-													<c:otherwise><a href="selectAll?selectarea=${selectarea }&selectcounties=${selectcounties}&no=${no }&page=${page+1}">下一頁›</a></c:otherwise>
+													<c:otherwise><a href="selectAll?parkid=${parkid }&no=${no }&page=${page+1}">下一頁›</a></c:otherwise>
 													</c:choose>				
 														
-														<a href="selectAll?selectarea=${selectarea }&selectcounties=${selectcounties}&no=${no }&page=${totalPage}">最末頁»</a>
+														<a href="selectAll?parkid=${parkid }&no=${no }&page=${totalPage}">最末頁»</a>
 										</div>				
 								
 					
 							<div class="ml-auto">
-								<form action="<c:url value='/Rout/mountainCampBack/inserjump'></c:url>"
+								<form action="<c:url value='/Rout/mountainHouseBack/inserjump'></c:url>"
 									method='get'>
 				
 									<input type="submit" src="#" class="btn btn-outline-primary" name="" value="新增">
@@ -447,70 +425,69 @@
 											<thead>
 												<tr>
 													<th scope="col"><span class="tr_title">編號</span></th>
-													<th scope="col"><span class="tr_title">縣市</span></th>
-													<th scope="col"><span class="tr_title">鄉鎮</span></th>
-													<th scope="col"><span class="tr_title">營地名稱</span></th>
-													<th scope="col"><span class="tr_title">部落格網址</span></th>
+													<th scope="col"><span class="tr_title">國家公園</span></th>
+													<th scope="col"><span class="tr_title">山中小屋</span></th>
+													<th scope="col"><span class="tr_title">床位數量/價錢</span></th>
+													<th scope="col"><span class="tr_title">露營地數量/價錢</span></th>
+													<th scope="col"><span class="tr_title">海拔</span></th>
 													<th scope="col"><span class="tr_title">描述</span></th>
 													<th scope="col"><span class="tr_title">星星分數總合</span></th>
 													<th scope="col"><span class="tr_title">評分次數</span></th>
 													<th scope="col"><span class="tr_title">平均分數</span></th>
-													<th scope="col"><span class="tr_title">數量</span></th>
-													<th scope="col"><span class="tr_title">價錢</span></th>
 													<th scope="col"><span class="tr_title">照片</span></th>
 													<th scope="col"><span class="tr_title"></span></th>
 													<th scope="col"><span class="tr_title"></span></th>
+
 												</tr>
 											</thead>
 											<tbody>
-											<c:forEach var="i" items="${camp_all}">
+											<c:forEach var="i" items="${House_All}">
 						<tr>
-							<td>${i.campbasicid}</td>
-							<td>${i.counties.area.name}</td>
-							<td>${i.counties.name}</td>
+							<td>${i.housebasicid}</td>
+							<td>${i.nationalPark.name}</td>
 							<td>${i.name}</td>
-							<td><a href="${i.url}">${i.url}</a></td>
+							<td>${i.bed}床&nbspTWD&nbsp:&nbsp${i.bedprice}</td>
+							<td>${i.camp}區&nbspTWD&nbsp:&nbsp${i.campprice}</td>
+							<td>${i.height}</td>
 							
 							<td><a class="show" href="#show"  style="color: blue">點我看詳情.....more</a>
 							<span class="showme" id="showme" style="display:none">${i.desc}<a href="#showme"  style="color: red">隱藏內容</a></span></td>
 							
 							<c:choose>
-							<c:when test="${empty i.star}"><td>0</td></c:when>
-							<c:otherwise><td>總共${i.star}分</td></c:otherwise>
-						</c:choose>
-						<c:choose>
-							<c:when test="${empty i.clickcount}"><td>0</td></c:when>
-							<c:otherwise><td>評分過${i.clickcount}次</td></c:otherwise>
-						</c:choose>
+								<c:when test="${empty i.star}"><td>0</td></c:when>
+								<c:otherwise><td>總共${i.star}分</td></c:otherwise>
+							</c:choose>
+							<c:choose>
+								<c:when test="${empty i.clickcount}"><td>0</td></c:when>
+								<c:otherwise>
+									<td>評分過${i.clickcount}次</td>
+								</c:otherwise>
+							</c:choose>
 							<td>平均${i.star/i.clickcount}分</td>
-							<td>${i.campamount}間</td>
-							<td>TWD.${i.campprice}</td>
 							<td>
 								<c:choose>
-								<c:when test="${empty i.campimgid.img }">
-								<a class="tooltip-a" data-toggle='tooltip' href="${i.url}"target="_blank"><img alt='按'  height="100" width="100"
-										src="/MountainExploer.com/housecamp/images/campnull.PNG"></a>
-								</c:when>
-								<c:when test="${not empty i.campimgid.img }">
-								<a class="tooltip-a" data-toggle='tooltip' title="點擊" href="${i.url}"target="_blank"><img alt='按'  height="100" width="100"
-										src="<c:url value='/mountainCampBack/showimg?imgid=${i.campimgid.id}'/>"></a>
-								</c:when>
+									<c:when test="${empty i.imgid.img }">
+									<img  height="100" width="100"src="/MountainExploer.com/housecamp/images/housenull.PNG">
+									</c:when>
+									<c:when test="${not empty i.imgid.img }">
+										<img   height="100" width="100"src="<c:url value='/mountainHouseBack/showimg?imgid=${i.imgid.id}'/>">
+									</c:when>
 								</c:choose>
 								</td>
 							<td>
 								<form
-									action="<c:url value='/Rout/mountainCampBack/deleteCamp'></c:url>"
+									action="<c:url value='/Rout/mountainHouseBack/deleteHouse'></c:url>"
 									name="form1" method='post'>
-									<input type="hidden" name="deletecamp" value="${i.campbasicid}">
+									<input type="hidden" name="deletehouse" value="${i.housebasicid}">
 									<input type="button" value="刪除"
 										onclick="if(confirm('確認要刪除嗎？')) this.form.submit();">
 								</form>
 							</td>
 							<td>
 								<form
-									action="<c:url value="/Rout/mountainCampBack/updatejump"></c:url>"
+									action="<c:url value="/Rout/mountainHouseBack/updatejump"></c:url>"
 									method="get">
-									<input type="hidden" name="jumpupdate" value="${i.campbasicid}">
+									<input type="hidden" name="jumpupdate" value="${i.housebasicid}">
 									<input type="submit" value="修改">
 								</form>
 							</td>
@@ -519,37 +496,41 @@
 					</c:forEach>
 					
 
-					<c:forEach var="m" items="${lookupdate}">
+					<c:forEach var="i" items="${lookupdate}">
 						<tr>
-							<td>${m.campbasicid}</td>
-							<td>${m.counties.area.name}</td>
-							<td>${m.counties.name}</td>
-							<td>${m.name}</td>
-							<td><a href="${m.url}">${m.url}</a></td>
-							<td>${m.desc}</td>
+							<td>${i.housebasicid}</td>
+							<td>${i.nationalPark.name}</td>
+							<td>${i.name}</td>
+							<td>${i.bed}床&nbspTWD&nbsp:&nbsp${i.bedprice}</td>
+							<td>${i.camp}區&nbspTWD&nbsp:&nbsp${i.campprice}</td>
+							<td>${i.height}</td>
+							<td>${i.desc}</td>
 							<c:choose>
-							<c:when test="${empty m.star}"><td>0</td></c:when>
-							<c:otherwise><td>總共${m.star}分</td></c:otherwise>
-						</c:choose>
-						<c:choose>
-							<c:when test="${empty m.clickcount}"><td>0</td></c:when>
-							<c:otherwise><td>評分過${m.clickcount}次</td></c:otherwise>
-						</c:choose>
-							<td>平均${m.star/m.clickcount}分</td>
-							<td>${m.campamount}間</td>
-							<td>TWD.${m.campprice}</td>
+								<c:when test="${empty i.star}"><td>0</td></c:when>
+								<c:otherwise><td>總共${i.star}分</td></c:otherwise>
+							</c:choose>
+							<c:choose>
+								<c:when test="${empty i.clickcount}"><td>0</td></c:when>
+								<c:otherwise><td>評分過${i.clickcount}次</td></c:otherwise>
+							</c:choose>
+							<c:choose>
+								<c:when test="${empty i.clickcount}"><td>平均0分</td></c:when>
+								<c:otherwise>
+									<td>平均${i.star*1.0 / i.clickcount}分</td>
+								</c:otherwise>
+							</c:choose>
 							<td>
 								<c:choose>
-								<c:when test="${empty m.campimgid.img}">
-								<a href="${m.url}"target="_blank"><img height="100" width="100"
-										src="/MountainExploer.com/housecamp/images/campnull.PNG">按</a>
+								<c:when test="${empty i.imgid.img }">
+								<a class="tooltip-a" data-toggle='tooltip' target="_blank"><img height="100" width="100"
+										src="/MountainExploer.com/housecamp/images/housenull.PNG"></a>
 								</c:when>
-								<c:when test="${not empty m.campimgid.img}">
-								<a href="${m.url}" target="_blank"><img height="100" width="100"
-										src="<c:url value='/mountainCampBack/showimg?imgid=${m.campimgid.id}'/>">按</a>
+								<c:when test="${not empty i.imgid.img }">
+								<a class="tooltip-a" data-toggle='tooltip'target="_blank"><img height="100" width="100"
+										src="<c:url value='/mountainHouseBack/showimg?imgid=${i.imgid.id}'/>"></a>
 								</c:when>
 								</c:choose>
-							</td>
+								</td>
 							
 							</tr>
 					</c:forEach>
@@ -636,47 +617,23 @@
 	</script>
 	
 	<script type="text/javascript">
-		$(function() {
-			
-			
-			var campUrl = "/MountainExploer.com/Rout/mountainCampBack";
 
-			//所有縣市	
-			$.ajax({
-				url : campUrl + "/areaoption",
-				method : "GET",
-				dataType : "json",
-				success : function(area) {
-					for (var i = 0; i < area.length; i++) {
-						$("#selectArea").append(
-								"<option value='" + area[i].name + "'>"
-										+ area[i].name + "</option>")
-					}
-					let firstArea = $("#selectArea").find("option").eq(0).val()
+	$(function() {
+		var houseUrl = "/MountainExploer.com/Rout/mountainHouseBack";
 
+		$.ajax({
+			url:houseUrl + "/nParkAlloption",
+			method:"GET",
+			dataType : "json",
+			success:function(nPark){
+				for(var i =0 ; i< nPark.length ; i++){
+					$("#selectnPark").append(
+							"<option value='" + nPark[i].id + "'>"
+							+ nPark[i].name + "</option>") }
+//	 			let firstArea = $("#selectnPark").find("option").eq(0).val()
+				
 				}
 			})
-			//縣市選單變更	
-
-			$("#selectArea").on("change",function() {
-						var areaselect = $("#selectArea").val();
-						$("#selectCounties").empty();
-						$.ajax({
-							url : campUrl + "/countiesoption?areaselect="
-									+ areaselect,
-							method : "GET",
-							dataType : "json",
-							success : function(counties) {
-								for (var i = 0; i < counties.length; i++) {
-									$("#selectCounties").append(
-											"<option value='" + counties[i].name + "'>"
-													+ counties[i].name
-													+ "</option>")
-
-								}
-							}
-						})
-					})
 
 				
 
@@ -693,7 +650,7 @@
 // 			$('.tooltip-a').tooltip()
 			
 	
-			// 縣市圓餅圖	
+			// 國家公園圓餅圖	
 			Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 			Chart.defaults.global.defaultFontColor = '#858796';
 
@@ -705,7 +662,7 @@
 			  type: 'doughnut',
 			  data: {
 
-			    labels: [ "縣市" ],
+			    labels: [ "雪霸國家公園","太魯閣國家公園","玉山國家公園" ],
 			    datasets: [{
 			      data: [55, 30, 15],
 			      backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],

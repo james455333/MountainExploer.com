@@ -33,7 +33,7 @@ public class HouseInfoBeanDAO implements IHouseInfoBeanService  {
 
 	
 	@Override
-	public List<HouseInfoBean> selecthouseid(int houseid) {
+	public List<HouseInfoBean> selecthouseid(Integer houseid) {
 		
 		Query<HouseInfoBean> query = getSession().createQuery("From HouseInfoBean where housebasicid=" + houseid, HouseInfoBean.class);
 		List<HouseInfoBean> list = query.list();
@@ -179,8 +179,14 @@ public class HouseInfoBeanDAO implements IHouseInfoBeanService  {
 		}
 		return result;
 }
+	@Override
+	public int countParkHouse() {
+		int result=0;
+		Query query = getSession().createQuery("From HouseInfoBean ",HouseInfoBean.class);
+		result = query.list().size();
+		return result;
+	}
 	
-
 	
 }	
 		

@@ -56,9 +56,8 @@ transition: all 0.6s;}
 		</nav>
 	</header>
 	<div class="div_ul">
-<!-- 		<div class="secNavbar"> -->
-<!-- 			<nav> -->
-<!-- 				<ul class="second_nav"> -->
+		<div class="secNavbar">
+				<ul class="second_nav">
 <!-- 					更改內容從這邊開始 -->
 <!-- 					<li class="li1"><a href="#">第二導覽列1</a></li> -->
 
@@ -66,11 +65,10 @@ transition: all 0.6s;}
 
 <!-- 					<li class="li1"><a href="#">第二導覽列3</a></li> -->
 
-<!-- 					<li class="li1"><a href="#">第二導覽列4</a></li> -->
+					<li class="li1"><a href="/MountainExploer.com/mountainHouseActOrder/selecthouseorder?Member=Member">訂單查詢</a></li>
 <!-- 					更改內容到這邊結束 -->
-<!-- 				</ul> -->
-<!-- 			</nav> -->
-<!-- 		</div> -->
+				</ul>
+		</div>
 		<div class="div_li1">
 <!-- 			<a>保留區</a> -->
 		
@@ -95,7 +93,9 @@ transition: all 0.6s;}
 						</div>
 						</form>
 						
-						
+					</div>
+				
+					<div class="third_nav">
 						<form style=margin-left:25px action="<c:url value='/mountainHouseAct/actselectAll'></c:url>"
 							method='get'>					
 							<input type="hidden" value="1" name="page">
@@ -103,11 +103,9 @@ transition: all 0.6s;}
 							<input type="hidden" value="" name="parkid">
 							<input type="submit" class="btn btn-outline-info" value="全部觀看">
 						</form>
-						
-
-						<!-- 控制列表內容到這邊結束 -->
-					</div>
+						</div>							
 				</nav>
+						<!-- 控制列表內容到這邊結束 -->
 
 
 				<div class="search">
@@ -129,12 +127,7 @@ transition: all 0.6s;}
 
 			<div class="secDivContent">
 <!-- datepicker -->
-			<form action="<c:url value=''></c:url>">
-			<div>入住日期 : <input type="date" name="calendar" id="datepicker">
-				   退房日期 : <input type="date" name="calendar" id="datepicker">
-				   <input type="submit" value="查詢">
-			</div>
-			</form>
+			
          
 				<!--table-->
 				<table class="order-table table table-hover" id="tablePreview"
@@ -295,21 +288,10 @@ transition: all 0.6s;}
 </body>
 
 <script type="text/javascript">
-$(function() 
-	    { 
-	    $("#datepicker").datepicker(
-	    { 
-	    showOn:"both", 
-	    buttonImage:"image.jpg", 
-	    dateFormat:"yy-mm-dd", 
-	    buttonImageOnly:false, 
-	    minDate:+0, //you do not want to show previous date. 
-	    maxDate:+0 // you do not want to show next day. 
-	    }); 
-	    }); 
+
 
 $(function() {
-	var houseUrl = "/MountainExploer.com/mountainHouseBack";
+	var houseUrl = "/MountainExploer.com/mountainHouseAct";
 
 	$.ajax({
 		url:houseUrl + "/nParkAlloption",
@@ -320,7 +302,7 @@ $(function() {
 				$("#selectnPark").append(
 						"<option value='" + nPark[i].id + "'>"
 						+ nPark[i].name + "</option>") }
-			let firstArea = $("#selectnPark").find("option").eq(0).val()
+// 			let firstArea = $("#selectnPark").find("option").eq(0).val()
 			
 			}
 		})

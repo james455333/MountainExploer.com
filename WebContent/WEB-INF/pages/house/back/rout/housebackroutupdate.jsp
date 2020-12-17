@@ -14,7 +14,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>露營地 | 後台新增系統</title>
+<title>小屋 | 後台修改系統</title>
 
 <!-- Custom fonts for this template-->
 <link
@@ -131,46 +131,59 @@
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
-
-					<form action="<c:url value='/Rout/mountainCampBack/insertCamp' ></c:url>"method="Post" enctype="multipart/form-data">
-
+					<c:forEach var="l" items="${jumpupdatename}">
+					<form action="<c:url value='/Rout/mountainHouseBack/updateHouse' ></c:url>"method="Post" enctype="multipart/form-data">
+							<input type="hidden" name="update_id" size="10" value="${l.housebasicid}">
+							<input type="hidden" name="update_star" size="10" value="${l.star}">
+							<input type="hidden" name="update_click" size="10" value="${l.clickcount}">
+							
 							<fieldset>
-								<legend>修改露營地</legend>
+								<legend>修改岳進者小屋</legend>
 								<div class="">
 									<div class="form-group col-md-6">
-										<label>縣市 : </label> <a class="col-sm-10"><select id="selectArea" name="insercamp_area" required="required"><option>請選擇縣市</option></select></a>
-										
-										<label>鄉鎮 : </label> <a class="col-sm-10"><select id="selectCounties" name="insercamp_counties" required="required"></select></a>
+										<label>國家公園 : </label> <a style="color: black" class="col-sm-10"><input  type="hidden" name="update_park" size="10" value="${l.nationalPark.name}">${l.nationalPark.name}</a>
 									</div>
 								</div>
 								<div class="form-group col-md-6">
-									<label>營地名稱 : </label><a class="col-sm-10"><input type="text" name="insercamp_name" size="20" value="小小露營區" required="required"></a>
+									<label>小屋名稱 : </label><a class="col-sm-10"><input type="text" name="update_name" size="20" value="${l.name}" required="required"></a>
 								</div>
 								<div class="form-group col-md-6">
-									<label>部落格網址 : </label><a class="col-sm-10"><input type="text" name="insercamp_url" size="50" value="https://evshhips.pixnet.net/blog"></a>
+									<label>海拔高度 : </label><a class="col-sm-10"><input type="text" name="update_height" size="20" value="${l.height}" required="required"></a>
 								</div>
-								<div class="form-group col-md-6">
-									<label>營區數量 : </label><a class="col-sm-10"><input type="text" name="insercamp_campamount" size="15" value="10" required="required"></a>
 								
-									<label>價格 : </label><a class="col-sm-10"><input type="text" name="insercamp_campprice" size="15" value="500" required="required"></a>
+								<div class="form-group col-md-6">
+									<label>床位數量 : </label><a class="col-sm-10"><input type="text" name="update_bed" size="15" value="${l.bed}" required="required"></a>
+								
+									<label>價格 : </label><a class="col-sm-10"><input type="text" name="update_bedprice" size="15" value="${l.bedprice}" required="required"></a>
 								</div>
 								<div class="form-group col-md-6">
-									<label class="col-sm-10">營區描述 : </label><textarea name="insercamp_desc" rows="10" cols="50">有收集雨水之儲水設備，枯水期不穩定，有簡易太陽能照明。有坑洞式廁所。住宿山屋者，請自備過夜及睡眠裝備。</textarea>
+									<label>營區數量 : </label><a class="col-sm-10"><input type="text" name="update_camp" size="15" value="${l.camp}" required="required"></a>
+								
+									<label>價格 : </label><a class="col-sm-10"><input type="text" name="update_campprice" size="15" value="${l.campprice}" required="required"></a>
 								</div>
-								<div class="form-group col-md-6">	<img id="blah" src="/MountainExploer.com/housecamp/images/campnull.PNG" alt="your image" />		       
-				      					<input type="file" name="mFile" id="imgInp" size="25" accept="image/*">
+								<div class="form-group col-md-6">
+									<label class="col-sm-10">營區描述 : </label><textarea name="update_desc" rows="10" cols="50">${l.desc}</textarea>
+								</div>
+								<div class="form-group col-md-6">	<img id="blah" src="" alt="your image" />		       
+				      					<input type="file" name="files" id="imgInp" size="25" accept="image/*">
+				      					<input type="hidden" name="hotelnumber" value="${l.imgid.id}">
 				      			</div>
 				      			<div class="form-group col-md-6">
-				      					<input class="btn btn-outline-secondary" type="submit"  value="新增">
+				      					<input class="btn btn-outline-secondary" type="submit"  value="修改">
 				      			</div>		
 							</fieldset>
 				
-				
-					
-					
-											
+															
 					</form>
-
+							<div  class="form-group col-md-6">
+							<c:choose>
+								<c:when test="${empty l.imgid.img }">
+								<img height="100" width="100"src="/MountainExploer.com/housecamp/images/housenull.PNG">
+								</c:when>
+				      		<c:otherwise><img height="100"width="100"src="<c:url value='/mountainHouseBack/showimg?imgid=${l.imgid.id}'/>"></c:otherwise>
+				      	</c:choose>
+							</div>
+					</c:forEach>
 										
 									</div>
 								</div>
@@ -254,91 +267,27 @@ $("#imgInp").change(function() {
 });
 </script>
 <script type="text/javascript">
-	$(function() {
-
-		var campUrl = "/MountainExploer.com/mountainCampAct";
-
-		//所有縣市	
-		$.ajax({
-			url : campUrl + "/areaoption",
-			method : "GET",
-			dataType : "json",
-			success : function(area) {
-				for (var i = 0; i < area.length; i++) {
-					$("#selectArea").append(
-							"<option value='" + area[i].name + "'>"
-									+ area[i].name + "</option>")
-				}
-				let firstArea = $("#selectArea").find("option").eq(0).val()
-
-			}
-		})
-		
-		
+$(function(){
+	var campUrl = "/MountainExploer.com/Rout/mountainCampBack";
+$(window).on("load",function(){
 	
-		//縣市選單變更	
-
-		$("#selectArea").on("change",function() {
-					var areaselect = $("#selectArea").val();
-					$("#selectCounties").empty();
-					$.ajax({
-						url : campUrl + "/countiesoption?areaselect="
-								+ areaselect,
-						method : "GET",
-						dataType : "json",
-						success : function(counties) {
-							for (var i = 0; i < counties.length; i++) {
-								$("#selectCounties").append(
-										"<option value='" + counties[i].name + "'>"
-												+ counties[i].name
-												+ "</option>")
-
-							}
-						}
-					})
-				})
+		var areaselect = $("#selectArea").val()
+		$.ajax({
+			url:campUrl+"/countiesoption?areaselect=" + areaselect,
+			dataType:"json",
+			method:"GET",
+			success:function(counties){
+				for(var i = 0 ; i< counties.length ; i++){
+				$("#selectCounties").append("<option value='" + counties[i].name + "'>" + counties[i].name + "</option>")	
+				}	}
+			
+			})
+})
+})
 			
 	
 	
-			// 縣市圓餅圖	
-			Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-			Chart.defaults.global.defaultFontColor = '#858796';
-
-		
-
-			// Pie Chart Example
-			var ctx = document.getElementById("myPieChart");
-			var myPieChart = new Chart(ctx, {
-			  type: 'doughnut',
-			  data: {
-
-			    labels: [ "縣市" ],
-			    datasets: [{
-			      data: [55, 30, 15],
-			      backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
-			      hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
-			      hoverBorderColor: "rgba(234, 236, 244, 1)",
-			    }],
-			  },
-			  options: {
-			    maintainAspectRatio: false,
-			    tooltips: {
-			      backgroundColor: "rgb(255,255,255)",
-			      bodyFontColor: "#858796",
-			      borderColor: '#dddfeb',
-			      borderWidth: 5,
-			      xPadding: 15,
-			      yPadding: 15,
-			      displayColors: false,
-			      caretPadding: 10,
-			    },
-			    legend: {
-			      display: true
-			    },
-			    cutoutPercentage: 80,
-			  },
-			});
-		});
+	
 // 圓餅圖	end -->		
 	</script>
 

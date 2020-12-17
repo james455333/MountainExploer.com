@@ -21,10 +21,22 @@
 <autoIncrementGenerateAlways>true</autoIncrementGenerateAlways>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="amount" id="4ABAD9D9-FCAD-D1F3-C709-6D56971DE96F">
+<Column name="bed_amount" id="4ABAD9D9-FCAD-D1F3-C709-6D56971DE96F">
 <createdBy>Student</createdBy>
 <createdTime>2020-12-03 09:19:58 UTC</createdTime>
 <ownerDesignName>all</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="camp_amount" id="2249845F-4C01-D875-4B4B-1B9860A03B10">
+<createdBy>Student</createdBy>
+<createdTime>2020-12-15 10:22:37 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
@@ -96,6 +108,54 @@
 <associations>
 <colAssociation fkAssociation="F5152180-3E95-8746-BAEC-735847D9AFA0" referredColumn="65FCDD1D-6006-4901-68AD-AD5A6ECA2E65"/>
 </associations>
+</Column>
+<Column name="daterange" id="2811F05E-9D78-74B0-3BA5-8D9675FC2C35">
+<createdBy>Student</createdBy>
+<createdTime>2020-12-15 10:24:26 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>250</dataTypeSize>
+<ownDataTypeParameters>250,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="people_name" id="2CDB5142-FDF7-8417-53BA-1FDFBECC13FE">
+<createdBy>Student</createdBy>
+<createdTime>2020-12-15 10:24:26 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>250</dataTypeSize>
+<ownDataTypeParameters>250,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cellphone" id="905D1F41-CC82-10A0-E323-AFF8FC365774">
+<createdBy>Student</createdBy>
+<createdTime>2020-12-15 10:24:26 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>15</dataTypePrecision>
+<ownDataTypeParameters>,15,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="textsuggest" id="A714CB82-0793-689B-6AA1-25C509DB7759">
+<createdBy>Student</createdBy>
+<createdTime>2020-12-15 10:24:26 UTC</createdTime>
+<ownerDesignName>all</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>250</dataTypeSize>
+<ownDataTypeParameters>250,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">

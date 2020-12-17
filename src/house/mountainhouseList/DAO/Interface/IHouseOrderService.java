@@ -10,13 +10,13 @@ public interface IHouseOrderService {
 
 	List<HouseOrderBean> selectAll();
 
-	//select orderid list 
+	// select orderid list
 	List<HouseOrderBean> selectorderid(Integer orderid);
 
-	//select houseid to order
+	// select houseid to order
 	List<HouseOrderBean> selecthouseid(Integer houseid);
 
-	//select memberid to order
+	// select memberid to order
 	List<HouseOrderBean> selectmemberid(Integer memberid);
 
 	HouseOrderBean inserHouseOrder(HouseOrderBean houseOrderBean);
@@ -24,5 +24,11 @@ public interface IHouseOrderService {
 	HouseOrderBean updateHouseOrder(HouseOrderBean houseOrderBean);
 
 	HouseOrderBean deleteHouseOrder(Integer houseorderid);
+
+	Integer selectdatebed(String bookdate, Integer houseid);
+
+	Integer selectdatecamp(String bookdate, Integer houseid);
+	
+	
 
 }

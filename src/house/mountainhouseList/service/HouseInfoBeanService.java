@@ -45,7 +45,7 @@ public class HouseInfoBeanService implements IHouseInfoBeanService {
 
 
 	@Override
-	public List<HouseInfoBean> selecthouseid(int houseid) {
+	public List<HouseInfoBean> selecthouseid(Integer houseid) {
 		return hDAO.selecthouseid(houseid);
 	}
 
@@ -77,5 +77,14 @@ public class HouseInfoBeanService implements IHouseInfoBeanService {
 		
 		return hDAO.selectPark(parkid);
 	}
+
+
+
+	@Override
+	public int countParkHouse() {
+		return hDAO.countParkHouse();
+	}
+
+
 
 }

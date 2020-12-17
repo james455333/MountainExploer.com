@@ -79,7 +79,7 @@ public class ActHouseController {
 		return list;
 	}
 	@GetMapping("/jumpHouseDesc")
-	public String selectHousedesc(@RequestParam(name = "selecthouseid") int houseid,Model m) {
+	public String selectHousedesc(@RequestParam(name = "selecthouseid") Integer houseid,Model m) {
 		List<HouseInfoBean> list = houseService.selecthouseid(houseid);
 		
 		m.addAttribute("selecthouseid",list);

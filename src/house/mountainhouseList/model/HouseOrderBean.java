@@ -1,9 +1,7 @@
 package house.mountainhouseList.model;
 
 
-import java.util.Date;
 
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
@@ -30,60 +26,78 @@ public class HouseOrderBean {
 	@Id @Column(name = "HOUSE_ORDERID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer orderid;
-	@Column(name = "AMOUNT")
-	private Integer amount;//數量
-	@Basic
-	@Column(name = "SHOPINGDATE")
-	@Temporal(TemporalType.DATE)
-	private Date shoppingdate;
-	@Basic
+	@Column(name = "BED_AMOUNT")
+	private Integer bedamount;//數量
+	@Column(name = "CAMP_AMOUNT")
+	private Integer campamount;
+	
+	@Column(name = "SHOPPINGDATE")
+	private String shoppingdate;
+	
 	@Column(name = "BOOKDATE")
-	@Temporal(TemporalType.DATE)
-	private Date bookdate;
+	private String bookdate;
 	@Column(name = "PRICE")
 	private Integer price;
 	@Transient
 	private Integer houseid;
 	@Transient
 	private Integer memberid;
+	@Column(name = "DATERANGE")
+	private String daterange;
+	@Column(name = "CELLPHONE")	
+	private Integer cellphone;
+	@Column(name = "TEXTSUGGEST")
+	private String textsuggest;
+	@Column(name = "PEOPLE_NAME")
+	private String peoplename;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "HOUSE_BASIC_ID")
+	@JsonIgnore
 	private HouseInfoBean housebasicid;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "MEMBER_BASIC_SEQNO")
+	@JsonIgnore
 	private MemberBasic memberbasicid;
 
-	public Integer getId() {
+	public Integer getOrderid() {
 		return orderid;
 	}
 
-	public void setId(Integer id) {
-		this.orderid = id;
+	public void setOrderid(Integer orderid) {
+		this.orderid = orderid;
 	}
 
-	public Integer getAmount() {
-		return amount;
+	public Integer getBedamount() {
+		return bedamount;
 	}
 
-	public void setAmount(Integer amount) {
-		this.amount = amount;
+	public void setBedamount(Integer bedamount) {
+		this.bedamount = bedamount;
 	}
 
-	public Date getShoppingdate() {
+	public Integer getCampamount() {
+		return campamount;
+	}
+
+	public void setCampamount(Integer campamount) {
+		this.campamount = campamount;
+	}
+
+	public String getShoppingdate() {
 		return shoppingdate;
 	}
 
-	public void setShoppingdate(Date shoppingdate) {
+	public void setShoppingdate(String shoppingdate) {
 		this.shoppingdate = shoppingdate;
 	}
 
-	public Date getBookdate() {
+	public String getBookdate() {
 		return bookdate;
 	}
 
-	public void setBookdate(Date bookdate) {
+	public void setBookdate(String bookdate) {
 		this.bookdate = bookdate;
 	}
 
@@ -111,6 +125,30 @@ public class HouseOrderBean {
 		this.memberid = memberid;
 	}
 
+	public String getDaterange() {
+		return daterange;
+	}
+
+	public void setDaterange(String daterange) {
+		this.daterange = daterange;
+	}
+
+	public Integer getCellphone() {
+		return cellphone;
+	}
+
+	public void setCellphone(Integer cellphone) {
+		this.cellphone = cellphone;
+	}
+
+	public String getTextsuggest() {
+		return textsuggest;
+	}
+
+	public void setTextsuggest(String textsuggest) {
+		this.textsuggest = textsuggest;
+	}
+
 	public HouseInfoBean getHousebasicid() {
 		return housebasicid;
 	}
@@ -126,7 +164,15 @@ public class HouseOrderBean {
 	public void setMemberbasicid(MemberBasic memberbasicid) {
 		this.memberbasicid = memberbasicid;
 	}
-	
+
+	public String getPeoplename() {
+		return peoplename;
+	}
+
+	public void setPeoplename(String peoplename) {
+		this.peoplename = peoplename;
+	}
+
 	
 	
 }

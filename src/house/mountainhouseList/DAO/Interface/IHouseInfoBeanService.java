@@ -8,7 +8,7 @@ public interface IHouseInfoBeanService {
 
 	HouseInfoBean select(int houseid);
 
-	List<HouseInfoBean> selecthouseid(int houseid);
+	List<HouseInfoBean> selecthouseid(Integer houseid);
 
 	List<HouseInfoBean> selectAllHouse(Integer page , Integer showData ,Integer no , Integer parkid , Integer star, Integer clickcount);
 
@@ -25,5 +25,7 @@ public interface IHouseInfoBeanService {
 	int counthousenaem(String house);
 
 	List<HouseInfoBean> selectPark(Integer parkid);
+
+	int countParkHouse();
 
 }

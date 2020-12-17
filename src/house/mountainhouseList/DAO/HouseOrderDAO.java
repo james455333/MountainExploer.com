@@ -89,7 +89,32 @@ public class HouseOrderDAO implements IHouseOrderService {
 		}
 		return houseOrderBean;
 	}
+	@Override
+	public Integer selectdatebed(String bookdate , Integer houseid) {
+		String orignString = "From HouseOrderBean where bookdate like '%" + bookdate +"%' and housebasicid like '%" + houseid +"%'";
+		Query<HouseOrderBean> query = getSession().createQuery(orignString,HouseOrderBean.class);
+		
+		List<HouseOrderBean> list = query.list();
+		Integer bedamount = 0;
+		for (HouseOrderBean houseOrderBean : list) {
+			Integer bedamounts = houseOrderBean.getBedamount();
+			bedamount += bedamounts;
+		}
+		return bedamount;
+		
+	}
+	@Override
+	public Integer selectdatecamp(String bookdate , Integer houseid) {
+		String orignString = "From HouseOrderBean where bookdate like '%" + bookdate +"%' and housebasicid like '%" + houseid +"%'";
+		Query<HouseOrderBean> query = getSession().createQuery(orignString,HouseOrderBean.class);
+		
+		List<HouseOrderBean> list = query.list();
+		Integer campamount = 0;
+		for (HouseOrderBean houseOrderBean : list) {
+			Integer campamounts = houseOrderBean.getCampamount();
+			campamount += campamounts;
+		}
+		return campamount;
 	
-	
-	
+	}
 }

@@ -95,23 +95,22 @@
 
 </body>
 <script type="text/javascript">
-	$(function() {
-		var houseUrl = "/MountainExploer.com/mountainHouseBack";
+$(function() {
+	var houseUrl = "/MountainExploer.com/Rout/mountainHouseBack";
 
-		$.ajax({
-			url:houseUrl + "/nParkAlloption",
-			method:"GET",
-			dataType : "json",
-			success:function(nPark){
-				for(var i =0 ; i< nPark.length ; i++){
-					$("#selectnPark").append(
-							"<option value='" + nPark[i].id + "'>"
-							+ nPark[i].name + "</option>") }
-				let firstArea = $("#selectnPark").find("option").eq(0).val()
-				
-				}
-			})
-
+	$.ajax({
+		url:houseUrl + "/nParkAlloption",
+		method:"GET",
+		dataType : "json",
+		success:function(nPark){
+			for(var i =0 ; i< nPark.length ; i++){
+				$("#selectnPark").append(
+						"<option value='" + nPark[i].id + "'>"
+						+ nPark[i].name + "</option>") }
+// 			let firstArea = $("#selectnPark").find("option").eq(0).val()
+			
+			}
+		})
 		})
 	</script>
 	<script>

@@ -104,18 +104,18 @@ public class ActCampOrderController {
 
 	}
 
-	@GetMapping("/selectmemberorder")
-	private String selectMemberOrder(Model m ) {
-		if (m.getAttribute("Member") == null) {
-			return "redirect:/member/memberLoginEntry";
-		}
-		MemberBasic mBasic = (MemberBasic) m.getAttribute("Member");
-		Integer memberid = mBasic.getSeqno();
-		List<CampOrderBean> list = campOrderService.selectmemberid(memberid);
-
-		m.addAttribute("list", list);
-		return "house/act/actCampOrder";
-	}
+//	@GetMapping("/selectmemberorder")
+//	private String selectMemberOrder(Model m ) {
+//		if (m.getAttribute("Member") == null) {
+//			return "redirect:/member/memberLoginEntry";
+//		}
+//		MemberBasic mBasic = (MemberBasic) m.getAttribute("Member");
+//		Integer memberid = mBasic.getSeqno();
+//		List<CampOrderBean> list = campOrderService.selectmemberid(memberid);
+//
+//		m.addAttribute("list", list);
+//		return "house/act/actCampOrder";
+//	}
 
 	// delete order
 	@GetMapping("/deletecamporder")
@@ -178,7 +178,7 @@ public class ActCampOrderController {
 		return days;
 	}
 
-	// ajax date order select 庫存
+	// date order select camp left amount
 	
 	@RequestMapping("/selectamount")
 	public String campamount(@RequestParam(name = "selectcampid")Integer campid, @RequestParam(name = "select_bookdate") String bookdate, Model m) {
@@ -207,7 +207,6 @@ public class ActCampOrderController {
 //			System.out.println("................."+bookorderdate);//當天訂房數量
 		}
 //			System.out.println("................."+hotel);//區間訂房最大數量
-		System.out.println("======== campamount-hotel) : " + (campamount-hotel));
 		Integer leftcampamount = campamount-hotel;
 	m.addAttribute("leftcampamount",leftcampamount); //庫存
 				

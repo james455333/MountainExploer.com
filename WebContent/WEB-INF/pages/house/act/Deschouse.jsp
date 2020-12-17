@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>山屋</title>
+    <title>岳進者小屋</title>
     <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
     <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -15,72 +15,31 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-<!-- 日曆     -->
-	<link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
-	<script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-	<script charset="utf-8" src="resources/js/jquery/jquery-1.10.2.js"></script>
-	<script type="text/javascript" src="resources/js/jquery/jquery-ui.js"></script>
-	<script type="text/javascript" src="resources/js/jquery/jquery.ui.datepicker-zh-CN.js"></script>
-  <script>
-  $(function() {
-	  $.datepicker.regional['zh-CN'] = {
-				closeText: '關閉',
-				prevText: '<上月',
-				nextText: '下月>',
-				currentText: '今天',
-				monthNames: ['一月','二月','三月','四月','五月','六月',
-				'七月','八月','九月','十月','十一月','十二月'],
-				monthNamesShort: ['一月','二月','三月','四月','五月','六月',
-				'七月','八月','九月','十月','十一月','十二月'],
-				dayNames: ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],
-				dayNamesShort: ['周日','周一','周二','周三','周四','周五','周六'],
-				dayNamesMin: ['日','一','二','三','四','五','六'],
-				weekHeader: '周',
-				dateFormat: 'yy-mm-dd',
-				firstDay: 1,
-				isRTL: false,
-				showMonthAfterYear: true,
-				yearSuffix: '年'};
-			$.datepicker.setDefaults($.datepicker.regional['zh-CN']);
-    $( "#from" ).datepicker({
-    	minDate: -20, 
-      defaultDate: "+1w",
-      changeMonth: true,
-      numberOfMonths: 2,
-//       altField:"#to",
-      onClose: function( selectedDate ) {
-        $( "#to" ).datepicker( "option", "minDate", selectedDate );
-      }
-    });
-    $( "#to" ).datepicker({
-    	maxDate: "+1M",
-      defaultDate: "+1w",
-      changeMonth: true,
-      numberOfMonths: 2,
-      onClose: function( selectedDate ) {
-        $( "#from" ).datepicker( "option", "maxDate", selectedDate );
-      }
-    });
-  });
-  </script>
-<!--     日曆end -->
-    
-    <style>
+	<link href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.all.min.js"></script>
+	
+ 
+     
+   <style>
     .images{
 width:25px;
 height:25px;
 }
-	.topname{margin : 50px 30px 50px 5px;
+	.topname{margin : 50px 45px 40px 5px;
 	float: left;
-	padding : 50px 30px 50px 5px;
+	padding : 50px 0px 40px 5px;
 	}
-	.body{margin : 10px;
+	.body{margin : 20px;
 	clear : left;
-	
-	width:500px;
-	height :50px;
+	width:90%;
+	height :100%;
 	}
+	.counties{float:left;
+	padding : 0px 20px 40px 50px;
+	clear:left;}
+.img{width:100%;
+	transition: all 0.6s;}
+.img:hover{transform: scale(1.5);}
     </style>
  
 </head>
@@ -134,10 +93,10 @@ height:25px;
 
             <div class="secDivContent">
 
-                <div class="forImage">
-                    <img src="/MountainExploer.com/images/BGI.jpg" alt="" class="forImagesImg">
-                    <!-- 調整參考網址 https://segmentfault.com/q/1010000018971940 -->
-                </div>
+<!--                 <div class="forImage"> -->
+<!--                     <img src="/MountainExploer.com/images/BGI.jpg" alt="" class="forImagesImg"> -->
+<!--                     調整參考網址 https://segmentfault.com/q/1010000018971940 -->
+<!--                 </div> -->
 <!-- 右邊 -->
                 <div class="forFrom ">
 	         <!-- 評價 -->
@@ -145,7 +104,7 @@ height:25px;
                 <div class="topname">
                 				<c:choose>
 									<c:when test="${(j.star*1.0 / j.clickcount) lt 1 || empty j.star}">
-												<span><jmg class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
 												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
 												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
 												<span><img class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
@@ -187,26 +146,33 @@ height:25px;
 												<span><img class="images" src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
 									</c:when>
 							</c:choose>
-					(${j.clickcount }人評分過)
+							
+					<c:choose>
+					<c:when test="${j.clickcount <= 0 || empty j.clickcount}">(0人評分過)</c:when>
+					<c:otherwise>(${j.clickcount }人評分過)</c:otherwise>
+					</c:choose>
+					
 					<div>
+					<c:choose>
+					<c:when test="${empty j.star}">(無人評分)</c:when>
+					<c:otherwise>
 					(平均<fmt:formatNumber type="number" value="${j.star*1.0 / j.clickcount} " maxFractionDigits="1"/>分)		
-					<form action="<c:url value='/mountainHouseAct/jumpupdatestart'></c:url>">
+					</c:otherwise>
+					</c:choose>
+					<form action="<c:url value='/mountainHouseAct/jumpupdatestart'></c:url>" method = "get">
 					<input type="hidden" name="selecthouseid" value="${j.housebasicid}">
-					<input type="submit" value="評分"></form>
+						<c:choose>
+								<c:when test="${empty Member}">
+									<input type="button" class="swalLogin" value="評分">
+								</c:when>
+							<c:otherwise><input type="submit" value="評分"></c:otherwise>
+						</c:choose>	
+					</form>
 					</div>
 					</div>
 					</c:forEach>
 		<!-- datepicker jump-->
-						<div>
-						<form class="topname" action="<c:url value=''></c:url>">
-							<label for="from">入住時間</label>
-							<input type="text" id="from" name="from" readonly>
-							<label for="to">退房時間</label>
-							<input type="text" id="to" name="to" readonly>
-							   <input type="submit" value="查詢">
 						
-						</form>
-						</div>
                 </div>
 <!-- 左邊 -->
                 <div class="forText">
@@ -223,13 +189,112 @@ height:25px;
 								</c:when>
 								</c:choose>
 					</div>
-	                <div class = "topname"><h3>${i.name}</h3></div>
-	                <div class="body" style="height: 250px">${i.desc}</div>
+	                <div class = "topname"><h2>${i.nationalPark.name}</h2><h3>${i.name}</h3></div>
+	                <div class="body" style="height: 200px">${i.desc}</div>
 	                <div class="body">山屋床位${i.bed}  營地數量${i.camp}</div>					
 	                </c:forEach>
+	                
 	                </div>
-                
                 </div>
+<!-- 		下框 -->
+				<div class="secDivContent">
+                	<div style="padding: 20px 0 0 0 "><h3>查詢住宿日期</h3>
+                		<form action="<c:url value='/mountainHouseActOrder/selectamount'></c:url>">
+
+                			<c:forEach var="i" items="${selecthouseid}">
+<!--       小屋編號          			 -->
+                				<input type="hidden" name="selecthouseid" value="${i.housebasicid}">
+                			</c:forEach>
+		                	<div>
+		                		入住時間 : <input type="text" id="from" name="select_bookdate" size="45" readonly>
+		                	</div>
+
+		                	<div>
+		                		<c:choose>
+		                			<c:when test="${empty Member}">
+		                				<input type="button" class="swalLogin" value="查詢">
+		                			</c:when>
+		                			<c:otherwise>
+		                				<input type="submit" value="查詢">
+		                			</c:otherwise>
+		                		</c:choose>
+		                	</div>
+                		</form>
+                	</div>
+<!-- 	顯示查詢日期			                			 -->
+                	<div>
+                		<form action="<c:url value='/mountainHouseActOrder/orderjump'></c:url>">
+                			<c:forEach var="i" items="${house}">
+	                			<input type="hidden" name="orderjump_houseid" value="${i.housebasicid}">
+	                			<input type="hidden" name="orderjump_bookdate" value="${selectdate}">
+	                			<div><h2>${selectdate}</h2>
+	                			<h4>共選了${bookneight}晚</h4></div>
+                				
+                				<table class="order-table table table-hover" id="tablePreview"
+										style="background-color: white;">
+                					<thead class="order-table-th">
+                						<tr>
+                							<th scope="col">岳進者休息區</th>
+                							<th scope="col">價格</th>
+                							<th scope="col">選擇數量</th>
+                							<th scope="col">總共金額</th>
+                						</tr>
+                					</thead>
+				                	
+				                	<tbody class="order-table-tb">
+				                		<tr>
+				                			<td class="img">
+				                				 <c:choose>
+										             <c:when test="${leftcampamount <= 10 && leftcampamount >= 1}">
+										             	<p style="color: red">*&nbsp營地剩餘${leftcampamount}區&nbsp*</p>
+										             </c:when>
+										             <c:when test="${leftcampamount <= 0}">
+										           	 	 <p style="color: red">無剩餘區域&nbsp!!</p>
+										             </c:when>
+										             <c:when test="${leftcampamount > 10}">
+										          		   <p style="color: blue">營地還有${leftcampamount}區</p>
+										             </c:when>
+									             </c:choose>
+				                					<img style="height: 60%" src="/MountainExploer.com/housecamp/images/housecamp3.jpg">
+				                			</td>
+				                			
+				                					<td>TWD.${i.campprice}</td>
+				                					<td><select id="campleftamount" name="orderjump_campamount"></select></td>
+				                				
+				                					<td rowspan="2"><input type=text  readonly   class=" border-0 text-dark" name="orderjump_totelprice" id="houseorderprice" ><p><input class="btn btn-outline-success" type="submit" value="立即下訂"></p></td>
+				                		</tr>
+				                		
+				                		<tr>
+				                			<td class="img">
+				                				
+				                				<c:choose>
+										             <c:when test="${leftbedamount <= 10 && leftbedamount >= 1}">
+										             	<p style="color: red">*&nbsp床位剩餘${leftbedamount}區&nbsp*</p>
+										             </c:when>
+										             <c:when test="${leftbedamount <= 0}">
+										           	 	 <p style="color: red">無剩餘床位&nbsp!!</p>
+										             </c:when>
+										             <c:when test="${leftbedamount > 10}">
+										          		   <p style="color: blue">床位還有${leftbedamount}床</p>
+										             </c:when>
+									            </c:choose>
+				                					<img style="height: 60%" src="/MountainExploer.com/housecamp/images/bedsmall.jpg">
+				                			</td>
+				                			
+				                					<td>TWD.${i.bedprice}</td>
+				                					<td><select id="bedleftamount" name="orderjump_bedamount"></select></td>
+				                				
+				                		</tr>
+				                		
+				                	</tbody>				
+                				
+                				</table>
+                				
+                			</c:forEach>
+                		</form>
+                	</div>
+<!--下框end-->	</div>	
+
             </div>
 
 
@@ -251,8 +316,117 @@ height:25px;
 
 
     </footer>
+    
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+    
+<script type="text/javascript">
+$("#from").daterangepicker({
+//  "singleDatePicker": true,
+ "autoApply": true,
+ "maxSpan": {
+     "days": 7
+ },
+	"locale": {
+ "format": "YYYY年MM月DD日",
+ "separator": " ~ ",
+ "applyLabel": "確認",
+ "cancelLabel": "取消",
+ "customRangeLabel": "自訂義範圍",
+ "daysOfWeek": [
+     "日",
+     "一",
+     "二",
+     "三",
+     "四",
+     "五",
+     "日"
+ ],
+ "monthNames": [
+     "1 月",
+     "2 月",
+     "3 月",
+     "4 月",
+     "5 月",
+     "6 月",
+     "7 月",
+     "8 月",
+     "9 月",
+     "10 月",
+     "11 月",
+     "12 月"
+ ],
+ "firstDay": 1
+	},
+	"startDate": 0,
+	"endDate": moment().subtract(-1, 'days'),
+	"minDate": moment(),
+	"maxDate": moment().subtract(-6, 'month')
+	});
+
+</script>  
+
+<script type="text/javascript">
+$(document).ready(function(){
+	var campleftamount = "${leftcampamount}";
+		if (campleftamount >= 10){
+			campleftamount = "10"
+			};
+			
+	var bedleftamount = "${leftbedamount}";
+		if (bedleftamount >= 10){
+			bedleftamount = "10"
+			};
+	var houseid = "${houseid}";
+	var bedprice = "${bedprice}";	
+	var campprice = "${campprice}"
+
+	var orderhouse = "/MountainExploer.com/mountainHouseActOrder";
+		
+	$.ajax({
+ 		url:orderhouse + "/orderhousebedamount?selecthouseid=" + houseid,
+ 		method: "GET",
+ 		dateType:"json",
+		success : function(order){
+			for(var i = 0 ; i <= campleftamount ; i++){
+				$("#campleftamount").append(
+						"<option value='"+ i +"'>"+ i+"&nbsp&nbsp&nbsp"+"(" +"TWD:"+ i*campprice+")" + "</option>")
+				}
+			for(var i = 0 ; i <= bedleftamount ; i++){
+				$("#bedleftamount").append(
+						"<option value='"+ i +"'>"+ i+"&nbsp&nbsp&nbsp"+"(" +"TWD:"+ i*bedprice+")" + "</option>")
+				
+				}
+			
+// 	let str = $("#campleftamount").find("option").eq(0).val();
+			}
+		})
+	$("#campleftamount").change(function(){
+		var str = $("#campleftamount").val();
+		var stt = $("#bedleftamount").val();
+		
+		$("#houseorderprice").empty();
+		$("#houseorderprice").val(campprice*str+bedprice*stt)
+		
+	})	
+	$("#bedleftamount").change(function(){
+		var str = $("#campleftamount").val();
+		var stt = $("#bedleftamount").val();
+		$("#houseorderprice").empty();
+		$("#houseorderprice").val(campprice*str+bedprice*stt)
+		
+		})
+	
+})
+</script>
+    
+    
 </body>
  
+<script src="/MountainExploer.com/housecamp/js/swalLogin.js"></script> 
 <script src="/MountainExploer.com/js/upLoadImg.js"></script><!-- 上傳頭像 -->
 <script src="/MountainExploer.com/js/table.js"></script>
 <script src="/MountainExploer.com/js/topBar.js"></script>

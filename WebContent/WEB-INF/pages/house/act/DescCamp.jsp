@@ -159,13 +159,19 @@ height:25px;
 					</c:choose>
 					<div>
 						<form action="<c:url value='/mountainCampAct/jumpupdatestar'></c:url>">
+<<<<<<< Updated upstream
 <%-- 						<input type="hidden" name="selectcampid" value="${j.campbasicid}"> --%>
+=======
+						<input type="hidden" name="selectcampid" value="${j.campbasicid}">
+						
+>>>>>>> Stashed changes
 						<c:choose>
 								<c:when test="${empty Member}">
 									<input type="button" class="swalLogin" value="評分">
 								</c:when>
 							<c:otherwise><input type="submit" value="評分"></c:otherwise>
-						</c:choose>					
+						</c:choose>	
+										
 						</form>
 					</div>
 						<div style="margin: 10px">
@@ -236,13 +242,13 @@ height:25px;
 							<tr>
 					             <td class="img">
 					             <c:choose>
-						             <c:when test="${leftcampamount <= 3 && leftcampamount >= 1}">
-						             	<p style="color: red">剩餘${leftcampamount}區</p>
+						             <c:when test="${leftcampamount <= 5 && leftcampamount >= 1}">
+						             	<p style="color: red">*&nbsp剩餘${leftcampamount}區&nbsp*!!</p>
 						             </c:when>
 						             <c:when test="${leftcampamount <= 0}">
 						           	 	 <p style="color: red">無剩餘區域</p>
 						             </c:when>
-						             <c:when test="${leftcampamount > 3}">
+						             <c:when test="${leftcampamount > 5}">
 						          		   <p style="color: blue">剩餘5區</p>
 						             </c:when>
 					             </c:choose>

@@ -18,6 +18,9 @@ import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import mountain.model.route.NationalPark;
 
 @Entity
@@ -41,12 +44,17 @@ public class HouseInfoBean {
 	private Integer star;
 	@Column(name = "CLICKCOUNT")	
 	private Integer clickcount;
+	@Column(name = "BEDPRICE")
+	private Integer bedprice;
+	@Column(name = "CAMPPRICE")
+	private Integer campprice;
 	
-	@Transient
-	private Integer nationparkseqno;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "NATIONAL_PARK_SEQNO",referencedColumnName = "SEQNO")
+	@JsonIgnore
 	private NationalPark nationalPark;
+	@Transient
+	private Integer nationparkseqno;
 	
 	@OneToOne(fetch = FetchType.LAZY , mappedBy = "houseid" ,cascade = CascadeType.ALL)
 	private HouseImgBean imgid;
@@ -91,10 +99,7 @@ public class HouseInfoBean {
 		this.nationalPark = nationalPark;
 	}
 	public Integer getNationparkseqno() {
-		return nationparkseqno;
-	}
-	public void setNationparkseqno(Integer nationparkseqno) {
-		this.nationparkseqno = nationparkseqno;
+		return nationalPark.getId();
 	}
 	public HouseImgBean getImgid() {
 		return imgid;
@@ -125,6 +130,18 @@ public class HouseInfoBean {
 	}
 	public void setHouseorder(Set<HouseOrderBean> houseorder) {
 		this.houseorder = houseorder;
+	}
+	public Integer getBedprice() {
+		return bedprice;
+	}
+	public void setBedprice(Integer bedprice) {
+		this.bedprice = bedprice;
+	}
+	public Integer getCampprice() {
+		return campprice;
+	}
+	public void setCampprice(Integer campprice) {
+		this.campprice = campprice;
 	}
 	
 	
