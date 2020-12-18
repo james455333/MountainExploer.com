@@ -1,13 +1,17 @@
 var rtSearchURL = "/MountainExploer.com/mountain/route/search"
-var buttonModel = '<div class="float-left"><button type="button" class="btn btn-outline-info"></button></div>'
+var buttonModel = '<div class="d-inline-block mx-3 animated animate__bounceIn my-3"><button type="button" class="btn btn-outline-info"></button></div>'
 /* 預設AJAX */
 function ajaxDefault() {
+	progressCount("等待獲取資料")
 	$.ajax({
 		url: rtSearchURL + "/np",
 		method: "GET",
 		dataType: "json",
 		success: function(data) {
-			setTN(data);
+			progressCount("成功獲得資料")
+			setTimeout(()=>{
+				setTN(data);
+			},1200)
 		},
 		error: function() {
 			showErrorSwal();
@@ -61,12 +65,22 @@ function setTN(data) {
 	console.log(data)
 	let npList = $(".npList")
 	for (let i in data) {
-		npList.append(buttonModel);
-		npList.find("button").eq(i)
-			.val(data[i].id).html(data[i].name)
-		if(i == 0){
-			setVTN(data[i].routeBasic)
-		}
+		let model = $("#hideElm").find(".npModel").clone()
+		model.find("a").val(data[i].id).html(data[i].name)
+			.attr("href","#np"+data[i].id)
+		let rtContainer =  $("#hideElm").find(".rt-container").clone()
+		rtContainer.attr("id","np"+data[i].id)
+		if(i==0) rtContainer.addClass("active")
+		npList.append(model);
+		$("#rt-info-container").append(rtContainer);
+		setTimeout(()=>{
+			model.toggleClass("invisible animate__bounceIn")
+			if(i==0) model.find("a").toggleClass("active")
+			if((Number(i)+1) == data.length){
+				console.log("go")
+				setVTN(data[0].routeBasic)
+			}
+		},150*Number(i))
 	}
 	let num = data.length
 }
@@ -78,20 +92,29 @@ function setVTN(data) {
 	routeList.empty();
 	for (let i in data) {
 		if(data[i].routeInfo.toggle == null){
-			let model = $("#hideElm").find("li").clone();
+			let model = $("#hideElm").find(".li2").clone();
 			model.find("button").val(data[i].id).html(data[i].routeInfo.name)
-			routeList.append(model)
+			setTimeout(()=>{
+				routeList.append(model)
+				if(i==0) {
+					setTimeout(()=>{
+						ajaxVTN(model.find("button").val())
+					},125)
+				}
+			},125*Number(i))
+			
 		}
 	}
 	let firstRtID = routeList.find("button").eq(0).val()
-	ajaxVTN(firstRtID)
+	console.log("firstRtID : " + firstRtID)
+	
 	//	$(".routeNav").show(1000);
 }
 
 /* 新增主內容元素 */
 function setMainContent(routeInfo) {
 	
-	let imgContent = $(".forImage")
+	let imgContent = $(".imgAdjust")
 	let imgSet = '<img class="imgSet" src="" alt="">'
 	let text = $(".sec-div-text")
 	imgContent.empty();

@@ -8,21 +8,24 @@
     <title>岳進者 - 路線介紹</title>
     <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
     <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
-    <link rel="stylesheet" href="route/route.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- Animate.css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+	<!-- jquery loading -->
+	<link rel="stylesheet" href="/MountainExploer.com/css/loading.css">
+    <link rel="stylesheet" href="route/route.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+     <!-- jquery loading -->
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easy-loading/1.3.0/jquery.loading.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-loading-overlay/2.1.7/loadingoverlay.min.js'></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="route/routeFunction.js"></script>
     <script src="route/route.js"></script>
     <script src="js/mountain.js"></script>
-    <!-- jquery.blockUI -->
-	<script src="http://malsup.github.io/jquery.blockUI.js"></script>
-    
-    <style>
+	<script src="/MountainExploer.com/js/loading.js"></script>    
 
-    </style>
 </head>
 
 <body>
@@ -46,25 +49,43 @@
                 include-html="/MountainExploer.com/forinclude/includeForIndex.html"></div>
         </nav>
     </header>
+      <nav>
+		<ol class="breadcrumb" id="bc">
+			<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
+			<li class="breadcrumb-item active"><a href="">路線介紹</a></li>
+		</ol>
+	</nav>
     <div class="div_ul">
-        <div class="secNavbar" include-html="fragment/secondNav.html">
-            
-        </div>
-        
         <div class="div_li1">
-            
         </div>
         <div class="div_li3">
         </div>
         <div class="div_li2 m-dl2-adj">
-        	<div class="npNav">
-                <div class="my-3"><div class="npList d-flex align-items-center justify-content-around"> </div></div>
-        	</div>
-        	<div class="routeNav">
+	        <ul class="nav nav-tabs npList">
+				
+			</ul>
+			<!-- Tab panes -->
+			<div class="tab-content" id="rt-info-container">
+			</div>
+
+        	
+            <!-- 每頁不同的內容到這裡結束 -->
+        </div>
+    </div>
+	<div id='hideElm'>
+		<ul>
+			<li class="npModel nav-item invisible animate__animated ">
+				   <a class="nav-link" data-toggle="tab" href="#home">Home</a>
+			</li>
+			<li class="li2">
+			<button type="button" class="btn btn-outline-info"></button></li>
+		</ul>
+		 <div class="rt-container tab-pane container" id="">
+		 	<div class="routeNav  shadow-lg">
                 <nav><ul class="routeList"></ul></nav>
             </div>
-            <div class="secDivContent sdcAdjust">
-                <div class="forImage imgAdjust">
+            <div class="sdcAdjust  shadow">
+                <div class="mx-3 my-3 imgAdjust">
                     <!-- 調整參考網址 https://segmentfault.com/q/1010000018971940 -->
                 </div>
                 <div class="sec-div">
@@ -80,17 +101,8 @@
                 	<div class="sec-div-text"></div>
                 </div>
             </div>
-
-
-
-
-            <!-- 每頁不同的內容到這裡結束 -->
-        </div>
-    </div>
-	<div id='hideElm'>
-		<li class="li2">
-		<button type="button" class="btn btn-outline-info">
-		</button></li>
+		 </div>
+<!-- 		<div class="npModel d-inline-block invisible animated mx-3 my-3"><button type="button" class="btn btn-outline-info"></button></div> -->
 	</div>
     <footer id="footer">
         <a>全站導覽</a>

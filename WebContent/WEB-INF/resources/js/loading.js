@@ -9,7 +9,7 @@ var LoadingCount = {
 		countLoad : 250
 };
 function openBlock(target){
-	LoadingCount.target = target != "body" ? target : LoadingCount.target
+	LoadingCount.target = target != null ? target : LoadingCount.target
 	if (LoadingCount.target instanceof jQuery){
 		LoadingCount.target.css("overflow", "hidden")
 	}else{
@@ -62,7 +62,7 @@ function PBBlock(obj){
 		LoadingCount.min = obj.hasOwnProperty("min") && obj.min>=0  && obj.min.toString().match(/^[0-9]+$/) ?  obj.min : LoadingCount.min
 		LoadingCount.max = obj.hasOwnProperty("max") && obj.max>=0 && obj.max.toString().match(/^[0-9]+$/) ?  obj.max : LoadingCount.max
 		LoadingCount.startCount = obj.hasOwnProperty("startCount") && obj.startCount >=0 && obj.startCount.toString().match(/^[0-9]+$/) ?  obj.startCount : LoadingCount.startCount
-		LoadingCount.endCount = obj.hasOwnProperty("endCount") && obj.startCount >=0  && obj.endCount.toString().match(/^[0-9]+$/) ?  obj.endCount : LoadingCount.endCount
+		LoadingCount.endCount = obj.hasOwnProperty("endCount") && obj.endCount >=0  && obj.endCount.toString().match(/^[0-9]+$/) ?  obj.endCount : LoadingCount.endCount
 	}
 	if(LoadingCount.startCount > 0 ){
 		let restCount = LoadingCount.max - LoadingCount.startCount
@@ -83,7 +83,8 @@ function progressCount(message,countLoad){
 		$('[data-cb="countNum"]').html(LoadingCount.startCount + "%");
 		$('[data-cb="countBar"]').width(LoadingCount.startCount + "%");
 		$('[data-cb="countBar"]').attr("aria-valuenow", LoadingCount.startCount);
-//		console.log("LoadingCount.endCount : " + LoadingCount.endCount)
+		console.log("LoadingCount.endCount : " + LoadingCount.endCount)
+		console.log("LoadingCount.startCount : " + LoadingCount.startCount)
 		if(LoadingCount.startCount >= LoadingCount.endCount){
 			if(LoadingCount.startCount != 100){
 				$('[data-cb="countNum"]').html("100%");

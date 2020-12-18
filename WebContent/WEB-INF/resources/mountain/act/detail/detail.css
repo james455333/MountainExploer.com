@@ -5,32 +5,33 @@
 	height: 100%;
 	padding : 15px;
 }
-.div_ul{
-	background-image: linear-gradient(
-      90deg,
-      rgba(0, 255, 213, 0.15) 10%,
-      rgba(0, 0, 0, 0) 10%
-    ),
-    linear-gradient(rgba(0, 255, 213, 0.15) 10%, rgba(0, 0, 0, 0) 10%);
-  background-size: 5px 5px;
+body{
+	background:	#E0E0E0;
+    background-image: linear-gradient(#FFFFFF 0.5px,transparent 0),
+    	linear-gradient(90deg, #FFFFFF 0.5px,transparent 0),
+    	linear-gradient(hsla(0,0%,100%,.3) 1px,transparent 0),
+    	linear-gradient(90deg,hsla(0,0%,100%,.3) 1px,transparent 0);
+    background-size:35px 35px,25px 25px,7.5px 7.5px,7.5px 7.5px;
 }
 .actTitle {
 	position: relative;
 	font-size: 25px;
-	width: 100%;
-	background-color : white;
-	margin-bottom : 10px;
-	border-radius: 30px;
+	width: -webkit-fill-available;
+	margin-left : 14%+5px;
+	padding : 0 5px;
+	background-color : 	#F0F0F0;
 }
 .a_title{
 	font-size : 35px;
+	background-color : 	#F0F0F0;
 }
 .a_title a{
-	transition : 500ms
+	transition : 500ms;
+	max-width: 50%; 
+	overflow: hidden;
+	white-space: nowrap;
 }
-.a_title a:hover{
-	font-size : 37.5px;
-}
+
 .a_title a:link{
 	color : black;
 }
@@ -55,11 +56,15 @@
 .d_Main {
 	width: 85%;
 	max-width : 85%;
+	height : auto;
 	padding: 5px 5px;
 	vertical-align: top;
-	box-shadow : 0px 2px 4px rgba(0, 0, 0, 0.33)
+	background-color : 	#F0F0F0;
+	
 }
-
+.memberinfo-container{
+	background-color:#F0F0F0;
+}
 .memeberImg {
 	position: relative;
 	width: 100%;
@@ -78,12 +83,14 @@
 .d_time {
 	width: auto;
 	text-align: left;
+	
 }
 
 .d_text{
 	text-align: left;
 	padding: 10px;
 	font-size : 20px;
+	min-height : 250px;
 }
 .d_text i{
 	text-align: left;
@@ -231,7 +238,7 @@
 	width : 100%;
 	padding : 15px;
 	margin : 5px;
-	background-color: #e9e8ff;
+	background-color: #F0F0F0;
 	margin-bottom : 15px;
 }
 .d-sr-body{

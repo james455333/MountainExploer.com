@@ -2,12 +2,14 @@
 //	函式 : 將參數傳入、組合，並執行Ajax指令，最後得到回傳結果，再將結果交給動態新增函式處理
 function activeMainAjax(page,as){
 	let sendData = { page : page, actID}
+	progressCount("等待獲取資料")
 	$.ajax({
 		url : actHomeURL + as,
 		method : "GET",
 		dataType: 'json',
 		data : sendData,
 		success:function(data){
+			progressCount("資料獲取成功")
 			console.log(data)
 			member = data.login
 			//參數給值
@@ -19,7 +21,7 @@ function activeMainAjax(page,as){
 			insertElement(data);
 			//設定按鈕
 			setPageController(data.page)
-			
+			progressCount("頁面設置完成")
 			
 		}
 	})
@@ -103,7 +105,7 @@ function insertMemberTD(thisElm, memberBasic){
 			thisElm.find(".d_ctrl").css("display","inline-flex")
 		}
 	}
-	thisElm.find(".memberTD").find("a").eq(0).html(memberBasic.memberInfo.neck_name).attr("href", "/MountainExploer.com/member/memberInfoEntry")
+	thisElm.find(".memberTD").find(".memeber-name").find("a").html(memberBasic.memberInfo.neck_name).attr("href", "/MountainExploer.com/member/memberInfoEntry")
 	thisElm.find(".memeberImgContainer").find("a").attr("href", "/MountainExploer.com/member/memberInfoEntry")
 	thisElm.find(".memeberImgContainer").find("img").attr("src","/MountainExploer.com/member/showUserImg?userSeq="+memberBasic.seqno)
 				.on("error",function(){
@@ -207,10 +209,10 @@ function insertMainContent(thisElm, data){
 }
 /* 依據Tag設定報名頁面欄位 */
 function setGoReg(thisElm, tagMap){
-	let goReg = "<button type='button' class='btn btn-primary'><i class='fas fa-sign-in-alt'></i>前往報名</button>"
-	let regTop = "<button type='button' class='btn btn-warning'><i class='fas fa-exclamation-circle'></i> 報名人數達到上限</button>"
-	let regEndDate ="<button type='button' class='btn btn-danger'><i class='far fa-calendar-times'></i> 報名已截止</button>"
-	let actEnd = "<button type='button' class='btn btn-dark'><i class='fas fa-calendar-times'></i> 活動已開始或結束</button>"
+	let goReg = "<button type='button' id='btn-reg' class='btn btn-primary btn-goReg'><i class='fas fa-sign-in-alt'></i>前往報名</button>"
+	let regTop = "<button type='button' id='btn-top'  class='btn btn-warning btn-goReg'><i class='fas fa-exclamation-circle'></i> 報名已滿</button>"
+	let regEndDate ="<button type='button' id='btn-regEnd' class='btn btn-danger btn-goReg'><i class='far fa-calendar-times'></i> 報名已截止</button>"
+	let actEnd = "<button type='button' id='btn-end' class='btn btn-dark btn-goReg'><i class='fas fa-calendar-times'></i> 活動已結束</button>"
 	if (!tagMap[3]) {
 		if (!tagMap[4]) {
 			if (!tagMap[5]) {
@@ -224,7 +226,7 @@ function setGoReg(thisElm, tagMap){
 		}
 	
 	} else {
-		thisElm.find(".goReg").find("a").text(actEnd)
+		thisElm.find(".goReg").find("a").html(actEnd)
 	}
 	
 }
@@ -473,3 +475,32 @@ function confirmNewResp(data){
 	})
 }
 
+function goReg(){
+	let btnID = $(this).attr("id").replace("btn-","")
+	switch(btnID){
+		case "end":
+			Swal.fire({
+				title : "<h2>本活動已結束</h2>",
+				timer: 2000,
+  				timerProgressBar: true,
+				confirmButtonText : "點擊關閉或 兩秒後自動關閉"
+			})
+			break;
+		case "top":
+			Swal.fire({
+				title : "<h2>報名已滿</h2>",
+				timer: 2000,
+  				timerProgressBar: true,
+				confirmButtonText : "點擊關閉或 兩秒後自動關閉"
+			})
+			break;
+		case "regEnd":
+			Swal.fire({
+				title : "<h2>報名已截止</h2>",
+				timer: 2000,
+  				timerProgressBar: true,
+				confirmButtonText : "點擊關閉或 兩秒後自動關閉"
+			})
+			break;
+	}
+}
