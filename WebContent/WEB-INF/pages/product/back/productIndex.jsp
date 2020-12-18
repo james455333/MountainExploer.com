@@ -204,103 +204,103 @@
 							</div>
 						</div>
 					</div>
-					<!-- 					<div class='row'> -->
-					<!-- 						<div class="col-xl-6 col-lg-7"> -->
-					<!-- 														<div class="card shadow mb-4"> -->
-					<!-- 															Card Header - Dropdown -->
-					<!-- 															<div class="card-header py-3 "> -->
-					<!-- 																<div -->
-					<!-- 																	class="d-flex flex-row align-items-center justify-content-between"> -->
-					<!-- 																	<h6 class="m-0 font-weight-bold text-primary">活動選擇--國家公園及路線使用率</h6> -->
-					<!-- 																	<div class="ml-auto px-2 no-arrow"> -->
-					<!-- 																		<a href="" role="button" class="chart-reset"> <i -->
-					<!-- 																			class="fas fa-sm fa-fw fa-sync"></i> -->
-					<!-- 																		</a> -->
-					<!-- 																	</div> -->
-					<!-- 																	<div class="dropdown no-arrow"> -->
-					<!-- 																		<a class="dropdown-toggle" href="#" role="button" -->
-					<!-- 																			id="dropdownMenuLink" data-toggle="dropdown" -->
-					<!-- 																			aria-haspopup="true" aria-expanded="false"> <i -->
-					<!-- 																			class="fas fa-ellipsis-v fa-sm fa-fw text-gray-800"></i> -->
-					<!-- 																		</a> -->
-					<!-- 																		<div -->
-					<!-- 																			class="dropdown-menu dropdown-menu-right shadow animated--fade-in" -->
-					<!-- 																			aria-labelledby="dropdownMenuLink"> -->
-					<!-- 																			<div class="dropdown-header">顯示圖像變化</div> -->
-					<!-- 																			<button class="dropdown-item usePer-chart" value='pie'>圓餅圖</button> -->
-					<!-- 																			<button class="dropdown-item usePer-chart" value='doughnut'>甜甜圈圖</button> -->
-					<!-- 																			<button class="dropdown-item usePer-chart" value='bar'>長條圖(直)</button> -->
-					<!-- 																			<button class="dropdown-item usePer-chart" -->
-					<!-- 																				value='horizontalBar'>長條圖(橫)</button> -->
-					<!-- 																			<div class="dropdown-divider"></div> -->
-					<!-- 																			<button class="dropdown-item" id="usePerNp-export">輸出為PNG檔</button> -->
-					<!-- 																			<button class="dropdown-item" id="usePerNp-export-json">輸出為JSON檔</button> -->
-					<!-- 																		</div> -->
-					<!-- 																	</div> -->
-					<!-- 																</div> -->
-					<!-- 																<div -->
-					<!-- 																	class="mt-3 d-flex flex-row align-items-center justify-content-between"> -->
-					<!-- 																	<div class="input-group"> -->
-					<!-- 																		<div class="input-group-prepend"> -->
-					<!-- 																			<label class="input-group-text" for="npChartSelect">選擇切換</label> -->
-					<!-- 																		</div> -->
-					<!-- 																		<select id="npChartSelect" class="custom-select"> -->
-					<!-- 																		</select> -->
-					<!-- 																	</div> -->
-					<!-- 																</div> -->
-					<!-- 															</div> -->
-					<!-- 															Card Body -->
-					<!-- 															<div class="card-body"> -->
-					<!-- 																<div class="chart-area"> -->
-					<!-- 																	<canvas id="usePerNpChart"></canvas> -->
-					<!-- 																</div> -->
-					<!-- 															</div> -->
-					<!-- 														</div> -->
-					<!-- 						</div> -->
+										<div class='row'>
+											<div class="col-xl-6 col-lg-7">
+																			<div class="card shadow mb-4">
+																				Card Header - Dropdown
+																				<div class="card-header py-3 ">
+																					<div
+																						class="d-flex flex-row align-items-center justify-content-between">
+																						<h6 class="m-0 font-weight-bold text-primary">活動選擇--國家公園及路線使用率</h6>
+																						<div class="ml-auto px-2 no-arrow">
+																							<a href="" role="button" class="chart-reset"> <i
+																								class="fas fa-sm fa-fw fa-sync"></i>
+																							</a>
+																						</div>
+																						<div class="dropdown no-arrow">
+																							<a class="dropdown-toggle" href="#" role="button"
+																								id="dropdownMenuLink" data-toggle="dropdown"
+																								aria-haspopup="true" aria-expanded="false"> <i
+																								class="fas fa-ellipsis-v fa-sm fa-fw text-gray-800"></i>
+																							</a>
+																							<div
+																								class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+																								aria-labelledby="dropdownMenuLink">
+																								<div class="dropdown-header">顯示圖像變化</div>
+																								<button class="dropdown-item usePer-chart" value='pie'>圓餅圖</button>
+																								<button class="dropdown-item usePer-chart" value='doughnut'>甜甜圈圖</button>
+																								<button class="dropdown-item usePer-chart" value='bar'>長條圖(直)</button>
+																								<button class="dropdown-item usePer-chart"
+																									value='horizontalBar'>長條圖(橫)</button>
+																								<div class="dropdown-divider"></div>
+																								<button class="dropdown-item" id="usePerNp-export">輸出為PNG檔</button>
+																								<button class="dropdown-item" id="usePerNp-export-json">輸出為JSON檔</button>
+																							</div>
+																						</div>
+																					</div>
+																					<div
+																						class="mt-3 d-flex flex-row align-items-center justify-content-between">
+																						<div class="input-group">
+																							<div class="input-group-prepend">
+																								<label class="input-group-text" for="npChartSelect">選擇切換</label>
+																							</div>
+																							<select id="npChartSelect" class="custom-select">
+																							</select>
+																						</div>
+																					</div>
+																				</div>
+																				Card Body
+																				<div class="card-body">
+																					<div class="chart-area">
+																						<canvas id="usePerNpChart"></canvas>
+																					</div>
+																				</div>
+																			</div>
+											</div>
 
-					<!-- 						<div class="col-xl-6 col-lg-7"> -->
-					<!-- 														<div class="card shadow mb-4"> -->
-					<!-- 															Card Header - Dropdown -->
-					<!-- 															<div -->
-					<!-- 																class="card-header py-3 d-flex flex-row align-items-center justify-content-between"> -->
-					<!-- 																<h6 class="m-0 font-weight-bold text-primary">各國家公園路線總數量及佔比</h6> -->
-					<!-- 																<div class="ml-auto px-2 no-arrow"> -->
-					<!-- 																	<a href="#" role="button" class="chart-reset"> <i -->
-					<!-- 																		class="fas fa-sm fa-fw fa-sync"></i> -->
-					<!-- 																	</a> -->
-					<!-- 																</div> -->
-					<!-- 																<div class="dropdown no-arrow"> -->
-					<!-- 																	<a class="dropdown-toggle" href="#" role="button" -->
-					<!-- 																		id="dropdownMenuLink" data-toggle="dropdown" -->
-					<!-- 																		aria-haspopup="true" aria-expanded="false"> <i -->
-					<!-- 																		class="fas fa-ellipsis-v fa-sm fa-fw text-gray-800"></i> -->
-					<!-- 																	</a> -->
+											<div class="col-xl-6 col-lg-7">
+																			<div class="card shadow mb-4">
+																				Card Header - Dropdown
+																				<div
+																					class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+																					<h6 class="m-0 font-weight-bold text-primary">各國家公園路線總數量及佔比</h6>
+																					<div class="ml-auto px-2 no-arrow">
+																						<a href="#" role="button" class="chart-reset"> <i
+																							class="fas fa-sm fa-fw fa-sync"></i>
+																						</a>
+																					</div>
+																					<div class="dropdown no-arrow">
+																						<a class="dropdown-toggle" href="#" role="button"
+																							id="dropdownMenuLink" data-toggle="dropdown"
+																							aria-haspopup="true" aria-expanded="false"> <i
+																							class="fas fa-ellipsis-v fa-sm fa-fw text-gray-800"></i>
+																						</a>
 
-					<!-- 																	<div -->
-					<!-- 																		class="dropdown-menu dropdown-menu-right shadow animated--fade-in" -->
-					<!-- 																		aria-labelledby="dropdownMenuLink"> -->
-					<!-- 																		<div class="dropdown-header">顯示圖像變化</div> -->
-					<!-- 																		<button class="dropdown-item countRt-chart" value='pie'>圓餅圖</button> -->
-					<!-- 																		<button class="dropdown-item countRt-chart" value='doughnut'>甜甜圈圖</button> -->
-					<!-- 																		<button class="dropdown-item countRt-chart" value='bar'>長條圖(直)</button> -->
-					<!-- 																		<button class="dropdown-item countRt-chart" -->
-					<!-- 																			value='horizontalBar'>長條圖(橫)</button> -->
-					<!-- 																		<div class="dropdown-divider">分隔線</div> -->
-					<!-- 																		<button class="dropdown-item" id="countRt-export">輸出為PNG檔</button> -->
-					<!-- 																		<button class="dropdown-item" id="countRt-export-json">輸出為JSON檔</button> -->
-					<!-- 																	</div> -->
-					<!-- 																</div> -->
-					<!-- 															</div> -->
-					<!-- 															Card Body -->
-					<!-- 															<div class="card-body"> -->
-					<!-- 																<div class="chart-area"> -->
-					<!-- 																	<canvas id="countRtChart"></canvas> -->
-					<!-- 																</div> -->
+																						<div
+																							class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+																							aria-labelledby="dropdownMenuLink">
+																							<div class="dropdown-header">顯示圖像變化</div>
+																							<button class="dropdown-item countRt-chart" value='pie'>圓餅圖</button>
+																							<button class="dropdown-item countRt-chart" value='doughnut'>甜甜圈圖</button>
+																							<button class="dropdown-item countRt-chart" value='bar'>長條圖(直)</button>
+																							<button class="dropdown-item countRt-chart"
+																								value='horizontalBar'>長條圖(橫)</button>
+																							<div class="dropdown-divider">分隔線</div>
+																							<button class="dropdown-item" id="countRt-export">輸出為PNG檔</button>
+																							<button class="dropdown-item" id="countRt-export-json">輸出為JSON檔</button>
+																						</div>
+																					</div>
+																				</div>
+																				Card Body
+																				<div class="card-body">
+																					<div class="chart-area">
+																						<canvas id="countRtChart"></canvas>
+																					</div>
 
-					<!-- 															</div> -->
-					<!-- 														</div> -->
-					<!-- 						</div> -->
-					<!-- 					</div> -->
+																				</div>
+																			</div>
+											</div>
+										</div>
 					<div class="row" id="productBody">
 						<div class="col-xl-12">
 							<div class="card shadow mb-4" id="tb-container">
@@ -361,13 +361,13 @@
 											<!-- 											<input type="button" value="商品名稱查詢" class="nameSubmit"> -->
 											<!-- 										</div> -->
 										</div>
-										<!-- 										<a href="#selectAll" class="ml-auto"> -->
-										<!-- 											<button id="selectAll" class="btn btn-primary btn-icon-split"> -->
-										<!-- 												<span class="icon text-white-50"> <i -->
-										<!-- 													class="fas fa-redo"></i> -->
-										<!-- 												</span> <span class="text">重置查詢</span> -->
-										<!-- 											</button> -->
-										<!-- 										</a> -->
+																				<a href="#selectAll" class="ml-auto">
+																					<button id="selectAll" class="btn btn-primary btn-icon-split">
+																						<span class="icon text-white-50"> <i
+																							class="fas fa-redo"></i>
+																						</span> <span class="text">重置查詢</span>
+																					</button>
+																				</a>
 									</div>
 									<hr>
 									<!-- 											<div class="d-flex"> -->

@@ -25,11 +25,10 @@ var chatyBackHoverColors = [
 $(function(){
 	$. noConflict()
 	setTopCard()
+	countRtChartData()
 	setRevenue()
 	console.log(dataTable)
 	setTable()
-//	$("#npSelect").on("change",changeRtAndTb)
-//	$("#rtSelect").on("change",changeTbByRt)
 	
 	$("#tb-container").find("*").on("click",function(){
 		$('.btn-ctrl').bootstrapToggle({});
@@ -38,7 +37,8 @@ $(function(){
 		$('.btn-rt-info').tooltip();
 		$('.btn-rt-upImg').tooltip();
 	})
-
+	
+	$("#selectAll").on("click",reRender)
 	
 	
 	
@@ -65,21 +65,21 @@ $(function(){
 //	$("#usePerNpChart").parents(".row").find(".usePer-chart").on("click",function(){
 //		usePerNpChartData($(this).val())
 //	})
-//	$("#countRtChart").parents(".row").find(".countRt-chart").on("click",function(){
-//		countRtChartData($(this).val())
-//	})
+	$("#countRtChart").parents(".row").find(".countRt-chart").on("click",function(){
+		countRtChartData($(this).val())
+	})
 //	$("#usePerNp-export").on("click",function(){
 //		downloadChart(usePerNpChart)
 //	})
-//	$("#countRt-export").on("click",function(){
-//		downloadChart(countRtChart)
-//	})
+	$("#countRt-export").on("click",function(){
+		downloadChart(countRtChart)
+	})
 //	$("#usePerNp-export-json").on("click",function(){
 //		downloadChartJson(1)
 //	})
-//	$("#countRt-export-json").on("click",function(){
-//		downloadChartJson(2)
-//	})
+	$("#countRt-export-json").on("click",function(){
+		downloadChartJson(2)
+	})
 //	$("a.chart-reset").on("click",function(e){
 //		let thisElm = $(this)
 //		let canvasID = thisElm.parents("div.card").find("canvas").attr("id")

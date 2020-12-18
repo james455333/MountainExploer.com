@@ -3,10 +3,13 @@ package product.controller.back;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +18,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 
+import main.generic.model.GenericTypeObject;
+import main.generic.service.InterfaceService;
+import mountain.model.route.NationalPark;
+import mountain.model.route.RouteBasic;
 import product.dao.OrdersDAO;
 import product.function.TransFuction;
 import product.model.FirstClass;
@@ -246,6 +254,28 @@ public class BackShopEntryController {
 		model.addAttribute("scBean", secondClassBeans);
 
 		return "product/back/backProductCreate2";
+	}
+	
+	
+	@GetMapping("/countRt")
+	public Map<String, Integer> countRt(){
+		Map<String, Integer> resultMap = new HashMap<String, Integer>();
+		try {
+			
+			
+			List<SecondClass> selectAll = secondClassService.selectAll();
+			for (SecondClass secondClass : selectAll) {
+				 Set<ItemBasic> itemBasics = secondClass.getItemBasics();
+				 int size = itemBasics.size();
+				 resultMap.put(secondClass.getName(), size);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		
+		return resultMap;
 	}
 
 }
