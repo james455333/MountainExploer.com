@@ -27,6 +27,15 @@
 
 
 <style>
+.tips{position: relative;
+    width: 264px;
+    margin: 7px 0 16px;
+    font-size: 88%;
+    float: right;
+    background:#DEFFFF;
+    
+    }
+    
 .images {
 	width: 25px;
 	height: 25px;
@@ -232,14 +241,17 @@
 								</form>
 							</div>
 							</div>
-							<div style="margin: 20px">
-								<div style="margin: 10px">登山1晚的最佳選擇</div>
-								<div style="color: red;margin: 10px">◎所有裝備(睡袋與登山裝備等)及餐飲皆需自行攜帶準備。</div>
-								<div style="margin: 10px"><a href="#selecttoorder"><input type="button" class="btn btn-outline-success" value="現在預定房間"></a></div>
-							</div>	
-							<div>
+							
+							<div class="tips">
+								<div style="margin: 10px;text-align: left; ">
+									<div style="margin: 10px">◎登山的好選擇</div>
+									<div style="margin: 10px">◎宿營地內請以簡易器具炊煮，禁止野炊、烤肉或燃火等行為。</div>
+									<div style="color: #AA0000;margin: 10px">◎所有裝備 ( 睡袋與登山裝備等 ) 及餐飲皆需自行攜帶準備。</div>
+								</div>	
+									<div style="margin: 10px"><a href="#selecttoorder"><input type="button" class="btn btn-outline-success" value="現在預定房間"></a></div>
+							</div>
 								
-							</div>							
+														
 											
 						</div>
 					</c:forEach>
@@ -271,7 +283,7 @@
 							<div class="body">@ 山屋總床位 : ${i.bed} 床</div>
 							<div class="body">@ 營地總數量 : ${i.camp} 區</div>
 							<div class="body" id="selecttoorder">@ 備註 :
-								<div class="body" style=" height: 200px;border:1px  black solid;"><div style="margin:5px"> ${i.desc}</div></div>
+								<div class="body" style=" height: 100%;border:1px  black solid;"><div style="margin:5px"> ${i.desc}</div></div>
 							</div>	
 						</div>	
 						</c:forEach>
@@ -293,22 +305,22 @@
 							<div >
 								入住時間 : <input  type="text" id="from" name="select_bookdate"
 									size="45" readonly>
-							</div>
-
-							<div>
+							
 								<c:choose>
 									<c:when test="${empty Member}">
-										<input  type="button"  class="swalLogin" value="查詢">
+										<input  type="button"  class="swalLogin btn btn-outline-info" value="查詢">
 									</c:when>
 									<c:otherwise>
-										<input type="submit" value="查詢">
+										
+										<input type="submit"  class="btn btn-outline-info" value="查詢">
+										
 									</c:otherwise>
 								</c:choose>
 							</div>
 						</form>
 					</div>
 					<!-- 	顯示查詢日期			                			 -->
-					<div>
+					<div style="padding:50px">
 						<form
 							action="<c:url value='/mountainHouseActOrder/orderjump'></c:url>">
 							<c:forEach var="i" items="${house}">
@@ -318,7 +330,7 @@
 									value="${selectdate}">
 								<div>
 									<h2>${selectdate}</h2>
-									<h4>共選了${bookneight}晚</h4>
+									<h4>共選了 <a style="color: #5599FF">${bookneight}</a> 晚</h4>
 								</div>
 
 								<table class="order-table table table-hover" id="tablePreview"
@@ -337,7 +349,7 @@
 											<td class="img"><c:choose>
 													<c:when
 														test="${leftcampamount <= 10 && leftcampamount >= 1}">
-														<p style="color: red">*&nbsp營地剩餘${leftcampamount}區&nbsp*</p>
+														<p style="color: red">*&nbsp營地剩餘 ${leftcampamount}區&nbsp*</p>
 													</c:when>
 													<c:when test="${leftcampamount <= 0}">
 														<p style="color: red">無剩餘區域&nbsp!!</p>
@@ -346,7 +358,7 @@
 														<p style="color: blue">營地還有${leftcampamount}區</p>
 													</c:when>
 												</c:choose> <img style="height: 60%"
-												src="/MountainExploer.com/housecamp/images/housecamp3.jpg">
+												src="/MountainExploer.com/housecamp/images/housecampsmall.jpg">
 											</td>
 
 											<td>TWD.${i.campprice}</td>
@@ -357,8 +369,7 @@
 												class=" border-0 text-dark" name="orderjump_totelprice"
 												id="houseorderprice">
 												<p>
-													<input class="btn btn-outline-success" type="submit"
-														value="立即下訂">
+													<input class="btn btn-outline-success" style="width:100%" type="submit" value="立即下訂">
 												</p></td>
 										</tr>
 
@@ -503,7 +514,8 @@
 							;
 							var houseid = "${houseid}";
 							var bedprice = "${bedprice}";
-							var campprice = "${campprice}"
+							var campprice = "${campprice}";
+							var bookneight = "${bookneight}";
 
 							var orderhouse = "/MountainExploer.com/mountainHouseActOrder";
 
@@ -542,8 +554,8 @@
 
 										$("#houseorderprice").empty();
 										$("#houseorderprice").val(
-												campprice * str + bedprice
-														* stt)
+												(campprice * str + bedprice
+														* stt)*bookneight)
 
 									})
 							$("#bedleftamount").change(
@@ -552,8 +564,8 @@
 										var stt = $("#bedleftamount").val();
 										$("#houseorderprice").empty();
 										$("#houseorderprice").val(
-												campprice * str + bedprice
-														* stt)
+												(campprice * str + bedprice
+														* stt)*bookneight)
 
 									})
 

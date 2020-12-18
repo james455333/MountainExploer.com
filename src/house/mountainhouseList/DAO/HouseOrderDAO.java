@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import house.mountainhouseList.DAO.Interface.IHouseOrderService;
+import house.mountainhouseList.model.CampInfoBean;
 import house.mountainhouseList.model.HouseOrderBean;
 
 @Repository
@@ -44,6 +45,10 @@ public class HouseOrderDAO implements IHouseOrderService {
 		Query<HouseOrderBean> query = getSession().createQuery("From HouseOrderBean where orderid=" + orderid, HouseOrderBean.class);
 		List<HouseOrderBean> list = query.list();
 		return list;
+	}
+	@Override
+	public HouseOrderBean selectHouseid(Integer houseid ) {
+		return getSession().get(HouseOrderBean.class, houseid);
 	}
 	
 	//select houseid to order
@@ -116,5 +121,47 @@ public class HouseOrderDAO implements IHouseOrderService {
 		}
 		return campamount;
 	
+	}
+	@Override
+	public Integer countorder(Integer houseid) {
+		Query query = getSession().createQuery("Select count(*) From HouseOrderBean where  housebasicid like '%" + houseid +"%'");
+		long result = (long) query.uniqueResult();
+		return (int)result;	
+	}
+//	@Override
+//	public List<HouseOrderBean> selectpeoplename(String peoplename){
+//		Query<HouseOrderBean> query = getSession().createQuery("From HouseOrderBean where peoplename like '%"+ peoplename+"%'",HouseOrderBean.class);
+//		List<HouseOrderBean> list = query.list();
+//		return list;
+//	}
+	
+	@Override
+	public List<HouseOrderBean> selectHouesOrder(Integer no ,Integer houseid , String peoplename){
+		if (no==1) {
+			Query<HouseOrderBean> query = getSession().createQuery("From HouseOrderBean",HouseOrderBean.class);
+			List<HouseOrderBean> list = query.list();
+			return list;
+		}else if (no==2) {
+			Query<HouseOrderBean> query = getSession().createQuery("From HouseOrderBean where  housebasicid like '%" + houseid +"%'",HouseOrderBean.class);
+			List<HouseOrderBean> list = query.list();
+			return list;
+		}
+		return null;
+	}
+	
+	@Override
+	public Integer countorder(Integer no ,Integer houseid , String peoplename) {
+		
+		int result=0;
+		if (no == 1) { //全部
+		Query query = getSession().createQuery("From HouseOrderBean",HouseOrderBean.class);
+		result = query.list().size();
+		
+		}else if (no==2) { //姓名
+			Query query = getSession().createQuery("From HouseOrderBean where  housebasicid like '%" + houseid +"%'",HouseOrderBean.class);
+			result = query.list().size();
+	}
+	
+		return result;
 	}
 }

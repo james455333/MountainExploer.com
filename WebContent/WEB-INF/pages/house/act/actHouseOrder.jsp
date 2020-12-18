@@ -145,7 +145,7 @@ div{margin: 20px;}
 								</div>
 								
 								<div>
-									價錢 :&nbsp <input type="hidden" name="houseorder_price" value="${totalprice}">TWD&nbsp:&nbsp${totelprice}
+									價錢 :&nbsp <input type="hidden" name="houseorder_price" value="${totelprice}">TWD&nbsp:&nbsp${totelprice}
 								</div>
 								
 								<div>
@@ -156,7 +156,7 @@ div{margin: 20px;}
 								<div>
 									特別要求 :
 								</div> 
-								<div><textarea rows="4" cols="50" name="houseorder_textsuggest"></textarea></div>
+								<div><textarea rows="4" cols="50" name="houseorder_textsuggest">無</textarea></div>
 
 								<input type="submit" value="送出">
 							</c:forEach>

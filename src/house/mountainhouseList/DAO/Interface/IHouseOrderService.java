@@ -28,6 +28,15 @@ public interface IHouseOrderService {
 	Integer selectdatebed(String bookdate, Integer houseid);
 
 	Integer selectdatecamp(String bookdate, Integer houseid);
+
+	HouseOrderBean selectHouseid(Integer houseid);
+
+	Integer countorder(Integer houseid);
+
+
+	List<HouseOrderBean> selectHouesOrder(Integer no, Integer houseid, String peoplename);
+
+	Integer countorder(Integer no, Integer houseid, String peoplename);
 	
 	
 
