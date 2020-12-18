@@ -103,6 +103,12 @@
 <style type="text/css">
 .myMouse{cursor: default;}
 
+.ordertop{
+	margin : 10px;
+	font-size: 20px;
+	color : black;
+	font-weight:bold;;
+}
 </style>
 </head>
 
@@ -138,90 +144,14 @@
 					<!-- Page Heading -->
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">路線資料維護</h1>
+						<h1 class="h3 mb-0 text-gray-800">${housename} 訂單</h1>
 						<a href="#" id="exportAll"
 							class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
 							class="fas fa-download fa-sm text-white-50"></i>匯出資料表</a>
 					</div>
 
-					<div class='row'>
-
-						<div class="col-xl-4 col-md-6 mb-4">
-							<div class="card border-left-danger shadow h-100 py-2">
-								<div class="card-body">
-									<div class="row no-gutters align-items-center">
-										<div class="col mr-2">
-											<div
-												class="text-s font-weight-bold text-danger text-uppercase mb-1">
-												岳進小屋總數量</div>
-											<div id="rt-forbid-num"
-												class="h5 mb-0 font-weight-bold text-gray-600">${AllHouse}區</div>
-										</div>
-										<div class="col-auto">
-											<i class="fa fa-flag fa-2x" style="color: #ff6b6b;"
-												aria-hidden="true"></i>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class='row'>
-						<div class="col-xl-6 col-lg-7">
-							<div class="card shadow mb-4">
-								<!-- Card Header - Dropdown -->
-								<div class="card-header py-3 ">
-									<div
-										class="d-flex flex-row align-items-center justify-content-between">
-										<h6 class="m-0 font-weight-bold text-primary">國家公園 - 小屋比例</h6>
-										<div class="ml-auto px-2 no-arrow">
-											<a href="" role="button" class="chart-reset"> <i
-												class="fas fa-sm fa-fw fa-sync"></i>
-											</a>
-										</div>
-										<div class="dropdown no-arrow">
-											<a class="dropdown-toggle" href="#" role="button"
-												id="dropdownMenuLink" data-toggle="dropdown"
-												aria-haspopup="true" aria-expanded="false"> <i
-												class="fas fa-ellipsis-v fa-sm fa-fw text-gray-800"></i>
-											</a>
-											<div
-												class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-												aria-labelledby="dropdownMenuLink">
-												<div class="dropdown-header">顯示圖像變化</div>
-												<button class="dropdown-item usePer-chart" id="areacount" value='pie'>圓餅圖</button>
-												<button class="dropdown-item usePer-chart" value='doughnut'>甜甜圈圖</button>
-												<button class="dropdown-item usePer-chart" value='bar'>長條圖(直)</button>
-												<button class="dropdown-item usePer-chart"
-													value='horizontalBar'>長條圖(橫)</button>
-												<div class="dropdown-divider"></div>
-												<button class="dropdown-item" id="usePerNp-export">輸出為PNG檔</button>
-												<button class="dropdown-item" id="usePerNp-export-json">輸出為JSON檔</button>
-											</div>
-										</div>
-									</div>
-<!-- 									<div -->
-<!-- 										class="mt-3 d-flex flex-row align-items-center justify-content-between"> -->
-<!-- 										<div class="input-group"> -->
-<!-- 											<div class="input-group-prepend"> -->
-<!-- 												<label class="input-group-text" for="npChartSelect">選擇切換</label> -->
-<!-- 											</div> -->
-<!-- 											<select id="npChartSelect" class="custom-select"> -->
-<!-- 											</select> -->
-<!-- 										</div> -->
-<!-- 									</div> -->
-								</div>
-								<!-- Card Body -->
-								<div class="card-body">
-									<div class="chart-area">
-										<canvas id="usePerNpChart"></canvas>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						
-					</div>
+					
+					
 					<div class="row">
 						<!-- 下面開始 -->
 						<div class="col-xl-12">
@@ -229,33 +159,39 @@
 								<div class="card-header py-3"></div>
 								<div class="card-body">
 									<div class="d-flex">
-										<div class="col-md-4 justify-content-end d-flex align-items-center ">
+<!-- 										<div class="col-md-4 justify-content-end d-flex align-items-center "> -->
 											
-											<div class="input-group">
-												<div class="input-group-prepend">
-													<label class="input-group-text">國家公園</label>
-												</div>
+<!-- 											<div class="input-group"> -->
+<!-- 												<div class="input-group-prepend"> -->
+<!-- 													<label class="input-group-text">國家公園</label> -->
+<!-- 												</div> -->
 												 
-												<form class="form-inline" action="<c:url value='/Rout/mountainHouseBack/selectAll#toseesee'></c:url>"method='get'>
-													<select id="selectnPark" class="form-control" name="parkid">
-														<option value="">請選擇指定國家公園</option>
-													</select>
-														<div  class=" input-group-prepend ">
-														<input type="hidden" value="1" name="page">
-														<input type="hidden" value="2" name="no">
-														<input type="submit" class="btn btn-outline-success" value="查詢">
-														</div>
+<%-- 												<form class="form-inline" action="<c:url value='/Rout/mountainHouseBack/selectAll#toseesee'></c:url>"method='get'> --%>
+<!-- 													<select id="selectnPark" class="form-control" name="parkid"> -->
+<!-- 														<option value="">請選擇指定國家公園</option> -->
+<!-- 													</select> -->
+<!-- 														<div  class=" input-group-prepend "> -->
+<!-- 														<input type="hidden" value="1" name="page"> -->
+<!-- 														<input type="hidden" value="2" name="no"> -->
+<!-- 														<input type="submit" class="btn btn-outline-success" value="查詢"> -->
+<!-- 														</div> -->
 												
-												</form>
+<!-- 												</form> -->
 												
-											</div>
-										</div>
+<!-- 											</div> -->
+<!-- 										</div> -->
 										
 										
 										<div class="ml-auto">
-											<form action="<c:url value='/Rout/mountainHouseBack/selectHouse'></c:url>"
+											<form action="<c:url value='/Rout/mountainHouseBack/housebackorder'></c:url>"
 												method='get' id="form1" name="form1">
-												小屋名稱 :&nbsp <input type="text" class="light-table-filter"placeholder="請輸入關鍵字" name="selecthouse" >
+												訂房姓名 :&nbsp <input type="text" class="light-table-filter"placeholder="請輸入關鍵字" name="peoplename" >
+															 
+															 
+															 <input type="hidden" value="" name="orderhouseid">
+															 
+														  	 
+														  	 <input type="hidden" name="no" value="2">
 												<input type="image" class="imgSearch" src="/MountainExploer.com/images/放大鏡.png" width="35px"
 													onClick="document.form1.submit()">
 											</form>
@@ -263,36 +199,17 @@
 										
 									
 										<div class="ml-auto">
-											<form action="<c:url value='/Rout/mountainHouseBack/selectAll#toseesee'></c:url>"method='get'>					
-												<input type="hidden" value="1" name="page">
-												<input type="hidden" value="1" name="no">
-												<input type="hidden" value="" name="parkid">
-												<input type="submit" id="toseesee" class="btn btn-outline-info" value="全部觀看">
+											<form action="<c:url value='/Rout/mountainHouseBack/housebackorder#toseesee'></c:url>"method='get'>					
+												<c:forEach var="i" items="${housebackorder}">
+												<input type="hidden" value="${i.housebasicid.housebasicid}" name="orderhouseid">
+												<input type="hidden" name="no" value="1">
+												<input type="hidden" name="peoplename" value="">
+												</c:forEach>
+												<input type="submit" id="toseesee" class="btn btn-outline-info" value="查詢全部訂單">
 											</form>
 										</div>
 									</div>
-<!-- 									<hr> -->
-<!-- 									<div class="d-flex"> -->
-<!-- 										<h3>國家公園 -- 主類別控制</h3> -->
-<!-- 										<button id="newNp" -->
-<!-- 											class="btn btn-success btn-icon-split ml-auto"> -->
-<!-- 											<span class="icon text-white-50"> <i -->
-<!-- 												class="fas fa-mountain"></i> -->
-<!-- 											</span> <span class="text">新增國家公園</span> -->
-<!-- 										</button> -->
-<!-- 										<button id="updateNp" -->
-<!-- 											class="btn btn-warning btn-icon-split ml-auto"> -->
-<!-- 											<span class="icon text-white-50"> <i -->
-<!-- 												class="fas fa-mountain"></i> -->
-<!-- 											</span> <span class="text">編輯國家公園</span> -->
-<!-- 										</button> -->
-<!-- 										<button id="deleteNp" -->
-<!-- 											class="btn btn-danger btn-icon-split ml-auto"> -->
-<!-- 											<span class="icon text-white-50"> <i -->
-<!-- 												class="fas fa-trash-alt"></i> -->
-<!-- 											</span> <span class="text">刪除國家公園</span> -->
-<!-- 										</button> -->
-<!-- 									</div> -->
+
 									<hr>
 									<div class=' d-flex justify-content-between'>
 									
@@ -301,34 +218,14 @@
 														<div class="col mr-2">
 															<div
 																class="text-s font-weight-bold text-primary text-uppercase mb-1">
-																目前查詢筆數</div>
+																目前訂單查詢筆數</div>
 															<div id="rt-forbid-num"
-																class="h5 mb-0 font-weight-bold text-gray-600">${totalData}區</div>
+																class="h5 mb-0 font-weight-bold text-gray-600">${totalData}筆</div>
 														</div>
 										</div>									
 									
 									
 									
-										<div class="">									
-														<a href="selectAll?parkid=${parkid }&no=${no }&page=1">«第一頁</a>
-													<c:choose>
-													<c:when test="${page <= 1}"><a href="#">‹上一頁</a></c:when>
-													<c:otherwise><a href="selectAll?parkid=${parkid }&no=${no }&page=${page-1}">‹上一頁</a></c:otherwise>
-													</c:choose>					
-													
-														<select onChange="location = this.options[this.selectedIndex].value">
-															<c:forEach var="toPage" begin="1" end="${totalPage}">
-															<option value="selectAll?parkid=${parkid }&no=${no }&page=${toPage}" <c:if test="${toPage==page}">selected="selected"</c:if>>第${toPage}頁</option>
-															</c:forEach>
-														</select>
-													
-													<c:choose>
-													<c:when test="${page == totalPage}"><a href="#">下一頁›</a></c:when>
-													<c:otherwise><a href="selectAll?parkid=${parkid }&no=${no }&page=${page+1}">下一頁›</a></c:otherwise>
-													</c:choose>				
-														
-														<a href="selectAll?parkid=${parkid }&no=${no }&page=${totalPage}">最末頁»</a>
-										</div>				
 								
 					
 							<div class="ml-auto">
@@ -346,139 +243,81 @@
 										<table id="routeTable" style="border:3px #cccccc solid;" cellpadding="10" border='1'>
 											<thead>
 												<tr>
-													<th scope="col"><span class="tr_title">編號</span></th>
-													<th scope="col"><span class="tr_title">國家公園</span></th>
-													<th scope="col"><span class="tr_title">山中小屋</span></th>
-													<th scope="col"><span class="tr_title">床位數量/價錢</span></th>
-													<th scope="col"><span class="tr_title">露營地數量/價錢</span></th>
-													<th scope="col"><span class="tr_title">海拔</span></th>
-													<th scope="col"><span class="tr_title">描述</span></th>
-													<th scope="col"><span class="tr_title">星星分數總合</span></th>
-													<th scope="col"><span class="tr_title">評分次數</span></th>
-													<th scope="col"><span class="tr_title">平均分數</span></th>
+													<th scope="col"><span class="tr_title">訂單編號</span></th>
+													<th scope="col"><span class="tr_title">會員資料</span></th>
+													<th scope="col"><span class="tr_title">訂房姓名</span></th>
+													
+													<th scope="col"><span class="tr_title">總金額</span></th>
+													<th scope="col"><span class="tr_title">訂單詳細資訊</span></th>
+													
 													<th scope="col"><span class="tr_title">照片</span></th>
-													<th scope="col"><span class="tr_title"></span></th>
 													<th scope="col"><span class="tr_title"></span></th>
 
 												</tr>
 											</thead>
 											<tbody>
-											<c:forEach var="i" items="${House_All}">
+											<c:forEach var="i" items="${housebackorder}">
 						<tr>
-							<td>${i.housebasicid}</td>
-							<td>${i.nationalPark.name}</td>
-							<td>${i.name}</td>
-							<td>${i.bed}床&nbspTWD&nbsp:&nbsp${i.bedprice}</td>
-							<td>${i.camp}區&nbspTWD&nbsp:&nbsp${i.campprice}</td>
-							<td>${i.height}</td>
+							<td>${i.orderid}</td>
+							<td>${i.memberbasicid.name}</td>
+							<td>${i.peoplename}</td>
+							
+							<td>TWD : ${i.price}</td>
 							
 							<td>
 								<a class="show" href="#show"  style="color: blue">點我看詳情.....more</a>
-								<span class="showme" style="display:none">${i.desc}<a href="#showme"  style="color: red">隱藏內容</a></span>
+								<div class="showme" style="display:none">
+									<div><label class="ordertop">國家公園 / 岳進小屋 : </label>${i.housebasicid.nationalPark.name} ${i.housebasicid.name}</div>
+									<div><label class="ordertop">床位數量 : </label>${i.bedamount}床</div>
+									<div><label class="ordertop">露營地數量 : </label>${i.campamount}區</div>
+									<div><label class="ordertop">海拔 : </label>${i.housebasicid.height}</div>
+									<div><label class="ordertop">訂單日期 : </label>${i.shoppingdate}</div>
+									<div><label class="ordertop">入住日期 : </label>${i.daterange}</div>
+									<div><label class="ordertop">特殊需求 : </label>${i.textsuggest}</div>
+									
+									<a href="#showme"  style="color: red">&nbsp隱藏內容</a>
+								</div>
+									
 							</td>
 							
-							<c:choose>
-								<c:when test="${empty i.star}"><td>0</td></c:when>
-								<c:otherwise><td>總共${i.star}分</td></c:otherwise>
-							</c:choose>
-							<c:choose>
-								<c:when test="${empty i.clickcount}"><td>0</td></c:when>
-								<c:otherwise>
-									<td>評分過${i.clickcount}次</td>
-								</c:otherwise>
-							</c:choose>
+							
+							
+							
 							<td>
 								<c:choose>
-									<c:when test="${empty j.star}">0</c:when>
-									<c:otherwise>
-										(平均<fmt:formatNumber type="number"
-											value="${j.star*1.0 / j.clickcount} " maxFractionDigits="1" />分)		
-									</c:otherwise>
-								</c:choose>
-							</td>	
-							<td>
-								<c:choose>
-									<c:when test="${empty i.imgid.img }">
+									<c:when test="${empty i.housebasicid.imgid.img }">
 									<img  height="100" width="100"src="/MountainExploer.com/housecamp/images/housenull.PNG">
 									</c:when>
-									<c:when test="${not empty i.imgid.img }">
-										<img   height="100" width="100"src="<c:url value='/mountainHouseBack/showimg?imgid=${i.imgid.id}'/>">
+									<c:when test="${not empty i.housebasicid.imgid.img }">
+										<img   height="100" width="100"src="<c:url value='/mountainHouseBack/showimg?imgid=${i.housebasicid.imgid.id}'/>">
 									</c:when>
 								</c:choose>
 								</td>
 							<td>
 								<div style="margin: 10px">
 									<form
-										action="<c:url value='/Rout/mountainHouseBack/deleteHouse'></c:url>"
+										action="<c:url value='/Rout/mountainHouseBack/deletehouseorder'></c:url>"
 										name="form1" method='post'>
-										<input type="hidden" name="deletehouse" value="${i.housebasicid}">
+										<input type="hidden" name="deletehouse" value="${i.orderid}">
 										<input type="button" class="btn btn-outline-danger" value="刪除"
 											onclick="if(confirm('確認要刪除嗎？')) this.form.submit();">
 									</form>
 								</div>
-								<div style="margin: 10px">
-									<form
-										action="<c:url value="/Rout/mountainHouseBack/updatejump"></c:url>"
-										method="get">
-										<input type="hidden" name="jumpupdate" value="${i.housebasicid}">
-										<input type="submit" class="btn btn-outline-info" value="修改">
-									</form>
-								</div>
+<!-- 								<div style="margin: 10px"> -->
+<!-- 									<form -->
+<%-- 										action="<c:url value="/Rout/mountainHouseBack/updatejump"></c:url>" --%>
+<!-- 										method="get"> -->
+<%-- 										<input type="hidden" name="jumpupdate" value="${i.orderid}"> --%>
+<!-- 										<input type="submit" class="btn btn-outline-info" value="修改"> -->
+<!-- 									</form> -->
+<!-- 								</div> -->
 							</td>
-							<td>
-								<form
-									action="<c:url value="/Rout/mountainHouseBack/housebackorder"></c:url>"
-									method="get">
-									<input type="hidden" name="orderhouseid" value="${i.housebasicid}">
-									<input type="hidden" name="no" value="1">
-									<input type="hidden" name="peoplename" value="">
-									<input type="submit" class="btn btn-outline-success" value="訂單查詢">
-								</form>
-							</td>
+							
 							
 						</tr>
 					</c:forEach>
 					
 
-					<c:forEach var="i" items="${lookupdate}">
-						<tr>
-							<td>${i.housebasicid}</td>
-							<td>${i.nationalPark.name}</td>
-							<td>${i.name}</td>
-							<td>${i.bed}床&nbspTWD&nbsp:&nbsp${i.bedprice}</td>
-							<td>${i.camp}區&nbspTWD&nbsp:&nbsp${i.campprice}</td>
-							<td>${i.height}</td>
-							<td>${i.desc}</td>
-							<c:choose>
-								<c:when test="${empty i.star}"><td>0</td></c:when>
-								<c:otherwise><td>總共${i.star}分</td></c:otherwise>
-							</c:choose>
-							<c:choose>
-								<c:when test="${empty i.clickcount}"><td>0</td></c:when>
-								<c:otherwise><td>評分過${i.clickcount}次</td></c:otherwise>
-							</c:choose>
-							<c:choose>
-								<c:when test="${empty i.clickcount}"><td>平均0分</td></c:when>
-								<c:otherwise>
-									<td>平均${i.star*1.0 / i.clickcount}分</td>
-								</c:otherwise>
-							</c:choose>
-							<td>
-								<c:choose>
-								<c:when test="${empty i.imgid.img }">
-								<a class="tooltip-a" data-toggle='tooltip' target="_blank"><img height="100" width="100"
-										src="/MountainExploer.com/housecamp/images/housenull.PNG"></a>
-								</c:when>
-								<c:when test="${not empty i.imgid.img }">
-								<a class="tooltip-a" data-toggle='tooltip'target="_blank"><img height="100" width="100"
-										src="<c:url value='/mountainHouseBack/showimg?imgid=${i.imgid.id}'/>"></a>
-								</c:when>
-								</c:choose>
-								</td>
-							
-							</tr>
-					</c:forEach>
-											
 											</tbody>
 										</table>
 									</div>

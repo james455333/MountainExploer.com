@@ -23,12 +23,15 @@ import org.springframework.web.multipart.MultipartFile;
 
 import house.mountainhouseList.model.HouseImgBean;
 import house.mountainhouseList.model.HouseInfoBean;
+import house.mountainhouseList.model.HouseOrderBean;
 import house.mountainhouseList.service.HouseImgBeanService;
 import house.mountainhouseList.service.HouseInfoBeanService;
+import house.mountainhouseList.service.HouseOrderService;
 import house.mountainhouseList.service.NationalParkService;
 import main.generic.model.GenericTypeObject;
 import main.generic.service.GenericService;
 import mountain.model.route.NationalPark;
+import oracle.net.aso.m;
 
 @Controller
 @RequestMapping("/Rout/mountainHouseBack")
@@ -48,6 +51,8 @@ public class HouseRoutAction {
 	private HttpServletRequest httprequest;
 	@Autowired
 	private HouseImgBeanService houseImgService;
+	@Autowired
+	private HouseOrderService houseOrderService;
 
 	@GetMapping("/selectAll")
 //	@GetMapping("/mountainHouseBack/selectAll")
@@ -271,12 +276,46 @@ public class HouseRoutAction {
 		return list;
 	}
 	
-//	@GetMapping("/nParkHouseamount")
-//	@ResponseBody
-//	public Integer ParkHouseamount(@RequestParam(name = "Park_Houseamount")Integer parkid){
-//		List<HouseInfoBean> list = new ArrayList<HouseInfoBean>();
-//		list = houseService.ParkHousecount(parkid);
-//		
-//	}
+	@GetMapping("/housebackorder")
+	public String HouseBackOrder(@RequestParam(name = "orderhouseid")Integer houseid,Model m,
+			@RequestParam(name = "no")Integer no ,@RequestParam(name = "peoplename") String peoplename) {
+		
+		int totalData = houseOrderService.countorder(no, houseid, peoplename);
+		
+		List<HouseOrderBean> list = houseOrderService.selectHouesOrder(no, houseid, peoplename);
+		// no = 1 全部 / no = 2 名字
+		
+		HouseInfoBean houseInfoBean = houseService.select(houseid);
+		String housename = houseInfoBean.getName();
+		
+		m.addAttribute("houseid",houseid);
+		m.addAttribute("totalData",totalData);
+		m.addAttribute("housename",housename);
+		m.addAttribute("housebackorder",list);
+		
+		return "house/back/rout/housebackroutorder";
+	}
 
+//	@GetMapping("/housebackallorder")
+//	public String selectHouseOrder(@RequestParam(name = "orderhouseid")Integer houseid,Model m){
+//		
+//		List<HouseOrderBean> list = houseOrderService.selecthouseid(houseid);
+//		
+//		Integer countorder = houseOrderService.countorder(houseid);
+////		System.out.println("+++++++++++++++++++++" + countorder);
+//		
+//		m.addAttribute("countorder",countorder);
+//		m.addAttribute("housebackorder",list);
+//		return "house/back/rout/housebackroutorder";
+//	}	
+//	@GetMapping("/selectpeoplename")
+//	public String selectPeopleName(@RequestParam(name = "selectpeoplename")String peoplename,Model m) {
+//		List<HouseOrderBean> list = houseOrderService.selectpeoplename(peoplename);
+//		Integer countorder = houseOrderService.countorder(houseid);
+////		System.out.println("+++++++++++++++++++++" + countorder);
+//		
+//		m.addAttribute("countorder",countorder);
+//		m.addAttribute("housebackorder",list);
+//		return "house/back/rout/housebackroutorder";
+//	}
 }

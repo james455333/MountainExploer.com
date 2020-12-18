@@ -72,4 +72,28 @@ public class HouseOrderService implements IHouseOrderService {
 		return horderDAO.selectdatecamp(bookdate, houseid);
 	}
 
+	@Override
+	public HouseOrderBean selectHouseid(Integer houseid) {
+		return horderDAO.selectHouseid(houseid);
+	}
+
+	
+
+	@Override
+	public Integer countorder(Integer houseid) {
+		return horderDAO.countorder(houseid);
+	}
+
+	
+
+	@Override
+	public List<HouseOrderBean> selectHouesOrder(Integer no, Integer houseid, String peoplename) {
+		return horderDAO.selectHouesOrder(no, houseid, peoplename);
+	}
+
+	@Override
+	public Integer countorder(Integer no, Integer houseid, String peoplename) {
+		return horderDAO.countorder(no, houseid, peoplename);
+	}
+
 }

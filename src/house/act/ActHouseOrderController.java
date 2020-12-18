@@ -56,7 +56,6 @@ public class ActHouseOrderController {
 		}
 		HouseInfoBean houseInfoBean = houseService.select(houseid);
 		houseorder.setHousebasicid(houseInfoBean);
-		
 		houseorder.setPeoplename(peoplename);
 		houseorder.setBedamount(bedamount);
 		houseorder.setBookdate(qewtString);
@@ -68,6 +67,7 @@ public class ActHouseOrderController {
 		houseorder.setShoppingdate(shoppingdate);
 		houseorder.setTextsuggest(textsuggest);
 		
+		System.out.println("-------------------"+price);
 		houseOrderService.inserHouseOrder(houseorder);
 		return "redirect:/mountainHouseActOrder/selecthouseorder";
 		
@@ -220,6 +220,7 @@ public class ActHouseOrderController {
 		
 		return list;
 	}
+	
 	
 	
 }
