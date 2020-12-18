@@ -155,7 +155,7 @@
 												class="text-s font-weight-bold text-primary text-uppercase mb-1">
 												搜尋商品數量</div>
 											<div id="totalData"
-												class="h5 mb-0 font-weight-bold text-gray-600"></div>
+												class="h5 mb-0 font-weight-bold text-gray-600"></div>筆
 										</div>
 										<div class="col-auto">
 											<i class="fa fa-flag fa-2x" style="color: #339af0;"
@@ -174,7 +174,7 @@
 												class="text-s font-weight-bold text-success text-uppercase mb-1">
 												營業額</div>
 											<div id="rt-able-num"
-												class="h5 mb-0 font-weight-bold text-gray-600"></div>
+												class="h5 mb-0 font-weight-bold text-gray-600"></div>NTD
 										</div>
 										<div class="col-auto">
 											<i class="fa fa-check-circle fa-2x" style="color: #51cf66;"
@@ -193,7 +193,7 @@
 												class="text-s font-weight-bold text-danger text-uppercase mb-1">
 												未出貨訂單</div>
 											<div id="rt-forbid-num"
-												class="h5 mb-0 font-weight-bold text-gray-600"></div>
+												class="h5 mb-0 font-weight-bold text-gray-600"></div>筆
 										</div>
 										<div class="col-auto">
 											<i class="fa fa-times-circle fa-2x" style="color: #ff6b6b;"
