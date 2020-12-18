@@ -16,131 +16,136 @@ document.getElementById("reset").onclick = function(){
 }
 
 
+//註冊
+
+
+
+
+
 //驗證帳號
-$(".account").on("blur", function(){
-    let AntVal = $.trim($(".account").val());
-    let AntValLen = AntVal.length;
+function confirmAnt(confirmAnt){
+    let confirmAntLen = AntVal.length;
     let flag = false;
 
-    if(AntVal == ""){
-        $(".Antsp").html("<font color='red'>請輸入帳號</font>");
-    }else if(AntValLen >= 6){
+    if(confirmAnt == ""){
+        Swal.fire({
+            icon:"warning",
+            title:"帳號不得為空"
+        })
+    }else if(confirmAntLen >= 6){
         let re = new RegExp(/[A-Za-z]+[0-9]/);
         let re2 = new RegExp(/[0-9]+[A-Za-z]/);
-        if(AntVal.match(re)){
+        if(confirmAnt.match(re)){
             flag = true;
-        }else if(AntVal.match(re2)){
+        }else if(confirmAnt.match(re2)){
             flag = true;
         }else{
             flag = false;
         }
         if(flag){
-            $(".Antsp").html("<font color='green'>正確</font>");
+            return true;
         }else{
-            $(".Antsp").html("<font color='red'>帳號長度必須包含英文字母和數字</font>");
+            return false;
         }
     }else{
-        $(".Antsp").html("<font color='red'>帳號長度至少6個字元</font>");
+        return false;
     }
-});
+}
 
 
 //比對帳號
-$(".account").on("blur", function(){
-    var userAnt = $.trim($(".account").val());
-	if(userAnt != null && userAnt.length != 0){
+function noSameAnt(noSameAnt){
+	if(noSameAnt != null && noSameAnt.length != 0){
 	    $.ajax({
 	        method:"GET",
 	        url:"/MountainExploer.com/member/checkAnt",
-	        data:{account:userAnt},
+	        data:{account:noSameAnt},
 	        dataType:"json",
-	        complete:function(msg){
-	            console.log(msg);
-	            if(eval("(" + msg.responseText + ")")){
-	                $("#chksp").html("<font color='red'>帳號已經存在</font>")
-	            } else{
-	                $("#chksp").html("<font color='green'>帳號可以使用</font>");
-	            }
-	        }
+	        success:function(data){
+                if(data){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
 	    })
-	}else{
-		$("#chksp").html("")
 	}
-});
+}
 
 
 //驗證密碼
-$(".pwd").on("blur", function(){
-    let PwdVal = $.trim($(".pwd").val());
-    let PwdValLen = PwdVal.length;
+function confirmPwd(confirmPwd){
+    let confirmPwdLen = PwdVal.length;
     let flag = false;
 
-    if(PwdVal == ""){
-        $(".pwdsp").html("<font color='red'>請輸入密碼</font>");
-    }else if(PwdValLen >= 8){
+    if(confirmPwd == ""){
+        Swal.fire({
+            icon:"warning",
+            title:"密碼不得為空"
+        }).then(function(){
+            
+        })
+    }else if(confirmPwdLen >= 8){
         let re = new RegExp(/[A-Za-z]+[0-9]/);
         let re2 = new RegExp(/[0-9]+[A-Za-z]/);
         let re3 = new RegExp(/[A-Za-z0-9_] + [!@#$%^&*]/);
         let re4 = new RegExp(/[!@#$%^&*] + [A-Za-z0-9_]/);
-        if(PwdVal.match(re)){
+        if(confirmPwd.match(re)){
             flag = true;
-        }else if(PwdVal.match(re2)){
+        }else if(confirmPwd.match(re2)){
             flag = true;
-        }else if(PwdVal.match(re3)){
+        }else if(confirmPwd.match(re3)){
             flag = true;
-        }else if(PwdVal.match(re4)){
+        }else if(confirmPwd.match(re4)){
             flag = true;
         }else{
             flag = false;
         }
         
         if(flag){
-            $(".pwdsp").html("<font color='green'>正確</font>");
+            return true;
         }else{
-            $(".pwdsp").html("<font color='red'>密碼必須包含英文字母與數字，或特殊字元</font>");
+            return false;
         }
     }else{
-        $(".pwdsp").html("<font color='red'>密碼長度至少8個字元</font>");
+        return false;
     }
-});
+}
 
 //比對密碼
-$(".chkPwd").on("blur", function(){
-    let ChkPwdVal = $.trim($(".chkPwd").val());
-    let PwdVal = $.trim($(".pwd").val());
+function comparPwd(Pwd1, Pwd2){
     let flag = false;
-
-    if(ChkPwdVal == ""){
-        $(".chksp").html("<font color='red'>請再次輸入密碼</font>");
-    }else if(ChkPwdVal != ""){
-        if(ChkPwdVal == PwdVal){
-            flag = true;
-        }else{
-            flag = false;
-        }
-
-        if(flag){
-            $(".chksp").html("<font color='green'>正確</font>");
-        }else{
-            $(".chksp").html("<font color='red'>密碼不相符</font>");
-        }
+    
+    if(Pwd1 == Pwd2){
+        flag = true;
     }else{
-        $(".chksp").html("<font color='red'>密碼驗證必須與先前輸入之密碼相同</font>");
+        flag = false;
     }
-})
+
+    if(flag){
+       return true;
+    }else{
+        return false;
+    }
+    
+}
 
 
 //驗證姓名
-$(".name").on("blur", function(){
-    let NmVal = $.trim($(".name").val());
-    let NmValLen = NmVal.length;
+function chkName(chkName){
+    let chkNameLen = chkName.length;
     let flag = false;
 
-    if(NmVal == ""){
-        $(".nmsp").html("<font color='red'>請輸入姓名</font>");
-    }else if(NmValLen >= 2){
-        for(let i = 0; i < NmValLen; i++){
-            let ch = NmVal.charCodeAt(i);
+    if(chkName == ""){
+        Swal.fire({
+            icon:"warning",
+            title:"姓名不得為空"
+        }).then(function(){
+            
+        })
+    }else if(chkNameLen >= 2){
+        for(let i = 0; i < chkNameLen; i++){
+            let ch = chkName.charCodeAt(i);
             if(ch >= 0x4e00 && ch <= 0x9fff){
                 flag = true;
             }else{
@@ -150,39 +155,48 @@ $(".name").on("blur", function(){
         }
 
         if(flag){
-            $(".nmsp").html("<font color='green'>正確</font>");
+            return true;
         }else{
-            $(".nmsp").html("<font color='red'>請輸入中文字元</font>");
+            return false;
         }
     }else{
-        $(".nmsp").html("<font color='red'>姓名長度至少2個中文字元</font>");
+        Swal.fire({
+            icon:"warning",
+            title:"姓名至少兩個中文字元"
+        }).then(function(){
+            
+        })
     }
-})
+}
 
 
 //驗證Email
-$(".email").on("blur", function(){
-    let EmVal = $.trim($(".email").val());
-    let EmValLen = EmVal.length;
+function chkEmail(chkEmail){
+    let chkEmailLen = chkEmail.length;
     let flag = false;
 
-    if(EmVal == ""){
-        $(".emsp").html("<font color='red'>請輸入電子郵件</font>");
-    }else if(EmValLen >= 5){
+    if(chkEmail == ""){
+        Swal.fire({
+            icon:"warning",
+            title:"Email不得為空"
+        }).then(function(){
+            
+        })
+    }else if(chkEmailLen >= 5){
         let re = new RegExp(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/);
-        if(EmVal.match(re)){
+        if(chkEmail.match(re)){
             flag = true;
         }else{
             flag = false;
         }
 
         if(flag){
-            $(".emsp").html("<font color='green'>正確</font>");
+            return true;
         }else{
-            $(".emsp").html("<font color='red'>電子郵件格式不正確</font>")
+            return false;
         }
     }
-})
+}
 
 
 

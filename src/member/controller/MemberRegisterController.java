@@ -45,6 +45,7 @@ public class MemberRegisterController {
 	}
 	
 	
+	//判斷帳號是否重複
 	@ResponseBody
 	@GetMapping(value = "/member/checkAnt")
 	public boolean processIsExist(Model m, @RequestParam(name = "account")String account) {
