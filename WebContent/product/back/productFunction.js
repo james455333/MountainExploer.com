@@ -1,12 +1,12 @@
 //
-function downloadChart(chartElm){
+function downloadChart(chartElm) {
 	const openURL = chartElm.toBase64Image()
 	const chartType = chartElm.config.type
-//	console.log(openURL)
+	//	console.log(openURL)
 	const a = $("a.export")[0]
 	console.log(a)
 	// 設定下載的檔名
-	a.download = chartType+"_countRtChart.png"
+	a.download = chartType + "_countRtChart.png"
 	// 設定網址
 	a.href = openURL
 	// 模擬使用者按下連結
@@ -16,131 +16,193 @@ function downloadChart(chartElm){
 	// 不過若你下載完就要跳轉到下一頁的話，其實這個可以不用
 	setTimeout(() => window.URL.revokeObjectURL(openURL), 5000)
 }
-function downloadChartJson(order){
-	if( order == 1 ){
+function downloadChartJson(order) {
+	if (order == 1) {
 		$.ajax({
-			url : routeBaseURL+"/usePerNp",
-			type : "GET",
-			dataType : "json",
-			success : function(data){
+			url: routeBaseURL + "/usePerNp",
+			type: "GET",
+			dataType: "json",
+			success: function(data) {
 				let newData = {}
-				for(let i in data){
+				for (let i in data) {
 					let rt = data[i]
-					let newRt = {路線總數 : 0}
+					let newRt = { 路線總數: 0 }
 					newData[i] = newRt
-					for(let j in rt){
-						if(j == "npNums"){
+					for (let j in rt) {
+						if (j == "npNums") {
 							newRt["路線總數"] = rt[j]
-						}else{
-							newRt[j] = {路線被選取數 : rt[j] }
+						} else {
+							newRt[j] = { 路線被選取數: rt[j] }
 						}
 					}
 				}
-				activeJsonDownload(newData,"活動選擇_國家公園及路線使用率")
+				activeJsonDownload(newData, "活動選擇_國家公園及路線使用率")
 			},
-			error : function(jqXHR){
+			error: function(jqXHR) {
 				console.log(jqXHR)
 				Swal.fire("發生錯誤", "下載時發生錯誤，錯誤代碼 : " + jqXHR.status, "error")
 			}
 		})
-	}else if( order == 2 ){
+	} else if (order == 2) {
 		$.ajax({
-			url : routeBaseURL+"/countRt",
-			type : "GET",
-			dataType : "json",
-			success : function(data){
+			url: routeBaseURL + "/countRt",
+			type: "GET",
+			dataType: "json",
+			success: function(data) {
 				console.log(data)
 				let newData = {}
-				for(let i in data){
-					newData[i] = {路線總數 : data[i]}
+				for (let i in data) {
+					newData[i] = { 路線總數: data[i] }
 				}
-				activeJsonDownload(newData,"各國家公園路線總數量")
+				activeJsonDownload(newData, "各國家公園路線總數量")
 			},
-			error : function(jqXHR){
+			error: function(jqXHR) {
 				Swal.fire("發生錯誤", "下載時發生錯誤，錯誤代碼 : " + jqXHR.status, "error")
 			}
 		})
 	}
 }
 
-function reRender(){
+function reRender() {
 	usePerRtChart = null;
 	setTopCard()
 	countRtChartData()
 	usePerNpChartData()
 	setSearchBar()
-	if(typeof dataTable != 'undefined') dataTable.destroy()
+	if (typeof dataTable != 'undefined') dataTable.destroy()
 	$('#productTable').find("tbody").remove()
 	let btn = $(this)
 	btn.find("i").addClass("fa-spin")
-	setTimeout(function(){
+	setTimeout(function() {
 		setTable()
 		btn.find("i").removeClass("fa-spin")
 	}, 1000)
 }
-function resetChart(canvasID){
-	if(canvasID == 'usePerNpChart'){
+function resetChart(canvasID) {
+	if (canvasID == 'usePerNpChart') {
 		usePerRtChart = null;
 		usePerNpChartData()
-	}else if(canvasID == 'countRtChart'){
+	} else if (canvasID == 'countRtChart') {
 		countRtChartData()
 	}
 }
 
-function countRtChartData(cType){
+function countRtChartData(cType) {
 	$.ajax({
-		url : productBaseURL + "/countRt",
-		type : "GET",
-		dataType : "json",
-		success : function(data){
-			setCountRtChart(data,cType)
+		url: productBaseURL + "/countRt",
+		type: "GET",
+		dataType: "json",
+		success: function(data) {
+			setCountRtChart(data, cType)
 		},
-		error : function(jqXHR){
+		error: function(jqXHR) {
 			Swal.fire("設定路線圓餅圖發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
 		}
 	})
 }
 
-function setCountRtChart(data,cType){
+function setCountRtChart(data, cType) {
 	let names = []
 	let rtNums = []
-	for(let i in data){
+	for (let i in data) {
 		names.push([i])
 		rtNums.push(data[i])
 	}
 	var ctx = $("#countRtChart");
-	if(countRtChart != null ) countRtChart.destroy()
+	if (countRtChart != null) countRtChart.destroy()
 	let setType = 'doughnut';
-	if(typeof cType != 'undefined') setType = cType
-	var chartSet =  {
-	  type: setType,
-	  data: {
-	    labels: names,
-	    datasets: [{
-	      data: rtNums,
-	      backgroundColor: chartBackColors,
-	      hoverBackgroundColor: chatyBackHoverColors,
-	      hoverBorderColor: "rgba(234, 236, 244, 1)",
-	    }],
-	  },
-	  options: {
-	    maintainAspectRatio: false,
-	    tooltips: {
-		  bodyFontSize : 20,
-	      borderWidth: 5,
-	      xPadding: 15,
-	      yPadding: 15,
-	      caretPadding: 10,
-	    },
-	    legend: {
-	      display: true
-	    },
-	  },
+	if (typeof cType != 'undefined') setType = cType
+	var chartSet = {
+		type: setType,
+		data: {
+			labels: names,
+			datasets: [{
+				data: rtNums,
+				backgroundColor: chartBackColors,
+				hoverBackgroundColor: chatyBackHoverColors,
+				hoverBorderColor: "rgba(234, 236, 244, 1)",
+			}],
+		},
+		options: {
+			maintainAspectRatio: false,
+			tooltips: {
+				bodyFontSize: 20,
+				borderWidth: 5,
+				xPadding: 15,
+				yPadding: 15,
+				caretPadding: 10,
+			},
+			legend: {
+				display: true
+			},
+		},
 	}
-	if(setType == 'bar' || setType == 'horizontalBar') chartSet.options.legend.display = false;
-	countRtChart = new Chart(ctx,chartSet);
-//	$("#countRtChart")[0].toDataURL("image/jpg")
+	if (setType == 'bar' || setType == 'horizontalBar') chartSet.options.legend.display = false;
+	countRtChart = new Chart(ctx, chartSet);
+	//	$("#countRtChart")[0].toDataURL("image/jpg")
 }
+
+
+function usePerNpChartData(cType) {
+
+	$.ajax({
+		url: productBaseURL + "/amountPercent",
+		type: "GET",
+		dataType: "json",
+		success: function(data) {
+			setUsePerNpChart(data, cType)
+		},
+		error: function(jqXHR) {
+			Swal.fire("設定路線圓餅圖發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
+		}
+	})
+}
+function setUsePerNpChart(data, cType) {
+	let names = []
+	let rtNums = []
+	for (let i in data) {
+		names.push([i])
+		rtNums.push(data[i])
+	}
+
+	var ctx = $("#usePerNpChart");
+	if (usePerNpChart != null) usePerNpChart.destroy()
+	let setType = 'pie';
+	if (typeof cType != 'undefined') setType = cType
+
+//	let setType = 'doughnut';
+//	if (typeof cType != 'undefined') setType = cType
+	var chartSet = {
+		type: setType,
+		data: {
+			labels: names,
+			datasets: [{
+				data: rtNums,
+				backgroundColor: chartBackColors,
+				hoverBackgroundColor: chatyBackHoverColors,
+				hoverBorderColor: "rgba(234, 236, 244, 1)",
+			}],
+		},
+		options: {
+			maintainAspectRatio: false,
+			tooltips: {
+				bodyFontSize: 20,
+				borderWidth: 5,
+				xPadding: 15,
+				yPadding: 15,
+				caretPadding: 10,
+			},
+			legend: {
+				display: true
+			},
+		},
+	}
+	if (setType == 'bar' || setType == 'horizontalBar') chartSet.options.legend.display = false;
+	usePerNpChart = new Chart(ctx, chartSet);
+}
+
+
+
 
 
 //改

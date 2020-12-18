@@ -26,6 +26,7 @@ $(function(){
 	$. noConflict()
 	setTopCard()
 	countRtChartData()
+	usePerNpChartData()
 	setRevenue()
 	console.log(dataTable)
 	setTable()

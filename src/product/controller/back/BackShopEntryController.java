@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -22,8 +23,10 @@ import org.springframework.web.server.ResponseStatusException;
 
 import main.generic.model.GenericTypeObject;
 import main.generic.service.InterfaceService;
+import mountain.model.activity.ActivityInfo;
 import mountain.model.route.NationalPark;
 import mountain.model.route.RouteBasic;
+import mountain.model.route.RouteInfo;
 import product.dao.OrdersDAO;
 import product.function.TransFuction;
 import product.model.FirstClass;
@@ -268,6 +271,24 @@ public class BackShopEntryController {
 				 Set<ItemBasic> itemBasics = secondClass.getItemBasics();
 				 int size = itemBasics.size();
 				 resultMap.put(secondClass.getName(), size);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		
+		return resultMap;
+	}
+	
+	@GetMapping("/amountPercent")
+	public Map<Integer, Double> amountPercent(){
+		Map<Integer, Double> resultMap = new HashMap<Integer, Double>();
+		try {
+			List<Orders> selectAllOrders = ordersDao.selectAllOrders();
+			for (Orders orders : selectAllOrders) {
+				Double totalAmount = orders.getTotalAmount();
+				resultMap.put(orders.getMemberBasicID(), totalAmount);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
