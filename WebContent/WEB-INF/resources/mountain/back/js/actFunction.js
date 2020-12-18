@@ -119,17 +119,22 @@ function downloadAllJson(){
 	})
 }
 function reRender(){
-	var callbacks = $.Callbacks( "once" );
-	$("#resetAll").addClass("fa-spin")
-	if(typeof dataTable != 'undefined') {
-		dataTable.destroy()
-		$('#routeTable').find("tbody").remove()
-	}
+	PBBlock({
+		startCount : 25,
+		endCount : 99,
+		countTimes : 9,
+	})
+	progressCount("頁面元素讀取完成")
+	$("body").css("overflow", "hidden")
+	openBlock("#actBack")
+	$("#actBack").loading("resize")
 	$.ajax({
 		url : baseURL + "/all",
 		type : "GET",
 		dataType : "json",
 		success : function(data){
+			$("#actBack").loading("resize")
+			progressCount("獲得活動資料")
 			allData = data
 			$.ajax({
 				url : baseURL + "/reg/all",
@@ -137,18 +142,21 @@ function reRender(){
 				dataType : "json",
 				success : function(data){
 					allData_reg = data
+					progressCount("獲得報名資料")
 					setTopCard()
+					progressCount("字卡，設置完成")
 					setActModeChart()
+					progressCount("活動狀態圖，設置完成")
 					setTagModeChart()
+					progressCount("報名狀態圖，設置完成")
 					setActMonthSlider()
 					setActYearSelect()
 					setActTrendChart()
-					setTimeout(function(){
-						callbacks.add(setTable)
-						callbacks.fire()
-						$("#resetAll").removeClass("fa-spin")
-					}, 500)
-					
+					progressCount("活動與報名趨勢圖，設置完成")
+					setTable()
+					progressCount("資料表格，設置完成")
+					progressCount("頁面準備完畢", 1000)
+					$("body").css("overflow", "auto")
 				}
 			})
 		},
@@ -157,6 +165,43 @@ function reRender(){
 		}
 	})
 
+}
+function resetTable(){
+	PBBlock({
+		countTimes : 5,
+	})
+	$("#resetAll").addClass("fa-spin")
+	openBlock("#tableBody")
+	progressCount("表格重置")
+	progressCount("獲取活動資料")
+	$.ajax({
+		url : baseURL + "/all",
+		type : "GET",
+		dataType : "json",
+		success : function(data){
+			allData = data
+			progressCount("獲取活動註冊資料")
+			$.ajax({
+				url : baseURL + "/reg/all",
+				type : "GET",
+				dataType : "json",
+				success : function(data){
+					progressCount("設置表格中...")
+					allData_reg = data
+					if(typeof dataTable != 'undefined') {
+						dataTable.destroy()
+					}
+					setTable()
+					progressCount("表格重置完成..")
+					$("#resetAll").removeClass("fa-spin")
+					
+				}
+			})
+		},
+		error : function(jqXHR){
+			Swal.fire("getAllData發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
+		}
+	})
 }
 
 function resetChart(canvasID){
@@ -359,7 +404,6 @@ function setResultToDT(data){
 			}
 //			"<div class='d-flex justify-content-between align-items-center' >" + updateBtn + deleteBtn + infoBtn + upImgBtn +"</div>"
 		result.push(riGroup)
-		progressCount()
 	}
 	return result;
 }

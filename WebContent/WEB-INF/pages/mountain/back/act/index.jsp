@@ -42,7 +42,6 @@
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 	<!-- for this page -->    
     <link href="/MountainExploer.com/mountain/back/css/act.css" rel="stylesheet">
-	<!-- for this page -->    
     <link href="/MountainExploer.com/css/loading.css" rel="stylesheet">
 	
 	<!-- JQuery -->
@@ -323,12 +322,12 @@
 	                            <div class="card-header d-flex py-3 align-items-center">
 	                            	<h3 class=" text-primary">活動管理維護</h3>
 	                            	<div class="ml-auto px-2 no-arrow">
-		                                <a href="#selectAll"id="selectAll" role="button" class="chart-reset">
+		                                <a href="#selectAll"id="selectAll" role="button">
 		                                    <i class="fas fa-lg fa-fw fa-sync"></i>
 		                                </a>
 	                                </div>
 	                            </div>
-	                            <div class="card-body">
+	                            <div class="card-body" id="tableBody">
 	                                <div class="table-responsive">
 	                                    <table id="routeTable" class="table-hover table-striped">
 	                                    	<thead>

@@ -9,7 +9,7 @@ var LoadingCount = {
 		countLoad : 250
 };
 function openBlock(target){
-	LoadingCount.target = target != "body" ? target : LoadingCount.target
+	LoadingCount.target = target != null ? target : LoadingCount.target
 	if (LoadingCount.target instanceof jQuery){
 		LoadingCount.target.css("overflow", "hidden")
 	}else{
@@ -63,9 +63,6 @@ function PBBlock(obj){
 		LoadingCount.max = obj.hasOwnProperty("max") && obj.max>=0 && obj.max.toString().match(/^[0-9]+$/) ?  obj.max : LoadingCount.max
 		LoadingCount.startCount = obj.hasOwnProperty("startCount") && obj.startCount >=0 && obj.startCount.toString().match(/^[0-9]+$/) ?  obj.startCount : LoadingCount.startCount
 		LoadingCount.endCount = obj.hasOwnProperty("endCount") && obj.endCount >=0  && obj.endCount.toString().match(/^[0-9]+$/) ?  obj.endCount : LoadingCount.endCount
-		console.log("LoadingCount.endCount : " + LoadingCount.endCount)
-		console.log("obj.endCount status : " + obj.hasOwnProperty("endCount") && obj.startCount >=0  && obj.endCount.toString().match(/^[0-9]+$/))
-	
 	}
 	if(LoadingCount.startCount > 0 ){
 		let restCount = LoadingCount.max - LoadingCount.startCount
@@ -75,18 +72,21 @@ function PBBlock(obj){
 		LoadingCount.eachCoount = Math.round(LoadingCount.max/LoadingCount.countTimes)
 	}
 }
-function progressCount(message){
+/* 觸發進度條前進 */
+function progressCount(message,countLoad){
 	if(LoadingCount.countTimes==0) return
-	
+	LoadingCount.countLoad = countLoad != null ? countLoad : LoadingCount.countLoad
 	/* 設置callback */
 	setTimeout(() => { 
 		if(message != null) $('[data-cb="countMessage"]').html(message)
-		LoadingCount.startCount += LoadingCount.eachCoount
+		LoadingCount.startCount = Number((LoadingCount.eachCoount + LoadingCount.startCount).toFixed(1))
 		$('[data-cb="countNum"]').html(LoadingCount.startCount + "%");
 		$('[data-cb="countBar"]').width(LoadingCount.startCount + "%");
 		$('[data-cb="countBar"]').attr("aria-valuenow", LoadingCount.startCount);
 		console.log("LoadingCount. : " + LoadingCount.startCount)
 		console.log("LoadingCount.endCount : " + LoadingCount.endCount)
+		console.log("LoadingCount.endCount : " + LoadingCount.endCount)
+		console.log("LoadingCount.startCount : " + LoadingCount.startCount)
 		if(LoadingCount.startCount >= LoadingCount.endCount){
 			if(LoadingCount.startCount != 100){
 				$('[data-cb="countNum"]').html("100%");
@@ -105,6 +105,7 @@ function progressCount(message){
 		}
 	},LoadingCount.countLoad)	
 }
+/* 初始化LoadingCount */
 function IntiLoadingCount(){
 	LoadingCount = {
 		countTimes : 1,

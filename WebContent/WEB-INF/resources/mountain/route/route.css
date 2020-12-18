@@ -1,26 +1,51 @@
 @charset "UTF-8";
+body{
+	/* background-color : #e7d6bc!important; */
+	background:	#e7d6bc;
+  /*  background-image: linear-gradient(#FFFFFF 0.5px,transparent 0),
+    	linear-gradient(90deg, #FFFFFF 0.5px,transparent 0),
+    	linear-gradient(hsla(0,0%,100%,.3) 1px,transparent 0),
+    	linear-gradient(90deg,hsla(0,0%,100%,.3) 1px,transparent 0);
+    background-size:35px 35px,25px 25px,7.5px 7.5px,7.5px 7.5px; */
+}
 .m-dl2-adj{
-	transition : 1000ms;
-	background-color : #e7d6bc;
-	padding : 2.5px;
+	margin : 0;
+	padding : 0;
+	width : 100%;
+}
+.li2 button{
+	animation : flipInY;
+	animation-duration: 2s;
+}
+#rt-book{
+	width : 100%;
+	height : 550px;
+	background-color: white; 
+	position : relative;
+	width : 0 auto;
+	z-index: 9;
+	overflow: visible;
 }
 
 .npNav{
-	padding : 2.5px;
 	background-color : #f1e8da;
 	margin : 10px;
-	margin-bottom : 10px;
-	border-radius : 10px;
+	min-height : 102px;
+}
+.npNav li{
+	animation : flipInY;
+	animation-duration: 2s;
 }
 .routeNav{
 	height : 150px;
 	margin : 10px;
 	background-color : #f1e8da;
 	transition : 1000ms;
-	border-radius : 10px;
 }
 .sdcAdjust{
 	transition : 1000ms;
+	background-color : #f1e8da;
+	margin : 10px;
 	z-index: 5
 }
 .imgAdjust{
@@ -32,11 +57,6 @@
 	width : 100%;
 }
 .sec-div{
-	position : relative;
-	float : left;
-	width : 980px;
-	height : auto;
-	border: 5px solid rgb(95, 26, 26);
 	margin : 5px;
 }
 #hideElm{
@@ -44,7 +64,6 @@
 }
 .sec-div-title{
 	font-size : 25px;
-	border-bottom: 3px solid #EA7500;
 }
 .sec-div-text{
 	font-size : 15px;

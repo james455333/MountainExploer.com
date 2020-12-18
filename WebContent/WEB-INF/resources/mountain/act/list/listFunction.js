@@ -8,9 +8,10 @@ function ajaxCheckLogin(od){
 		dataType : "json",
 		success : function(data){
 			PBBlock({
-				startCount : 25
+				counTimes : 4,
 			})
 			openBlock("body")
+			progressCount("頁面元素載入完成")
 			member = data.seqno
 			if(od == 1){
 				activeMainAjax(page,"/defaultAS");			
@@ -92,27 +93,26 @@ function activeMainAjax(page, as) {
 		dataType: 'json',
 		data: sendData,
 		success: function(data) {
-			
-			PBBlock({
-				countTimes : data.actList.length
-			})
+			showData = data
 //			console.log(data)
 			//參數給值
+			progressCount("成功取得資料")
 			totalPage = data.totalPage;
 			totalData = data.totalData;
+			//	本次查詢資料總數
+			$("#totalData").append(totalData)
+			//	呼叫動態新增資料函式
+			insertTable(data.actList);
+			progressCount("列表設置完成")
+			//	設定按鈕
+			setPageController(data.page,totalPage)
+			progressCount("頁面設置完成")
 			if (totalData == 0) {
 				swal({
 					title: "無符合本次查詢條件的資料",
 					icon: "info",
 				})
 			}
-			//	本次查詢資料總數
-			$("ul[class='third_nav']").find("li").eq(2).append(totalData)
-			//	呼叫動態新增資料函式
-			insertTable(data.actList);
-			//	設定按鈕
-			setPageController(data.page,totalPage)
-			
 
 		}
 	})
@@ -123,19 +123,24 @@ function insertTable(data) {
 	for (let i = 0; i < data.length; i++) {
 		let model = $(".order-table").find(".order-table-tb").eq(i).clone();
 		let thisElm = $(".order-table-tb").eq(i)
-		
+		let imageModel = $("#table-image").find(".act-container").eq(i).clone();
+		let thisElm2 = $("#table-image").find(".act-container").eq(i)
 		/**呼叫動態新增網頁元素之函式 */
-//		console.log("actBasic.seqno : " + data[i].actBasic.seqno)
-		setActImg(data[i].actBasic.seqno, thisElm)
-		setTitle(data[i].actBasic, thisElm)
-		setTag(data[i].tagMap, thisElm)
-		setPostTime(data[i].actBasic, thisElm)
-		setRegNum(data[i], thisElm)
-		setRegEndDate(data[i].actBasic.actInfo, thisElm)
-		$(".order-table").append(model)
-		$(".order-table").find(".order-table-tb").eq(i).removeClass("hideTbody");
-		progressCount()
+		imageMode(data[i],thisElm2)
+		listMode(data[i],thisElm)
+		$("#table-list").append(model)
+		$("#table-list").find(".order-table-tb").eq(i).removeClass("hideTbody");
+		$("#table-image").append(imageModel)
+		$("#table-image").find(".act-container").eq(i).removeClass("d-none");
 	}
+}
+function listMode(data,thisElm){
+	setActImg(data.actBasic.seqno, thisElm)
+	setTitle(data.actBasic, thisElm)
+	setTag(data.tagMap, thisElm)
+	setPostTime(data.actBasic, thisElm)
+	setRegNum(data, thisElm)
+	setRegEndDate(data.actBasic.actInfo, thisElm)
 }
 
 /*	
@@ -160,16 +165,16 @@ function setActImg(seqno, thisElm) {
 function setTitle(actBasic, thisElm) {
 	
 	let thisTD = thisElm.find("td").eq(1).find("a")
-	let title = actBasic.actInfo.title + "<br>"
-		+ actBasic.actInfo.totalDay + " / $" + actBasic.actInfo.price;
-	
+	let title = actBasic.actInfo.title 
 	thisTD.attr("href", detailURL + actBasic.seqno)
+	thisTD.attr("title", title)
+//	thisTD.attr("id", "act"+actBasic.seqno)
 	thisTD.append(title)
 }
 function setPostTime(actBasic, thisElm) {
 	
 	let thisTD = thisElm.find("td").eq(2)
-	let postTime = " / <br>"
+	let postTime = " / "
 		.concat(dateFormate(actBasic.actInfo.postDate))
 		.concat(new Date(actBasic.actInfo.postDate).toLocaleTimeString())
 	
@@ -202,6 +207,56 @@ function activeTagAS(tag) {
 		window.location.assign(defaultAs)
 	}
 }
+
+function imageMode(data,thisElm){
+	setActImg_IM(data.actBasic.seqno, thisElm)
+	setTitle_IM(data.actBasic, thisElm)
+//	setTag_IM(data.tagMap, thisElm)
+	setPostTime_IM(data.actBasic, thisElm)
+	setRegNum_IM(data, thisElm)
+	setRegEndDate_IM(data.actBasic.actInfo, thisElm)
+}
+function setActImg_IM(seqno, thisElm){
+	let thisTarget = thisElm.find(".image")
+	let imgURL = actHomeURL + "/images?actID=" + seqno + "&defImage=1"
+	thisTarget.find("a").attr("href", detailURL + seqno);
+	thisTarget.find("img").attr("src", imgURL).on("error",imgError);
+}
+function setTitle_IM(actBasic, thisElm){
+	let thisTD = thisElm.find(".title").find(".act-title")
+	let title = actBasic.actInfo.title 
+	thisTD.attr("href", detailURL + actBasic.seqno)
+	thisTD.attr("title", title)
+//	thisTD.attr("id", "act"+actBasic.seqno)
+	thisTD.append(title)
+}
+//function setTag_IM(tagMap, thisElm){}
+function setPostTime_IM(actBasic, thisElm){
+	let thisTD = thisElm.find(".post-info")
+	let postTime = dateFormate(actBasic.actInfo.postDate)
+		.concat(new Date(actBasic.actInfo.postDate).toLocaleTimeString())
+	
+	thisTD.find(".postDate").append(postTime);
+	thisTD.find(".author").append(actBasic.memberBasic.memberInfo.neck_name)
+	thisTD.find(".author").find("a").attr("href", "");
+	
+	
+}
+function setRegNum_IM(data, thisElm){
+		
+	let thisTD = thisElm.find(".regInfo")
+	
+	thisTD.append(data.nowReg + " / " + data.actBasic.actInfo.regTop)
+}
+function setRegEndDate_IM(actInfo, thisElm){
+	let thisTD = thisElm.find(".regEndData")
+	thisTD.append(dateFormate(actInfo.regEndDate))
+}
+
+
+
+
+
 
 /* 函式 : 
 	計算傳入參數，並於網頁動態新增或修改頁面控制項 
@@ -302,11 +357,66 @@ function setTag(check, thisElm) {
 	}
 }
 
-
+function modeSwitch(){
+	if(mode == $(this).val()) return
+	mode = $(this).val()
+	let originURL = actEnterURL.match(/\mode=[\u4e00-\u9fa5_a-zA-Z]*\&/)[0]
+	let newMode = "mode=" + mode +"&"
+	if(originURL != null && originURL!= ""){
+		actEnterURL = actEnterURL.replace(originURL, newMode )
+		console.log(actEnterURL)
+	}else{
+		actEnterURL += newMode
+		console.log(actEnterURL)
+	}
+	changePaginationLink(newMode)
+//	actEnterURL +=  ?  ("mode=" + mode +"&" )
+	let targetMode = $("#table-"+mode)
+	let originMode = targetMode.siblings("*")
+	originMode.toggleClass("animate__zoomOut animate__zoomIn").one("animationend",function(){
+		originMode.toggleClass("d-none")
+		targetMode.toggleClass("d-none animate__zoomOut animate__zoomIn").one("animationend",function(){
+//			targetMode.toggleClass("animate__zoomOut animate__zoomIn")
+		})
+	})
+	
+}
+function changePaginationLink(newMode){
+	
+	let pagination = $(".pagination")
+	for(let i = 0; i < pagination.length ; i++){
+		let aTags = pagination.eq(i).find("a")
+		for(let j = 0 ; j < aTags.length ; j++ ){
+			let check = aTags.eq(j).attr("href").match(/^\//)
+			if(check != null && check != ""){
+				let href = aTags.eq(j).attr("href")
+				let originURL = href.match(/\mode=[\u4e00-\u9fa5_a-zA-Z]*\&/)[0]
+				href = href.replace(originURL,newMode)
+				aTags.eq(j).attr("href",href)
+			}
+		}
+	}
+}
+function toggleShowMode(){
+	toggleModeBtn()
+	let target = "#table-" + mode
+	$(target).toggleClass("animate__zoomOut animate__zoomIn d-none")
+	$(target).siblings("*").toggleClass("animate__zoomOut animate__zoomIn d-none")
+}
+function toggleModeBtn(){
+	let showModeBtn = $(".showMode").toggleClass("active").find("input")
+	console.log(showModeBtn)
+	for(let i = 0 ; i < showModeBtn.length ; i++){
+		if(showModeBtn.eq(i).attr("checked") != null){
+			showModeBtn.eq(i).removeAttr("checked")
+		}else{
+			showModeBtn.eq(i).attr("checked",true)
+		}
+	}
+}
 /*	函式 : 回傳 => 日期編排 */
 function dateFormate(date) {
 	let result = "";
 	result = result.concat(new Date(date).toLocaleDateString())
-
 	return result;
 }

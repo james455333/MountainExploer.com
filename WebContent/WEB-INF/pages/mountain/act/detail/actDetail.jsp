@@ -20,6 +20,8 @@
 	<link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
     <!-- sweetalert2 -->
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css">
+    <!-- jquery loading -->
+	<link rel="stylesheet" href="/MountainExploer.com/css/loading.css">
     <!-- for this page -->
     <link rel="stylesheet" href="detail/detail.css">
     <!-- CKeditor4 -->
@@ -39,13 +41,17 @@
 	<script src="http://malsup.github.io/jquery.blockUI.js"></script>
 	<!-- sweetalert2 -->
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <!-- jquery loading -->
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easy-loading/1.3.0/jquery.loading.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-loading-overlay/2.1.7/loadingoverlay.min.js'></script>
     <!-- for this page -->
     <script src="/MountainExploer.com/mountain/js/mountain.js"></script>
     <script src="detail/detail.js"></script>
     <script src="detail/detailFunction.js"></script>
     <!-- active method -->
-	<script src="/MountainExploer.com/js/blockUI.js"></script>
+<!-- 	<script src="/MountainExploer.com/js/blockUI.js"></script> -->
 	<script src="/MountainExploer.com/js/swalLogin.js"></script>
+	<script src="/MountainExploer.com/js/loading.js"></script>
 </head>
 
 <body>
@@ -67,6 +73,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent" include-html="/MountainExploer.com/forinclude/includeForIndex.html"></div>
         </nav>
     </header>
+     <nav>
+		<ol class="breadcrumb" id="bc">
+			<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
+			<li class="breadcrumb-item"><a href="/MountainExploer.com/mountain/list?page=1&od=1">活動討論區</a></li>
+			<li class="breadcrumb-item active">發表活動</li>
+		</ol>
+	</nav>
     <div class="div_ul">
         <div class="div_li1">
         </div>
@@ -74,23 +87,22 @@
         </div>
         <div class="div_li2">
             <!-- 每頁不同的內容從這裡開始 -->
-            <nav>
-				<ol class="breadcrumb" id="bc">
-					<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
-					<li class="breadcrumb-item"><a href="/MountainExploer.com/mountain/list?page=1&od=1">活動討論區</a></li>
-					<li class="breadcrumb-item active">發表活動</li>
-				</ol>
-			</nav>
-            <div class="innerContainer">
+           
+            <div id="topAnchor" class="innerContainer">
 				<!--	活動標題 	-->
-				<table class="actTitle">
+				<table id="actTitle" class="actTitle shadow-lg">
 					<tbody>
 						<tr>
 							<td>
-								<!-- 標籤 -->
-								<div class="tagContainer"></div>
 								<!-- 標題 -->
-								<div class="a_title"><a></a></div>
+								<div class="d-flex py-3 px-3">
+									<div class="a_title " style="max-width: 50%; overflow: hidden"><a></a></div>
+									<div class="tagContainer"></div>
+									<div id="btn-top-container" class="ml-auto mr-3 d-none align-items-center">
+										<button id="btn-top" class="btn  btn-flat"><i class="fa fa-lg fa-sign-out-alt align-self-center fa-rotate-270"></i></button>
+									</div>
+								</div>
+								<div></div>
 							</td>
 						</tr>
 					</tbody>
@@ -105,16 +117,18 @@
 							<tr>
 								<!-- 會員資訊 -->
 								<td class="memberTD">
-									<!-- 會員暱稱 -->
-									<div><a href=""></a></div>
-									<!-- 會員頭像 -->
-									<div class="memeberImgContainer">
-										<a href="">
-											<img class="memeberImg" src="">
-										</a>
+									<div class="memberinfo-container shadow">
+										<!-- 會員頭像 -->
+										<div class="memeberImgContainer">
+											<a href="">
+												<img class="memeberImg" src="">
+											</a>
+										</div>
+										<!-- 會員暱稱 -->
+										<div class="memeber-name"><a href=""></a></div>
 									</div>
 								</td>
-								<td class="d_Main">
+								<td class="d_Main shadow-lg">
 									<!-- 發起時間 -->
 									<div class="d_time"></div>
 									<!-- 修改 -->
@@ -159,7 +173,7 @@
 											
 										</div>
 										<!-- 留言 複數 -->
-											<div class="d_sr">
+											<div class="d_sr align-self-end">
 												<div class="d-sr-body">
 													<!-- 留言者 -->
 													<div class="d_sr_img">
@@ -251,8 +265,8 @@
 			        </li>
 			    </ul>
 			</nav>
-            <div class="container-fluid">
-				<div class="row resp-container">
+            <div class="container-fluid ">
+				<div class="row resp-container shadow-lg">
 					<div class="col-md-12">
 						<div class="row">
 							<div class="col-md-12">
