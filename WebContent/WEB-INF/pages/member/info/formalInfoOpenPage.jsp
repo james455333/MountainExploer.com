@@ -57,7 +57,157 @@
         </div>
         <div class="div_li2">
             <!-- 每頁不同的內容從這裡開始 -->
-            
+            <div class="secDivContent">
+				<div class="container bootstrap snippets bootdey">
+				<div class="panel-body inf-content">
+				    <div class="row">
+				        <div class="col-md-4">
+				        	<form id="imgForm" action="<c:url value='/member/imgUpdateAction'/>" method="POST" enctype="multipart/form-data">
+					            <img alt="會員頭貼" style="width:600px;" class="img-circle img-thumbnail isTooltip userFile" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" data-original-title="Usuario">
+					            
+					            <div style="display:none">
+					            	<input type="text" class="seqno" name="seqno" value="${mbean.seqno}">
+					            </div>
+				            </form>
+				        </div>
+				        <div class="col-md-6">
+				            <strong style="font-family: Microsoft JhengHei;font-weight:bold;font-size:30px">個人資訊</strong><br>
+				            <div class="table-responsive">
+				            <table class="table table-user-information">
+				                <tbody>
+				                    <tr class="acTr">        
+				                        <td>
+				                            <strong>
+				                                <span class="glyphicon glyphicon-asterisk text-primary"></span>
+				                                	會員帳號
+				                            </strong>
+				                        </td>
+				                        <td class="text-primary account">
+				                            	${mbean.account}
+				                        </td>
+				                    </tr>
+				                    <tr class="ncTr">        
+				                        <td>
+				                            <strong>
+				                                <span class="glyphicon glyphicon-cloud text-primary"></span>  
+				                                	暱稱
+				                            </strong>
+				                        </td>
+				                        <td class="text-primary ncName">
+				                           	${mbean.memberInfo.neck_name}
+				                        </td>
+				                    </tr>
+				                    <tr class="gnTr">        
+				                        <td>
+				                            <strong>
+				                                <span class="glyphicon glyphicon-cloud text-primary"></span>  
+				                                	性別
+				                            </strong>
+				                        </td>
+				                        <td class="text-primary gender">
+				                           	<c:if test="${mbean.memberInfo.gender eq 'male'}">
+												男
+											</c:if>
+											<c:if test="${mbean.memberInfo.gender eq 'female'}">
+												女
+											</c:if>
+											<c:if test="${mbean.memberInfo.gender eq 'x'}">
+												X
+											</c:if>
+											<c:if test="${mbean.memberInfo.gender eq  'mask'}">
+												不透露
+											</c:if>
+				                        </td>
+				                    </tr>
+				                    <tr class="emTr">        
+				                        <td>
+				                            <strong>
+				                                <span class="glyphicon glyphicon-bookmark text-primary"></span> 
+				                                	Email
+				                            </strong>
+				                        </td>
+				                        <td class="text-primary email">
+				                            	${mbean.email}
+				                        </td>
+				                        
+				                    </tr>
+				                    <tr class="gpTr">        
+				                        <td>
+				                            <strong>
+				                                <span class="glyphicon glyphicon-eye-open text-primary"></span> 
+				                                	身分組
+				                            </strong>
+				                        </td>
+				                        <td class="text-primary group">
+				                            	<c:if test="${mbean.memberStatus.seqno eq 100}">
+													一般登山者
+												</c:if>
+												<c:if test="${mbean.memberStatus.seqno eq 110}">
+													未認證登山者
+												</c:if>
+												<c:if test="${mbean.memberStatus.seqno eq 120}">
+													登山嚮導						
+												</c:if>
+												<c:if test="${mbean.memberStatus.seqno eq 130}">
+													未認證嚮導
+												</c:if>
+												<c:if test="${mbean.memberStatus.seqno eq 140}">
+													停權登山者
+												</c:if>
+												<c:if test="${mbean.memberStatus.seqno eq 150}">
+													停權嚮導
+												</c:if>
+												<c:if test="${mbean.memberStatus.seqno eq 160}">
+													管理員
+												</c:if>
+												
+				                        </td>
+				                    </tr>
+				                    <tr class="exTr">        
+				                        <td>
+				                            <strong>
+				                                <span class="glyphicon glyphicon-envelope text-primary"></span> 
+				                                	登山經驗
+				                            </strong>
+				                        </td>
+				                        <td class="text-primary exp">
+				                            	${mbean.memberInfo.climb_ex}
+				                        </td>
+				                    </tr>
+				                    <tr class="otTr">        
+				                        <td>
+				                            <strong>
+				                                <span class="glyphicon glyphicon-calendar text-primary"></span>
+				                                	個人簡介
+				                            </strong>
+				                        </td>
+				                        <td class="text-primary other">
+				                            	尚未填寫
+				                        </td>
+				                    </tr>
+				                    <tr class="rgTr">        
+				                        <td>
+				                            <strong>
+				                                <span class="glyphicon glyphicon-calendar text-primary"></span>
+				                                	註冊日期
+				                            </strong>
+				                        </td>
+				                        <td class="text-primary regDate">
+				                             	${mbean.reg_Date}
+				                        </td>
+				                    </tr>
+				                    <tr class="btnAction">        
+				                        
+				                    </tr>                                  
+				                </tbody>
+				            </table>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+				</div>                                        
+
+            </div>
             <!-- 每頁不同內容到這邊結束 -->
             <div class="fix"><a href="#"><img src="/MountainExploer.com/images/arror.png" alt="" style=" width:60px; height:60px;"></a>
             </div>
@@ -79,7 +229,7 @@
 <!--sweet alert-->
 <script src="/MountainExploer.com/js/includejsp.js"></script>
 <script src="/MountainExploer.com/js/personalContrul.js"></script><!-- 個人資料控制列表 -->
-<script src="bootstrapInfo.js"></script>
+<script src="formalInfoOpenPage.js"></script>
 
 
 </html>
