@@ -38,23 +38,9 @@ $(function(){
 		$('.btn-rt-info').tooltip();
 		$('.btn-rt-upImg').tooltip();
 	})
-//	$("#routeTable").on("error","img",function(){
-//		console.log(123)
-//		$(this).attr("src","/MountainExploer.com/mountain/images/defaultMountain.jpg")
-//	})
+
 	
-	$("#tb-container").on("click", '.toggle', function(){
-		let thisRtID = $(this).parents("tr").find("td").eq(2).text()
-		let thisToggle ;
-		if( !$(this).attr("class").includes("off")){
-			console.log(thisRtID + " set to off")
-			thisToggle = 1;
-		}else{
-			console.log(thisRtID + " set to on")
-			thisToggle = 0;
-		}
-		setRtToggle(thisRtID, thisToggle)
-	})
+	
 	
 	$("#tb-container").on("click", '.btn-rt-update', function(){
 		updateBox($(this))
@@ -63,12 +49,11 @@ $(function(){
 		deleteAlert($(this))
 	})
 	$("#tb-container").on("click", '.btn-rt-info', function(){
-		window.location = "http://www.google.com/"
+//		window.location = "http://www.google.com/"
+		window.location = "/MountainExploer.com/back/shop/productInfoEntry?no=6000000"
 //		showMoreInfo($(this))
 	})
-	$("#tb-container").on("click", '.btn-rt-upImg', function(){
-		updateImage($(this))
-	})
+	
 //	$("#newNp").on('click',newNp)
 //	$("#updateNp").on('click',updateNp)
 //	$("#deleteNp").on('click',deleteNp)

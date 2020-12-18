@@ -139,9 +139,9 @@ function setTopCard(){
 
 			$("#rt-forbid-num").html(data)
 		},
-		error : function(jqXHR){
-			Swal.fire("發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
-		}
+//		error : function(jqXHR){
+//			Swal.fire("發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
+//		}
 	})
 	
 }
@@ -156,9 +156,9 @@ function setRevenue(){
 		success : function(data){
 			$("#rt-able-num").html(data)
 		},
-		error : function(jqXHR){
-			Swal.fire("發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
-		}
+//		error : function(jqXHR){
+//			Swal.fire("發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
+//		}
 	})
 	
 }
@@ -261,7 +261,7 @@ function ajaxUpdate(result){
 }
 
 function deleteAlert(btn){
-	let rtID = btn.parents("tr").find("td").eq(2).text()
+	let productID = btn.parents("tr").find("td").eq(0).text()
 	
 	Swal.fire({
 		customClass: {
@@ -269,19 +269,20 @@ function deleteAlert(btn){
 		    cancelButton: 'btn btn-danger'
 		},
 		buttonsStyling: false,
-		title : '即將刪除 <i class="fas fa-arrow-right"></i> 路線編號 : ' + rtID,
+		title : '即將刪除 <i class="fas fa-arrow-right"></i> 商品編號 : ' + productID,
 		icon : "warning",
-		html : "!! 警告 !!  <hr>本動作將刪除本路線，並且無法回復",
+		html : "!! 警告 !!  <hr>本動作將刪除本商品，並且無法回復",
 		showCancelButton: true, 
 	  	confirmButtonColor: '#3085d6',
 		cancelButtonColor: '#d33',
 		confirmButtonText: '確定刪除', 
 		cancelButtonText: '取消',
-	}).then(function(e) {
+	})
+	.then(function(e) {
 		console.log(e)
 		if(e.isConfirmed){
 			$.ajax({
-				url : routeBaseURL + "/rt-" + rtID,
+				url : productBaseURL + "/delete-" + productID,
 				type : "Delete",
 				success:function(){
 					reRender()
@@ -296,9 +297,9 @@ function deleteAlert(btn){
 					  	confirmButtonColor: '#3085d6',
 					})
 				},
-				error : function(jqXHR){
-					Swal.fire("發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
-				}
+//				error : function(jqXHR){
+//					Swal.fire("發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
+//				}
 				
 			})
 		}
@@ -306,7 +307,7 @@ function deleteAlert(btn){
 }
 
 function showMoreInfo(btn){
-	let rtID = btn.parents("tr").find("td").eq(2).text()
+	let rtID = btn.parents("tr").find("td").eq(0).text()
 	let nextTr = btn.parents("tr").next()
 	if(nextTr.attr("class") == "append-info") {
 		nextTr.toggle(500)
