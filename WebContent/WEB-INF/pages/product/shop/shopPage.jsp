@@ -29,9 +29,18 @@
             flex-wrap: wrap;
             justify-content: center;
         }
+        .secDivContent {
+            display: flex;
+            margin: auto;
+        }
         .div {
             margin: 15px;
             font-size: 18px;
+        }
+        .div2 {
+            margin: 15px;
+            font-size: 18px;
+            line-height: 40px;
         }
 
         </style>
@@ -96,8 +105,23 @@
 				</ul>
 			</nav>
 		</div>
-		<div class="div_li1">
+		<div class="div_li1" >
 			<a></a>
+				<div class="div2">
+					<a href='<c:url value="/shop/shoppingCartEntry"/>'>查看購物車</a>
+					<br>
+					<span>
+					品項： ${ShoppingCart.itemNumber} 項
+					</span>
+					<br>
+					<span>
+					金額： $  ${ShoppingCart.subtotal} 
+					</span>
+
+				</div>
+				<div class="div2">
+					<a href='<c:url value="/shoppingcart/memberOrders"/>'>查看訂單</a>
+				</div>
 		</div>
 		<div class="div_li3">
 			<a></a>
@@ -136,40 +160,13 @@
 
 			</div>
 
-			<div class="secDivContent">
+			<div class="secDivContent" >
 				<div>
 					<span>資料筆數 : </span> <span id="totalData"> </span>
 				</div>
-				<div>
-					<a href='<c:url value="/shop/shoppingCartEntry"/>'>查看購物車</a>
-					<br>
-					<span>品項： ${ShoppingCart.itemNumber} 項</span>
-					<br>
-					<span>金額： $  ${ShoppingCart.subtotal} </span>
-
-				</div>
-				<div>
-					<a href='<c:url value="/shoppingcart/memberOrders"/>'>查看訂單</a>
-<%-- 				<form action="<c:url value='/shoppingcart/memberOrders'></c:url>"> --%>
-<%-- 						<input type="hidden" name="selectcampid" value="${j.campbasicid}"> --%>
-<%-- 						<c:choose> --%>
-<%-- 								<c:when test="${empty Member}"> --%>
-<!-- 									<input type="button" class="swalLogin" value="查看訂單"> -->
-<%-- 								</c:when> --%>
-<%-- 							<c:otherwise><input type="submit" value="查看訂單"></c:otherwise> --%>
-<%-- 						</c:choose>					 --%>
-<!-- 						</form> -->
 				</div>
 				<!--table-->
 				<table class="order-table">
-<!-- 					<thead class="order-table-th"> -->
-<!-- 							<th scope="col">商品名稱</th> -->
-<!-- 							<th scope="col">圖片</th> -->
-<!-- 							<th scope="col">價格</th> -->
-<!-- 							<th scope="col">選擇數量</th> -->
-<!-- 							thead更改到這邊結束 -->
-<!-- 						</tr> -->
-<!-- 					</thead> -->
 					
 					<div class="order-table-tb">
 					
