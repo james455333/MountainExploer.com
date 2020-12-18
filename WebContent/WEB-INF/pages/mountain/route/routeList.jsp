@@ -13,10 +13,16 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 	<!-- jquery loading -->
 	<link rel="stylesheet" href="/MountainExploer.com/css/loading.css">
+	<!-- bookblock -->
+	<link rel="stylesheet" href="/MountainExploer.com/css/bookblock.css">
     <link rel="stylesheet" href="route/route.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <!-- bookblock -->
+	<script src="/MountainExploer.com/js/modernizr.custom.js"></script>    
+	<script src="/MountainExploer.com/js/jquery.bookblock.min.js"></script>    
+	<script src="/MountainExploer.com/js/bookblock.min.js"></script>    
      <!-- jquery loading -->
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easy-loading/1.3.0/jquery.loading.min.js'></script>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-loading-overlay/2.1.7/loadingoverlay.min.js'></script>
@@ -56,18 +62,39 @@
 		</ol>
 	</nav>
     <div class="div_ul">
-        <div class="div_li1">
-        </div>
-        <div class="div_li3">
-        </div>
-        <div class="div_li2 m-dl2-adj">
-	        <ul class="nav nav-tabs npList">
+        <div class="div_li2 m-dl2-adj ">
+	        <ul class="nav nav-tabs npList mx-3">
 				
 			</ul>
 			<!-- Tab panes -->
-			<div class="tab-content" id="rt-info-container">
+			<div style="" id="rt-info-container" class="mx-3">
+				 <div class="rt-container" id="">
+<!-- 				 	<div class="routeNav  shadow-lg"> -->
+<!-- 		                <nav><ul class="routeList"></ul></nav> -->
+<!-- 		            </div> -->
+		            <div id="rt-book" class="bb-bookblock">
+					</div>
+					<div id="page-container">
+						<nav aria-label="Page navigation bookPage">
+						  <ul class="pagination justify-content-center">
+						    <li class="page-item">
+						      <a id="first-page" class="page-link" href="#" aria-label="Previous">
+						        <span aria-hidden="true">&laquo;</span>
+						      </a>
+						    </li>
+						    <li class="page-item"><a id="prev-page" class="page-link" href="#"><</a></li>
+						    <li class="page-item"><a id="stop-page" class="page-link" href="#">stop</a></li>
+						    <li class="page-item"><a id="next-page" class="page-link" href="#">></a></li>
+						    <li class="page-item">
+						      <a class="page-link" id="last-page" href="#" aria-label="Next">
+						        <span aria-hidden="true" >&raquo;</span>
+						      </a>
+						    </li>
+						  </ul>
+						</nav>
+					</div>
+				</div>
 			</div>
-
         	
             <!-- 每頁不同的內容到這裡結束 -->
         </div>
@@ -75,34 +102,34 @@
 	<div id='hideElm'>
 		<ul>
 			<li class="npModel nav-item invisible animate__animated ">
-				   <a class="nav-link" data-toggle="tab" href="#home">Home</a>
+				   <a class="nav-link" data-toggle="tab" ></a>
 			</li>
 			<li class="li2">
 			<button type="button" class="btn btn-outline-info"></button></li>
 		</ul>
-		 <div class="rt-container tab-pane container" id="">
-		 	<div class="routeNav  shadow-lg">
-                <nav><ul class="routeList"></ul></nav>
-            </div>
-            <div class="sdcAdjust  shadow">
-                <div class="mx-3 my-3 imgAdjust">
-                    <!-- 調整參考網址 https://segmentfault.com/q/1010000018971940 -->
-                </div>
-                <div class="sec-div">
-                	<div class="sec-div-title">路線描述</div>
-                	<div class="sec-div-text"></div>
-                </div>
-                <div class="sec-div">
-                	<div class="sec-div-title">建議行程</div>
-                	<div class="sec-div-text"></div>
-                </div>
-                <div class="sec-div">
-                	<div class="sec-div-title">前往交通</div>
-                	<div class="sec-div-text"></div>
-                </div>
-            </div>
-		 </div>
-<!-- 		<div class="npModel d-inline-block invisible animated mx-3 my-3"><button type="button" class="btn btn-outline-info"></button></div> -->
+		
+		<div class="rt-page bb-item">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="mx-3 my-3 imgAdjust">
+		            </div>
+				</div>
+				<div class="col-md-6">
+		            <div class="sec-div">
+		                <div class="sec-div-title">路線描述</div>
+		                <div class="sec-div-text"></div>
+		            </div>
+		            <div class="sec-div">
+		                <div class="sec-div-title">建議行程</div>
+		                <div class="sec-div-text"></div>
+		            </div>
+		            <div class="sec-div">
+		                <div class="sec-div-title">前往交通</div>
+		            	<div class="sec-div-text"></div>
+		            </div>
+				</div>
+			</div>
+		</div>
 	</div>
     <footer id="footer">
         <a>全站導覽</a>

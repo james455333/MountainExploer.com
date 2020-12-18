@@ -100,7 +100,7 @@ body{
 	display : none;
 }
 .d_text p span{
-	float: left;
+	display : inline-table;
 }
 
 .d_act_img {

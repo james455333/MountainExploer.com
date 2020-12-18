@@ -18,7 +18,12 @@ $(function(){
 	$("#rt-info-container").on("click",".btn",function(){
 		let rtID = $(this).val()
 		console.log(rtID)
-		ajaxVTN(rtID);
+		ajaxVTN(rtID, $(this));
+	})
+	$(".page-link").on("click",function(e){
+		let order = $(this).attr("id").replace("-page","")
+		$( '#rt-book' ).bookblock(order);
+		e.preventDefault()
 	})
 	
 })
