@@ -50,14 +50,9 @@ body {
 
 <body>
 	<div class="container1" id="">
-		<div class="count1">
+		<div class="count1" style="margin-top: 55px">
 			<div class="count1_img">
-				<!-- <a href="#"> -->
-				<!--  <img src="/MountainExploer.com/images/logo1.png" class="animated slideInDown"> -->
-				 <!-- <img src="https://mdbootstrap.com/img/logo/mdb-transparent-250px.png" class="animated bounce slideInDown infinite" alt="Transparent MDB Logo" id="animated-img1"> -->
-			<!-- 	</a>
-				<hr>
-				<h1 class="font">岳進者</h1> -->
+				
 			</div>
 		</div>
 		<header style="z-index: 999;">
@@ -229,15 +224,15 @@ body {
                                     <div class="portfolio-wrap">
                                         <img src="assets/img/portfolio/app1.jpg" class="img-fluid" alt="">
                                         <div class="portfolio-info">
-                                            <h4><a href="portfolio-details.html">App 1</a></h4>
-                                            <p>ppAppAppAppAppAppApp</p>
+                                            <h4><a href="portfolio-details.html">上衣</a></h4>
+                                            <p>123</p>
                                             <br>
-                                            <p>apppp</p>
+                                            <p>456</p>
                                             <div>
                                                 <a href="assets/img/portfolio/app1.jpg" data-gall="portfolioGallery"
                                                     title="App 1" class="venobox link-preview"><i
                                                         class="ion ion-eye"></i></a>
-                                                 <a href="商品資訊頁面" class="link-details"
+                                                 <a href="商品資訊頁面連結" class="link-details"
                                                     title="More Details"><i class="ion ion-android-open"></i></a> 
                                             </div>
                                         </div>
