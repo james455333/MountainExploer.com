@@ -62,11 +62,17 @@
 				<div class="panel-body inf-content">
 				    <div class="row">
 				        <div class="col-md-4">
-				            <img alt="會員頭貼" style="width:600px;" title="點此上傳頭貼" class="img-circle img-thumbnail isTooltip userFile" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" data-original-title="Usuario">
-				            <div style="display:none">
-				            	<input type="file" class="userImg">
-				            	<input type="text" class="seqno" value="${Member.seqno}">
-				            </div>
+				        	<form id="imgForm" action="<c:url value='/member/imgUpdateAction'/>" method="POST" enctype="multipart/form-data">
+					            <img alt="會員頭貼" style="width:600px;" class="img-circle img-thumbnail isTooltip userFile" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" data-original-title="Usuario">
+					            <p class="text-primary" style="font-family: Microsoft JhengHei;">點擊圖片修改頭貼</p>
+								<div  style="display:none" class="hiddenImg">
+									<input type="file" name="userImg" class="userImg" accept="image/*" style="font-family: Microsoft JhengHei;margin-left:50px">
+									<input type="button" class="updateImg" value="修改頭貼">								
+								</div>	
+					            <div style="display:none">
+					            	<input type="text" class="seqno" name="seqno" value="${Member.seqno}">
+					            </div>
+				            </form>
 				        </div>
 				        <div class="col-md-6">
 				            <strong style="font-family: Microsoft JhengHei;font-weight:bold;font-size:30px">個人資訊</strong><br>
@@ -198,7 +204,7 @@
 				                            	尚未填寫
 				                        </td>
 				                        <td style="display:none" class="hiddeninp">
-					                        <textarea name="otInp" rows="5" cols="20" class="form-control otInp"></textarea>				                            	
+					                        <textarea name="otInp" rows="5" cols="20" class="form-control otInp" placeholder="請填寫您的個人簡介"></textarea>				                            	
 				                        </td>
 				                    </tr>
 				                    <tr class="brTr">        
