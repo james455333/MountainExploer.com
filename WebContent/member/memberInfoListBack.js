@@ -543,59 +543,129 @@ $(".allMember").on("click", ".sgInfo", function(){
             $.each(mbList, function(index, item){
                 if(mbList != null){
                     if(item.memberStatus.seqno == 100 || item.memberStatus.seqno == 110 || item.memberStatus.seqno == 120 || item.memberStatus.seqno == 130 || item.memberStatus.seqno == 140 || item.memberStatus.seqno == 150){
-                        let reDate = new Date(item.reg_Date);
-                        let birDate = item.memberInfo.birthday;
-                        if(birDate == ""){
-                            birDate = "尚未填寫";
+
+                        let seqno = item.seqno;
+
+                        let phone = item.memberInfo.phone;
+                        if(phone == null){
+                            var phInfo = "尚未填寫";
                         }else{
-                            birDate = new Date(item.memberInfo.birthday);
+                            var phInfo = phone;
+                        }
+
+                        let gender = item.memberInfo.gender;
+                        if(gender == "male"){
+                            var genderInfo = "男";
+                        }else if(gender == "female"){
+                            var genderInfo = "女";
+                        }else if(gender == "x"){
+                            var genderInfo = "X";
+                        }else if(gender == "mask"){
+                            var genderInfo = "不透露";
+                        }else if(gender == null){
+                            var genderInfo = "尚未填寫";
+                        }
+                        
+                        let reDate = new Date(item.reg_Date);
+                        let reInfo = getFormattedDate(reDate);
+
+
+                        let birDate = item.memberInfo.birthday;
+                        if(birDate == null){
+                            var birInfo = "尚未填寫";
+                        }else{
+                            let birTurn = new Date(item.memberInfo.birthday);
+                            var birInfo = getFormattedDate(birTurn);
                         }
 
                         let imgMb = item.memberInfo.img_name;
-                        if(imgMb == ""){
-                            let imgMb = "preset.png";
+                        if(imgMb == null){
+                            var imgInfo = "/MountainExploer.com/images/preset.png";
+                        }else{
+                            var imgInfo = "/MountainExploer.com/member/showUserImg?seqno=" + seqno;
                         }
+
+                        let exp = item.memberInfo.climb_ex;
+                        if(exp == null){
+                            var expInfo = "尚未填寫";
+                        }else{
+                            var expInfo = exp;
+                        }
+
+
+                        $.ajax({
+                            method:"GET",
+                            url:"/MountainExploer.com/member/memberOther",
+                            data:{seqno:seqno},
+                            contentType:"application/json; charset=UTF-8",
+                            dataType:"json",
+                            success:function(otherLs){
+                                if(otherLs != null){
+                                    $("#page-top").find(".other").text(otherLs);
+                                }else{
+                                    let nullOther = "尚未填寫";
+                                    $("#page-top").find(".other").text(nullOther);
+                                }
+                            }
+            
+                        })
+
+                        
+
+
                         Swal.fire({
                             title: "會員編號" + item.seqno + "的會員資料",
                             html:`<div>
-                                    <label>會員編號：</label>
-                                    <input type="text" name="seqno" class="swal2-input seqno" value="` + item.seqno + `" readonly>
-                                    <br/>
-                                    <label>帳號：</label>
-                                    <input type="text" name="account" class="swal2-input account" value="` + item.account + `" readonly>
-                                    <br/>
-                                    <label>姓名：</label>
-                                    <input type="text" name="name" class="swal2-input name" value="` + item.name + `" readonly>
-                                    <br/>
-                                    <label>暱稱：</label>
-                                    <input type="text" name="ncName" class="swal2-input ncName" value="` + item.memberInfo.neck_name + `" readonly>
-                                    <br/>
-                                    <label>身分組：</label>
-                                    <input type="text" name="statusId" class="swal2-input statusId" value="` + item.memberStatus.name + `" readonly>
-                                    <br/>
-                                    <label>Email：</label>
-                                    <input type="text" name="email" class="swal2-input email" value="` + item.email + `" readonly>
-                                    <br/>
-                                    <label>手機：</label>
-                                    <input type="text" name="phone" class="swal2-input phone" value="` + item.memberInfo.phone + `" readonly>
-                                    <br/>
-                                    <label>性別：</label>
-                                    <input type="text" name="gender" class="swal2-input gender" value="` + item.memberInfo.gender + `" readonly>
-                                    <br/>
-                                    <label>生日：</label>
-                                    <input type="text" name="birthday" class="swal2-input birthday" value="` + birDate + `" readonly>
-                                    <br/>
-                                    <label>註冊日期：</label>
-                                    <input type="text" name="rgDate" class="swal2-input rgDate" value="` + reDate + `" readonly>
-                                    <br/>
-                                    <label>登山經驗：</label>
-                                    <input type="text" name="exp" class="swal2-input exp" value="` + item.memberInfo.climb_ex + `" readonly>
-                                    <br/>
-                                    <label>個人簡介：</label>
-                                    <input type="text" name="other" class="swal2-input other" value="` + item.memberInfo.other + `" readonly>
-                                    <br/>
+                                    <div>
+                                        <label>會員編號：</label>
+                                        <span name="seqno" class="seqno">` + seqno + `</span>
+                                        <br/>
+                                        <label style="margin-left:10px">帳號：</label>
+                                        <span name="account" class="account">` + item.account + `</span>
+                                    </div>
+                                    
+                                    <div>
+                                        <label>姓名：</label>
+                                        <span name="name" class="name">` + item.name + `</span>
+                                        <br/>   
+                                        <label  style="margin-left:10px">暱稱：</label>
+                                        <span name="ncName" class="ncName">` + item.memberInfo.neck_name + `</span>
+                                    </div>
+
+                                    <div>
+                                        <label>身分組：</label>
+                                        <span name="statusId" class="statusId">` + item.memberStatus.name + `</span>
+                                        <br/>
+                                        <label>Email：</label>
+                                        <span name="email" class="email">` + item.email + `</span>
+                                    </div>
+
+                                    <div>
+                                        <label>手機：</label>
+                                        <span name="phone" class="phone">` + phInfo + `</span>
+                                        <br/>
+                                        <label>性別：</label>
+                                        <span name="gender" class="gender">` + genderInfo + `</span>
+                                    </div>
+
+                                    <div>
+                                        <label>生日：</label>
+                                        <span name="birthday" class="birthday">` + birInfo + `</span>
+                                        <br/>
+                                        <label style="margin-left:10px">註冊日期：</label>
+                                        <span name="rgDate" class="rgDate">` + reInfo + `</span>
+                                    </div>
+
+                                    <div>
+                                        <label>登山經驗：</label>
+                                        <span name="exp" class="exp">` + expInfo + `</span>
+                                        <br/>
+                                        <label>個人簡介：</label>
+                                        <span name="other" class="other"></span>
+                                    </div>
+
                                     <label>頭貼：</label>
-                                    <img src="/MountainExploer.com/images/` + imgMb + `">
+                                    <img src="` + imgInfo + `">
                                     <br/>
                                     </div>` 
                         })
@@ -824,3 +894,16 @@ $(".allMember").on("click", ".chGroup", function(){
         })
     })()
 })
+
+
+//日期轉換
+function getFormattedDate(date){
+    let year = date.getFullYear();
+    let month = (1 + date.getMonth()).toString().padStart(2, "0");
+    let day = date.getDate().toString().padStart(2, "0");
+
+    return year + "-" + month + "-" + day;
+}
+
+
+

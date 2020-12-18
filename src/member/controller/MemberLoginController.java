@@ -68,7 +68,18 @@ public class MemberLoginController {
 	public String processLoginEntry() {
 		return "member/formalLoginPage";
 	}	
-
+	
+	
+//	@ResponseBody
+//	@GetMapping(path = "/member/memberChkLogin")
+//	public MemberBasic processchkLogin(Model m) {
+//		if(m.getAttribute("Member") != null) {
+//			return (MemberBasic) m.getAttribute("Member");
+//		}else {
+//			
+//		}
+//	}
+	
 	
 	@ResponseBody
 	@GetMapping(value = "/member/FastLoginOne")

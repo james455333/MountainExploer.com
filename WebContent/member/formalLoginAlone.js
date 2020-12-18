@@ -71,7 +71,7 @@ $(".submit").on("click", function(){
 						icon:"success",
 						title:"登入成功"
 					}).then(function(){
-						window.location.href="/MountainExploer.com/member/memberInfoEntry";
+						window.location.href="/MountainExploer.com";
 					})
 				}else if(data == 110 || data == 130){
 					Swal.fire({
@@ -87,7 +87,7 @@ $(".submit").on("click", function(){
 						title:"登入失敗，帳號已被停權",
 						text:"您的帳號已被停權，無法使用本系統"
 					}).then(function(){
-						window.location.href="/MountainExploer.com";
+						window.location.href="/MountainExploer.com" + $(".account").val() + "";
 					})
 				}else if(data == 160){
 					Swal.fire({
