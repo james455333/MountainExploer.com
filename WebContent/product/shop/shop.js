@@ -355,7 +355,7 @@ $(function() {
 //						"</c:choose>"+
 				
 				
-				'<input class="demo1" type="submit" value="加入購物車">' +
+				'<input class="swalLogin" type="submit" value="加入購物車">' +
 				'</form>' +
 				
 				"</tr>"+
