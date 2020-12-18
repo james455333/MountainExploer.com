@@ -8,18 +8,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>岳進者會員註冊</title>
-<link rel="stylesheet" href="../css/other.css">
-<link rel="stylesheet" href="../css/font.css">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/....../font-awesome.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<link rel="stylesheet" href="../css/other.css">
+	<link rel="stylesheet" href="../css/font.css">
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/....../font-awesome.min.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.all.min.js"></script>
 <style>
 </style>
 </head>
@@ -106,7 +108,7 @@
                     	</div>
 
                     </div>
-                    <button type="submit" name="submit" class="btn btn-outline-success"><i class="fa fa-check-circle-o"></i>
+                    <button type="button" name="submit" class="btn btn-outline-success"><i class="fa fa-check-circle-o"></i>
                         確認送出</button>
                     <button type="button" name="fastRg" class="btn btn-outline-success fastRg"><i class="fa fa-check-circle-o"></i>快速註冊</button>
                     <button type="reset" class="btn btn-outline-danger reset" id="reset"><i class="fa fa-close"></i> 清除</button>

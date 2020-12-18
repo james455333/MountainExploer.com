@@ -116,7 +116,7 @@ $(".updatePwdbtn").on("click", function(){
             }
 
             if(confirmPwd(updatePwd) == false){
-                Swal.showValidationMessage(`密碼必須包含大小寫英文字母與數字，可包含特殊字元!@#$%^&*`);
+                Swal.showValidationMessage(`密碼長度至少8個字元，且必須包含大小寫英文字母與數字，可包含特殊字元!@#$%^&*`);
             }
 
 
@@ -215,34 +215,40 @@ $(".updatePwdbtn").on("click", function(){
 
 //驗證密碼
 function confirmPwd(confirmPwd){
+    let pwdLen = confirmPwd.length;
     let re = new RegExp(/[A-Za-z]+[0-9]/);
     let re2 = new RegExp(/[0-9]+[A-Za-z]/);
-    let re3 = new RegExp(/[A-Za-z0-9]+[!@#$%^&*]/);
-    let re4 = new RegExp(/[!@#$%^&*]+[A-Za-z0-9]/);
+    let re3 = new RegExp(/[A-Za-z0-9_]+[!@#$%^&*]/);
+    let re4 = new RegExp(/[!@#$%^&*]+[A-Za-z0-9_]/);
     let flag = false;
 
-    if(confirmPwd.match(re)){
-        flag = true;
-        console.log("re");
-    }else if(confirmPwd.match(re2)){
-        flag = true;
-        console.log("re2");
-    }else if(confirmPwd.match(re3)){
-        flag = true;
-        console.log("re3");
-    }else if(confirmPwd.match(re4)){
-        flag = true;
-        console.log("re4");
+    if(pwdLen >= 8){
+        if(confirmPwd.match(re)){
+            flag = true;
+            console.log("re");
+        }else if(confirmPwd.match(re2)){
+            flag = true;
+            console.log("re2");
+        }else if(confirmPwd.match(re3)){
+            flag = true;
+            console.log("re3");
+        }else if(confirmPwd.match(re4)){
+            flag = true;
+            console.log("re4");
+        }else{
+            flag = false;
+            console.log("false");
+        }
+    
+        if(flag){
+            return true;
+        }else{
+            return false;
+        }
     }else{
-        flag = false;
-        console.log("false");
+        return false
     }
 
-    if(flag){
-        return true;
-    }else{
-        return flag;
-    }
 
 }
 
@@ -392,6 +398,8 @@ function chkName(chkName){
         Swal.fire({
             icon:"warning",
             title:"姓名不得為空"
+        }).then(function(){
+
         })
     }else if(chkNameLen >= 2){
         for(let i = 0; i < chkNameLen; i++){
@@ -413,6 +421,8 @@ function chkName(chkName){
         Swal.fire({
             icon:"warning",
             title:"姓名至少兩個中文字元"
+        }).then(function(){
+            
         })
     }
 }
@@ -427,6 +437,8 @@ function chkEmail(chkEmail){
         Swal.fire({
             icon:"warning",
             title:"Email不得為空"
+        }).then(function(){
+            
         })
     }else if(chkEmailLen >= 5){
         let re = new RegExp(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/);
