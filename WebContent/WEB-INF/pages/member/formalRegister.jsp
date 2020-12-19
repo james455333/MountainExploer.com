@@ -84,10 +84,17 @@
                             <span class="chksp"></span><br/>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="inputAddress2">姓名:</label>
-                        <input type="text" class="form-control name" name="name" id="name" placeholder="請輸入姓名" required="required">
-                        <span class="nmsp"></span><br/>
+                    
+                    <div class="form-row">
+                    	<div class="form-group col-md-6">
+	                        <label>姓名:</label>
+	                        <input type="text" class="form-control name" name="name" id="name" placeholder="請輸入姓名" required="required">
+	                        <span class="nmsp"></span><br/>
+                        </div>
+                        <div class="form-group col-md-6">
+                        	<label>暱稱:</label>
+	                        <input type="text" class="form-control ncName" name="ncName" id="ncName" placeholder="請輸入暱稱" required="required">
+                        </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">

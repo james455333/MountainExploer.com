@@ -176,8 +176,8 @@ $(".sgSelect").on("click", function(){
                             "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle' style='margin-right:3px'></i>詳細資料</button>" + 
-                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text' style='margin-right:3px'></i>修改資料</button>" + 
+                                "<button type='button' class='btn btn-info disabled'><i class='fa fa-user-circle' style='margin-right:3px'></i>詳細資料</button>" + 
+                                "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary disabled'><i class='fa fa-file-text' style='margin-right:3px'></i>修改資料</button>" + 
                                 "<button type='button' style='margin-left:10px' class='btn btn-secondary disabled'><i class='fas fa-users-cog' style='margin-right:3px'></i>更變身分組</button></td></tr>"
                         )
 
@@ -432,8 +432,8 @@ $(".admin").on("click", function(){
                         "<td>" + item.memberStatus.name + "</td>" + 
                         "<td>" + 
                             "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                            "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle' style='margin-right:3px'></i>詳細資料</button>" + 
-                            "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text' style='margin-right:3px'></i>修改資料</button>" + 
+                            "<button type='button' class='btn btn-info disabled'><i class='fa fa-user-circle' style='margin-right:3px'></i>詳細資料</button>" + 
+                            "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary disabled'><i class='fa fa-file-text' style='margin-right:3px'></i>修改資料</button>" + 
                             "<button type='button' style='margin-left:10px' class='btn btn-secondary disabled'><i class='fas fa-users-cog' style='margin-right:3px'></i>更變身分組</button></td></tr>"
                     )
                 }
@@ -663,9 +663,9 @@ $(".allMember").on("click", ".sgInfo", function(){
                                         <label>個人簡介：</label>
                                         <span name="other" class="other"></span>
                                     </div>
-
-                                    <label>頭貼：</label>
-                                    <img src="` + imgInfo + `">
+                                    <br/>
+                                    
+                                    <img style="width:300px;height:300px;" src="` + imgInfo + `">
                                     <br/>
                                     </div>` 
                         })
@@ -705,22 +705,23 @@ $(".allMember").on("click", ".chInfo", function(){
                         html:`<div>
                                 <form id="upForm" action="/MountainExploer.com/back/member/updateInfoBack" method="POST">
                                 <label>會員編號：</label>
-                                <input type="text" name="seqno" class="swal2-input seqno" value="` + item.seqno + `" readonly>
+                                <strong class="swal2-input">` + item.seqno + `</strong>
+                                <input type="hidden" name="seqno" class="seqno" value="` + item.seqno + `">
                                 <br/>
                                 <label>帳號：</label>
-                                <input type="text" name="account" class="swal2-input account" value="` + item.account + `" readonly>
+                                <strong type="text" name="account" class="swal2-input account">` + item.account + `</strong>
                                 <br/>
                                 <label>姓名：</label>
-                                <input type="text" name="name" class="swal2-input name" value="` + itNm + `">
+                                <input type="text" name="name" class="form-control name" value="` + itNm + `">
                                 <br/>
                                 <label>暱稱：</label>
-                                <input type="text" name="ncName" class="swal2-input ncName" value="` + itNc + `">
+                                <input type="text" name="ncName" class="form-control ncName" value="` + itNc + `">
                                 <br/>
                                 <label>Email：</label>
-                                <input type="text" name="email" class="swal2-input email" value="` + item.email + `">
+                                <input type="text" name="email" class="form-control email" value="` + item.email + `">
                                 <br/>
                                 <label>手機：</label>
-                                <input type="text" name="phone" class="swal2-input phone" value="` + itPh + `">
+                                <input type="text" name="phone" class="form-control phone" value="` + itPh + `">
                                 <br/>
                                 </form>
                                 </div>`,
@@ -738,7 +739,7 @@ $(".allMember").on("click", ".chInfo", function(){
                         }
 
                         if(result.isDismissed){
-
+                            // window.location.reload();
                         }
                     })
                 

@@ -72,7 +72,6 @@ public class MemberUpdateController {
 	@RequestMapping(path = "/member/memberFirstInfoInsert", method = RequestMethod.POST)
 	public String processInfoInsert(@RequestParam(name = "seqno")int seqno,
 									@RequestParam(name = "memberStatus.seqno")int statusId,
-									@RequestParam(name = "memberInfo.neck_name")String ncName,
 									@RequestParam(name = "memberInfo.gender")String gender,
 									@RequestParam(name = "memberInfo.birthday", required = false)String birDate,
 									@RequestParam(name = "memberInfo.phone")String phone,
@@ -86,7 +85,7 @@ public class MemberUpdateController {
 		MemberInfo mbInfo = new MemberInfo();
 //		MemberBasic mb = new MemberBasic();
 		
-		mbInfo.setNeck_name(ncName);
+		
 		mbInfo.setGender(gender);
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

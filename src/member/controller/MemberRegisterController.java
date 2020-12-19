@@ -63,6 +63,7 @@ public class MemberRegisterController {
 			@RequestParam(name="submit")String submit,
 			@RequestParam(name = "account")String account,
 			@RequestParam(name = "pwd")String password,
+			@RequestParam(name = "ncName")String ncName,
 			@RequestParam(name = "name")String name,
 			@RequestParam(name = "email")String email,
 			@RequestParam(name = "statusId")int statusId,

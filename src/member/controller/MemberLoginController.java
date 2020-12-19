@@ -407,7 +407,7 @@ public class MemberLoginController {
 	//第三方登入
 	@RequestMapping(path = "/member/socialLoginEntry", method = RequestMethod.GET)
 	public String socialLoginEntry() {
-		return "member/FBLoginTest";
+		return "member/socailLoginGoogleTest";
 	}
 	
 	@RequestMapping(value = "/member/googleVerify", method = RequestMethod.POST)
