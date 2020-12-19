@@ -19,6 +19,7 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,6 +39,7 @@ import member.MemberGlobal;
 import member.model.MemberBasic;
 import member.model.MemberService;
 import net.sf.json.JSONObject;
+import oracle.net.aso.m;
 
 @Controller
 @SessionAttributes(names = {"Member", "beforeCheckURL"})
@@ -70,16 +72,24 @@ public class MemberLoginController {
 	}	
 	
 	
-//	@ResponseBody
-//	@GetMapping(path = "/member/memberChkLogin")
-//	public MemberBasic processchkLogin(Model m) {
-//		if(m.getAttribute("Member") != null) {
-//			return (MemberBasic) m.getAttribute("Member");
-//		}else {
-//			
-//		}
-//	}
+	@ResponseBody
+	@GetMapping(path = "/member/memberChkLogin")
+	public boolean processchkLogin(Model m) {
+		if(m.getAttribute("Member") != null) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 	
+	@ResponseBody
+	@GetMapping(path = "/member/getSession")
+	public List<MemberBasic> processGetSession(HttpSession httpSession) {
+		MemberBasic mb = (MemberBasic) httpSession.getAttribute("Member");
+		int seqno = mb.getSeqno();
+		List<MemberBasic> mbList = mbService.selectInfo(seqno);
+		return mbList;
+	}
 	
 	@ResponseBody
 	@GetMapping(value = "/member/FastLoginOne")
@@ -121,7 +131,7 @@ public class MemberLoginController {
 	
 	@ResponseBody
 	@GetMapping(path = "/member/memberLogin")
-	public int processCheckLogin(
+	public List<MemberBasic> processCheckLogin(
 			@RequestParam(name = "account")String account,
 			@RequestParam(name = "password")String password,
 			@RequestParam(name = "rememberMe", required = false)String rm,
@@ -139,18 +149,18 @@ public class MemberLoginController {
 			System.out.println("beforeCheckURL : " + beforeCheckURL);
 		}
 		
-		if(account == null || account.length() == 0) {
-			errors.put("account", "請輸入帳號");
-		}
-		
-		if(password == null || password.length() == 0) {
-			errors.put("password", "請輸入密碼");
-		}
-		
-		if(errors != null && !errors.isEmpty()) {
-			return 0;
-		}
-		
+//		if(account == null || account.length() == 0) {
+//			errors.put("account", "請輸入帳號");
+//		}
+//		
+//		if(password == null || password.length() == 0) {
+//			errors.put("password", "請輸入密碼");
+//		}
+//		
+//		if(errors != null && !errors.isEmpty()) {
+//			return 0;
+//		}
+//		
 		
 		if(rm != "") {
 			System.out.println("A");
@@ -201,32 +211,36 @@ public class MemberLoginController {
 			if(mb != null) {
 				if(mb.getMemberStatus().getSeqno() == 100 || mb.getMemberStatus().getSeqno() == 120) {
 					m.addAttribute("Member", mb);
-					m.addAttribute("result", "登入成功");
+//					m.addAttribute("result", "登入成功");
+					List<MemberBasic> mbList = mbService.selectInfo(mb.getSeqno());
 					System.out.println("=======================登入成功");
-					return mb.getMemberStatus().getSeqno();
+					return mbList;
 				}else if(mb.getMemberStatus().getSeqno() == 110 || mb.getMemberStatus().getSeqno() == 130) {
 					m.addAttribute("Member", mb);
-					m.addAttribute("result", "初次登入成功");
+//					m.addAttribute("result", "初次登入成功");
+					List<MemberBasic> mbList = mbService.selectInfo(mb.getSeqno());
 					System.out.println("=======================登入成功");
-					return mb.getMemberStatus().getSeqno();
+					return mbList;
 				}else if(mb.getMemberStatus().getSeqno() == 140 || mb.getMemberStatus().getSeqno() == 150) {
-					
-					return mb.getMemberStatus().getSeqno();
+					List<MemberBasic> mbList = mbService.selectInfo(mb.getSeqno());
+					return mbList;
 				}else if(mb.getMemberStatus().getSeqno() == 160) {
 					m.addAttribute("Member", mb);
-					return mb.getMemberStatus().getSeqno();
+					List<MemberBasic> mbList = mbService.selectInfo(mb.getSeqno());
+					return mbList;
 				}else {
+					List<MemberBasic> mbList = null;
 					System.out.println("身分組權限不足");
-					return 0;
+					return mbList;
 				}
 			} else {
-				errors.put("msg", "帳號或密碼錯誤");
-				return 0;
+				List<MemberBasic> mbList = null;
+				return mbList;
 			}
 		}
 		
-		errors.put("msg", "帳號或密碼錯誤");
-		return 0;
+		List<MemberBasic> mbList = null;
+		return mbList;
 		
 	}
 	

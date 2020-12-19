@@ -27,6 +27,7 @@
 	
 	<a href="<c:url value='/member/seqnoList?mbSeqno=1000080'/>">點我</a>
 	
+	<button type="button" class="loginTest">測試</button>
 	
 	<script src="swal2Test.js"></script>
 </body>

@@ -601,6 +601,8 @@ body {
 	<script src="/MountainExploer.com/assets/vendor/venobox/venobox.min.js"></script>
 	<script src="/MountainExploer.com/assets/vendor/aos/aos.js"></script>
 	<script src="/MountainExploer.com/assets/js/main.js"></script>
+	
+	<script src="/MountainExploer.com/member/userTop.js"></script>
 </body>
 
 </html>
