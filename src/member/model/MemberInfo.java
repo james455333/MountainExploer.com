@@ -83,6 +83,7 @@ public class MemberInfo {
 	@GenericGenerator(name = "generator", strategy = "foreign", parameters = @Parameter(name = "property", value = "memberBasic"))
 	@Id 
 	@GeneratedValue (generator = "generator")
+	@JsonIgnore
 	@Column(name = "MEMBER_BASIC_ID")
 	public int getMember_basic_id() {
 		return member_basic_id;

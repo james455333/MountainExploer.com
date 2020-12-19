@@ -23,7 +23,7 @@
 					<span class="emsp">${errors.msg}</span>
 				</div>
 				<div>
-					<input type="submit" name="submit" class="submit" required="required" value="送出" />
+					<input type="button" name="submit" class="submit" required="required" value="送出" />
 					<input type="reset" name="reset" class="reset" value="清除"/>
 				</div>
 			</fieldset>
