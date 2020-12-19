@@ -90,16 +90,16 @@ transition: all 0.6s;}
 
 					<div class="third_nav">
 						<!-- 控制列表內容從這邊開始 -->
-						<form
-							action="<c:url value='/mountainCampAct/actselectAll'></c:url>"
+						<form action="<c:url value='/mountainCampAct/actselectAll'></c:url>"
 							method='GET'>
 							<div>
 								縣市: <select name="selectarea" id="selectArea">
 									<option>請選擇縣市</option>
-								</select> <input type="hidden" value="" name="selectcounties"> <input
-									type="hidden" value=3 name="no"> <input type="hidden"
-									value=1 name="page"> <input type="submit"
-									class="btn btn-outline-success" value="查詢">
+								</select> 
+								<input type="hidden" value="" name="selectcounties"> 
+								<input type="hidden" value=3 name="no"> 
+								<input type="hidden" value=1 name="page">
+								<input type="submit"class="btn btn-outline-success" value="查詢">
 							</div>
 						</form>
 						<form

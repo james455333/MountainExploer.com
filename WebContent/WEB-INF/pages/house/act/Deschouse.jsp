@@ -27,15 +27,12 @@
 
 
 <style>
-.tips{position: relative;
-    width: 264px;
-    margin: 7px 0 16px;
-    font-size: 88%;
-    float: right;
-    background:#DEFFFF;
-    
-    }
-    
+.tips {
+	width: 100%;
+	font-size: 88%;
+	background: #DEFFFF;
+}
+
 .images {
 	width: 25px;
 	height: 25px;
@@ -43,7 +40,6 @@
 
 .topname {
 	margin: 50px 45px 40px 5px;
-	float: left;
 	padding: 50px 0px 40px 5px;
 }
 
@@ -52,7 +48,7 @@
 	clear: left;
 	width: 90%;
 	height: 100%;
-	text-align: left; 
+	text-align: left;
 }
 
 .counties {
@@ -68,6 +64,14 @@
 
 .img:hover {
 	transform: scale(1.5);
+}
+
+.forFrom {
+	float: none;
+}
+
+.forText {
+	width: 100%;
 }
 </style>
 
@@ -97,19 +101,29 @@
 		</nav>
 	</header>
 	<div class="div_ul">
-		        <div class="secNavbar">
-		            <nav>
-		                <ul class="second_nav">
-		                    <li class="li1"><a href="/MountainExploer.com/mountainHouseAct/actselectAll?page=1&no=1&parkid=">首頁</a></li>
-						<c:if test="${ !empty Member}">
-		                    <li class="li1"><a href="/MountainExploer.com/mountainHouseActOrder/selecthouseorder?Member=Member">訂單查詢</a></li>
-						</c:if>
-		<!--                     <li class="li1"><a href="#">第二導覽列3</a></li> -->
+		<div class="secNavbar">
+			<nav>
+				<ul class="second_nav">
+					<li class="li1"><a
+						href="/MountainExploer.com/mountainHouseAct/actselectAll?page=1&no=1&parkid=">首頁</a></li>
+					<c:if test="${ !empty Member}">
+						<li class="li1"><a
+							href="/MountainExploer.com/mountainHouseActOrder/selecthouseorder?Member=Member">訂單查詢</a></li>
+					</c:if>
+					<!--                     <li class="li1"><a href="#">第二導覽列3</a></li> -->
 
-		<!--                     <li class="li1"><a href="#">第二導覽列4</a></li> -->
-		                </ul>
-		            </nav>
-		        </div>
+					<!--                     <li class="li1"><a href="#">第二導覽列4</a></li> -->
+				</ul>
+			</nav>
+		</div>
+		<nav style="font-size: 20px;" aria-label="breadcrumb">
+		  <ol class="breadcrumb">
+		    <li class="breadcrumb-item"><a href="#">Home</a></li>
+		    <li class="breadcrumb-item"><a href="#">Library</a></li>
+		    <li class="breadcrumb-item active" aria-current="page">Data</li>
+		    <li style="list-style-type: none" class="breadcrumb-item ml-auto" ><a href="#">訂單查詢</a></li>
+		  </ol>
+		</nav>
 		<div class="div_li1">
 			<!--             <a>保留區</a> -->
 		</div>
@@ -118,7 +132,7 @@
 		</div>
 		<div class="div_li2">
 			<!-- 每頁不同的內容從這裡開始 -->
-
+			
 
 			<div class="secDivContent">
 
@@ -126,174 +140,247 @@
 				<!--                     <img src="/MountainExploer.com/images/BGI.jpg" alt="" class="forImagesImg"> -->
 				<!--                     調整參考網址 https://segmentfault.com/q/1010000018971940 -->
 				<!--                 </div> -->
-				<!-- 右邊 -->
-				<div class="forFrom ">
-					<!-- 評價 -->
-					<c:forEach var="j" items="${selecthouseid}">
-						<div class="topname">
-							<c:choose>
-								<c:when
-									test="${(j.star*1.0 / j.clickcount) lt 1 || empty j.star}">
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
-								</c:when>
-								<c:when
-									test="${ j.star*1.0/j.clickcount ge 1 && j.star*1.0/j.clickcount lt 2}">
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
-								</c:when>
-								<c:when
-									test="${j.star*1.0/j.clickcount ge 2 && j.star*1.0/j.clickcount lt 3}">
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
-								</c:when>
-								<c:when
-									test="${j.star*1.0/j.clickcount ge 3 && j.star*1.0/j.clickcount lt 4}">
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
-								</c:when>
-								<c:when
-									test="${j.star*1.0/j.clickcount ge 4 && j.star*1.0/j.clickcount lt 4.8}">
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
-								</c:when>
-								<c:when test="${j.star*1.0 / j.clickcount ge 4.8}">
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
-									<span><img class="images"
-										src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
-								</c:when>
-							</c:choose>
-
-							<c:choose>
-								<c:when test="${j.clickcount <= 0 || empty j.clickcount}">(0人評分過)</c:when>
-								<c:otherwise>(${j.clickcount }人評分過)</c:otherwise>
-							</c:choose>
-
-							<div>
-								<c:choose>
-									<c:when test="${empty j.star}">(無人評分)</c:when>
-									<c:otherwise>
-					(平均<fmt:formatNumber type="number"
-											value="${j.star*1.0 / j.clickcount} " maxFractionDigits="1" />分)		
-					</c:otherwise>
-								</c:choose>
-								<div  style="margin: 10px">
-								<form
-									action="<c:url value='/mountainHouseAct/jumpupdatestart'></c:url>"
-									method="get">
-									<input type="hidden" name="selecthouseid"
-										value="${j.housebasicid}">
-									<c:choose>
-										<c:when test="${empty Member}">
-											<input type="button" class="swalLogin" value="評分">
-										</c:when>
-										<c:otherwise>
-											<input type="submit" value="評分">
-										</c:otherwise>
-									</c:choose>
-								</form>
-							</div>
-							</div>
-							
-							<div class="tips">
-								<div style="margin: 10px;text-align: left; ">
-									<div style="margin: 10px">◎登山的好選擇</div>
-									<div style="margin: 10px">◎宿營地內請以簡易器具炊煮，禁止野炊、烤肉或燃火等行為。</div>
-									<div style="color: #AA0000;margin: 10px">◎所有裝備 ( 睡袋與登山裝備等 ) 及餐飲皆需自行攜帶準備。</div>
-								</div>	
-									<div style="margin: 10px"><a href="#selecttoorder"><input type="button" class="btn btn-outline-success" value="現在預定房間"></a></div>
-							</div>
-								
-														
-											
-						</div>
-					</c:forEach>
-					<!-- datepicker jump-->
-
-				</div>
 				<!-- 左邊 -->
 				<div class="forText">
-					<div>
+					<div class="d-flex ">
 						<c:forEach var="i" items="${selecthouseid}">
-							<div style="float: left; margin: 30px">
+							<div style="margin: 30px">
 								<c:choose>
 									<c:when test="${ empty i.imgid.img}">
-										<img height="400" width="400"
-											src="/MountainExploer.com/housecamp/images/housenull.PNG">
+										<div><img height="400" width="400"
+											src="/MountainExploer.com/housecamp/images/housenull.PNG"></div>
 									</c:when>
 									<c:when test="${not empty i.imgid.img}">
-										<img height="400" width="400"
-											src="<c:url value='/mountainHouseBack/showimg?imgid=${i.imgid.id}'/>">
+										<div><img height="400" width="400"
+											src="<c:url value='/mountainHouseBack/showimg?imgid=${i.imgid.id}'/>"></div>
 									</c:when>
 								</c:choose>
+								<div>
+									<c:forEach var="j" items="${selecthouseid}">
+									<div class="topname">
+										<c:choose>
+											<c:when
+												test="${(j.star*1.0 / j.clickcount) lt 1 || empty j.star}">
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+											</c:when>
+											<c:when
+												test="${ j.star*1.0/j.clickcount ge 1 && j.star*1.0/j.clickcount lt 2}">
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+											</c:when>
+											<c:when
+												test="${j.star*1.0/j.clickcount ge 2 && j.star*1.0/j.clickcount lt 3}">
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+											</c:when>
+											<c:when
+												test="${j.star*1.0/j.clickcount ge 3 && j.star*1.0/j.clickcount lt 4}">
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+											</c:when>
+											<c:when
+												test="${j.star*1.0/j.clickcount ge 4 && j.star*1.0/j.clickcount lt 4.8}">
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/blackstar.PNG"></span>
+											</c:when>
+											<c:when test="${j.star*1.0 / j.clickcount ge 4.8}">
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+												<span><img class="images"
+													src="/MountainExploer.com/housecamp/images/bringstar.PNG"></span>
+											</c:when>
+										</c:choose>
+
+										<c:choose>
+											<c:when test="${j.clickcount <= 0 || empty j.clickcount}">(0人評分過)</c:when>
+											<c:otherwise>(${j.clickcount }人評分過)</c:otherwise>
+										</c:choose>
+
+										<div>
+											<c:choose>
+												<c:when test="${empty j.star}">(無人評分)</c:when>
+												<c:otherwise>
+					(平均<fmt:formatNumber type="number"
+														value="${j.star*1.0 / j.clickcount} "
+														maxFractionDigits="1" />分)		
+					</c:otherwise>
+											</c:choose>
+											<div style="margin: 10px">
+												<form
+													action="<c:url value='/mountainHouseAct/jumpupdatestart'></c:url>"
+													method="get">
+													<input type="hidden" name="selecthouseid"
+														value="${j.housebasicid}">
+													<c:choose>
+														<c:when test="${empty Member}">
+															<input type="button"
+																class="swalLogin btn btn-primary py-2 px-3" value="評分">
+														</c:when>
+														<c:otherwise>
+															<!-- 											<input type="submit" value="評分"> -->
+															<a href="#" data-toggle="modal" data-target="#showMap"
+																data-whatever="${j.housebasicid}"
+																class="btn btn-primary py-2 px-3">評分</a>
+
+														</c:otherwise>
+													</c:choose>
+
+
+												</form>
+
+											</div>
+										</div>
+										<!-- 	星星評分		 -->
+										<div class="modal fade" id="showMap" tabindex="-1"
+											role="dialog" aria-labelledby="exampleModalLabel"
+											aria-hidden="true">
+											<div class="modal-dialog modal-dialog-centered"
+												role="document">
+												<div class="modal-content" style="width: 640px">
+													<div class="modal-header">
+														<h5 class="modal-title" id="exampleModalLabel">您今天看起來</h5>
+														<button type="button" class="close" data-dismiss="modal"
+															aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+													</div>
+													<div class="modal-body" id="mapHere" style="width: 640px">
+														<form id="star"
+															action="<c:url value='/mountainHouseAct/updatestar'></c:url>"
+															method='GET'>
+															<span><img id="img1" class="images"
+																src="/MountainExploer.com/housecamp/images/blackstar.PNG" />
+																<img id="img2" class="images"
+																src="/MountainExploer.com/housecamp/images/blackstar.PNG" />
+																<img id="img3" class="images"
+																src="/MountainExploer.com/housecamp/images/blackstar.PNG" />
+																<img id="img4" class="images"
+																src="/MountainExploer.com/housecamp/images/blackstar.PNG" />
+																<img id="img5" class="images"
+																src="/MountainExploer.com/housecamp/images/blackstar.PNG" />
+															</span> <input type="hidden" name="updatestar" value="${j.star}">
+															<input type="hidden" name="updateclick"
+																value="${j.clickcount}"> <input type="hidden"
+																name="updateid" value="${j.housebasicid}"> <input
+																type="submit" value="送出">
+														</form>
+													</div>
+													<div class="modal-footer">
+
+														<button type="button" class="btn btn-secondary"
+															data-dismiss="modal">關閉</button>
+													</div>
+												</div>
+											</div>
+										</div>
+
+
+
+
+
+
+
+									</div>
+								</c:forEach>
+								<!-- 星星end -->
+								</div>
 							</div>
-						<div class="body">	
-							<div class="body" >
-								<h2>${i.nationalPark.name}</h2>
-								<h3>${i.name}</h3>
+							<div class="body">
+								<div class="body">
+									<h2>${i.nationalPark.name}</h2>
+									<h3>${i.name}</h3>
+								</div>
+								<div class="body">@ 海拔高度 : ${i.height}</div>
+								<div class="body">@ 山屋總床位 : ${i.bed} 床</div>
+								<div class="body">@ 營地總數量 : ${i.camp} 區</div>
+								<div class="body" id="">
+									@ 備註 :
+									<div class="body"
+										style="height: 100%; border: 1px black solid;">
+										<div style="margin: 5px">${i.desc}</div>
+									</div>
+								</div>
 							</div>
-							<div class="body">@ 海拔高度 : ${i.height}</div>
-							<div class="body">@ 山屋總床位 : ${i.bed} 床</div>
-							<div class="body">@ 營地總數量 : ${i.camp} 區</div>
-							<div class="body" id="selecttoorder">@ 備註 :
-								<div class="body" style=" height: 100%;border:1px  black solid;"><div style="margin:5px"> ${i.desc}</div></div>
-							</div>	
-						</div>	
 						</c:forEach>
-						
+
+					</div>
+					<div class="row">
+						<div class="col-6">
+							<div>
+
+								
+
+							</div>
+							<!-- 評價 -->
+						</div>
+						<div class="col-sm-6 d-flex align-items-end"">
+							<div class="tips m-3">
+								<div style="margin: 10px; text-align: left;">
+									<div style="margin: 10px">◎登山的好選擇</div>
+									<div style="margin: 10px">◎宿營地內請以簡易器具炊煮，禁止野炊、烤肉或燃火等行為。</div>
+									<div style="color: #AA0000; margin: 10px">◎所有裝備 (
+										睡袋與登山裝備等 ) 及餐飲皆需自行攜帶準備。</div>
+								</div>
+								<div style="margin: 10px">
+									<a href="#from"><input type="button"
+										class="btn btn-outline-success" value="現在預定房間"></a>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<!-- 		下框 -->
-				<div class="secDivContent" >
-					<div style="padding: 20px 0 0 0">
-						<h3 >查詢住宿日期</h3>
+				<div class="secDivContent" style="padding: 20px 0 0 0;">
+					<div
+						style="padding: 10px; blue; text-align: left; background-color: #ffc489; width: 65%; height: 125px">
+						<h3 style="padding: 0 0 0 100px">查詢住宿日期</h3>
 						<form
 							action="<c:url value='/mountainHouseActOrder/selectamount'></c:url>">
 
@@ -302,25 +389,27 @@
 								<input type="hidden" name="selecthouseid"
 									value="${i.housebasicid}">
 							</c:forEach>
-							<div >
-								入住時間 : <input  type="text" id="from" name="select_bookdate"
+							<div>
+								入住時間 : <input type="text" id="from" name="select_bookdate"
 									size="45" readonly>
-							
+
 								<c:choose>
 									<c:when test="${empty Member}">
-										<input  type="button"  class="swalLogin btn btn-outline-info" value="查詢">
+										<input type="button" class="swalLogin btn btn-outline-info"
+											value="查詢">
 									</c:when>
 									<c:otherwise>
-										
-										<input type="submit"  class="btn btn-outline-info" value="查詢">
-										
+
+										<input type="submit" class="btn btn-outline-info"
+											style="color: white; background-color: #0066FF;" value="查詢">
+
 									</c:otherwise>
 								</c:choose>
 							</div>
 						</form>
 					</div>
 					<!-- 	顯示查詢日期			                			 -->
-					<div style="padding:50px">
+					<div style="padding: 50px">
 						<form
 							action="<c:url value='/mountainHouseActOrder/orderjump'></c:url>">
 							<c:forEach var="i" items="${house}">
@@ -330,7 +419,9 @@
 									value="${selectdate}">
 								<div>
 									<h2>${selectdate}</h2>
-									<h4>共選了 <a style="color: #5599FF">${bookneight}</a> 晚</h4>
+									<h4>
+										共選了 <a style="color: #5599FF">${bookneight}</a> 晚
+									</h4>
 								</div>
 
 								<table class="order-table table table-hover" id="tablePreview"
@@ -349,7 +440,8 @@
 											<td class="img"><c:choose>
 													<c:when
 														test="${leftcampamount <= 10 && leftcampamount >= 1}">
-														<p style="color: red">*&nbsp營地剩餘 ${leftcampamount}區&nbsp*</p>
+														<p style="color: red">*&nbsp營地剩餘
+															${leftcampamount}區&nbsp*</p>
 													</c:when>
 													<c:when test="${leftcampamount <= 0}">
 														<p style="color: red">無剩餘區域&nbsp!!</p>
@@ -362,15 +454,21 @@
 											</td>
 
 											<td>TWD.${i.campprice}</td>
-											<td><select id="campleftamount"
-												name="orderjump_campamount"></select></td>
+											<td>
+												<select id="campleftamount" name="orderjump_campamount"></select>
+											
+											</td>
 
 											<td rowspan="2"><input type=text readonly
 												class=" border-0 text-dark" name="orderjump_totelprice"
-												id="houseorderprice">
+												id="houseorderprice" required="required">
+											
 												<p>
-													<input class="btn btn-outline-success" style="width:100%" type="submit" value="立即下訂">
-												</p></td>
+													<input class="btn btn-outline-success" style="width: 100%"
+														type="submit" value="立即下訂" >
+												</p>
+											
+												</td>
 										</tr>
 
 										<tr>
@@ -404,36 +502,35 @@
 					</div>
 					<div class="topname">
 						<c:forEach var="i" items="${selecthouse}">
-						<div><h2 style="color: blue"><a href="#selecttoorder">請先查詢住宿日期</a></h2></div>
-					<table class="order-table table table-hover" id="tablePreview"
-									style="background-color: white;">
-									<thead class="order-table-th">
-										<tr>
-											<th scope="col">岳進者休息區</th>
-											<th scope="col">價格</th>
-											
-										</tr>
-									</thead>
 
-					<tbody class="order-table-tb">
-					<tr>
-						<td>
-							<img alt="" src="/MountainExploer.com/housecamp/images/bedsmall.jpg">
-						</td>
-						<td>
-							TWD.&nbsp${i.bedprice}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<img alt="" src="/MountainExploer.com/housecamp/images/housecampsmall.jpg">
-						</td>
-						<td>
-							TWD.&nbsp${i.bedprice}
-						</td>
-					</tr>
-					</tbody>
-					</table>
+							<table class="order-table table table-hover" id="tablePreview"
+								style="background-color: white;">
+								<thead class="order-table-th">
+									<tr>
+										<th scope="col">岳進者休息區</th>
+										<th scope="col"></th>
+
+									</tr>
+								</thead>
+
+								<tbody class="order-table-tb">
+									<tr>
+										<td><img alt=""
+											src="/MountainExploer.com/housecamp/images/bedsmall.jpg">
+											<p>TWD.&nbsp${i.bedprice}</p></td>
+
+										<td><img alt=""
+											src="/MountainExploer.com/housecamp/images/housecampsmall.jpg">
+
+											<p>TWD.&nbsp${i.bedprice}</p></td>
+									</tr>
+								</tbody>
+							</table>
+							<div>
+								<h2 style="color:">
+									<a href="#from">請先查詢住宿日期</a>
+								</h2>
+							</div>
 						</c:forEach>
 					</div>
 					<!--下框end-->
@@ -472,12 +569,15 @@
 
 
 	<script type="text/javascript">
-		$("#from").daterangepicker(
+  
+		var dateRangePicker = $("#from").daterangepicker(
 				{ //  "singleDatePicker": true,
 					"autoApply" : true,
 					"maxSpan" : {
 						"days" : 7
 					},
+					"minDays" : 2,
+
 					"locale" : {
 						"format" : "YYYY年MM月DD日",
 						"separator" : " ~ ",
@@ -495,11 +595,15 @@
 					"minDate" : moment(),
 					"maxDate" : moment().subtract(-6, 'month')
 				});
+
+		$("#from").on("apply.daterangepicker",function(){
+			console.log( $(this).val())
+			})
 	</script>
 
 	<script type="text/javascript">
-		$(document)
-				.ready(
+
+		$(document).ready(
 						function() {
 							var campleftamount = "${leftcampamount}";
 							if (campleftamount >= 10) {
@@ -519,6 +623,10 @@
 
 							var orderhouse = "/MountainExploer.com/mountainHouseActOrder";
 
+							
+
+							
+
 							$.ajax({
 								url : orderhouse
 										+ "/orderhousebedamount?selecthouseid="
@@ -528,11 +636,12 @@
 								success : function(order) {
 									for (var i = 0; i <= campleftamount; i++) {
 										$("#campleftamount").append(
-												"<option value='"+ i +"'>" + i
-														+ "&nbsp&nbsp&nbsp"
-														+ "(" + "TWD:" + i
+												"<option value='"+ i +"'>" + i+ "&nbsp&nbsp&nbsp"+ "(" + "TWD:" + i
 														* campprice + ")"
-														+ "</option>")
+														+ "</option>"
+														)
+
+												
 									}
 									for (var i = 0; i <= bedleftamount; i++) {
 										$("#bedleftamount").append(
@@ -553,9 +662,13 @@
 										var stt = $("#bedleftamount").val();
 
 										$("#houseorderprice").empty();
-										$("#houseorderprice").val(
+										var houseorderprice =	$("#houseorderprice").val(
 												(campprice * str + bedprice
-														* stt)*bookneight)
+														* stt)
+														* bookneight)
+
+														if($("#houseorderprice").val().length <= 1 || $("#houseorderprice").val() <= 0){
+															$("#houseorderprice").val(""); }
 
 									})
 							$("#bedleftamount").change(
@@ -563,15 +676,148 @@
 										var str = $("#campleftamount").val();
 										var stt = $("#bedleftamount").val();
 										$("#houseorderprice").empty();
-										$("#houseorderprice").val(
+				
+								$("#houseorderprice").val(
 												(campprice * str + bedprice
-														* stt)*bookneight)
+														* stt)
+														* bookneight)
+										
+			if($("#houseorderprice").val().length <= 1 || $("#houseorderprice").val() <= 0){
+					$("#houseorderprice").val(""); }
 
 									})
+													
+							// 	$('#showMap').on('show.bs.modal', function (event) {
+							// 	var aHref = $(event.relatedTarget);
+							// 	var houseid = aHref.data('whatever');
+							// 	$.ajax({
+							// 		url : orderhouse+"/selecthouseidtostar?selecthouseid=" + houseid,
+							// 		type : "GET",
+							// 		data : {"houseid" : houseid},
+							// 		datatype : "json",
+							// 		success : function(data, status) {
+							// 			$("#mapHere").html(data);
+
+							// 		},
+							// 		error : function(data, status) {
+							// 			$("#mapHere").html(data);
+							// 			console.log(data)
+							// 		}
+							// 	});			
+							// 	})						
 
 						})
 	</script>
+	<script>
+	
+		let index;
 
+		$("#img1")
+				.click(
+						function() {
+							$(this)
+									.attr("src",
+											"/MountainExploer.com/housecamp/images/bringstar.PNG");
+						})
+				.click(
+						function() {
+							$("#img5,#img4,#img3,#img2")
+									.attr("src",
+											"/MountainExploer.com/housecamp/images/blackstar.PNG");
+						}).val()
+
+		$("#img2")
+				.click(
+						function() {
+							$("#img2,#img1")
+									.attr("src",
+											"/MountainExploer.com/housecamp/images/bringstar.PNG");
+						})
+				.click(
+						function() {
+							$("#img5,#img4,#img3")
+									.attr("src",
+											"/MountainExploer.com/housecamp/images/blackstar.PNG");
+						})
+
+		$("#img3")
+				.click(
+						function() {
+							$("#img3,#img2,#img1")
+									.attr("src",
+											"/MountainExploer.com/housecamp/images/bringstar.PNG");
+						})
+				.click(
+						function() {
+							$("#img5,#img4")
+									.attr("src",
+											"/MountainExploer.com/housecamp/images/blackstar.PNG");
+						})
+
+		$("#img4")
+				.click(
+						function() {
+							$("#img4,#img3,#img2,#img1")
+									.attr("src",
+											"/MountainExploer.com/housecamp/images/bringstar.PNG");
+						})
+				.click(
+						function() {
+							$("#img5")
+									.attr("src",
+											"/MountainExploer.com/housecamp/images/blackstar.PNG");
+						})
+
+		$("#img5")
+				.click(
+						function() {
+							$("#img5,#img4,#img3,#img2,#img1")
+									.attr("src",
+											"/MountainExploer.com/housecamp/images/bringstar.PNG");
+						})
+
+		$(document).ready(
+				function() {
+					$("img").click(function() {
+						index = $(this).index()
+					});
+					$("#star")
+							.on(
+									"submit",
+									function(e) {
+
+										let originStarV = $(
+												"input[name='updatestar']")
+												.val()
+										let originCount = $(
+												"input[name='updateclick']")
+												.val()
+										$("input[name='updatestar']").val(
+												Number(originStarV)
+														+ Number(index + 1))
+										$("input[name='updateclick']")
+												.val(
+														Number(originCount)
+																+ Number(1))
+										// 		e.preventDefault(); // 不會送出submit
+									})
+
+				});
+	</script>
+	<script type="text/javascript">
+	  var count = 1;
+	    var countEl = document.getElementById("count");
+	    function plus(){
+	        count++;
+	        countEl.value = count;
+	    }
+	    function minus(){
+	      if (count > 1) {
+	        count--;
+	        countEl.value = count;
+	      }  
+	    }
+	</script>
 
 </body>
 

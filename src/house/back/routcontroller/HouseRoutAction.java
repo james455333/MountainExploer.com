@@ -276,7 +276,7 @@ public class HouseRoutAction {
 		return list;
 	}
 	
-	@GetMapping("/housebackorder")
+	@PostMapping("/housebackorder")
 	public String HouseBackOrder(@RequestParam(name = "orderhouseid")Integer houseid,Model m,
 			@RequestParam(name = "no")Integer no ,@RequestParam(name = "peoplename") String peoplename) {
 		
@@ -295,27 +295,25 @@ public class HouseRoutAction {
 		
 		return "house/back/rout/housebackroutorder";
 	}
+	@GetMapping("/deletehouseorder")
+	public String deleteHouseOrder(@RequestParam(name = "deletehouseorder")Integer orderid,
+			@RequestParam(name = "no")Integer no,@RequestParam(name = "peoplename") String peoplename,
+			@RequestParam(name = "orderhouseid")Integer houseid,Model m) {
+		houseOrderService.deleteHouseOrder(orderid);
+		int totalData = houseOrderService.countorder(no, houseid, peoplename);
 
-//	@GetMapping("/housebackallorder")
-//	public String selectHouseOrder(@RequestParam(name = "orderhouseid")Integer houseid,Model m){
-//		
-//		List<HouseOrderBean> list = houseOrderService.selecthouseid(houseid);
-//		
-//		Integer countorder = houseOrderService.countorder(houseid);
-////		System.out.println("+++++++++++++++++++++" + countorder);
-//		
-//		m.addAttribute("countorder",countorder);
-//		m.addAttribute("housebackorder",list);
-//		return "house/back/rout/housebackroutorder";
-//	}	
-//	@GetMapping("/selectpeoplename")
-//	public String selectPeopleName(@RequestParam(name = "selectpeoplename")String peoplename,Model m) {
-//		List<HouseOrderBean> list = houseOrderService.selectpeoplename(peoplename);
-//		Integer countorder = houseOrderService.countorder(houseid);
-////		System.out.println("+++++++++++++++++++++" + countorder);
-//		
-//		m.addAttribute("countorder",countorder);
-//		m.addAttribute("housebackorder",list);
-//		return "house/back/rout/housebackroutorder";
-//	}
+		
+		List<HouseOrderBean> list = houseOrderService.selectHouesOrder(no, houseid, peoplename);
+		
+		HouseInfoBean houseInfoBean = houseService.select(houseid);
+		String housename = houseInfoBean.getName();
+		
+		m.addAttribute("houseid",houseid);
+		m.addAttribute("totalData",totalData);
+		m.addAttribute("housename",housename);
+		m.addAttribute("housebackorder",list);
+		
+		return "house/back/rout/housebackroutorder";
+	}
+	
 }

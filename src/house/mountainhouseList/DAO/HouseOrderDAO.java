@@ -138,11 +138,11 @@ public class HouseOrderDAO implements IHouseOrderService {
 	@Override
 	public List<HouseOrderBean> selectHouesOrder(Integer no ,Integer houseid , String peoplename){
 		if (no==1) {
-			Query<HouseOrderBean> query = getSession().createQuery("From HouseOrderBean",HouseOrderBean.class);
+			Query<HouseOrderBean> query = getSession().createQuery("From HouseOrderBean where  housebasicid like '%" + houseid +"%'",HouseOrderBean.class);
 			List<HouseOrderBean> list = query.list();
 			return list;
 		}else if (no==2) {
-			Query<HouseOrderBean> query = getSession().createQuery("From HouseOrderBean where  housebasicid like '%" + houseid +"%'",HouseOrderBean.class);
+			Query<HouseOrderBean> query = getSession().createQuery("From HouseOrderBean where  peoplename like '%" + peoplename +"%'",HouseOrderBean.class);
 			List<HouseOrderBean> list = query.list();
 			return list;
 		}
@@ -154,11 +154,11 @@ public class HouseOrderDAO implements IHouseOrderService {
 		
 		int result=0;
 		if (no == 1) { //全部
-		Query query = getSession().createQuery("From HouseOrderBean",HouseOrderBean.class);
+		Query query = getSession().createQuery("From HouseOrderBean where  housebasicid like '%" + houseid +"%'",HouseOrderBean.class);
 		result = query.list().size();
 		
 		}else if (no==2) { //姓名
-			Query query = getSession().createQuery("From HouseOrderBean where  housebasicid like '%" + houseid +"%'",HouseOrderBean.class);
+			Query query = getSession().createQuery("From HouseOrderBean where  peoplename like '%" + peoplename +"%'",HouseOrderBean.class);
 			result = query.list().size();
 	}
 	

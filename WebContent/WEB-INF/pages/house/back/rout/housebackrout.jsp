@@ -428,7 +428,7 @@
 							<td>
 								<form
 									action="<c:url value="/Rout/mountainHouseBack/housebackorder"></c:url>"
-									method="get">
+									method="post">
 									<input type="hidden" name="orderhouseid" value="${i.housebasicid}">
 									<input type="hidden" name="no" value="1">
 									<input type="hidden" name="peoplename" value="">
