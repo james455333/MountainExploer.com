@@ -131,7 +131,7 @@ public class MemberLoginController {
 	
 	@ResponseBody
 	@GetMapping(path = "/member/memberLogin")
-	public List<MemberBasic> processCheckLogin(
+	public int processCheckLogin(
 			@RequestParam(name = "account")String account,
 			@RequestParam(name = "password")String password,
 			@RequestParam(name = "rememberMe", required = false)String rm,
@@ -157,10 +157,10 @@ public class MemberLoginController {
 //			errors.put("password", "請輸入密碼");
 //		}
 //		
-//		if(errors != null && !errors.isEmpty()) {
-//			return 0;
-//		}
-//		
+		if(errors != null && !errors.isEmpty()) {
+			return 0;
+		}
+		
 		
 		if(rm != "") {
 			System.out.println("A");
@@ -212,35 +212,29 @@ public class MemberLoginController {
 				if(mb.getMemberStatus().getSeqno() == 100 || mb.getMemberStatus().getSeqno() == 120) {
 					m.addAttribute("Member", mb);
 //					m.addAttribute("result", "登入成功");
-					List<MemberBasic> mbList = mbService.selectInfo(mb.getSeqno());
 					System.out.println("=======================登入成功");
-					return mbList;
+					return mb.getMemberStatus().getSeqno();
 				}else if(mb.getMemberStatus().getSeqno() == 110 || mb.getMemberStatus().getSeqno() == 130) {
 					m.addAttribute("Member", mb);
 //					m.addAttribute("result", "初次登入成功");
-					List<MemberBasic> mbList = mbService.selectInfo(mb.getSeqno());
 					System.out.println("=======================登入成功");
-					return mbList;
+					return mb.getMemberStatus().getSeqno();
 				}else if(mb.getMemberStatus().getSeqno() == 140 || mb.getMemberStatus().getSeqno() == 150) {
-					List<MemberBasic> mbList = mbService.selectInfo(mb.getSeqno());
-					return mbList;
+					return mb.getMemberStatus().getSeqno();
 				}else if(mb.getMemberStatus().getSeqno() == 160) {
 					m.addAttribute("Member", mb);
-					List<MemberBasic> mbList = mbService.selectInfo(mb.getSeqno());
-					return mbList;
+					return mb.getMemberStatus().getSeqno();
 				}else {
-					List<MemberBasic> mbList = null;
 					System.out.println("身分組權限不足");
-					return mbList;
+					return 0;
 				}
 			} else {
-				List<MemberBasic> mbList = null;
-				return mbList;
+				System.out.println("登入出錯");
+				return 0;
 			}
 		}
-		
-		List<MemberBasic> mbList = null;
-		return mbList;
+		System.out.println("登入出錯");
+		return 0;
 		
 	}
 	
