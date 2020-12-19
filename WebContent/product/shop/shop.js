@@ -370,7 +370,19 @@ $(function() {
 //							'<c:otherwise><input id="demo1" type="submit" value="加入購物車">'+
 //							"</c:otherwise>"+
 //						"</c:choose>"+
-				'<input class="addShoppingCart" type="submit" value="加入購物車">' +
+
+
+//				"<c:choose>"+
+//			'<c:when test="${empty Member}">'+
+//									'<input type="button" class="swalLogin" value="評分">'+
+//								"</c:when>"+
+//							'<c:otherwise><input class="swalLogin" type="submit" value="加入購物車">'+
+//							"</c:otherwise>"+
+//						"</c:choose>"+
+				
+				
+				'<input  type="submit" value="加入購物車">' +
+//				'<input class="swalLogin" type="submit" value="加入購物車">' +
 				'</form>' +
 				
 				"</tr>"+

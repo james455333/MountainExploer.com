@@ -77,8 +77,6 @@ public class ShoppingCartController {
 		// 將CartBean物件加入ShoppingCart的物件內
 		shoppingCart.addToCart(parseIntitemBasicSeqno, cartBean);
 
-//		m.addAttribute(shoppingCart);
-//		m.addAttribute("Member", mb);
 
 		return "redirect:/shop/shoppingPage";
 
@@ -181,6 +179,7 @@ public class ShoppingCartController {
 			OrderItems orderItems = new OrderItems();
 			orderItems.setOrders(orders);
 			orderItems.setItemBasicSeqno(cartBean.getItemBasicSeqno());
+			System.out.println("cartBean.getItemBasicSeqno():"+cartBean.getItemBasicSeqno());
 			orderItems.setUnitPrice(cartBean.getUnitPrice());
 			orderItems.setAmount(cartBean.getAmount());
 			orderItems.setDiscount(cartBean.getDiscount());
