@@ -62,38 +62,12 @@
         <div class="div_li2">
             <!-- 每頁不同的內容從這裡開始 -->
             
-                <div class="pageControl">
-
-                    
-                    <!-- <div class="pageControl_Tr">
-                        <img src="/MountainExploer.com/images/personal/user.png" alt="" class="pageControl_Td" type="button"
-                            id="userShow">
-                    </div>
-                    <div class="pageControl_Tr">
-                        <img src="/MountainExploer.com/images/personal/id-card.png" alt="" class="pageControl_Td" type="button"
-                            id="idCardShow">
-                    </div>
-                    <div class="pageControl_Tr">
-                        <img src="/MountainExploer.com/images/personal/padlock.png" alt="" class="pageControl_Td" type="button"
-                            id="padlockShow">
-                    </div>
-                    <div class="pageControl_Tr">
-                        <img src="/MountainExploer.com/images/personal/trophy.png" alt="" class="pageControl_Td" type="button"
-                            id="challengeShow">
-                    </div> -->
+                <div>
                 </div>
-                <div class="personalInfo">
-                    <div id="user" style="display: none;">
-                    上傳頭像
-                    </div>
+                <div>
+                    
                     <div id="idCard display: block;">
-                        <!-- 個資內容<br>
-                        相片:<br>
-                        帳號:<br>
-                        密碼:<br>
-                        名稱:<br>
-                        生日:<br>
-                        性別:<br> -->
+                        
                         <h2>找回密碼：</h2>
                         <form >
 <%--                         action="<c:url value='/member/memberPwdFoundAction' />" method="POST" --%>
@@ -130,7 +104,7 @@
                             
                               <div class="offset-4 col-8" style="margin: 0 auto;">
                                 <button name="submit" type="button" class="btn btn-primary submit">送出</button>
-                                <button name="submit" type="reset" class="btn btn-primary">取消</button>
+                                <button name="submit" type="reset" class="btn btn-danger">取消</button>
                               </div>
                               </form>
                             </div>
@@ -138,19 +112,15 @@
                     </div>
                   
                     <div id="padLock" style="display: none;">
-                        安全性<br>
-                        帳號:(唯讀)<br>
-                        密碼:(可更改)
                     </div>
                     <div id="challenge" style="display: none;">
-                        挑戰<br>
-                        (目前尚未有任何積分或挑戰成就)
+                      
                     </div>
                 </div>
 
             </div>
-            <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a
-                    href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+            <br/>
+            
             <!-- 每頁不同內容到這邊結束 -->
             <!-- <div class="fix"><a href="#"><img src="/MountainExploer.com/images/arror.png" alt="" style=" width:60px; height:60px;"></a>
             </div> -->
@@ -160,14 +130,7 @@
     </div>
     <footer id="footer">
         <a>全站導覽</a>
-<!--         <button id="demo1">確認demo1</button> -->
-<!--         <button id="demo2">錯誤demo2</button> -->
-<!--         <button id="demo3">確認提醒demo3</button> -->
-<!--         <button id="demo4">多重選項&提醒視窗demo4</button> -->
-<!--         <button id="demo5">Demo5</button> -->
-<!--         <button id="demo6">Demo6</button> -->
-        <button id="button7"><a href=""><img src="/MountainExploer.com/images/personal/user.png" alt="" style="width: 30px;"
-                    id="logInButton"></a></button>
+
 
 
 

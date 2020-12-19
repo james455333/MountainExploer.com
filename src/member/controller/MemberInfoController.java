@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import member.model.MemberBasic;
+import member.model.MemberInfo;
 import member.model.MemberService;
 import member.model.MemberStatus;
 import member.model.MemberStatusService;
@@ -124,7 +125,7 @@ public class MemberInfoController {
 	@GetMapping(value = "/member/socailInfoAdd")
 	@ResponseBody
 	public boolean processSocailInfoAction(
-			String account, String name, String email, int statusId, String regDate, Model m) throws ParseException {
+			String account, String name, String email, int statusId, String ncName, String exp, String regDate, Model m) throws ParseException {
 		
 		if(account == "" || name == "" || email == "") {
 			return false;
@@ -145,6 +146,12 @@ public class MemberInfoController {
 		mbSet.add(mb);
 		mbStat.setMemberBasic(mbSet);
 		mb.setMemberStatus(mbStat);
+		
+		MemberInfo mbInfo = new MemberInfo();
+		mbInfo.setNeck_name(ncName);
+		mbInfo.setClimb_ex(exp);
+		mbInfo.setMemberBasic(mb);
+		mb.setMemberInfo(mbInfo);
 		
 		MemberStatus queryST = mbstService.select(statusId);
 		if(queryST != null) {

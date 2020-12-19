@@ -230,6 +230,6 @@
 <script src="/MountainExploer.com/js/includejsp.js"></script>
 <script src="/MountainExploer.com/js/personalContrul.js"></script><!-- 個人資料控制列表 -->
 <script src="formalInfoOpenPage.js"></script>
-
+<script src="/MountainExploer.com/member/userTop.js"></script>
 
 </html>

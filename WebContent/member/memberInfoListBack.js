@@ -906,4 +906,40 @@ function getFormattedDate(date){
 }
 
 
+//匯出Json
+$("#exporJsonAll").on("click", function(e){
+    infoDownload()
+    e.preventDefault();
+})
 
+function infoDownload(){
+    $.ajax({
+        method:"GET",
+        url:"/MountainExploer.com/back/member/memberListIndexAction",
+        dataType:"json",
+        success:function(mbList){
+            $.each(mbList, function(index, item){
+                delete item.password
+                delete item.statusId
+                
+            })
+            jsonDownload(mbList, "會員資料");
+        },
+        error:function(){
+            Swal.fire({
+                icon:"error",
+                title:"下載發生錯誤"
+            })
+        }
+    })
+}
+
+function jsonDownload(jsonList, fileName){
+    $("<a />", {
+        "download":fileName + new Date().toLocaleDateString() + ".json",
+        "href": "data:application/json," + encodeURIComponent(JSON.stringify(jsonList))
+    }).appendTo("body")
+    .click(function(){
+        $(this).remove();
+    })[0].click()
+}

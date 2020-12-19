@@ -128,5 +128,6 @@
 <!--sweet alert-->
 <script src="../js/includejsp.js"></script>
 <script src="/MountainExploer.com/member/formalFirstInfo.js"></script>
+<script src="/MountainExploer.com/member/userTop.js"></script>
 
 </html>
