@@ -73,6 +73,7 @@ $(".submit").on("click", function(){
 					}).then(function(){
 						window.location.href="/MountainExploer.com/member/memberInfoEntry";
 					})
+					
 				}else if(data == 110 || data == 130){
 					Swal.fire({
 						icon:"success",
@@ -105,6 +106,7 @@ $(".submit").on("click", function(){
 						window.location.reload();
 					})
 				}
+
 			},
 			error:function(){
 				Swal.fire({

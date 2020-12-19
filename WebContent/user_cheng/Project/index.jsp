@@ -641,6 +641,8 @@
     <script src="/MountainExploer.com/assets/vendor/aos/aos.js"></script>
 
     <script src="/MountainExploer.com/assets/js/main.js"></script>
+    
+    
 </body>
 
 </html>

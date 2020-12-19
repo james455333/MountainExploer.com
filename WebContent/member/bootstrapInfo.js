@@ -56,8 +56,10 @@ $(function(){
 
                 let imgMb = item.memberInfo.img_name;
                 if(imgMb != null){
-                    let imgMbNm = item.memberInfo.img_name
-                    $(".userFile").attr("src", "/MountainExploer.com/images/" + imgMbNm);
+                    // let imgMbNm = item.memberInfo.img_name;
+                    let imgMbSrc = "/MountainExploer.com/member/showUserImg?seqno=" + item.seqno;
+                    // $(".userFile").attr("src", "/MountainExploer.com/images/" + imgMbNm);
+                    $(".userFile").attr("src", imgMbSrc);
                 }
 
             })

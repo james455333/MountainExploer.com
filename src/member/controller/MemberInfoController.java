@@ -106,6 +106,7 @@ public class MemberInfoController {
 	
 	
 	
+	
 	//讀取圖片
 	@ResponseBody
 	@GetMapping(path = "/member/showUserImg")
