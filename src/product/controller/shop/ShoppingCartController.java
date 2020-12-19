@@ -28,7 +28,7 @@ public class ShoppingCartController {
 
 	@Autowired
 	private OrdersDAO ordersDao;
-
+	
 	// 在Session加入ShoppingCart屬性物件
 	@RequestMapping(path = "/addShoppingCart", method = RequestMethod.GET)
 	public String addCartBean(Model m, 

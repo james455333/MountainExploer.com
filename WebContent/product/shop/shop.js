@@ -6,7 +6,24 @@ $(function() {
 	var totalPage = 0;
 	//統一網域名稱設置
 	var homeUrl = "/MountainExploer.com/shop/search";
-
+		
+	var booleanFlag = true
+	
+	$("body").on("submit", ".shoppingCart",function(e){
+		$.ajax({
+			url : "/MountainExploer.com/memberCheck",
+			type : "GET",
+			success : function(){
+				booleanFlag = false
+				$(this).trigger("submit")
+			},
+			error : function(){
+				loginSwal()
+			}
+		})
+		if(booleanFlag)e.preventDefault()
+	})
+	
 	//	預設頁面
 	$(window).on("load", function() {
 		//查找資料庫總筆數
@@ -335,7 +352,7 @@ $(function() {
 				"<td>"+		
 				"$" +data[i].price  +
 
-				'<form  action= "/MountainExploer.com/shoppingcart/addShoppingCart">' +
+				'<form class="shoppingCart" action= "/MountainExploer.com/shoppingcart/addShoppingCart">' +
 				'<input type="hidden" name="itemBasicSeqno" value="' + data[i].seqno + '" readonly>' +
 				'<input type="hidden" name="itemBasicName" value="' + data[i].name + '" readonly>' +
 				'<input type="hidden" name="unitPrice" value="' + data[i].price + '" readonly>' +
@@ -353,9 +370,7 @@ $(function() {
 //							'<c:otherwise><input id="demo1" type="submit" value="加入購物車">'+
 //							"</c:otherwise>"+
 //						"</c:choose>"+
-				
-				
-				'<input class="swalLogin" type="submit" value="加入購物車">' +
+				'<input class="addShoppingCart" type="submit" value="加入購物車">' +
 				'</form>' +
 				
 				"</tr>"+

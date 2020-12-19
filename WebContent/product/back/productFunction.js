@@ -1,4 +1,50 @@
 //
+function downloadAllJson(){
+	$.ajax({
+		url : routeBaseURL + "/backAll",
+		type : "GET",
+		dataType : "json",
+		success : function(data){
+			console.log(data)
+			let newData = {}
+			for(let i in data){
+					let npName = data[i].name
+				if( newData[npName] == null){
+					newData[npName] = []
+				}
+				let newRoute = {
+//					產品編號 : data[i].seqno,
+					產品名稱 : data[i].name,
+					主分類 : data[i].firstClass,
+					次分類 :data[i].secondClass,
+					價格 : data[i].price,
+					庫存 : data[i].stock
+					
+				}
+				newData[npName].push(newRoute)
+			}
+			activeJsonDownload(newData,"商品總資料表")
+		},
+		error : function(jqXHR){
+			console.log(jqXHR)
+			Swal.fire("發生錯誤", "下載時發生錯誤，錯誤代碼 : " + jqXHR.status, "error")
+		}
+	})
+}
+
+
+function activeJsonDownload(jsonObj,fileName){
+	$("<a />", {
+	    "download": fileName+".json",
+	    "href" : "data:application/json," + encodeURIComponent(JSON.stringify(jsonObj))
+	}).appendTo("body")
+	.click(function() {
+		$(this).remove()
+	})[0].click()	
+}
+
+
+
 function downloadChart(chartElm) {
 	const openURL = chartElm.toBase64Image()
 	const chartType = chartElm.config.type
@@ -68,7 +114,7 @@ function reRender() {
 	setTopCard()
 	countRtChartData()
 	usePerNpChartData()
-	setSearchBar()
+//	setSearchBar()
 	if (typeof dataTable != 'undefined') dataTable.destroy()
 	$('#productTable').find("tbody").remove()
 	let btn = $(this)
@@ -110,7 +156,8 @@ function setCountRtChart(data, cType) {
 	}
 	var ctx = $("#countRtChart");
 	if (countRtChart != null) countRtChart.destroy()
-	let setType = 'doughnut';
+//	let setType = 'doughnut';
+	let setType = 'pie';
 	if (typeof cType != 'undefined') setType = cType
 	var chartSet = {
 		type: setType,
@@ -297,10 +344,10 @@ function setResultToDT(data) {
 	}
 	return result;
 }
-function imgError(thisElm) {
+//function imgError(thisElm) {
 	//	thisElm.attr("src","/MountainExploer.com/mountain/images/defaultMountain.jpg")
 	//	thisElm.parent().attr("href","/MountainExploer.com/mountain/images/defaultMountain.jpg")
-}
+//}
 
 function setDataTable(result) {
 	console.log(result)
@@ -490,7 +537,8 @@ function deleteAlert(btn) {
 					url: productBaseURL + "/delete-" + productID,
 					type: "Delete",
 					success: function() {
-						reRender()
+//						reRender()
+						btn.parents("tr").remove()
 						Swal.fire({
 							customClass: {
 								confirmButton: 'btn btn-success',
@@ -502,10 +550,9 @@ function deleteAlert(btn) {
 							confirmButtonColor: '#3085d6',
 						})
 					},
-					//				error : function(jqXHR){
-					//					Swal.fire("發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
-					//				}
-
+					error : function(jqXHR){
+							Swal.fire("發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
+					}
 				})
 			}
 		})
@@ -551,325 +598,3 @@ function showMoreInfo(btn) {
 
 //-------------------------------------------------
 
-
-$(function() {
-	var homeUrl = "/MountainExploer.com/backstage/product/search";
-
-	//	預設頁面
-	$(window).on("load", function() {
-
-		//		setTable()
-
-		//查找資料庫總筆數
-		$.ajax({
-			url: homeUrl + "/totalData",
-			method: "GET",
-			success: function(data) {
-				var totalData = data;
-				$("#totalData").html(data)
-
-				// 預設顯示資料
-				$.ajax({
-					//					url: homeUrl + "/backAll",
-					//					url: homeUrl + "/totalData",
-					method: "GET",
-					dataType: 'json',
-					success: function(data) {
-						//	使用回覆方法
-						insertTable(data);
-
-					}
-				})
-				//	主類別列表設置
-				$.ajax({
-					url: homeUrl + "/navFC",
-					method: "GET",
-					dataType: 'json',
-					success: function(result) {
-						for (let i = 0; i < result.length; i++) {
-
-							$("#fcSelect").append('<option value="' + result[i].seqno + '">' + result[i].name + "</option>")
-
-						}
-						//						let firstFC = $("fcSelect").find("option").eq(0).val()
-						let firstFC = $("select[name='firstclass']").find("option").eq(0).val()
-						console.log(firstFC)
-						//						// 次類別列表預設為第一筆顯示主類別
-						navSC(firstFC);
-					}
-				})
-
-
-
-			}
-		})
-
-	})
-	//	主類別列表Change觸發切換路線
-	$("#fcSelect").on("change", function() {
-		var firstSC = $("#fcSelect").val();
-		$(".scSelect").empty();
-		console.log(firstSC)
-		navSC(firstSC);
-	})
-
-	function navSC(firstFC) {
-
-		$.ajax({
-			url: homeUrl + "/navSC",
-			method: "GET",
-			dataType: "json",
-			data: {
-				first: firstFC
-			},
-			success: function(data) {
-				//console.log(data)
-				for (let i in data) $(".scSelect").append("<option value='" + data[i].id + "'>" + data[i].name + "</option>")
-			}
-		})
-	}
-
-	// 主類別查詢
-	$(".fcSubmit").on("click", function() {
-		page = 1;
-		//console.log("show : " + showData + "\tpage : " + page)
-		let fcID = $("#fcSelect").val();
-		//console.log(fcID);
-		$.ajax({
-			url: homeUrl + "/totalData?firstclass=" + fcID,
-			method: "GET",
-			success: function(data) {
-				totalData = data;
-				$("#totalData").html(data)
-				//console.log("fc query TotalData : " + data )
-				totalPage = Math.ceil(totalData / showData);
-				//console.log("fc query TotalPage : " + totalPage)
-				$.ajax({
-					url: homeUrl + "/navFC?firstclass=" + fcID + "&showData=" + showData,
-					method: "GET",
-					dataType: "json",
-					success: function(data) {
-
-						insertTable(data);
-						setPageController(page)
-					}
-
-				})
-				$("#pageController").off("click", "input")
-				$("#pageController").on("click", "input", function() {
-					var page = Number($(this).attr("name"));
-					//console.log("page Before Click : " + page)
-					$.ajax({
-						url: homeUrl + "/navFC?firstclass=" + fcID + "&showData=" + showData + "&page=" + page,
-						method: "GET",
-						dataType: "json",
-						success: function(data) {
-
-							insertTable(data);
-							setPageController(page)
-						}
-
-					})
-				})
-			}
-		})
-
-
-	})
-
-	// 次類別查詢
-	$(".scSubmit").on("click", function() {
-		page = 1;
-		//console.log("show : " + showData + "\tpage : " + page)
-		let scID = $(".scSelect").val();
-		console.log(scID);
-		$.ajax({
-			url: homeUrl + "/totalData?secondclass=" + scID,
-			method: "GET",
-			success: function(data) {
-				totalData = data;
-				$("#totalData").html(data)
-				//console.log("fc query TotalData : " + data )
-				totalPage = Math.ceil(totalData / showData);
-				//console.log("fc query TotalPage : " + totalPage)
-				$.ajax({
-					url: homeUrl + "/scSelect?secondclass=" + scID + "&showData=" + showData,
-					method: "GET",
-					dataType: "json",
-					success: function(data) {
-
-						insertTable(data);
-						setPageController(page)
-					}
-
-				})
-				$("#pageController").off("click", "input")
-				$("#pageController").on("click", "input", function() {
-					var page = Number($(this).attr("name"));
-					//console.log("page Before Click : " + page)
-					$.ajax({
-						url: homeUrl + "/scSelect?secondclass=" + scID + "&showData=" + showData + "&page=" + page,
-						method: "GET",
-						dataType: "json",
-						success: function(data) {
-
-							insertTable(data);
-							setPageController(page)
-						}
-
-					})
-				})
-			}
-		})
-
-
-	})
-
-	// 價格區間查詢
-	$(".priceSubmitButton").on("click", function() {
-
-		console.log("priceSubmitButton");
-		page = 1;
-		//console.log("show : " + showData + "\tpage : " + page)
-		let scale = $('input[name*=radioGroup]:checked').val()
-		console.log(scale);
-		$.ajax({
-			url: homeUrl + "/searchPrice?radioGroup=" + scale,
-			method: "GET",
-			success: function(data) {
-				totalData = data;
-				$("#totalData").html(data)
-				console.log(" query TotalData : " + data)
-				totalPage = Math.ceil(totalData / showData);
-				//console.log("fc query TotalPage : " + totalPage)
-				$.ajax({
-					url: homeUrl + "/priceSelect?radioGroup=" + scale + "&showData=" + showData,
-					method: "GET",
-					dataType: "json",
-					success: function(data) {
-
-						insertTable(data);
-						setPageController(page)
-					}
-
-				})
-				$("#pageController").off("click", "input")
-				$("#pageController").on("click", "input", function() {
-					var page = Number($(this).attr("name"));
-					//console.log("page Before Click : " + page)
-					$.ajax({
-						url: homeUrl + "/priceSelect?radioGroup=" + scale + "&showData=" + showData + "&page=" + page,
-						method: "GET",
-						dataType: "json",
-						success: function(data) {
-
-							insertTable(data);
-							setPageController(page)
-						}
-
-					})
-				})
-			}
-		})
-
-
-	})
-
-	// 商品名稱查詢
-	$(".nameSubmit").on("click", function() {
-		page = 1;
-		//console.log("show : " + showData + "\tpage : " + page)
-		let search = $(".nameSelect").val();
-		console.log(search);
-		$.ajax({
-			url: homeUrl + "/searchName?nameSelect=" + search,
-			method: "GET",
-			success: function(data) {
-				totalData = data;
-				$("#totalData").html(data)
-				//console.log("fc query TotalData : " + data )
-				totalPage = Math.ceil(totalData / showData);
-				//console.log("fc query TotalPage : " + totalPage)
-				$.ajax({
-					url: homeUrl + "/nameSelect?nameSelect=" + search + "&showData=" + showData,
-					method: "GET",
-					dataType: "json",
-					success: function(data) {
-
-						insertTable(data);
-						setPageController(page)
-					}
-
-				})
-				$("#pageController").off("click", "input")
-				$("#pageController").on("click", "input", function() {
-					var page = Number($(this).attr("name"));
-					//console.log("page Before Click : " + page)
-					$.ajax({
-						url: homeUrl + "/nameSelect?nameSelect=" + search + "&showData=" + showData + "&page=" + page,
-						method: "GET",
-						dataType: "json",
-						success: function(data) {
-
-							insertTable(data);
-							setPageController(page)
-						}
-
-					})
-				})
-			}
-		})
-
-
-	})
-
-
-	//更換顯示
-	$("#changeShowData").on("click", function() {
-		showData = $("#showData").val();
-		console.log(showData);
-	})
-
-	//查詢結果回覆新增表格
-	function insertTable(data) {
-		$(".productTable").find("tbody").empty();
-		for (let i in data) {
-			$(".productTable").find("tbody").append(
-				"<tr>" +
-				"<td>" + data[i].seqno + "</th>" +
-				//			  		"<td><div >" + data[i].name + "</div></td>"+
-				"<td>" + '<a href="/MountainExploer.com//backstage/product/productInfoEntry?no=' + data[i].seqno + '">' + data[i].name + '</a>' + "</td>" +
-				"<td>" + data[i].type + "</td>" +
-				"<td>" + data[i].firstClass + "</td>" +
-				"<td>" + data[i].secondClass + "</td>" +
-				//				"<td>" +
-				//				'<img style="width: 50px; height: 50px;" src="/MountainExploer.com/backstage/product/search/images?seqno=' + data[i].seqno + '" class="productImg" >' +
-				//				"</td>" +
-				"<td>" + data[i].price + "</td>" +
-				"<td>" + data[i].stock + "</td>" +
-				"<td>" +
-				"<div>" +
-				//				"<form  action='" + homeUrl + "/updateDataPage'>" +
-				"<form  action=' '/MountainExploer.com/back/shop/updateDataPage'>" +
-				'<input type="hidden" name="seqno" value="' + data[i].seqno + '" readonly>' +
-				'<input type="submit" value="修改">' +
-				'</form>' +
-				"</div>" +
-				"<div>" +
-				//				"<form class='hiddenForm' action='/MountainExploer.com/backstage/product/deleteData'>" +
-				"<form class='hiddenForm' action='/MountainExploer.com/back/shop/deleteData'>" +
-				'<input  type="hidden" name="seqno" value="' + data[i].seqno + '" readonly>' +
-				//				'<input id="deleteNp" class="deleteButton" type="button"  value="刪除">' +
-				'</form>' +
-				'<input class="deleteButton" type="button"  value="刪除">' +
-				"</div>" +
-				"</td>" +
-				"</tr>"
-			)
-		}
-	}
-
-
-
-
-})

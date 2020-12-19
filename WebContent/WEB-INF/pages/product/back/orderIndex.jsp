@@ -209,7 +209,7 @@
 											</c:forEach>
 											<tr>
 												<td colspan="10" align="center"><input type="button"
-													value="返回上一頁" id="backPreviousPage"></td>
+													value="返回商品後台" id="backPreviousPage"></td>
 											</tr>
 
 
@@ -300,7 +300,7 @@
 					.on(
 							"click",
 							function() {
-								window.location = "MountainExploer.com/backstage/product/createDataPage"
+								window.location = "MountainExploer.com/back/shop/product/index"
 							})
 		})
 	</script>

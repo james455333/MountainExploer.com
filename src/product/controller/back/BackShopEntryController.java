@@ -13,11 +13,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -27,11 +30,13 @@ import mountain.model.activity.ActivityInfo;
 import mountain.model.route.NationalPark;
 import mountain.model.route.RouteBasic;
 import mountain.model.route.RouteInfo;
+import product.dao.OrderItemsDAO;
 import product.dao.OrdersDAO;
 import product.function.TransFuction;
 import product.model.FirstClass;
 import product.model.ItemBasic;
 import product.model.ItemInfo;
+import product.model.OrderItems;
 import product.model.Orders;
 import product.model.SecondClass;
 import product.service.FirstClassService;
@@ -40,6 +45,7 @@ import product.service.ItemInfoService;
 import product.service.SecondClassService;
 
 @Controller
+//@RestController
 @RequestMapping("/back/shop")
 public class BackShopEntryController {
 
@@ -54,6 +60,9 @@ public class BackShopEntryController {
 	private ItemInfoService itemInfoService;
 	@Autowired
 	private OrdersDAO ordersDao;
+	
+	@Autowired
+	private OrderItemsDAO orderItemsDao;
 
 	@GetMapping("/product/index")
 	public String backProductEntry() {
@@ -122,7 +131,7 @@ public class BackShopEntryController {
 		if (update != null) {
 			Integer seqInt = Integer.parseInt(update);
 			Orders selectSeqno = ordersDao.selectSeqno(seqInt);
-			selectSeqno.setCancelTag("D");
+			selectSeqno.setCancelTag("已出貨");
 			Date date = new Date();
 			selectSeqno.setShippingDate(date);
 			ordersDao.update(selectSeqno);
@@ -131,7 +140,7 @@ public class BackShopEntryController {
 		if (cancel != null) {
 			Integer cancelInt = Integer.parseInt(cancel);
 			Orders selectSeqno = ordersDao.selectSeqno(cancelInt);
-			selectSeqno.setCancelTag("");
+			selectSeqno.setCancelTag("已取消");
 			selectSeqno.setShippingDate(null);
 			ordersDao.update(selectSeqno);
 		}
@@ -149,12 +158,18 @@ public class BackShopEntryController {
 
 		int ibID = Integer.parseInt(deleteID);
 		boolean check = itemBasicService.delete(ibID);
-//		System.out.println("Delete Status : " + check);
-
-//	return "redirect:/backstage/product/retrievePage";
-//	return "/product/back/productIndex";
 		return "redirect:/back/shop/product/index";
 
+	}
+// 資料刪除
+//	@RequestMapping(path = "/delete-{productID}", method = RequestMethod.GET)
+	@RequestMapping("/delete-{productID}")
+	@ResponseBody
+	public void delete(@PathVariable("productID") Integer productID) {
+		
+		System.out.println("deletID : " + productID);
+		
+		boolean check = itemBasicService.delete(productID);
 	}
 
 //資料修改
@@ -261,17 +276,25 @@ public class BackShopEntryController {
 	
 	
 	@GetMapping("/countRt")
-	public Map<String, Integer> countRt(){
-		Map<String, Integer> resultMap = new HashMap<String, Integer>();
+	@ResponseBody
+	public Map<Integer, Integer> countRt(){
+		Map<Integer, Integer> resultMap = new HashMap<Integer, Integer>();
 		try {
 			
+			List<OrderItems> selectAllOrderItems = orderItemsDao.selectAllOrderItems();
 			
-			List<SecondClass> selectAll = secondClassService.selectAll();
-			for (SecondClass secondClass : selectAll) {
-				 Set<ItemBasic> itemBasics = secondClass.getItemBasics();
-				 int size = itemBasics.size();
-				 resultMap.put(secondClass.getName(), size);
+			for (OrderItems orderItems : selectAllOrderItems) {
+				Integer itemBasicSeqno = orderItems.getItemBasicSeqno();
+				Integer amount = orderItems.getAmount();
+				resultMap.put(itemBasicSeqno, amount);
 			}
+			
+//			List<SecondClass> selectAll = secondClassService.selectAll();
+//			for (SecondClass secondClass : selectAll) {
+//				 Set<ItemBasic> itemBasics = secondClass.getItemBasics();
+//				 int size = itemBasics.size();
+//				 resultMap.put(secondClass.getName(), size);
+//			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -282,13 +305,15 @@ public class BackShopEntryController {
 	}
 	
 	@GetMapping("/amountPercent")
-	public Map<Integer, Double> amountPercent(){
-		Map<Integer, Double> resultMap = new HashMap<Integer, Double>();
+	@ResponseBody
+	public Map<String, Double> amountPercent(){
+		Map<String, Double> resultMap = new HashMap<String, Double>();
 		try {
 			List<Orders> selectAllOrders = ordersDao.selectAllOrders();
 			for (Orders orders : selectAllOrders) {
 				Double totalAmount = orders.getTotalAmount();
-				resultMap.put(orders.getMemberBasicID(), totalAmount);
+//				resultMap.put(orders.getMemberBasicID(), totalAmount);
+				resultMap.put(orders.getMemberBasic().getName(), totalAmount);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

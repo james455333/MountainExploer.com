@@ -69,15 +69,15 @@ $(function(){
 	$("#countRtChart").parents(".row").find(".countRt-chart").on("click",function(){
 		countRtChartData($(this).val())
 	})
-//	$("#usePerNp-export").on("click",function(){
-//		downloadChart(usePerNpChart)
-//	})
+	$("#usePerNp-export").on("click",function(){
+		downloadChart(usePerNpChart)
+	})
 	$("#countRt-export").on("click",function(){
 		downloadChart(countRtChart)
 	})
-//	$("#usePerNp-export-json").on("click",function(){
-//		downloadChartJson(1)
-//	})
+	$("#usePerNp-export-json").on("click",function(){
+		downloadChartJson(1)
+	})
 	$("#countRt-export-json").on("click",function(){
 		downloadChartJson(2)
 	})
@@ -87,53 +87,58 @@ $(function(){
 //		resetChart(canvasID)
 //		e.preventDefault()
 //	})
-//	$("#exportAll").on("click",function(e){
-//		downloadAllJson()
-//		e.preventDefault()
-//	})
-//	
-//	
-//	$("#npChartSelect").on("change",function(){
-//		let value = $(this).val()
-//		let options = $(this).find("option")
-//		for(let i =0; i < options.length ; i++){
-//			let opValue = options.eq(i).val()
-//			if(opValue == value) usePerRtChart = options.eq(i).text()
-//		}
-////		console.log(usePerRtChart) 
-//		usePerNpChartData()
-//	})
-//	$.fancybox.defaults.infobar = true;
-//	$.fancybox.defaults.buttons = [
-//	    "zoom",
-////	    "share",
-//	    "slideShow",
-//	    "fullScreen",
-//	    "download",
-//	    "thumbs",
-//	    "close"
-//	  ];
-//	
+	$("#exportAll").on("click",function(e){
+		downloadAllJson()
+		e.preventDefault()
+		Swal.fire({
+				title : "匯出商品資料，請稍等...",
+				icon : "success",
+  				confirmButtonText: 'ok',
+			})
+	})
+	
+	
+	$("#npChartSelect").on("change",function(){
+		let value = $(this).val()
+		let options = $(this).find("option")
+		for(let i =0; i < options.length ; i++){
+			let opValue = options.eq(i).val()
+			if(opValue == value) usePerRtChart = options.eq(i).text()
+		}
+//		console.log(usePerRtChart) 
+		usePerNpChartData()
+	})
+	$.fancybox.defaults.infobar = true;
+	$.fancybox.defaults.buttons = [
+	    "zoom",
+//	    "share",
+	    "slideShow",
+	    "fullScreen",
+	    "download",
+	    "thumbs",
+	    "close"
+	  ];
+	
 })
 
 
-jQuery.extend(jQuery.validator.messages, {
-    required: "必填",
-    remote: "Please fix this field.",
-    email: "請輸入正確Email格式",
-    url: "Please enter a valid URL.",
-    date: "Please enter a valid date.",
-    dateISO: "Please enter a valid date (ISO).",
-    number: "僅能輸入數字",
-    digits: "Please enter only digits.",
-    creditcard: "Please enter a valid credit card number.",
-    equalTo: "Please enter the same value again.",
-    accept: "Please enter a value with a valid extension.",
-    maxlength: jQuery.validator.format("Please enter no more than {0} characters."),
-    minlength: jQuery.validator.format("請輸入至少 {0} 個字"),
-    rangelength: jQuery.validator.format("Please enter a value between {0} and {1} characters long."),
-    range: jQuery.validator.format("Please enter a value between {0} and {1}."),
-    max: jQuery.validator.format("Please enter a value less than or equal to {0}."),
-    min: jQuery.validator.format("Please enter a value greater than or equal to {0}."),
-	pattern: "格式錯誤"
-});
+//jQuery.extend(jQuery.validator.messages, {
+//    required: "必填",
+//    remote: "Please fix this field.",
+//    email: "請輸入正確Email格式",
+//    url: "Please enter a valid URL.",
+//    date: "Please enter a valid date.",
+//    dateISO: "Please enter a valid date (ISO).",
+//    number: "僅能輸入數字",
+//    digits: "Please enter only digits.",
+//    creditcard: "Please enter a valid credit card number.",
+//    equalTo: "Please enter the same value again.",
+//    accept: "Please enter a value with a valid extension.",
+//    maxlength: jQuery.validator.format("Please enter no more than {0} characters."),
+//    minlength: jQuery.validator.format("請輸入至少 {0} 個字"),
+//    rangelength: jQuery.validator.format("Please enter a value between {0} and {1} characters long."),
+//    range: jQuery.validator.format("Please enter a value between {0} and {1}."),
+//    max: jQuery.validator.format("Please enter a value less than or equal to {0}."),
+//    min: jQuery.validator.format("Please enter a value greater than or equal to {0}."),
+//	pattern: "格式錯誤"
+//});
