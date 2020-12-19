@@ -184,12 +184,12 @@
 										
 										<div class="ml-auto">
 											<form action="<c:url value='/Rout/mountainHouseBack/housebackorder'></c:url>"
-												method='get' id="form1" name="form1">
+												method='post' id="form1" name="form1">
 												訂房姓名 :&nbsp <input type="text" class="light-table-filter"placeholder="請輸入關鍵字" name="peoplename" >
 															 
-															 
-															 <input type="hidden" value="" name="orderhouseid">
-															 
+															 <c:forEach var="i" items="${housebackorder}">
+															 <input type="hidden" value="${i.housebasicid.housebasicid}" name="orderhouseid">
+															 </c:forEach>
 														  	 
 														  	 <input type="hidden" name="no" value="2">
 												<input type="image" class="imgSearch" src="/MountainExploer.com/images/放大鏡.png" width="35px"
@@ -199,12 +199,12 @@
 										
 									
 										<div class="ml-auto">
-											<form action="<c:url value='/Rout/mountainHouseBack/housebackorder#toseesee'></c:url>"method='get'>					
+											<form action="<c:url value='/Rout/mountainHouseBack/housebackorder#toseesee'></c:url>"method='post'>					
 												<c:forEach var="i" items="${housebackorder}">
 												<input type="hidden" value="${i.housebasicid.housebasicid}" name="orderhouseid">
+												</c:forEach>
 												<input type="hidden" name="no" value="1">
 												<input type="hidden" name="peoplename" value="">
-												</c:forEach>
 												<input type="submit" id="toseesee" class="btn btn-outline-info" value="查詢全部訂單">
 											</form>
 										</div>
@@ -229,18 +229,14 @@
 								
 					
 							<div class="ml-auto">
-								<form action="<c:url value='/Rout/mountainHouseBack/inserjump'></c:url>"
-									method='get'>
-				
-									<input type="submit" src="#" class="btn btn-outline-primary" name="" value="新增">
-								</form>
+								
 							</div>
 							
 							</div>
 									</div>
 								<div class="card-body">
 									<div class="table-responsive">
-										<table id="routeTable" style="border:3px #cccccc solid;" cellpadding="10" border='1'>
+										<table id="routeTable" style="border:3px #cccccc solid; cellpadding="10" border='1'">
 											<thead>
 												<tr>
 													<th scope="col"><span class="tr_title">訂單編號</span></th>
@@ -297,8 +293,11 @@
 								<div style="margin: 10px">
 									<form
 										action="<c:url value='/Rout/mountainHouseBack/deletehouseorder'></c:url>"
-										name="form1" method='post'>
-										<input type="hidden" name="deletehouse" value="${i.orderid}">
+										name="form1" method='get'>
+										<input type="hidden" name="deletehouseorder" value="${i.orderid}">
+										<input type="hidden" name="no" value="1">
+										<input type="hidden" name="peoplename" value="">
+										<input type="hidden" name="orderhouseid" value="${i.housebasicid.housebasicid}">
 										<input type="button" class="btn btn-outline-danger" value="刪除"
 											onclick="if(confirm('確認要刪除嗎？')) this.form.submit();">
 									</form>

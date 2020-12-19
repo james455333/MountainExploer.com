@@ -78,6 +78,7 @@ public class ActHouseController {
 		list = nParkService.selectAll();
 		return list;
 	}
+	
 	@GetMapping("/jumpHouseDesc")
 	public String selectHousedesc(@RequestParam(name = "selecthouseid") Integer houseid,Model m) {
 		List<HouseInfoBean> list = houseService.selecthouseid(houseid);
@@ -92,6 +93,7 @@ public class ActHouseController {
 			return "redirect:/member/memberLoginEntry";
 		}
 		List<HouseInfoBean> list = houseService.selecthouseid(houseid);
+		
 		m.addAttribute("list",list);
 		return "house/act/star";
 	}
@@ -111,7 +113,16 @@ public class ActHouseController {
 		List<HouseInfoBean> list = houseService.selecthouseid(houseid);
 		m.addAttribute("selecthouseid",list);
 		
+		
 //		return "redirect:/mountainHouseAct/jumpHouseDesc";
 		return "house/act/Deschouse";
 	}
+	
+//	@GetMapping("/selecthouseidtostar")
+//	@ResponseBody
+//	public List<HouseInfoBean> selecthouseid(@RequestParam(name = "selecthouseid")Integer houseid){
+//		List<HouseInfoBean> list = houseService.selecthouseid(houseid);
+//		System.out.println("+++++++++++++"+list);
+//		return list;
+//	}
 }

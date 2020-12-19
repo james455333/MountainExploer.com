@@ -84,9 +84,9 @@ height:25px;
     <img id="img4" class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG" />
     <img id="img5" class="images" src="/MountainExploer.com/housecamp/images/blackstar.PNG" />
 	</span>
-	<input type="hidden" name="updatestar" value="${i.star}">
-	<input type="hidden" name="updateclick" value="${i.clickcount}">
-	<input type="hidden" name="updateid" value="${i.housebasicid}">
+	<input type="text" name="updatestar" value="${i.star}">
+	<input type="text" name="updateclick" value="${i.clickcount}">
+	<input type="text" name="updateid" value="${i.housebasicid}">
 	<input type="reset" value="清除">
 	<input type="submit" value="送出">
 </form>
