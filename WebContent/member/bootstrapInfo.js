@@ -299,90 +299,77 @@ $(".updateAction").on("click", function(){
     let other = $(".otTr").find(".otInp").val();
     let birDate = $(".brTr").find(".brInp").val();
 
-    if(chkName(name) == false){
-        Swal.fire({
-            icon:"warning",
-            title:"姓名必須是兩個以上的中文字元"
-        })
-    }
+    if(ncName != "" && chkEmail(email) == true && chkPhone(phone) == true && chkBirDate(birDate) == true && exp != ""){
 
-    if(ncName == ""){
+        $.ajax({
+            method:"GET",
+            url:"/MountainExploer.com/member/memberInfoUpdateAction",
+            data:{
+                seqno:seqno,
+                name:name,
+                ncName:ncName,
+                gender:gender,
+                email:email,
+                phone:phone,
+                exp:exp,
+                other:other,
+                birDate:birDate
+            },
+            dataType:"json",
+            success:function(data){
+                if(data){
+                    Swal.fire({
+                        icon:"success",
+                        title:"修改成功"
+                    }).then(function(){
+                        window.location.reload();
+                    })
+                }else{
+                    Swal.fire({
+                        icon:"error",
+                        title:"修改失敗",
+                        text:"請重試一次或聯絡管理員"
+                    }).then(function(){
+                        window.location.reload();
+                    })
+                }
+            },
+            error:function(){
+                Swal.fire({
+                    icon:"error",
+                    title:"出現錯誤",
+                    text:"請聯絡管理員"
+                })
+            }
+    
+        })
+    }else if(ncName == ""){
         Swal.fire({
             icon:"warning",
             title:"請填寫暱稱"
         })
-    }
-
-    if(chkEmail(email) ==  false){
+    }else if(chkEmail(email) ==  false){
         Swal.fire({
             icon:"warning",
             title:"Email格式錯誤"
         })
-    }
-    
-    if(chkPhone(phone) == false){
+    }else if(chkPhone(phone) == false){
         Swal.fire({
             icon:"warning",
             title:"手機格式錯誤"
         })
-    }
-
-    if(chkBirDate(birDate) == false){
+    }else if(chkBirDate(birDate) == false){
         Swal.fire({
             icon:"warning",
             title:"日期格式錯誤"
         })
-    }
-
-    if(exp == ""){
+    }else if(exp == ""){
         Swal.fire({
             icon:"warning",
             title:"請填寫登山經驗"
         })
     }
-
-    $.ajax({
-        method:"GET",
-        url:"/MountainExploer.com/member/memberInfoUpdateAction",
-        data:{
-            seqno:seqno,
-            name:name,
-            ncName:ncName,
-            gender:gender,
-            email:email,
-            phone:phone,
-            exp:exp,
-            other:other,
-            birDate:birDate
-        },
-        dataType:"json",
-        success:function(data){
-            if(data){
-                Swal.fire({
-                    icon:"success",
-                    title:"修改成功"
-                }).then(function(){
-                    window.location.reload();
-                })
-            }else{
-                Swal.fire({
-                    icon:"error",
-                    title:"修改失敗",
-                    text:"請重試一次或聯絡管理員"
-                }).then(function(){
-                    window.location.reload();
-                })
-            }
-        },
-        error:function(){
-            Swal.fire({
-                icon:"error",
-                title:"出現錯誤",
-                text:"請聯絡管理員"
-            })
-        }
-
-    })
+    
 
 })
 
@@ -392,42 +379,42 @@ $(".reset").on("click", function(){
 })
 
 //驗證姓名
-function chkName(chkName){
-    let chkNameLen = chkName.length;
-    let flag = false;
+// function chkName(chkName){
+//     let chkNameLen = chkName.length;
+//     let flag = false;
 
-    if(chkName == ""){
-        Swal.fire({
-            icon:"warning",
-            title:"姓名不得為空"
-        }).then(function(){
+//     if(chkName == ""){
+//         Swal.fire({
+//             icon:"warning",
+//             title:"姓名不得為空"
+//         }).then(function(){
 
-        })
-    }else if(chkNameLen >= 2){
-        for(let i = 0; i < chkNameLen; i++){
-            let ch = chkName.charCodeAt(i);
-            if(ch >= 0x4e00 && ch <= 0x9fff){
-                flag = true;
-            }else{
-                flag = false;
-                break;
-            }
-        }
+//         })
+//     }else if(chkNameLen >= 2){
+//         for(let i = 0; i < chkNameLen; i++){
+//             let ch = chkName.charCodeAt(i);
+//             if(ch >= 0x4e00 && ch <= 0x9fff){
+//                 flag = true;
+//             }else{
+//                 flag = false;
+//                 break;
+//             }
+//         }
 
-        if(flag){
-            return true;
-        }else{
-            return false;
-        }
-    }else{
-        Swal.fire({
-            icon:"warning",
-            title:"姓名至少兩個中文字元"
-        }).then(function(){
-            
-        })
-    }
-}
+//         if(flag){
+//             return true;
+//         }else{
+//             return false;
+//         }
+//     }else{
+//         Swal.fire({
+//             icon:"warning",
+//             title:"姓名至少兩個中文字元"
+//         }).then(function(){
+//             e.preventDefault()
+//         })
+//     }
+// }
 
 
 //驗證Email

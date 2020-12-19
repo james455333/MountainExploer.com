@@ -256,8 +256,7 @@
 
             </div>
             <!-- 每頁不同內容到這邊結束 -->
-            <div class="fix"><a href="#"><img src="/MountainExploer.com/images/arror.png" alt="" style=" width:60px; height:60px;"></a>
-            </div>
+            
             <!-- 宣告為fix後會將DIV的層級拉到最外層(不管原本是寫在哪)也就是跳脫出原本的HTML框架 -->
         </div>
 

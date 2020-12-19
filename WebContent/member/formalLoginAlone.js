@@ -201,27 +201,27 @@ $(".adminLog").on("click", function(){
 						async:false,
 						success:function(data){
 							if(data == 1){
-								swal({
-									title: "登入成功",
-									icon: "success"
-								}).then(function(){
-									window.location.href="/MountainExploer.com";								
-								})
+								window.location.href="/MountainExploer.com";								
+								// Swal.fire({
+								// 	title: "登入成功",
+								// 	icon: "success"
+								// }).then(function(){
+								// })
 							} else if(data == 2){
-								swal({
-									title: "初次登入成功，請填寫會員資料",
-									icon: "success"
-								}).then(function(){
-									window.location.href="/MountainExploer.com/member/socailInfoEntry";
-								})
+								window.location.href="/MountainExploer.com/member/socailInfoEntry";
+								// Swal.fire({
+								// 	title: "初次登入成功，請填寫會員資料",
+								// 	icon: "success"
+								// }).then(function(){
+								// })
 							}
 						},
 						
 						error:function(){
-							swal({
-								title: "發生錯誤，登入失敗",
-								icon: "error"
-							});
+							// Swal.fire({
+							// 	title: "發生錯誤，登入失敗",
+							// 	icon: "error"
+							// });
 							window.location.reload();
 						}
 					});

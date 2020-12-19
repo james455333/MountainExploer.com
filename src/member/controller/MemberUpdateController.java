@@ -122,18 +122,12 @@ public class MemberUpdateController {
 				return "member/info/memberFormalInfo";
 				
 			}else if(queryMb.getMemberStatus().getSeqno() == 130) {
-				MemberStatus mbStId = mbStService.select(120);
-				queryMb.setMemberStatus(mbStId);
-				mbService.updateData(queryMb);
-				
-				System.out.println("================身分組更新：" + queryMb.getMemberStatus().getSeqno());
 				
 				mbInfo.setMemberBasic(queryMb);
 				mbInfoService.insert(mbInfo);
 				queryMb.setMemberInfo(mbInfo);
 				m.addAttribute("Member", queryMb);
-				m.addAttribute("result", "認證成功");
-				System.out.println("登山嚮導認證成功");
+				System.out.println("登山嚮導資料更新成功");
 				
 				return "member/info/memberFormalInfo";
 			}
