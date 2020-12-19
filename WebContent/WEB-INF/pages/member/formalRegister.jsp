@@ -109,13 +109,14 @@
                                 <option value="130">登山嚮導</option>
                             </select>
                         </div>
-                        <div style="display:none">
+                        <div >
+<!--                         style="display:none" readonly="readonly"-->
                         	<label>註冊時間：</label>
-                			<input type="text" class="regDate" id="regDate" name="regDate" readonly="readonly">  
+                			<input type="text" class="regDate" id="regDate" name="regDate" >  
                     	</div>
 
                     </div>
-                    <button type="button" name="submit" class="btn btn-outline-success"><i class="fa fa-check-circle-o"></i>
+                    <button type="submit" name="submit" class="btn btn-outline-success"><i class="fa fa-check-circle-o"></i>
                         確認送出</button>
                     <button type="button" name="fastRg" class="btn btn-outline-success fastRg"><i class="fa fa-check-circle-o"></i>快速註冊</button>
                     <button type="reset" class="btn btn-outline-danger reset" id="reset"><i class="fa fa-close"></i> 清除</button>
@@ -127,13 +128,7 @@
     </div>
 
 	<footer id="footer">
-<!-- 		<a>全站導覽</a> -->
-<!-- 		<button id="demo1">確認demo1</button> -->
-<!-- 		<button id="demo2">錯誤demo2</button> -->
-<!-- 		<button id="demo3">確認提醒demo3</button> -->
-<!-- 		<button id="demo4">多重選項&提醒視窗demo4</button> -->
-<!-- 		<button id="demo5">Demo5</button> -->
-<!-- 		<button id="demo6">Demo6</button> -->
+
 
 
 
@@ -146,7 +141,7 @@
 <script src="../js/sweetalert.js"></script>
 <!--sweet alert-->
 <script src="../js/includejsp.js"></script>
-<script src="register.js"></script>
-<script src="formalRegister.js"></script>
+<!-- <script src="register.js"></script> -->
+<!-- <script src="formalRegister.js"></script> -->
 
 </html>

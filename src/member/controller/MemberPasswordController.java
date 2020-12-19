@@ -105,10 +105,10 @@ public class MemberPasswordController {
 	
 	
 	//更改密碼
-	@RequestMapping(path = "/member/memberPwdChangeEntry", method = RequestMethod.GET)
-	public String processUpdatePwdEntry() {
-		return "member/memberPwdChange";
-	}
+//	@RequestMapping(path = "/member/memberPwdChangeEntry", method = RequestMethod.GET)
+//	public String processUpdatePwdEntry() {
+//		return "member/memberPwdChange";
+//	}
 	
 	
 	@ResponseBody

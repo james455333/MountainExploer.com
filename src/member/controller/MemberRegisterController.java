@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import member.MemberGlobal;
 import member.model.MemberBasic;
+import member.model.MemberInfo;
 import member.model.MemberService;
 import member.model.MemberStatus;
 import member.model.MemberStatusService;
@@ -87,7 +88,7 @@ public class MemberRegisterController {
 			mb.setEmail(email);
 			
 			//String Data(sql)轉型
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			java.util.Date parse = sdf.parse(regDate);
 			Date sqldate = new Date(parse.getTime());
 			mb.setReg_Date(sqldate);
@@ -96,6 +97,10 @@ public class MemberRegisterController {
 			mbSet.add(mb);
 			mbStat.setMemberBasic(mbSet);
 			mb.setMemberStatus(mbStat);
+			
+			MemberInfo mbInfo = new MemberInfo();
+			mbInfo.setMemberBasic(mb);
+			mb.setMemberInfo(mbInfo);
 			
 			MemberStatus queryST = mbstService.select(statusId);
 			if(queryST != null) {
@@ -108,7 +113,7 @@ public class MemberRegisterController {
 				} else {
 					System.out.println(mb.getAccount() + "註冊成功");
 					redAttr.addFlashAttribute("result", "註冊成功");
-					return "member/formalLoginAlone";
+					return "member/formalLoginPage";
 				}
 			} else {
 				System.out.println(statusId);
@@ -120,7 +125,7 @@ public class MemberRegisterController {
 				} else {
 					System.out.println(mb.getAccount() + "註冊成功");
 					redAttr.addFlashAttribute("result", "註冊成功");
-					return "redirect:/member/formalLoginAlone";
+					return "redirect:/member/formalLoginPage";
 				}
 			}
 			
