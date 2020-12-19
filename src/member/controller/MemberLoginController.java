@@ -361,7 +361,7 @@ public class MemberLoginController {
 					m.addAttribute("Member", mb);
 					m.addAttribute("result", "登入成功");
 					System.out.println("=======================登入成功");
-					return "member/info/memberFormalInfo";
+					return "member/info/formalInfoPage";
 				}else if(mb.getMemberStatus().getSeqno() == 110 || mb.getMemberStatus().getSeqno() == 130) {
 					m.addAttribute("Member", mb);
 					m.addAttribute("result", "初次登入成功");
@@ -378,16 +378,16 @@ public class MemberLoginController {
 					return "index";
 				}else {
 					System.out.println("身分組權限不足");
-					return "member/formalLoginAlone";
+					return "member/formalLoginPage";
 				}
 			} else {
 				errors.put("msg", "帳號或密碼錯誤");
-				return "member/formalLoginAlone";
+				return "member/formalLoginPage";
 			}
 		}
 		
 		errors.put("msg", "帳號或密碼錯誤");
-		return "member/formalLoginAlone";
+		return "member/formalLoginPage";
 		
 	}
 	

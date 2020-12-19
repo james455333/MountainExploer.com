@@ -118,7 +118,7 @@ public class MemberUpdateController {
 				m.addAttribute("result", "認證成功");
 				System.out.println("一般會員認證成功");
 				
-				return "member/info/memberFormalInfo";
+				return "member/info/formalInfoPage";
 				
 			}else if(queryMb.getMemberStatus().getSeqno() == 130) {
 				
@@ -128,13 +128,13 @@ public class MemberUpdateController {
 				m.addAttribute("Member", queryMb);
 				System.out.println("登山嚮導資料更新成功");
 				
-				return "member/info/memberFormalInfo";
+				return "member/info/formalInfoPage";
 			}
 		} else {
 			errors.put("errors", "找不到會員基本資料");
 			System.out.println("找不到會員基本資料");
 		}	
-		return "member/formalLoginAlone";
+		return "member/formalLoginPage";
 	}
 	
 	
