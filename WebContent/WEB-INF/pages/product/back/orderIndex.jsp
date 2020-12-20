@@ -296,11 +296,11 @@
 
 	<script>
 		$(function() {
-			$("#newRoute")
+			$("#backPreviousPage")
 					.on(
 							"click",
 							function() {
-								window.location = "MountainExploer.com/back/shop/product/index"
+								window.location = "/MountainExploer.com/back/shop/product/index"
 							})
 		})
 	</script>

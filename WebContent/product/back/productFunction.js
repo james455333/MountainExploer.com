@@ -522,7 +522,7 @@ function deleteAlert(btn) {
 			cancelButton: 'btn btn-danger'
 		},
 		buttonsStyling: false,
-		title: '即將刪除 <i class="fas fa-arrow-right"></i> 商品編號 : ' + productID,
+		title: '將刪除 <i class="fas fa-arrow-right"></i> 商品編號 : ' + productID,
 		icon: "warning",
 		html: "!! 警告 !!  <hr>本動作將刪除本商品，並且無法回復",
 		showCancelButton: true,
@@ -559,38 +559,6 @@ function deleteAlert(btn) {
 		})
 }
 
-function showMoreInfo(btn) {
-	let rtID = btn.parents("tr").find("td").eq(0).text()
-	let nextTr = btn.parents("tr").next()
-	if (nextTr.attr("class") == "append-info") {
-		nextTr.toggle(500)
-		nextTr.next().toggle(500)
-		nextTr.siblings(".append-info").not(nextTr).not(nextTr.next()).hide(500)
-		return;
-	}
-	$(".append-info").hide(500)
-	$.ajax({
-		url: routeBaseURL + "/rt-" + rtID,
-		type: "GET",
-		dataType: 'json',
-		success: function(data) {
-			let routeInfo = data[0].routeInfo;
-			let appendInfo = "<tr class='append-info'>"
-				+ "<th colspan='3'>路線介紹</th>"
-				+ "<th colspan='2'>建議行程</th>"
-				+ "<th colspan='1'>交通資訊</th>"
-				+ "</tr>"
-				+ "<tr class='append-info'>"
-				+ "<td colspan='3'><div>" + routeInfo.desp + "</div></th>"
-				+ "<td colspan='2'><div>" + routeInfo.adv + "</div></th>"
-				+ "<td colspan='1'><div>" + routeInfo.traf + "</div></th>"
-				+ "</tr>"
-
-			btn.parents("tr").after(appendInfo)
-			btn.parents("tr").nextAll().slice(0, 2).show(500)
-		}
-	})
-}
 
 
 

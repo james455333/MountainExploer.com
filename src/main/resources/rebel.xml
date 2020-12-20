@@ -9,6 +9,8 @@
 	<classpath>
 		<dir name="C:/moutain/MountainExploer.com/target/classes">
 		</dir>
+		<dir name="C:/Mountain/MountainExploer.com/target/classes">
+		</dir>
 		<dir name="C:/MountainExploer/MountainExploer.com/target/classes">
 		</dir>
 		<dir name="C:/JavaProjectMountain/MountainExploer.com/target/classes">
@@ -23,6 +25,9 @@
 		
 		<link target="/">
 			<dir name="C:/moutain/MountainExploer.com/target/m2e-wtp/web-resources">
+				<exclude name="/"/>
+			</dir>
+			<dir name="C:/Mountain/MountainExploer.com/target/m2e-wtp/web-resources">
 				<exclude name="/"/>
 			</dir>
 			<dir name="C:/MountainExploer/MountainExploer.com/target/m2e-wtp/web-resources">
@@ -40,6 +45,8 @@
 		</link>
 		<link target="/">
 			<dir name="C:/moutain/MountainExploer.com/WebContent">
+			</dir>
+			<dir name="C:/Mountain/MountainExploer.com/WebContent">
 			</dir>
 			<dir name="C:/MountainExploer/MountainExploer.com/WebContent">
 			</dir>
