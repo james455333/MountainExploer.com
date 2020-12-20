@@ -263,7 +263,7 @@
 <!-- 																				Card Header - Dropdown -->
 																				<div
 																					class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-																					<h6 class="m-0 font-weight-bold text-primary">各商品編號銷售數量數量及佔比</h6>
+																					<h6 class="m-0 font-weight-bold text-primary">商品編號-銷售數量</h6>
 																					<div class="ml-auto px-2 no-arrow">
 																						<a href="#" role="button" class="chart-reset"> <i
 																							class="fas fa-sm fa-fw fa-sync"></i>

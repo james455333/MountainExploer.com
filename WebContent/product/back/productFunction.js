@@ -156,8 +156,8 @@ function setCountRtChart(data, cType) {
 	}
 	var ctx = $("#countRtChart");
 	if (countRtChart != null) countRtChart.destroy()
-//	let setType = 'doughnut';
-	let setType = 'pie';
+	let setType = 'doughnut';
+//	let setType = 'pie';
 	if (typeof cType != 'undefined') setType = cType
 	var chartSet = {
 		type: setType,
@@ -598,4 +598,3 @@ function showMoreInfo(btn) {
 //********************* */
 
 //-------------------------------------------------
-
