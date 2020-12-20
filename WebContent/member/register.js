@@ -16,7 +16,6 @@ document.getElementById("reset").onclick = function(){
 }
 
 
-
 //註冊
 $(".submit").on("click", function(){
     let account = $.trim($(".account").val());
