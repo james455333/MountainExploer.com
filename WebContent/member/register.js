@@ -16,15 +16,101 @@ document.getElementById("reset").onclick = function(){
 }
 
 
+
 //註冊
+$(".submit").on("click", function(){
+    let account = $.trim($(".account").val());
+    let password = $.trim($(".pwd").val());
+    let chkPwd = $.trim($(".chkPwd").val());
+    let name = $(".name").val();
+    let ncName = $(".ncName").val();
+    let email = $(".email").val();
+
+    if(confirmAnt(account) == true && noSameAnt(account) == false && confirmPwd(password) == true && comparPwd(password, chkPwd) == true && chkName(name) == true && chkEmail(email) == true && ncName == ""){
+        $("#rsForm").submit();
+    }
+    
+})
 
 
+//blur
+$(".account").on("blur", function(){
+    let account = $(".account").val();
+    if(confirmAnt(account)){
+        $(".Antsp").html("<font color='green'>正確</font>");
+    }else{
+        $(".Antsp").html("<font color='red'>帳號格式不正確</font>");
+    }  
+})
 
+$(".account").on("blur", function(){
+    let account = $(".account").val();
+    if(noSameAnt(account)){
+        $("#chkAntsp").html("<font color='red'>帳號重複</font>");
+    }else{
+        $("#chkAntsp").html("<font color='green'>帳號可以使用</font>");
+    }
+})
+
+$(".pwd").on("blur", function(){
+    let password = $.trim($(".pwd").val());
+    if(confirmPwd(password)){
+        $(".pwdsp").html("<font color='green'>正確</font>");
+    }else{
+        $(".pwdsp").html("<font color='red'>密碼格式不正確</font>");
+    }
+})
+
+$(".chkPwd").on("blur", function(){
+    let chkPwd = $.trim($(".chkPwd").val());
+    if(comparPwd(chkPwd)){
+        $(".chksp").html("<font color='green'>正確</font>");
+    }else{
+        $(".chksp").html("<font color='red'>密碼不相符</font>");
+    }
+})
+
+$(".name").on("blur", function(){
+    let name = $(".name").val();
+    if(chkName(name)){
+        $(".nmsp").html("<font color='green'>正確</font>");
+    }else{
+        $(".nmsp").html("<font color='red'>姓名不得為空，且至少2個字元</font>");
+    }
+})
+
+$(".ncName").on("blur", function(){
+    let ncName = $(".ncName").val();
+    if(ncName.length >= 2){
+        $(".ncsp").html("<font color='green'>正確</font>");
+    }else{
+        $(".ncsp").html("<font color='red'>暱稱不得為空，且至少2個字元</font>");
+    }
+})
+
+$(".email").on("blur", function(){
+    let email = $(".email").val();
+    if(chkEmail(email)){
+        $(".emsp").html("<font color='green'>正確</font>");
+    }else{
+        $(".emsp").html("<font color='red'>Email格式錯誤</font>");
+    }
+})
+
+//登山嚮導提醒
+$(".statusId").change(function(){
+	Swal.fire({
+		icon:"warning",
+		title:"登山嚮導註冊提示",
+		html:`<p>登山嚮導需寄送相關文件證明，經人工審核後方可完成認證程序。<p><p style="color:red;font-weight:bold">本系統客服：mountainexploer@gmail.com</p>`
+	})
+	
+})
 
 
 //驗證帳號
 function confirmAnt(confirmAnt){
-    let confirmAntLen = AntVal.length;
+    let confirmAntLen = confirmAnt.length;
     let flag = false;
 
     if(confirmAnt == ""){
@@ -45,45 +131,51 @@ function confirmAnt(confirmAnt){
         if(flag){
             return true;
         }else{
-            return false;
+            Swal.fire({
+                icon:"warning",
+                title:"帳號格式不符"
+            })
         }
     }else{
-        return false;
+        Swal.fire({
+            icon:"warning",
+            title:"帳號長度至少6個字元"
+        })
     }
 }
 
 
 //比對帳號
 function noSameAnt(noSameAnt){
-	if(noSameAnt != null && noSameAnt.length != 0){
-	    $.ajax({
-	        method:"GET",
-	        url:"/MountainExploer.com/member/checkAnt",
-	        data:{account:noSameAnt},
-	        dataType:"json",
-	        success:function(data){
-                if(data){
-                    return true;
-                }else{
-                    return false;
-                }
+    $.ajax({
+        method:"GET",
+        url:"/MountainExploer.com/member/checkAnt",
+        data:{account:noSameAnt},
+        dataType:"json",
+        success:function(data){
+            if(data){
+                Swal.fire({
+                    icon:"warning",
+                    title:"帳號已有人使用"
+                })
+            }else{
+                return false;
             }
-	    })
-	}
+        }
+    })
+	
 }
 
 
 //驗證密碼
 function confirmPwd(confirmPwd){
-    let confirmPwdLen = PwdVal.length;
+    let confirmPwdLen = confirmPwd.length;
     let flag = false;
 
     if(confirmPwd == ""){
         Swal.fire({
             icon:"warning",
             title:"密碼不得為空"
-        }).then(function(){
-            
         })
     }else if(confirmPwdLen >= 8){
         let re = new RegExp(/[A-Za-z]+[0-9]/);
@@ -105,10 +197,16 @@ function confirmPwd(confirmPwd){
         if(flag){
             return true;
         }else{
-            return false;
+            Swal.fire({
+                icon:"warning",
+                title:"密碼格式不符"
+            })
         }
     }else{
-        return false;
+        Swal.fire({
+            icon:"warning",
+            title:"密碼長度至少8個字元"
+        })
     }
 }
 
@@ -125,7 +223,10 @@ function comparPwd(Pwd1, Pwd2){
     if(flag){
        return true;
     }else{
-        return false;
+        Swal.fire({
+            icon:"warning",
+            title:"密碼不相符"
+        })
     }
     
 }
@@ -134,38 +235,19 @@ function comparPwd(Pwd1, Pwd2){
 //驗證姓名
 function chkName(chkName){
     let chkNameLen = chkName.length;
-    let flag = false;
 
     if(chkName == ""){
         Swal.fire({
             icon:"warning",
             title:"姓名不得為空"
-        }).then(function(){
-            
         })
     }else if(chkNameLen >= 2){
-        for(let i = 0; i < chkNameLen; i++){
-            let ch = chkName.charCodeAt(i);
-            if(ch >= 0x4e00 && ch <= 0x9fff){
-                flag = true;
-            }else{
-                flag = false;
-                break;
-            }
-        }
-
-        if(flag){
-            return true;
-        }else{
-            return false;
-        }
-    }else{
         Swal.fire({
             icon:"warning",
-            title:"姓名至少兩個中文字元"
-        }).then(function(){
-            
+            title:"姓名長度至少2個字元"
         })
+    }else{
+        return true;
     }
 }
 
@@ -179,8 +261,6 @@ function chkEmail(chkEmail){
         Swal.fire({
             icon:"warning",
             title:"Email不得為空"
-        }).then(function(){
-            
         })
     }else if(chkEmailLen >= 5){
         let re = new RegExp(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/);
@@ -193,7 +273,10 @@ function chkEmail(chkEmail){
         if(flag){
             return true;
         }else{
-            return false;
+            Swal.fire({
+                icon:"warning",
+                title:"Email格式不符"
+            })
         }
     }
 }
