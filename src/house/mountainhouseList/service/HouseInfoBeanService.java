@@ -80,16 +80,36 @@ public class HouseInfoBeanService implements IHouseInfoBeanService {
 
 
 
-	@Override
-	public int countParkHouse() {
-		return hDAO.countParkHouse();
-	}
-
+	
 
 
 	@Override
 	public List<HouseInfoBean> allhouseid() {
 		return hDAO.allhouseid();
+	}
+
+
+
+	@Override
+	public int countParkHouse(Integer parkid) {
+		// TODO Auto-generated method stub
+		return hDAO.countParkHouse(parkid);
+	}
+
+
+
+	@Override
+	public int countHouse() {
+		// TODO Auto-generated method stub
+		return hDAO.countHouse();
+	}
+
+
+
+	@Override
+	public List<HouseInfoBean> selectAllhouse() {
+		// TODO Auto-generated method stub
+		return hDAO.selectAllhouse();
 	}
 
 

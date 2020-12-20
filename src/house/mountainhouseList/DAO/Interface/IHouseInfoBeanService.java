@@ -26,8 +26,12 @@ public interface IHouseInfoBeanService {
 
 	List<HouseInfoBean> selectPark(Integer parkid);
 
-	int countParkHouse();
-
 	List<HouseInfoBean> allhouseid();
+
+	int countParkHouse(Integer parkid);
+
+	int countHouse();
+
+	List<HouseInfoBean> selectAllhouse();
 
 }

@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -62,7 +64,7 @@ public class HouseRoutAction {
 		int totalPage = (int) Math.ceil(totalData * 1.0 / 10);
 		List<HouseInfoBean> list = houseService.selectAllHouse(page, 10, no, parkid, star, clickcount);
 		
-		int AllHouse = houseService.countParkHouse();
+		int AllHouse = houseService.countHouse();
 		
 		m.addAttribute("AllHouse",AllHouse);
 		
@@ -315,5 +317,28 @@ public class HouseRoutAction {
 		
 		return "house/back/rout/housebackroutorder";
 	}
+	
+	@GetMapping("/npTotalaHouse")
+	@ResponseBody
+	public Map<String, Integer> npTotalHouse(){
+		Map<String, Integer> resultMap = new HashMap<String, Integer>();
+		
+		
+		List<HouseInfoBean> list = houseService.selectAllhouse();
+	
+		for (HouseInfoBean houseInfoBean : list) {
+			String Parkname = houseInfoBean.getNationalPark().getName();
+			
+			Integer Parkhousecount = houseService.countParkHouse(houseInfoBean.getNationalPark().getId());
+			resultMap.put(Parkname, Parkhousecount);
+			
+				}
+		
+		System.out.println("-+-+++-+--+-++-+-+-+-+-+-+-+-"+resultMap);
+		
+		
+		return resultMap;
+	}
+	
 	
 }
