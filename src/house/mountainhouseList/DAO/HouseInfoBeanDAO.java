@@ -30,6 +30,12 @@ public class HouseInfoBeanDAO implements IHouseInfoBeanService  {
 		return getSession().get(HouseInfoBean.class, houseid);
 
 	}
+	@Override
+	public List<HouseInfoBean> selectAllhouse(){
+		Query<HouseInfoBean> query = getSession().createQuery("From HouseInfoBean ", HouseInfoBean.class);
+		List<HouseInfoBean> list = query.list();
+		return list;
+	}
 
 	
 	@Override
@@ -180,9 +186,16 @@ public class HouseInfoBeanDAO implements IHouseInfoBeanService  {
 		return result;
 }
 	@Override
-	public int countParkHouse() {
+	public int countHouse() {
 		int result=0;
 		Query query = getSession().createQuery("From HouseInfoBean ",HouseInfoBean.class);
+		result = query.list().size();
+		return result;
+	}
+	@Override
+	public int countParkHouse(Integer parkid) {
+		int result=0;
+		Query query = getSession().createQuery("From HouseInfoBean where nationalPark=" + parkid,HouseInfoBean.class);
 		result = query.list().size();
 		return result;
 	}
