@@ -18,10 +18,38 @@ function activeMainAjax(page,as){
 			
 			// $("ul[class='third_nav']").find("li").eq(2).append(totalData)
 			//	呼叫動態新增資料函式
-			insertElement(data);
-			//設定按鈕
-			setPageController(data.page)
 			progressCount("頁面設置完成")
+			if(data.actBasic.actInfo.deleteTag!= null){
+				Swal.fire({
+					title : "本活動已取消",
+					html : "將於<span> 2 </span>秒後返回上一頁或活動討論區",
+					icon : "error",
+					didOpen : function(e){
+						timerInterval = setInterval(() => {
+					      const content = Swal.getContent()
+					      if (content) {
+					        const span = content.querySelector('span')
+					        if (span) {
+					          span.textContent -= 1
+					        }
+					      }
+					    }, 1000)
+					},
+					showConfirmButton: false,
+  					timer: 2750,
+					timerProgressBar: true,
+					willClose: () => {
+				    	clearInterval(timerInterval)
+						window.history.go(-1);
+						window.location.assign("/MountainExploer.com/mountain/list?page=1&od=1")
+				  	}
+				})
+			}
+//			if(data.actBasic.actInfo.hideTag != null ) return;
+			//設定按鈕
+			insertElement(data);
+			setPageController(data.page)
+			
 			
 		}
 	})
@@ -57,7 +85,7 @@ function setPageController(page){
 
 //	函式 : 分配參數給正確函式
 function insertElement(data){
-	if(data.actBasic.actInfo.deleteTag==null){
+	if(data.actBasic.actInfo.deleteTag==null && data.actBasic.actInfo.hideTag==null){
 		let model = $(".actPost").clone();
 		if(totalData!=0){
 			for(let i = 1 ; i<= data.respList.length;i++){
@@ -181,6 +209,7 @@ function insertMainContent(thisElm, data){
 		$(".d_Main").html("本區域已被隱藏顯示")
 		return;
 	}
+	console.log("主內容繼續")
 	thisElm.find(".d_time").html("發表於 " + dateFormate(actInfo.postDate) + new Date(actInfo.postDate).toLocaleTimeString());
 	insertDefault(thisElm,data)
 

@@ -44,16 +44,20 @@ $(function(){
 	if(mode != defaultMode){
 		toggleShowMode()
 	}
+	location.hash = "bc"
+//	$('html, body').animate({
+//			height: $("#text-loading").offset().top
+//	},1000);
 	/*	依照頁面命令變數值(od)，給予呼叫的函式相應的參數	*/
 	ajaxCheckLogin(od)
 
 	/* 掛載活動狀態標籤查詢方法，讓點擊選單選項執行查詢函式 */
-	$("select[name='aTag']").on("change",function(){
+	$("input[name='aTag']").on("change",function(){
 		activeTagAS( $(this).val() );
 	})
 	
 	/* 掛報名狀態標籤查詢方法，讓點擊選單選項執行查詢函式 */
-	$("select[name='rTag']").on("change",function(){
+	$("input[name='rTag']").on("change",function(){
 		activeTagAS( $(this).val() );
 	})
 	

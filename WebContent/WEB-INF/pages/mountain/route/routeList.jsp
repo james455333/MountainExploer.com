@@ -6,8 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>岳進者 - 路線介紹</title>
-    <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
-    <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
+ 
+        <!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <!-- Animate.css -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -15,6 +16,9 @@
 	<link rel="stylesheet" href="/MountainExploer.com/css/loading.css">
 	<!-- bookblock -->
 	<link rel="stylesheet" href="/MountainExploer.com/css/bookblock.css">
+	<link rel="stylesheet" href="/MountainExploer.com/css/other.css">
+    <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
+    <link rel="stylesheet" href="/MountainExploer.com/css/style.css">
     <link rel="stylesheet" href="route/route.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
@@ -26,7 +30,6 @@
      <!-- jquery loading -->
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easy-loading/1.3.0/jquery.loading.min.js'></script>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-loading-overlay/2.1.7/loadingoverlay.min.js'></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="route/routeFunction.js"></script>
     <script src="route/route.js"></script>
     <script src="js/mountain.js"></script>
@@ -35,14 +38,66 @@
 </head>
 
 <body>
-    <div class="count1">
-        <div class="count1_img">
-            <img src="/MountainExploer.com/images/logo1.png">
-            <hr>
-            <h1 class="font">可能改成輪播</h1>
-            <!-- <a class="font">岳進者</a> -->
-        </div>
-    </div>
+    <div class="container-fluid">
+	    <div class="row">
+	        <div class="col-md-12 p-0">
+	            <div class="carousel slide" id="carousel-23783">
+	
+	                <!-- 中央選擇白框 -->
+	                <ol class="carousel-indicators">
+	                    <li data-slide-to="0" data-target="#carousel-23783">
+	                    </li>
+	                    <li data-slide-to="1" data-target="#carousel-23783">
+	                    </li>
+	                    <li data-slide-to="2" data-target="#carousel-23783">
+	                    </li>
+	                    <li data-slide-to="3" data-target="#carousel-23783">
+	                    </li>
+	                    <li data-slide-to="依序增加" data-target="#carousel-23783" class="active">
+	                    </li>
+	
+	                </ol>
+	
+	                <!-- 輪播圖片 -->
+	                <div class="carousel-inner">
+	                    
+	                    <div class="carousel-item">
+	                        <img class="d-block w-100" alt="Carousel Bootstrap Second" src="/MountainExploer.com/images/亮的.jpg">
+	                        <div class="carousel-caption">
+	                            <h4>
+	                                標題 </h4>
+	                            <p>
+	                                內容 </p>
+	                        </div>
+	                    </div>
+	                    <div class="carousel-item">
+	                        <img class="d-block w-100" alt="Carousel Bootstrap Third" src="/MountainExploer.com/images/亮的.jpg">
+	                        <div class="carousel-caption">
+	                            <h4>
+	                                標題 </h4>
+	                            <p>
+	                                內容 </p>
+	                        </div>
+	                    </div>
+	                    <div class="carousel-item active">
+	                        <img class="d-block w-100" alt="Carousel Bootstrap Forth" src="/MountainExploer.com/images/亮的.jpg">
+	                        <div class="carousel-caption">
+	                            <h4>
+	                                標題 </h4>
+	                            <p>
+	                                內容 </p>
+	                        </div>
+	                    </div>
+	
+	                    <!-- 左右控制標籤 -->
+	                </div> <a class="carousel-control-prev" href="#carousel-23783" data-slide="prev"><span
+	                        class="carousel-control-prev-icon"></span> <span class="sr-only">上一頁</span></a> <a
+	                    class="carousel-control-next" href="#carousel-23783" data-slide="next"><span
+	                        class="carousel-control-next-icon"></span> <span class="sr-only">下一頁</span></a>
+	            </div>
+	        </div>
+	    </div>
+	</div>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light zline">
             <a class="navbar-brand" href="#"><img src="/MountainExploer.com/images/logo1.png" height="30%"
@@ -56,43 +111,50 @@
         </nav>
     </header>
       <nav>
-		<ol class="breadcrumb" id="bc">
+		<ol class="breadcrumb bg-light" style="font-size : 25px;" id="bc">
 			<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
 			<li class="breadcrumb-item active"><a href="">路線介紹</a></li>
 		</ol>
 	</nav>
     <div class="div_ul">
-        <div class="div_li2 m-dl2-adj ">
-	        <ul class="nav nav-tabs npList mx-3">
+        <div style="overflow: hidden;" class="div_li2 m-dl2-adj py-5">
+	        <ul style="background-color: white" class="nav nav-pills nav-justified npList mx-3">
 				
 			</ul>
 			<!-- Tab panes -->
 			<div style="" id="rt-info-container" class="mx-3">
-				 <div class="rt-container" id="">
-<!-- 				 	<div class="routeNav  shadow-lg"> -->
-<!-- 		                <nav><ul class="routeList"></ul></nav> -->
-<!-- 		            </div> -->
-		            <div id="rt-book" class="bb-bookblock">
-					</div>
-					<div id="page-container">
+				 <div class="rt-container" id="rt-container">
+					<div style="font-size:20px;" class="my-3" id="page-container" class="">
 						<nav aria-label="Page navigation bookPage">
-						  <ul class="pagination justify-content-center">
+						  <ul class="pagination justify-content-center pagination-lg">
 						    <li class="page-item">
 						      <a id="first-page" class="page-link" href="#" aria-label="Previous">
-						        <span aria-hidden="true">&laquo;</span>
+						        <i class="fas fa-lg fa-fast-backward"></i>
 						      </a>
 						    </li>
-						    <li class="page-item"><a id="prev-page" class="page-link" href="#"><</a></li>
-						    <li class="page-item"><a id="stop-page" class="page-link" href="#">stop</a></li>
-						    <li class="page-item"><a id="next-page" class="page-link" href="#">></a></li>
+						    <li class="page-item">
+						    	<a id="prev-page" class="page-link" href="#">
+							        <i class="fas fa-lg fa-angle-left"></i>
+						    	</a>
+						    </li>
+						    <li class="page-item mx-1 p-0" style="width: 25%">
+						    	<select class="custom-select custom-select-lg"  style="height: 100%;" id="rtSelect">
+								</select>
+						    </li>
+						    <li class="page-item">
+							    <a id="next-page" class="page-link" href="#">
+							    	<i class="fas fa-lg fa-angle-right"></i>
+							    </a>
+						    </li>
 						    <li class="page-item">
 						      <a class="page-link" id="last-page" href="#" aria-label="Next">
-						        <span aria-hidden="true" >&raquo;</span>
+						        <i class="fas fa-lg fa-fast-forward"></i>
 						      </a>
 						    </li>
 						  </ul>
 						</nav>
 					</div>
+		            
 				</div>
 			</div>
         	
@@ -101,48 +163,54 @@
     </div>
 	<div id='hideElm'>
 		<ul>
-			<li class="npModel nav-item invisible animate__animated ">
-				   <a class="nav-link" data-toggle="tab" ></a>
+			<li class="npModel nav-item invisible animate__animated  shadow-lg">
+				   <a class="nav-link" href="#" style="font-size:30px;" data-toggle="tab" ></a>
 			</li>
 			<li class="li2">
 			<button type="button" class="btn btn-outline-info"></button></li>
 		</ul>
 		
 		<div class="rt-page bb-item">
-			<div class="row">
-				<div class="col-md-6">
-					<div class="mx-3 my-3 imgAdjust">
+			<div class="d-flex h-100 w-100 border border-primary">
+				<div class="col-6 p-3">
+					<div class="imgAdjust shadow">
 		            </div>
 				</div>
-				<div class="col-md-6">
-		            <div class="sec-div">
-		                <div class="sec-div-title">路線描述</div>
-		                <div class="sec-div-text"></div>
+				<div class="col-6 p-3">
+		            <div class="sec-div d-flex">
+		                <div class="sec-div-title mr-auto"></div>
 		            </div>
-		            <div class="sec-div">
-		                <div class="sec-div-title">建議行程</div>
-		                <div class="sec-div-text"></div>
-		            </div>
-		            <div class="sec-div">
-		                <div class="sec-div-title">前往交通</div>
-		            	<div class="sec-div-text"></div>
-		            </div>
+		            <hr>
+		            <ul class="nav nav-pills nav-justified rt-Info">
+						<li class="nav-item  animate__animated" >
+							<a class="nav-link active show" href="#" style="font-size:30px;" data-toggle="tab" role="tab" aria-controls="nav-home" aria-selected="true">路線描述</a>
+						</li>
+						<li class="nav-item  animate__animated">
+							<a class="nav-link" href="#" style="font-size:30px;" data-toggle="tab" role="tab" aria-controls="nav-home" aria-selected="false">建議行程</a>
+						</li>
+						<li class="nav-item  animate__animated ">
+							<a class="nav-link" href="#" style="font-size:30px;" data-toggle="tab" role="tab" aria-controls="nav-home" aria-selected="false">前往交通</a>
+						</li>
+					</ul>
+					<div class="tab-content shadow-lg mh-100 p-3">
+			            <div class="tab-pane fade show active sec-div " role="tabpanel">
+			                <div class="sec-div-text"></div>
+			            </div>
+			            <div class="tab-pane fade sec-div" role="tabpanel">
+			                <div class="sec-div-text"></div>
+			            </div>
+			            <div class="tab-pane fade sec-div" role="tabpanel">
+			            	<div class="sec-div-text"></div>
+			            </div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-    <footer id="footer">
-        <a>全站導覽</a>
-        <button id="demo1">確認demo1</button>
-        <button id="demo2">錯誤demo2</button>
-        <button id="demo3">確認提醒demo3</button>
-        <button id="demo4">多重選項&提醒視窗demo4</button>
-        <button id="demo5">Demo5</button>
-        <button id="demo6">Demo6</button>
+    <footer id="footer"
+			include-html="/MountainExploer.com/forinclude/includeForFooter.html">
+	</footer>
 
-
-
-    </footer>
 </body>
 
 <script src="/MountainExploer.com/js/upLoadImg.js"></script><!-- 上傳頭像 -->
