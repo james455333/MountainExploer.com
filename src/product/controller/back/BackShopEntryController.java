@@ -1,6 +1,7 @@
 package product.controller.back;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -32,12 +33,14 @@ import mountain.model.route.RouteBasic;
 import mountain.model.route.RouteInfo;
 import product.dao.OrderItemsDAO;
 import product.dao.OrdersDAO;
+import product.function.ShoppingTransFuction;
 import product.function.TransFuction;
 import product.model.FirstClass;
 import product.model.ItemBasic;
 import product.model.ItemInfo;
 import product.model.OrderItems;
 import product.model.Orders;
+import product.model.ProductBean;
 import product.model.SecondClass;
 import product.service.FirstClassService;
 import product.service.ItemBasicService;
@@ -250,6 +253,25 @@ public class BackShopEntryController {
 		itemInfoService.insert(itemInfo);
 
 	}
+	
+	// 顯示修改頁面資料
+		@RequestMapping(path = "/updateDataPage", method = RequestMethod.GET)
+		public String updatePage(@RequestParam(name = "seqno") String seqno, Model model) throws IOException, SQLException {
+
+			int itemBasicSeqno = Integer.parseInt(seqno);
+
+			ItemInfo itemInfo = itemInfoService.selectNo(itemBasicSeqno);
+			ItemBasic itemBasic = itemBasicService.selectNo(itemBasicSeqno);
+			ProductBean productBean = new ProductBean();
+			
+			String description = TransFuction.bytesToString(itemInfo.getDescription());
+			productBean.setDescription(description);
+
+			model.addAttribute("itemInfo", itemInfo);
+			model.addAttribute("itemBasic", itemBasic);
+			model.addAttribute("productBean", productBean);
+			return "forward:/back/shop/updateDataEntry";
+		}
 
 	// 前往修改頁面
 	@RequestMapping(path = "/updateDataEntry", method = RequestMethod.GET)
@@ -283,15 +305,19 @@ public class BackShopEntryController {
 			
 			List<OrderItems> selectAllOrderItems = orderItemsDao.selectAllOrderItems();
 			
+			List<Orders> selectAllOrders = ordersDao.selectAllOrders();
+			
 			for (OrderItems orderItems : selectAllOrderItems) {
 				Integer itemBasicSeqno = orderItems.getItemBasicSeqno();
 				Integer amount = orderItems.getAmount();
 				resultMap.put(itemBasicSeqno, amount);
+				
 			}
 			
 //			List<SecondClass> selectAll = secondClassService.selectAll();
 //			for (SecondClass secondClass : selectAll) {
 //				 Set<ItemBasic> itemBasics = secondClass.getItemBasics();
+//				 
 //				 int size = itemBasics.size();
 //				 resultMap.put(secondClass.getName(), size);
 //			}
@@ -323,5 +349,19 @@ public class BackShopEntryController {
 		
 		return resultMap;
 	}
+	
+	
+	// 前往商品細項頁面
+			@RequestMapping(path = "/productInfoEntry",method = RequestMethod.GET)
+			public String productInfoPage(Model model,
+					@RequestParam(name = "no") String no
+					) throws IOException, SQLException {
+				Integer noInt = Integer.parseInt(no);
+				ItemBasic itemBasic = itemBasicService.selectNo(noInt);
+				ProductBean productBean = ShoppingTransFuction.transItemBasic(itemBasic);
+				model.addAttribute("ProductBean",productBean);
+				
+				return "product/back/productInfoPage";
+			}
 
 }

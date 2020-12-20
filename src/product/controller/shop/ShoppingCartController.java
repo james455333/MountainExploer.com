@@ -38,14 +38,14 @@ public class ShoppingCartController {
 			@RequestParam(name = "unitPrice") String unitPrice, @RequestParam(name = "amount") String amount) {
 
 		// 如果找不到Member物件
-		if (m.getAttribute("Member") == null) {
-			System.out.println("============ Member null : " );
-			
-			shoppingCart.getContent().clear();
-			m.addAttribute("ShoppingCart", shoppingCart);
-			
-			return "redirect:/member/memberLoginEntry";
-		}
+//		if (m.getAttribute("Member") == null) {
+//			System.out.println("============ Member null : " );
+//			
+//			shoppingCart.getContent().clear();
+//			m.addAttribute("ShoppingCart", shoppingCart);
+//			
+//			return "redirect:/member/memberLoginEntry";
+//		}
 
 		// 如果找不到ShoppingCart物件
 		if (m.getAttribute("ShoppingCart") == null) {

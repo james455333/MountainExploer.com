@@ -492,9 +492,10 @@ function updateBox(btn) {
 }
 
 function ajaxUpdate(result) {
+	
 	console.log(result)
 	$.ajax({
-		url: routeBaseURL + "/update." + result.rtID,
+		url: productBaseURL + "/updateDataPage?seqno=" + result.rtID,
 		type: "PUT",
 		data: JSON.stringify(result),
 		contentType: "application/json; charset=UTF-8",

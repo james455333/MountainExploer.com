@@ -22,6 +22,7 @@ var chatyBackHoverColors = [
 	"#FFBB77"
 ]
 
+
 $(function(){
 	$. noConflict()
 	setTopCard()
@@ -44,15 +45,17 @@ $(function(){
 	
 	
 	$("#tb-container").on("click", '.btn-rt-update', function(){
-		updateBox($(this))
+//		let productID = btn.parents("tr").find("td").eq(0).text()
+//		console.log(productID)
+		window.location = "/MountainExploer.com/back/shop/updateDataPage?seqno=6000437"
 	})
 	$("#tb-container").on("click", '.btn-rt-delete', function(){
 		deleteAlert($(this))
 	})
 	$("#tb-container").on("click", '.btn-rt-info', function(){
-//		window.location = "http://www.google.com/"
+//		let productID = btn.parents("tr").find("td").eq(0).text()
+//		console.log(productID)
 		window.location = "/MountainExploer.com/back/shop/productInfoEntry?no=6000000"
-//		showMoreInfo($(this))
 	})
 	
 //	$("#newNp").on('click',newNp)
@@ -96,6 +99,9 @@ $(function(){
   				confirmButtonText: 'ok',
 			})
 	})
+	
+	
+	
 	
 	
 	$("#npChartSelect").on("change",function(){
