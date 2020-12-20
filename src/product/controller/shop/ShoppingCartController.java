@@ -28,7 +28,7 @@ public class ShoppingCartController {
 
 	@Autowired
 	private OrdersDAO ordersDao;
-
+	
 	// 在Session加入ShoppingCart屬性物件
 	@RequestMapping(path = "/addShoppingCart", method = RequestMethod.GET)
 	public String addCartBean(Model m, 
@@ -38,14 +38,14 @@ public class ShoppingCartController {
 			@RequestParam(name = "unitPrice") String unitPrice, @RequestParam(name = "amount") String amount) {
 
 		// 如果找不到Member物件
-		if (m.getAttribute("Member") == null) {
-			System.out.println("============ Member null : " );
-			
-			shoppingCart.getContent().clear();
-			m.addAttribute("ShoppingCart", shoppingCart);
-			
-			return "redirect:/member/memberLoginEntry";
-		}
+//		if (m.getAttribute("Member") == null) {
+//			System.out.println("============ Member null : " );
+//			
+//			shoppingCart.getContent().clear();
+//			m.addAttribute("ShoppingCart", shoppingCart);
+//			
+//			return "redirect:/member/memberLoginEntry";
+//		}
 
 		// 如果找不到ShoppingCart物件
 		if (m.getAttribute("ShoppingCart") == null) {
@@ -77,8 +77,6 @@ public class ShoppingCartController {
 		// 將CartBean物件加入ShoppingCart的物件內
 		shoppingCart.addToCart(parseIntitemBasicSeqno, cartBean);
 
-//		m.addAttribute(shoppingCart);
-//		m.addAttribute("Member", mb);
 
 		return "redirect:/shop/shoppingPage";
 
@@ -181,6 +179,7 @@ public class ShoppingCartController {
 			OrderItems orderItems = new OrderItems();
 			orderItems.setOrders(orders);
 			orderItems.setItemBasicSeqno(cartBean.getItemBasicSeqno());
+			System.out.println("cartBean.getItemBasicSeqno():"+cartBean.getItemBasicSeqno());
 			orderItems.setUnitPrice(cartBean.getUnitPrice());
 			orderItems.setAmount(cartBean.getAmount());
 			orderItems.setDiscount(cartBean.getDiscount());

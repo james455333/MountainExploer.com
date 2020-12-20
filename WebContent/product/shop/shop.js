@@ -6,7 +6,26 @@ $(function() {
 	var totalPage = 0;
 	//統一網域名稱設置
 	var homeUrl = "/MountainExploer.com/shop/search";
-
+		
+	var booleanFlag = true
+	
+	$("body").on("click", ".submit-buy",function(e){
+		let btn = $(this)
+		$.ajax({
+			url : "/MountainExploer.com/memberCheck",
+			type : "GET",
+			success : function(){
+				let form = btn.parents("form")
+				console.log(form)
+				form.submit()
+			},
+			error : function(){
+				loginSwal()
+			}
+		})
+		
+	})
+	
 	//	預設頁面
 	$(window).on("load", function() {
 		//查找資料庫總筆數
@@ -305,47 +324,62 @@ $(function() {
 	//		showData = $("#showData").val();
 	//		console.log(showData);
 	//	})
-
+	$("body").on("mouseenter",".div", function(){
+		console.log($(this))
+		$(this).toggleClass("animate__pulse").find("table").css("border","1px solid gray")
+	}).on("mouseleave",".div",function(){
+		$(this).toggleClass("animate__pulse").find("table").css("border","none")
+	})
 	//查詢結果回覆新增表格
 	function insertTable(data) {
 		$(".order-table-tb").empty();
 		for (let i in data) {
 			$(".order-table-tb").append(
-				"<div class='div'>"+
+				"<div class='div shadow animate__animated '>"+
 		
 				"<table>"+
 				
 				"<tr>"+
-				"<td>"+		
-				'<img style="width: 120px; height: 120px;" src="/MountainExploer.com/backstage/product/search/images?seqno=' + data[i].seqno + '" class="productImg" >' +
+				"<td>"+	
+					"<div class='p-3 border-bottom'>"+	
+						'<img  style="width: 100%; height: 200px;" src="/MountainExploer.com/backstage/product/search/images?seqno=' + data[i].seqno + '" class="productImg" >' +
+					"</div>" + 
 				"</tr>"+
 				"</td>"+		
 				
 				"<tr>"+
-				'<td style= "width: 150px ;height:500 px">'+	
+				'<td style= "width: 150px">'+	
 //				'<div style= "width: 120px ;height:400 px">'+	
-				"<div style='overflow:hidden;min-height:75px;max-height:75px'>" +
-				'<a style="font-size:10px;" class="name-aTag" title="' + data[i].name + '"href= "/MountainExploer.com/shop/productInfoEntry?no='+data[i].seqno+'">'+ data[i].name  + '</a>' +
-				"</div>" +
+					"<div class='p-3' style='overflow:hidden;min-height:75px;max-height:75px'>" +
+						'<a style="font-size:15px;max-width : 125px;" class="name-aTag" title="' + data[i].name + '"href= "/MountainExploer.com/shop/productInfoEntry?no='+data[i].seqno+'">'+ data[i].name  + '</a>' +
+					"</div>" +
 				"</tr>"+
 //				"</div>"+	
 				"</td>"+		
 				
 				"<tr>"+
-				"<td>"+		
-				"$" +data[i].price  +
+				"<td>"+	
+					"<div class='ml-auto' style='font-size:15px;' >" +	
+						"$" +data[i].price  +
+					"</div>" +	
 
-				'<form  action= "/MountainExploer.com/shoppingcart/addShoppingCart">' +
+				'<form class="shoppingCart input-group-prepend" action= "/MountainExploer.com/shoppingcart/addShoppingCart">' +
 				'<input type="hidden" name="itemBasicSeqno" value="' + data[i].seqno + '" readonly>' +
 				'<input type="hidden" name="itemBasicName" value="' + data[i].name + '" readonly>' +
 				'<input type="hidden" name="unitPrice" value="' + data[i].price + '" readonly>' +
-				'<select name="amount">' +
-				'<option value="1">1</option>' +
-				'<option value="2">2</option>' +
-				'<option value="3">3</option>' +
-				'<option value="4">4</option>' +
-				'<option value="5">5</option>' +
-				"</select>" +
+				'<div class="input-group m-3">' +
+  					'<div class="input-group-prepend">' +
+    					'<label class="input-group-text submit-buy " for="sp' + data[i].seqno + '">加入購物車</label>' +
+ 					'</div>' + 
+ 					' <select class="custom-select" name="amount" id="sp' + data[i].seqno + '">' + 
+	    				'<option value="1" selected>1</option>' +
+	    				'<option value="2">2</option>' +
+	    				'<option value="3">3</option>' +
+	    				'<option value="4">4</option>' +
+	    				'<option value="5">5</option>' +
+					'</select>' + 
+				'</div>'+
+//				'<option selected>選擇數量</option>'+
 //				"<c:choose>"+
 //			'<c:when test="${empty Member}">'+
 //									'<input type="button" class="swalLogin" value="評分">'+
@@ -353,9 +387,18 @@ $(function() {
 //							'<c:otherwise><input id="demo1" type="submit" value="加入購物車">'+
 //							"</c:otherwise>"+
 //						"</c:choose>"+
+
+
+//				"<c:choose>"+
+//			'<c:when test="${empty Member}">'+
+//									'<input type="button" class="swalLogin" value="評分">'+
+//								"</c:when>"+
+//							'<c:otherwise><input class="swalLogin" type="submit" value="加入購物車">'+
+//							"</c:otherwise>"+
+//						"</c:choose>"+
 				
 				
-				'<input class="demo1" type="submit" value="加入購物車">' +
+//				'<input class="swalLogin" type="submit" value="加入購物車">' +
 				'</form>' +
 				
 				"</tr>"+

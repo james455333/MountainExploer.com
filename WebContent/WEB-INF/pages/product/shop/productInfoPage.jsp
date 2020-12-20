@@ -74,7 +74,7 @@
 				</div>
 				<div>
 					<!--<a href='<c:url value="/shoppingcart/memberOrders"/>'>查看訂單</a>-->
-					<a href='<c:url value="/shoppingcart/memberOrders"/>'>
+					<a href='<c:url value="/shoppingcart/memberOrders"/>'></a>
 						<button type="button" class="btn btn-outline-dark">查看訂單</button>
 				</div>
 				<!--table-->

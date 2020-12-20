@@ -164,20 +164,20 @@
 								</select>
 							</div>
 							<div>
-								<label for="name">* 產品名稱 : &nbsp&nbsp</label> <input type="text" id="name"
-									name="name"  required>
+								<label for="name">* 產品名稱 : &nbsp&nbsp</label> <input type="text"
+									id="name" name="name" required>
 							</div>
 							<div>
-								<label for="type">* 型號 : &nbsp&nbsp</label> <input type="text" id="type"
-									name="type"  required>
+								<label for="type">* 型號 : &nbsp&nbsp</label> <input type="text"
+									id="type" name="type" required>
 							</div>
 							<div>
-								<label for="price">* 價格 : &nbsp&nbsp</label> <input type="text" id="price"
-									name="price"  required>
+								<label for="price">* 價格 : &nbsp&nbsp</label> <input type="text"
+									id="price" name="price" required>
 							</div>
 							<div>
-								<label for="stock">* 庫存 : &nbsp&nbsp</label> <input type="text" id="stock"
-									name="stock"  required>
+								<label for="stock">* 庫存 : &nbsp&nbsp</label> <input type="text"
+									id="stock" name="stock" required>
 							</div>
 							<div>
 								<label for="productImg">* 產品圖檔案 : &nbsp&nbsp</label> <input
@@ -185,12 +185,13 @@
 							</div>
 							<div>
 								<label for="description">介紹 : &nbsp&nbsp</label>
-								<textarea rows="2.5%" cols="50%"  name="description"  id="description"  ></textarea>
+								<textarea rows="2.5%" cols="50%" name="description"
+									id="description"></textarea>
 							</div>
 
 							<div>
 								<div>
-									<input type="submit" value="確認新增">
+									<input type="submit" id="update" value="確認新增">
 								</div>
 								<div>
 									<input type="reset" value="清除">
@@ -281,14 +282,23 @@
 	<script src="/MountainExploer.com/js/includejsp.js"></script>
 
 	<script>
-	$(function() {
-		$("#fast").on("click", function() {
-			$('#name').val("岳進者結業紀念排汗衫");
-			$('#type').val("mountain100");
-			$('#price').val("999");
-			$('#stock').val("5");
-			$('#description').val("慶祝結業限量款");
+		$(function() {
+			$("#fast").on("click", function() {
+				$('#name').val("岳進者結業紀念排汗衫");
+				$('#type').val("mountain100");
+				$('#price').val("999");
+				$('#stock').val("5");
+				$('#description').val("慶祝結業限量款");
+			})
 		})
-	})
+// 		$(function() {
+// 			$("#update").on("click", function() {
+// 				Swal.fire({
+// 					title : "商品新增成功",
+// 					icon : "success",
+// 					confirmButtonText : 'ok',
+// 				})
+// 			})
+// 		})
 	</script>
 </body>
