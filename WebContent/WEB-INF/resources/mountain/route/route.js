@@ -22,9 +22,6 @@ $(function(){
 				})
 			},1000)
 		})
-		
-
-
 	})
 	$("#rt-info-container").on("click",".btn",function(){
 		let rtID = $(this).val()

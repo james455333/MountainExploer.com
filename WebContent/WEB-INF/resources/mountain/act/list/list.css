@@ -1,4 +1,12 @@
 @charset "UTF-8";
+body{
+	background:	#E0E0E0;
+    background-image: linear-gradient(#FFFFFF 0.5px,transparent 0),
+    	linear-gradient(90deg, #FFFFFF 0.5px,transparent 0),
+    	linear-gradient(hsla(0,0%,100%,.3) 1px,transparent 0),
+    	linear-gradient(90deg,hsla(0,0%,100%,.3) 1px,transparent 0);
+    background-size:35px 35px,25px 25px,7.5px 7.5px,7.5px 7.5px;
+}
 .m-list-searchBar{
 	position : static;
 	margin : 15px;
@@ -6,8 +14,6 @@
 
 .m-sdc-adj{
 	border : none;
-	top : 0;
-	margin : 20px;
 	height : atuo;
 	min-height: 500px;
 }

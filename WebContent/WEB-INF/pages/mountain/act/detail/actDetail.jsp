@@ -127,7 +127,7 @@
         </nav>
     </header>
      <nav>
-		<ol class="breadcrumb bg-light" id="bc">
+		<ol class="breadcrumb bg-light" style="font-size : 25px;" id="bc">
 			<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
 			<li class="breadcrumb-item"><a href="/MountainExploer.com/mountain/list?page=1&od=1">活動討論區</a></li>
 			<li class="breadcrumb-item active">發表活動</li>

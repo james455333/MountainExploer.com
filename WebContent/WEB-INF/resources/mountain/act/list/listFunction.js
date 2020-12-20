@@ -10,7 +10,7 @@ function ajaxCheckLogin(od){
 			PBBlock({
 				counTimes : 4,
 			})
-			openBlock("body")
+			openBlock("#info-page")
 			progressCount("頁面元素載入完成")
 			member = data.seqno
 			if(od == 1){
@@ -102,11 +102,10 @@ function activeMainAjax(page, as) {
 			//	本次查詢資料總數
 			$("#totalData").append(totalData)
 			//	呼叫動態新增資料函式
+			progressCount("開始設置頁面",550)
 			insertTable(data.actList);
-			progressCount("列表設置完成")
 			//	設定按鈕
 			setPageController(data.page,totalPage)
-			progressCount("頁面設置完成")
 			if (totalData == 0) {
 				swal({
 					title: "無符合本次查詢條件的資料",
@@ -121,17 +120,19 @@ function activeMainAjax(page, as) {
 /* 函式 : 將得到結果，於網頁上的指定位置動態新增指定元素 */
 function insertTable(data) {
 	for (let i = 0; i < data.length; i++) {
-		let model = $(".order-table").find(".order-table-tb").eq(i).clone();
-		let thisElm = $(".order-table-tb").eq(i)
-		let imageModel = $("#table-image").find(".act-container").eq(i).clone();
-		let thisElm2 = $("#table-image").find(".act-container").eq(i)
-		/**呼叫動態新增網頁元素之函式 */
-		imageMode(data[i],thisElm2)
-		listMode(data[i],thisElm)
-		$("#table-list").append(model)
-		$("#table-list").find(".order-table-tb").eq(i).removeClass("hideTbody");
-		$("#table-image").append(imageModel)
-		$("#table-image").find(".act-container").eq(i).removeClass("d-none");
+		setTimeout(()=>{
+			let model = $(".order-table").find(".order-table-tb").eq(i).clone();
+			let thisElm = $(".order-table-tb").eq(i)
+			let imageModel = $("#table-image").find(".act-container").eq(i).clone();
+			let thisElm2 = $("#table-image").find(".act-container").eq(i)
+			/**呼叫動態新增網頁元素之函式 */
+			imageMode(data[i],thisElm2)
+			listMode(data[i],thisElm)
+			$("#table-list").append(model)
+			$("#table-list").find(".order-table-tb").eq(i).removeClass("hideTbody");
+			$("#table-image").append(imageModel)
+			$("#table-image").find(".act-container").eq(i).toggleClass("d-none d-inline-flex");
+		},150*i)
 	}
 }
 function listMode(data,thisElm){
@@ -373,11 +374,14 @@ function modeSwitch(){
 //	actEnterURL +=  ?  ("mode=" + mode +"&" )
 	let targetMode = $("#table-"+mode)
 	let originMode = targetMode.siblings("*")
-	originMode.toggleClass("animate__zoomOut animate__zoomIn").one("animationend",function(){
-		originMode.toggleClass("d-none")
-		targetMode.toggleClass("d-none animate__zoomOut animate__zoomIn").one("animationend",function(){
-//			targetMode.toggleClass("animate__zoomOut animate__zoomIn")
-		})
+	new Promise((resolve)=>{
+		originMode.toggleClass("animate__zoomOut animate__zoomIn")
+		resolve()
+	}).then(success => {
+		setTimeout(()=>{
+			originMode.toggleClass("d-none")
+			targetMode.toggleClass("d-none animate__zoomOut animate__zoomIn")
+		},750)
 	})
 	
 }

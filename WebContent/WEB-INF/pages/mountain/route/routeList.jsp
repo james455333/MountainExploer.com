@@ -111,7 +111,7 @@
         </nav>
     </header>
       <nav>
-		<ol class="breadcrumb bg-light" id="bc">
+		<ol class="breadcrumb bg-light" style="font-size : 25px;" id="bc">
 			<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
 			<li class="breadcrumb-item active"><a href="">路線介紹</a></li>
 		</ol>
