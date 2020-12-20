@@ -99,6 +99,7 @@ public class MemberRegisterController {
 			mb.setMemberStatus(mbStat);
 			
 			MemberInfo mbInfo = new MemberInfo();
+			mbInfo.setNeck_name(ncName);
 			mbInfo.setMemberBasic(mb);
 			mb.setMemberInfo(mbInfo);
 			
