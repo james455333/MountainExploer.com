@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -78,6 +79,11 @@ public class BackActController {
 		int totalData = service.countWithHql(all);
 
 		// 得到回傳結果
+		System.out.println("=================================================");
+		System.out.println("=================================================");
+		System.out.println("start getAllwithHql");
+		System.out.println("=================================================");
+		System.out.println("=================================================");
 		List<ActivityInfo> actInfoList = (List<ActivityInfo>) service.getAllwithHQL(hql);
 		for (ActivityInfo actInfoInList : actInfoList) {
 			// Set actBasic => map
@@ -88,14 +94,20 @@ public class BackActController {
 			// Set tagMap => map
 			Map<Integer, Boolean> tagResult = new TagSelector(actInfoInList, service).getTagResult();
 			map.put("tagMap", tagResult);
-
-//			// Set nowReg => map
-//			service.save(new ActRegInfo());
-//			String reghql = "Select count(*) From ActRegInfo ari where ari.actRegistry in (From ActRegistry ar where"
-//					+ " deniTag is null and cancelTag is null and ACTIVITY_BASIC_SEQNO = "
-//					+ actBasic.getSeqno() + ")";
-//			int nowReg = service.countWithHql(reghql);
-//			map.put("nowReg", nowReg);
+			// Set nowReg => map
+			service.save(new ActRegInfo());
+			String reghql = "From ActRegistry ar where "
+					+ " deniTag is null and cancelTag is null and ACTIVITY_BASIC_SEQNO = "
+					+ actBasic.getSeqno();
+			List<ActRegistry> actRegList = (List<ActRegistry>) service.getAllwithHQL(reghql);
+			int nowReg = 0;
+			if(!actRegList.isEmpty()) {
+				for (ActRegistry actRegistry : actRegList) {
+					Set<ActRegInfo> actRegInfoSet = actRegistry.getActRegInfo();
+					nowReg += actRegInfoSet.size();
+				}
+			}
+			map.put("nowReg", nowReg);
 
 			actList.add(map);
 		}
@@ -115,10 +127,7 @@ public class BackActController {
 			List<ActRegistry> actRgList = (List<ActRegistry>) service.getAllwithHQL(arHql);
 			for (ActRegistry actRegistry2 : actRgList) {
 				Map<String, Object> map = new HashMap<String, Object>();
-				String hql = "select count(*) From ActRegInfo where actRegistry = " + actRegistry2.getSeqno();
-				service.save(new ActRegInfo());
-				int count = service.countWithHql(hql);
-				
+				int count = actRegistry2.getActRegInfo().size();
 				map.put("actRegistry", actRegistry2);
 				map.put("regNum",count);
 				resultList.add(map);
