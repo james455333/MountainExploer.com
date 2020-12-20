@@ -18,7 +18,7 @@
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+<script src="/MountainExploer.com/member/userTop.js"></script>
 <style type="text/css">
 
 .table td{
@@ -69,23 +69,23 @@
 		</c:choose>
 	
 		<!--table-->
-		<div class="col-3">
+		<div class="col-3 ">
 			<div>
 				<FORM action="<c:url value='/shop/orderConfirmEntry' />"	>
-					<button class="btn btn-lg btn-block btn-primary" id="demo1" type="submit"	value="確認訂單">
-						確認訂單 <i class="fas fa-shopping-cart fa-flip-horizontal"></i> 
+					<button class="btn btn-lg btn-block btn-primary m-3 p-3"  type="submit">
+						 <i class="fas fa-money-check-alt">  確認訂單</i>
 					</button>
 				</FORM>
 			</div>
 			<div>
-				<a href="<c:url value='/shop/shoppingPage' />">繼續購物</a>
+				<a class="btn btn-success btn-lg btn-block fas fa-shopping-cart m-3 p-3" href="<c:url value='/shop/shoppingPage' />">  繼續購物</a>
 			</div>
 			<div>
-				<a href="<c:url value='/shoppingcart/abort' />">清空購物車</a>
+				<a  class="fas fa-trash-alt btn  btn-lg btn-block btn btn-warning m-3 p-3" href="<c:url value='/shoppingcart/abort' />">  清空購物車</a>
 			</div>
 		</div>
 		<div class="col-9">
-			<table class="table table-striped">
+			<table style="font-size:20px" class="table table-striped">
 				<thead class="col">
 					<tr>
 						<th colspan="7" align="center">${Member.name}的購物車</th>
@@ -93,23 +93,23 @@
 					<tr>
 						<!-- thead更改從這邊開始 -->
 						<th scope="col" style="width:35%;">商品名稱</th>
-						<th scope="col" style="width:15%;">圖片</th>
+						<th scope="col" style="width:17.5%;">圖片</th>
 						<th scope="col" style="width:15%;">價格</th>
-						<th scope="col" style="width:5%;">數量</th>
+						<th scope="col" style="width:7.5%;">數量</th>
 						<th scope="col" style="width:10%;">小計</th>
 						<th scope="col" style="width:20%;">修改</th>
 						<!-- thead更改到這邊結束 -->
 					</tr>
 				</thead>
 		
-				<tbody class="">
+				<tbody  class="">
 					<!-- tbody更改從這邊開始 -->
 					<c:forEach varStatus="vs" var="anEntry"
 						items="${ShoppingCart.content}">
 						<tr>
 							<td  align='center' valign="middle">
 								<div class="d-flex w-100 align-items-center">
-									<a href='<c:url value='/shop/productInfoEntry?no=${anEntry.value.itemBasicSeqno}' />'>
+									<a style="font-size:20px" href='<c:url value='/shop/productInfoEntry?no=${anEntry.value.itemBasicSeqno}' />'>
 										${anEntry.value.itemBasicName} 
 									</a>
 								</div>
@@ -121,10 +121,10 @@
 							<td align="center">${anEntry.value.amount}</td>
 							<td>${anEntry.value.unitPrice * anEntry.value.discount * anEntry.value.amount}元
 								</td>
-							<td>
+							<td class="m-3  p-3">
 								<form action="<c:url value='/shoppingcart/modifyCartBean' />">
 									<input type="hidden" name="itemBasicSeqno"
-										value='${anEntry.value.itemBasicSeqno}' readonly> <select
+										value='${anEntry.value.itemBasicSeqno}' readonly> <select class="custom-select"
 										name="newAmount">
 										<option value="1">1</option>
 										<option value="2">2</option>
@@ -136,18 +136,18 @@
 										<option value="8">8</option>
 										<option value="9">9</option>
 										<option value="10">10</option>
-									</select> <input id="demo3" type="submit" value="修改數量">
+									</select> <input class="input-group-prepend" type="submit" value="修改數量">
 								</form>
 								<form action="<c:url value='/shoppingcart/deleteCartBean' />">
 									<input type="text" name="itemBasicSeqno"
 										value="${anEntry.value.itemBasicSeqno}" style="display: none;">
-									<input id="demo3" type="submit" value="刪除品項">
+									<input class="input-group-prepend" type="submit" value="刪除品項">
 								</form>
 							</td>
 						</tr>
 					</c:forEach>
 					<tr>
-						<td colspan="7" align="center">品項： ${ShoppingCart.itemNumber} 項</td>
+						<td colspan="7" align="center">合計品項： ${ShoppingCart.itemNumber} 項</td>
 					</tr>
 					<tr>
 						<td colspan="7" align="center">合計金額： ${subtotal} 元</td>
@@ -161,13 +161,6 @@
 	<!-- 每頁不同的內容到這邊結束 -->
 
 	<footer id="footer">
-		<a>全站導覽</a>
-		<button id="demo1">確認demo1</button>
-		<button id="demo2">錯誤demo2</button>
-		<button id="demo3">確認提醒demo3</button>
-		<button id="demo4">多重選項&提醒視窗demo4</button>
-		<button id="demo5">Demo5</button>
-		<button id="demo6">Demo6</button>
 
 
 
@@ -177,7 +170,6 @@
 <!-- 上傳頭像 -->
 <script src="/MountainExploer.com/js/table.js"></script>
 <script src="/MountainExploer.com/js/topBar.js"></script>
-<script src="/MountainExploer.com/js/sweetalert.js"></script>
 <!--sweet alert-->
 <script src="/MountainExploer.com/js/includejsp.js"></script>
 </html>

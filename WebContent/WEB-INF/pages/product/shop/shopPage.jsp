@@ -20,7 +20,7 @@
 	<script type="text/javascript" charset="UTF-8" src='<c:url value="/product/shop/shop.js"/>'></script>
 	<script src="/MountainExploer.com/js/swalLogin.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.all.min.js"></script>
-    
+    <script src="/MountainExploer.com/member/userTop.js"></script>
 		<style>
         
 
