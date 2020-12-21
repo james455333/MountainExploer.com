@@ -370,27 +370,28 @@
 										<div class="portfolio-wrap">
 											<img src="assets/img/portfolio/app1.jpg" class="img-fluid" alt="">
 											<div class="portfolio-info">
-												<h4><a href="portfolio-details.html">上衣</a></h4>
-												<p>123</p>
-												<br>
-												<p>456</p>
+												<h4><a href="portfolio-details.html">短袖排汗衣 男 獵戶藍</a></h4>
+												<p>Mammut Atacazo Light Zip T-SHIRT</p>
+												
 												<div>
 													<a href="assets/img/portfolio/app1.jpg" data-gall="portfolioGallery"
 														title="App 1" class="venobox link-preview"><i
 															class="ion ion-eye"></i></a>
-													<a href="商品資訊頁面連結" class="link-details" title="More Details"><i
+													<a href="MountainExploer.com/shop/productInfoEntry?no=6000050" class="link-details" title="More Details"><i
 															class="ion ion-android-open"></i></a>
 												</div>
 											</div>
 										</div>
 									</div>
 
-									<div class="col-lg-4 col-md-6 portfolio-item filter-pants">
+									<div class="col-lg-4 col-md-6 portfolio-item filter-clothes">
 										<div class="portfolio-wrap">
 											<img src="assets/img/portfolio/web3.jpg" class="img-fluid" alt="">
 											<div class="portfolio-info">
-												<h4><a href="portfolio-details.html">Web 3</a></h4>
-												<p>Web</p>
+												<h4><a href="portfolio-details.html">保暖排汗衣 女 醬果紫</a></h4>
+												<p>POWER STRETCH® PRO</p>
+												
+												<p>RAB POWER STRETCH PRO PULL-ON</p>
 												<div>
 													<a href="assets/img/portfolio/web3.jpg" class="venobox link-preview"
 														data-gall="portfolioGallery" title="Web 3"><i
@@ -402,12 +403,14 @@
 										</div>
 									</div>
 
-									<div class="col-lg-4 col-md-6 portfolio-item filter-camp">
+									<div class="col-lg-4 col-md-6 portfolio-item filter-pants">
 										<div class="portfolio-wrap">
 											<img src="assets/img/portfolio/app2.jpg" class="img-fluid" alt="">
 											<div class="portfolio-info">
-												<h4><a href="portfolio-details.html">App 2</a></h4>
-												<p>App</p>
+												<h4><a href="portfolio-details.html">耐磨長褲 男 月桂綠/深森綠</a></h4>
+												<p>81160R-625-662</p>
+												
+												<p>Fjallraven Vidda Pro Ventilated Trousers Reg M</p>
 												<div>
 													<a href="assets/img/portfolio/app2.jpg" class="venobox link-preview"
 														data-gall="portfolioGallery" title="App 2"><i
@@ -423,8 +426,8 @@
 										<div class="portfolio-wrap">
 											<img src="assets/img/portfolio/card2.jpg" class="img-fluid" alt="">
 											<div class="portfolio-info">
-												<h4><a href="portfolio-details.html">Card 2</a></h4>
-												<p>Card</p>
+												<h4><a href="portfolio-details.html">防水保暖透氣吊帶滑雪褲 女 女爵粉</a></h4>
+												<p>CDare 2b DWW399 Attract II</p>
 												<div>
 													<a href="assets/img/portfolio/card2.jpg"
 														class="venobox link-preview" data-gall="portfolioGallery"
@@ -436,12 +439,12 @@
 										</div>
 									</div>
 
-									<div class="col-lg-4 col-md-6 portfolio-item filter-other">
+									<div class="col-lg-4 col-md-6 portfolio-item filter-camp">
 										<div class="portfolio-wrap">
 											<img src="assets/img/portfolio/web2.jpg" class="img-fluid" alt="">
 											<div class="portfolio-info">
-												<h4><a href="portfolio-details.html">Web 2</a></h4>
-												<p>Web</p>
+												<h4><a href="portfolio-details.html">單人全方位超輕帳</a></h4>
+												<p>犀牛 U-11  1.8kg</p>
 												<div>
 													<a href="assets/img/portfolio/web2.jpg" class="venobox link-preview"
 														data-gall="portfolioGallery" title="Web 2"><i
@@ -453,12 +456,13 @@
 										</div>
 									</div>
 
-									<div class="col-lg-4 col-md-6 portfolio-item filter-other">
+									<div class="col-lg-4 col-md-6 portfolio-item filter-camp">
 										<div class="portfolio-wrap">
 											<img src="assets/img/portfolio/app3.jpg" class="img-fluid" alt="">
 											<div class="portfolio-info">
-												<h4><a href="portfolio-details.html">App 3</a></h4>
-												<p>App</p>
+												<h4><a href="portfolio-details.html">摩卡黑森林別墅帳/露營帳篷</a></h4>
+												<p>K9T3T005 GEOPATH</p>
+												<p>KAZMI</p>
 												<div>
 													<a href="assets/img/portfolio/app3.jpg" class="venobox link-preview"
 														data-gall="portfolioGallery" title="App 3"><i
@@ -470,12 +474,14 @@
 										</div>
 									</div>
 
-									<div class="col-lg-4 col-md-6 portfolio-item filter-clothes">
+									<div class="col-lg-4 col-md-6 portfolio-item filter-other">
 										<div class="portfolio-wrap">
 											<img src="assets/img/portfolio/card1.jpg" class="img-fluid" alt="">
 											<div class="portfolio-info">
-												<h4><a href="portfolio-details.html">Card 1</a></h4>
-												<p>Card</p>
+												<h4><a href="portfolio-details.html">野營斧頭暨直刀組</a></h4>
+												<p>MORAKNIV Outdoor Kit</p>
+												<hr>
+												<p>軍綠</p>
 												<div>
 													<a href="assets/img/portfolio/card1.jpg"
 														class="venobox link-preview" data-gall="portfolioGallery"
@@ -487,12 +493,13 @@
 										</div>
 									</div>
 
-									<div class="col-lg-4 col-md-6 portfolio-item filter-pants">
+									<div class="col-lg-4 col-md-6 portfolio-item filter-other">
 										<div class="portfolio-wrap">
 											<img src="assets/img/portfolio/card3.jpg" class="img-fluid" alt="">
 											<div class="portfolio-info">
-												<h4><a href="portfolio-details.html">Card 3</a></h4>
-												<p>Card</p>
+												<h4><a href="portfolio-details.html">頭燈</a></h4>
+												<p>Petzl E089 Tactikka+</p>
+												<p>黑 350流明</p>
 												<div>
 													<a href="assets/img/portfolio/card3.jpg"
 														class="venobox link-preview" data-gall="portfolioGallery"
