@@ -1,7 +1,9 @@
 package house.act;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -98,6 +100,7 @@ public class ActHouseController {
 		return "house/act/star";
 	}
 	
+
 	
 	@GetMapping("/updatestar")
 	public String updatestar(@RequestParam(name = "updatestar") Integer star ,@RequestParam(name = "updateclick")Integer clickcount, Model m,
@@ -112,6 +115,7 @@ public class ActHouseController {
 		
 		List<HouseInfoBean> list = houseService.selecthouseid(houseid);
 		m.addAttribute("selecthouseid",list);
+		m.addAttribute("selecthouse",list);
 		
 		
 //		return "redirect:/mountainHouseAct/jumpHouseDesc";

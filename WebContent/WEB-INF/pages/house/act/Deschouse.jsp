@@ -101,27 +101,46 @@
 		</nav>
 	</header>
 	<div class="div_ul">
-		<div class="secNavbar">
-			<nav>
-				<ul class="second_nav">
-					<li class="li1"><a
-						href="/MountainExploer.com/mountainHouseAct/actselectAll?page=1&no=1&parkid=">首頁</a></li>
-					<c:if test="${ !empty Member}">
-						<li class="li1"><a
-							href="/MountainExploer.com/mountainHouseActOrder/selecthouseorder?Member=Member">訂單查詢</a></li>
-					</c:if>
-					<!--                     <li class="li1"><a href="#">第二導覽列3</a></li> -->
+<!-- 		<div class="secNavbar"> -->
+<!-- 			<nav> -->
+<!-- 				<ul class="second_nav"> -->
+<!-- 					<li class="li1"><a -->
+<!-- 						href="/MountainExploer.com/mountainHouseAct/actselectAll?page=1&no=1&parkid=">首頁</a></li> -->
+<%-- 					<c:if test="${ !empty Member}"> --%>
+<!-- 						<li class="li1"><a -->
+<!-- 							href="/MountainExploer.com/mountainHouseActOrder/selecthouseorder?Member=Member">訂單查詢</a></li> -->
+<%-- 					</c:if> --%>
+<!-- 					                    <li class="li1"><a href="#">第二導覽列3</a></li> -->
 
-					<!--                     <li class="li1"><a href="#">第二導覽列4</a></li> -->
-				</ul>
-			</nav>
-		</div>
+<!-- 					                    <li class="li1"><a href="#">第二導覽列4</a></li> -->
+<!-- 				</ul> -->
+<!-- 			</nav> -->
+<!-- 		</div> -->
 		<nav style="font-size: 20px;" aria-label="breadcrumb">
 		  <ol class="breadcrumb">
-		    <li class="breadcrumb-item"><a href="#">Home</a></li>
-		    <li class="breadcrumb-item"><a href="#">Library</a></li>
-		    <li class="breadcrumb-item active" aria-current="page">Data</li>
-		    <li style="list-style-type: none" class="breadcrumb-item ml-auto" ><a href="#">訂單查詢</a></li>
+		    <li class="breadcrumb-item"><a href="/MountainExploer.com/mountainHouseAct/actselectAll?page=1&no=1&parkid=">首頁</a></li>
+			    <c:forEach var="i" items="${selecthouseid}">
+			   		<li class="breadcrumb-item active" aria-current="page">${i.name}</li>
+			    </c:forEach>
+			    	
+			    	<c:choose>
+			    	<c:when test="${empty Member}">
+										
+				    	<li style="list-style-type: none" class="breadcrumb-item  swalLogin" >
+							<a href="#">現在預定房間</a>
+						</li>
+					</c:when>
+			    	<c:otherwise>
+				  		<li style="list-style-type: none" class="breadcrumb-item" >
+							<a href="#from">現在預定房間</a>
+						</li>
+			    	</c:otherwise>
+			    	</c:choose>
+					
+			    <c:if test="${ !empty Member}">
+		    		<li style="list-style-type: none" class="breadcrumb-item ml-auto" ><a href="/MountainExploer.com/mountainHouseActOrder/selecthouseorder?Member=Member">訂單查詢</a></li>
+				</c:if>
+								
 		  </ol>
 		</nav>
 		<div class="div_li1">
@@ -142,22 +161,74 @@
 				<!--                 </div> -->
 				<!-- 左邊 -->
 				<div class="forText">
-					<div class="d-flex ">
+					
+					<div class="d-flex " id="tostar">
+								
+					
 						<c:forEach var="i" items="${selecthouseid}">
-							<div style="margin: 30px">
+							<div style="margin: 30px 0px 30px 30px">
 								<c:choose>
 									<c:when test="${ empty i.imgid.img}">
-										<div><img height="400" width="400"
+										<div><img height="500" width="500"
 											src="/MountainExploer.com/housecamp/images/housenull.PNG"></div>
 									</c:when>
 									<c:when test="${not empty i.imgid.img}">
-										<div><img height="400" width="400"
+										<div><img height="500" width="500"
 											src="<c:url value='/mountainHouseBack/showimg?imgid=${i.imgid.id}'/>"></div>
 									</c:when>
 								</c:choose>
-								<div>
-									<c:forEach var="j" items="${selecthouseid}">
-									<div class="topname">
+							</div>
+						</c:forEach>
+								<div style="margin: 30px 80px 30px 0px">
+									<img height="250" width="350"
+											src="/MountainExploer.com/housecamp/images/housebed.jpg">
+									<img height="250" width="350"
+											src="/MountainExploer.com/housecamp/images/housecampbig.jpg">
+								
+								</div>
+								
+								
+								
+							
+
+					</div>
+					<div class="row">
+						
+						
+						<div class="col-6">
+						<div>
+								<c:forEach var="i" items="${selecthouseid}">
+									
+									<div class="body">
+								<div class="body">
+									<h2>${i.nationalPark.name}</h2>
+									<h3>${i.name}</h3>
+								</div>
+								<div class="body">@ 海拔高度 : ${i.height}</div>
+								<div class="body">@ 山屋總床位 : ${i.bed} 床</div>
+								<div class="body">@ 營地總數量 : ${i.camp} 區</div>
+								<div class="body" id="">
+									@ 備註 :
+									<div class="body"
+										style="height: 100%; border: 1px black solid;;width:100%'">
+										<div id="date" style="margin: 5px">${i.desc}</div>
+									</div>
+								</div>
+							</div>								
+
+								</c:forEach>
+						</div>
+							</div>
+							<!-- 評價 -->
+						
+						<div class="col-sm-6 d-flex ">
+							<div>
+							
+							<!-- 				印星星		 -->
+							<div>
+
+								<c:forEach var="j" items="${selecthouseid}">
+									<div class="" >
 										<c:choose>
 											<c:when
 												test="${(j.star*1.0 / j.clickcount) lt 1 || empty j.star}">
@@ -247,10 +318,10 @@
 											<c:choose>
 												<c:when test="${empty j.star}">(無人評分)</c:when>
 												<c:otherwise>
-					(平均<fmt:formatNumber type="number"
+												(平均<fmt:formatNumber type="number"
 														value="${j.star*1.0 / j.clickcount} "
 														maxFractionDigits="1" />分)		
-					</c:otherwise>
+												</c:otherwise>
 											</c:choose>
 											<div style="margin: 10px">
 												<form
@@ -277,7 +348,7 @@
 
 											</div>
 										</div>
-										<!-- 	星星評分		 -->
+	<!-- 	星星評分		 -->
 										<div class="modal fade" id="showMap" tabindex="-1"
 											role="dialog" aria-labelledby="exampleModalLabel"
 											aria-hidden="true">
@@ -293,7 +364,7 @@
 													</div>
 													<div class="modal-body" id="mapHere" style="width: 640px">
 														<form id="star"
-															action="<c:url value='/mountainHouseAct/updatestar'></c:url>"
+															action="<c:url value='/mountainHouseAct/updatestar#tostar'></c:url>"
 															method='GET'>
 															<span><img id="img1" class="images"
 																src="/MountainExploer.com/housecamp/images/blackstar.PNG" />
@@ -306,10 +377,12 @@
 																<img id="img5" class="images"
 																src="/MountainExploer.com/housecamp/images/blackstar.PNG" />
 															</span> <input type="hidden" name="updatestar" value="${j.star}">
+															
 															<input type="hidden" name="updateclick"
 																value="${j.clickcount}"> <input type="hidden"
-																name="updateid" value="${j.housebasicid}"> <input
-																type="submit" value="送出">
+																name="updateid" value="${j.housebasicid}"> 
+															<input type="submit" value="送出">
+															
 														</form>
 													</div>
 													<div class="modal-footer">
@@ -322,67 +395,30 @@
 										</div>
 
 
-
-
-
-
-
 									</div>
 								</c:forEach>
 								<!-- 星星end -->
-								</div>
 							</div>
-							<div class="body">
-								<div class="body">
-									<h2>${i.nationalPark.name}</h2>
-									<h3>${i.name}</h3>
-								</div>
-								<div class="body">@ 海拔高度 : ${i.height}</div>
-								<div class="body">@ 山屋總床位 : ${i.bed} 床</div>
-								<div class="body">@ 營地總數量 : ${i.camp} 區</div>
-								<div class="body" id="">
-									@ 備註 :
-									<div class="body"
-										style="height: 100%; border: 1px black solid;">
-										<div style="margin: 5px">${i.desc}</div>
-									</div>
-								</div>
-							</div>
-						</c:forEach>
-
-					</div>
-					<div class="row">
-						<div class="col-6">
-							<div>
-
-								
-
-							</div>
-							<!-- 評價 -->
-						</div>
-						<div class="col-sm-6 d-flex align-items-end"">
-							<div class="tips m-3">
-								<div style="margin: 10px; text-align: left;">
+							<div class="tips m-3 "">
+							
+								<div style="margin: 100px 0 0 0; text-align: left;">
 									<div style="margin: 10px">◎登山的好選擇</div>
 									<div style="margin: 10px">◎宿營地內請以簡易器具炊煮，禁止野炊、烤肉或燃火等行為。</div>
 									<div style="color: #AA0000; margin: 10px">◎所有裝備 (
 										睡袋與登山裝備等 ) 及餐飲皆需自行攜帶準備。</div>
+									<div style="margin: 10px">◎所有客房禁菸</div>	
 								</div>
-								<div style="margin: 10px">
-									<a href="#from"><input type="button"
-										class="btn btn-outline-success" value="現在預定房間"></a>
-								</div>
+								
 							</div>
 						</div>
-					</div>
+					</div></div>
 				</div>
 				<!-- 		下框 -->
 				<div class="secDivContent" style="padding: 20px 0 0 0;">
 					<div
-						style="padding: 10px; blue; text-align: left; background-color: #ffc489; width: 65%; height: 125px">
+						style="padding: 10px; blue; background-color: #ffc489; height: 125px">
 						<h3 style="padding: 0 0 0 100px">查詢住宿日期</h3>
-						<form
-							action="<c:url value='/mountainHouseActOrder/selectamount'></c:url>">
+						<form action="<c:url value='/mountainHouseActOrder/selectamount#date'></c:url>">
 
 							<c:forEach var="i" items="${selecthouseid}">
 								<!--       小屋編號          			 -->
@@ -500,7 +536,7 @@
 
 						</form>
 					</div>
-					<div class="topname">
+					<div >
 						<c:forEach var="i" items="${selecthouse}">
 
 							<table class="order-table table table-hover" id="tablePreview"

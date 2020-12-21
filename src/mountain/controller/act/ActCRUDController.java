@@ -430,19 +430,6 @@ public class ActCRUDController {
 			// Set acRespMap in respList
 			Map<String, Object> actRespMap = new HashMap<String, Object>();
 			
-			// Set sideResponse's order
-//			Set<ActSideResponse> actSideResponse = returnRespBean.getActSideResponse();
-//			Set<ActSideResponse> orderSetwithDate;
-//			if(actSideResponse.size() != 0) {
-//				orderSetwithDate = orderSetwithDate(actSideResponse);
-//				Iterator<ActSideResponse> iterator = orderSetwithDate.iterator();
-//				int count = 0;
-//				while (iterator.hasNext()) {
-//					System.out.println("No" + count + " : " + iterator.next().getPostDate().getTime());
-//					count++;
-//				}
-//				returnRespBean.setActSideResponse(orderSetwithDate);
-//			}
 			
 			// Set actResp in acRespMap
 			actRespMap.put("actResp", returnRespBean);

@@ -96,13 +96,16 @@
 <!-- <script src="/MountainExploer.com/mountain/back/js/route.js"></script> -->
 <!-- <script src="/MountainExploer.com/mountain/back/js/routeFunction.js"></script> -->
 <!-- FB Login -->
-<link href="https://cdn.jsdelivr.net/....../dist/sweetalert2.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/....../dist/sweetalert2.all.min.js"></script>
+<link href="https://cdn.jsdelivr.net/....../dist/sweetalert2.min.css"
+	rel="stylesheet" />
+<script
+	src="https://cdn.jsdelivr.net/....../dist/sweetalert2.all.min.js"></script>
 
 
 <style type="text/css">
-.myMouse{cursor: default;}
-
+.myMouse {
+	cursor: default;
+}
 </style>
 </head>
 
@@ -189,7 +192,8 @@
 												class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
 												aria-labelledby="dropdownMenuLink">
 												<div class="dropdown-header">顯示圖像變化</div>
-												<button class="dropdown-item usePer-chart" id="areacount" value='pie'>圓餅圖</button>
+												<button class="dropdown-item usePer-chart" id="areacount"
+													value='pie'>圓餅圖</button>
 												<button class="dropdown-item usePer-chart" value='doughnut'>甜甜圈圖</button>
 												<button class="dropdown-item usePer-chart" value='bar'>長條圖(直)</button>
 												<button class="dropdown-item usePer-chart"
@@ -200,27 +204,27 @@
 											</div>
 										</div>
 									</div>
-<!-- 									<div -->
-<!-- 										class="mt-3 d-flex flex-row align-items-center justify-content-between"> -->
-<!-- 										<div class="input-group"> -->
-<!-- 											<div class="input-group-prepend"> -->
-<!-- 												<label class="input-group-text" for="npChartSelect">選擇切換</label> -->
-<!-- 											</div> -->
-<!-- 											<select id="npChartSelect" class="custom-select"> -->
-<!-- 											</select> -->
-<!-- 										</div> -->
-<!-- 									</div> -->
+									<!-- 									<div -->
+									<!-- 										class="mt-3 d-flex flex-row align-items-center justify-content-between"> -->
+									<!-- 										<div class="input-group"> -->
+									<!-- 											<div class="input-group-prepend"> -->
+									<!-- 												<label class="input-group-text" for="npChartSelect">選擇切換</label> -->
+									<!-- 											</div> -->
+									<!-- 											<select id="npChartSelect" class="custom-select"> -->
+									<!-- 											</select> -->
+									<!-- 										</div> -->
+									<!-- 									</div> -->
 								</div>
 								<!-- Card Body -->
 								<div class="card-body">
 									<div class="chart-area">
-										<canvas id="usePerNpChart"></canvas>
+										<canvas id="showthepie"></canvas>
 									</div>
 								</div>
 							</div>
 						</div>
 
-						
+
 					</div>
 					<div class="row">
 						<!-- 下面開始 -->
@@ -229,121 +233,147 @@
 								<div class="card-header py-3"></div>
 								<div class="card-body">
 									<div class="d-flex">
-										<div class="col-md-4 justify-content-end d-flex align-items-center ">
-											
+										<div
+											class="col-md-4 justify-content-end d-flex align-items-center ">
+
 											<div class="input-group">
 												<div class="input-group-prepend">
 													<label class="input-group-text">國家公園</label>
 												</div>
-												 
-												<form class="form-inline" action="<c:url value='/Rout/mountainHouseBack/selectAll#toseesee'></c:url>"method='get'>
+
+												<form class="form-inline"
+													action="<c:url value='/Rout/mountainHouseBack/selectAll#toseesee'></c:url>"
+													method='get'>
 													<select id="selectnPark" class="form-control" name="parkid">
 														<option value="">請選擇指定國家公園</option>
 													</select>
-														<div  class=" input-group-prepend ">
-														<input type="hidden" value="1" name="page">
-														<input type="hidden" value="2" name="no">
-														<input type="submit" class="btn btn-outline-success" value="查詢">
-														</div>
-												
+													<div class=" input-group-prepend ">
+														<input type="hidden" value="1" name="page"> <input
+															type="hidden" value="2" name="no"> <input
+															type="submit" class="btn btn-outline-success" value="查詢">
+													</div>
+
 												</form>
-												
+
 											</div>
 										</div>
-										
-										
+
+
 										<div class="ml-auto">
-											<form action="<c:url value='/Rout/mountainHouseBack/selectHouse'></c:url>"
+											<form
+												action="<c:url value='/Rout/mountainHouseBack/selectHouse'></c:url>"
 												method='get' id="form1" name="form1">
-												小屋名稱 :&nbsp <input type="text" class="light-table-filter"placeholder="請輸入關鍵字" name="selecthouse" >
-												<input type="image" class="imgSearch" src="/MountainExploer.com/images/放大鏡.png" width="35px"
+												小屋名稱 :&nbsp <input type="text" class="light-table-filter"
+													placeholder="請輸入關鍵字" name="selecthouse"> <input
+													type="image" class="imgSearch"
+													src="/MountainExploer.com/images/放大鏡.png" width="35px"
 													onClick="document.form1.submit()">
 											</form>
 										</div>
-										
-									
+
+
 										<div class="ml-auto">
-											<form action="<c:url value='/Rout/mountainHouseBack/selectAll#toseesee'></c:url>"method='get'>					
-												<input type="hidden" value="1" name="page">
-												<input type="hidden" value="1" name="no">
-												<input type="hidden" value="" name="parkid">
-												<input type="submit" id="toseesee" class="btn btn-outline-info" value="全部觀看">
+											<form
+												action="<c:url value='/Rout/mountainHouseBack/selectAll#toseesee'></c:url>"
+												method='get'>
+												<input type="hidden" value="1" name="page"> <input
+													type="hidden" value="1" name="no"> <input
+													type="hidden" value="" name="parkid"> <input
+													type="submit" id="toseesee" class="btn btn-outline-info"
+													value="全部觀看">
 											</form>
 										</div>
 									</div>
-<!-- 									<hr> -->
-<!-- 									<div class="d-flex"> -->
-<!-- 										<h3>國家公園 -- 主類別控制</h3> -->
-<!-- 										<button id="newNp" -->
-<!-- 											class="btn btn-success btn-icon-split ml-auto"> -->
-<!-- 											<span class="icon text-white-50"> <i -->
-<!-- 												class="fas fa-mountain"></i> -->
-<!-- 											</span> <span class="text">新增國家公園</span> -->
-<!-- 										</button> -->
-<!-- 										<button id="updateNp" -->
-<!-- 											class="btn btn-warning btn-icon-split ml-auto"> -->
-<!-- 											<span class="icon text-white-50"> <i -->
-<!-- 												class="fas fa-mountain"></i> -->
-<!-- 											</span> <span class="text">編輯國家公園</span> -->
-<!-- 										</button> -->
-<!-- 										<button id="deleteNp" -->
-<!-- 											class="btn btn-danger btn-icon-split ml-auto"> -->
-<!-- 											<span class="icon text-white-50"> <i -->
-<!-- 												class="fas fa-trash-alt"></i> -->
-<!-- 											</span> <span class="text">刪除國家公園</span> -->
-<!-- 										</button> -->
-<!-- 									</div> -->
+									<!-- 									<hr> -->
+									<!-- 									<div class="d-flex"> -->
+									<!-- 										<h3>國家公園 -- 主類別控制</h3> -->
+									<!-- 										<button id="newNp" -->
+									<!-- 											class="btn btn-success btn-icon-split ml-auto"> -->
+									<!-- 											<span class="icon text-white-50"> <i -->
+									<!-- 												class="fas fa-mountain"></i> -->
+									<!-- 											</span> <span class="text">新增國家公園</span> -->
+									<!-- 										</button> -->
+									<!-- 										<button id="updateNp" -->
+									<!-- 											class="btn btn-warning btn-icon-split ml-auto"> -->
+									<!-- 											<span class="icon text-white-50"> <i -->
+									<!-- 												class="fas fa-mountain"></i> -->
+									<!-- 											</span> <span class="text">編輯國家公園</span> -->
+									<!-- 										</button> -->
+									<!-- 										<button id="deleteNp" -->
+									<!-- 											class="btn btn-danger btn-icon-split ml-auto"> -->
+									<!-- 											<span class="icon text-white-50"> <i -->
+									<!-- 												class="fas fa-trash-alt"></i> -->
+									<!-- 											</span> <span class="text">刪除國家公園</span> -->
+									<!-- 										</button> -->
+									<!-- 									</div> -->
 									<hr>
 									<div class=' d-flex justify-content-between'>
-									
-									
+
+
 										<div class="col-xl-4 col-md-6 mb-4">
-														<div class="col mr-2">
-															<div
-																class="text-s font-weight-bold text-primary text-uppercase mb-1">
-																目前查詢筆數</div>
-															<div id="rt-forbid-num"
-																class="h5 mb-0 font-weight-bold text-gray-600">${totalData}區</div>
-														</div>
-										</div>									
-									
-									
-									
-										<div class="">									
-														<a href="selectAll?parkid=${parkid }&no=${no }&page=1">«第一頁</a>
-													<c:choose>
-													<c:when test="${page <= 1}"><a href="#">‹上一頁</a></c:when>
-													<c:otherwise><a href="selectAll?parkid=${parkid }&no=${no }&page=${page-1}">‹上一頁</a></c:otherwise>
-													</c:choose>					
-													
-														<select onChange="location = this.options[this.selectedIndex].value">
-															<c:forEach var="toPage" begin="1" end="${totalPage}">
-															<option value="selectAll?parkid=${parkid }&no=${no }&page=${toPage}" <c:if test="${toPage==page}">selected="selected"</c:if>>第${toPage}頁</option>
-															</c:forEach>
-														</select>
-													
-													<c:choose>
-													<c:when test="${page == totalPage}"><a href="#">下一頁›</a></c:when>
-													<c:otherwise><a href="selectAll?parkid=${parkid }&no=${no }&page=${page+1}">下一頁›</a></c:otherwise>
-													</c:choose>				
-														
-														<a href="selectAll?parkid=${parkid }&no=${no }&page=${totalPage}">最末頁»</a>
-										</div>				
-								
-					
-							<div class="ml-auto">
-								<form action="<c:url value='/Rout/mountainHouseBack/inserjump'></c:url>"
-									method='get'>
-				
-									<input type="submit" src="#" class="btn btn-outline-primary" name="" value="新增">
-								</form>
-							</div>
-							
-							</div>
+											<div class="col mr-2">
+												<div
+													class="text-s font-weight-bold text-primary text-uppercase mb-1">
+													目前查詢筆數</div>
+												<div id="rt-forbid-num"
+													class="h5 mb-0 font-weight-bold text-gray-600">${totalData}區</div>
+											</div>
+										</div>
+
+
+
+										<div class="">
+											<a href="selectAll?parkid=${parkid }&no=${no }&page=1">«第一頁</a>
+											<c:choose>
+												<c:when test="${page <= 1}">
+													<a href="#">‹上一頁</a>
+												</c:when>
+												<c:otherwise>
+													<a
+														href="selectAll?parkid=${parkid }&no=${no }&page=${page-1}">‹上一頁</a>
+												</c:otherwise>
+											</c:choose>
+
+											<select
+												onChange="location = this.options[this.selectedIndex].value">
+												<c:forEach var="toPage" begin="1" end="${totalPage}">
+													<option
+														value="selectAll?parkid=${parkid }&no=${no }&page=${toPage}"
+														<c:if test="${toPage==page}">selected="selected"</c:if>>第${toPage}頁</option>
+												</c:forEach>
+											</select>
+
+											<c:choose>
+												<c:when test="${page == totalPage}">
+													<a href="#">下一頁›</a>
+												</c:when>
+												<c:otherwise>
+													<a
+														href="selectAll?parkid=${parkid }&no=${no }&page=${page+1}">下一頁›</a>
+												</c:otherwise>
+											</c:choose>
+
+											<a
+												href="selectAll?parkid=${parkid }&no=${no }&page=${totalPage}">最末頁»</a>
+										</div>
+
+
+										<div class="ml-auto">
+											<form
+												action="<c:url value='/Rout/mountainHouseBack/inserjump'></c:url>"
+												method='get'>
+
+												<input type="submit" src="#" class="btn btn-outline-primary"
+													name="" value="新增">
+											</form>
+										</div>
+
 									</div>
+								</div>
 								<div class="card-body">
 									<div class="table-responsive">
-										<table id="routeTable" style="border:3px #cccccc solid;" cellpadding="10" border='1'>
+										<table id="routeTable" style="border: 3px #cccccc solid;"
+											cellpadding="10" border='1'>
 											<thead>
 												<tr>
 													<th scope="col"><span class="tr_title">編號</span></th>
@@ -363,159 +393,178 @@
 												</tr>
 											</thead>
 											<tbody>
-											<c:forEach var="i" items="${House_All}">
-						<tr>
-							<td>${i.housebasicid}</td>
-							<td>${i.nationalPark.name}</td>
-							<td>${i.name}</td>
-							<td>${i.bed}床&nbspTWD&nbsp:&nbsp${i.bedprice}</td>
-							<td>${i.camp}區&nbspTWD&nbsp:&nbsp${i.campprice}</td>
-							<td>${i.height}</td>
-							
-							<td>
-								<a class="show" href="#show"  style="color: blue">點我看詳情.....more</a>
-								<span class="showme" style="display:none">${i.desc}<a href="#showme"  style="color: red">隱藏內容</a></span>
-							</td>
-							
-							<c:choose>
-								<c:when test="${empty i.star}"><td>0</td></c:when>
-								<c:otherwise><td>總共${i.star}分</td></c:otherwise>
-							</c:choose>
-							<c:choose>
-								<c:when test="${empty i.clickcount}"><td>0</td></c:when>
-								<c:otherwise>
-									<td>評分過${i.clickcount}次</td>
-								</c:otherwise>
-							</c:choose>
-							<td>
-								<c:choose>
-									<c:when test="${empty j.star}">0</c:when>
-									<c:otherwise>
-										(平均<fmt:formatNumber type="number"
-											value="${j.star*1.0 / j.clickcount} " maxFractionDigits="1" />分)		
-									</c:otherwise>
-								</c:choose>
-							</td>	
-							<td>
-								<c:choose>
-									<c:when test="${empty i.imgid.img }">
-									<img  height="100" width="100"src="/MountainExploer.com/housecamp/images/housenull.PNG">
-									</c:when>
-									<c:when test="${not empty i.imgid.img }">
-										<img   height="100" width="100"src="<c:url value='/mountainHouseBack/showimg?imgid=${i.imgid.id}'/>">
-									</c:when>
-								</c:choose>
-								</td>
-							<td>
-								<div style="margin: 10px">
-									<form
-										action="<c:url value='/Rout/mountainHouseBack/deleteHouse'></c:url>"
-										name="form1" method='post'>
-										<input type="hidden" name="deletehouse" value="${i.housebasicid}">
-										<input type="button" class="btn btn-outline-danger" value="刪除"
-											onclick="if(confirm('確認要刪除嗎？')) this.form.submit();">
-									</form>
-								</div>
-								<div style="margin: 10px">
-									<form
-										action="<c:url value="/Rout/mountainHouseBack/updatejump"></c:url>"
-										method="get">
-										<input type="hidden" name="jumpupdate" value="${i.housebasicid}">
-										<input type="submit" class="btn btn-outline-info" value="修改">
-									</form>
-								</div>
-							</td>
-							<td>
-								<form
-									action="<c:url value="/Rout/mountainHouseBack/housebackorder"></c:url>"
-									method="post">
-									<input type="hidden" name="orderhouseid" value="${i.housebasicid}">
-									<input type="hidden" name="no" value="1">
-									<input type="hidden" name="peoplename" value="">
-									<input type="submit" class="btn btn-outline-success" value="訂單查詢">
-								</form>
-							</td>
-							
-						</tr>
-					</c:forEach>
-					
+												<c:forEach var="i" items="${House_All}">
+													<tr>
+														<td>${i.housebasicid}</td>
+														<td>${i.nationalPark.name}</td>
+														<td>${i.name}</td>
+														<td>${i.bed}床&nbspTWD&nbsp:&nbsp${i.bedprice}</td>
+														<td>${i.camp}區&nbspTWD&nbsp:&nbsp${i.campprice}</td>
+														<td>${i.height}</td>
 
-					<c:forEach var="i" items="${lookupdate}">
-						<tr>
-							<td>${i.housebasicid}</td>
-							<td>${i.nationalPark.name}</td>
-							<td>${i.name}</td>
-							<td>${i.bed}床&nbspTWD&nbsp:&nbsp${i.bedprice}</td>
-							<td>${i.camp}區&nbspTWD&nbsp:&nbsp${i.campprice}</td>
-							<td>${i.height}</td>
-							<td>${i.desc}</td>
-							<c:choose>
-								<c:when test="${empty i.star}"><td>0</td></c:when>
-								<c:otherwise><td>總共${i.star}分</td></c:otherwise>
-							</c:choose>
-							<c:choose>
-								<c:when test="${empty i.clickcount}"><td>0</td></c:when>
-								<c:otherwise><td>評分過${i.clickcount}次</td></c:otherwise>
-							</c:choose>
-							<c:choose>
-								<c:when test="${empty i.clickcount}"><td>平均0分</td></c:when>
-								<c:otherwise>
-									<td>平均${i.star*1.0 / i.clickcount}分</td>
-								</c:otherwise>
-							</c:choose>
-							<td>
-								<c:choose>
-								<c:when test="${empty i.imgid.img }">
-								<a class="tooltip-a" data-toggle='tooltip' target="_blank"><img height="100" width="100"
-										src="/MountainExploer.com/housecamp/images/housenull.PNG"></a>
-								</c:when>
-								<c:when test="${not empty i.imgid.img }">
-								<a class="tooltip-a" data-toggle='tooltip'target="_blank"><img height="100" width="100"
-										src="<c:url value='/mountainHouseBack/showimg?imgid=${i.imgid.id}'/>"></a>
-								</c:when>
-								</c:choose>
-								</td>
-							
-							</tr>
-					</c:forEach>
-											
+														<td><a class="show" href="#show" style="color: blue">點我看詳情.....more</a>
+															<span class="showme" style="display: none">${i.desc}<a
+																href="#showme" style="color: red">隱藏內容</a></span></td>
+
+														<c:choose>
+															<c:when test="${empty i.star}">
+																<td>0</td>
+															</c:when>
+															<c:otherwise>
+																<td>總共${i.star}分</td>
+															</c:otherwise>
+														</c:choose>
+														<c:choose>
+															<c:when test="${empty i.clickcount}">
+																<td>0</td>
+															</c:when>
+															<c:otherwise>
+																<td>評分過${i.clickcount}次</td>
+															</c:otherwise>
+														</c:choose>
+														<td><c:choose>
+																<c:when test="${empty j.star}">0</c:when>
+																<c:otherwise>
+																	(平均<fmt:formatNumber type="number"
+																		value="${j.star*1.0 / j.clickcount} "
+																		maxFractionDigits="1" />分)		
+																</c:otherwise>
+															</c:choose></td>
+														<td><c:choose>
+																<c:when test="${empty i.imgid.img }">
+																	<img height="100" width="100"
+																		src="/MountainExploer.com/housecamp/images/housenull.PNG">
+																</c:when>
+																<c:when test="${not empty i.imgid.img }">
+																	<img height="100" width="100"
+																		src="<c:url value='/mountainHouseBack/showimg?imgid=${i.imgid.id}'/>">
+																</c:when>
+															</c:choose></td>
+														<td>
+															<div style="margin: 10px">
+																<form
+																	action="<c:url value='/Rout/mountainHouseBack/deleteHouse'></c:url>"
+																	name="form1" method='post'>
+																	<input type="hidden" name="deletehouse"
+																		value="${i.housebasicid}"> <input
+																		type="button" class="btn btn-outline-danger"
+																		value="刪除"
+																		onclick="if(confirm('確認要刪除嗎？')) this.form.submit();">
+																</form>
+															</div>
+															<div style="margin: 10px">
+																<form
+																	action="<c:url value="/Rout/mountainHouseBack/updatejump"></c:url>"
+																	method="get">
+																	<input type="hidden" name="jumpupdate"
+																		value="${i.housebasicid}"> <input
+																		type="submit" class="btn btn-outline-info" value="修改">
+																</form>
+															</div>
+														</td>
+														<td>
+															<form
+																action="<c:url value="/Rout/mountainHouseBack/housebackorder"></c:url>"
+																method="post">
+																<input type="hidden" name="orderhouseid"
+																	value="${i.housebasicid}"> <input type="hidden"
+																	name="no" value="1"> <input type="hidden"
+																	name="peoplename" value=""> <input
+																	type="submit" class="btn btn-outline-success"
+																	value="訂單查詢">
+															</form>
+														</td>
+
+													</tr>
+												</c:forEach>
+
+
+												<c:forEach var="i" items="${lookupdate}">
+													<tr>
+														<td>${i.housebasicid}</td>
+														<td>${i.nationalPark.name}</td>
+														<td>${i.name}</td>
+														<td>${i.bed}床&nbspTWD&nbsp:&nbsp${i.bedprice}</td>
+														<td>${i.camp}區&nbspTWD&nbsp:&nbsp${i.campprice}</td>
+														<td>${i.height}</td>
+														<td>${i.desc}</td>
+														<c:choose>
+															<c:when test="${empty i.star}">
+																<td>0</td>
+															</c:when>
+															<c:otherwise>
+																<td>總共${i.star}分</td>
+															</c:otherwise>
+														</c:choose>
+														<c:choose>
+															<c:when test="${empty i.clickcount}">
+																<td>0</td>
+															</c:when>
+															<c:otherwise>
+																<td>評分過${i.clickcount}次</td>
+															</c:otherwise>
+														</c:choose>
+														<c:choose>
+															<c:when test="${empty i.clickcount}">
+																<td>平均0分</td>
+															</c:when>
+															<c:otherwise>
+																<td>平均${i.star*1.0 / i.clickcount}分</td>
+															</c:otherwise>
+														</c:choose>
+														<td><c:choose>
+																<c:when test="${empty i.imgid.img }">
+																	<a class="tooltip-a" data-toggle='tooltip'
+																		target="_blank"><img height="100" width="100"
+																		src="/MountainExploer.com/housecamp/images/housenull.PNG"></a>
+																</c:when>
+																<c:when test="${not empty i.imgid.img }">
+																	<a class="tooltip-a" data-toggle='tooltip'
+																		target="_blank"><img height="100" width="100"
+																		src="<c:url value='/mountainHouseBack/showimg?imgid=${i.imgid.id}'/>"></a>
+																</c:when>
+															</c:choose></td>
+
+													</tr>
+												</c:forEach>
+
 											</tbody>
 										</table>
 									</div>
 								</div>
 							</div>
-								
-								
+
+
 						</div>
 
-						</div>
 					</div>
-					<!-- Page Heading -->
-
-					<!-- DataTales Example -->
-					<div class='hideDIV'>
-						<a class="hideElm export" href=""></a>
-					</div>
-
-
-
-
 				</div>
-				<!-- /.container-fluid -->
+				<!-- Page Heading -->
+
+				<!-- DataTales Example -->
+				<div class='hideDIV'>
+					<a class="hideElm export" href=""></a>
+				</div>
+
+
+
 
 			</div>
-			<!-- End of Main Content -->
-
-			<!-- Footer -->
-			<footer class="sticky-footer bg-white">
-				<div class="container my-auto">
-					<div class="copyright text-center my-auto"></div>
-				</div>
-			</footer>
-			<!-- End of Footer -->
+			<!-- /.container-fluid -->
 
 		</div>
-		<!-- End of Content Wrapper -->
+		<!-- End of Main Content -->
+
+		<!-- Footer -->
+		<footer class="sticky-footer bg-white">
+			<div class="container my-auto">
+				<div class="copyright text-center my-auto"></div>
+			</div>
+		</footer>
+		<!-- End of Footer -->
+
+	</div>
+	<!-- End of Content Wrapper -->
 
 	</div>
 	<!-- End of Page Wrapper -->
@@ -559,91 +608,115 @@
 			}
 		}
 	</script>
-	
+
 	<script type="text/javascript">
+		$(function() {
+			var houseUrl = "/MountainExploer.com/Rout/mountainHouseBack";
 
-	$(function() {
-		var houseUrl = "/MountainExploer.com/Rout/mountainHouseBack";
+			$.ajax({
+				url : houseUrl + "/nParkAlloption",
+				method : "GET",
+				dataType : "json",
+				success : function(nPark) {
+					for (var i = 0; i < nPark.length; i++) {
 
-		$.ajax({
-			url:houseUrl + "/nParkAlloption",
-			method:"GET",
-			dataType : "json",
-			success:function(nPark){
-				for(var i =0 ; i< nPark.length ; i++){
-					$("#selectnPark").append(
-							"<option value='" + nPark[i].id + "'>"
-							+ nPark[i].name + "</option>") }
-//	 			let firstArea = $("#selectnPark").find("option").eq(0).val()
-				
+						$("#selectnPark").append(
+								"<option value='" + nPark[i].id + "'>"
+										+ nPark[i].name + "</option>")
+					}
+					//	 			let firstArea = $("#selectnPark").find("option").eq(0).val()
+
 				}
 			})
-			$("body").on("click",".show",function(){
+			$("body").on("click", ".show", function() {
 				let thisShowme = $(this).siblings(".showme")
-// 				$(".showme").not(thisShowme).slideUp(250)
+				// 				$(".showme").not(thisShowme).slideUp(250)
 				thisShowme.slideToggle();
 				$(this).toggle();
 			});
 
-			
-		
+			$("body").on("click", ".showme", function() {
+				let thisShow = $(this).siblings(".show")
+				thisShow.slideToggle();
+				$(this).toggle();
 
-		$("body").on("click",".showme",function(){
-			let thisShow = $(this).siblings(".show")
-			thisShow.slideToggle();
-			$(this).toggle();
-			
+			});
 		});
-			
+		// 			$('.tooltip-a').tooltip() 
 
+		$(function(housecount) {
+					// 國家公園圓餅圖	
+					Chart.defaults.global.defaultFontFamily = 'Nunito',
+					'-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+			Chart.defaults.global.defaultFontColor = '#858796';
+
+			var houseUrl = "/MountainExploer.com/Rout/mountainHouseBack";
+
+			$.ajax({
+				url : houseUrl + "/npTotalaHouse",
+				method : "GET",
+				dataType : "json",
+				success : function(data) {
+					console.log(data)
+
+					showthepie(data)
+				},
+
+			})
+
+			// Pie Chart Example
+
+			function showthepie(data, housecount) {
+				let name = []
+				let Parkhousecount = []
+				for ( let i in data) {
+					name.push([ i ])
+					Parkhousecount.push(data[i])
+				}
+				
+				var ctx = $("#showthepie");
 					
-// 			$('.tooltip-a').tooltip()
-			
-	
-			// 國家公園圓餅圖	
-// 			Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-// 			Chart.defaults.global.defaultFontColor = '#858796';
+				let charSet = {
+					type : 'pie',
+					data : {
 
-		
+						labels : name,
+						datasets : [ {
+							data : Parkhousecount,
+							backgroundColor : [ '#4e73df', '#1cc88a', '#36b9cc' ],
+							hoverBackgroundColor : [ '#2e59d9', '#17a673',
+									'#2c9faf' ],
+							hoverBorderColor : "rgba(234, 236, 244, 1)",
+						} ],
+					},
+					options : {
+						maintainAspectRatio : false,
+						tooltips : {
+							backgroundColor : "rgb(255,255,255)",
+							bodyFontColor : "#858796",
+							borderColor : '#dddfeb',
+							borderWidth : 5,
+							xPadding : 15,
+							yPadding : 15,
+							displayColors : false,
+							caretPadding : 10,
+						},
+						legend : {
+							display : true
+						},
+					},
+				}
 
-// 			// Pie Chart Example
-// 			var ctx = document.getElementById("myPieChart");
-// 			var myPieChart = new Chart(ctx, {
-// 			  type: 'doughnut',
-// 			  data: {
-
-// 			    labels: [ "雪霸國家公園","太魯閣國家公園","玉山國家公園" ],
-// 			    datasets: [{
-// 			      data: [55, 30, 15],
-// 			      backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
-// 			      hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
-// 			      hoverBorderColor: "rgba(234, 236, 244, 1)",
-// 			    }],
-// 			  },
-// 			  options: {
-// 			    maintainAspectRatio: false,
-// 			    tooltips: {
-// 			      backgroundColor: "rgb(255,255,255)",
-// 			      bodyFontColor: "#858796",
-// 			      borderColor: '#dddfeb',
-// 			      borderWidth: 5,
-// 			      xPadding: 15,
-// 			      yPadding: 15,
-// 			      displayColors: false,
-// 			      caretPadding: 10,
-// 			    },
-// 			    legend: {
-// 			      display: true
-// 			    },
-// 			    cutoutPercentage: 80,
-// 			  },
-// 			});
-		});
-// 圓餅圖	end -->		
+					showthepie = new Chart(ctx,charSet);
+				
+			}
+			;
+		})
+	// 圓餅圖	end -->
 	</script>
 
-	
-	
+
+
 	<script src="/MountainExploer.com/vendor/jquery/jquery.min.js"></script>
 	<!-- Core plugin JavaScript-->
 	<script

@@ -79,6 +79,10 @@ public class ShopPageEntryController {
 	// 前往確認訂單頁面
 	@RequestMapping(path = "/orderConfirmEntry", method = RequestMethod.GET)
 	public String orderConfirm( Model m) { 
+		// 如果找不到Member物件
+				if (m.getAttribute("Member") == null) {
+					return "redirect:/member/memberLoginEntry";
+				}
 		
 		return "product/cart/orderConfirm";
 

@@ -89,13 +89,13 @@ public class BackActController {
 			Map<Integer, Boolean> tagResult = new TagSelector(actInfoInList, service).getTagResult();
 			map.put("tagMap", tagResult);
 
-			// Set nowReg => map
-			service.save(new ActRegInfo());
-			String reghql = "Select count(*) From ActRegInfo ari where ari.actRegistry in (From ActRegistry ar where"
-					+ " deniTag is null and cancelTag is null and ACTIVITY_BASIC_SEQNO = "
-					+ actBasic.getSeqno() + ")";
-			int nowReg = service.countWithHql(reghql);
-			map.put("nowReg", nowReg);
+//			// Set nowReg => map
+//			service.save(new ActRegInfo());
+//			String reghql = "Select count(*) From ActRegInfo ari where ari.actRegistry in (From ActRegistry ar where"
+//					+ " deniTag is null and cancelTag is null and ACTIVITY_BASIC_SEQNO = "
+//					+ actBasic.getSeqno() + ")";
+//			int nowReg = service.countWithHql(reghql);
+//			map.put("nowReg", nowReg);
 
 			actList.add(map);
 		}

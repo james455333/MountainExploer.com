@@ -2,9 +2,18 @@ $(function(){
 	
 	$("body").on("click",".swalLogin" ,function(e){
 		e.preventDefault()
-	    loginSwal()
+		$.ajax({
+			url : "/MountainExploer.com/memberCheck",
+			type : "GET",
+			success : function(){
+			},
+			error : function(){
+				loginSwal()
+			}
+		})
 	})
-
+	
+})
 function loginSwal(){
 	Swal.fire({
 	    title: "註冊／登入",
@@ -150,5 +159,3 @@ function loginSwal(){
 	
 	
 	
-	
-})
