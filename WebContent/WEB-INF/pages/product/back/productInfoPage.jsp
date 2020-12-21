@@ -171,9 +171,11 @@
 						<input type="button" value="返回上一頁" id="backPreviousPage">
 					</div>
 
-				<br>
-				<div style="" class="p-3 m-3 shadow animate__animated" >
+				<div >
+				<div class="p-1 m-3">商品介紹: </div>
+				<div style="height: 200px ;overflow:auto" class="p-3 m-3 shadow animate__animated" >
 					${ProductBean.description}
+				</div>
 				</div>
 			</div>
 		</div>

@@ -173,7 +173,7 @@
 										type="text" name="stock" value="${itemInfo.stock}" required>
 								</div>
 								<div class=" m-1 p-1">
-									<img style="width: 400px; height: 500px;"
+									<img style="width: 400px; height: 400px;"
 										src="<c:url value='/backstage/product/search/images?seqno=${itemInfo.itemBasicSeqno}' />">
 									<br>
 
