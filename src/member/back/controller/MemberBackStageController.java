@@ -160,6 +160,15 @@ public class MemberBackStageController {
 		return mbList;
 	}
 	
+	@ResponseBody
+	@GetMapping(path = "/countMemberAction")
+	public long processCountMember(){
+		List<MemberBasic> mbList = mbService.selectAll();
+		long mbListSize = mbList.size();
+		System.out.println("====================================" + mbListSize);
+		return mbListSize;
+	}
+	
 	
 	//單獨查詢
 	@ResponseBody

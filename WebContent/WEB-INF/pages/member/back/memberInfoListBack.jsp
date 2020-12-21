@@ -77,7 +77,7 @@ pageEncoding="UTF-8"%>
 												class="text-s font-weight-bold text-danger text-uppercase mb-1">
 												岳進者會員總數</div>
 											<div id="rt-forbid-num"
-												class="h5 mb-0 font-weight-bold text-gray-600"></div>
+												class="h5 mb-0 font-weight-bold text-gray-600 countMb"></div>
 										</div>
 										<div class="col-auto">
 											<i class="fa fa-flag fa-2x" style="color: #ff6b6b;"

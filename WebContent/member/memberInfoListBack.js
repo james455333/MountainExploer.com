@@ -1,6 +1,18 @@
 $(function(){
     $.ajax({
         method:"GET",
+        url:"/MountainExploer.com/back/member/countMemberAction",
+        dataType:"json",
+        success:function(data){
+            $(".countMb").html(data);
+        }
+    })
+})
+
+
+$(function(){
+    $.ajax({
+        method:"GET",
         url:"/MountainExploer.com/back/member/memberListIndexAction",
         dataType:"json",
         success:function(mbList){
