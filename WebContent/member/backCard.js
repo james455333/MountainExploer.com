@@ -55,6 +55,17 @@ var gmAjax = $.ajax({
         // console.log(image);
         downloadChart(myPieChart, "會員身分組占比圓餅圖");
     })
+
+    $("#mb-mode-export-json").on("click", function(){
+        let newData = {
+            一般登山者:datas[0],
+            登山嚮導:datas[1],
+            未認證會員:datas[2],
+            停權會員:datas[3],
+            管理員:datas[4]
+        }
+        jsonDownload(newData, "會員身分組占比");
+    })
     
 })
 
@@ -74,4 +85,13 @@ function downloadChart(chartElm, fileName){
     })
 }
 
+function jsonDownload(jsonList, fileName){
+    $("<a />", {
+        "download":fileName + new Date().toLocaleDateString() + ".json",
+        "href": "data:application/json," + encodeURIComponent(JSON.stringify(jsonList))
+    }).appendTo("body")
+    .click(function(){
+        $(this).remove();
+    })[0].click()
+}
 
