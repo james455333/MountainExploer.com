@@ -64,11 +64,11 @@
 			<li class="breadcrumb-item active">商品資訊</li>
 		</ol>
 	</nav>
-	<div class="div_ul d-flex div shadow animate__animated  p-3 ">
+	<div class="div_ul d-flex div shadow animate__animated   p-3 ">
 
 		<div class="col-5 d-flex justify-content-center p-3">
 			<div class="d-flex justify-content-center  m-1  ">
-				<img style="width: 600px;border:groove"
+				<img style="width: 600px"
 					src="<c:url value='/backstage/product/search/images?seqno=${ProductBean.seqno}' />">
 			</div>
 		</div>
@@ -106,12 +106,17 @@
 
 	</div >
 	<br>
-	<div style="width: 1000px" class="div_ul div shadow animate__animated">
-		<div style="display:auto">${ProductBean.description}</div>
-		<div>
+	<div class="div_ul div shadow animate__animated">
+	<div class="p-1 m-3 "style='font-size:20px'>商品介紹: </div>
+	<div style="height: 200px;overflow:auto" >
+		${ProductBean.description}
+	</div>
+	</div>
+	<br>
+		<div class="div_ul div">
 			<input type="button" value="返回上一頁" id="backPreviousPage">
 		</div>
-	</div>
+	<br>
 
 
 
