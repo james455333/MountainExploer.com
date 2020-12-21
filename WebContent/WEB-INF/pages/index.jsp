@@ -419,7 +419,8 @@ body {
 								<!-- 只需在filter-"填上相對應的分類即可" -->
 								<div class="col-lg-4 col-md-6 portfolio-item filter-clothes">
 									<div class="portfolio-wrap">
-										<img src="/MountainExploer.com/images/shopimg/hot1.jpg" class="img-fluid" alt="">
+										<img src="/MountainExploer.com/images/shopimg/hot1.jpg"
+											class="img-fluid" alt="">
 										<div class="portfolio-info">
 											<h4>
 												<a href="portfolio-details.html">短袖排汗衣 男 獵戶藍</a>
@@ -441,8 +442,8 @@ body {
 
 								<div class="col-lg-4 col-md-6 portfolio-item filter-clothes">
 									<div class="portfolio-wrap">
-										<img src="/MountainExploer.com/images/shopimg/hot2.jpg" class="img-fluid"
-											alt="">
+										<img src="/MountainExploer.com/images/shopimg/hot2.jpg"
+											class="img-fluid" alt="">
 										<div class="portfolio-info">
 											<h4>
 												<a href="portfolio-details.html">保暖排汗衣 女 醬果紫</a>
@@ -464,8 +465,8 @@ body {
 
 								<div class="col-lg-4 col-md-6 portfolio-item filter-pants">
 									<div class="portfolio-wrap">
-										<img src="/MountainExploer.com/images/shopimg/hot3.jpg" class="img-fluid"
-											alt="">
+										<img src="/MountainExploer.com/images/shopimg/hot3.jpg"
+											class="img-fluid" alt="">
 										<div class="portfolio-info">
 											<h4>
 												<a href="portfolio-details.html">耐磨長褲 男 月桂綠/深森綠</a>
@@ -476,7 +477,7 @@ body {
 											<div>
 												<a href="/MountainExploer.com/images/shopimg/hot3.jpg"
 													class="venobox link-preview" data-gall="portfolioGallery"
-													title="App 2"><i class="ion ion-eye"></i></a> <a
+													title="耐磨長褲 男 月桂綠/深森綠"><i class="ion ion-eye"></i></a> <a
 													href="/MountainExploer.com/shop/productInfoEntry?no=6000118"
 													class="link-details" title="More Details"><i
 													class="ion ion-android-open"></i></a>
@@ -487,8 +488,8 @@ body {
 
 								<div class="col-lg-4 col-md-6 portfolio-item filter-pants">
 									<div class="portfolio-wrap">
-										<img src="/MountainExploer.com/images/shopimg/hot4.jpg" class="img-fluid"
-											alt="">
+										<img src="/MountainExploer.com/images/shopimg/hot4.jpg"
+											class="img-fluid" alt="">
 										<div class="portfolio-info">
 											<h4>
 												<a href="portfolio-details.html">防水保暖透氣吊帶滑雪褲 女 女爵粉</a>
@@ -497,7 +498,7 @@ body {
 											<div>
 												<a href="/MountainExploer.com/images/shopimg/hot4.jpg"
 													class="venobox link-preview" data-gall="portfolioGallery"
-													title="Card 2"><i class="ion ion-eye"></i></a> <a
+													title="防水保暖透氣吊帶滑雪褲 女 女爵粉"><i class="ion ion-eye"></i></a> <a
 													href="/MountainExploer.com/shop/productInfoEntry?no=6000150"
 													class="link-details" title="More Details"><i
 													class="ion ion-android-open"></i></a>
@@ -508,8 +509,8 @@ body {
 
 								<div class="col-lg-4 col-md-6 portfolio-item filter-camp">
 									<div class="portfolio-wrap">
-										<img src="/MountainExploer.com/images/shopimg/hot5.jpg" class="img-fluid"
-											alt="">
+										<img src="/MountainExploer.com/images/shopimg/hot5.jpg"
+											class="img-fluid" alt="">
 										<div class="portfolio-info">
 											<h4>
 												<a href="portfolio-details.html">單人全方位超輕帳</a>
@@ -518,7 +519,7 @@ body {
 											<div>
 												<a href="/MountainExploer.com/images/shopimg/hot5.jpg"
 													class="venobox link-preview" data-gall="portfolioGallery"
-													title="Web 2"><i class="ion ion-eye"></i></a> <a
+													title="單人全方位超輕帳"><i class="ion ion-eye"></i></a> <a
 													href="/MountainExploer.com/shop/productInfoEntry?no=6000810"
 													class="link-details" title="More Details"><i
 													class="ion ion-android-open"></i></a>
@@ -529,8 +530,8 @@ body {
 
 								<div class="col-lg-4 col-md-6 portfolio-item filter-camp">
 									<div class="portfolio-wrap">
-										<img src="/MountainExploer.com/images/shopimg/hot6.jpg" class="img-fluid"
-											alt="">
+										<img src="/MountainExploer.com/images/shopimg/hot6.jpg"
+											class="img-fluid" alt="">
 										<div class="portfolio-info">
 											<h4>
 												<a href="portfolio-details.html">摩卡黑森林別墅帳/露營帳篷</a>
@@ -540,7 +541,7 @@ body {
 											<div>
 												<a href="/MountainExploer.com/images/shopimg/hot6.jpg"
 													class="venobox link-preview" data-gall="portfolioGallery"
-													title="App 3"><i class="ion ion-eye"></i></a> <a
+													title="摩卡黑森林別墅帳/露營帳篷"><i class="ion ion-eye"></i></a> <a
 													href="/MountainExploer.com/shop/productInfoEntry?no=6000842"
 													class="link-details" title="More Details"><i
 													class="ion ion-android-open"></i></a>
@@ -551,8 +552,8 @@ body {
 
 								<div class="col-lg-4 col-md-6 portfolio-item filter-other">
 									<div class="portfolio-wrap">
-										<img src="/MountainExploer.com/images/shopimg/hot7.jpg" class="img-fluid"
-											alt="">
+										<img src="/MountainExploer.com/images/shopimg/hot7.jpg"
+											class="img-fluid" alt="">
 										<div class="portfolio-info">
 											<h4>
 												<a href="portfolio-details.html">野營斧頭暨直刀組</a>
@@ -563,7 +564,7 @@ body {
 											<div>
 												<a href="/MountainExploer.com/images/shopimg/hot7.jpg"
 													class="venobox link-preview" data-gall="portfolioGallery"
-													title="Card 1"><i class="ion ion-eye"></i></a> <a
+													title="野營斧頭暨直刀組"><i class="ion ion-eye"></i></a> <a
 													href="/MountainExploer.com/shop/productInfoEntry?no=6001312"
 													class="link-details" title="More Details"><i
 													class="ion ion-android-open"></i></a>
@@ -574,8 +575,8 @@ body {
 
 								<div class="col-lg-4 col-md-6 portfolio-item filter-other">
 									<div class="portfolio-wrap">
-										<img src="/MountainExploer.com/images/shopimg/hot8.jpg" class="img-fluid"
-											alt="">
+										<img src="/MountainExploer.com/images/shopimg/hot8.jpg"
+											class="img-fluid" alt="">
 										<div class="portfolio-info">
 											<h4>
 												<a href="portfolio-details.html">頭燈</a>
@@ -585,7 +586,7 @@ body {
 											<div>
 												<a href="/MountainExploer.com/images/shopimg/hot8.jpg"
 													class="venobox link-preview" data-gall="portfolioGallery"
-													title="Card 3"><i class="ion ion-eye"></i></a> <a
+													title="頭燈"><i class="ion ion-eye"></i></a> <a
 													href="/MountainExploer.com/shop/productInfoEntry?no=6001051"
 													class="link-details" title="More Details"><i
 													class="ion ion-android-open"></i></a>
@@ -596,18 +597,18 @@ body {
 
 								<div class="col-lg-4 col-md-6 portfolio-item filter-camp">
 									<div class="portfolio-wrap">
-										<img src="/MountainExploer.com/images/shopimg/hot9.jpg" class="img-fluid"
-											alt="">
+										<img src="/MountainExploer.com/images/shopimg/hot9.jpg"
+											class="img-fluid" alt="">
 										<div class="portfolio-info">
 											<h4>
-												<a href="portfolio-details.html">輕量中筒健行鞋 棕 325</a>
+												<a href="portfolio-details.html">輕量中筒健行鞋</a>
 											</h4>
-											<p>Zamberlan</p>
+											<p>Zamberlan 棕 325</p>
 											<p>CORNELL LITE GTX 0325PM</p>
 											<div>
 												<a href="/MountainExploer.com/images/shopimg/hot9.jpg"
 													class="venobox link-preview" data-gall="portfolioGallery"
-													title="Web 1"><i class="ion ion-eye"></i></a> <a
+													title="輕量中筒健行鞋"><i class="ion ion-eye"></i></a> <a
 													href="/MountainExploer.com/shop/productInfoEntry?no=6000387"
 													class="link-details" title="More Details"><i
 													class="ion ion-android-open"></i></a>
@@ -656,16 +657,18 @@ body {
 										<div class="testimonial-item">
 
 											<div class="testimonial-item">
-												<img src="images/personalImg/洪上尚.jpg" class="testimonial-img" alt="">
+												<img src="images/personalImg/洪上尚.jpg"
+													class="testimonial-img" alt="">
 												<h3>洪 上尚</h3>
 												<h4>組員</h4>
 												<p>謝謝大家的幫忙，才能順利完成專案</p>
 											</div>
+										</div>
 
 										<div class="testimonial-item">
-											<img src="images/personalImg/洪上尚.jpg" class="testimonial-img"
+											<img src="images/personalImg/劉士豪.jpg" class="testimonial-img"
 												alt="">
-											<h3>洪 上尚</h3>
+											<h3>劉 士豪</h3>
 											<h4>組員</h4>
 											<p>說一些想說的話</p>
 										</div>
@@ -682,7 +685,6 @@ body {
 
 								</div>
 							</div>
-
 						</div>
 					</section>
 					<!-- End Testimonials Section -->
@@ -708,10 +710,10 @@ body {
 												<h4>劉 怡廷</h4>
 												<span>組長</span>
 												<div class="social">
-													<a href=""><i class="fa fa-twitter"></i></a>
-													<a href=""><i class="fa fa-facebook"></i></a>
-													<a href=""><i class="fa fa-google-plus"></i></a>
-													<a href=""><i class="fa fa-linkedin"></i></a>
+													<a href=""><i class="fa fa-twitter"></i></a> <a href=""><i
+														class="fa fa-facebook"></i></a> <a href=""><i
+														class="fa fa-google-plus"></i></a> <a href=""><i
+														class="fa fa-linkedin"></i></a>
 												</div>
 											</div>
 										</div>
@@ -727,10 +729,10 @@ body {
 												<h4>潘 威承</h4>
 												<span>技術長</span>
 												<div class="social">
-													<a href=""><i class="fa fa-twitter"></i></a>
-													<a href=""><i class="fa fa-facebook"></i></a>
-													<a href=""><i class="fa fa-google-plus"></i></a>
-													<a href=""><i class="fa fa-linkedin"></i></a>
+													<a href=""><i class="fa fa-twitter"></i></a> <a href=""><i
+														class="fa fa-facebook"></i></a> <a href=""><i
+														class="fa fa-google-plus"></i></a> <a href=""><i
+														class="fa fa-linkedin"></i></a>
 												</div>
 											</div>
 										</div>
@@ -746,10 +748,10 @@ body {
 												<h4>劉 士豪</h4>
 												<span>組員</span>
 												<div class="social">
-													<a href=""><i class="fa fa-twitter"></i></a>
-													<a href=""><i class="fa fa-facebook"></i></a>
-													<a href=""><i class="fa fa-google-plus"></i></a>
-													<a href=""><i class="fa fa-linkedin"></i></a>
+													<a href=""><i class="fa fa-twitter"></i></a> <a href=""><i
+														class="fa fa-facebook"></i></a> <a href=""><i
+														class="fa fa-google-plus"></i></a> <a href=""><i
+														class="fa fa-linkedin"></i></a>
 												</div>
 											</div>
 										</div>
@@ -765,10 +767,10 @@ body {
 												<h4>洪 上尚</h4>
 												<span>組員</span>
 												<div class="social">
-													<a href=""><i class="fa fa-twitter"></i></a>
-													<a href=""><i class="fa fa-facebook"></i></a>
-													<a href=""><i class="fa fa-google-plus"></i></a>
-													<a href=""><i class="fa fa-linkedin"></i></a>
+													<a href=""><i class="fa fa-twitter"></i></a> <a href=""><i
+														class="fa fa-facebook"></i></a> <a href=""><i
+														class="fa fa-google-plus"></i></a> <a href=""><i
+														class="fa fa-linkedin"></i></a>
 												</div>
 											</div>
 										</div>
