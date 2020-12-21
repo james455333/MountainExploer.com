@@ -95,13 +95,6 @@
 <!-- <script src="/MountainExploer.com/product/back/productFunction.js"></script> -->
 
 <script src="/MountainExploer.com/js/swalLogin.js"></script>
-<script>
-	$(function() {
-		$("#backPreviousPage").on("click", function() {
-			window.history.go(-1)
-		})
-	})
-	</script>
 
 </head>
 
@@ -141,26 +134,19 @@
 
 								<div class='d-flex'>
 									<h3>訂單選項</h3>
-									<!-- 										<button id="newRoute" -->
-									<!-- 											class="btn btn-success btn-icon-split ml-auto"> -->
-									<!-- 											<span class="icon text-white-50"> <i -->
-									<!-- 												class="fas fa-flag"></i> -->
-									<!-- 											</span> <span class="text">訂單維護</span> -->
-									<!-- 										</button> -->
-									<%-- 									<a href='<c:url value="/MountainExploer.com/backstage/product/allOrders"/>'>訂單維護</a> --%>
 								</div>
 								<hr>
 							</div>
 							<div class="card-body">
 								<div class="table-responsive">
 								
-									<table class="table">
+									<table style="font-size:20px" class="table table table-striped">
 											<thead>
 												<tr>
 													<!-- thead更改從這邊開始 -->
 													<th >訂單編號</th>
 													<th >會員帳號</th>
-													<th >金額</th>
+													<th >訂單金額</th>
 													<th >收貨人</th>
 													<th >收貨地址</th>
 													<th >連絡電話</th>
@@ -175,7 +161,7 @@
 											<c:forEach var="orderBean" varStatus="stat"	items="${AllOrders}">
 												<TR>
 													<TD><a
-														href='<c:url value='/shoppingcart/orderInfo?orderId=${orderBean.seqno}' />'>
+														href='<c:url value='/backstage/product/orderInfo?orderId=${orderBean.seqno}' />'>
 															${orderBean.seqno} </a></TD>
 													<TD>${orderBean.memberBasic.account}</TD>
 													<TD>${orderBean.totalAmount}元</TD>
@@ -189,9 +175,10 @@
 														<div>
 															<form
 																action="<c:url value='/back/shop/updateOrder' />">
-																<input type="text" name="update"
+																<input type="text" name="update" 
 																	value="${orderBean.seqno}" style="display: none;">
-																<input type="submit" value="確認出貨">
+																<button class="btn btn-outline-success"
+																type="submit" value="確認出貨">確認出貨</button>
 															</form>
 														</div>
 														<div>
@@ -199,7 +186,8 @@
 																action="<c:url value='/back/shop/updateOrder' />">
 																<input type="text" name="cancel"
 																	value="${orderBean.seqno}" style="display: none;">
-																<input type="submit" value="取消訂單">
+																<button class="btn btn-outline-danger"
+																type="submit" value="取消訂單">取消訂單</button>
 															</form>
 														</div>
 
@@ -208,10 +196,11 @@
 												</TR>
 											</c:forEach>
 											<tr>
-												<td colspan="10" align="center"><input type="button"
-													value="返回商品後台" id="backPreviousPage"></td>
+												<td colspan="10" align="center"><button type="button" class="fas fa-tasks m-3 p-3"
+													 id="backPreviousPage">返回商品後台</button>
+													
+													</td>
 											</tr>
-
 
 
 											<!-- tbody更改到這邊結束 -->

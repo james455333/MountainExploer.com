@@ -85,7 +85,7 @@
 	</nav>
 	<div class="div_ul d-flex">
 			
-		<div class="col-4" >
+		<div class="col-3" >
 			<div class="m-3  p-3">
 				<div class="" style="line-height : unset;">
 					<!-- 更改內容從這邊開始 -->
@@ -104,7 +104,7 @@
 			<div class="div2 p-3">
 				<div style="width:100%" class="btn-group dropdown">
 					<button type="button" class="btn btn-lg btn-block btn-outline-success dropdown-toggle justify-content-between" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-						查看購物車
+						我的購物車
 					</button>
 					<div class="dropdown-menu w-100">
 					    <div class="div2">
@@ -132,7 +132,7 @@
 			</div>
 			
 		</div>
-		<div class="col-8">
+		<div class="col-9">
 				<!-- 每頁不同的內容從這裡開始 -->
 				
 				<div class="searchBar">
@@ -168,14 +168,14 @@
 				</div>
 	
 				<div class="secDivContent" >
-					<div>
-						<span>資料筆數 : </span> <span id="totalData"> </span>
+					<div >
+						資料筆數: <span id="totalData"> </span> 筆
 					</div>
 					</div>
 					<!--table-->
 					<table class="order-table">
-						<div class="order-table-tb">
-						</div>
+						<table class="order-table-tb">
+						</table>
 					</table>
 					<nav class="pageControl">
 	
@@ -186,18 +186,10 @@
 							value="最尾頁" name="" disabled>
 	
 					</nav>
-			</div>
 			<!-- 每頁不同的內容到這邊結束 -->
 	</div>
 
 	<footer id="footer">
-		<a>全站導覽</a>
-		<button id="demo1">確認demo1</button>
-		<button id="demo2">錯誤demo2</button>
-		<button id="demo3">確認提醒demo3</button>
-		<button id="demo4">多重選項&提醒視窗demo4</button>
-		<button id="demo5">Demo5</button>
-		<button id="demo6">Demo6</button>
 
 
 

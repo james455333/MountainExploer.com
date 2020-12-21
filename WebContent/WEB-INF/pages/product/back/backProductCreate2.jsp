@@ -140,72 +140,66 @@
 					<hr>
 
 					<div class='d-flex'>
-						<h3>新增商品</h3>
-						<!-- 										<button id="newRoute" -->
-						<!-- 											class="btn btn-success btn-icon-split ml-auto"> -->
-						<!-- 											<span class="icon text-white-50"> <i -->
-						<!-- 												class="fas fa-flag"></i> -->
-						<!-- 											</span> <span class="text">訂單維護</span> -->
-						<!-- 										</button> -->
-						<%-- 									<a href='<c:url value="/MountainExploer.com/backstage/product/allOrders"/>'>訂單維護</a> --%>
+						<h3>新增一筆商品資料</h3>
 					</div>
 					<hr>
 				</div>
-				<div class="card-body">
-					<div class="table-responsive">
+				<div class="card-body" style="font-size:22px">
+									<div class="table-responsive ">
 						<form action='<c:url value="/back/shop/createProductData"/>'
 							enctype="multipart/form-data" method="post">
-							<div>* 為必填項目</div>
-							<div>
-								<span>*次分類 :&nbsp</span> <select name="scName">
+							<div class="m-3 p-1">所有欄位皆為必填</div>
+							<div class="m-3 p-1">
+								<span>次分類 :&nbsp&nbsp</span> <select name="scName">
 									<c:forEach var="scBean" items="${scBean}" varStatus="vsRT">
 										<option value="${scBean.id}">${scBean.name}</option>
 									</c:forEach>
 								</select>
 							</div>
-							<div>
-								<label for="name">* 產品名稱 : &nbsp&nbsp</label> <input type="text"
+							<div class="m-3 p-1">
+								<label for="name">產品名稱 :  &nbsp&nbsp</label> <input type="text"
 									id="name" name="name" required>
 							</div>
-							<div>
-								<label for="type">* 型號 : &nbsp&nbsp</label> <input type="text"
+							<div class="m-3 p-1">
+								<label for="type">型號 :  &nbsp&nbsp</label> <input type="text"
 									id="type" name="type" required>
 							</div>
-							<div>
-								<label for="price">* 價格 : &nbsp&nbsp</label> <input type="text"
+							<div class="m-3 p-1">
+								<label for="price">價格 :  &nbsp&nbsp</label> <input type="text"
 									id="price" name="price" required>
 							</div>
-							<div>
-								<label for="stock">* 庫存 : &nbsp&nbsp</label> <input type="text"
+							<div class="m-3 p-1">
+								<label for="stock">庫存 :  &nbsp&nbsp</label> <input type="text"
 									id="stock" name="stock" required>
 							</div>
-							<div>
-								<label for="productImg">* 產品圖檔案 : &nbsp&nbsp</label> <input
+							<div class="m-3 p-1">
+								<label for="productImg">產品圖檔案 :  &nbsp&nbsp</label> <input
 									type="file" name="productImg" accept="image/*" required>
 							</div>
-							<div>
-								<label for="description">介紹 : &nbsp&nbsp</label>
+							<div class="m-3 p-1">
+								<label for="description">介紹 :  &nbsp&nbsp</label>
 								<textarea rows="2.5%" cols="50%" name="description"
 									id="description"></textarea>
 							</div>
-
-							<div>
-								<div>
-									<input type="submit" id="update" value="確認新增">
-								</div>
-								<div>
-									<input type="reset" value="清除">
-								</div>
-								<div>
-									<input type="button" value="返回上一頁" id="backPreviousPage">
-								</div>
-								<div>
-									<input type="button" value="快速輸入" id="fast">
-								</div>
+							<div class="d-flex justify-content-center">
+								<button class="fas fa-broom"   type="reset" value="清除">清除</button>
 							</div>
-						</form>
-
+							<br>
+							<div class="d-flex justify-content-center">
+								<button class="fas fa-plus-square" type="submit" id="update">確認新增</button>
+							</div>
+					</form>
+					<div class="m-3 p-1 d-flex justify-content-center">
+						<div class="">
+							<button type="button" value="返回商品後台" id="backPreviousPage" class="fas fa-tasks">返回商品後台</button>
+						</div>
 					</div>
+					</div>
+					<br>
+						<div>
+							<button id="fast" class="fas fa-magic">快速輸入</button>
+						</div>
+
 				</div>
 			</div>
 
@@ -283,6 +277,14 @@
 
 	<script>
 		$(function() {
+			$("#backPreviousPage")
+					.on(
+							"click",
+							function() {
+								window.location = "/MountainExploer.com/back/shop/product/index"
+							})
+		})
+		$(function() {
 			$("#fast").on("click", function() {
 				$('#name').val("岳進者結業紀念排汗衫");
 				$('#type').val("mountain100");
@@ -302,3 +304,5 @@
 // 		})
 	</script>
 </body>
+
+</html>
