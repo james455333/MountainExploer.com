@@ -79,8 +79,8 @@
 	<nav>
 		<ol class="breadcrumb p-4" style="font-size : 22.5px;" id="bc">
 			<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
-			<li class="breadcrumb-item"><a href="/MountainExploer.com/mountain/list?page=1&od=1">活動討論區</a></li>
-			<li class="breadcrumb-item active">發表活動</li>
+<!-- 			<li class="breadcrumb-item"><a href="/MountainExploer.com/shop/shoppingPage">岳進者精選</a></li> -->
+			<li class="breadcrumb-item active">岳進者精選</li>
 		</ol>
 	</nav>
 	<div class="div_ul d-flex">
@@ -106,9 +106,9 @@
 					<button type="button" class="btn btn-lg btn-block btn-outline-success dropdown-toggle justify-content-between" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 						我的購物車
 					</button>
-					<div class="dropdown-menu w-100">
+					<div class="dropdown-menu w-100 ">
 					    <div class="div2">
-					    	<a href='<c:url value="/shop/shoppingCartEntry"/>'>查看購物車詳情</a>
+					    	<a href='<c:url value="/shop/shoppingCartEntry"/>'>前往購物車</a>
 					    </div>
 					    <hr>
 					    <div class="div2">
@@ -187,6 +187,8 @@
 	
 					</nav>
 			<!-- 每頁不同的內容到這邊結束 -->
+	</div>
+	</div>
 	</div>
 
 	<footer id="footer">
