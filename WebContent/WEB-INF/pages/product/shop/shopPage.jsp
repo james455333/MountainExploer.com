@@ -74,127 +74,124 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent"
 				include-html="/MountainExploer.com/forinclude/includeForIndex.html"></div>
 		</nav>
-		
+
 	</header>
 	<nav>
-		<ol class="breadcrumb p-4" style="font-size : 22.5px;" id="bc">
+		<ol class="breadcrumb p-4" style="font-size: 22.5px;" id="bc">
 			<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
-<!-- 			<li class="breadcrumb-item"><a href="/MountainExploer.com/shop/shoppingPage">岳進者精選</a></li> -->
+			<!-- 			<li class="breadcrumb-item"><a href="/MountainExploer.com/shop/shoppingPage">岳進者精選</a></li> -->
 			<li class="breadcrumb-item active">岳進者精選</li>
 		</ol>
 	</nav>
 	<div class="div_ul d-flex">
-			
-		<div class="col-3" >
+
+		<div class="col-3">
 			<div class="m-3  p-3">
-				<div class="" style="line-height : unset;">
+				<div class="" style="line-height: unset;">
 					<!-- 更改內容從這邊開始 -->
 					<div class="d-flex align-items-center justify-content-between p-1">
 						<select class="w-100 h-100 mr-3" name="firstclass" id="fcSelect">
 						</select>
-						<button type="button" value="主類別查詢" class="mx-1 fcSubmit btn btn-outline-danger">主類別查詢</button>
+						<button type="button" value="主類別查詢"
+							class="mx-1 fcSubmit btn btn-outline-danger">主類別查詢</button>
 					</div>
 					<div class="d-flex align-items-center justify-content-between p-1">
 						<select name="secondclass" class="scSelect h-100 w-100 mr-3"></select>
-						<button type="button" value="次類別查詢" class="mx-1 scSubmit btn btn-outline-danger">次類別查詢</button>
+						<button type="button" value="次類別查詢"
+							class="mx-1 scSubmit btn btn-outline-danger">次類別查詢</button>
 					</div>
 					<!-- 更改內容到這邊結束 -->
 				</div>
 			</div>
 			<div class="div2 p-3">
-				<div style="width:100%" class="btn-group dropdown">
-					<button type="button" class="btn btn-lg btn-block btn-outline-success dropdown-toggle justify-content-between" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-						我的購物車
-					</button>
+				<div style="width: 100%" class="btn-group dropdown">
+					<button type="button"
+						class="btn btn-lg btn-block btn-outline-success dropdown-toggle justify-content-between"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						我的購物車</button>
 					<div class="dropdown-menu w-100 ">
-					    <div class="div2">
-					    	<a href='<c:url value="/shop/shoppingCartEntry"/>'>前往購物車</a>
-					    </div>
-					    <hr>
-					    <div class="div2">
+						<div class="div2">
+							<a href='<c:url value="/shop/shoppingCartEntry"/>'>前往購物車</a>
+						</div>
+						<hr>
+						<div class="div2">
 							<a href='<c:url value="/shoppingcart/memberOrders"/>'>查看訂單</a>
 						</div>
-					    <hr>
-					  	<div class="div2">
-					  		<div>
-								品項： ${ShoppingCart.itemNumber} 項
-							</div>
-							<div>
-								金額： $  ${ShoppingCart.subtotal} 
-							</div>
-					  	</div>
+						<hr>
+						<div class="div2">
+							<div>品項： ${ShoppingCart.itemNumber} 項</div>
+							<div>金額： $ ${ShoppingCart.subtotal}</div>
+						</div>
 					</div>
 				</div>
-				
+
 				<br>
-				
+
 
 			</div>
-			
+
 		</div>
 		<div class="col-9">
-				<!-- 每頁不同的內容從這裡開始 -->
-				
-				<div class="searchBar">
-					<nav>
-						<ul class="third_nav">
-							<!-- 控制列表內容從這邊開始 -->
-	<!-- 						<li>主類別: <select name="firstclass" id="fcSelect"></select> <input -->
-	<!-- 							type="button" value="主類別查詢" class="fcSubmit"> -->
-	<!-- 						</li> -->
-	<!-- 						<li>次類別: <select name="secondclass" class="scSelect"></select> -->
-	<!-- 							<input type="button" value="次類別查詢" class="scSubmit"> -->
-	<!-- 						</li> -->
-						</ul>
-					</nav>
-	
-					<div>
-						<span>價格區間 : </span> <input type="radio" name="radioGroup"
-							id="radioA" value="1" checked="checked" /><label>0-1000元</label>
-						<input type="radio" name="radioGroup" id="radioB" value="2" /><label>1001-2000元</label>
-						<input type="radio" name="radioGroup" id="radioC" value="3" /><label>2001-3000元</label>
-						<input type="radio" name="radioGroup" id="radioD" value="4" /><label>3000元以上</label>
-						<button type="submit" class="priceSubmitButton btn btn-outline-danger">價格區間查詢</button>
-						<!-- <button type="submit" class="priceSubmitButton btn btn-outline-dark">價格區間查詢</button> -->
-					</div>
-					<div>
-						商品名稱搜尋：<input type="text" class="light-table-filter"
-							placeholder="請輸入關鍵字"> <img
-							class="imgSearch" src="/MountainExploer.com/images/放大鏡.png" alt=""
-							width="35px">
-						<!-- <button><img class=imgSearch src="/MountainExploer.com/images/放大鏡.png" alt="" width="35px"></button> -->
-					</div>
-	
+			<!-- 每頁不同的內容從這裡開始 -->
+
+			<div class="searchBar">
+				<nav>
+					<ul class="third_nav">
+						<!-- 控制列表內容從這邊開始 -->
+						<!-- 						<li>主類別: <select name="firstclass" id="fcSelect"></select> <input -->
+						<!-- 							type="button" value="主類別查詢" class="fcSubmit"> -->
+						<!-- 						</li> -->
+						<!-- 						<li>次類別: <select name="secondclass" class="scSelect"></select> -->
+						<!-- 							<input type="button" value="次類別查詢" class="scSubmit"> -->
+						<!-- 						</li> -->
+					</ul>
+				</nav>
+
+				<div>
+					<span>價格區間 : </span> <input type="radio" name="radioGroup"
+						id="radioA" value="1" checked="checked" /><label>0-1000元</label>
+					<input type="radio" name="radioGroup" id="radioB" value="2" /><label>1001-2000元</label>
+					<input type="radio" name="radioGroup" id="radioC" value="3" /><label>2001-3000元</label>
+					<input type="radio" name="radioGroup" id="radioD" value="4" /><label>3000元以上</label>
+					<button type="submit"
+						class="priceSubmitButton btn btn-outline-danger">價格區間查詢</button>
+					<!-- <button type="submit" class="priceSubmitButton btn btn-outline-dark">價格區間查詢</button> -->
 				</div>
-	
-				<div class="secDivContent" >
-					<div >
-						資料筆數: <span id="totalData"> </span> 筆
-					</div>
-					</div>
-					<!--table-->
-					<table class="order-table">
-						<table class="order-table-tb">
-						</table>
-					</table>
-					<nav class="pageControl">
-	
-						<input id="firstPage" type="button" value="最前頁" name="1" disabled>
-						<input id="previousPage" type="button" value="前一頁" name="" disabled>
-						<i id="pageNo"></i> <input id="nextPage" type="button" value="下一頁"
-							name="" disabled> <input id="lastPage" type="button"
-							value="最尾頁" name="" disabled>
-	
-					</nav>
+				<div>
+					商品名稱搜尋：<input type="text" class="light-table-filter"
+						placeholder="請輸入關鍵字"> <img class="imgSearch"
+						src="/MountainExploer.com/images/放大鏡.png" alt="" width="35px">
+					<!-- <button><img class=imgSearch src="/MountainExploer.com/images/放大鏡.png" alt="" width="35px"></button> -->
+				</div>
+
+			</div>
+
+			<div class="secDivContent">
+				<div>
+					資料筆數: <span id="totalData"> </span> 筆
+				</div>
+			</div>
+			<!--table-->
+			<table class="order-table">
+				<table class="order-table-tb">
+				</table>
+			</table>
+			<nav class="pageControl">
+
+				<input id="firstPage" type="button" value="最前頁" name="1" disabled>
+				<input id="previousPage" type="button" value="前一頁" name="" disabled>
+				<i id="pageNo"></i> <input id="nextPage" type="button" value="下一頁"
+					name="" disabled> <input id="lastPage" type="button"
+					value="最尾頁" name="" disabled>
+
+			</nav>
 			<!-- 每頁不同的內容到這邊結束 -->
+		</div>
 	</div>
 	</div>
-	</div>
 
-	<footer id="footer">
-
-
-
+	<footer id="footer"
+		include-html="/MountainExploer.com/forinclude/includeForFooter.html">
 	</footer>
 </body>
 <script src="/MountainExploer.com/js/upLoadImg.js"></script>

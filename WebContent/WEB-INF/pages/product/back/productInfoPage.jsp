@@ -157,7 +157,7 @@
 
 						<div style='font-size: 30px; height: 150px'
 							class="m-3 d-flex justify-content-center ">${ProductBean.name}</div>
-						<%-- 			<div>${ProductBean.seqno}</div> --%>
+									<div>${ProductBean.seqno}</div>
 						<div class="m-3 border-bottom">${ProductBean.firstClass}</div>
 						<div class="m-3 border-bottom">${ProductBean.secondClass}</div>
 						<div class="m-3 border-bottom">${ProductBean.type}</div>

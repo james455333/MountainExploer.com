@@ -161,10 +161,8 @@
 
 	<!-- 每頁不同的內容到這邊結束 -->
 
-	<footer id="footer">
-
-
-
+		<footer id="footer"
+		include-html="/MountainExploer.com/forinclude/includeForFooter.html">
 	</footer>
 </body>
 <script src="/MountainExploer.com/js/upLoadImg.js"></script>

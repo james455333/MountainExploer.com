@@ -351,7 +351,7 @@ $(function() {
 				'<td style= "width: 150px">'+	
 //				'<div style= "width: 120px ;height:400 px">'+	
 					"<div class='p-3' style='overflow:hidden;min-height:75px;max-height:75px'>" +
-						'<a style="font-size:15px;max-width : 125px;" class="name-aTag" title="' + data[i].name + '"href= "/MountainExploer.com/shop/productInfoEntry?no='+data[i].seqno+'">'+ data[i].name  + '</a>' +
+						'<a style="font-size:17px;max-width : 125px;" class="name-aTag" title="' + data[i].name + '"href= "/MountainExploer.com/shop/productInfoEntry?no='+data[i].seqno+'">'+ data[i].name  + '</a>' +
 					"</div>" +
 				"</tr>"+
 //				"</div>"+	
