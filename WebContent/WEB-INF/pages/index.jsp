@@ -297,52 +297,6 @@ body {
 										</svg>
 								</div>
 							</div>
-							<!--
-							<div class="row about-extra">
-								<div class="col-lg-6" data-aos="fade-right">
-									<img src="assets/img/about-extra-1.svg" class="img-fluid"
-										alt="">
-								</div>
-								<div class="col-lg-6 pt-5 pt-lg-0" data-aos="fade-left">
-									<h4>Voluptatem dignissimos provident quasi corporis
-										voluptates sit assumenda.</h4>
-									<p>Ipsum in aspernatur ut possimus sint. Quia omnis est
-										occaecati possimus ea. Quas molestiae perspiciatis occaecati
-										qui rerum. Deleniti quod porro sed quisquam saepe. Numquam
-										mollitia recusandae non ad at et a.</p>
-									<p>Ad vitae recusandae odit possimus. Quaerat cum ipsum
-										corrupti. Odit qui asperiores ea corporis deserunt veritatis
-										quidem expedita perferendis. Qui rerum eligendi ex doloribus
-										quia sit. Porro rerum eum eum.</p>
-								</div>
-							</div>
-
-							<div class="row about-extra">
-								<div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
-									<img src="assets/img/about-extra-2.svg" class="img-fluid"
-										alt="">
-								</div>
-
-								<div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1"
-									data-aos="fade-right">
-									<h4>Neque saepe temporibus repellat ea ipsum et. Id vel et
-										quia tempora facere reprehenderit.</h4>
-									<p>Delectus alias ut incidunt delectus nam placeat in
-										consequatur. Sed cupiditate quia ea quis. Voluptas nemo qui
-										aut distinctio. Cumque fugit earum est quam officiis numquam.
-										Ducimus corporis autem at blanditiis beatae incidunt sunt.</p>
-									<p>Voluptas saepe natus quidem blanditiis. Non sunt impedit
-										voluptas mollitia beatae. Qui esse molestias. Laudantium
-										libero nisi vitae debitis. Dolorem cupiditate est perferendis
-										iusto.</p>
-									<p>Eum quia in. Magni quas ipsum a. Quis ex voluptatem
-										inventore sint quia modi. Numquam est aut fuga mollitia
-										exercitationem nam accusantium provident quia.</p>
-								</div>
-
-							</div>
-
--->
 						</div>
 					</section>
 					<!-- End About Section -->
@@ -465,8 +419,7 @@ body {
 								<!-- 只需在filter-"填上相對應的分類即可" -->
 								<div class="col-lg-4 col-md-6 portfolio-item filter-clothes">
 									<div class="portfolio-wrap">
-										<img src="assets/img/portfolio/app1.jpg" class="img-fluid"
-											alt="">
+										<img src="/MountainExploer.com/images/shopimg/hot1.jpg" class="img-fluid" alt="">
 										<div class="portfolio-info">
 											<h4>
 												<a href="portfolio-details.html">短袖排汗衣 男 獵戶藍</a>
@@ -474,8 +427,8 @@ body {
 											<p>Mammut Atacazo Light Zip T-SHIRT</p>
 
 											<div>
-												<a href="assets/img/portfolio/app1.jpg"
-													data-gall="portfolioGallery" title="App 1"
+												<a href="/MountainExploer.com/images/shopimg/hot1.jpg"
+													data-gall="portfolioGallery" title="短袖排汗衣 男 獵戶藍"
 													class="venobox link-preview"><i class="ion ion-eye"></i></a>
 												<a
 													href="/MountainExploer.com/shop/productInfoEntry?no=6000050"
@@ -488,7 +441,7 @@ body {
 
 								<div class="col-lg-4 col-md-6 portfolio-item filter-clothes">
 									<div class="portfolio-wrap">
-										<img src="assets/img/portfolio/web3.jpg" class="img-fluid"
+										<img src="/MountainExploer.com/images/shopimg/hot2.jpg" class="img-fluid"
 											alt="">
 										<div class="portfolio-info">
 											<h4>
@@ -498,11 +451,12 @@ body {
 
 											<p>RAB POWER STRETCH PRO PULL-ON</p>
 											<div>
-												<a href="assets/img/portfolio/web3.jpg"
+												<a href="/MountainExploer.com/images/shopimg/hot2.jpg"
 													class="venobox link-preview" data-gall="portfolioGallery"
-													title="Web 3"><i class="ion ion-eye"></i></a> <a
-													href="portfolio-details.html" class="link-details"
-													title="More Details"><i class="ion ion-android-open"></i></a>
+													title="保暖排汗衣 女 醬果紫"><i class="ion ion-eye"></i></a> <a
+													href="/MountainExploer.com/shop/productInfoEntry?no=6000029"
+													class="link-details" title="More Details"><i
+													class="ion ion-android-open"></i></a>
 											</div>
 										</div>
 									</div>
@@ -510,7 +464,7 @@ body {
 
 								<div class="col-lg-4 col-md-6 portfolio-item filter-pants">
 									<div class="portfolio-wrap">
-										<img src="assets/img/portfolio/app2.jpg" class="img-fluid"
+										<img src="/MountainExploer.com/images/shopimg/hot3.jpg" class="img-fluid"
 											alt="">
 										<div class="portfolio-info">
 											<h4>
@@ -520,11 +474,12 @@ body {
 
 											<p>Fjallraven Vidda Pro Ventilated Trousers Reg M</p>
 											<div>
-												<a href="assets/img/portfolio/app2.jpg"
+												<a href="/MountainExploer.com/images/shopimg/hot3.jpg"
 													class="venobox link-preview" data-gall="portfolioGallery"
 													title="App 2"><i class="ion ion-eye"></i></a> <a
-													href="portfolio-details.html" class="link-details"
-													title="More Details"><i class="ion ion-android-open"></i></a>
+													href="/MountainExploer.com/shop/productInfoEntry?no=6000118"
+													class="link-details" title="More Details"><i
+													class="ion ion-android-open"></i></a>
 											</div>
 										</div>
 									</div>
@@ -532,7 +487,7 @@ body {
 
 								<div class="col-lg-4 col-md-6 portfolio-item filter-pants">
 									<div class="portfolio-wrap">
-										<img src="assets/img/portfolio/card2.jpg" class="img-fluid"
+										<img src="/MountainExploer.com/images/shopimg/hot4.jpg" class="img-fluid"
 											alt="">
 										<div class="portfolio-info">
 											<h4>
@@ -540,11 +495,12 @@ body {
 											</h4>
 											<p>CDare 2b DWW399 Attract II</p>
 											<div>
-												<a href="assets/img/portfolio/card2.jpg"
+												<a href="/MountainExploer.com/images/shopimg/hot4.jpg"
 													class="venobox link-preview" data-gall="portfolioGallery"
 													title="Card 2"><i class="ion ion-eye"></i></a> <a
-													href="portfolio-details.html" class="link-details"
-													title="More Details"><i class="ion ion-android-open"></i></a>
+													href="/MountainExploer.com/shop/productInfoEntry?no=6000150"
+													class="link-details" title="More Details"><i
+													class="ion ion-android-open"></i></a>
 											</div>
 										</div>
 									</div>
@@ -552,7 +508,7 @@ body {
 
 								<div class="col-lg-4 col-md-6 portfolio-item filter-camp">
 									<div class="portfolio-wrap">
-										<img src="assets/img/portfolio/web2.jpg" class="img-fluid"
+										<img src="/MountainExploer.com/images/shopimg/hot5.jpg" class="img-fluid"
 											alt="">
 										<div class="portfolio-info">
 											<h4>
@@ -560,11 +516,12 @@ body {
 											</h4>
 											<p>犀牛 U-11 1.8kg</p>
 											<div>
-												<a href="assets/img/portfolio/web2.jpg"
+												<a href="/MountainExploer.com/images/shopimg/hot5.jpg"
 													class="venobox link-preview" data-gall="portfolioGallery"
 													title="Web 2"><i class="ion ion-eye"></i></a> <a
-													href="portfolio-details.html" class="link-details"
-													title="More Details"><i class="ion ion-android-open"></i></a>
+													href="/MountainExploer.com/shop/productInfoEntry?no=6000810"
+													class="link-details" title="More Details"><i
+													class="ion ion-android-open"></i></a>
 											</div>
 										</div>
 									</div>
@@ -572,7 +529,7 @@ body {
 
 								<div class="col-lg-4 col-md-6 portfolio-item filter-camp">
 									<div class="portfolio-wrap">
-										<img src="assets/img/portfolio/app3.jpg" class="img-fluid"
+										<img src="/MountainExploer.com/images/shopimg/hot6.jpg" class="img-fluid"
 											alt="">
 										<div class="portfolio-info">
 											<h4>
@@ -581,11 +538,12 @@ body {
 											<p>K9T3T005 GEOPATH</p>
 											<p>KAZMI</p>
 											<div>
-												<a href="assets/img/portfolio/app3.jpg"
+												<a href="/MountainExploer.com/images/shopimg/hot6.jpg"
 													class="venobox link-preview" data-gall="portfolioGallery"
 													title="App 3"><i class="ion ion-eye"></i></a> <a
-													href="portfolio-details.html" class="link-details"
-													title="More Details"><i class="ion ion-android-open"></i></a>
+													href="/MountainExploer.com/shop/productInfoEntry?no=6000842"
+													class="link-details" title="More Details"><i
+													class="ion ion-android-open"></i></a>
 											</div>
 										</div>
 									</div>
@@ -593,7 +551,7 @@ body {
 
 								<div class="col-lg-4 col-md-6 portfolio-item filter-other">
 									<div class="portfolio-wrap">
-										<img src="assets/img/portfolio/card1.jpg" class="img-fluid"
+										<img src="/MountainExploer.com/images/shopimg/hot7.jpg" class="img-fluid"
 											alt="">
 										<div class="portfolio-info">
 											<h4>
@@ -603,11 +561,12 @@ body {
 											<hr>
 											<p>軍綠</p>
 											<div>
-												<a href="assets/img/portfolio/card1.jpg"
+												<a href="/MountainExploer.com/images/shopimg/hot7.jpg"
 													class="venobox link-preview" data-gall="portfolioGallery"
 													title="Card 1"><i class="ion ion-eye"></i></a> <a
-													href="portfolio-details.html" class="link-details"
-													title="More Details"><i class="ion ion-android-open"></i></a>
+													href="/MountainExploer.com/shop/productInfoEntry?no=6001312"
+													class="link-details" title="More Details"><i
+													class="ion ion-android-open"></i></a>
 											</div>
 										</div>
 									</div>
@@ -615,7 +574,7 @@ body {
 
 								<div class="col-lg-4 col-md-6 portfolio-item filter-other">
 									<div class="portfolio-wrap">
-										<img src="assets/img/portfolio/card3.jpg" class="img-fluid"
+										<img src="/MountainExploer.com/images/shopimg/hot8.jpg" class="img-fluid"
 											alt="">
 										<div class="portfolio-info">
 											<h4>
@@ -624,11 +583,12 @@ body {
 											<p>Petzl E089 Tactikka+</p>
 											<p>黑 350流明</p>
 											<div>
-												<a href="assets/img/portfolio/card3.jpg"
+												<a href="/MountainExploer.com/images/shopimg/hot8.jpg"
 													class="venobox link-preview" data-gall="portfolioGallery"
 													title="Card 3"><i class="ion ion-eye"></i></a> <a
-													href="portfolio-details.html" class="link-details"
-													title="More Details"><i class="ion ion-android-open"></i></a>
+													href="/MountainExploer.com/shop/productInfoEntry?no=6001051"
+													class="link-details" title="More Details"><i
+													class="ion ion-android-open"></i></a>
 											</div>
 										</div>
 									</div>
@@ -636,7 +596,7 @@ body {
 
 								<div class="col-lg-4 col-md-6 portfolio-item filter-camp">
 									<div class="portfolio-wrap">
-										<img src="assets/img/portfolio/web1.jpg" class="img-fluid"
+										<img src="/MountainExploer.com/images/shopimg/hot9.jpg" class="img-fluid"
 											alt="">
 										<div class="portfolio-info">
 											<h4>
@@ -645,11 +605,12 @@ body {
 											<p>Zamberlan</p>
 											<p>CORNELL LITE GTX 0325PM</p>
 											<div>
-												<a href="assets/img/portfolio/web1.jpg"
+												<a href="/MountainExploer.com/images/shopimg/hot9.jpg"
 													class="venobox link-preview" data-gall="portfolioGallery"
 													title="Web 1"><i class="ion ion-eye"></i></a> <a
-													href="portfolio-details.html" class="link-details"
-													title="More Details"><i class="ion ion-android-open"></i></a>
+													href="/MountainExploer.com/shop/productInfoEntry?no=6000387"
+													class="link-details" title="More Details"><i
+													class="ion ion-android-open"></i></a>
 											</div>
 										</div>
 									</div>
@@ -680,7 +641,7 @@ body {
 											<h3>劉 怡廷</h3>
 											<h4>組長</h4>
 											<h4>Management Information System</h4>
-											<p>說一些想說的話</p>
+											<p>結業順利!!!</p>
 										</div>
 
 										<div class="testimonial-item">
@@ -689,7 +650,7 @@ body {
 											<h3>潘 威承</h3>
 											<h4>技術長</h4>
 											<h4>Project Manager</h4>
-											<p>說一些想說的話</p>
+											<p>結業快樂!!!</p>
 										</div>
 
 										<div class="testimonial-item">
@@ -747,10 +708,10 @@ body {
 												<h4>劉 怡廷</h4>
 												<span>組長</span>
 												<div class="social">
-													<a href=""><i class="fa fa-twitter"></i></a> <a href=""><i
-														class="fa fa-facebook"></i></a> <a href=""><i
-														class="fa fa-google-plus"></i></a> <a href=""><i
-														class="fa fa-linkedin"></i></a>
+													<a href=""><i class="fa fa-twitter"></i></a>
+													<a href=""><i class="fa fa-facebook"></i></a>
+													<a href=""><i class="fa fa-google-plus"></i></a>
+													<a href=""><i class="fa fa-linkedin"></i></a>
 												</div>
 											</div>
 										</div>
@@ -766,10 +727,10 @@ body {
 												<h4>潘 威承</h4>
 												<span>技術長</span>
 												<div class="social">
-													<a href=""><i class="fa fa-twitter"></i></a> <a href=""><i
-														class="fa fa-facebook"></i></a> <a href=""><i
-														class="fa fa-google-plus"></i></a> <a href=""><i
-														class="fa fa-linkedin"></i></a>
+													<a href=""><i class="fa fa-twitter"></i></a>
+													<a href=""><i class="fa fa-facebook"></i></a>
+													<a href=""><i class="fa fa-google-plus"></i></a>
+													<a href=""><i class="fa fa-linkedin"></i></a>
 												</div>
 											</div>
 										</div>
@@ -785,10 +746,10 @@ body {
 												<h4>劉 士豪</h4>
 												<span>組員</span>
 												<div class="social">
-													<a href=""><i class="fa fa-twitter"></i></a> <a href=""><i
-														class="fa fa-facebook"></i></a> <a href=""><i
-														class="fa fa-google-plus"></i></a> <a href=""><i
-														class="fa fa-linkedin"></i></a>
+													<a href=""><i class="fa fa-twitter"></i></a>
+													<a href=""><i class="fa fa-facebook"></i></a>
+													<a href=""><i class="fa fa-google-plus"></i></a>
+													<a href=""><i class="fa fa-linkedin"></i></a>
 												</div>
 											</div>
 										</div>
@@ -804,10 +765,10 @@ body {
 												<h4>洪 上尚</h4>
 												<span>組員</span>
 												<div class="social">
-													<a href=""><i class="fa fa-twitter"></i></a> <a href=""><i
-														class="fa fa-facebook"></i></a> <a href=""><i
-														class="fa fa-google-plus"></i></a> <a href=""><i
-														class="fa fa-linkedin"></i></a>
+													<a href=""><i class="fa fa-twitter"></i></a>
+													<a href=""><i class="fa fa-facebook"></i></a>
+													<a href=""><i class="fa fa-google-plus"></i></a>
+													<a href=""><i class="fa fa-linkedin"></i></a>
 												</div>
 											</div>
 										</div>
