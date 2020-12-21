@@ -150,41 +150,41 @@
 						<form action='<c:url value="/back/shop/updateData"/>'
 							class="newDataForm" enctype="multipart/form-data" method="post">
 							<div>
-								<div>
+								<div class=" m-1 p-1">
 									<input type="hidden" name="itemBasicSeqno"
 										value="${itemInfo.itemBasicSeqno}" readonly> 編號 :
 									${itemInfo.itemBasicSeqno}
 								</div>
-								<div>
+								<div class=" m-1 p-1">
 									<label for="name"> 產品名稱: (必填)&nbsp</label> <input type="text"
 										style="width: 600px" name="name" value="${itemBasic.name}"
 										required>
 								</div>
-								<div>
+								<div class=" m-1 p-1">
 									<label for="type"> 型號: (必填)&nbsp</label> <input type="text"
 										name="type" value="${itemInfo.type}" required>
 								</div>
-								<div>
+								<div class=" m-1 p-1">
 									<label for="price"> 價格: (必填)&nbsp</label> <input type="text"
 										name="price" value="${itemInfo.price}" required>
 								</div>
-								<div>
+								<div class=" m-1 p-1">
 									<label for="stock"> 庫存量 : &nbsp(必填)&nbsp</label> <input
 										type="text" name="stock" value="${itemInfo.stock}" required>
 								</div>
-								<div>
-									<img style="width: 150px; height: 150px;"
+								<div class=" m-1 p-1">
+									<img style="width: 400px; height: 500px;"
 										src="<c:url value='/backstage/product/search/images?seqno=${itemInfo.itemBasicSeqno}' />">
 									<br>
 
 								</div>
-								<div>
+								<div class=" m-1 p-1">
 									<i>修改圖片上傳 : &nbsp&nbsp<i>
 <!-- 									<label for="productImg">修改圖片上傳 : &nbsp&nbsp</label> -->
 									<div style="display: none;"></div>
 									<input type="file" name="productImg" accept="image/*">
 								</div>
-								<div>
+								<div class=" m-1 p-1">
 									<label for="description"> 介紹 : &nbsp&nbsp(必填)</label> <textarea
 										style="width: 1000px ;height:100px" 
 										name="description"
@@ -193,11 +193,11 @@
 
 							</div>
 							<div>
-								<div>
+								<div class=" m-1 p-1">
 <!-- 									<input type="submit" value="確認修改"> -->
 									<button type="submit" class="fas fa-pen-nib m-3 p-3" value="確認修改">確認修改</button>
 								</div>
-								<div>
+								<div class=" m-1 p-1">
 									<button type="button" value="返回商品後台" id="backPreviousPage" class="fas fa-tasks m-3 p-3">返回商品後台</button>
 								</div>
 

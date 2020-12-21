@@ -575,7 +575,7 @@
 												<img src="images/personalImg/洪上尚.jpg" class="testimonial-img" alt="">
 												<h3>洪 上尚</h3>
 												<h4>組員</h4>
-												<p>說一些想說的話</p>
+												<p>謝謝大家的幫忙，才能順利完成專案</p>
 											</div>
 
 											<div class="testimonial-item">
