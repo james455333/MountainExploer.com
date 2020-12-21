@@ -49,5 +49,27 @@ var gmAjax = $.ajax({
         cutoutPercentage: 0,
       },
     });
+
+    $("#mb-mode-export").on("click", function(){
+        downloadChart(mbModeChart, "會員身分組占比圓餅圖");
+    })
+    
 })
+
+function downloadChart(chartElm, fileName){
+    const openURL = chartElm.toBase64Image();
+    const chartType = chartElm.config.type;
+    let exportName = fileName + "_" + chartType;
+    
+    const a = $("a.export")[0];
+    console.log(a);
+
+    a.download = exportName + ".png";
+    a.href = openURL;
+    a.click()
+    setTimeout(function(){
+        window.URL.revokeObjectURL(openURL),5000
+    })
+}
+
 

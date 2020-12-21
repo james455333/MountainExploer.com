@@ -112,7 +112,7 @@ pageEncoding="UTF-8"%>
 	                                            <button class="dropdown-item act-mode-chart" value='bar' >長條圖(直)</button>
 	                                            <button class="dropdown-item act-mode-chart" value='horizontalBar' >長條圖(橫)</button>
 	                                        	<div class="dropdown-divider"></div>
-												<button class="dropdown-item" id="act-mode-export">輸出為PNG檔</button>
+												<button class="dropdown-item exporPng" id="mb-mode-export">輸出為PNG檔</button>
 												<button class="dropdown-item" id="act-mode-export-json">輸出為JSON檔</button>
 	                                        </div>
 	                                    </div>
