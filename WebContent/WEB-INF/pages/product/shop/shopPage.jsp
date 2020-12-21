@@ -142,20 +142,9 @@
 		<div class="col-9">
 			<!-- 每頁不同的內容從這裡開始 -->
 
-			<div class="searchBar">
-				<nav>
-					<ul class="third_nav">
-						<!-- 控制列表內容從這邊開始 -->
-						<!-- 						<li>主類別: <select name="firstclass" id="fcSelect"></select> <input -->
-						<!-- 							type="button" value="主類別查詢" class="fcSubmit"> -->
-						<!-- 						</li> -->
-						<!-- 						<li>次類別: <select name="secondclass" class="scSelect"></select> -->
-						<!-- 							<input type="button" value="次類別查詢" class="scSubmit"> -->
-						<!-- 						</li> -->
-					</ul>
-				</nav>
+			<div class="searchBar m-2 p-1">
 
-				<div style='font-size: 20px '>
+				<div style='font-size: 18px '>
 					<span>價格區間 :  </span> <input type="radio" name="radioGroup"
 						id="radioA" value="1" checked="checked" /><label> 0-1000元</label>
 					<input type="radio" name="radioGroup" id="radioB" value="2" /><label> 1001-2000元</label>
@@ -165,7 +154,7 @@
 						class="priceSubmitButton btn btn-outline-info ">價格區間查詢</button>
 					<!-- <button type="submit" class="priceSubmitButton btn btn-outline-dark">價格區間查詢</button> -->
 				</div>
-				<div style='font-size: 20px'>
+				<div style='font-size: 18px'>
 					商品名稱搜尋：<input type="text" class="light-table-filter"
 						placeholder="請輸入關鍵字"> <img class="imgSearch"
 						src="/MountainExploer.com/images/放大鏡.png" alt="" width="35px">

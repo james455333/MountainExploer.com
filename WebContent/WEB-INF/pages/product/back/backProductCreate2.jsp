@@ -144,11 +144,19 @@
 					</div>
 					<hr>
 				</div>
-				<div class="card-body" style="font-size:22px">
-									<div class="table-responsive ">
+				<div class="card-body" style="font-size: 22px">
+					<div class="table-responsive ">
+					<div>
 						<form action='<c:url value="/back/shop/createProductData"/>'
 							enctype="multipart/form-data" method="post">
-							<div class="m-3 p-1">所有欄位皆為必填</div>
+							<div class="col-5 ">
+							<div class="m-3 p-1">
+								<label for="productImg">產品圖檔案 : &nbsp&nbsp</label> <input
+									type="file" name="productImg" accept="image/*" required>
+							</div>
+							</div>
+							<div class="col-7 ">
+							<div class="m-3 p-1">* 所有欄位皆為必填</div>
 							<div class="m-3 p-1">
 								<span>次分類 :&nbsp&nbsp</span> <select name="scName">
 									<c:forEach var="scBean" items="${scBean}" varStatus="vsRT">
@@ -157,48 +165,50 @@
 								</select>
 							</div>
 							<div class="m-3 p-1">
-								<label for="name">產品名稱 :  &nbsp&nbsp</label> <input type="text"
+								<label for="name">產品名稱 : &nbsp&nbsp</label> <input type="text"
 									id="name" name="name" required>
 							</div>
 							<div class="m-3 p-1">
-								<label for="type">型號 :  &nbsp&nbsp</label> <input type="text"
+								<label for="type">型號 : &nbsp&nbsp</label> <input type="text"
 									id="type" name="type" required>
 							</div>
 							<div class="m-3 p-1">
-								<label for="price">價格 :  &nbsp&nbsp</label> <input type="text"
+								<label for="price">價格 : &nbsp&nbsp</label> <input type="text"
 									id="price" name="price" required>
 							</div>
 							<div class="m-3 p-1">
-								<label for="stock">庫存 :  &nbsp&nbsp</label> <input type="text"
+								<label for="stock">庫存 : &nbsp&nbsp</label> <input type="text"
 									id="stock" name="stock" required>
 							</div>
+							
 							<div class="m-3 p-1">
-								<label for="productImg">產品圖檔案 :  &nbsp&nbsp</label> <input
-									type="file" name="productImg" accept="image/*" required>
-							</div>
-							<div class="m-3 p-1">
-								<label for="description">介紹 :  &nbsp&nbsp</label>
+								<label for="description">介紹 : &nbsp&nbsp</label>
 								<textarea rows="2.5%" cols="50%" name="description"
 									id="description"></textarea>
 							</div>
-							<div class="d-flex justify-content-center">
-								<button class="fas fa-broom"   type="reset" value="清除">清除</button>
 							</div>
-							<br>
+							
+							<hr>
 							<div class="d-flex justify-content-center">
-								<button class="fas fa-plus-square" type="submit" id="update">確認新增</button>
+								<button class="fas fa-broom m-2 p-2" type="reset" value="清除">清除</button>
 							</div>
-					</form>
-					<div class="m-3 p-1 d-flex justify-content-center">
-						<div class="">
-							<button type="button" value="返回商品後台" id="backPreviousPage" class="fas fa-tasks">返回商品後台</button>
+							<div class="d-flex justify-content-center">
+								<button class="fas fa-plus-square m-2 p-2" type="submit"
+									id="update">確認新增</button>
+							</div>
+						</form>
+							</div>
+						<div class=" d-flex justify-content-center">
+							<div class="">
+								<button type="button" value="返回商品後台" id="backPreviousPage"
+									class="fas fa-tasks m-2 p-2">返回商品後台</button>
+							</div>
 						</div>
-					</div>
 					</div>
 					<br>
-						<div>
-							<button id="fast" class="fas fa-magic">快速輸入</button>
-						</div>
+					<div>
+						<button id="fast" class="fas fa-magic">快速輸入</button>
+					</div>
 
 				</div>
 			</div>
@@ -293,15 +303,15 @@
 				$('#description').val("慶祝結業限量款");
 			})
 		})
-// 		$(function() {
-// 			$("#update").on("click", function() {
-// 				Swal.fire({
-// 					title : "商品新增成功",
-// 					icon : "success",
-// 					confirmButtonText : 'ok',
-// 				})
-// 			})
-// 		})
+		// 		$(function() {
+		// 			$("#update").on("click", function() {
+		// 				Swal.fire({
+		// 					title : "商品新增成功",
+		// 					icon : "success",
+		// 					confirmButtonText : 'ok',
+		// 				})
+		// 			})
+		// 		})
 	</script>
 </body>
 
