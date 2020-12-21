@@ -114,7 +114,7 @@
 			<div class="div2 p-3">
 				<div style="width: 100%" class="btn-group dropdown">
 					<button type="button"
-						class="btn btn-lg btn-block  dropdown-toggle justify-content-between fas fa-shopping-cart"
+						class="btn btn-lg btn-block btn-outline-success dropdown-toggle justify-content-between"
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 						我的購物車</button>
 					<div class="dropdown-menu w-100 ">
