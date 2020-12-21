@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>會員訂單查詢</title>
 <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
+<link rel="stylesheet" href="/MountainExploer.com/css/index.css">
+<link rel="stylesheet" href="/MountainExploer.com/css/style.css">
 <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -37,7 +39,7 @@
 		<div class="count1_img">
 			<img src="/MountainExploer.com/images/logo1.png">
 			<hr>
-			<h1 class="font">可能改成輪播</h1>
+			<h1 class="font"></h1>
 			<!-- <a class="font">岳進者</a> -->
 		</div>
 	</div>
