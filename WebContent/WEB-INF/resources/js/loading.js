@@ -10,11 +10,11 @@ var LoadingCount = {
 };
 function openBlock(target){
 	LoadingCount.target = target != null ? target : LoadingCount.target
-	if (LoadingCount.target instanceof jQuery){
-		LoadingCount.target.css("overflow", "hidden")
-	}else{
-		$(LoadingCount.target).css("overflow", "hidden")
-	}
+//	if (LoadingCount.target instanceof jQuery){
+//		LoadingCount.target.css("overflow", "hidden")
+//	}else{
+//		$(LoadingCount.target).css("overflow", "hidden")
+//	}
 	$(LoadingCount.target).loading({
 		message : "<h2 data-cb='countMessage' class='text-dark'>" + LoadingCount.title + "</h2>" 
 				+ "<h2  data-cb='countNum' class='text-info'>" + LoadingCount.startCount  + "%</h2>" 
@@ -83,10 +83,6 @@ function progressCount(message,countLoad){
 		$('[data-cb="countNum"]').html(LoadingCount.startCount + "%");
 		$('[data-cb="countBar"]').width(LoadingCount.startCount + "%");
 		$('[data-cb="countBar"]').attr("aria-valuenow", LoadingCount.startCount);
-		console.log("LoadingCount. : " + LoadingCount.startCount)
-		console.log("LoadingCount.endCount : " + LoadingCount.endCount)
-		console.log("LoadingCount.endCount : " + LoadingCount.endCount)
-		console.log("LoadingCount.startCount : " + LoadingCount.startCount)
 		if(LoadingCount.startCount >= LoadingCount.endCount){
 			if(LoadingCount.startCount != 100){
 				$('[data-cb="countNum"]').html("100%");

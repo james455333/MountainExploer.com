@@ -13,13 +13,12 @@ body{
 }
 .act-container{
 	margin : 5px;
-	-webkit-transition: margin 0.5s ease-out;
-    -moz-transition: margin 0.5s ease-out;
-    -o-transition: margin 0.5s ease-out;
+	-webkit-transition: margin 0.25s ease-out;
+    -moz-transition: margin 0.25s ease-out;
+    -o-transition: margin 0.25s ease-out;
 }
 .act-container:hover{
 	margin-top : 0px;
-	margin-left : 0px;
 }
 .m-sdc-adj{
 	border : none;

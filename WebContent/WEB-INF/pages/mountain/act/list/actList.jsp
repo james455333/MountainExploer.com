@@ -139,7 +139,7 @@
 							<hr class="bg-info">
 							<div class="custom-control custom-radio d-inline-flex my-3  justify-content-start">
 								<input type="radio" id="rTag-alv" name="rTag" class="custom-control-input" value="0">
-								<label class="custom-control-label" for="rTag-alv">尚可報名</label>
+								<label class="custom-control-label" for="rTag-alv">預設顯示</label>
 							</div>
 							<div class="custom-control custom-radio d-inline-flex my-3  justify-content-start">
 								<input type="radio" id="rTag-alv" name="rTag" class="custom-control-input" value="6">
@@ -257,6 +257,5 @@
 <script src="../js/table.js"></script>
 <!--sweet alert-->
 <script src="../js/topBar.js"></script>
-<script src="../js/includejsp.js"></script>
 <!--sweet alert-->
 </html>
