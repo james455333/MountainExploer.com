@@ -56,7 +56,7 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid p-0">
 	    <div class="row">
 	        <div class="col-md-12 p-0">
 	            <div class="carousel slide" id="carousel-23783">
