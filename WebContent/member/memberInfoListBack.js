@@ -47,7 +47,7 @@ $(function(){
                             "<td>" + item.memberStatus.name + "</td>" + 
                             "<td>" + 
                                 "<input type='hidden' name='sgSeqno' class='sgSeqno' value='" + item.seqno +"'>" +
-                                "<button type='button' class='btn btn-info sgInfo'><i class='fa fa-user-circle' style='margin-right:3px'></i>詳細資料</button>" + 
+                                "<button type='button' class='btn btn-info disabled'><i class='fa fa-user-circle' style='margin-right:3px'></i>詳細資料</button>" + 
                                 "<button type='button' style='margin-left:10px' id='chInfo' class='btn btn-secondary chInfo'><i class='fa fa-file-text' style='margin-right:3px'></i>修改資料</button>" + 
                                 "<button type='button' style='margin-left:10px' class='btn btn-secondary disabled'><i class='fas fa-users-cog' style='margin-right:3px'></i>更變身分組</button></td></tr>"
                         )
@@ -546,6 +546,13 @@ $(".allMember").on("click", ".sgInfo", function(){
 
                         let seqno = item.seqno;
 
+                        let ncName = item.memberInfo.neck_name;
+                        if(ncName == null){
+                            var ncInfo = "尚未填寫"
+                        }else{
+                            var ncInfo = ncName;
+                        }
+
                         let phone = item.memberInfo.phone;
                         if(phone == null){
                             var phInfo = "尚未填寫";
@@ -602,15 +609,10 @@ $(".allMember").on("click", ".sgInfo", function(){
                             success:function(otherLs){
                                 if(otherLs != null){
                                     $("#page-top").find(".other").text(otherLs);
-                                }else{
-                                    let nullOther = "尚未填寫";
-                                    $("#page-top").find(".other").text(nullOther);
                                 }
                             }
             
                         })
-
-                        
 
 
                         Swal.fire({
@@ -629,7 +631,7 @@ $(".allMember").on("click", ".sgInfo", function(){
                                         <span name="name" class="name">` + item.name + `</span>
                                         <br/>   
                                         <label  style="margin-left:10px">暱稱：</label>
-                                        <span name="ncName" class="ncName">` + item.memberInfo.neck_name + `</span>
+                                        <span name="ncName" class="ncName">` + ncInfo + `</span>
                                     </div>
 
                                     <div>
@@ -661,7 +663,7 @@ $(".allMember").on("click", ".sgInfo", function(){
                                         <span name="exp" class="exp">` + expInfo + `</span>
                                         <br/>
                                         <label>個人簡介：</label>
-                                        <span name="other" class="other"></span>
+                                        <span name="other" class="other" value="尚未填寫"></span>
                                     </div>
                                     <br/>
                                     
@@ -690,38 +692,56 @@ $(".allMember").on("click", ".chInfo", function(){
             $.each(mbList, function(index, item){
                 let itNm = item.name;
                 if(itNm == ""){
-                    itNm = "尚未填入";
+                    var itupNm = "尚未填入";
+                }else{
+                    var itupNm = itNm;
                 }
+
                 let itNc = item.memberInfo.neck_name;
                 if(itNc == null){
-                    itNc = "尚未填入";
+                    var itupNc = "尚未填入";
+                }else{
+                    var itupNc = itNc;
                 }
+
                 let itPh = item.memberInfo.phone;
-                if(itPh == ""){
-                    itPh = "尚未填入";
+                if(itPh == null){
+                    var itupPh = "尚未填入";
+                }else{
+                    var itupPh = itPh;
                 }
                     Swal.fire({
                         title: "會員編號" + item.seqno + "的會員資料",
                         html:`<div>
                                 <form id="upForm" action="/MountainExploer.com/back/member/updateInfoBack" method="POST">
                                 <label>會員編號：</label>
-                                <strong class="swal2-input">` + item.seqno + `</strong>
+                                <strong>` + item.seqno + `</strong>
                                 <input type="hidden" name="seqno" class="seqno" value="` + item.seqno + `">
                                 <br/>
+                                <br/>
+
                                 <label>帳號：</label>
-                                <strong type="text" name="account" class="swal2-input account">` + item.account + `</strong>
+                                <strong type="text" name="account" class="account">` + item.account + `</strong>
                                 <br/>
-                                <label>姓名：</label>
-                                <input type="text" name="name" class="form-control name" value="` + itNm + `">
                                 <br/>
-                                <label>暱稱：</label>
-                                <input type="text" name="ncName" class="form-control ncName" value="` + itNc + `">
+
+                                <strong>姓名：</strong>
+                                <input type="text" name="name" class="name" value="` + itupNm + `">
                                 <br/>
-                                <label>Email：</label>
-                                <input type="text" name="email" class="form-control email" value="` + item.email + `">
                                 <br/>
-                                <label>手機：</label>
-                                <input type="text" name="phone" class="form-control phone" value="` + itPh + `">
+
+                                <strong>暱稱：</strong>
+                                <input type="text" name="ncName" class="ncName" value="` + itupNc + `">
+                                <br/>
+                                <br/>
+
+                                <strong>Email：</strong>
+                                <input type="text" name="email" class="email" value="` + item.email + `">
+                                <br/>
+                                <br/>
+
+                                <strong>手機：</strong>
+                                <input type="text" name="phone" class="phone" value="` + itupPh + `">
                                 <br/>
                                 </form>
                                 </div>`,

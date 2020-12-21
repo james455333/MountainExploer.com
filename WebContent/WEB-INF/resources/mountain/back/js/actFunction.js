@@ -124,7 +124,7 @@ function reRender(){
 		endCount : 99,
 		countTimes : 9,
 	})
-	progressCount("頁面元素讀取完成")
+	progressCount("等待資料存取")
 	$("body").css("overflow", "hidden")
 	openBlock("#actBack")
 	$("#actBack").loading("resize")

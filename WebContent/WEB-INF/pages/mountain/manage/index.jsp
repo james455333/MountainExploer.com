@@ -20,6 +20,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- CKeditor 4 -->
+	<script src="/MountainExploer.com/mountain/ckeditor/ckeditor.js"></script>
     <script src="/MountainExploer.com/mountain/js/mountain.js"></script>
     <script src="manage/managePostFunction.js"></script>
     <script src="manage/manageRegistryFunction.js"></script>
@@ -85,8 +87,8 @@
     </div>
     
     <div class="m-hide">
-   		<table class="order-table m-ma-ta">
-        	<thead class="order-table-th"><tr>
+   		<table class=" table- m-ma-ta border shadow-lg">
+        	<thead class="bg-success m_thead order-table-th"><tr>
 				<th scope="col" style="width:75px">活動編號</th>
 				<th scope="col" class="d-li-na">活動名稱</th>
 				<th scope="col" class="m-tb-date">開始時間</th>
@@ -97,7 +99,6 @@
 				<th scope="col" style="width:75px">報名人數 / 人數上限</th>
 				<th scope="col" class="m-tb-date">報名截止日</th>
 				<th scope="col" style="width:50px">備註</th>
-				<th scope="col" style="width:50px">回覆</th>
 				<th scope="col">控制選項</th>
 			</tr></thead>
 			<tbody  class='order-table-tb hideTbody'>
@@ -111,16 +112,15 @@
 					<td></td>
 					<td></td>
 					<td></td>
-					<td><button>備註顯示</button></td>
-					<td><button>CM</button></td>
+					<td><button class="btn btn-outline-primary">備註顯示</button></td>
 					<td>
 						<div class="flex-box">
-							<button class="bt-reg-show">報名選單</button>
-							<button class="bt-update-show">修改內容</button>
+							<button class="bnt btn-outline-success bt-reg-show">報名選單</button>
+							<button class="bnt btn-outline-warning bt-update-show">修改內容</button>
 						</div>
 						<div class="flex-box">
-							<button class="bt-act-hide"></button>
-							<button class="bt-act-delete">取消活動</button>
+							<button class="bnt btn-outline-danger bt-act-hide"></button>
+							<button class="bnt btn-danger bt-act-delete">取消活動</button>
 						</div>
 					</td>
 				</tr>
@@ -204,12 +204,12 @@
 								</div>
 								<div class="tr-up-form">
 									<label>備註 : 
-										<textarea rows="5" cols="100" name="note" class="m-note-form"></textarea>
+										<textarea rows="5" cols="100" class="m-note-form"></textarea>
 									</label>
 								</div>
 								<div class="tr-up-form">
-									<input type="submit" value="確認修改">
-									<input type="reset" class="cancel-up" value="取消修改">
+									<button type="submit" class="btn btn-outline-success mx-3" value="確認修改">確認修改</button>
+									<button type="button" class="cancel-up btn btn-outline-danger mx-3" value="取消修改">取消修改</button>
 								</div>
 							</form>
 						</div>

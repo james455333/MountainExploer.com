@@ -52,6 +52,9 @@
 .m-ma-ta{
 	width : 100%;
 }
+.m_thead th{
+	color : white;
+}
 .order-table-th{
 	font-size : 10px;
 }

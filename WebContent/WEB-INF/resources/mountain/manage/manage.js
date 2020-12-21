@@ -56,10 +56,14 @@ $(function(){
 	$(".m-ma-container").on("blur","input[name='regTop']",checkRegTop)
 	$(".m-ma-container").on("submit",".tr-form",function(e){
 		e.preventDefault()
+		let id= $(this).find("textarea").attr("id")
+		let out = CKEDITOR.instances[id].getData()
+		let formData = new FormData(this)
+		formData.append("note",out)
 		$.ajax({
 			url: manageHome+"/post-update",
 	    	type: 'POST',
-	     	data: new FormData(this),
+	     	data: formData,
 	     	processData: false,
 	     	contentType: false,
 			success : function(data){

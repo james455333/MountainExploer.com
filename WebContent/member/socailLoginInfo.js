@@ -28,7 +28,7 @@ $(".statusId").change(function(){
 	Swal.fire({
 		icon:"warning",
 		title:"登山嚮導註冊提示",
-		html:`<p>登山嚮導需寄送相關文件證明，經人工審核後才完成認證程序。<p><p style="color:red;font-weight:bold">本系統客服：mountainexploer@gmail.com</p>`
+		html:`<p>登山嚮導需寄送相關文件證明，經人工審核後方可完成認證程序。<p><p style="color:red;font-weight:bold">本系統客服：mountainexploer@gmail.com</p>`
 	})
 	
 })

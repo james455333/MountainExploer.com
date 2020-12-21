@@ -28,14 +28,7 @@ function ajaxTN(npID) {
 		dataType: "json",
 		success: function(data) {
 			setVTN(data);
-			if(data.length > 0){
-				let display = $(".secDivContent ").attr("display")
-				if(display == "none") $(".secDivContent ").show(500)
-				setMainContent(data[0].routeInfo);
-			}
-			else{
-				$(".secDivContent ").hide()
-			}
+//			setMainContent(data[0].routeInfo);
 		},
 		error: function() {
 			showErrorSwal();
@@ -51,7 +44,6 @@ function ajaxVTN(rtID) {
 		data: { rtID: rtID },
 		success: function(data) {
 			setMainContent(data[0].routeInfo);
-			$( '#rt-book' ).bookblock();
 		},
 		error: function() {
 			showErrorSwal();
@@ -67,47 +59,61 @@ function setTN(data) {
 	let npList = $(".npList")
 	for (let i in data) {
 		let model = $("#hideElm").find(".npModel").clone()
-		model.find("a").val(data[i].id).html(data[i].name)
+		model.find("a").attr("href","np"+data[i].id).html(data[i].name)
 		npList.append(model);
-		setTimeout(()=>{
-			model.toggleClass("invisible animate__bounceIn")
-			if(i==0) model.find("a").toggleClass("active")
-			if((Number(i)+1) == data.length){
-				console.log("go")
-				setVTN(data[0].routeBasic)
-			}
-		},150*Number(i))
+		model.toggleClass("invisible animate__bounceIn")
+		if(i==0) model.find("a").toggleClass("active")
+		if((Number(i)+1) == data.length){
+			setVTN(data[0].routeBasic)
+		}
 	}
-	let num = data.length
+}
+
+function hideBook(){
+	return new Promise((resolve, reject) => {
+		console.log("animate book")
+		$("#rt-book").toggleClass("animate__bounceOutDown animate__bounceInUp")
+		$(".rt-container").height($(".rt-container").height())
+		console.log("animate book complete")
+		resolve("success")
+	})
 }
 
 /* 新增副項元素 */
 function setVTN(data) {
-
-//	let routeList = $(".routeList")
-//	routeList.empty();
+	$("#rt-container").append(`<div id="rt-book" class="bb-bookblock shadow-lg animate__animated  animate__bounceInUp"></div>`)
+	$("#rtSelect").empty()
 	for (let i =0 ; i < data.length ; i ++) {
 		if(data[i].routeInfo.toggle == null){
-//			let model = $("#hideElm").find(".li2").clone();
-//			model.find("button").val(data[i].id).html(data[i].routeInfo.name)
-//			routeList.append(model)
-			console.log(i)
 			setMainContent(data[i].routeInfo)
 		}
 	}
+	let prevShowing;
 	$('#rt-book').bookblock({
 		easing : 'ease-in-out',
 		shadows	: true,
-//		shadowSides	: 0.2,
-//		shadowFlip	: 0.1,
+		shadowSides	: 1,
+		shadowFlip	: 1,
 		circular	: true,
 		onEndFlip : function(){
 			$("body").css("overflow","auto")
 			$(".div_ul").css("overflow","auto")
+			$(".div_li2").css("overflow","hidden")
+			let showing = $("#rt-book .rt-page")
+				.filter(function() { return $(this).css("display") == "block" })
+			let indexShowing = $("#rt-book .rt-page").index(showing)
+			$("#rtSelect option").eq(prevShowing).prop("selected",false)
+			$("#rtSelect option").eq(indexShowing).prop("selected",true)
+			
 		},
 		onBeforeFlip :  function(){
 			$("body").css("overflow","visible")
 			$(".div_ul").css("overflow","visible")
+			$(".div_li2").css("overflow","visible")
+			let showing = $("#rt-book .rt-page")
+				.filter(function() { return $(this).css("display") == "block" })
+			prevShowing = $("#rt-book .rt-page").index(showing)
+			
 		},
 	});
 }
@@ -121,16 +127,44 @@ function setMainContent(routeInfo) {
 	let imgSet = '<img class="imgSet" src="" alt="">'
 	let text = bookPage.find(".sec-div-text")
 	imgContent.html(imgSet)
-	console.log("rtSeqno : " + routeInfo.id)
+	$("#rtSelect").append("<option>" + routeInfo.name + "</option>")
 	let imgURL = rtSearchURL + "/images?rtID=" + routeInfo.id + "&timestamp=" + new Date().getTime()
-	console.log("imgURL : " + imgURL)
 	bookPage.find(".imgSet").attr("src", imgURL).attr("onerror","imgError( $(this) )")
-//	text.eq(0).text(routeInfo.desp)
-//	text.eq(1).text(routeInfo.adv)
-//	text.eq(2).text(routeInfo.traf)
-	console.log(bookPage[0])
+	
+	bookPage.find(".sec-div-title").eq(0).text(routeInfo.name)
+	bookPage.find(".rt-Info").attr("id","rt-Info" + routeInfo.id)
+	bookPage.find(".nav-link").eq(0)
+		.attr("href","#rt-pane-desp"+routeInfo.id)
+		.attr("id","rt-tab-desp"+routeInfo.id)
+		.attr("aria-controls","rt-pane-desp"+routeInfo.id)
+	bookPage.find(".tab-pane").eq(0)
+		.attr("id","rt-pane-desp"+routeInfo.id)
+		.attr("aria-labelledby","rt-tab-desp"+routeInfo.id)
+	bookPage.find(".nav-link").eq(1)
+		.attr("href","#rt-pane-adv"+routeInfo.id)
+		.attr("id","rt-tab-adv"+routeInfo.id)
+		.attr("aria-controls","rt-pane-adv"+routeInfo.id)
+	bookPage.find(".tab-pane").eq(1)
+		.attr("id","rt-pane-adv"+routeInfo.id)
+		.attr("aria-labelledby","rt-tab-adv"+routeInfo.id)
+	bookPage.find(".nav-link").eq(2)
+		.attr("href","#rt-pane-traf"+routeInfo.id)
+		.attr("id","rt-tab-traf"+routeInfo.id)
+		.attr("aria-controls","rt-pane-traf"+routeInfo.id)
+	bookPage.find(".tab-pane").eq(2)
+		.attr("id","rt-pane-traf"+routeInfo.id)
+		.attr("aria-labelledby","rt-tab-traf"+routeInfo.id)
+	console.log(routeInfo.desp)
+	text.eq(0).text(routeInfo.desp)
+	text.eq(1).text(routeInfo.adv)
+	text.eq(2).text(routeInfo.traf)
 	bookBody.append(bookPage)
-	console.log("setMainContent")
+	
+	$("#rt-Info"+routeInfo.id+" a").on('click', function (e) {
+		console.log($(this).tab('show'))
+		e.preventDefault()
+		
+	})
 }
 
 /* 錯誤訊息 */

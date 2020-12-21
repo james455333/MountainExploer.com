@@ -15,6 +15,7 @@
     <!-- project public -->
     <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
     <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
+    <link rel="stylesheet" href="/MountainExploer.com/css/style.css">
     <link rel="stylesheet" href="/MountainExploer.com/mountain/css/mountain.css">
 	    <!-- JQuery UI -->
 	<link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
@@ -55,14 +56,66 @@
 </head>
 
 <body>
-    <div class="count1">
-        <div class="count1_img">
-            <img src="/MountainExploer.com/images/logo1.png">
-            <hr>
-            <h1 class="font">岳進者</h1>
-            <!-- <a class="font">岳進者</a> -->
-        </div>
-    </div>
+    <div class="container-fluid">
+	    <div class="row">
+	        <div class="col-md-12 p-0">
+	            <div class="carousel slide" id="carousel-23783">
+	
+	                <!-- 中央選擇白框 -->
+	                <ol class="carousel-indicators">
+	                    <li data-slide-to="0" data-target="#carousel-23783">
+	                    </li>
+	                    <li data-slide-to="1" data-target="#carousel-23783">
+	                    </li>
+	                    <li data-slide-to="2" data-target="#carousel-23783">
+	                    </li>
+	                    <li data-slide-to="3" data-target="#carousel-23783">
+	                    </li>
+	                    <li data-slide-to="依序增加" data-target="#carousel-23783" class="active">
+	                    </li>
+	
+	                </ol>
+	
+	                <!-- 輪播圖片 -->
+	                <div class="carousel-inner">
+	                    
+	                    <div class="carousel-item">
+	                        <img class="d-block w-100" alt="Carousel Bootstrap Second" src="/MountainExploer.com/images/亮的.jpg">
+	                        <div class="carousel-caption">
+	                            <h4>
+	                                標題 </h4>
+	                            <p>
+	                                內容 </p>
+	                        </div>
+	                    </div>
+	                    <div class="carousel-item">
+	                        <img class="d-block w-100" alt="Carousel Bootstrap Third" src="/MountainExploer.com/images/亮的.jpg">
+	                        <div class="carousel-caption">
+	                            <h4>
+	                                標題 </h4>
+	                            <p>
+	                                內容 </p>
+	                        </div>
+	                    </div>
+	                    <div class="carousel-item active">
+	                        <img class="d-block w-100" alt="Carousel Bootstrap Forth" src="/MountainExploer.com/images/亮的.jpg">
+	                        <div class="carousel-caption">
+	                            <h4>
+	                                標題 </h4>
+	                            <p>
+	                                內容 </p>
+	                        </div>
+	                    </div>
+	
+	                    <!-- 左右控制標籤 -->
+	                </div> <a class="carousel-control-prev" href="#carousel-23783" data-slide="prev"><span
+	                        class="carousel-control-prev-icon"></span> <span class="sr-only">上一頁</span></a> <a
+	                    class="carousel-control-next" href="#carousel-23783" data-slide="next"><span
+	                        class="carousel-control-next-icon"></span> <span class="sr-only">下一頁</span></a>
+	            </div>
+	        </div>
+	    </div>
+	</div>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light zline">
             <a class="navbar-brand" href="/MountainExploer.com/"><img src="/MountainExploer.com/images/logo1.png" height="30%" width="30%"></a>
@@ -74,7 +127,7 @@
         </nav>
     </header>
      <nav>
-		<ol class="breadcrumb" id="bc">
+		<ol class="breadcrumb bg-light" style="font-size : 25px;" id="bc">
 			<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
 			<li class="breadcrumb-item"><a href="/MountainExploer.com/mountain/list?page=1&od=1">活動討論區</a></li>
 			<li class="breadcrumb-item active">發表活動</li>
@@ -301,18 +354,9 @@
         
     </div>
 
-    <footer id="footer">
-        <a>全站導覽</a>
-        <button id="demo1">確認demo1</button>
-        <button id="demo2">錯誤demo2</button>
-        <button id="demo3">確認提醒demo3</button>
-        <button id="demo4">多重選項&提醒視窗demo4</button>
-        <button id="demo5">Demo5</button>
-        <button id="demo6">Demo6</button>
-
-
-
-    </footer>
+     <footer id="footer"
+			include-html="/MountainExploer.com/forinclude/includeForFooter.html">
+	</footer>
 </body>
 <script src="/MountainExploer.com/js/upLoadImg.js"></script><!-- 上傳頭像 -->
 <script src="/MountainExploer.com/js/table.js"></script>

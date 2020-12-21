@@ -23,8 +23,7 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.all.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-
+<script src="/MountainExploer.com/member/userTop.js"></script>
 
 <style>
 .tips {
@@ -453,7 +452,7 @@
 									value="${i.housebasicid}">
 								<input type="hidden" name="orderjump_bookdate"
 									value="${selectdate}">
-								<div>
+								<div style="background-color:#ECFFFF ;border:3px #cccccc solid;">
 									<h2>${selectdate}</h2>
 									<h4>
 										共選了 <a style="color: #5599FF">${bookneight}</a> 晚
@@ -495,13 +494,13 @@
 											
 											</td>
 
-											<td rowspan="2"><input type=text readonly
+											<td><input type=text readonly
 												class=" border-0 text-dark" name="orderjump_totelprice"
 												id="houseorderprice" required="required">
 											
 												<p>
-													<input class="btn btn-outline-success" style="width: 100%"
-														type="submit" value="立即下訂" >
+													<input id="ordersubmit" class="btn btn-outline-success" style="width: 100%"
+														type="button" value="立即下訂" >
 												</p>
 											
 												</td>
@@ -665,9 +664,9 @@
 
 							$.ajax({
 								url : orderhouse
-										+ "/orderhousebedamount?selecthouseid="
-										+ houseid,
+										+ "/orderhousebedamount",
 								method : "GET",
+								data : {"selecthouseid":houseid},
 								dateType : "json",
 								success : function(order) {
 									for (var i = 0; i <= campleftamount; i++) {
@@ -718,10 +717,33 @@
 														* stt)
 														* bookneight)
 										
-			if($("#houseorderprice").val().length <= 1 || $("#houseorderprice").val() <= 0){
-					$("#houseorderprice").val(""); }
+										if($("#houseorderprice").val().length <= 1 || $("#houseorderprice").val() <= 0){
+												$("#houseorderprice").val(""); }
 
 									})
+// 							$("#ordersubmit").on("click",function(){
+// 								if($("#houseorderprice").val().length <= 1){
+// 									alert("請選擇一間房");
+// 									return false;
+// 										}else{
+// 											$(this).submit();}
+// 								})		
+								
+								
+								$("#ordersubmit").on("click",function() {
+									if($("#houseorderprice").val().length <= 1){
+										Swal.fire({
+											  icon: 'error',
+											  title: '請選擇一間房',
+											 
+											})
+	 										}else{
+	 											
+	 										 $(this).parents('form').submit();
+	 											}
+									});
+								
+										
 													
 							// 	$('#showMap').on('show.bs.modal', function (event) {
 							// 	var aHref = $(event.relatedTarget);
@@ -840,6 +862,8 @@
 
 				});
 	</script>
+	
+	
 	<script type="text/javascript">
 	  var count = 1;
 	    var countEl = document.getElementById("count");

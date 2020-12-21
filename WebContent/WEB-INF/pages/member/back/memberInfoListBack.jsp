@@ -66,7 +66,28 @@ pageEncoding="UTF-8"%>
                         <a href="#" id="exporJsonAll" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i>匯出資料表</a>
                     </div>
+				<div class='row'>
 
+						<div class="col-xl-4 col-md-6 mb-4">
+							<div class="card border-left-danger shadow h-100 py-2">
+								<div class="card-body">
+									<div class="row no-gutters align-items-center">
+										<div class="col mr-2">
+											<div
+												class="text-s font-weight-bold text-danger text-uppercase mb-1">
+												岳進者會員總數</div>
+											<div id="rt-forbid-num"
+												class="h5 mb-0 font-weight-bold text-gray-600"></div>
+										</div>
+										<div class="col-auto">
+											<i class="fa fa-flag fa-2x" style="color: #ff6b6b;"
+												aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
                 <div class="container-fluid">
 					<div class="row">
 						<div class="col-md-12">
@@ -206,14 +227,12 @@ pageEncoding="UTF-8"%>
     <script src="/MountainExploer.com/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="/MountainExploer.com/js/demo/折線圖demo.js"></script>
     <script src="/MountainExploer.com/js/demo/圓餅圖demo.js"></script>
-
-
 
     <script src="/MountainExploer.com/js/includejsp.js"></script>
     
     <script src="/MountainExploer.com/member/memberInfoListBack.js"></script>
+    <script src="/MountainExploer.com/member/Linedemo.js"></script>
 </body>
 
 </html>

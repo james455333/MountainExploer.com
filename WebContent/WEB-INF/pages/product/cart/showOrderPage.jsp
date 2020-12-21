@@ -5,17 +5,32 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>查詢訂單</title>
+<title>會員訂單查詢</title>
 <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
 <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<!-- Font Awesome -->
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<link rel="stylesheet"
+	href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css">
+
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- sweetalert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="/MountainExploer.com/member/userTop.js"></script>
+<style type="text/css">
+.table td {
+	vertical-align: middle;
+}
+</style>
+
 </head>
 <body>
 	<div class="count1">
@@ -40,88 +55,73 @@
 				include-html="/MountainExploer.com/forinclude/includeForIndex.html"></div>
 		</nav>
 	</header>
-
-	<c:choose>
-		<c:when test="${ShoppingCart.subtotal > 0}">
-			<c:set var="subtotalMessage" value="金額小計:${ShoppingCart.subtotal} 元" />
-			<c:set var="subtotal" value="${ShoppingCart.subtotal}" />
-		</c:when>
-		<c:otherwise>
-			<c:set var="subtotalMessage" value="金額小計:  0 元" />
-			<c:set var="subtotal" value="0" />
-		</c:otherwise>
-	</c:choose>
-
-	<!--table-->
-	<table class="order-table">
-		<thead class="order-table-th">
-		<tr >
-			<th colspan="7" align="center">${Member.name}的訂購紀錄</th>
-		</tr>
-			<tr>
-				<!-- thead更改從這邊開始 -->
-				<th scope="col">訂單編號</th>
-				<th scope="col">金額</th>
-				<th scope="col">收貨人</th>
-				<th scope="col">收貨地址</th>
-				<th scope="col">連絡電話</th>
-				<th scope="col">訂貨日期</th>
-				<th scope="col">出貨日期</th>
-<!-- 				<th scope="col">訂單狀態</th> -->
-				<!-- thead更改到這邊結束 -->
-			</tr>
-		</thead>
-
-	<c:forEach var="anOrderBean" varStatus="stat" items="${MemberOrders}">
-			<TR >
-			<TD >
-			    <a  href='<c:url value='/shoppingcart/orderInfo?orderId=${anOrderBean.seqno}' />'>
-				    ${anOrderBean.seqno}
-			    </a>
-			</TD>
-			<TD >${anOrderBean.totalAmount} 元</TD>
-			<TD >${anOrderBean.receiver}</TD>
-			<TD >${anOrderBean.shippingAddress}</TD>
-			<TD >${anOrderBean.invoiceTitle}</TD>
-			<TD >${anOrderBean.orderDate}</TD>
-			<TD >${anOrderBean.shippingDate}</TD>
-<%-- 			<TD >${anOrderBean.cancelTag}</TD> --%>
-							
-		</TR>
-		</c:forEach>
-						<tr>
-				<TD colspan="7" align="center"><A
-					href="<c:url value='/shop/shoppingPage' />">繼續購物</A></TD>
-			</tr>
-			
+	<nav class="">
+			<ol class="breadcrumb p-4" style="font-size : 22.5px;" id="bc">
+			<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
+			<li class="breadcrumb-item"><a href="/MountainExploer.com/shop/shoppingPage">岳進者精選</a></li>
+<!-- 			<li class="breadcrumb-item"><a href="/MountainExploer.com/shoppingcart/memberOrders">訂單查詢</a></li> -->
+			<li class="breadcrumb-item active">訂單查詢</li>
+		</ol>
+	</nav>
+	<div class="div_ul d-flex">
 
 
-			<!-- tbody更改到這邊結束 -->
-		</tbody>
+		<!--table-->
+			<table style="font-size: 20px" class="table table-striped">
+				<thead class="col">
+					<tr>
+						<th colspan="7"style="font-size: 25px" align="center">${Member.name}的訂購紀錄</th>
+					</tr>
+					<tr>
+						<!-- thead更改從這邊開始 -->
+						<th scope="col" style="width: 10%;">訂單編號</th>
+						<th scope="col" style="width: 10%;">金額</th>
+						<th scope="col" style="width: 10%;">收貨人</th>
+						<th scope="col" style="width: 20%;">收貨地址</th>
+						<th scope="col" style="width: 10%;">連絡電話</th>
+						<th scope="col" style="width: 20%;">訂貨日期</th>
+						<th scope="col" style="width: 20%;">出貨日期</th>
+						<!-- thead更改到這邊結束 -->
+					</tr>
+				</thead>
+				<tbody class="">
 
-	</table>
+					<c:forEach var="anOrderBean" varStatus="stat"
+						items="${MemberOrders}">
+						<TR>
+							<TD><a
+								href='<c:url value='/shoppingcart/orderInfo?orderId=${anOrderBean.seqno}' />'>
+									${anOrderBean.seqno} </a></TD>
+							<TD>${anOrderBean.totalAmount}元</TD>
+							<TD>${anOrderBean.receiver}</TD>
+							<TD>${anOrderBean.shippingAddress}</TD>
+							<TD>${anOrderBean.invoiceTitle}</TD>
+							<TD>${anOrderBean.orderDate}</TD>
+							<TD>${anOrderBean.shippingDate}</TD>
+							<%-- 			<TD >${anOrderBean.cancelTag}</TD> --%>
+
+						</TR>
+					</c:forEach>
+					<tr>
+						<TD colspan="7" align="center"><a
+							class="btn btn-success btn-lg btn-block fas fa-shopping-cart m-3 p-3"
+							href="<c:url value='/shop/shoppingPage' />"> 繼續購物</a>
+							</TD>
+					</tr>
+
+
+				</tbody>
+			</table>
+	</div>
 
 
 	<!-- 每頁不同的內容到這邊結束 -->
 
-	<footer id="footer">
-		<a>全站導覽</a>
-		<button id="demo1">確認demo1</button>
-		<button id="demo2">錯誤demo2</button>
-		<button id="demo3">確認提醒demo3</button>
-		<button id="demo4">多重選項&提醒視窗demo4</button>
-		<button id="demo5">Demo5</button>
-		<button id="demo6">Demo6</button>
-
-
-
-	</footer>
+	<footer id="footer"> </footer>
 </body>
 <script src="/MountainExploer.com/js/upLoadImg.js"></script>
 <!-- 上傳頭像 -->
 <script src="/MountainExploer.com/js/table.js"></script>
 <script src="/MountainExploer.com/js/topBar.js"></script>
-<script src="/MountainExploer.com/js/sweetalert.js"></script>
 <!--sweet alert-->
 <script src="/MountainExploer.com/js/includejsp.js"></script>
-</html>

@@ -20,7 +20,7 @@
 	<script type="text/javascript" charset="UTF-8" src='<c:url value="/product/shop/shop.js"/>'></script>
 	<script src="/MountainExploer.com/js/swalLogin.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.all.min.js"></script>
-    
+    <script src="/MountainExploer.com/member/userTop.js"></script>
 		<style>
         
 
@@ -79,13 +79,13 @@
 	<nav>
 		<ol class="breadcrumb p-4" style="font-size : 22.5px;" id="bc">
 			<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
-			<li class="breadcrumb-item"><a href="/MountainExploer.com/mountain/list?page=1&od=1">活動討論區</a></li>
-			<li class="breadcrumb-item active">發表活動</li>
+<!-- 			<li class="breadcrumb-item"><a href="/MountainExploer.com/shop/shoppingPage">岳進者精選</a></li> -->
+			<li class="breadcrumb-item active">岳進者精選</li>
 		</ol>
 	</nav>
 	<div class="div_ul d-flex">
 			
-		<div class="col-4" >
+		<div class="col-3" >
 			<div class="m-3  p-3">
 				<div class="" style="line-height : unset;">
 					<!-- 更改內容從這邊開始 -->
@@ -104,11 +104,11 @@
 			<div class="div2 p-3">
 				<div style="width:100%" class="btn-group dropdown">
 					<button type="button" class="btn btn-lg btn-block btn-outline-success dropdown-toggle justify-content-between" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-						查看購物車
+						我的購物車
 					</button>
-					<div class="dropdown-menu w-100">
+					<div class="dropdown-menu w-100 ">
 					    <div class="div2">
-					    	<a href='<c:url value="/shop/shoppingCartEntry"/>'>查看購物車詳情</a>
+					    	<a href='<c:url value="/shop/shoppingCartEntry"/>'>前往購物車</a>
 					    </div>
 					    <hr>
 					    <div class="div2">
@@ -132,7 +132,7 @@
 			</div>
 			
 		</div>
-		<div class="col-8">
+		<div class="col-9">
 				<!-- 每頁不同的內容從這裡開始 -->
 				
 				<div class="searchBar">
@@ -168,14 +168,14 @@
 				</div>
 	
 				<div class="secDivContent" >
-					<div>
-						<span>資料筆數 : </span> <span id="totalData"> </span>
+					<div >
+						資料筆數: <span id="totalData"> </span> 筆
 					</div>
 					</div>
 					<!--table-->
 					<table class="order-table">
-						<div class="order-table-tb">
-						</div>
+						<table class="order-table-tb">
+						</table>
 					</table>
 					<nav class="pageControl">
 	
@@ -186,18 +186,12 @@
 							value="最尾頁" name="" disabled>
 	
 					</nav>
-			</div>
 			<!-- 每頁不同的內容到這邊結束 -->
+	</div>
+	</div>
 	</div>
 
 	<footer id="footer">
-		<a>全站導覽</a>
-		<button id="demo1">確認demo1</button>
-		<button id="demo2">錯誤demo2</button>
-		<button id="demo3">確認提醒demo3</button>
-		<button id="demo4">多重選項&提醒視窗demo4</button>
-		<button id="demo5">Demo5</button>
-		<button id="demo6">Demo6</button>
 
 
 

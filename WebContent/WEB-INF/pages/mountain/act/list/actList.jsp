@@ -12,6 +12,7 @@
 	<!-- public -->
 	<link rel="stylesheet" href="/MountainExploer.com/css/other.css">
 	<link rel="stylesheet" href="/MountainExploer.com/css/font.css">
+	<link rel="stylesheet" href="/MountainExploer.com/css/style.css">
 	<!-- for this page -->
 	<link rel="stylesheet" href="/MountainExploer.com/mountain/css/mountain.css">
 	<link rel="stylesheet" href="/MountainExploer.com/mountain/act/list/list.css">
@@ -56,7 +57,6 @@
 	<script src="/MountainExploer.com/mountain/js/mountain.js"></script>
 	<script src="act/list/listFunction.js"></script>
 	<script src="act/list/list.js"></script>
-<!-- 	<script src="/MountainExploer.com/js/blockUI.js"></script> -->
 
 </head>
 
@@ -64,12 +64,65 @@
 <body>
 
 
-	<div class="count1">
-		<div class="count1_img">
-			<img src="/MountainExploer.com/images/logo1.png">
-			<hr>
-			<h1 class="font">岳進者</h1>
-		</div>
+	<div class="container-fluid">
+	    <div class="row">
+	        <div class="col-md-12 p-0">
+	            <div class="carousel slide" id="carousel-23783">
+	
+	                <!-- 中央選擇白框 -->
+	                <ol class="carousel-indicators">
+	                    <li data-slide-to="0" data-target="#carousel-23783">
+	                    </li>
+	                    <li data-slide-to="1" data-target="#carousel-23783">
+	                    </li>
+	                    <li data-slide-to="2" data-target="#carousel-23783">
+	                    </li>
+	                    <li data-slide-to="3" data-target="#carousel-23783">
+	                    </li>
+	                    <li data-slide-to="依序增加" data-target="#carousel-23783" class="active">
+	                    </li>
+	
+	                </ol>
+	
+	                <!-- 輪播圖片 -->
+	                <div class="carousel-inner">
+	                    
+	                    <div class="carousel-item">
+	                        <img class="d-block w-100" alt="Carousel Bootstrap Second" src="/MountainExploer.com/images/亮的.jpg">
+	                        <div class="carousel-caption">
+	                            <h4>
+	                                標題 </h4>
+	                            <p>
+	                                內容 </p>
+	                        </div>
+	                    </div>
+	                    <div class="carousel-item">
+	                        <img class="d-block w-100" alt="Carousel Bootstrap Third" src="/MountainExploer.com/images/亮的.jpg">
+	                        <div class="carousel-caption">
+	                            <h4>
+	                                標題 </h4>
+	                            <p>
+	                                內容 </p>
+	                        </div>
+	                    </div>
+	                    <div class="carousel-item active">
+	                        <img class="d-block w-100" alt="Carousel Bootstrap Forth" src="/MountainExploer.com/images/亮的.jpg">
+	                        <div class="carousel-caption">
+	                            <h4>
+	                                標題 </h4>
+	                            <p>
+	                                內容 </p>
+	                        </div>
+	                    </div>
+	
+	                    <!-- 左右控制標籤 -->
+	                </div> <a class="carousel-control-prev" href="#carousel-23783" data-slide="prev"><span
+	                        class="carousel-control-prev-icon"></span> <span class="sr-only">上一頁</span></a> <a
+	                    class="carousel-control-next" href="#carousel-23783" data-slide="next"><span
+	                        class="carousel-control-next-icon"></span> <span class="sr-only">下一頁</span></a>
+	            </div>
+	        </div>
+	    </div>
 	</div>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light zline">
@@ -86,19 +139,32 @@
 		</nav>
 	</header>
 	<nav class="">
-		<ol class="breadcrumb" id="bc">
+		<ol class="breadcrumb" style="font-size : 25px;" id="bc">
 			<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
 			<li class="breadcrumb-item active">活動討論區</li>
 		</ol>
 	</nav>
-	<div class="div_ul" id="text-loading">
-		<div class="div_li1"></div>
-		<div class="div_li3"></div>
-		<div class="div_li2 mt-3">
-			<!-- 每頁不同的內容從這裡開始 -->
-			
-			<div class="d-flex mb-3">
-				<div class="btn-group btn-group-toggle mr-auto mx-2" data-toggle="buttons">
+	<div class="div_ul d-flex" id="text-loading" style="min-height: 800px;">
+		<div class="col-3">
+			<div class="w-100 h-100">
+				<div id="btn-newpost" class="btn-group p-3"  role="group">
+						<button style="font-size:35px;" class="list-newPost btn btn-success" type="button">
+							<i class="fas fa-hiking"></i> 舉辦活動 
+						</button>
+				</div>
+				<div class="w-100 p-3">
+					<form action="list" id="m-sr-form">
+						<div style="position: static; float: none;" class="search d-flex">
+							<button class="btn btn-outline-success">
+								<i class="fas fa-search pr-1 mr-1"></i> 搜尋
+							</button>
+							<input type="hidden" name="page" value="1" readonly>
+							<input type="hidden" name="od" value="3" readonly> 
+							<input name="search" type="search" class="form-control" placeholder="請輸入活動名稱">
+						</div>
+					</form>
+				</div>
+				<div class="btn-group btn-group-toggle p-3 w-100" data-toggle="buttons">
 				    <label class="showMode btn btn-outline-primary">
 				        <input type="radio" name="mode" autocomplete="off" value="list"> 清單模式
 				    </label>
@@ -106,65 +172,66 @@
 				        <input type="radio" name="mode" autocomplete="off" value="image" checked> 圖片模式
 				    </label>
 				</div>
-				<div class="ml-auto mx-2">
-					<form action="list" id="m-sr-form">
-						<div style="position: static" class="search d-inline-flex">
-							<button class="btn btn-outline-success">
-								<i class="fas fa-search pr-1 mr-1"></i> 搜尋
-							</button>
-							<input type="hidden" name="page" value="1" readonly>
-							<input type="hidden" name="od" value="3" readonly> 
-							<input
-								name="search" type="search" class="form-control"
-								placeholder="請輸入活動名稱">
-						</div>
-					</form>
-				</div>
-			</div>
-			<div style="border: 5px" class="m-list-searchBar bg-light rounded m-0 py-2 px-1">
-				<div class="d-flex">
+				<div class="px-3">
 						<!-- 控制列表內容從這邊開始 -->
-						<div class="d-flex align-items-center mx-1">
-							<div class="input-group ">
-								<div class="input-group-prepend">
-								   <label class="input-group-text  text-primary" for="aTag-select">活動狀態</label>
-								</div>
-									<select id="aTag-select" name="aTag" class="custom-select">
-										<option value="0" selected disabled>請選擇活動標籤</option>
-										<option value="0">預設顯示</option>
-										<option value="1">新活動</option>
-										<option value="2">熱門活動</option>
-										<option value="3">歷史活動</option>
-									</select>
+						<div class="">
+							<div>
+								<span style="font-size:25px;">活動狀態</span>
+							</div>
+							<hr class="bg-info">
+							<div class="custom-control custom-radio my-3 d-inline-flex justify-content-start">
+								<input type="radio" id="aTag-new" name="aTag" class="custom-control-input" value="1">
+								<label class="custom-control-label" for="aTag-new">新活動</label>
+							</div>
+							<div class="custom-control custom-radio my-3  d-inline-flex">
+								<input type="radio" id="aTag-hot" name="aTag" class="custom-control-input" value="2">
+								<label class="custom-control-label" for="aTag-hot">熱門活動</label>
+							</div>
+							<div class="custom-control custom-radio my-3  d-inline-flex">
+								<input type="radio" id="aTag-old" name="aTag" class="custom-control-input" value="3">
+								<label class="custom-control-label" for="aTag-old">歷史活動</label>
+							</div>
+							<br>
+							<br>
+							<div>
+								<span style="font-size:25px;">報名狀態</span>
+							</div>
+							<hr class="bg-info">
+							<div class="custom-control custom-radio d-inline-flex my-3  justify-content-start">
+								<input type="radio" id="rTag-alv" name="rTag" class="custom-control-input" value="0">
+								<label class="custom-control-label" for="rTag-alv">尚可報名</label>
+							</div>
+							<div class="custom-control custom-radio d-inline-flex my-3  justify-content-start">
+								<input type="radio" id="rTag-alv" name="rTag" class="custom-control-input" value="6">
+								<label class="custom-control-label" for="rTag-alv">尚可報名</label>
+							</div>
+							<div class="custom-control custom-radio d-inline-flex my-3 ">
+								<input type="radio" id="rTag-alm-clz" name="rTag" class="custom-control-input" value="7">
+								<label class="custom-control-label" for="rTag-alm-clz">報名將截止</label>
+							</div>
+							<div class="custom-control custom-radio d-inline-flex my-3 ">
+								<input type="radio" id="rTag-alm-full" name="rTag" class="custom-control-input" value="8">
+								<label class="custom-control-label" for="rTag-alm-full">報名將滿</label>
+							</div>
+							<div class="custom-control custom-radio d-inline-flex my-3 ">
+								<input type="radio" id="rTag-clz" name="rTag" class="custom-control-input" value="4">
+								<label class="custom-control-label" for="rTag-clz">報名已截止</label>
+							</div>
+							<div class="custom-control custom-radio d-inline-flex my-3 ">
+								<input type="radio" id="rTag-full" name="rTag" class="custom-control-input" value="5">
+								<label class="custom-control-label" for="rTag-full">報名已滿</label>
 							</div>
 						</div>
-						<div class="align-items-center mx-1">
-							<div class="input-group">
-								<div class="input-group-prepend">
-								   <label class="input-group-text text-primary" for="rTag-select">報名狀態</label>
-								</div>
-									<select id="rTag-select" name="rTag" class="custom-select">
-										<option value="0" selected disabled>請選擇報名標籤</option>
-										<option value="0">預設顯示</option>
-										<option value="6">尚可報名</option>
-										<option value="8">報名將滿</option>
-										<option value="7">報名將截止</option>
-										<option value="5">報名已滿</option>
-										<option value="4">報名截止</option>
-									</select>
-							</div>
-						</div>
-						<div class="d-inline-flex align-items-center ml-auto mx-1" id="totalData">查詢筆數 :</div>
+						<div class="d-inline-flex align-items-center my-3" id="totalData">查詢筆數 :</div>
 						<!-- 控制列表內容到這邊結束 -->
 				</div>
-				
 			</div>
+		</div>
+		<div class="col-9" id='info-page'>
+			<!-- 每頁不同的內容從這裡開始 -->
+			
 			<div class="d-flex px-1">
-				<div id="btn-newpost" class="btn-group mr-auto my-3 mx-1" role="group">
-						<button class="list-newPost btn btn-outline-success" type="button">
-							<i class="fas fa-hiking"></i> 舉辦活動 
-						</button>
-				</div>
+				
 				<nav class="my-3 align-items-center">
 					<ul class="pagination pageController justify-content-left ">
 						<li class="page-item "><a class="page-link"  href="#"><i class="fas fa-angle-double-left"></i></a></li>
@@ -175,27 +242,22 @@
 				</nav>
 			</div>
 
-			<div class="m-sdc-adj" id="mode-container">
-                <div id="table-image" class="show-mode animate__animated  animate__zoomIn">
-					<div style="width:1000px; max-width: 1000px" class="p-2 border act-container d-none" >
+			<div class="m-sdc-adj " id="mode-container">
+                <div id="table-image" class="show-mode animate__animated d-flex flex-wrap animate__zoomIn justify-content-left">
+					<div style="width:25%; max-width: 200px" class="p-1 borders act-container d-none shadow animate__animated animate__flipInY" >
 						<div style="width: auto;" class="p-1">
 							<div style="min-height: 200px;"class="image border">
 								<a><img style="width:100%; height:auto; min-height: 200px;" src=""></a>
 							</div>
-							<div class="title d-flex justify-content-start">
-								<div style="max-width:75%; overflow: hidden;"> 
-				    				<a style="font-size: 35px;"class="m-tb-ti act-title"></a>
-								</div>
-								<div style="font-size:15px" class="post-info ml-auto align-items-end">
-									<div class="mr-auto text-left postDate">發布時間 :</div>
-									<div class="mr-auto text-left author">發布者 :  <a href=""></a></div>
+							<div class="title d-flex justify-content-center">
+								<div class="text-truncate"> 
+				    				<a style="font-size: 20px; max-width:175px"class="m-tb-ti d-inline-block act-title text-truncate"></a>
 								</div>
 							</div>
-							<div style="font-size:20px" class="date-info d-flex m-1 justify-content-start">
-								<div class="regEndData">報名截止日 : </div>
-								<div class="regInfo ml-5">目前人數 / 人數上限 : </div>
-								
-							</div>
+							<div style="font-size:10px" class="post-info d-flex align-items-end">
+									<div class="mr-auto text-left author"><a href=""></a></div>
+									<div class="mr-auto text-left postDate"></div>
+								</div>
 						</div>
 					</div>
 				</div>
@@ -214,7 +276,7 @@
                         </tr>
                     </thead>
                     <tbody  class='order-table-tb hideTbody'>
-	                    <tr>
+	                    <tr class="animate__animated animate__bounceIn ">
 							<td >
 								<a href="">
 									<img class='showImage'  >
@@ -245,15 +307,8 @@
 			<!-- 每頁不同的內容到這裡結束 -->
 		</div>
 	</div>
-	<footer id="footer">
-		<a>全站導覽</a>
-		<button id="demo1">確認demo1</button>
-		<button id="demo2">錯誤demo2</button>
-		<button id="demo3">確認提醒demo3</button>
-		<button id="demo4">多重選項&提醒視窗demo4</button>
-		<button id="demo5">Demo5</button>
-		<button id="demo6">Demo6</button>
-
+	<footer id="footer"
+			include-html="/MountainExploer.com/forinclude/includeForFooter.html">
 	</footer>
 </body>
 <!-- 設置頁面參數 -->

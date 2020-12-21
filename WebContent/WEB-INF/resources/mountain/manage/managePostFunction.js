@@ -11,7 +11,7 @@ function replaceContentPost(order,page){
 	model = $(".m-ma-ta").clone();
 	pageCtrl = $(".m-hide").find(".pageControl").clone()
 	let notice = "<h2>已完成活動請至 <i>活動紀錄查看</i></h2>";
-	$(".m-ma-container").append(notice)
+//	$(".m-ma-container").append(notice)
 	$(".m-ma-container").append(model)
 	$(".m-ma-container").append(pageCtrl)
 	insertPostInfo(order, page);
@@ -104,7 +104,8 @@ function setPS_RegEnd(actList,thisElm){
 }
 function setPS_Note(actList,thisElm){
 	thisElm.find("tr").eq(1).find("td").html(actList.actBasic.actInfo.addInfo)
-	thisElm.find("textarea[name='note']").html(actList.actBasic.actInfo.addInfo)
+	thisElm.find("textarea").attr("id","note"+actList.actBasic.actInfo.id).html(actList.actBasic.actInfo.addInfo)
+	CKEDITOR.replace("note"+actList.actBasic.actInfo.id)
 	thisElm.find("td").eq(9).on("click",function(){
 		let thisNote = thisElm.find(".m-note")
 		let thead = $(".order-table-th").find("tr")
@@ -121,9 +122,9 @@ function setPS_TotalDay(actInfo,thisElm){
 function setPS_Controll(actList,thisElm){
 	let hideTag = actList.actBasic.actInfo.hideTag
 	if( hideTag == null){
-		thisElm.find("td").eq(11).find("button").eq(2).html("隱藏活動")
+		thisElm.find(".bt-act-hide").html("隱藏活動")
 	}else{
-		thisElm.find("td").eq(11).find("button").eq(2).html("取消隱藏")
+		thisElm.find(".bt-act-hide").html("取消隱藏")
 	}	
 }
 

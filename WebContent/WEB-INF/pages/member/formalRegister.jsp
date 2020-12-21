@@ -59,7 +59,7 @@
         </div> -->
         <div class="div_li2" style="background: #ecf5ff; height: auto;">
             <!-- 每頁不同的內容從這裡開始 -->
-            <form action="<c:url value='/member/memberRegister'/>" method="POST"
+            <form id="rsForm" action="<c:url value='/member/memberRegister'/>" method="POST"
                 style="width: 800px; margin: 0 auto; border: 10px solid#ecf5ff; border-radius: 1%; background-color: d#ecf5ff;">
                 <div style="border-radius: 3%; border: 10px solid white; background-color: white;">
 				
@@ -70,7 +70,7 @@
                         <label for="inputAddress">帳號:</label>
                         <input type="text" class="form-control account" name="account" id="account" placeholder="請輸入帳號" required="required">
                     	<span id="Antsp" class="Antsp"></span>
-                    	<span id="chksp"></span><br/>
+                    	<span id="chkAntsp"></span><br/>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -94,6 +94,7 @@
                         <div class="form-group col-md-6">
                         	<label>暱稱:</label>
 	                        <input type="text" class="form-control ncName" name="ncName" id="ncName" placeholder="請輸入暱稱" required="required">
+	                        <span class="ncsp"></span>
                         </div>
                     </div>
                     <div class="form-row">
@@ -104,7 +105,7 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputState">身分組選擇</label>
-                            <select id="statusId" name="statusId" class="form-control" required="required">
+                            <select id="statusId" name="statusId" class="form-control statusId" required="required">
                                 <option value="110" selected>一般登山者</option>
                                 <option value="130">登山嚮導</option>
                             </select>
@@ -115,7 +116,7 @@
                     	</div>
 
                     </div>
-                    <button type="submit" name="submit" class="btn btn-outline-success"><i class="fa fa-check-circle-o"></i>
+                    <button type="button" name="submit" class="btn btn-outline-success"><i class="fa fa-check-circle-o"></i>
                         確認送出</button>
                     <button type="button" name="fastRg" class="btn btn-outline-success fastRg"><i class="fa fa-check-circle-o"></i>快速註冊</button>
                     <button type="reset" class="btn btn-outline-danger reset" id="reset"><i class="fa fa-close"></i> 清除</button>
@@ -140,7 +141,7 @@
 <script src="../js/sweetalert.js"></script>
 <!--sweet alert-->
 <script src="../js/includejsp.js"></script>
-<!-- <script src="register.js"></script> -->
-<!-- <script src="formalRegister.js"></script> -->
+<script src="register.js"></script>
+<script src="formalRegister.js"></script>
 
 </html>

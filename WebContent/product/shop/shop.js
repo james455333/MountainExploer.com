@@ -379,26 +379,6 @@ $(function() {
 	    				'<option value="5">5</option>' +
 					'</select>' + 
 				'</div>'+
-//				'<option selected>選擇數量</option>'+
-//				"<c:choose>"+
-//			'<c:when test="${empty Member}">'+
-//									'<input type="button" class="swalLogin" value="評分">'+
-//								"</c:when>"+
-//							'<c:otherwise><input id="demo1" type="submit" value="加入購物車">'+
-//							"</c:otherwise>"+
-//						"</c:choose>"+
-
-
-//				"<c:choose>"+
-//			'<c:when test="${empty Member}">'+
-//									'<input type="button" class="swalLogin" value="評分">'+
-//								"</c:when>"+
-//							'<c:otherwise><input class="swalLogin" type="submit" value="加入購物車">'+
-//							"</c:otherwise>"+
-//						"</c:choose>"+
-				
-				
-//				'<input class="swalLogin" type="submit" value="加入購物車">' +
 				'</form>' +
 				
 				"</tr>"+
