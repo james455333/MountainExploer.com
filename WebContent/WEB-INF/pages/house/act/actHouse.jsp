@@ -65,8 +65,8 @@
 		</nav>
 	</header>
 	<div class="div_ul">
-		<div class="secNavbar">
-			<ul class="second_nav">
+		<div class="secNavbar" style="background-color: #C4E1FF">
+			<ul class="second_nav" >
 				<!-- 					更改內容從這邊開始 -->
 				<!-- 					<li class="li1"><a href="#">第二導覽列1</a></li> -->
 
@@ -172,7 +172,7 @@
 								<td class="img"><c:choose>
 										<c:when test="${ empty i.imgid.img}">
 											<img height="100" width="100"
-												src="/MountainExploer.com/housecamp/images/housenull.PNG">
+												src="/MountainExploer.com/housecamp/images/imgnotfound.png">
 										</c:when>
 
 										<c:when test="${not emptyi.imgid.img}">
@@ -326,18 +326,12 @@
 		</div>
 	</div>
 
-	<footer id="footer">
-		<a>全站導覽</a>
-		<button id="demo1">確認demo1</button>
-		<button id="demo2">錯誤demo2</button>
-		<button id="demo3">確認提醒demo3</button>
-		<button id="demo4">多重選項&提醒視窗demo4</button>
-		<button id="demo5">Demo5</button>
-		<button id="demo6">Demo6</button>
+		<div style="padding: 100px">
+			<footer id="footer"
+					include-html="/MountainExploer.com/forinclude/includeForFooter.html">
+			</footer>
+		</div>
 
-
-
-	</footer>
 </body>
 
 <script type="text/javascript">

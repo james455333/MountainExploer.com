@@ -177,7 +177,7 @@
 							<div  class="form-group col-md-6">
 							<c:choose>
 								<c:when test="${empty l.imgid.img }">
-								<img height="100" width="100"src="/MountainExploer.com/housecamp/images/housenull.PNG">
+								<img height="100" width="100"src="/MountainExploer.com/housecamp/images/imgnotfound.png">
 								</c:when>
 				      		<c:otherwise><img height="100"width="100"src="<c:url value='/mountainHouseBack/showimg?imgid=${l.imgid.id}'/>"></c:otherwise>
 				      	</c:choose>

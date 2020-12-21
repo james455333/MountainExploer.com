@@ -60,9 +60,9 @@ transition: all 0.6s;}
 		</nav>
 	</header>
 	<div class="div_ul">
-				<div class="secNavbar">
+				<div class="secNavbar" style="background-color: #C4E1FF">
 					 
-						<div class="second_nav">
+						<div class="second_nav" >
 <!-- 		更改內容從這邊開始 -->
 <!-- 							<div class="li1"><a href="#">第二導覽列1</a></div> -->
 
@@ -70,7 +70,7 @@ transition: all 0.6s;}
 
 <!-- 							<div class="li1"><a href="">第二導覽列3</a></div> -->
 							
-							<div class="li1"><a href="/MountainExploer.com/mountaincCampActOrder/selectcamporder?Member=Member">訂單查詢</a></div>
+<!-- 							<div class="li1"><a href="/MountainExploer.com/mountaincCampActOrder/selectcamporder?Member=Member">訂單查詢</a></div> -->
 
 							
 <!-- 		更改內容到這邊結束 -->
@@ -85,7 +85,7 @@ transition: all 0.6s;}
 		</div>
 		<div class="div_li2">
 			<!-- 每頁不同的內容從這裡開始 -->
-			<div class="searchBar">
+			<div class="searchBar" >
 				<nav>
 
 					<div class="third_nav">
@@ -174,7 +174,7 @@ transition: all 0.6s;}
 										<c:when test="${empty i.campimgid.img }">
 											<a href="${i.url}" target="_blank"><img height="100"
 												width="100"
-												src="/MountainExploer.com/housecamp/images/campnull.PNG">按</a>
+												src="/MountainExploer.com/housecamp/images/campimagnotfound.png"></a>
 										</c:when>
 										<c:when test="${not empty i.campimgid.img }">
 											<a href="${i.url}" target="_blank"><img height="100"
@@ -329,18 +329,11 @@ transition: all 0.6s;}
 		</div>
 	</div>
 
-	<footer id="footer">
-		<a>全站導覽</a>
-		<button id="demo1">確認demo1</button>
-		<button id="demo2">錯誤demo2</button>
-		<button id="demo3">確認提醒demo3</button>
-		<button id="demo4">多重選項&提醒視窗demo4</button>
-		<button id="demo5">Demo5</button>
-		<button id="demo6">Demo6</button>
-
-
-
+<div style="padding: 100px">
+	<footer id="footer"
+			include-html="/MountainExploer.com/forinclude/includeForFooter.html">
 	</footer>
+</div>
 </body>
 
 <script type="text/javascript">

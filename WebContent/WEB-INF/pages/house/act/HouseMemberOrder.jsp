@@ -72,7 +72,7 @@
 	<div class="div_ul">
 				<div class="secNavbar">
 					<nav>
-						<ul class="second_nav">
+						<ul class="second_nav" style="background-color: #C4E1FF">
 		<!-- 更改內容從這邊開始 -->
 							<li class="li1"><a href="/MountainExploer.com/mountainHouseAct/actselectAll?page=1&no=1&parkid=">回到查詢列表</a></li>
 
@@ -122,7 +122,7 @@
 					    	<div style="padding : 15px">
 					    		<c:choose>
 						    		<c:when test="${empty i.housebasicid.imgid.img }">
-										<img height="300px" width="300px"src="/MountainExploer.com/housecamp/images/housenull.PNG">
+										<img height="300px" width="300px"src="/MountainExploer.com/housecamp/images/imgnotfound.png">
 									</c:when>
 									<c:when test="${not empty i.housebasicid.imgid.img }">
 										<img height="300px"width="300px"src="<c:url value='/mountainHouseBack/showimg?imgid=${i.housebasicid.imgid.id}'/>">

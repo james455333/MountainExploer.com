@@ -203,103 +203,7 @@
 							</div>
 						</div>
 					</div>
-					<div class='row'>
-						<div class="col-xl-6 col-lg-7">
-							<div class="card shadow mb-4">
-								<!-- Card Header - Dropdown -->
-								<div class="card-header py-3 ">
-									<div
-										class="d-flex flex-row align-items-center justify-content-between">
-										<h6 class="m-0 font-weight-bold text-primary">縣市 - 露營地比例</h6>
-										<div class="ml-auto px-2 no-arrow">
-											<a href="" role="button" class="chart-reset"> <i
-												class="fas fa-sm fa-fw fa-sync"></i>
-											</a>
-										</div>
-										<div class="dropdown no-arrow">
-											<a class="dropdown-toggle" href="#" role="button"
-												id="dropdownMenuLink" data-toggle="dropdown"
-												aria-haspopup="true" aria-expanded="false"> <i
-												class="fas fa-ellipsis-v fa-sm fa-fw text-gray-800"></i>
-											</a>
-											<div
-												class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-												aria-labelledby="dropdownMenuLink">
-												<div class="dropdown-header">顯示圖像變化</div>
-												<button class="dropdown-item usePer-chart" id="areacount" value='pie'>圓餅圖</button>
-												<button class="dropdown-item usePer-chart" value='doughnut'>甜甜圈圖</button>
-												<button class="dropdown-item usePer-chart" value='bar'>長條圖(直)</button>
-												<button class="dropdown-item usePer-chart"
-													value='horizontalBar'>長條圖(橫)</button>
-												<div class="dropdown-divider"></div>
-												<button class="dropdown-item" id="usePerNp-export">輸出為PNG檔</button>
-												<button class="dropdown-item" id="usePerNp-export-json">輸出為JSON檔</button>
-											</div>
-										</div>
-									</div>
-<!-- 									<div -->
-<!-- 										class="mt-3 d-flex flex-row align-items-center justify-content-between"> -->
-<!-- 										<div class="input-group"> -->
-<!-- 											<div class="input-group-prepend"> -->
-<!-- 												<label class="input-group-text" for="npChartSelect">選擇切換</label> -->
-<!-- 											</div> -->
-<!-- 											<select id="npChartSelect" class="custom-select"> -->
-<!-- 											</select> -->
-<!-- 										</div> -->
-<!-- 									</div> -->
-								</div>
-								<!-- Card Body -->
-								<div class="card-body">
-									<div class="chart-area">
-										<canvas id="usePerNpChart"></canvas>
-									</div>
-								</div>
-							</div>
-						</div>
 
-						<div class="col-xl-6 col-lg-7">
-							<div class="card shadow mb-4">
-								<!-- Card Header - Dropdown -->
-								<div
-									class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-									<h6 class="m-0 font-weight-bold text-primary">鄉鎮 - 露營地比例</h6>
-									<div class="ml-auto px-2 no-arrow">
-										<a href="#" role="button" class="chart-reset"> <i
-											class="fas fa-sm fa-fw fa-sync"></i>
-										</a>
-									</div>
-									<div class="dropdown no-arrow">
-										<a class="dropdown-toggle" href="#" role="button"
-											id="dropdownMenuLink" data-toggle="dropdown"
-											aria-haspopup="true" aria-expanded="false"> <i
-											class="fas fa-ellipsis-v fa-sm fa-fw text-gray-800"></i>
-										</a>
-
-										<div
-											class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-											aria-labelledby="dropdownMenuLink">
-											<div class="dropdown-header">顯示圖像變化</div>
-											<button class="dropdown-item countRt-chart" value='pie'>圓餅圖</button>
-											<button class="dropdown-item countRt-chart" value='doughnut'>甜甜圈圖</button>
-											<button class="dropdown-item countRt-chart" value='bar'>長條圖(直)</button>
-											<button class="dropdown-item countRt-chart"
-												value='horizontalBar'>長條圖(橫)</button>
-											<div class="dropdown-divider">分隔線</div>
-											<button class="dropdown-item" id="countRt-export">輸出為PNG檔</button>
-											<button class="dropdown-item" id="countRt-export-json">輸出為JSON檔</button>
-										</div>
-									</div>
-								</div>
-								<!-- Card Body -->
-								<div class="card-body">
-									<div class="chart-area">
-										<canvas id="countRtChart"></canvas>
-									</div>
-
-								</div>
-							</div>
-						</div>
-					</div>
 					<div class="row">
 						<!-- 下面開始 -->
 						<div class="col-xl-12">
@@ -489,7 +393,7 @@
 								<c:choose>
 								<c:when test="${empty i.campimgid.img }">
 								<a class="tooltip-a" data-toggle='tooltip' href="${i.url}"target="_blank"><img alt='按'  height="100" width="100"
-										src="/MountainExploer.com/housecamp/images/campnull.PNG"></a>
+										src="/MountainExploer.com/housecamp/images/campimagnotfound.png"></a>
 								</c:when>
 								<c:when test="${not empty i.campimgid.img }">
 								<a class="tooltip-a" data-toggle='tooltip' title="點擊" href="${i.url}"target="_blank"><img alt='按'  height="100" width="100"

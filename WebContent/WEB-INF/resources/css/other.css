@@ -129,14 +129,14 @@ header {
 	z-index: 1;
 }
 
-#footer {
+/* #footer {
 	clear: both;
 	background-color: grey;
 	height: 120px;
 	width: 1440px;
 	text-align: center;
 	margin: 0px auto;
-}
+} */
 
 .fix {
 	/*此為網頁右方快捷鍵 可直接在任何地方直接加入<div class="fix"><a href="#"><img src="../images/arror.png" alt="" style=" width:60px; height:60px;"></a>

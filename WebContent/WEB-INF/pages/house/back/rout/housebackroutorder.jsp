@@ -282,7 +282,7 @@
 							<td>
 								<c:choose>
 									<c:when test="${empty i.housebasicid.imgid.img }">
-									<img  height="100" width="100"src="/MountainExploer.com/housecamp/images/housenull.PNG">
+									<img  height="100" width="100"src="/MountainExploer.com/housecamp/images/imgnotfound.png">
 									</c:when>
 									<c:when test="${not empty i.housebasicid.imgid.img }">
 										<img   height="100" width="100"src="<c:url value='/mountainHouseBack/showimg?imgid=${i.housebasicid.imgid.id}'/>">
