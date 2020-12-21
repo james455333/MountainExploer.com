@@ -105,7 +105,7 @@ $(function(){
 })
 let count = 1;
 
-function includeHTML() {
+async function includeHTML() {
 	var z, i, elmnt, file, xhttp;
 	/* Loop through a collection of all HTML elements: */
 	z = document.getElementsByTagName("*");
@@ -115,24 +115,23 @@ function includeHTML() {
 		file = elmnt.getAttribute("include-html");
 		if (file) {
 			console.log("count include : " + (count++))
-			 /* Make an HTTP request using the attribute value as the file name: */
-			xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-			if (this.readyState == 4) {
-			if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-			if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
-			    /* Remove the attribute, and call this function once more: */
-			            elmnt.removeAttribute("include-html");
-						includeHTML()
-			        }
+					 /* Make an HTTP request using the attribute value as the file name: */
+				xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+				if (this.readyState == 4) {
+					if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+					if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+					    /* Remove the attribute, and call this function once more: */
+					    elmnt.removeAttribute("include-html");
+						await includeHTML()
+					}
 				}
-		    
-		    xhttp.open("GET", file, true);
-		    xhttp.send();
+			    
+			    xhttp.open("GET", file, true);
+			    xhttp.send();
+				resolve()
 		    /* Exit the function: */
-			console.log("return resolve")
-		    }
-			resolve()
 		}
+	}
 	
 }
