@@ -96,13 +96,13 @@ div{margin: 20px;}
 			<!-- 每頁不同的內容從這裡開始 -->
 
 
-			<div class="secDivContent">
+			<div class="secDivContent"  >
 
 				<!--    新增訂單   	inserorder -->
 
 				<form	action="<c:url value='/mountainHouseActOrder/inserhouseorder'></c:url>"
 					method='get'>
-					<div class="forImage">
+					<div class="forImage" id="orderdesc">
 
 						<c:forEach var="i" items="${list}">
 

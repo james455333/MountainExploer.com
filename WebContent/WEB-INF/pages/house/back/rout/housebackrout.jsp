@@ -433,7 +433,7 @@
 														<td><c:choose>
 																<c:when test="${empty i.imgid.img }">
 																	<img height="100" width="100"
-																		src="/MountainExploer.com/housecamp/images/housenull.PNG">
+																		src="/MountainExploer.com/housecamp/images/imgnotfound.png">
 																</c:when>
 																<c:when test="${not empty i.imgid.img }">
 																	<img height="100" width="100"
@@ -446,8 +446,8 @@
 																	action="<c:url value='/Rout/mountainHouseBack/deleteHouse'></c:url>"
 																	name="form1" method='post'>
 																	<input type="hidden" name="deletehouse"
-																		value="${i.housebasicid}"> <input
-																		type="button" class="btn btn-outline-danger"
+																		value="${i.housebasicid}"> 
+																		<input id="deletehouse" type="button" class="btn btn-outline-danger"
 																		value="刪除"
 																		onclick="if(confirm('確認要刪除嗎？')) this.form.submit();">
 																</form>
@@ -597,33 +597,36 @@
 	</div>
 
 	<script>
-		function delete_data() {
-			if (confirm("確認刪除?")) {
-				document.form1.submit();
-				return true
-				alert('已删除');
-			} else {
-				return false;
-				alert('取消')
-			}
-		}
+// 		function delete_data() {
+// 			if (confirm("確認刪除?")) {
+// 				document.form1.submit();
+// 				return true
+// 				alert('已删除');
+// 			} else {
+// 				return false;
+// 				alert('取消')
+// 			}
+// 		}
 
-// 		Swal.fire({
-// 			  title: 'Are you sure?',
-// 			  text: "You won't be able to revert this!",
-// 			  icon: 'warning',
-// 			  showCancelButton: true,
-// 			  confirmButtonColor: '#3085d6',
-// 			  cancelButtonColor: '#d33',
-// 			  confirmButtonText: 'Yes, delete it!'
-// 			}).then((result) => {
-// 			  if (result.isConfirmed) {
-// 			    Swal.fire(
-// 			      'Deleted!',
-// 			      'Your file has been deleted.',
-// 			      'success'
-// 			    )
 
+		$("#deletehouse").on("click",function(){
+		Swal.fire({
+			  title: 'Are you sure?',
+			  text: "You won't be able to revert this!",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Yes, delete it!'
+			}).then((result) => {
+			  if (result.isConfirmed) {
+			    Swal.fire(
+			      'Deleted!',
+			      'Your file has been deleted.',
+			      'success'
+			    )}
+			})
+		})
 
 
 		

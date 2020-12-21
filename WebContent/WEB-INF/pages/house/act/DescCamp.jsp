@@ -95,7 +95,7 @@ height:25px;
                			<c:forEach var="i" items="${selectcamp}">
 					<c:choose>
 								<c:when test="${ empty i.campimgid.img}">
-								<img style="height: 100%" src="/MountainExploer.com/housecamp/images/campnull.PNG">
+								<img style="height: 100%" src="/MountainExploer.com/housecamp/images/campimagnotfound.png">
 								</c:when>
 								<c:when test="${not empty i.campimgid.img}">
 								<img style="height: 100%"

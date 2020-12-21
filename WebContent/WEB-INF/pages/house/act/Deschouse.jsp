@@ -17,11 +17,8 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<link
-	href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css"
-	rel="stylesheet" />
-<script
-	src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.all.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css"rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="/MountainExploer.com/member/userTop.js"></script>
 
@@ -137,7 +134,7 @@
 			    	</c:choose>
 					
 			    <c:if test="${ !empty Member}">
-		    		<li style="list-style-type: none" class="breadcrumb-item ml-auto" ><a href="/MountainExploer.com/mountainHouseActOrder/selecthouseorder?Member=Member">訂單查詢</a></li>
+		    		<li style="list-style-type: none;" class="breadcrumb-item ml-auto" ><a  href="/MountainExploer.com/mountainHouseActOrder/selecthouseorder?Member=Member">訂單查詢</a></li>
 				</c:if>
 								
 		  </ol>
@@ -169,7 +166,7 @@
 								<c:choose>
 									<c:when test="${ empty i.imgid.img}">
 										<div><img height="500" width="500"
-											src="/MountainExploer.com/housecamp/images/housenull.PNG"></div>
+											src="/MountainExploer.com/housecamp/images/imgnotfound.png"></div>
 									</c:when>
 									<c:when test="${not empty i.imgid.img}">
 										<div><img height="500" width="500"
@@ -446,7 +443,7 @@
 					<!-- 	顯示查詢日期			                			 -->
 					<div style="padding: 50px">
 						<form
-							action="<c:url value='/mountainHouseActOrder/orderjump'></c:url>">
+							action="<c:url value='/mountainHouseActOrder/orderjump#orderdesc'></c:url>">
 							<c:forEach var="i" items="${house}">
 								<input type="hidden" name="orderjump_houseid"
 									value="${i.housebasicid}">
@@ -563,7 +560,7 @@
 							</table>
 							<div>
 								<h2 style="color:">
-									<a href="#from">請先查詢住宿日期</a>
+									<a href="#from" >請先查詢住宿日期</a>
 								</h2>
 							</div>
 						</c:forEach>
@@ -579,19 +576,11 @@
 			<!-- 每頁不同的內容到這裡結束 -->
 		</div>
 	</div>
-
-	<footer id="footer">
-		<a>全站導覽</a>
-		<button id="demo1">確認demo1</button>
-		<button id="demo2">錯誤demo2</button>
-		<button id="demo3">確認提醒demo3</button>
-		<button id="demo4">多重選項&提醒視窗demo4</button>
-		<button id="demo5">Demo5</button>
-		<button id="demo6">Demo6</button>
-
-
-
+<div style="padding: 100px">
+	<footer id="footer"
+			include-html="/MountainExploer.com/forinclude/includeForFooter.html">
 	</footer>
+</div>
 
 	<script type="text/javascript"
 		src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
@@ -881,7 +870,7 @@
 
 </body>
 
-<script src="/MountainExploer.com/housecamp/js/swalLogin.js"></script>
+<script src="/MountainExploer.com/js/swalLogin.js"></script>
 <script src="/MountainExploer.com/js/upLoadImg.js"></script>
 <!-- 上傳頭像 -->
 <script src="/MountainExploer.com/js/table.js"></script>
