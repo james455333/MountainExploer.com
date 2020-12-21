@@ -24,6 +24,12 @@ function loginSwal(){
 				</div>
 				<div><a href="/MountainExploer.com/member/memberPwdFoundEntry">忘記密碼</a></div>
 				<div style="text-align: center;">立即<a href="/MountainExploer.com/member/memberRegisterEntry">註冊</a>帳號或<a href="/MountainExploer.com/member/memberLoginEntry">使用Facebook帳號登入</div>
+				<div>
+				<input type="button" name="userLog1" class="btn btn-info userLog1" value="一般登入">
+				<input type="button" name="userLog2" class="btn btn-warning userLog2" value="登山嚮導登入">
+				<input type="button" name="adminLog" class="btn btn-secondary adminLog" value="管理員登入">
+				<input type="button" name="testLog" class="btn btn-info disabled userLog3" value="即時登入">
+				</div>
 				`,
 		customClass: {
 			confirmButton: 'btn btn-success mx-3',
@@ -159,3 +165,64 @@ function loginSwal(){
 	
 	
 	
+//快速登入
+$(".userLog1").on("click", function(){
+    let userNo1 = $(".userLog1").val();
+
+    $.ajax({
+        method:"GET",
+        url:"/MountainExploer.com/member/FastLoginOne",
+        data:{userLog1:userNo1},
+        dataType:"json",
+        success:function(flag){
+            if(flag){
+                window.location.href="/MountainExploer.com";
+            }else{
+                window.location.reload();
+            }
+        }
+    })
+})
+
+$(".userLog2").on("click", function(){
+    let userNo2 = $(".userLog2").val();
+
+    $.ajax({
+        method:"GET",
+        url:"/MountainExploer.com/member/FastLoginTwo",
+        data:{userLog2:userNo2},
+        dataType:"json",
+        success:function(flag){
+            if(flag){
+                window.location.href="/MountainExploer.com/member/memberInfoEntry";
+            }else{
+                window.location.reload();
+            }
+        }
+    })
+})
+
+$(".adminLog").on("click", function(){
+    let adminLog = $(".adminLog").val();
+
+    $.ajax({
+        method:"GET",
+        url:"/MountainExploer.com/member/FastLoginAdmin",
+        data:{adminLog:adminLog},
+        dataType:"json",
+        success:function(flag){
+            if(flag){
+                window.location.href="/MountainExploer.com/back";
+            }else{
+                window.location.reload();
+            }
+        }
+    })
+})
+
+
+$(".userLog3").on("click", function(){
+	$(".account").val("Asterius298");
+	$(".password").val("DoingTest123");
+	$(".rememberMe").prop("checked", true);
+})

@@ -243,7 +243,12 @@
 				                            
 				                        </td>
 				                        <td>				                             	
+				                            <div style="inline">
 				                                <button type="button" class="btn btn-secondary updatePwdbtn">修改密碼</button>
+				                                <div style="display:none;" class="hiddeninp">
+				                                	<button type="button" class="btn btn-info disabled textUpdate">修改資料</button>
+				                                </div>
+				                            </div>
 				                        </td>
 				                    </tr>                                  
 				                </tbody>

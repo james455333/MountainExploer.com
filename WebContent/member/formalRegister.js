@@ -1,9 +1,9 @@
 //快速註冊
 $(".fastRg").on("click", function(){
-    $("#account").val("makoto1202");
+    $("#account").val("Asterius298");
     $("#pwd").val("DoingTest123");
     $("#chkPwd").val("DoingTest123");
-    $("#name").val("丹禮真");
-    $(".ncName").val("Coto")
-    $("#email").val("reimakoto@gmail.com");
+    $("#name").val("阿斯忒里翁");
+    $(".ncName").val("牛牛")
+    $("#email").val("edwardareis@gmail.com");
 })

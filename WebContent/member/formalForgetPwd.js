@@ -66,3 +66,9 @@ $(".submit").on("click", function(){
         })
     }
 })
+
+//快速輸入
+$(".antpwd").on("click", function(){
+    $(".account").val("Asterius298");
+    $(".email").val("edwardareis@gmail.com");
+})

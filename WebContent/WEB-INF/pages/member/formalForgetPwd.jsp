@@ -104,7 +104,8 @@
                             
                               <div class="offset-4 col-8" style="margin: 0 auto;">
                                 <button name="submit" type="button" class="btn btn-primary submit">送出</button>
-                                <button name="submit" type="reset" class="btn btn-danger">取消</button>
+                                <button name="reset" type="reset" class="btn btn-danger">取消</button>
+                                <button type="button" class="btn btn-info disabled antpwd">快速輸入</button>
                               </div>
                               </form>
                             </div>

@@ -378,6 +378,12 @@ $(".reset").on("click", function(){
     window.location.reload();
 })
 
+
+//click
+$(".textUpdate").on("click", function(){
+    $(".otInp").val("夢尋綺星長空盡");
+})
+
 //驗證姓名
 // function chkName(chkName){
 //     let chkNameLen = chkName.length;

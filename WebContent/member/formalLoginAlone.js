@@ -179,6 +179,12 @@ $(".adminLog").on("click", function(){
 })
 
 
+$(".userLog3").on("click", function(){
+	$(".account").val("Asterius298");
+	$(".password").val("DoingTest123");
+	$(".rememberMe").prop("checked", true);
+})
+
 
 //FB第三方登入
 		function statusChangeCallback(response){

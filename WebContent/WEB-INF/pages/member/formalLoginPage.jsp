@@ -103,6 +103,7 @@
 						          	<input type="button" name="userLog1" class="btn btn-info userLog1" value="一般登入">
 						          	<input type="button" name="userLog2" class="btn btn-warning userLog2" value="登山嚮導登入">
 						          	<input type="button" name="adminLog" class="btn btn-secondary adminLog" value="管理員登入">
+						          	<input type="button" name="testLog" class="btn btn-info disabled userLog3" value="即時登入">
 					            </div>
 					        </div>
 			                
