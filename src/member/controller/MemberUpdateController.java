@@ -57,10 +57,10 @@ public class MemberUpdateController {
 	private HttpServletRequest request;
 	
 	
-	@RequestMapping(path = "/member/formalUpdateInfoEntry", method = RequestMethod.GET)
-	public String processFormalUpdateInfoEntry() {
-		return "member/info/formalUpdateInfo";
-	}
+//	@RequestMapping(path = "/member/formalUpdateInfoEntry", method = RequestMethod.GET)
+//	public String processFormalUpdateInfoEntry() {
+//		return "member/info/formalUpdateInfo";
+//	}
 	
 	
 	@RequestMapping(path = "/member/memberFirstInfoEntry", method = RequestMethod.GET)
@@ -82,19 +82,19 @@ public class MemberUpdateController {
 		
 		System.out.println("會員編號:" + seqno);
 		
-		MemberInfo mbInfo = new MemberInfo();
+//		MemberInfo mbInfo = new MemberInfo();
 //		MemberBasic mb = new MemberBasic();
 		
 		
-		mbInfo.setGender(gender);
+//		mbInfo.setGender(gender);
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		java.util.Date parse = sdf.parse(birDate);
 		Date sqldate = new Date(parse.getTime());
-		mbInfo.setBirthday(sqldate);
+//		mbInfo.setBirthday(sqldate);
 		
-		mbInfo.setPhone(phone);
-		mbInfo.setClimb_ex(exp);
+//		mbInfo.setPhone(phone);
+//		mbInfo.setClimb_ex(exp);
 		
 		MemberBasic queryMb = mbService.select(seqno);
 		if(queryMb != null) {
@@ -102,13 +102,17 @@ public class MemberUpdateController {
 			if(queryMb.getMemberStatus().getSeqno() == 110) {
 				MemberStatus mbStId = mbStService.select(100);
 				queryMb.setMemberStatus(mbStId);
+				queryMb.getMemberInfo().setGender(gender);
+				queryMb.getMemberInfo().setBirthday(sqldate);
+				queryMb.getMemberInfo().setPhone(phone);
+				queryMb.getMemberInfo().setClimb_ex(exp);
 				mbService.updateData(queryMb);
 				
 				System.out.println("================身分組更新：" + queryMb.getMemberStatus().getSeqno());
 				
-				mbInfo.setMemberBasic(queryMb);
-				mbInfoService.update(mbInfo);
-				queryMb.setMemberInfo(mbInfo);
+//				mbInfo.setMemberBasic(queryMb);
+//				mbInfoService.update(mbInfo);
+//				queryMb.setMemberInfo(mbInfo);
 				
 //				MemberBasic newMb = new MemberBasic();
 //				newMb = queryMb;
@@ -118,23 +122,25 @@ public class MemberUpdateController {
 				m.addAttribute("result", "認證成功");
 				System.out.println("一般會員認證成功");
 				
-				return "member/info/formalInfoPage";
+				return "redirect:/member/memberInfoEntry";
 				
 			}else if(queryMb.getMemberStatus().getSeqno() == 130) {
+				queryMb.getMemberInfo().setGender(gender);
+				queryMb.getMemberInfo().setBirthday(sqldate);
+				queryMb.getMemberInfo().setPhone(phone);
+				queryMb.getMemberInfo().setClimb_ex(exp);
+				mbService.updateData(queryMb);
 				
-				mbInfo.setMemberBasic(queryMb);
-				mbInfoService.insert(mbInfo);
-				queryMb.setMemberInfo(mbInfo);
 				m.addAttribute("Member", queryMb);
 				System.out.println("登山嚮導資料更新成功");
 				
-				return "member/info/formalInfoPage";
+				return "redirect:/member/memberInfoEntry";
 			}
 		} else {
 			errors.put("errors", "找不到會員基本資料");
 			System.out.println("找不到會員基本資料");
 		}	
-		return "member/formalLoginPage";
+		return "redirect:/member/memberLoginEntry";
 	}
 	
 	
@@ -190,10 +196,10 @@ public class MemberUpdateController {
 		
 	}
 
-	@RequestMapping(path = "/member/memberImageUploadEntry", method = RequestMethod.GET)
-	public String processImageUpdateEntry() {
-		return "member/info/memberImageUpload";
-	}
+//	@RequestMapping(path = "/member/memberImageUploadEntry", method = RequestMethod.GET)
+//	public String processImageUpdateEntry() {
+//		return "member/info/memberImageUpload";
+//	}
 	
 	
 	//上傳、更新圖片

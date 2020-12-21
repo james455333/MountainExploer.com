@@ -59,9 +59,10 @@
         </div> -->
         <div class="div_li2" style="background: #ecf5ff; height: auto;">
             <!-- 每頁不同的內容從這裡開始 -->
-            <form id="rsForm" action="<c:url value='/member/memberRegister'/>" method="POST"
+            <form id="rsForm" 
                 style="width: 800px; margin: 0 auto; border: 10px solid#ecf5ff; border-radius: 1%; background-color: d#ecf5ff;">
                 <div style="border-radius: 3%; border: 10px solid white; background-color: white;">
+<%--                 action="<c:url value='/member/memberRegister'/>" method="POST" --%>
 				
                     <fieldset>
                         <legend>請輸入個人資料</legend>
@@ -116,7 +117,7 @@
                     	</div>
 
                     </div>
-                    <button type="submit" name="submit" class="btn btn-outline-success submit"><i class="fa fa-check-circle-o"></i>
+                    <button type="button" id="send" name="submit" class="btn btn-outline-success send" value="send"><i class="fa fa-check-circle-o"></i>
                         確認送出</button>
                     <button type="button" name="fastRg" class="btn btn-outline-success fastRg"><i class="fa fa-check-circle-o"></i>快速註冊</button>
                     <button type="reset" class="btn btn-outline-danger reset" id="reset"><i class="fa fa-close"></i> 清除</button>

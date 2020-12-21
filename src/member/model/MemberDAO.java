@@ -49,9 +49,9 @@ public class MemberDAO {
 		MemberBasic qBean = query.uniqueResult();
 		
 		if(qBean != null) {
-			return true;
+			return false;
 		}
-		return false;
+		return true;
 	}
 
 	//Login Check Password
