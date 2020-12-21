@@ -211,6 +211,39 @@ public class MemberBackStageController {
 		return pieMap;
 	}
 	
+	
+	//圓餅圖性別分布
+	@ResponseBody
+	@GetMapping(path = "/countGender")
+	public Map<String, Object> processGenderAll(){
+		Map<String, Object> gdMap = new HashMap<String, Object>();
+		
+		String male = "male";
+		List<MemberBasic> mlList = mbService.selectGdAll(male);
+		long mlListSize = mlList.size();
+		gdMap.put("mlList", mlListSize);
+		
+		String female = "female";
+		List<MemberBasic> fmList = mbService.selectGdAll(female);
+		long fmListSize = fmList.size();
+		gdMap.put("fmList", fmListSize);
+		
+		String x = "x";
+		List<MemberBasic> xList = mbService.selectGdAll(x);
+		long xListSize = xList.size();
+		gdMap.put("xList", xListSize);
+		
+		String mask = "mask";
+		List<MemberBasic> maskList = mbService.selectGdAll(mask);
+		long maskListSize = maskList.size();
+		gdMap.put("maskList", maskListSize);
+		
+		return gdMap;
+	}
+	
+	
+	
+	
 	//單獨查詢
 	@ResponseBody
 	@GetMapping(path = "/memberSingleAction")

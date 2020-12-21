@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import member.model.MemberBasic;
+import oracle.net.aso.q;
 
 
 @Repository
@@ -143,6 +144,15 @@ public class MemberBasicBackDAO {
 		return mb;
 	}
 	
+	public List<MemberBasic> selectGdAll(String gender){
+		Session session = sessionFactory.getCurrentSession();
+		Query<MemberBasic> query = session.createQuery("From MemberBasic where gender = ?0", MemberBasic.class);
+		query.setParameter(0, gender);
+		
+		List<MemberBasic> mbList = query.list();
+		
+		return mbList;
+	}
 	
 	//更新
 	public MemberBasic update(MemberBasic mb) {

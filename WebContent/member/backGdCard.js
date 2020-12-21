@@ -3,29 +3,28 @@ Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,Bli
 Chart.defaults.global.defaultFontColor = '#858796';
 
 // Pie Chart Example
-var datas = [];
-var gmAjax = $.ajax({
+var gdDatas = [];
+var gdAjax = $.ajax({
     method:"GET",
-    url:"/MountainExploer.com/back/member/countGMember",
+    url:"/MountainExploer.com/back/member/countGender",
     dataType:"json",
     success:function(pieMap){
-        datas[0] = pieMap.gmSize;
-        datas[1] = pieMap.ggSize;
-        datas[2] = pieMap.uaSize;
-        datas[3] = pieMap.saSize;
-        datas[4] = pieMap.adSiza;
-        console.log(datas);
+        gdDatas[0] = pieMap.mlList;
+        gdDatas[1] = pieMap.fmList;
+        gdDatas[2] = pieMap.xList;
+        gdDatas[3] = pieMap.maskList;
+        console.log(gdDatas);
     }
 }).then(()=>{
 
-    var ctx = document.getElementById("mbModeChart");
+    var ctx = document.getElementById("gdModeChart");
     var myPieChart = new Chart(ctx, {
       type: 'pie',
       data: {
     
-        labels: ["一般登山者", "登山嚮導", "未認證會員", "停權會員", "管理者"],
+        labels: ["男性", "女性", "第三性", "不透露"],
         datasets: [{
-          data: datas,
+          data: gdDatas,
           backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#FF0000', '#8E8E8E'],
           hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf', '#EA0000', '#7B7B7B'],
           hoverBorderColor: "rgba(234, 236, 244, 1)",
@@ -94,5 +93,3 @@ function jsonDownload(jsonList, fileName){
         $(this).remove();
     })[0].click()
 }
-
-

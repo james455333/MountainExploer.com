@@ -49,6 +49,10 @@ public class MemberBasicBackService {
 		return mbDAO.selectAll();
 	}
 	
+	public List<MemberBasic> selectGdAll(String gender){
+		return mbDAO.selectGdAll(gender);
+	}
+	
 	public MemberBasic update(MemberBasic mb) {
 		return mbDAO.update(mb);
 	}

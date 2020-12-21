@@ -83,7 +83,7 @@ pageEncoding="UTF-8"%>
 												class="h5 mb-0 font-weight-bold text-gray-600 countMb"></div>
 										</div>
 										<div class="col-auto">
-											<i class="fa fa-flag fa-2x" style="color: #ff6b6b;"
+											<i class="fas fa-users fa-2x" style="color: #ff6b6b;"
 												aria-hidden="true"></i>
 										</div>
 									</div>
@@ -107,12 +107,12 @@ pageEncoding="UTF-8"%>
 	                                        </a>
 	                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
 	                                            aria-labelledby="dropdownMenuLink">
-	                                            <div class="dropdown-header">顯示圖像變化</div>
-	                                            <button class="dropdown-item act-mode-chart" value='pie' >圓餅圖</button>
-	                                            <button class="dropdown-item act-mode-chart" value='doughnut' >甜甜圈圖</button>
-	                                            <button class="dropdown-item act-mode-chart" value='bar' >長條圖(直)</button>
-	                                            <button class="dropdown-item act-mode-chart" value='horizontalBar' >長條圖(橫)</button>
-	                                        	<div class="dropdown-divider"></div>
+<!-- 	                                            <div class="dropdown-header">顯示圖像變化</div> -->
+<!-- 	                                            <button class="dropdown-item mb-mode-chart" value='pie' >圓餅圖</button> -->
+<!-- 	                                            <button class="dropdown-item mb-mode-chart" value='doughnut' >甜甜圈圖</button> -->
+<!-- 	                                            <button class="dropdown-item mb-mode-chart" value='bar' >長條圖(直)</button> -->
+<!-- 	                                            <button class="dropdown-item mb-mode-chart" value='horizontalBar' >長條圖(橫)</button> -->
+<!-- 	                                        	<div class="dropdown-divider"></div> -->
 												<button class="dropdown-item exporPng" id="mb-mode-export">輸出為PNG檔</button>
 												<button class="dropdown-item" id="mb-mode-export-json">輸出為JSON檔</button>
 	                                        </div>
@@ -126,6 +126,39 @@ pageEncoding="UTF-8"%>
                                         <canvas id="mbModeChart"></canvas>
                                     </div>
                                 </div>
+                                
+<!--                                 <div class="card-header py-3 "> -->
+<!--                                     <div class="d-flex flex-row align-items-center justify-content-between"> -->
+<!-- 	                                    <h6 class="m-0 font-weight-bold text-primary">會員性別分布</h6> -->
+<!-- 	                                    <div class="ml-auto px-2 no-arrow"> -->
+<!-- 		                                    <a href="" role="button" class="chart-reset"> -->
+<!-- 		                                       	<i class="fas fa-sm fa-fw fa-sync"></i> -->
+<!-- 		                                    </a> -->
+<!-- 	                                    </div> -->
+<!-- 	                                    <div class="dropdown no-arrow"> -->
+<!-- 	                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLinkGd" -->
+<!-- 	                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+<!-- 	                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-800"></i> -->
+<!-- 	                                        </a> -->
+<!-- 	                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" -->
+<!-- 	                                            aria-labelledby="dropdownMenuLink"> -->
+<!-- 	                                            <div class="dropdown-header">顯示圖像變化</div> -->
+<!-- 	                                            <button class="dropdown-item mb-mode-chart" value='pie' >圓餅圖</button> -->
+<!-- 	                                            <button class="dropdown-item mb-mode-chart" value='doughnut' >甜甜圈圖</button> -->
+<!-- 	                                            <button class="dropdown-item mb-mode-chart" value='bar' >長條圖(直)</button> -->
+<!-- 	                                            <button class="dropdown-item mb-mode-chart" value='horizontalBar' >長條圖(橫)</button> -->
+<!-- 	                                        	<div class="dropdown-divider"></div> -->
+<!-- 												<button class="dropdown-item exporPng" id="gd-mode-export">輸出為PNG檔</button> -->
+<!-- 												<button class="dropdown-item" id="gd-mode-export-json">輸出為JSON檔</button> -->
+<!-- 	                                        </div> -->
+<!-- 	                                    </div> -->
+                                    </div>
+                                </div>
+<!--                                 <div class="card-body" style="inline"> -->
+<!--                                     <div class="chart-area"> -->
+<%--                                         <canvas id="gdModeChart"></canvas> --%>
+<!--                                     </div> -->
+<!--                                 </div> -->
                                 <!-- DataTales Example -->
 			                    <div class='hideDIV'>
 			                    	<a class="hideElm export" href="" ></a>
@@ -276,6 +309,7 @@ pageEncoding="UTF-8"%>
     <script src="/MountainExploer.com/member/memberInfoListBack.js"></script>
 <!--     <script src="/MountainExploer.com/member/Linedemo.js"></script> -->
     <script src="/MountainExploer.com/member/backCard.js"></script>
+    <script src="/MountainExploer.com/member/backGdCard.js"></script>
 </body>
 
 </html>
