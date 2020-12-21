@@ -114,7 +114,9 @@
 
 
 </body>
-<footer id="footer"> </footer>
+	<footer id="footer"
+		include-html="/MountainExploer.com/forinclude/includeForFooter.html">
+	</footer>
 <script src="/MountainExploer.com/js/upLoadImg.js"></script>
 <!-- 上傳頭像 -->
 <script src="/MountainExploer.com/js/table.js"></script>
