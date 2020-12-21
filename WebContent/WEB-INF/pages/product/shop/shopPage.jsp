@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>購物頁面</title>
 <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
+<link rel="stylesheet" href="/MountainExploer.com/css/index.css">
+<link rel="stylesheet" href="/MountainExploer.com/css/style.css">
 <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -21,6 +23,12 @@
 	<script src="/MountainExploer.com/js/swalLogin.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="/MountainExploer.com/member/userTop.js"></script>
+    <!-- bootstrap 4 core -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+	<!-- Bootstrap core CSS -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
 		<style>
         
 
@@ -57,7 +65,7 @@
 		<div class="count1_img">
 			<img src="/MountainExploer.com/images/logo1.png">
 			<hr>
-			<h1 class="font">可能改成輪播</h1>
+			<h1 class="font"></h1>
 			<!-- <a class="font">岳進者</a> -->
 		</div>
 	</div>
@@ -87,18 +95,18 @@
 
 		<div class="col-3">
 			<div class="m-3  p-3">
-				<div class="" style="line-height: unset;">
+				<div class="" style="line-height: unset;"     >
 					<!-- 更改內容從這邊開始 -->
 					<div class="d-flex align-items-center justify-content-between p-1">
 						<select class="w-100 h-100 mr-3" name="firstclass" id="fcSelect">
 						</select>
 						<button type="button" value="主類別查詢"
-							class="mx-1 fcSubmit btn btn-outline-danger">主類別查詢</button>
+							class="mx-1 fcSubmit btn btn-outline-info">主類別查詢</button>
 					</div>
 					<div class="d-flex align-items-center justify-content-between p-1">
 						<select name="secondclass" class="scSelect h-100 w-100 mr-3"></select>
 						<button type="button" value="次類別查詢"
-							class="mx-1 scSubmit btn btn-outline-danger">次類別查詢</button>
+							class="mx-1 scSubmit btn btn-outline-info">次類別查詢</button>
 					</div>
 					<!-- 更改內容到這邊結束 -->
 				</div>
@@ -106,7 +114,7 @@
 			<div class="div2 p-3">
 				<div style="width: 100%" class="btn-group dropdown">
 					<button type="button"
-						class="btn btn-lg btn-block btn-outline-success dropdown-toggle justify-content-between"
+						class="btn btn-lg btn-block  dropdown-toggle justify-content-between fas fa-shopping-cart"
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 						我的購物車</button>
 					<div class="dropdown-menu w-100 ">
@@ -147,17 +155,17 @@
 					</ul>
 				</nav>
 
-				<div>
-					<span>價格區間 : </span> <input type="radio" name="radioGroup"
-						id="radioA" value="1" checked="checked" /><label>0-1000元</label>
-					<input type="radio" name="radioGroup" id="radioB" value="2" /><label>1001-2000元</label>
-					<input type="radio" name="radioGroup" id="radioC" value="3" /><label>2001-3000元</label>
-					<input type="radio" name="radioGroup" id="radioD" value="4" /><label>3000元以上</label>
+				<div style='font-size: 20px '>
+					<span>價格區間 :  </span> <input type="radio" name="radioGroup"
+						id="radioA" value="1" checked="checked" /><label> 0-1000元</label>
+					<input type="radio" name="radioGroup" id="radioB" value="2" /><label> 1001-2000元</label>
+					<input type="radio" name="radioGroup" id="radioC" value="3" /><label> 2001-3000元</label>
+					<input type="radio" name="radioGroup" id="radioD" value="4" /><label> 3000元以上</label>
 					<button type="submit"
-						class="priceSubmitButton btn btn-outline-danger">價格區間查詢</button>
+						class="priceSubmitButton btn btn-outline-info ">價格區間查詢</button>
 					<!-- <button type="submit" class="priceSubmitButton btn btn-outline-dark">價格區間查詢</button> -->
 				</div>
-				<div>
+				<div style='font-size: 20px'>
 					商品名稱搜尋：<input type="text" class="light-table-filter"
 						placeholder="請輸入關鍵字"> <img class="imgSearch"
 						src="/MountainExploer.com/images/放大鏡.png" alt="" width="35px">

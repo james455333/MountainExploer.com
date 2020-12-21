@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>商品資訊</title>
 <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
+<link rel="stylesheet" href="/MountainExploer.com/css/index.css">
+<link rel="stylesheet" href="/MountainExploer.com/css/style.css">
 <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -37,7 +39,7 @@
 		<div class="count1_img">
 			<img src="/MountainExploer.com/images/logo1.png">
 			<hr>
-			<h1 class="font">可能改成輪播</h1>
+			<h1 class="font"></h1>
 			<!-- <a class="font">岳進者</a> -->
 		</div>
 	</div>
@@ -62,11 +64,11 @@
 			<li class="breadcrumb-item active">商品資訊</li>
 		</ol>
 	</nav>
-	<div class="div_ul d-flex div shadow animate__animated  p-3">
+	<div class="div_ul d-flex div shadow animate__animated  p-3 ">
 
 		<div class="col-5 d-flex justify-content-center p-3">
-			<div class="d-flex justify-content-center p-3 m-3  ">
-				<img style="width: 600px"
+			<div class="d-flex justify-content-center  m-1  ">
+				<img style="width: 600px;border:groove"
 					src="<c:url value='/backstage/product/search/images?seqno=${ProductBean.seqno}' />">
 			</div>
 		</div>
@@ -74,7 +76,7 @@
 		<div style='font-size:20px' class="col-7 ">
 			<!-- 每頁不同的內容從這裡開始 -->
 
-			<div style='font-size:30px; height:150px 'class="m-3 d-flex justify-content-center ">${ProductBean.name}</div>
+			<div style='font-size:30px; height:150px 'class="m-3 d-flex justify-content-center border-bottom">${ProductBean.name}</div>
 <%-- 			<div>${ProductBean.seqno}</div> --%>
 			<div class="m-3 border-bottom">
 			${ProductBean.firstClass}</div>
@@ -105,7 +107,7 @@
 	</div >
 	<br>
 	<div style="width: 1000px" class="div_ul div shadow animate__animated">
-		<div>${ProductBean.description}</div>
+		<div style="display:auto">${ProductBean.description}</div>
 		<div>
 			<input type="button" value="返回上一頁" id="backPreviousPage">
 		</div>

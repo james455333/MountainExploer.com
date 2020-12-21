@@ -359,9 +359,9 @@ $(function() {
 				
 				"<tr>"+
 				"<td>"+	
-					"<div class='ml-auto' style='font-size:15px;' >" +	
-						"$" +data[i].price  +
-					"</div>" +	
+					"<i class='ml-auto' style='font-size:20px;' >" +	
+						"$ " +data[i].price  +
+					"</i>" +	
 
 				'<form class="shoppingCart input-group-prepend" action= "/MountainExploer.com/shoppingcart/addShoppingCart">' +
 				'<input type="hidden" name="itemBasicSeqno" value="' + data[i].seqno + '" readonly>' +
