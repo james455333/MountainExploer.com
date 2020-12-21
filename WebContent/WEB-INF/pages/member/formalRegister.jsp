@@ -10,6 +10,7 @@
 <title>岳進者會員註冊</title>
 	<link rel="stylesheet" href="../css/other.css">
 	<link rel="stylesheet" href="../css/font.css">
+	<link rel="stylesheet" href="/MountainExploer.com/css/style.css">
 	<link rel="stylesheet"
 		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 	<link rel="stylesheet"
@@ -128,11 +129,8 @@
         </div>
     </div>
 
-	<footer id="footer">
-
-
-
-
+	<footer id="footer"
+			include-html="/MountainExploer.com/forinclude/includeForFooter.html">
 	</footer>
 </body>
 <script src="../js/upLoadImg.js"></script>

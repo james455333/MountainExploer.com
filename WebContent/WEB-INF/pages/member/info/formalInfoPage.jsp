@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="/MountainExploer.com/member/css/bootstrapInfo.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/MountainExploer.com/css/style.css">
+    
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
@@ -267,12 +269,9 @@
 
     </div>
 
-    <footer id="footer">
-        <a>全站導覽</a>
-
-
-
-    </footer>
+    <footer id="footer"
+			include-html="/MountainExploer.com/forinclude/includeForFooter.html">
+	</footer>
 </body>
 <script src="/MountainExploer.com/js/upLoadImg.js"></script><!-- 上傳頭像 -->
 <script src="/MountainExploer.com/js/table.js"></script>
@@ -282,6 +281,7 @@
 <script src="/MountainExploer.com/js/personalContrul.js"></script><!-- 個人資料控制列表 -->
 <script src="bootstrapInfo.js"></script>
 <script src="/MountainExploer.com/member/userTop.js"></script>
+<script src="/MountainExploer.com/member/checkLogin.js"></script>
 
 
 </html>

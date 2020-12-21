@@ -12,6 +12,7 @@
     <title>岳進者</title>
     <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
     <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
+    <link rel="stylesheet" href="/MountainExploer.com/css/style.css">
     <link rel="stylesheet" href="/MountainExploer.com/css/loginDiv.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -120,12 +121,9 @@
         </div>
   
 
-    <footer id="footer">
-       
-
-
-
-    </footer>
+    <footer id="footer"
+			include-html="/MountainExploer.com/forinclude/includeForFooter.html">
+	</footer>
 </body>
 <script src="/MountainExploer.com/js/upLoadImg.js"></script><!-- 上傳頭像 -->
 <script src="/MountainExploer.com/js/table.js"></script>

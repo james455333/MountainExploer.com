@@ -10,6 +10,7 @@
     <title>岳進者會員認證資料填寫</title>
     <link rel="stylesheet" href="../css/other.css">
     <link rel="stylesheet" href="../css/font.css">
+    <link rel="stylesheet" href="/MountainExploer.com/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -108,18 +109,9 @@
         </div>
     </div>
 
-    <footer id="footer">
-        <a>全站導覽</a>
-<!--         <button id="demo1">確認demo1</button> -->
-<!--         <button id="demo2">錯誤demo2</button> -->
-<!--         <button id="demo3">確認提醒demo3</button> -->
-<!--         <button id="demo4">多重選項&提醒視窗demo4</button> -->
-<!--         <button id="demo5">Demo5</button> -->
-<!--         <button id="demo6">Demo6</button> -->
-
-
-
-    </footer>
+    <footer id="footer"
+			include-html="/MountainExploer.com/forinclude/includeForFooter.html">
+	</footer>
 </body>
 <script src="../js/upLoadImg.js"></script><!-- 上傳頭像 -->
 <script src="../js/table.js"></script>
@@ -129,5 +121,6 @@
 <script src="../js/includejsp.js"></script>
 <script src="/MountainExploer.com/member/formalFirstInfo.js"></script>
 <script src="/MountainExploer.com/member/userTop.js"></script>
+<script src="/MountainExploer.com/member/checkLogin.js"></script>
 
 </html>

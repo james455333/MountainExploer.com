@@ -10,6 +10,7 @@
     <title>岳進者</title>
     <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
     <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
+    <link rel="stylesheet" href="/MountainExploer.com/css/style.css">
     <link rel="stylesheet" href="/MountainExploer.com/css/personalPage.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="/MountainExploer.com/member/css/bootstrapInfo.css">
@@ -216,12 +217,9 @@
 
     </div>
 
-    <footer id="footer">
-        <a>全站導覽</a>
-
-
-
-    </footer>
+    <footer id="footer"
+			include-html="/MountainExploer.com/forinclude/includeForFooter.html">
+	</footer>
 </body>
 <script src="/MountainExploer.com/js/upLoadImg.js"></script><!-- 上傳頭像 -->
 <script src="/MountainExploer.com/js/table.js"></script>
@@ -231,5 +229,6 @@
 <script src="/MountainExploer.com/js/personalContrul.js"></script><!-- 個人資料控制列表 -->
 <script src="formalInfoOpenPage.js"></script>
 <script src="/MountainExploer.com/member/userTop.js"></script>
+<script src="/MountainExploer.com/member/checkLogin.js"></script>
 
 </html>
