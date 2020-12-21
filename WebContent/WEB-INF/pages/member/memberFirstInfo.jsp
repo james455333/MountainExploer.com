@@ -21,16 +21,17 @@
 					<span>${Member.memberStatus.seqno}</span>
 					<input type="text" name="memberStatus.seqno" value="${Member.memberStatus.seqno}">
 				</div>
-				<div>
-					<label>暱稱：</label>
-					<input type="text" id="ncName" class="ncName" name="memberInfo.neck_name" placeholder="請輸入暱稱" required="required">
-					<span class="ncsp"></span>
-				</div>
+<!-- 				<div> -->
+<!-- 					<label>暱稱：</label> -->
+<!-- 					<input type="text" id="ncName" class="ncName" name="memberInfo.neck_name" placeholder="請輸入暱稱" required="required"> -->
+<!-- 					<span class="ncsp"></span> -->
+<!-- 				</div> -->
 				<div>
 					<label>性別：</label>
 					<input type="radio" name="memberInfo.gender" id="gender1" value="male">男
 					<input type="radio" name="memberInfo.gender" id="gender2" value="female">女
 					<input type="radio" name="memberInfo.gender" id="gender3" value="x">X
+					<input type="radio" name="memberInfo.gender" id="gender4" value="mask">不透漏
 				</div>
 				<div>
 					<label>生日：</label>

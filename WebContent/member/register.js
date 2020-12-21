@@ -17,21 +17,78 @@ document.getElementById("reset").onclick = function(){
 
 
 //註冊
-$(".submit").on("click", function(){
-    let account = $.trim($(".account").val());
+$(".send").on("click", function(){
+    let account = $(".account").val();
+    let password = $.trim($(".pwd").val());
+    let name = $(".name").val();
+    let ncName = $(".ncName").val();
+    let email = $(".email").val();
+    let statusId = $(".statusId").val();
+    let regDate = $(".regDate").val();
+
+    if(rsCheck()){
+        
+            $.ajax({
+                method:"GET",
+                url:"/MountainExploer.com/member/memberRegister",
+                data:{
+                    account:account,
+                    password:password,
+                    ncName:ncName,
+                    name:name,
+                    email:email,
+                    statusId:statusId,
+                    regDate:regDate
+                },
+                dataType:"json",
+                success:(function(data){
+                    if(data){
+                        Swal.fire({
+                            icon:"success",
+                            title:"註冊成功，請重新登入"
+                        }).then(function(){
+                            window.location.href="/MountainExploer.com/member/memberLoginEntry";
+                        })
+                    }else{
+                        Swal.fire({
+                            icon:"error",
+                            title:"註冊失敗"
+                        })
+                    }
+                })
+            })
+        
+    }else{
+        Swal.fire({
+            icon:"warning",
+            title:"註冊資料有誤，請重新註冊"
+        })
+    }
+})
+
+
+function rsCheck(){
+    let account = $(".account").val();
+    let antChk = $("#account").val();
     let password = $.trim($(".pwd").val());
     let chkPwd = $.trim($(".chkPwd").val());
     let name = $(".name").val();
     let ncName = $(".ncName").val();
     let email = $(".email").val();
 
-    if(confirmAnt(account) == true && noSameAnt(account) == false && confirmPwd(password) == true && comparPwd(password, chkPwd) == true && chkName(name) == true && chkEmail(email) == true && ncName == ""){
-        $("#rsForm").submit();
+    if(sameAnt(antChk) == "true"){
+        return false;
     }else{
-        console.log("false");
+        if(confirmAnt(account) == true && confirmPwd(password) == true && comparPwd(password, chkPwd) == true && chkName(name) == true && chkEmail(email) == true && chkNcName(ncName) == true){
+            console.log("true");
+            return true;            
+        }else{
+            console.log("false");
+            return false;
+        }
     }
     
-})
+}
 
 
 //blur
@@ -46,9 +103,9 @@ $(".account").on("blur", function(){
 
 $(".account").on("blur", function(){
     let account = $(".account").val();
-    if(noSameAnt(account)){
+    if(sameAnt(account) == "true"){
         $("#chkAntsp").html("<font color='red'>帳號重複</font>");
-    }else{
+    }else{     
         $("#chkAntsp").html("<font color='green'>帳號可以使用</font>");
     }
 })
@@ -63,8 +120,9 @@ $(".pwd").on("blur", function(){
 })
 
 $(".chkPwd").on("blur", function(){
+    let password = $.trim($(".pwd").val());
     let chkPwd = $.trim($(".chkPwd").val());
-    if(comparPwd(chkPwd)){
+    if(comparPwd(password, chkPwd)){
         $(".chksp").html("<font color='green'>正確</font>");
     }else{
         $(".chksp").html("<font color='red'>密碼不相符</font>");
@@ -147,20 +205,19 @@ function confirmAnt(confirmAnt){
 
 
 //比對帳號
-function noSameAnt(noSameAnt){
+function sameAnt(sameAnt){
     $.ajax({
         method:"GET",
         url:"/MountainExploer.com/member/checkAnt",
-        data:{account:noSameAnt},
+        data:{account:sameAnt},
         dataType:"json",
         success:function(data){
             if(data){
-                Swal.fire({
-                    icon:"warning",
-                    title:"帳號已有人使用"
-                })
+                console.log("true");
+                return "true";
             }else{
-                return false;
+                console.log("false");
+                return "false";
             }
         }
     })
@@ -196,8 +253,10 @@ function confirmPwd(confirmPwd){
         }
         
         if(flag){
+            console.log("true");
             return true;
         }else{
+            console.log("false");
             Swal.fire({
                 icon:"warning",
                 title:"密碼格式不符"
@@ -222,8 +281,10 @@ function comparPwd(Pwd1, Pwd2){
     }
 
     if(flag){
+        console.log("true");
        return true;
     }else{
+        console.log("false");
         Swal.fire({
             icon:"warning",
             title:"密碼不相符"
@@ -243,15 +304,33 @@ function chkName(chkName){
             title:"姓名不得為空"
         })
     }else if(chkNameLen >= 2){
+        return true;
+    }else{
         Swal.fire({
             icon:"warning",
             title:"姓名長度至少2個字元"
         })
-    }else{
-        return true;
     }
 }
 
+
+//驗證暱稱
+function chkNcName(chkNcName){
+    let chkNcNameLen = chkNcName.length;
+    if(chkNcName == ""){
+        Swal.fire({
+            icon:"warning",
+            title:"暱稱不得為空"
+        })
+    }else if(chkNcNameLen >= 2){
+        return true;
+    }else{
+        Swal.fire({
+            icon:"warning",
+            title:"暱稱至少2個字元"
+        })
+    }
+}
 
 //驗證Email
 function chkEmail(chkEmail){

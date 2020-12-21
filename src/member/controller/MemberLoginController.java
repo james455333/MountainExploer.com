@@ -60,10 +60,10 @@ public class MemberLoginController {
 	private MemberService mbService;
 	
 	
-	@RequestMapping(path = "/member/swalLoginTestEntry", method = RequestMethod.GET)
-	public String processSwalLoginTestEntry() {
-		return "member/swalLoginTest";
-	}
+//	@RequestMapping(path = "/member/swalLoginTestEntry", method = RequestMethod.GET)
+//	public String processSwalLoginTestEntry() {
+//		return "member/swalLoginTest";
+//	}
 	
 	
 	@RequestMapping(path = "/member/memberLoginEntry", method = RequestMethod.GET)

@@ -64,10 +64,10 @@
 						<label>身分組ID：</label>
 						<input type="text" name="memberStatus.seqno" id="statusId" value="${Member.memberStatus.seqno}">
 					</div>
-                    <div class="form-group">
-                        <label for="inputNcName">暱稱：</label>
-                        <input type="text" class="form-control ncName" id="ncName" name="memberInfo.neck_name" placeholder="請輸入暱稱" required="required">
-                    </div>
+<!--                     <div class="form-group"> -->
+<!--                         <label for="inputNcName">暱稱：</label> -->
+<!--                         <input type="text" class="form-control ncName" id="ncName" name="memberInfo.neck_name" placeholder="請輸入暱稱" required="required"> -->
+<!--                     </div> -->
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputGender">性別：</label>

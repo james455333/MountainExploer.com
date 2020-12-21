@@ -4,7 +4,7 @@ import java.util.List;
 
 public class MemberLoginCheck {
 	
-	private static String info = "member/memberInfoEntry";
+	private static String info = "/member/info";
 	
 	
 	
