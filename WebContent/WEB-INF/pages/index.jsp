@@ -640,9 +640,10 @@ body {
 											alt="">
 										<div class="portfolio-info">
 											<h4>
-												<a href="portfolio-details.html">Web 1</a>
+												<a href="portfolio-details.html">輕量中筒健行鞋 棕 325</a>
 											</h4>
-											<p>Web</p>
+											<p>Zamberlan</p>
+											<p>CORNELL LITE GTX 0325PM</p>
 											<div>
 												<a href="assets/img/portfolio/web1.jpg"
 													class="venobox link-preview" data-gall="portfolioGallery"
