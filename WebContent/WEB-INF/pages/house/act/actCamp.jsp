@@ -329,11 +329,11 @@ transition: all 0.6s;}
 		</div>
 	</div>
 
-<div style="padding: 100px">
-	<footer id="footer"
+
+	<footer id="footer" style="padding: 100px"
 			include-html="/MountainExploer.com/forinclude/includeForFooter.html">
 	</footer>
-</div>
+
 </body>
 
 <script type="text/javascript">

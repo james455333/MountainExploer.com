@@ -576,11 +576,11 @@
 			<!-- 每頁不同的內容到這裡結束 -->
 		</div>
 	</div>
-<div style="padding: 100px">
-	<footer id="footer"
+
+	<footer id="footer" style="padding: 100px"
 			include-html="/MountainExploer.com/forinclude/includeForFooter.html">
 	</footer>
-</div>
+
 
 	<script type="text/javascript"
 		src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
