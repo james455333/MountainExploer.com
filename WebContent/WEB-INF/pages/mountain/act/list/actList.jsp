@@ -62,7 +62,7 @@
 
 
 <body>
-	<div class="container-fluid" include-html="/MountainExploer.com/forinclude/carousel.html">
+	<div class="container-fluid" style="padding: 0px;" include-html="/MountainExploer.com/forinclude/carousel.html">
 	</div>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light zline">
