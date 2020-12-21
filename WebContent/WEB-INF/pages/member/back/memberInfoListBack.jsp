@@ -26,11 +26,13 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.all.min.js"></script>
-
+    <link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+	
+<!--     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script> -->
+<!-- 	<script -->
+<!-- 	src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script> -->
+	
 </head>
 
 <body id="page-top">
@@ -88,6 +90,40 @@ pageEncoding="UTF-8"%>
 							</div>
 						</div>
 					</div>
+					<!-- Card Header - Dropdown -->
+                                <div class="card-header py-3 ">
+                                    <div class="d-flex flex-row align-items-center justify-content-between">
+	                                    <h6 class="m-0 font-weight-bold text-primary">會員分布</h6>
+	                                    <div class="ml-auto px-2 no-arrow">
+		                                    <a href="" role="button" class="chart-reset">
+		                                       	<i class="fas fa-sm fa-fw fa-sync"></i>
+		                                    </a>
+	                                    </div>
+	                                    <div class="dropdown no-arrow">
+	                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+	                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-800"></i>
+	                                        </a>
+	                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+	                                            aria-labelledby="dropdownMenuLink">
+	                                            <div class="dropdown-header">顯示圖像變化</div>
+	                                            <button class="dropdown-item act-mode-chart" value='pie' >圓餅圖</button>
+	                                            <button class="dropdown-item act-mode-chart" value='doughnut' >甜甜圈圖</button>
+	                                            <button class="dropdown-item act-mode-chart" value='bar' >長條圖(直)</button>
+	                                            <button class="dropdown-item act-mode-chart" value='horizontalBar' >長條圖(橫)</button>
+	                                        	<div class="dropdown-divider"></div>
+												<button class="dropdown-item" id="act-mode-export">輸出為PNG檔</button>
+												<button class="dropdown-item" id="act-mode-export-json">輸出為JSON檔</button>
+	                                        </div>
+	                                    </div>
+                                    </div>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="mbModeChart"></canvas>
+                                    </div>
+                                </div>
                 <div class="container-fluid">
 					<div class="row">
 						<div class="col-md-12">
@@ -225,14 +261,15 @@ pageEncoding="UTF-8"%>
 
     <!-- Page level plugins -->
     <script src="/MountainExploer.com/vendor/chart.js/Chart.min.js"></script>
-
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- Page level custom scripts -->
-    <script src="/MountainExploer.com/js/demo/圓餅圖demo.js"></script>
-
+<!--     <script src="/MountainExploer.com/js/demo/圓餅圖demo.js"></script> -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.all.min.js"></script>
     <script src="/MountainExploer.com/js/includejsp.js"></script>
     
     <script src="/MountainExploer.com/member/memberInfoListBack.js"></script>
-    <script src="/MountainExploer.com/member/Linedemo.js"></script>
+<!--     <script src="/MountainExploer.com/member/Linedemo.js"></script> -->
+    <script src="/MountainExploer.com/member/backCard.js"></script>
 </body>
 
 </html>

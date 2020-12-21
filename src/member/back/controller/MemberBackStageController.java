@@ -160,6 +160,7 @@ public class MemberBackStageController {
 		return mbList;
 	}
 	
+	//會員數總計
 	@ResponseBody
 	@GetMapping(path = "/countMemberAction")
 	public long processCountMember(){
@@ -169,6 +170,46 @@ public class MemberBackStageController {
 		return mbListSize;
 	}
 	
+	//圓餅圖
+	@ResponseBody
+	@GetMapping(path = "/countGMember")
+	public Map<String, Object> processCountGm() {
+		int gm = 100;
+		List<MemberBasic> gmList = mbService.selectST(gm);
+		long gmListSize = gmList.size();
+		Map<String, Object> pieMap = new HashMap<String, Object>();
+		pieMap.put("gmSize", gmListSize);
+		
+		int gg = 120;
+		List<MemberBasic> ggList = mbService.selectST(gg);
+		long ggLsitSize = ggList.size();
+		pieMap.put("ggSize", ggLsitSize);
+		
+		int um = 110;
+		int ug = 130;
+		List<MemberBasic> umList = mbService.selectLT(um);
+		long umListSize = umList.size();
+		List<MemberBasic> ugList = mbService.selectST(ug);
+		long ugListSize = ugList.size();
+		long countUm = umListSize + ugListSize;
+		pieMap.put("uaSize", countUm);
+		
+		int sm = 140;
+		int sg = 150;
+		List<MemberBasic> smList = mbService.selectST(sm);
+		long smListSize = smList.size();
+		List<MemberBasic> sgList = mbService.selectST(sg);
+		long sgListSize = sgList.size();
+		long countSm = smListSize + sgListSize;
+		pieMap.put("saSize", countSm);
+		
+		int ad = 160;
+		List<MemberBasic> adList = mbService.selectST(ad);
+		long adListSize = adList.size();
+		pieMap.put("adSiza", adListSize);
+		
+		return pieMap;
+	}
 	
 	//單獨查詢
 	@ResponseBody
