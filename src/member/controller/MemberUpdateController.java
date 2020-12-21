@@ -107,7 +107,7 @@ public class MemberUpdateController {
 				System.out.println("================身分組更新：" + queryMb.getMemberStatus().getSeqno());
 				
 				mbInfo.setMemberBasic(queryMb);
-				mbInfoService.insert(mbInfo);
+				mbInfoService.update(mbInfo);
 				queryMb.setMemberInfo(mbInfo);
 				
 //				MemberBasic newMb = new MemberBasic();

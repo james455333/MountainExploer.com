@@ -27,6 +27,8 @@ $(".submit").on("click", function(){
 
     if(confirmAnt(account) == true && noSameAnt(account) == false && confirmPwd(password) == true && comparPwd(password, chkPwd) == true && chkName(name) == true && chkEmail(email) == true && ncName == ""){
         $("#rsForm").submit();
+    }else{
+        console.log("false");
     }
     
 })

@@ -88,7 +88,7 @@ public class MemberRegisterController {
 			mb.setEmail(email);
 			
 			//String Data(sql)轉型
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 			java.util.Date parse = sdf.parse(regDate);
 			Date sqldate = new Date(parse.getTime());
 			mb.setReg_Date(sqldate);
