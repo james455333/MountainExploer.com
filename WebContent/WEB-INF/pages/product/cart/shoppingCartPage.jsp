@@ -51,9 +51,10 @@
 		</nav>
 	</header>
 	<nav class="">
-		<ol class="breadcrumb" id="bc">
+		<ol class="breadcrumb p-4" style="font-size : 22.5px;" id="bc">
 			<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
-			<li class="breadcrumb-item active">活動討論區</li>
+			<li class="breadcrumb-item"><a href="/MountainExploer.com/shop/shoppingPage">岳進者精選</a></li>
+			<li class="breadcrumb-item active">購物車</li>
 		</ol>
 	</nav>
 	<div class="div_ul d-flex">
