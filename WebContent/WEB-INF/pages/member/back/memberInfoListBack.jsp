@@ -29,6 +29,7 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
 	
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <!--     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script> -->
 <!-- 	<script -->
 <!-- 	src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script> -->
@@ -118,12 +119,17 @@ pageEncoding="UTF-8"%>
 	                                    </div>
                                     </div>
                                 </div>
+                                
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="chart-area">
                                         <canvas id="mbModeChart"></canvas>
                                     </div>
                                 </div>
+                                <!-- DataTales Example -->
+			                    <div class='hideDIV'>
+			                    	<a class="hideElm export" href="" ></a>
+			                    </div>
                 <div class="container-fluid">
 					<div class="row">
 						<div class="col-md-12">

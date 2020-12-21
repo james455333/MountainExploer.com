@@ -51,7 +51,9 @@ var gmAjax = $.ajax({
     });
 
     $("#mb-mode-export").on("click", function(){
-        downloadChart(mbModeChart, "會員身分組占比圓餅圖");
+        // var image = myPieChart.toBase64Image();
+        // console.log(image);
+        downloadChart(myPieChart, "會員身分組占比圓餅圖");
     })
     
 })
@@ -60,7 +62,7 @@ function downloadChart(chartElm, fileName){
     const openURL = chartElm.toBase64Image();
     const chartType = chartElm.config.type;
     let exportName = fileName + "_" + chartType;
-    
+    console.log(openURL);
     const a = $("a.export")[0];
     console.log(a);
 
