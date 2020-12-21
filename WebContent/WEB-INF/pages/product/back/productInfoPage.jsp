@@ -155,7 +155,7 @@
 					<div style='font-size: 20px' class="col-7 ">
 						<!-- 每頁不同的內容從這裡開始 -->
 
-						<div style='font-size: 30px; height: 150px'
+						<div style='font-size: 30px; height: 150px; width:800px '
 							class="m-3 d-flex justify-content-center ">${ProductBean.name}</div>
 									<div class="m-3 border-bottom">商品編號: ${ProductBean.seqno}</div>
 						<div class="m-3 border-bottom">${ProductBean.firstClass}</div>
@@ -163,19 +163,19 @@
 						<div class="m-3 border-bottom">${ProductBean.type}</div>
 						<div class="m-3 border-bottom">庫存量: ${ProductBean.stock}</div>
 						<div style='font-size: 30px; height: 70px'
-							class="m-5 border-bottom">$${ProductBean.price}</div>
+							class="m-3 p-3 border-bottom">$${ProductBean.price}</div>
 					</div>
 				</div>
+				</div>
+
+				<div >
+				<div style='font-size: 20px' class="p-3 m-3">商品介紹: </div>
+				<div style="height: 200px ;overflow:auto" class="p-3 m-3 shadow animate__animated" >
+					${ProductBean.description}
 				</div>
 					<div align="center">
 						<input type="button" value="返回上一頁" id="backPreviousPage">
 					</div>
-
-				<div >
-				<div class="p-1 m-3">商品介紹: </div>
-				<div style="height: 200px ;overflow:auto" class="p-3 m-3 shadow animate__animated" >
-					${ProductBean.description}
-				</div>
 				</div>
 			</div>
 		</div>

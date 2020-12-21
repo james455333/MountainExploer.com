@@ -145,60 +145,64 @@
 					<hr>
 				</div>
 				<div class="card-body">
-					<div class="table-responsive m-3 p-3" style="font-size:20px">
+					<div class="m-3 p-3" style="font-size: 20px">
 
 						<form action='<c:url value="/back/shop/updateData"/>'
 							class="newDataForm" enctype="multipart/form-data" method="post">
-							<div>
+							<div class="d-flex">
+							<div class="col-7">
+							
+								<div class="m-1 p-1">* 所有欄位皆為必填</div>
 								<div class=" m-1 p-1">
 									<input type="hidden" name="itemBasicSeqno"
 										value="${itemInfo.itemBasicSeqno}" readonly> 編號 :
 									${itemInfo.itemBasicSeqno}
 								</div>
 								<div class=" m-1 p-1">
-									<label for="name"> 產品名稱: (必填)&nbsp</label> <input type="text"
+									<label for="name"> 產品名稱: &nbsp</label> <input type="text"
 										style="width: 600px" name="name" value="${itemBasic.name}"
 										required>
 								</div>
 								<div class=" m-1 p-1">
-									<label for="type"> 型號: (必填)&nbsp</label> <input type="text"
+									<label for="type"> 型號: &nbsp</label> <input type="text"
 										name="type" value="${itemInfo.type}" required>
 								</div>
 								<div class=" m-1 p-1">
-									<label for="price"> 價格: (必填)&nbsp</label> <input type="text"
+									<label for="price"> 價格: &nbsp</label> <input type="text"
 										name="price" value="${itemInfo.price}" required>
 								</div>
 								<div class=" m-1 p-1">
-									<label for="stock"> 庫存量 : &nbsp(必填)&nbsp</label> <input
+									<label for="stock"> 庫存量 : &nbsp&nbsp</label> <input
 										type="text" name="stock" value="${itemInfo.stock}" required>
 								</div>
 								<div class=" m-1 p-1">
-									<img style="width: 400px; height: 400px;"
-										src="<c:url value='/backstage/product/search/images?seqno=${itemInfo.itemBasicSeqno}' />">
+									<label for="description"> 介紹 : &nbsp&nbsp</label>
 									<br>
+									<textarea style="width: 800px; height: 100px; overflow: auto"
+										name="description" required>${productBean.description}</textarea>
+								</div>
 
 								</div>
+								<div class="col-5">
 								<div class=" m-1 p-1">
 									<i>修改圖片上傳 : &nbsp&nbsp<i>
-<!-- 									<label for="productImg">修改圖片上傳 : &nbsp&nbsp</label> -->
-									<div style="display: none;"></div>
-									<input type="file" name="productImg" accept="image/*">
+											<div style="display: none;"></div> <input type="file"
+											name="productImg" accept="image/*">
+									<img style="width: 400px; height: 400px;"
+										src="<c:url value='/backstage/product/search/images?seqno=${itemInfo.itemBasicSeqno}' />">
 								</div>
-								<div class=" m-1 p-1">
-									<label for="description"> 介紹 : &nbsp&nbsp(必填)</label> <textarea
-										style="width: 1000px ;height:100px" 
-										name="description"
-										required>${productBean.description}</textarea>
 								</div>
-
+								</div>
+								<hr>
 							</div>
 							<div>
-								<div class=" m-1 p-1">
-<!-- 									<input type="submit" value="確認修改"> -->
-									<button type="submit" class="fas fa-pen-nib m-3 p-3" value="確認修改">確認修改</button>
+								<div class=" m-1 p-1"  align="center">
+									<button type="submit" class="fas fa-pen-nib m-3 p-3"
+										value="確認修改">確認修改</button>
 								</div>
-								<div class=" m-1 p-1">
-									<button type="button" value="返回商品後台" id="backPreviousPage" class="fas fa-tasks m-3 p-3">返回商品後台</button>
+								<div class=" m-1 p-1"  align="center">
+									<button type="button" value="返回商品後台" id="backPreviousPage"
+										class="fas fa-tasks m-3 p-3">返回商品後台</button>
 								</div>
 
 							</div>

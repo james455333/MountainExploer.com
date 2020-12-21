@@ -84,7 +84,7 @@
 			${ProductBean.secondClass}
 			</div>
 			<div class="m-3 border-bottom">${ProductBean.type}</div>
-			<div class="m-3 border-bottom">庫存量:     ${ProductBean.stock}</div>
+			<div class="m-3 border-bottom">庫存量 :     ${ProductBean.stock}</div>
 			<div style='font-size:30px;height:70px' class="m-5 border-bottom">$${ProductBean.price}</div>
 			<div style='font-size:25px;'>
 				<form class="" action="/MountainExploer.com/shoppingcart/addShoppingCart">
@@ -92,7 +92,7 @@
 						value="${ProductBean.seqno}" readonly> <input
 						type="hidden" name="itemBasicName" value="${ProductBean.name}"
 						readonly> <input type="hidden" name="unitPrice"
-						value="${ProductBean.price}" readonly> 選擇數量:  <select  class=""
+						value="${ProductBean.price}" readonly> 選擇數量 :  <select  class=""
 						name="amount">
 						<option value="1">1</option>
 						<option value="2">2</option>
