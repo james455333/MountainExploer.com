@@ -7,11 +7,7 @@ function ajaxCheckLogin(od){
 		type : "GET",
 		dataType : "json",
 		success : function(data){
-			PBBlock({
-				counTimes : 4,
-			})
-			openBlock("#info-page")
-			progressCount("頁面元素載入完成")
+			progressCount("等待存取資料")
 			member = data.seqno
 			if(od == 1){
 				activeMainAjax(page,"/defaultAS");			
@@ -97,12 +93,12 @@ function activeMainAjax(page, as) {
 //			console.log(data)
 			//參數給值
 			progressCount("成功取得資料")
+			progressCount("開始設置頁面")
 			totalPage = data.totalPage;
 			totalData = data.totalData;
 			//	本次查詢資料總數
 			$("#totalData").append(totalData)
 			//	呼叫動態新增資料函式
-			progressCount("開始設置頁面",550)
 			insertTable(data.actList);
 			//	設定按鈕
 			setPageController(data.page,totalPage)
@@ -131,8 +127,8 @@ function insertTable(data) {
 			$("#table-list").append(model)
 			$("#table-list").find(".order-table-tb").eq(i).removeClass("hideTbody");
 			$("#table-image").append(imageModel)
-			$("#table-image").find(".act-container").eq(i).toggleClass("d-none d-inline-flex");
-		},150*i)
+			$("#table-image").find(".act-container").eq(i).toggleClass("d-none");
+		},250*i)
 	}
 }
 function listMode(data,thisElm){
@@ -265,11 +261,13 @@ function setRegEndDate_IM(actInfo, thisElm){
 function setPageController(page, totalPage) {
 	//判別目前
 	let url;
-	if (od == 1) {
+	console.log("od : " + typeof od== 'undefined')
+	if (od == 1 ) {
 		url = actEnterURL + "od=1&"
-	}
-	if (od == 2) {
+	}else if (od == 2) {
 		url = actEnterURL + "od=2&tag=" + tag + "&"
+	}else if (od == 3 ){
+		url = actEnterURL + "od=3&search=" + search + "&"
 	}
 	let maxShow = 5
 	let thisPage = Number(page)
@@ -379,7 +377,9 @@ function modeSwitch(){
 		resolve()
 	}).then(success => {
 		setTimeout(()=>{
+			if(mode == "list") originMode.toggleClass("d-flex")
 			originMode.toggleClass("d-none")
+			if(mode == "image") targetMode.toggleClass("d-flex")
 			targetMode.toggleClass("d-none animate__zoomOut animate__zoomIn")
 		},750)
 	})
@@ -405,7 +405,7 @@ function toggleShowMode(){
 	toggleModeBtn()
 	let target = "#table-" + mode
 	$(target).toggleClass("animate__zoomOut animate__zoomIn d-none")
-	$(target).siblings("*").toggleClass("animate__zoomOut animate__zoomIn d-none")
+	$(target).siblings("*").toggleClass("animate__zoomOut animate__zoomIn d-none d-flex")
 }
 function toggleModeBtn(){
 	let showModeBtn = $(".showMode").toggleClass("active").find("input")

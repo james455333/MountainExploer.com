@@ -45,6 +45,7 @@ import mountain.model.activity.ActImage;
 import mountain.model.activity.ActivityBasic;
 import mountain.model.activity.ActivityInfo;
 import mountain.model.activity.Registry.ActRegInfo;
+import mountain.model.activity.Registry.ActRegistry;
 import mountain.model.activity.response.ActResponse;
 import mountain.model.activity.response.ActSideResponse;
 import mountain.model.route.NationalPark;
@@ -294,11 +295,18 @@ public class ActCRUDController {
 			map.put("tagMap", tagResult);
 
 			// Set nowReg => map
-			service.save(new ActRegInfo());
-			String reghql = "Select count(*) From ActRegInfo ari where ari.actRegistry in (From ActRegistry ar where "
+			service.save(new ActRegistry());
+			String reghql = "From ActRegistry ar where "
 					+ " deniTag is null and cancelTag is null and ACTIVITY_BASIC_SEQNO = "
-					+ actBasic.getSeqno() + ")";
-			int nowReg = service.countWithHql(reghql);
+					+ actBasic.getSeqno();
+			List<ActRegistry> actRegList = (List<ActRegistry>) service.getAllwithHQL(reghql);
+			int nowReg = 0;
+			if(!actRegList.isEmpty()) {
+				for (ActRegistry actRegistry : actRegList) {
+					Set<ActRegInfo> actRegInfoSet = actRegistry.getActRegInfo();
+					nowReg += actRegInfoSet.size();
+				}
+			}
 			map.put("nowReg", nowReg);
 
 			actList.add(map);
@@ -340,7 +348,7 @@ public class ActCRUDController {
 		if (allParam.get("search") != null) {
 			String search = allParam.get("search");
 			System.out.println("================" + search);
-			String hql = "From ActivityInfo where Title like '%" + search + "%'" + " order by postDate desc, actBasic";
+			String hql = "From ActivityInfo where Title like '%" + search + "%'" + " and deleteTag is null order by postDate desc, actBasic";
 
 			String allHql = "Select count(*) ".concat(hql);
 			totalData = service.countWithHql(allHql);

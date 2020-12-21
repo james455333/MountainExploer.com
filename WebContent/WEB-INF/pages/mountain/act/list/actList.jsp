@@ -57,7 +57,6 @@
 	<script src="/MountainExploer.com/mountain/js/mountain.js"></script>
 	<script src="act/list/listFunction.js"></script>
 	<script src="act/list/list.js"></script>
-<!-- 	<script src="/MountainExploer.com/js/blockUI.js"></script> -->
 
 </head>
 
@@ -179,7 +178,7 @@
 							<div>
 								<span style="font-size:25px;">活動狀態</span>
 							</div>
-							<hr>
+							<hr class="bg-info">
 							<div class="custom-control custom-radio my-3 d-inline-flex justify-content-start">
 								<input type="radio" id="aTag-new" name="aTag" class="custom-control-input" value="1">
 								<label class="custom-control-label" for="aTag-new">新活動</label>
@@ -197,7 +196,11 @@
 							<div>
 								<span style="font-size:25px;">報名狀態</span>
 							</div>
-							<hr>
+							<hr class="bg-info">
+							<div class="custom-control custom-radio d-inline-flex my-3  justify-content-start">
+								<input type="radio" id="rTag-alv" name="rTag" class="custom-control-input" value="0">
+								<label class="custom-control-label" for="rTag-alv">尚可報名</label>
+							</div>
 							<div class="custom-control custom-radio d-inline-flex my-3  justify-content-start">
 								<input type="radio" id="rTag-alv" name="rTag" class="custom-control-input" value="6">
 								<label class="custom-control-label" for="rTag-alv">尚可報名</label>
@@ -239,9 +242,9 @@
 				</nav>
 			</div>
 
-			<div class="m-sdc-adj" id="mode-container">
-                <div id="table-image" class="show-mode animate__animated flex-wrap justify-content-around animate__zoomIn">
-					<div style="width:25%; max-width: 200px" class="p-1 borders act-container d-none shadow mx-1 animate__animated animate__flipInY" >
+			<div class="m-sdc-adj " id="mode-container">
+                <div id="table-image" class="show-mode animate__animated d-flex flex-wrap animate__zoomIn justify-content-left">
+					<div style="width:25%; max-width: 200px" class="p-1 borders act-container d-none shadow animate__animated animate__flipInY" >
 						<div style="width: auto;" class="p-1">
 							<div style="min-height: 200px;"class="image border">
 								<a><img style="width:100%; height:auto; min-height: 200px;" src=""></a>
@@ -273,7 +276,7 @@
                         </tr>
                     </thead>
                     <tbody  class='order-table-tb hideTbody'>
-	                    <tr>
+	                    <tr class="animate__animated animate__bounceIn ">
 							<td >
 								<a href="">
 									<img class='showImage'  >

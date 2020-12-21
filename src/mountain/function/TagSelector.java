@@ -42,8 +42,8 @@ public class TagSelector {
 		passDay = (int) Math.ceil( ( (nowTime - postTime)*1.0 ) / MountainGlobal.ONEDAY);
 		regLeftDay = (int) Math.ceil( (regEndTime - nowTime)*1.0 / MountainGlobal.ONEDAY );
 		service.save(activityInfo);
-		String hql = "Select count(*) From ActRegInfo ari where ari.actRegistry in (From ActRegistry ar where deniTag is null and cancelTag is null and ACTIVITY_BASIC_SEQNO = "+ activityInfo.getId() + ")";
-		nowReg = service.countWithHql(hql);
+//		String hql = "Select count(*) From ActRegInfo ari where ari.actRegistry in (From ActRegistry ar where deniTag is null and cancelTag is null and ACTIVITY_BASIC_SEQNO = "+ activityInfo.getId() + ")";
+//		nowReg = service.countWithHql(hql);
 		topReg = activityInfo.getRegTop();
 		
 	}
