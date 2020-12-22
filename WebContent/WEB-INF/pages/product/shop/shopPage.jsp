@@ -82,48 +82,47 @@
 	<nav>
 		<ol class="breadcrumb p-4" style="font-size: 22.5px;" id="bc">
 			<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
-			<!-- 			<li class="breadcrumb-item"><a href="/MountainExploer.com/shop/shoppingPage">岳進者精選</a></li> -->
 			<li class="breadcrumb-item active">岳進者精選</li>
 		</ol>
 	</nav>
 	<div class="div_ul d-flex">
 
-		<div class="col-3">
+		<div class="col-3 shadow p-3 mb-5  rounded"style="height: 280px ">
 			<div class="m-3  p-3">
 				<div class="" style="line-height: unset;"     >
 					<!-- 更改內容從這邊開始 -->
 					<div class="d-flex align-items-center justify-content-between p-1">
 						<select class="w-100 h-100 mr-3" name="firstclass" id="fcSelect">
 						</select>
-						<button type="button" value="主類別查詢"
-							class="mx-1 fcSubmit btn btn-outline-info">主類別查詢</button>
+						<button style=""
+							class="mx-1 fcSubmit btn btn-info">主類別查詢</button>
 					</div>
 					<div class="d-flex align-items-center justify-content-between p-1">
 						<select name="secondclass" class="scSelect h-100 w-100 mr-3"></select>
-						<button type="button" value="次類別查詢"
-							class="mx-1 scSubmit btn btn-outline-info">次類別查詢</button>
+						<buttonstyle=""
+							class="mx-1 scSubmit btn btn-info">次類別查詢</button>
 					</div>
 					<!-- 更改內容到這邊結束 -->
 				</div>
 			</div>
-			<div class="div2 p-3">
-				<div style="width: 100%" class="btn-group dropdown">
-					<button type="button"
-						class="btn btn-lg btn-block btn-outline-success dropdown-toggle justify-content-between"
+			<div class="div2 p-3" >
+				<div style="width: 100% ;background-color:white" class="btn-group dropdown" >
+					<button type="button" 
+						class="btn btn-lg btn-block btn-outline-success dropdown-toggle justify-content-between "
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 						我的購物車</button>
 					<div class="dropdown-menu w-100 ">
-						<div class="div2">
-							<a href='<c:url value="/shop/shoppingCartEntry"/>'>前往購物車</a>
+						<div class="div2 " align="center">
+							<a href='<c:url value="/shop/shoppingCartEntry"/>'><button class="m-2 p-2 fas fa-shopping-cart">  前往購物車</button></a>
 						</div>
 						<hr>
-						<div class="div2">
-							<a href='<c:url value="/shoppingcart/memberOrders"/>'>查看訂單</a>
+						<div align="center" class="div2 "  >
+							<a href='<c:url value="/shoppingcart/memberOrders"/>'><button class="m-2 p-2 fas fa-money-check">  查看訂單</button></a>
 						</div>
 						<hr>
-						<div class="div2">
-							<div>品項： ${ShoppingCart.itemNumber} 項</div>
-							<div>金額： $ ${ShoppingCart.subtotal}</div>
+						<div class="div2"align="center">
+							<h5>品項： ${ShoppingCart.itemNumber} 項</h5>
+							<h5>金額： $ ${ShoppingCart.subtotal}</h5>
 						</div>
 					</div>
 				</div>
@@ -137,20 +136,19 @@
 		<div class="col-9">
 			<!-- 每頁不同的內容從這裡開始 -->
 
-			<div class="searchBar m-2 p-1">
+			<div class="searchBar m-2 p-1 shadow-none bg-white rounded " >
 
-				<div style='font-size: 18px '>
-					<span>價格區間 :  </span> <input type="radio" name="radioGroup"
-						id="radioA" value="1" checked="checked" /><label> 0-1000元</label>
-					<input type="radio" name="radioGroup" id="radioB" value="2" /><label> 1001-2000元</label>
-					<input type="radio" name="radioGroup" id="radioC" value="3" /><label> 2001-3000元</label>
-					<input type="radio" name="radioGroup" id="radioD" value="4" /><label> 3000元以上</label>
+				<div style='font-size: 18px ' >
+					<b>價格區間 :  </b> <input class="m-1" type="radio" name="radioGroup"
+						id="radioA" value="1" checked="checked" /><label>  0-1000元</label>
+					<input class="m-1" type="radio" name="radioGroup" id="radioB" value="2" /><label>  1001-2000元</label>
+					<input class="m-1" type="radio" name="radioGroup" id="radioC" value="3" /><label>  2001-3000元</label>
+					<input class="m-1" type="radio" name="radioGroup" id="radioD" value="4" /><label>  3000元以上</label>
 					<button type="submit"
-						class="priceSubmitButton btn btn-outline-info ">價格區間查詢</button>
-					<!-- <button type="submit" class="priceSubmitButton btn btn-outline-dark">價格區間查詢</button> -->
+						class="priceSubmitButton btn btn-info ">價格區間查詢</button>
 				</div>
 				<div style='font-size: 18px'>
-					商品名稱搜尋：<input type="text" class="light-table-filter"
+					<b>商品名稱搜尋：</b><input type="text" class="light-table-filter"
 						placeholder="請輸入關鍵字"> <img class="imgSearch"
 						src="/MountainExploer.com/images/放大鏡.png" alt="" width="35px">
 					<!-- <button><img class=imgSearch src="/MountainExploer.com/images/放大鏡.png" alt="" width="35px"></button> -->
