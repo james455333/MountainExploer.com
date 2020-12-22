@@ -155,8 +155,8 @@
 					<div style='font-size: 20px' class="col-7 ">
 						<!-- 每頁不同的內容從這裡開始 -->
 
-						<div style='font-size: 30px; height: 150px; width:800px '
-							class="m-3 d-flex justify-content-center ">${ProductBean.name}</div>
+						<h2 style=' height: 150px; width:800px '
+							class="m-3 d-flex justify-content-center ">${ProductBean.name}</h2>
 									<div class="m-3 border-bottom">商品編號: ${ProductBean.seqno}</div>
 						<div class="m-3 border-bottom">${ProductBean.firstClass}</div>
 						<div class="m-3 border-bottom">${ProductBean.secondClass}</div>
@@ -169,7 +169,7 @@
 				</div>
 
 				<div >
-				<div style='font-size: 20px' class="p-3 m-3">商品介紹: </div>
+				<h4 class="p-3 m-3">商品介紹: </h4>
 				<div style="height: 200px ;overflow:auto" class="p-3 m-3 shadow animate__animated" >
 					${ProductBean.description}
 				</div>

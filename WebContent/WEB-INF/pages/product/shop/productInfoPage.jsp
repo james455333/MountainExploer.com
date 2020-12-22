@@ -17,7 +17,8 @@
 	href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 <link rel="stylesheet"
 	href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css">
-
+<!-- bootstrap 4 core -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
@@ -71,7 +72,7 @@
 		<div style='font-size:20px' class="col-7 ">
 			<!-- 每頁不同的內容從這裡開始 -->
 
-			<div style='font-size:30px; height:150px 'class="m-3 d-flex justify-content-center border-bottom">${ProductBean.name}</div>
+			<div style='font-size:33px; height:150px 'class="m-3 d-flex justify-content-center border-bottom">${ProductBean.name}</div>
 <%-- 			<div>${ProductBean.seqno}</div> --%>
 			<div class="m-3 border-bottom">
 			${ProductBean.firstClass}</div>
@@ -102,7 +103,7 @@
 	</div >
 	<br>
 	<div class="div_ul div shadow animate__animated">
-	<div class="p-1 m-3 "style='font-size:20px'>商品介紹: </div>
+	<h3 class="p-1 m-3 ">商品介紹: </h3>
 	<div style="height: 200px;overflow:auto" >
 		${ProductBean.description}
 	</div>

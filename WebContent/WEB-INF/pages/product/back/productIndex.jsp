@@ -146,7 +146,7 @@
 
 					<div class='row'>
 
-						<div class="col-xl-4 col-md-6 mb-4">
+						<div style='font-size: 20px' class="col-xl-4 col-md-6 mb-4">
 							<div class="card border-left-primary shadow h-100 py-2">
 								<div class="card-body">
 									<div class="row no-gutters align-items-center">
@@ -164,8 +164,8 @@
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-xl-4 col-md-6 mb-4">
+						</div> 
+						<div style='font-size: 20px'class="col-xl-4 col-md-6 mb-4">
 							<div class="card border-left-success shadow h-100 py-2">
 								<div class="card-body">
 									<div class="row no-gutters align-items-center">
@@ -184,7 +184,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-xl-4 col-md-6 mb-4">
+						<div style='font-size: 20px' class="col-xl-4 col-md-6 mb-4">
 							<div class="card border-left-danger shadow h-100 py-2">
 								<div class="card-body">
 									<div class="row no-gutters align-items-center">
@@ -211,7 +211,7 @@
 																				<div class="card-header py-3 ">
 																					<div
 																						class="d-flex flex-row align-items-center justify-content-between">
-																						<h6 class="m-0 font-weight-bold text-primary">會員名稱-訂單金額</h6>
+																						<h5 class="m-0 font-weight-bold text-primary">會員名稱-訂單金額</h5>
 																						<div class="ml-auto px-2 no-arrow">
 																							<a href="" role="button" class="chart-reset"> <i
 																								class="fas fa-sm fa-fw fa-sync"></i>
@@ -263,7 +263,7 @@
 <!-- 																				Card Header - Dropdown -->
 																				<div
 																					class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-																					<h6 class="m-0 font-weight-bold text-primary">商品編號-銷售數量</h6>
+																					<h5 class="m-0 font-weight-bold text-primary">商品編號-銷售數量</h5>
 																					<div class="ml-auto px-2 no-arrow">
 																						<a href="#" role="button" class="chart-reset"> <i
 																							class="fas fa-sm fa-fw fa-sync"></i>
@@ -304,102 +304,16 @@
 					<div class="row" id="productBody">
 						<div class="col-xl-12">
 							<div class="card shadow mb-4" id="tb-container">
-								<div class="card-header py-3"></div>
 								<div class="card-body">
-									<div class="d-flex">
-										<!-- 										<div -->
-										<!-- 											class="col-md-4 justify-content-end d-flex align-items-center "> -->
-										<!-- 											<div class="input-group"> -->
-										<!-- 												<div class="input-group-prepend"> -->
-										<!-- 													<label class="input-group-text" for="npSelect">國家公園</label> -->
-										<!-- 												</div> -->
-										<!-- 												<select id="npSelect" class="custom-select"> -->
-										<!-- 												</select> -->
-										<!-- 											</div> -->
-										<!-- 										</div> -->
-										<!-- 										<div -->
-										<!-- 											class="col-md-4 justify-content-end d-flex align-items-center "> -->
-										<!-- 											<div class="input-group"> -->
-										<!-- 												<div class="input-group-prepend"> -->
-										<!-- 													<label class="input-group-text" for="rtSelect">路線選項</label> -->
-										<!-- 												</div> -->
-										<!-- 												<select id="rtSelect" class="custom-select"> -->
-										<!-- 												</select> -->
-										<!-- 											</div> -->
-										<!-- 										</div> -->
-										<div class="d-flex">
-<!-- 											<div class="d-flex"> -->
-<!-- 												<span>主類別 :&nbsp</span> <select name="firstclass" -->
-<!-- 													id="fcSelect"> -->
-<!-- 												</select> -->
-<!-- 											</div> -->
-<!-- 											<div class="d-flex"> -->
-<!-- 												<input type="button" value="主類別查詢" class="fcSubmit"> -->
-<!-- 											</div> -->
-<!-- 											<div class="d-flex"> -->
-<!-- 												<span>次類別 :&nbsp</span> <select name="secondclass" -->
-<!-- 													class="scSelect"> -->
-<!-- 												</select> -->
-<!-- 											</div> -->
-<!-- 											<div class="d-flex"> -->
-<!-- 												<input type="button" value="次類別查詢" class="scSubmit"> -->
-<!-- 											</div> -->
-										</div>
-<!-- 										<hr> -->
-										<div>
-<!-- 											<div> -->
-<!-- 												<span>價格區間 : </span> <input type="radio" name="radioGroup" -->
-<!-- 													id="radioA" value="1" checked="checked" /><label>0-1000元</label> -->
-<!-- 												<input type="radio" name="radioGroup" id="radioB" value="2" /><label>1001-2000元</label> -->
-<!-- 												<input type="radio" name="radioGroup" id="radioC" value="3" /><label>2001-3000元</label> -->
-<!-- 												<input type="radio" name="radioGroup" id="radioD" value="4" /><label>3000元以上</label> -->
-<!-- 												<button type="submit" class="priceSubmitButton">價格區間查詢</button> -->
-<!-- 											</div> -->
-
-											<!-- 										<div> -->
-											<!-- 											<input type="search" name="nameSelect" class="nameSelect"> -->
-											<!-- 											<input type="button" value="商品名稱查詢" class="nameSubmit"> -->
-											<!-- 										</div> -->
-										</div>
-<!-- 																				<a href="#selectAll" class="ml-auto"> -->
-<!-- 																					<button id="selectAll" class="btn btn-primary btn-icon-split"> -->
-<!-- 																						<span class="icon text-white-50"> <i -->
-<!-- 																							class="fas fa-redo"></i> -->
-<!-- 																						</span> <span class="text">重置查詢</span> -->
-<!-- 																					</button> -->
-<!-- 																				</a> -->
-									</div>
-									<hr>
-									<!-- 											<div class="d-flex"> -->
-									<!-- 												<h3>國家公園 -- 主類別控制</h3> -->
-									<!-- 												<button id="newNp" -->
-									<!-- 													class="btn btn-success btn-icon-split ml-auto"> -->
-									<!-- 													<span class="icon text-white-50"> <i -->
-									<!-- 														class="fas fa-mountain"></i> -->
-									<!-- 													</span> <span class="text">新增國家公園</span> -->
-									<!-- 												</button> -->
-									<!-- 												<button id="updateNp" -->
-									<!-- 													class="btn btn-warning btn-icon-split ml-auto"> -->
-									<!-- 													<span class="icon text-white-50"> <i -->
-									<!-- 														class="fas fa-mountain"></i> -->
-									<!-- 													</span> <span class="text">編輯國家公園</span> -->
-									<!-- 												</button> -->
-									<!-- 												<button id="deleteNp" -->
-									<!-- 													class="btn btn-danger btn-icon-split ml-auto"> -->
-									<!-- 													<span class="icon text-white-50"> <i -->
-									<!-- 														class="fas fa-trash-alt"></i> -->
-									<!-- 													</span> <span class="text">刪除國家公園</span> -->
-									<!-- 												</button> -->
-									<!-- 											</div> -->
-									<!-- 									<hr> -->
 									<div class='d-flex'>
-										<h3>商品選項&nbsp&nbsp&nbsp</h3>
+										<h2>商品選項&nbsp&nbsp&nbsp</h2>
 										<div>
 											<button id="newProduct"
-												class="btn btn-success btn-icon-split ml-auto">
-												<span class="icon text-white-50"> <i
-													class="fas fa-flag"></i>
-												</span> <span class="text">新增商品</span>
+												class="btn btn-primary btn-icon-split ml-auto">
+												<span class="icon text-white-50"> 
+												<i class="fas fa-plus-circle "></i>
+													
+												</span> <span class="text ">新增商品</span>
 											</button>
 											<%-- 									<a href='<c:url value="/backstage/product/createDataPage"/>'>新增一筆資料</a> --%>
 										</div>
@@ -408,15 +322,8 @@
 									<hr>
 
 									<div class='d-flex'>
-										<h3>訂單選項&nbsp&nbsp&nbsp</h3>
-										<!-- 										<button id="newRoute" -->
-										<!-- 											class="btn btn-success btn-icon-split ml-auto"> -->
-										<!-- 											<span class="icon text-white-50"> <i -->
-										<!-- 												class="fas fa-flag"></i> -->
-										<!-- 											</span> <span class="text">訂單維護</span> -->
-										<!-- 										</button> -->
+										<h2>訂單選項&nbsp&nbsp&nbsp</h2>
 										<div>
-											<!-- 										<a href="/MountainExploer.com/back/shop/order"> 訂單維護 </a> -->
 											<button id="order"
 												class="btn btn-success btn-icon-split ml-auto">
 												<span class="icon text-white-50"> <i
@@ -425,13 +332,11 @@
 											</button>
 
 										</div>
-										<%-- 									<a href='<c:url value="/MountainExploer.com/backstage/product/allOrders"/>'>訂單維護</a> --%>
 									</div>
 									<hr>
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
-										<!-- 									<table class="table" > -->
 										<table id="productTable">
 											<thead>
 												<tr>
@@ -443,17 +348,8 @@
 													<td style='width: 10%'>價格</td>
 													<td style='width: 10%'>庫存</td>
 													<td style='width: 20%'>控制項</td>
-													<!-- 	                                    			<td style='width: 7.5%'>狀態項</td> -->
-													<!-- 	                                    			<td style='width: 15%'>路線圖</td> -->
-													<!-- 	                                    			<td style='width: 12.5%'>路線編號</td> -->
-													<!-- 													<td style='width: 15%'>路線名稱</td> -->
-													<!-- 													<td style='width: 15%'>國家公園</td> -->
-													<!-- 													<td style='width: 35%'>控制項</td> -->
 												</tr>
 											</thead>
-											<!-- 										<tbody> -->
-
-											<!-- 										</tbody> -->
 
 										</table>
 									</div>
