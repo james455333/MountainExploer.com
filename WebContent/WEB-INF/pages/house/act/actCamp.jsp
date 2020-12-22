@@ -31,9 +31,20 @@
 	font-size: 20px
 }
 /* img change large */
-.img{width:100%;
+img{
 transition: all 0.6s;}
-.img:hover{transform: scale(1.5);}
+img:hover{transform: scale(1.5);}
+#tablePreview td{
+	vertical-align: middle;
+}
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #BBFFBB;
+}
+.table-striped>tbody>tr:nth-of-type(odd){
+	background-color : #F0FFF0;
+
+}
+
 </style>
 </head>
 
@@ -54,42 +65,27 @@ transition: all 0.6s;}
 				include-html="/MountainExploer.com/forinclude/includeForIndex.html"></div>
 		</nav>
 	</header>
-	<div class="div_ul">
-				<div class="secNavbar" style="background-color: #C4E1FF">
-					 
-						<div class="second_nav" >
-<!-- 		更改內容從這邊開始 -->
-<!-- 							<div class="li1"><a href="#">第二導覽列1</a></div> -->
+	<nav>
+		<ol class="breadcrumb bg-light" style="font-size : 25px;" id="bc">
+			<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
+			<li class="breadcrumb-item"><a href="/MountainExploer.com/mountainCampAct/actselectAll?selectarea=&selectcounties=&no=1&page=1">露營小天地</a></li>
+			
+		</ol>
+	</nav>
+	
+	<div class="div_ul p-5">
+			<div class="" style="font-size:20px;" >
+				<!-- 每頁不同的內容從這裡開始 -->
+				<div class="mb-3 p-5  border shadow " style="color : white">
+					<nav class="d-flex">
 
-<!-- 							<div class="li1"><a href="#">第二導覽列2</a></div> -->
-
-<!-- 							<div class="li1"><a href="">第二導覽列3</a></div> -->
-							
-<!-- 							<div class="li1"><a href="/MountainExploer.com/mountaincCampActOrder/selectcamporder?Member=Member">訂單查詢</a></div> -->
-
-							
-<!-- 		更改內容到這邊結束 -->
-						</div>
-					
-				</div>
-		<div class="div_li1">
-			<!-- 			<a>保留區</a> -->
-		</div>
-		<div class="div_li3">
-			<!-- 			<a>保留區</a> -->
-		</div>
-		<div class="div_li2">
-			<!-- 每頁不同的內容從這裡開始 -->
-			<div class="searchBar" >
-				<nav>
-
-					<div class="third_nav">
+						<div class="ml-auto">
 						<!-- 控制列表內容從這邊開始 -->
 						<form action="<c:url value='/mountainCampAct/actselectAll'></c:url>"
 							method='GET'>
 							<div>
-								縣市: <select name="selectarea" id="selectArea">
-									<option>請選擇縣市</option>
+								<select name="selectarea" id="selectArea">
+									<option>請先選擇縣市</option>
 								</select> 
 								<input type="hidden" value="" name="selectcounties"> 
 								<input type="hidden" value=3 name="no"> 
@@ -97,19 +93,23 @@ transition: all 0.6s;}
 								<input type="submit"class="btn btn-outline-success" value="查詢">
 							</div>
 						</form>
+						</div>
+						<div class="ml-auto">
 						<form
 							action="<c:url value='/mountainCampAct/actselectAll'></c:url>"
 							method='GET'>
-							<div>
-								鄉鎮: <select name="selectcounties" id="selectCounties">
-									<option>請先選擇縣市</option>
-								</select> <input type="hidden" value="" name="selectarea"> <input
-									type="hidden" value=2 name="no"> <input type="hidden"
-									value=1 name="page"> <input type="submit"
-									class="btn btn-outline-success" value="查詢">
+							<div class="d-flex align-content-center">
+								 <select name="selectcounties" id="selectCounties">
+									<option>請選擇鄉鎮</option>
+								</select> 
+								<input type="hidden" value="" name="selectarea">
+								 <input	type="hidden" value=2 name="no">
+								 <input type="hidden"	value=1 name="page">
+								 <input type="submit"	class="btn btn-outline-success" value="查詢">
 							</div>
 						</form>
-
+						</div>
+						<div class="ml-auto">
 						<form style="margin-left: 25px"
 							action="<c:url value='/mountainCampAct/actselectAll'></c:url>"
 							method='get'>
@@ -123,10 +123,7 @@ transition: all 0.6s;}
 
 						<!-- 控制列表內容到這邊結束 -->
 					</div>
-				</nav>
-
-
-				<div class="search">
+				<div class="ml-auto">
 					<form
 						action="<c:url value='/mountainCampAct/actselectCamp'></c:url>"
 						method='GET' id="form1" name="form1">
@@ -139,15 +136,19 @@ transition: all 0.6s;}
 						<!-- <button><img class=imgSearch src="/MountainExploer.com/images/放大鏡.png" alt="" width="35px"></button> -->
 					</form>
 				</div>
+				</nav>
+
+
 
 			</div>
+			
+			
 
-			<div class="secDivContent">
+			<div class="mt-5 mx-3">
 				<!--table-->
-				<table class="order-table table table-hover" id="tablePreview"
-					style="background-color: white;">
-					<thead class="order-table-th">
-						<tr>
+				<table class="order-table table table-hover" id="tablePreview">
+					<thead class="bg-success bg-gradient text-white ">
+						<tr style="font-size:20px;">
 							<!-- thead更改從這邊開始 -->
 							<th scope="col">縣市</th>
 							<th scope="col">鄉鎮</th>
@@ -158,7 +159,7 @@ transition: all 0.6s;}
 						</tr>
 					</thead>
 
-					<tbody class="order-table-tb">
+					<tbody class="">
 						<!-- tbody更改從這邊開始 -->
 						<c:forEach var="i" items="${camp_all}">
 							<tr>

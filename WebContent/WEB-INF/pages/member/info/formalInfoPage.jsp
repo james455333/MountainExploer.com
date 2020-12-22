@@ -31,14 +31,9 @@
 </head>
 
 <body>
-    <div class="count1">
-        <div class="count1_img">
-            <img src="/MountainExploer.com/images/logo1.png">
-            <hr>
-            <h1 class="font">岳進者</h1>
-            <!-- <a class="font">岳進者</a> -->
-        </div>
-    </div>
+    
+    <div class="container-fluid" style="padding: 0px;" include-html="/MountainExploer.com/forinclude/carousel.html">
+	</div>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light zline">
             <a class="navbar-brand" href="#"><img src="/MountainExploer.com/images/logo1.png" height="30%" width="30%"></a>

@@ -78,8 +78,8 @@ img:hover {
 		<nav>
 		<ol class="breadcrumb bg-light" style="font-size : 25px;" id="bc">
 			<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
-			<li class="breadcrumb-item"><a href="/MountainExploer.com/mountain/list?page=1&od=1">活動討論區</a></li>
-			<li class="breadcrumb-item active">發表活動</li>
+			<li class="breadcrumb-item"><a href="/MountainExploer.com/mountainHouseAct/actselectAll?page=1&no=1&parkid=">山中小屋</a></li>
+			
 		</ol>
 	</nav>
 		<div class="div_ul p-5">
@@ -161,20 +161,23 @@ img:hover {
 							<c:forEach var="i" items="${House_All}">
 								<tr>
 									<td>${i.nationalPark.name}</td>
-									<td><a
-										href="jumpHouseDesc?selecthouseid=${i.housebasicid}">${i.name}</a></td>
+									<td><a href="jumpHouseDesc?selecthouseid=${i.housebasicid}">${i.name}</a></td>
 									<td>${i.bed}</td>
 									<td>${i.camp}</td>
 									<td>${i.height}</td>
 									<td class="img"><c:choose>
 											<c:when test="${ empty i.imgid.img}">
+											<a href="jumpHouseDesc?selecthouseid=${i.housebasicid}">
 												<img height="100" width="100"
 													src="/MountainExploer.com/housecamp/images/imgnotfound.png">
+											</a>
 											</c:when>
 
 											<c:when test="${not emptyi.imgid.img}">
+												<a href="jumpHouseDesc?selecthouseid=${i.housebasicid}">
 												<img height="100" width="100"
 													src="<c:url value='/mountainHouseBack/showimg?imgid=${i.imgid.id}'/>">
+												</a>
 											</c:when>
 										</c:choose></td>
 									<!-- 星星評分 -->
