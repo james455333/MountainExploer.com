@@ -350,7 +350,7 @@ $(function() {
 				
 				"<tr>"+
 				'<td style= "width: 150px">'+	
-					"<div class='p-3' style='overflow:hidden;min-height:75px;max-height:75px'>" +
+					"<div class='' style='overflow:hidden;min-height:60px;max-height:60px ;font-size:20px'>" +
 						'<a style="max-width : 125px;" class="name-aTag" title="' + data[i].name + '"href= "/MountainExploer.com/shop/productInfoEntry?no='+data[i].seqno+'">'+ data[i].name  + '</a>' +
 					"</div>" +
 				"</tr>"+
@@ -358,9 +358,9 @@ $(function() {
 				
 				"<tr>"+
 				"<td>"+	
-					"<i class='ml-auto' style='font-size:20px;' >" +	
+					"<span class='ml-auto' style='font-size:22px;' >" +	
 						"$ " +data[i].price  +
-					"</i>" +	
+					"</span>" +	
 
 				'<form class="shoppingCart input-group-prepend" action= "/MountainExploer.com/shoppingcart/addShoppingCart">' +
 				'<input type="hidden" name="itemBasicSeqno" value="' + data[i].seqno + '" readonly>' +
