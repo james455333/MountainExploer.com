@@ -13,8 +13,8 @@
 	<link rel="stylesheet" href="/MountainExploer.com/css/style.css">
 	<link rel="stylesheet"
 		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/....../font-awesome.min.css">
+<!-- 	<link rel="stylesheet" -->
+<!-- 		href="https://maxcdn.bootstrapcdn.com/....../font-awesome.min.css"> -->
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>

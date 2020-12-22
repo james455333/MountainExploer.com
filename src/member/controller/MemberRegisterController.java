@@ -49,7 +49,7 @@ public class MemberRegisterController {
 	//判斷帳號是否重複
 	@ResponseBody
 	@GetMapping(value = "/member/checkAnt")
-	public boolean processIsExist(Model m, @RequestParam(name = "account")String account) {
+	public boolean processIsExist(Model m, String account) {
 		boolean flag = mbService.checkAnt(account);
 		
 		if(flag) {

@@ -41,7 +41,7 @@ $(".send").on("click", function(){
                     regDate:regDate
                 },
                 dataType:"json",
-                success:(function(data){
+                success:function(data){
                     if(data){
                         Swal.fire({
                             icon:"success",
@@ -55,7 +55,14 @@ $(".send").on("click", function(){
                             title:"註冊失敗"
                         })
                     }
-                })
+                },
+                error:function(){
+                    Swal.fire({
+                        icon:"error",
+                        title:"註冊失敗",
+                        text:"帳號重複或資料格式錯誤"
+                    })
+                }
             })
         
     }else{
@@ -76,16 +83,12 @@ function rsCheck(){
     let ncName = $(".ncName").val();
     let email = $(".email").val();
 
-    if(sameAnt(antChk) == "true"){
-        return false;
+    if(confirmAnt(account) == true && confirmPwd(password) == true && comparPwd(password, chkPwd) == true && chkName(name) == true && chkEmail(email) == true && chkNcName(ncName) == true){
+        console.log("true");
+        return true;            
     }else{
-        if(confirmAnt(account) == true && confirmPwd(password) == true && comparPwd(password, chkPwd) == true && chkName(name) == true && chkEmail(email) == true && chkNcName(ncName) == true){
-            console.log("true");
-            return true;            
-        }else{
-            console.log("false");
-            return false;
-        }
+        console.log("false");
+        return false;
     }
     
 }
@@ -103,11 +106,7 @@ $(".account").on("blur", function(){
 
 $(".account").on("blur", function(){
     let account = $(".account").val();
-    if(sameAnt(account) == "true"){
-        $("#chkAntsp").html("<font color='red'>帳號重複</font>");
-    }else{     
-        $("#chkAntsp").html("<font color='green'>帳號可以使用</font>");
-    }
+    sameAnt(account);
 })
 
 $(".pwd").on("blur", function(){
@@ -212,12 +211,11 @@ function sameAnt(sameAnt){
         data:{account:sameAnt},
         dataType:"json",
         success:function(data){
+            console.log(data);
             if(data){
-                console.log("true");
-                return "true";
+                $("#chkAntsp").html("<font color='green'>帳號可以使用</font>");
             }else{
-                console.log("false");
-                return "false";
+                $("#chkAntsp").html("<font color='red'>帳號重複</font>");
             }
         }
     })

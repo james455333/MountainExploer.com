@@ -55,10 +55,10 @@ public class MemberInfoController {
 //		return "member/memberInfoUpdate";
 //	}
 	
-//	@RequestMapping(path = "/member/socailInfoEntry", method = RequestMethod.GET)
-//	public String processSocailInfo() {
-//		return "member/socailLoginInfo";	
-//	}
+	@RequestMapping(path = "/member/socailInfoEntry", method = RequestMethod.GET)
+	public String processSocailInfo() {
+		return "member/socailLoginInfo";	
+	}
 	
 	@RequestMapping(path = "/member/memberInfoOpenPageEntry")
 	public String processInfoOpenPage() {
