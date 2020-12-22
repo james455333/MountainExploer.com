@@ -164,7 +164,7 @@
 								<div class="form-group col-md-6">
 									<label class="col-sm-10">營區描述 : </label><textarea name="update_desc" rows="10" cols="50">${l.desc}</textarea>
 								</div>
-								<div class="form-group col-md-6">	<img id="blah" src="" alt="your image" />		       
+								<div class="form-group col-md-6">	<img id="blah" src="/MountainExploer.com/housecamp/images/imgnotfound.png" alt="your image" />		       
 				      					<input type="file" name="files" id="imgInp" size="25" accept="image/*">
 				      					<input type="hidden" name="hotelnumber" value="${l.imgid.id}">
 				      			</div>

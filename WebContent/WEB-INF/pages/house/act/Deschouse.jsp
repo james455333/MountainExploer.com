@@ -109,24 +109,25 @@ img {
 <!-- 		</div> -->
 		<nav style="font-size: 20px;" aria-label="breadcrumb">
 		  <ol class="breadcrumb">
-		    <li class="breadcrumb-item"><a href="/MountainExploer.com/mountainHouseAct/actselectAll?page=1&no=1&parkid=">首頁</a></li>
+			<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
+		    <li class="breadcrumb-item"><a href="/MountainExploer.com/mountainHouseAct/actselectAll?page=1&no=1&parkid=">山中小屋</a></li>
 			    <c:forEach var="i" items="${selecthouseid}">
 			   		<li class="breadcrumb-item active" aria-current="page">${i.name}</li>
 			    </c:forEach>
 			    	
-			    	<c:choose>
-			    	<c:when test="${empty Member}">
-										
-				    	<li style="list-style-type: none" class="breadcrumb-item  swalLogin" >
-							<a href="#">現在預定房間</a>
-						</li>
-					</c:when>
-			    	<c:otherwise>
-				  		<li style="list-style-type: none" class="breadcrumb-item" >
-							<a href="#from">現在預定房間</a>
-						</li>
-			    	</c:otherwise>
-			    	</c:choose>
+				    	<c:choose>
+					    	<c:when test="${empty Member}">
+												
+						    	<li style="list-style-type: none" class="breadcrumb-item  swalLogin" >
+									<a href="#">現在預定房間</a>
+								</li>
+							</c:when>
+					    	<c:otherwise>
+						  		<li style="list-style-type: none" class="breadcrumb-item" >
+									<a href="#from">現在預定房間</a>
+								</li>
+					    	</c:otherwise>
+				    	</c:choose>
 					
 			    <c:if test="${ !empty Member}">
 		    		<li style="list-style-type: none;" class="breadcrumb-item ml-auto" ><a  href="/MountainExploer.com/mountainHouseActOrder/selecthouseorder?Member=Member">訂單查詢</a></li>
@@ -486,12 +487,12 @@ img {
 											
 											</td>
 
-											<td><input type=text readonly
+											<td><input type=text readonly style="width:100%;"
 												class=" border-0 text-dark" name="orderjump_totelprice"
 												id="houseorderprice" required="required">
 											
 												<p>
-													<input id="ordersubmit" class="btn btn-outline-success" style="width: 100%"
+													<input id="ordersubmit" class="btn btn-outline-success"  style="width: 100%"
 														type="button" value="立即下訂" >
 												</p>
 											

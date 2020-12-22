@@ -250,9 +250,14 @@ public class HouseRoutAction {
 		hBean.setNationalPark(nParkBean);
 		houseService.updateHouse(hBean);
 		
+		m.addAttribute("totalData", 1);
+		m.addAttribute("totalPage", 1);
+		m.addAttribute("page", 1);
+		
 
 		List<HouseInfoBean> list = houseService.selecthouseid(houseid);
-		m.addAttribute("lookupdate", list);
+//		m.addAttribute("lookupdate", list);
+		m.addAttribute("House_All", list);
 
 		return "house/back/rout/housebackrout";
 	}
