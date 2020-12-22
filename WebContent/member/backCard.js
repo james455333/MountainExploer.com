@@ -4,6 +4,7 @@ Chart.defaults.global.defaultFontColor = '#858796';
 
 var mbModeChart;
 var datas = [];
+var gdModeChart;
 
 //身分組分布
 var setMbModeChart = function setMbModeChart(chartType){
@@ -18,7 +19,6 @@ var setMbModeChart = function setMbModeChart(chartType){
     setType = chartType;
   }
 
-  
   $.ajax({
       method:"GET",
       url:"/MountainExploer.com/back/member/countGMember",
@@ -184,7 +184,7 @@ var setMbDgChart = function setMbDgChart(chartType){
             display: true
           },
           cutoutPercentage: 70,
-        },
+        }
     }
     mbModeChart = new Chart(ctx, chartSet);
 
@@ -262,12 +262,10 @@ function jsonDownload(jsonList, fileName){
 
 //性別分布
 
-
-
 var setGdChart = function setGdChart(chartType){
   var ctx = $("#gdModeChart");
-  if(gbModeChart != null){
-    gbModeChart.destroy();
+  if(gdModeChart != null){
+    gdModeChart.destroy();
   }
 
   let setType = "pie";
@@ -275,7 +273,6 @@ var setGdChart = function setGdChart(chartType){
   if(typeof chartType != "undefined"){
     setType = chartType;
   }
-
 
   var gdAjax = $.ajax({
       method:"GET",
@@ -290,13 +287,13 @@ var setGdChart = function setGdChart(chartType){
       }
   }).then(()=>{
 
-      let chartSet = {
+      var chartGdSet = {
           type: 'pie',
           data: {
         
             labels: ["男性", "女性", "第三性", "不透露"],
             datasets: [{
-              data: gdDatas,
+              data: datas,
               backgroundColor: ['#4e73df', '#FF0000', '#1cc88a', '#8E8E8E'],
               hoverBackgroundColor: ['#2e59d9', '#EA0000', '#00CACAc', '#7B7B7B'],
               hoverBorderColor: "rgba(234, 236, 244, 1)",
@@ -320,225 +317,136 @@ var setGdChart = function setGdChart(chartType){
             cutoutPercentage: 0,
           },
         }
+        if(setType == "doughnut"){
+          chartGdSet = {
+            type: 'doughnut',
+            data: {
+          
+              labels: ["男性", "女性", "第三性", "不透露"],
+              datasets: [{
+                data: datas,
+                backgroundColor: ['#4e73df', '#FF0000', '#1cc88a', '#8E8E8E'],
+                hoverBackgroundColor: ['#2e59d9', '#EA0000', '#00CACAc', '#7B7B7B'],
+                hoverBorderColor: "rgba(234, 236, 244, 1)",
+              }],
+            },
+            options: {
+              maintainAspectRatio: false,
+              tooltips: {
+                backgroundColor: "rgb(255,255,255)",
+                bodyFontColor: "#858796",
+                borderColor: '#dddfeb',
+                borderWidth: 5,
+                xPadding: 15,
+                yPadding: 15,
+                displayColors: false,
+                caretPadding: 10,
+              },
+              legend: {
+                display: true
+              },
+              cutoutPercentage: 70,
+            },
+          }
+        }else if(setType == "bar"){
+          chartGdSet = {
+            type: 'bar',
+            data: {
+          
+              labels: ["男性", "女性", "第三性", "不透露"],
+              datasets: [{
+                data: datas,
+                backgroundColor: ['#4e73df', '#FF0000', '#1cc88a', '#8E8E8E'],
+                hoverBackgroundColor: ['#2e59d9', '#EA0000', '#00CACAc', '#7B7B7B'],
+                hoverBorderColor: "rgba(234, 236, 244, 1)",
+              }],
+            },
+            options: {
+              maintainAspectRatio: false,
+              tooltips: {
+                backgroundColor: "rgb(255,255,255)",
+                bodyFontColor: "#858796",
+                borderColor: '#dddfeb',
+                borderWidth: 5,
+                xPadding: 15,
+                yPadding: 15,
+                displayColors: false,
+                caretPadding: 10,
+              },
+              legend: {
+                display: false
+              },
+            },
+          }
+        }else if(setType == "horizontalBar"){
+          chartGdSet = {
+            type: 'horizontalBar',
+            data: {
+          
+              labels: ["男性", "女性", "第三性", "不透露"],
+              datasets: [{
+                data: datas,
+                backgroundColor: ['#4e73df', '#FF0000', '#1cc88a', '#8E8E8E'],
+                hoverBackgroundColor: ['#2e59d9', '#EA0000', '#00CACAc', '#7B7B7B'],
+                hoverBorderColor: "rgba(234, 236, 244, 1)",
+              }],
+            },
+            options: {
+              maintainAspectRatio: false,
+              tooltips: {
+                backgroundColor: "rgb(255,255,255)",
+                bodyFontColor: "#858796",
+                borderColor: '#dddfeb',
+                borderWidth: 5,
+                xPadding: 15,
+                yPadding: 15,
+                displayColors: false,
+                caretPadding: 10,
+              },
+              legend: {
+                display: false
+              },
+            },
+          }
+        }
+        gdModeChart = new Chart(ctx, chartGdSet);
       })
-  gdModeChart = new Chart(ctx, chartSet);
 }
 
-
+$(function(){
+  let pie = "pie";
+  setGdChart(pie);
+})
 
 $(".pieGd").on("click", function(){
-  $("#gdModeChart").remove();
-  $(".gdArea").append("<canvas id='gdModeChart'></canvas>");
-
-  var gdDatasPie = [];
-  var gdAjax = $.ajax({
-      method:"GET",
-      url:"/MountainExploer.com/back/member/countGender",
-      dataType:"json",
-      success:function(gdMap){
-          gdDatasPie[0] = gdMap.mlList;
-          gdDatasPie[1] = gdMap.fmList;
-          gdDatasPie[2] = gdMap.xList;
-          gdDatasPie[3] = gdMap.maskList;
-          // console.log(gdDatasPie);
-      }
-  }).then(()=>{
-  
-      var ctx = $("#gdModeChart");
-      var gdPieChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-      
-          labels: ["男性", "女性", "第三性", "不透露"],
-          datasets: [{
-            data: gdDatasPie,
-            backgroundColor: ['#4e73df', '#FF0000', '#1cc88a', '#8E8E8E'],
-            hoverBackgroundColor: ['#2e59d9', '#EA0000', '#00CACAc', '#7B7B7B'],
-            hoverBorderColor: "rgba(234, 236, 244, 1)",
-          }],
-        },
-        options: {
-          maintainAspectRatio: false,
-          tooltips: {
-            backgroundColor: "rgb(255,255,255)",
-            bodyFontColor: "#858796",
-            borderColor: '#dddfeb',
-            borderWidth: 5,
-            xPadding: 15,
-            yPadding: 15,
-            displayColors: false,
-            caretPadding: 10,
-          },
-          legend: {
-            display: true
-          },
-          cutoutPercentage: 0,
-        },
-      });
-  
-      $("#gd-Mode-export").on("click", function(){
-          // var image = myPieChart.toBase64Image();
-          // console.log(image);
-          downloadChart(gdPieChart, "會員性別比例圓餅圖");
-      })
-  
-      $("#gd-Mode-export-json").on("click", function(){
-          let newData = {
-              男性:gdDatas[0],
-              女性:gdDatas[1],
-              第三性:gdDatas[2],
-              不透露:gdDatas[3]
-          }
-          jsonDownload(newData, "會員身分組占比");
-      })
-      
-  })
-
+  setGdChart($(this).val());
 })
-
 
 $(".doughnutGd").on("click", function(){
-  $("#gdModeChart").remove();
-  $(".gdArea").append("<canvas id='gdModeChart'></canvas>");
-
-  var gdDatasDg = [];
-  var gdAjax = $.ajax({
-      method:"GET",
-      url:"/MountainExploer.com/back/member/countGender",
-      dataType:"json",
-      success:function(gdMap){
-          gdDatasDg[0] = gdMap.mlList;
-          gdDatasDg[1] = gdMap.fmList;
-          gdDatasDg[2] = gdMap.xList;
-          gdDatasDg[3] = gdMap.maskList;
-          // console.log(gdDatasPie);
-      }
-  }).then(()=>{
-  
-      var ctx = $("#gdModeChart");
-      var gdDgChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-      
-          labels: ["男性", "女性", "第三性", "不透露"],
-          datasets: [{
-            data: gdDatasDg,
-            backgroundColor: ['#4e73df', '#FF0000', '#1cc88a', '#8E8E8E'],
-            hoverBackgroundColor: ['#2e59d9', '#EA0000', '#00CACAc', '#7B7B7B'],
-            hoverBorderColor: "rgba(234, 236, 244, 1)",
-          }],
-        },
-        options: {
-          maintainAspectRatio: false,
-          tooltips: {
-            backgroundColor: "rgb(255,255,255)",
-            bodyFontColor: "#858796",
-            borderColor: '#dddfeb',
-            borderWidth: 5,
-            xPadding: 15,
-            yPadding: 15,
-            displayColors: false,
-            caretPadding: 10,
-          },
-          legend: {
-            display: true
-          },
-          cutoutPercentage: 70,
-        },
-      });
-  
-      $("#gd-Mode-export").on("click", function(){
-          // var image = myPieChart.toBase64Image();
-          // console.log(image);
-          downloadChart(gdDgChart, "會員性別比例圓餅圖");
-      })
-  
-      $("#gd-Mode-export-json").on("click", function(){
-          let newData = {
-              男性:gdDatas[0],
-              女性:gdDatas[1],
-              第三性:gdDatas[2],
-              不透露:gdDatas[3]
-          }
-          jsonDownload(newData, "會員身分組占比");
-      })
-      
-  })
-
+  setGdChart($(this).val());
 })
-
 
 $(".barGd").on("click", function(){
-  $("#gdModeChart").remove();
-  $(".gdArea").append("<canvas id='gdModeChart'></canvas>");
-
-  var gdDatasBar = [];
-  var gdAjax = $.ajax({
-      method:"GET",
-      url:"/MountainExploer.com/back/member/countGender",
-      dataType:"json",
-      success:function(gdMap){
-          gdDatasBar[0] = gdMap.mlList;
-          gdDatasBar[1] = gdMap.fmList;
-          gdDatasBar[2] = gdMap.xList;
-          gdDatasBar[3] = gdMap.maskList;
-          // console.log(gdDatasPie);
-      }
-  }).then(()=>{
-  
-      var ctx = $("#gdModeChart");
-      var gdBarChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-      
-          labels: ["男性", "女性", "第三性", "不透露"],
-          datasets: [{
-            data: gdDatasBar,
-            backgroundColor: ['#4e73df', '#FF0000', '#1cc88a', '#8E8E8E'],
-            hoverBackgroundColor: ['#2e59d9', '#EA0000', '#00CACAc', '#7B7B7B'],
-            hoverBorderColor: "rgba(234, 236, 244, 1)",
-          }],
-        },
-        options: {
-          maintainAspectRatio: false,
-          tooltips: {
-            backgroundColor: "rgb(255,255,255)",
-            bodyFontColor: "#858796",
-            borderColor: '#dddfeb',
-            borderWidth: 5,
-            xPadding: 15,
-            yPadding: 15,
-            displayColors: false,
-            caretPadding: 10,
-          },
-          legend: {
-            display: true
-          },
-          cutoutPercentage: 70,
-        },
-      });
-  
-      $("#gd-Mode-export").on("click", function(){
-          // var image = myPieChart.toBase64Image();
-          // console.log(image);
-          downloadChart(gdBarChart, "會員性別比例圓餅圖");
-      })
-  
-      $("#gd-Mode-export-json").on("click", function(){
-          let newData = {
-              男性:gdDatas[0],
-              女性:gdDatas[1],
-              第三性:gdDatas[2],
-              不透露:gdDatas[3]
-          }
-          jsonDownload(newData, "會員身分組占比");
-      })
-      
-  })
-
+  setGdChart($(this).val());
 })
 
+$(".horizontalBarGd").on("click", function(){
+  setGdChart($(this).val());
+})
 
+$("#gd-Mode-export").on("click", function(){
+  downloadChart(gdModeChart, "會員性別比例圖");
+})
+
+$("#gd-Mode-export-json").on("click", function(){
+  let newData = {
+    男性:datas[0],
+    女性:datas[1],
+    第三性:datas[2],
+    不透露:datas[3]
+  }
+  jsonDownload(newData, "會員性別比例")
+})
 
 
 
