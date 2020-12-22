@@ -27,6 +27,7 @@
 <!-- sweetalert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="/MountainExploer.com/member/userTop.js"></script>
+<script src="/MountainExploer.com/assets/js/main.js"></script>
 <style type="text/css">
 .table td {
 	vertical-align: middle;
@@ -35,8 +36,7 @@
 
 </head>
 <body>
-	<div class="container-fluid" style="padding: 0px;" include-html="/MountainExploer.com/forinclude/carousel.html">
-	</div>
+	<div class="container-fluid" style="padding: 0px;" include-html="/MountainExploer.com/forinclude/carousel.html"></div>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light zline">
 			<a class="navbar-brand" href="#"><img
@@ -58,6 +58,7 @@
 			<li class="breadcrumb-item active">商品資訊</li>
 		</ol>
 	</nav>
+	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 	<div class="div_ul d-flex div shadow animate__animated   p-3 ">
 
 		<div class="col-5 d-flex justify-content-center p-3">

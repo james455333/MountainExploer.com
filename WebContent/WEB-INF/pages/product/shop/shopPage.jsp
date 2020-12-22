@@ -29,6 +29,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 	<!-- Bootstrap core CSS -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+		<script src="/MountainExploer.com/assets/js/main.js"></script>
 		<style>
         
 
@@ -61,8 +62,7 @@
         </style>
 </head>
 <body>
-	<div class="container-fluid" style="padding: 0px;" include-html="/MountainExploer.com/forinclude/carousel.html">
-	</div>
+	<div class="container-fluid" style="padding: 0px;" include-html="/MountainExploer.com/forinclude/carousel.html"></div>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light zline">
 			<a class="navbar-brand" href="#"><img
@@ -78,6 +78,7 @@
 		</nav>
 
 	</header>
+	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 	<nav>
 		<ol class="breadcrumb p-4" style="font-size: 22.5px;" id="bc">
 			<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>

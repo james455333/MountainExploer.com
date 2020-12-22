@@ -27,6 +27,8 @@
 <!-- sweetalert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="/MountainExploer.com/member/userTop.js"></script>
+<script src="/MountainExploer.com/assets/js/main.js"></script>
+
 <style type="text/css">
 .table td {
 	vertical-align: middle;
@@ -35,8 +37,7 @@
 
 </head>
 <body>
-	<div class="container-fluid" style="padding: 0px;" include-html="/MountainExploer.com/forinclude/carousel.html">
-	</div>
+	<div class="container-fluid" style="padding: 0px;" include-html="/MountainExploer.com/forinclude/carousel.html"></div>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light zline">
 			<a class="navbar-brand" href="#"><img
@@ -59,6 +60,7 @@
 			<li class="breadcrumb-item active">訂單資料填寫</li>
 		</ol>
 	</nav>
+	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 	<div class="div_ul d-flex">
 		<c:choose>
 			<c:when test="${ShoppingCart.subtotal > 0}">
