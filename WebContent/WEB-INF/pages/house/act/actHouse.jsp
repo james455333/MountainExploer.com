@@ -65,41 +65,19 @@
 					include-html="/MountainExploer.com/forinclude/includeForIndex.html"></div>
 			</nav>
 		</header>
-		<div class="div_ul">
-			<div class="secNavbar" style="background-color: #C4E1FF">
-				<ul class="second_nav">
-					<!-- 					更改內容從這邊開始 -->
-					<!-- 					<li class="li1"><a href="#">第二導覽列1</a></li> -->
-
-					<!-- 					<li class="li1"><a href="#">第二導覽列2</a></li> -->
-
-					<!-- 					<li class="li1"><a href="#">第二導覽列3</a></li> -->
-					<c:if test="${ !empty Member}">
-						<li class="li1"><a
-							href="/MountainExploer.com/mountainHouseActOrder/selecthouseorder?Member=Member">訂單查詢</a></li>
-					</c:if>
-					<!-- 					更改內容到這邊結束 -->
-				</ul>
-			</div>
-			<div class="div_li1">
-				<!-- 			<a>保留區</a> -->
-
-			</div>
-			<div class="div_li3">
-				<!-- 			<a>保留區</a> -->
-			</div>
-			<div class="div_li2">
+		<div class="div_ul p-5">
+			<div class="" >
 				<!-- 每頁不同的內容從這裡開始 -->
-				<div class="searchBar">
-					<nav>
+				<div class="mb-3 p-5  border shadow">
+					<nav class="d-flex">
 
-						<div class="third_nav">
+						<div class="ml-3">
 							<!-- 控制列表內容從這邊開始 -->
 							<form
 								action="<c:url value='/mountainHouseAct/actselectAll'></c:url>"
 								method='GET'>
-								<div>
-									國家公園: <select name="parkid" id="selectnPark">
+								<div class="d-flex align-content-center">
+									<select name="parkid" id="selectnPark">
 										<option>請選擇國家公園</option>
 									</select> <input type="hidden" value="1" name="page"> <input
 										type="hidden" value="2" name="no"> <input
@@ -109,7 +87,7 @@
 
 						</div>
 
-						<div class="third_nav">
+						<div class="ml-3">
 							<form style="margin-left: 25px"
 								action="<c:url value='/mountainHouseAct/actselectAll'></c:url>"
 								method='get'>
@@ -119,23 +97,23 @@
 									class="btn btn-outline-info" value="全部觀看">
 							</form>
 						</div>
+						<div class="ml-auto">
+							<form class="d-flex"
+								action="<c:url value='/mountainHouseAct/actselectHouse'></c:url>"
+								method='GET' id="form1" name="form1">
+								<input type="text" class="light-table-filter"
+									placeholder="請輸入山中小屋名稱" name="selecthouse">
+								<!--                     <img class=imgSearch src="/MountainExploer.com/images/放大鏡.png" alt="" width="35px"> -->
+								<input type="image" class=imgSearch
+									src="/MountainExploer.com/images/放大鏡.png" width="35px"
+									onClick="document.form1.submit()">
+								<!-- <button><img class=imgSearch src="/MountainExploer.com/images/放大鏡.png" alt="" width="35px"></button> -->
+							</form>
+						</div>
 					</nav>
 					<!-- 控制列表內容到這邊結束 -->
 
 
-					<div class="search">
-						<form
-							action="<c:url value='/mountainHouseAct/actselectHouse'></c:url>"
-							method='GET' id="form1" name="form1">
-							山中小屋查詢： <input type="text" class="light-table-filter"
-								placeholder="請輸入關鍵字" name="selecthouse">
-							<!--                     <img class=imgSearch src="/MountainExploer.com/images/放大鏡.png" alt="" width="35px"> -->
-							<input type="image" class=imgSearch
-								src="/MountainExploer.com/images/放大鏡.png" width="35px"
-								onClick="document.form1.submit()">
-							<!-- <button><img class=imgSearch src="/MountainExploer.com/images/放大鏡.png" alt="" width="35px"></button> -->
-						</form>
-					</div>
 
 				</div>
 
