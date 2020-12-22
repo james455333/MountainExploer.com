@@ -323,6 +323,8 @@
 
 
 										<div class="">
+										
+										
 											<a href="selectAll?parkid=${parkid }&no=${no }&page=1">«第一頁</a>
 											<c:choose>
 												<c:when test="${page <= 1}">
@@ -336,25 +338,24 @@
 
 											<select
 												onChange="location = this.options[this.selectedIndex].value">
+												
+												
 												<c:forEach var="toPage" begin="1" end="${totalPage}">
-													<option
-														value="selectAll?parkid=${parkid }&no=${no }&page=${toPage}"
+													<option	value="selectAll?parkid=${parkid }&no=${no }&page=${toPage}"
 														<c:if test="${toPage==page}">selected="selected"</c:if>>第${toPage}頁</option>
+													
 												</c:forEach>
 											</select>
 
 											<c:choose>
-												<c:when test="${page == totalPage}">
-													<a href="#">下一頁›</a>
-												</c:when>
-												<c:otherwise>
-													<a
-														href="selectAll?parkid=${parkid }&no=${no }&page=${page+1}">下一頁›</a>
-												</c:otherwise>
+													<c:when test="${totalPage==page}"><a href="#">下一頁›</a></c:when>
+													<c:otherwise>
+													<a href="selectAll?parkid=${parkid }&no=${no }&page=${page+1}">下一頁›</a>
+													</c:otherwise>
 											</c:choose>
-
 											<a
 												href="selectAll?parkid=${parkid }&no=${no }&page=${totalPage}">最末頁»</a>
+										
 										</div>
 
 
@@ -516,7 +517,7 @@
 																<c:when test="${empty i.imgid.img }">
 																	<a class="tooltip-a" data-toggle='tooltip'
 																		target="_blank"><img height="100" width="100"
-																		src="/MountainExploer.com/housecamp/images/housenull.PNG"></a>
+																		src="/MountainExploer.com/housecamp/images/imgnotfound.png"></a>
 																</c:when>
 																<c:when test="${not empty i.imgid.img }">
 																	<a class="tooltip-a" data-toggle='tooltip'

@@ -163,7 +163,7 @@
 								<div class="form-group col-md-6">
 									<label class="col-sm-10">營區描述 : </label><textarea name="inser_desc" rows="10" cols="50">冬季水源較不穩定，有簡易太陽能照明。有乾式生態廁所。住宿山屋者，請自備過夜及睡眠裝備。通訊品質:尚可~不穩定。為登頂雪山主峰主要之住宿山莊。請民眾依入園證之核准床位號碼入住使用。</textarea>
 								</div>
-								<div class="form-group col-md-6">	<img id="blah" src="" alt="your image" />		       
+								<div class="form-group col-md-6">	<img id="blah" src="/MountainExploer.com/housecamp/images/imgnotfound.png"  alt="your image" />		       
 				      					<input type="file" name="mFile" id="imgInp" size="25" accept="image/*">
 				      					<input type="hidden" name="hotelnumber" value="${l.imgid.id}">
 				      			</div>
@@ -174,15 +174,7 @@
 				
 															
 					</form>
-							<div  class="form-group col-md-6">
-							<c:choose>
-								<c:when test="${empty l.imgid.img }">
-								<img height="100" width="100"src="/MountainExploer.com/housecamp/images/imgnotfound.png">
-								</c:when>
-				      		<c:otherwise><img height="100"width="100"src="<c:url value='/mountainHouseBack/showimg?imgid=${l.imgid.id}'/>"></c:otherwise>
-				      	</c:choose>
-							</div>
-					
+
 										
 									</div>
 								</div>
