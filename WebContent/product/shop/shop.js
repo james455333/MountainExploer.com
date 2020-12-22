@@ -341,8 +341,9 @@ $(function() {
 				
 				"<tr>"+
 				"<td>"+	
-					"<div class='p-3 border-bottom'>"+	
-						'<img  style="width: 100%; height: 200px;" src="/MountainExploer.com/backstage/product/search/images?seqno=' + data[i].seqno + '" class="productImg" >' +
+					"<div class='p-3 border-bottom'>"+
+						'<a href= "/MountainExploer.com/shop/productInfoEntry?no='+data[i].seqno+'">' +
+						'<img  style="width: 100%; height: 200px;" src="/MountainExploer.com/backstage/product/search/images?seqno=' + data[i].seqno + '" class="productImg" >' +'</a>'+
 					"</div>" + 
 				"</tr>"+
 				"</td>"+		
