@@ -3,20 +3,57 @@ var actCRUDHome = "/MountainExploer.com/mountain/act/crud"
 var detailHome = "/MountainExploer.com/mountain/act/detail?"
 
 var originSD;
-
+var includeJS = {
+	aInternal: true,
+	aListener: function(val) {},
+  	set status(val) {
+    	this.aInternal = val;
+    	this.aListener(val);
+  	},
+ 	get status() {
+    	return this.aInternal;
+  	},
+  	registerListener: function(listener) {
+    	this.aListener = listener;
+  	}
+}
 $(function(){
-	setDefaultRouteSelect( $(".newAct-form") )
-	setDatePicker($(".newAct-form"))
-	$("#npSelect").on("change",changeRtOption)
-	$("#rtSelect").on("change",changeRtDesp)
-	$("#btn-submit").on("click",function(){
-		$("#newAct-form").submit()
+	PBBlock({
+		countTimes : 2,
 	})
-	$("#newAct-form").validate({
-		submitHandler: function(form){
-			ajaxNewAct(form)
-        }
-	})
+	let count = 0 ;
+	openBlock()
+	progressCount("頁面基本元素載入中")
+	includeJS.registerListener(function(val) {
+		if(val){
+			progressCount("載入完成")
+			const headerH = $("header").height()
+			const bcTop = $("#bc").offset().top
+			const trgH = bcTop-headerH
+			
+			setTimeout(()=>{
+				$("html").animate({ scrollTop: trgH }, 1000,function(){
+						console.log("count : " + count++)
+						console.log("scrollTop end")
+						activeAnimate()
+					});
+				
+			},1000)
+			setDefaultRouteSelect( $(".newAct-form") )
+			setDatePicker($(".newAct-form"))
+			$("#npSelect").on("change",changeRtOption)
+			$("#rtSelect").on("change",changeRtDesp)
+			$("#btn-submit").on("click",function(){
+				$("#newAct-form").submit()
+			})
+			$("#newAct-form").validate({
+				submitHandler: function(form){
+					ajaxNewAct(form)
+		        }
+			})
+			
+		}
+	});
 	
 	CKEDITOR.replace("note")
 	

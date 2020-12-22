@@ -4,9 +4,10 @@
 .newa-ul{
 	margin : 15px;
 	padding : 0 25%;
+	list-style-type: none;
+	font-size : 25px;
 }
-.form-container{
-	
+#form-container{
 }
 .newAct-form{
 	padding : 15px;

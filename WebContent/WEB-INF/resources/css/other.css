@@ -9,11 +9,11 @@
 }
 
 /*---------下拉選單滑入展開---------*/
-.dropdown-menu li:hover .sub-menu {
+#navbarSupportedContent .dropdown-menu li:hover .sub-menu {
 	visibility: visible;
 }
 
-.dropdown:hover .dropdown-menu {
+#navbarSupportedContent .dropdown:hover .dropdown-menu {
 	display: block;
 }
 

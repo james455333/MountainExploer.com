@@ -1,3 +1,18 @@
+var includeJS = {
+  aInternal: true,
+  aListener: function(val) {},
+  set status(val) {
+    this.aInternal = val;
+    this.aListener(val);
+  },
+  get status() {
+    return this.aInternal;
+  },
+  registerListener: function(listener) {
+    this.aListener = listener;
+  }
+}
+
 $(function(){
 	
 	includeHTML();
@@ -17,6 +32,7 @@ $(function(){
 	            if (this.status == 200) {elmnt.innerHTML = this.responseText;}
 	            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
 	            /* Remove the attribute, and call this function once more: */
+				includeJS.status = false
 	            elmnt.removeAttribute("include-html");
 	            includeHTML();
 	          }
@@ -26,7 +42,9 @@ $(function(){
 	        /* Exit the function: */
 	        return;
 	      }
+		  
 	    }
+		includeJS.status = true
 		/*
 		let ullength= $(".navbar-nav").find("li").length;
 		if( !checklogin == ""){
