@@ -13,6 +13,10 @@
 <link rel="stylesheet" href="/MountainExploer.com/css/style.css">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+ <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />	
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
@@ -54,14 +58,10 @@
 	clear: left;
 }
 
-.img {
-	width: 100%;
+img {
 	transition: all 0.6s;
 }
 
-.img:hover {
-	transform: scale(1.5);
-}
 
 .forFrom {
 	float: none;
@@ -144,16 +144,16 @@
 			<!-- 每頁不同的內容從這裡開始 -->
 			
 
-			<div class="secDivContent">
+			<div class="mt-5">
 
 				<!--                 <div class="forImage"> -->
 				<!--                     <img src="/MountainExploer.com/images/BGI.jpg" alt="" class="forImagesImg"> -->
 				<!--                     調整參考網址 https://segmentfault.com/q/1010000018971940 -->
 				<!--                 </div> -->
 				<!-- 左邊 -->
-				<div class="forText">
+				<div class="border shadow bg-white p-5">
 					
-					<div class="d-flex " id="tostar">
+					<div class="d-flex shadow border" id="tostar">
 								
 					
 						<c:forEach var="i" items="${selecthouseid}">
@@ -183,7 +183,7 @@
 							
 
 					</div>
-					<div class="row">
+					<div class="row mt-5">
 						
 						
 						<div class="col-6">
@@ -200,8 +200,8 @@
 								<div class="body">@ 營地總數量 : ${i.camp} 區</div>
 								<div class="body" id="">
 									@ 備註 :
-									<div class="body"
-										style="height: 100%; border: 1px black solid;;width:100%'">
+									<div class="body border p-3"
+										style="height: 100%;width:100%'">
 										<div id="date" style="margin: 5px">${i.desc}</div>
 									</div>
 								</div>
@@ -405,10 +405,10 @@
 					</div></div>
 				</div>
 				<!-- 		下框 -->
-				<div class="secDivContent" style="padding: 20px 0 0 0;">
-					<div
-						style="padding: 10px; blue; background-color: #ffc489; height: 125px">
-						<h3 style="padding: 0 0 0 100px">查詢住宿日期</h3>
+				<div class="my-5" >
+					<div class="p-3 bg-white shadow"
+						style="height: 125px">
+						<h3 style="">查詢住宿日期</h3>
 						<form action="<c:url value='/mountainHouseActOrder/selectamount#date'></c:url>">
 
 							<c:forEach var="i" items="${selecthouseid}">
@@ -436,7 +436,7 @@
 						</form>
 					</div>
 					<!-- 	顯示查詢日期			                			 -->
-					<div style="padding: 50px">
+					<div class="mb-3">
 						<form
 							action="<c:url value='/mountainHouseActOrder/orderjump#orderdesc'></c:url>">
 							<c:forEach var="i" items="${house}">
@@ -476,7 +476,7 @@
 													<c:when test="${leftcampamount > 10}">
 														<p style="color: blue">營地還有${leftcampamount}區</p>
 													</c:when>
-												</c:choose> <img style="height: 60%"
+												</c:choose> <img class="animate__animated animate__lightSpeedInRight animate__delay-1s" style="height: 60%"
 												src="/MountainExploer.com/housecamp/images/housecampsmall.jpg">
 											</td>
 
@@ -509,7 +509,7 @@
 													<c:when test="${leftbedamount > 10}">
 														<p style="color: blue">床位還有${leftbedamount}床</p>
 													</c:when>
-												</c:choose> <img style="height: 60%"
+												</c:choose> <img class="animate__animated animate__lightSpeedInRight animate__delay-2s" style="height: 60%"
 												src="/MountainExploer.com/housecamp/images/bedsmall.jpg">
 											</td>
 

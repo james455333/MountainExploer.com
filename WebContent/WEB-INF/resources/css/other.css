@@ -3,6 +3,11 @@
 	padding-bottom: 0px !important;
 	height: 70px;
 } */
+
+body{
+	background-color: #f8f9fc!important;
+}
+
 .navbar {
 	/* min-height: 30px !important; */
 	z-index: 50;

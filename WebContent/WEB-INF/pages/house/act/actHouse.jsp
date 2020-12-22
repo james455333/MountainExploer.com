@@ -36,14 +36,24 @@
 	font-size: 20px
 }
 
-.img {
-	width: 100%;
+img{
 	transition: all 0.6s;
 }
 
-.img:hover {
-	transform: scale(1.5);
+img:hover {
+	transform: scale(1.25);
 }
+#tablePreview td{
+	vertical-align: middle;
+}
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #BBFFBB;
+}
+.table-striped>tbody>tr:nth-of-type(odd){
+	background-color : #F0FFF0;
+
+}
+
 </style>
 </head>
 
@@ -65,10 +75,17 @@
 					include-html="/MountainExploer.com/forinclude/includeForIndex.html"></div>
 			</nav>
 		</header>
+		<nav>
+		<ol class="breadcrumb bg-light" style="font-size : 25px;" id="bc">
+			<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
+			<li class="breadcrumb-item"><a href="/MountainExploer.com/mountain/list?page=1&od=1">活動討論區</a></li>
+			<li class="breadcrumb-item active">發表活動</li>
+		</ol>
+	</nav>
 		<div class="div_ul p-5">
-			<div class="" >
+			<div class="" style="font-size:20px;" >
 				<!-- 每頁不同的內容從這裡開始 -->
-				<div class="mb-3 p-5  border shadow">
+				<div class="mb-3 p-5  border shadow " style="color : white">
 					<nav class="d-flex">
 
 						<div class="ml-3">
@@ -79,9 +96,9 @@
 								<div class="d-flex align-content-center">
 									<select name="parkid" id="selectnPark">
 										<option>請選擇國家公園</option>
-									</select> <input type="hidden" value="1" name="page"> <input
+									</select> <input type="hidden" value="1" name="page" > <input
 										type="hidden" value="2" name="no"> <input
-										type="submit" class="btn btn-outline-success" value="查詢">
+										type="submit" class="btn btn-outline-success" style="font-size:20px;" value="查詢">
 								</div>
 							</form>
 
@@ -94,7 +111,7 @@
 								<input type="hidden" value="1" name="page"> <input
 									type="hidden" value="1" name="no"> <input type="hidden"
 									value="" name="parkid"> <input type="submit"
-									class="btn btn-outline-info" value="全部觀看">
+									class="btn btn-outline-info" style="font-size:20px;" value="全部觀看">
 							</form>
 						</div>
 						<div class="ml-auto">
@@ -117,29 +134,29 @@
 
 				</div>
 
-				<div class="secDivContent">
+				<div class="mt-5 mx-3">
 					<!-- datepicker -->
 
 
 					<!--table-->
-					<table class="order-table table table-hover" id="tablePreview"
-						style="background-color: white;">
-						<thead class="order-table-th">
-							<tr>
+					<table class="table table-hover table-striped  " id="tablePreview"
+						style="">
+						<thead class="bg-success bg-gradient text-white " >
+							<tr class="" style="font-size:20px;">
 								<!-- thead更改從這邊開始 -->
-								<th scope="col">國家公園</th>
-								<th scope="col">山中小屋</th>
-								<th scope="col">床位數量</th>
-								<th scope="col">露營地數量</th>
-								<th scope="col">海拔</th>
-								<th scope="col">照片</th>
-								<th scope="col">星級</th>
+								<th scope="col" >國家公園</th>
+								<th scope="col" >山中小屋</th>
+								<th scope="col" >床位數量</th>
+								<th scope="col" >露營地數量</th>
+								<th scope="col" >海拔</th>
+								<th scope="col" >照片</th>
+								<th scope="col" >星級</th>
 								<!-- thead更改到這邊結束 -->
 							</tr>
 						</thead>
 
 
-						<tbody class="order-table-tb">
+						<tbody class="">
 							<!-- tbody更改從這邊開始 -->
 							<c:forEach var="i" items="${House_All}">
 								<tr>
