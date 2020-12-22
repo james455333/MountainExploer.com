@@ -23,7 +23,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <!--     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <style>
 
     </style>
@@ -104,7 +104,7 @@
 						          	<input type="button" name="userLog1" class="btn btn-info userLog1" value="一般登入">
 						          	<input type="button" name="userLog2" class="btn btn-warning userLog2" value="登山嚮導登入">
 						          	<input type="button" name="adminLog" class="btn btn-secondary adminLog" value="管理員登入">
-						          	<input type="button" name="testLog" class="btn btn-info disabled userLog3" value="即時登入">
+						          	<button type="button" name="testLog" class="btn btn-info disabled userLog3">即時登入</button>
 					            </div>
 					        </div>
 			                

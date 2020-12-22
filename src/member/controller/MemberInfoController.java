@@ -91,7 +91,9 @@ public class MemberInfoController {
 			System.out.println("============================" + otherStr);
 			return otherLs;			
 		} else {
-			return null;
+			String noStr = "尚未填寫";
+			otherLs.add(noStr);
+			return otherLs;
 		}
 		
 	}

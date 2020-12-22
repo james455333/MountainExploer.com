@@ -2,20 +2,16 @@ package member.controller;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,8 +34,6 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import member.MemberGlobal;
 import member.model.MemberBasic;
 import member.model.MemberService;
-import net.sf.json.JSONObject;
-import oracle.net.aso.m;
 
 @Controller
 @SessionAttributes(names = {"Member", "beforeCheckURL"})

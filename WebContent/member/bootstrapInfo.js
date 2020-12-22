@@ -34,8 +34,14 @@ $(function(){
                 $(".emTr").find(".email").text(item.email);
                 $(".emTr").find(".emInp").val(item.email);
 
-                $(".phTr").find(".phone").text(item.memberInfo.phone);
-                $(".phTr").find(".phInp").val(item.memberInfo.phone);
+                let phone = item.memberInfo.phone;
+                if(phone == null){
+                    $(".phTr").find(".phone").text("尚未填寫");
+                    $(".phTr").find(".phInp").val("尚未填寫");
+                }else{
+                    $(".phTr").find(".phone").text(phone);
+                    $(".phTr").find(".phInp").val(phone);
+                }
 
                 $(".gpTr").find(".group").text(item.memberStatus.name);
                 
@@ -102,6 +108,7 @@ $(".updatePwdbtn").on("click", function(){
                 <input type="password" class="swal2-input pwd" placeholder="請輸入舊密碼">
                 <input type="password" class="swal2-input updatePwd" placeholder="請輸入新密碼">
                 <input type="password" class="swal2-input chkPwd" placeholder="請再次輸入新密碼">
+                <button type="button" class="btn btn-info disabled quick">快速輸入</button>
                 </div>`,
         confirmButtonText:"確認修改",
         confirmButtonColor:"#3085d6",
@@ -109,6 +116,12 @@ $(".updatePwdbtn").on("click", function(){
         showCancelButton:true,
         cancelButtonText:"取消",
         cancelButtonColor:"#FF5151",
+        didOpen:function(){
+            $(".quick").on("click", function(){
+                $(".updatePwd").val("DoingTest123");
+                $(".chkPwd").val("DoingTest123");
+            })
+        },
         preConfirm:function(){
             const oldPwd = Swal.getPopup().querySelector(".pwd").value;
             const updatePwd = Swal.getPopup().querySelector(".updatePwd").value;
