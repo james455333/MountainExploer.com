@@ -111,10 +111,10 @@ pageEncoding="UTF-8"%>
 	                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
 	                                            aria-labelledby="dropdownMenuLink">
 	                                            <div class="dropdown-header">顯示圖像變化</div>
-	                                            <button class="dropdown-item mb-mode-chart pieMode" value='pie' >圓餅圖</button>
+	                                            <button class="dropdown-item mb-mode-chart pieMode" id="pieMode" value='pie' >圓餅圖</button>
 	                                            <button class="dropdown-item mb-mode-chart doughnut" value='doughnut' >甜甜圈圖</button>
 	                                            <button class="dropdown-item mb-mode-chart bar" value='bar' >長條圖(直)</button>
-	                                            <button class="dropdown-item mb-mode-chart horizontalBar" value='horizontalBar' >長條圖(橫)</button>
+	                                            <button class="dropdown-item mb-mode-chart horizontalBar" id="horizontalBar" value='horizontalBar' >長條圖(橫)</button>
 	                                        	<div class="dropdown-divider"></div>
 												<button class="dropdown-item" id="mb-mode-export">輸出為PNG檔</button>
 												<button class="dropdown-item" id="mb-mode-export-json">輸出為JSON檔</button>
@@ -374,7 +374,7 @@ pageEncoding="UTF-8"%>
     <script src="/MountainExploer.com/member/memberInfoListBack.js"></script>
 <!--     <script src="/MountainExploer.com/member/Linedemo.js"></script> -->
     <script src="/MountainExploer.com/member/backCard.js"></script>
-    <script src="/MountainExploer.com/member/backLineCard.js"></script>
+<!--     <script src="/MountainExploer.com/member/backLineCard.js"></script> -->
 </body>
 
 </html>

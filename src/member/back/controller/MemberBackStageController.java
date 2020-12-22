@@ -27,7 +27,6 @@ import member.back.model.MemberStatusBackService;
 import member.model.MemberBasic;
 import member.model.MemberInfo;
 import member.model.MemberStatus;
-import sun.jvm.hotspot.oops.java_lang_Class;
 
 @Controller
 @RequestMapping("/back/member")
@@ -247,12 +246,12 @@ public class MemberBackStageController {
 	
 	
 	//註冊年分分布圖
-	public Map<String, Object> processRegYear(){
-		Map<String, Object> yearMap = new HashMap<String, Object>();
-		
-		
-		
-	}
+//	public Map<String, Object> processRegYear(){
+//		Map<String, Object> yearMap = new HashMap<String, Object>();
+//		
+//		
+//		
+//	}
 	
 	
 	//單獨查詢

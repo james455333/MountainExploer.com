@@ -2,10 +2,24 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
-// 身分組分布
-$(function(){
-  var datas = [];
-  var gmAjax = $.ajax({
+var mbModeChart;
+var datas = [];
+
+//身分組分布
+var setMbModeChart = function setMbModeChart(chartType){
+  var ctx = $("#mbModeChart");
+  if(mbModeChart != null){
+    mbModeChart.destroy();
+  }
+
+  let setType = "pie";
+
+  if(typeof chartType != "undefined"){
+    setType = chartType;
+  }
+
+  
+  $.ajax({
       method:"GET",
       url:"/MountainExploer.com/back/member/countGMember",
       dataType:"json",
@@ -17,11 +31,9 @@ $(function(){
           datas[4] = pieMap.adSiza;
           console.log(datas);
       }
-  }).then(()=>{
-  
-      var ctx = document.getElementById("mbModeChart");
-      var myModeChart = new Chart(ctx, {
-        type: 'pie',
+  }).then(function(){
+    var chartSet = {
+      type: 'pie',
         data: {
       
           labels: ["一般登山者", "登山嚮導", "未認證會員", "停權會員", "管理者"],
@@ -49,127 +61,108 @@ $(function(){
           },
           cutoutPercentage: 0,
         },
-      });
-  
-      $("#mb-mode-export").on("click", function(){
-          // var image = myPieChart.toBase64Image();
-          // console.log(image);
-          downloadChart(myModeChart, "會員身分組占比圓餅圖");
-      })
-  
-      $("#mb-mode-export-json").on("click", function(){
-          let newData = {
-              一般登山者:datas[0],
-              登山嚮導:datas[1],
-              未認證會員:datas[2],
-              停權會員:datas[3],
-              管理員:datas[4]
-          }
-          jsonDownload(newData, "會員身分組占比");
-      })
-      
-  })
-
-})
-
-$(".pieMode").on("click", function(){
-  $("#mbModeChart").remove();
-  $(".chart-area").append("<canvas id='mbModeChart'></canvas>");
-    var datasPie = [];
-    var gmAjax = $.ajax({
-        method:"GET",
-        url:"/MountainExploer.com/back/member/countGMember",
-        dataType:"json",
-        success:function(pieMap){
-          datasPie[0] = pieMap.gmSize;
-          datasPie[1] = pieMap.ggSize;
-          datasPie[2] = pieMap.uaSize;
-          datasPie[3] = pieMap.saSize;
-          datasPie[4] = pieMap.adSiza;
-            // console.log(datasPie);
-        }
-    }).then(()=>{
-    
-        var ctx = document.getElementById("mbModeChart");
-        var myPieChart = new Chart(ctx, {
-          type: 'pie',
-          data: {
-        
-            labels: ["一般登山者", "登山嚮導", "未認證會員", "停權會員", "管理者"],
-            datasets: [{
-              data: datasPie,
-              backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#FF0000', '#8E8E8E'],
-              hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf', '#EA0000', '#7B7B7B'],
-              hoverBorderColor: "rgba(234, 236, 244, 1)",
-            }],
-          },
-          options: {
-            maintainAspectRatio: false,
-            tooltips: {
-              backgroundColor: "rgb(255,255,255)",
-              bodyFontColor: "#858796",
-              borderColor: '#dddfeb',
-              borderWidth: 5,
-              xPadding: 15,
-              yPadding: 15,
-              displayColors: false,
-              caretPadding: 10,
-            },
-            legend: {
-              display: true
-            },
-            cutoutPercentage: 0,
-          },
-        });
-    
-        $("#mb-mode-export").on("click", function(){
-            // var image = myPieChart.toBase64Image();
-            // console.log(image);
-            downloadChart(myPieChart, "會員身分組占比圓餅圖");
-        })
-    
-        $("#mb-mode-export-json").on("click", function(){
-            let newData = {
-                一般登山者:datasPie[0],
-                登山嚮導:datasPie[1],
-                未認證會員:datasPie[2],
-                停權會員:datasPie[3],
-                管理員:datasPie[4]
-            }
-            jsonDownload(newData, "會員身分組占比");
-        })
-        
-    })
-})
-
-
-$(".doughnut").on("click", function(){
-  $("#mbModeChart").remove();
-  $(".chart-area").append("<canvas id='mbModeChart'></canvas>");
-
-  var datasDg = [];
-  var dgAjax = $.ajax({
-      method:"GET",
-      url:"/MountainExploer.com/back/member/countGMember",
-      dataType:"json",
-      success:function(pieMap){
-        datasDg[0] = pieMap.gmSize;
-        datasDg[1] = pieMap.ggSize;
-        datasDg[2] = pieMap.uaSize;
-        datasDg[3] = pieMap.saSize;
-        datasDg[4] = pieMap.adSiza;
-          console.log(datasDg);
-      }
-  }).then(()=>{
-  
-      var ctx = document.getElementById("mbModeChart");
-      var myDgChart = new Chart(ctx, {
-        type: 'pie',
+    }
+    if(setType == "bar"){
+      // chartSet.options.legend.display = false;
+      chartSet = {
+        type: 'bar',
         data: {
       
           labels: ["一般登山者", "登山嚮導", "未認證會員", "停權會員", "管理者"],
           datasets: [{
-            data:datasDg,
+            data: datas,
+            backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#FF0000', '#8E8E8E'],
+            hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf', '#EA0000', '#7B7B7B'],
+            hoverBorderColor: "rgba(234, 236, 244, 1)",
+          }],
+        },
+        options: {
+          maintainAspectRatio: false,
+          tooltips: {
+            backgroundColor: "rgb(255,255,255)",
+            bodyFontColor: "#858796",
+            borderColor: '#dddfeb',
+            borderWidth: 5,
+            xPadding: 15,
+            yPadding: 15,
+            displayColors: false,
+            caretPadding: 10,
+          },
+          // legend: {
+          //   display: true
+          // },
+        }, 
+      }
+    }else if(setType == "horizontalBar"){
+      chartSet = {
+        type: 'horizontalBar',
+        data: {
+      
+          labels: ["一般登山者", "登山嚮導", "未認證會員", "停權會員", "管理者"],
+          datasets: [{
+            data: datas,
+            backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#FF0000', '#8E8E8E'],
+            hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf', '#EA0000', '#7B7B7B'],
+            hoverBorderColor: "rgba(234, 236, 244, 1)",
+          }],
+        },
+        options: {
+          maintainAspectRatio: false,
+          tooltips: {
+            backgroundColor: "rgb(255,255,255)",
+            bodyFontColor: "#858796",
+            borderColor: '#dddfeb',
+            borderWidth: 5,
+            xPadding: 15,
+            yPadding: 15,
+            displayColors: false,
+            caretPadding: 10,
+          },
+          // legend: {
+          //   display: true
+          // },
+        }, 
+      }
+    }
+    mbModeChart = new Chart(ctx, chartSet);
+
+  })
+}
+
+
+var setMbDgChart = function setMbDgChart(chartType){
+  var ctx = $("#mbModeChart");
+  if(mbModeChart != null){
+    mbModeChart.destroy();
+  }
+
+  let setType = "pie";
+
+  if(typeof chartType != "undefined"){
+    setType = chartType;
+  }
+
+  
+  $.ajax({
+      method:"GET",
+      url:"/MountainExploer.com/back/member/countGMember",
+      dataType:"json",
+      success:function(pieMap){
+          datas[0] = pieMap.gmSize;
+          datas[1] = pieMap.ggSize;
+          datas[2] = pieMap.uaSize;
+          datas[3] = pieMap.saSize;
+          datas[4] = pieMap.adSiza;
+          console.log(datas);
+      }
+  }).then(function(){
+    var chartSet = {
+      type: 'pie',
+        data: {
+      
+          labels: ["一般登山者", "登山嚮導", "未認證會員", "停權會員", "管理者"],
+          datasets: [{
+            data: datas,
             backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#FF0000', '#8E8E8E'],
             hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf', '#EA0000', '#7B7B7B'],
             hoverBorderColor: "rgba(234, 236, 244, 1)",
@@ -192,149 +185,61 @@ $(".doughnut").on("click", function(){
           },
           cutoutPercentage: 70,
         },
-      });
-  
-      $("#mb-mode-export").on("click", function(){
+    }
+    mbModeChart = new Chart(ctx, chartSet);
 
-          // var image = myPieChart.toBase64Image();
-          // console.log(image);
-          downloadChart(myDgChart, "會員身分組占比甜甜圈圖");
-      })
-  
-      $("#mb-mode-export-json").on("click", function(){
-          let newData = {
-              一般登山者:datasDg[0],
-              登山嚮導:datasDg[1],
-              未認證會員:datasDg[2],
-              停權會員:datasDg[3],
-              管理員:datasDg[4]
-          }
-          jsonDownload(newData, "會員身分組占比");
-      })
-      
   })
+}
 
+
+
+
+$(function(){
+  let pie = $(".pieMode").val();
+  setMbModeChart(pie);
+})
+
+
+$(".pieMode").on("click", function(){
+  setMbModeChart($(this).val());
+})
+
+$(".doughnut").on("click", function(){
+  setMbDgChart($(this).val());
 })
 
 $(".bar").on("click", function(){
-  $("#mbModeChart").remove();
-  $(".chart-area").append("<canvas id='mbModeChart' style='height:100px'></canvas>");
-
-  var datasBar = [];
-  var barAjax = $.ajax({
-    method:"GET",
-    url:"/MountainExploer.com/back/member/countGMember",
-    dataType:"json",
-    success:function(barMap){
-      datasBar[0] = barMap.gmSize;
-      datasBar[1] = barMap.ggSize;
-      datasBar[2] = barMap.uaSize;
-      datasBar[3] = barMap.saSize;
-      datasBar[4] = barMap.adSiza;
-        console.log(datasBar);
-    }
-  }).then(function(){
-    var ctx = $("#mbModeChart");
-    var myBarChart = new Chart(ctx, {
-      type:"bar",
-      data: {
-        labels: ["一般登山者", "登山嚮導", "未認證會員", "停權會員", "管理者"],
-        datasets: [{
-          data: datasBar,
-          backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#FF0000', '#8E8E8E'],
-          hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf', '#EA0000', '#7B7B7B'],
-          hoverBorderColor: "rgba(234, 236, 244, 1)",
-
-        }],
-      },
-      options: {
-        maintainAspectRatio: false
-      }
-    })
-
-      $("#mb-mode-export").on("click", function(){
-        // var image = myPieChart.toBase64Image();
-        // console.log(image);
-        downloadChart(myBarChart, "會員身分組占比長條圖");
-      })
-
-    $("#mb-mode-export-json").on("click", function(){
-        let newData = {
-            一般登山者:datasBar[0],
-            登山嚮導:datasBar[1],
-            未認證會員:datasBar[2],
-            停權會員:datasBar[3],
-            管理員:datasBar[4]
-        }
-        jsonDownload(newData, "會員身分組占比");
-    })
-  })
+  setMbModeChart($(this).val());
 })
-
 
 $(".horizontalBar").on("click", function(){
-  $("#mbModeChart").remove();
-  $(".chart-area").append("<canvas id='mbModeChart' style='height:100px'></canvas>");
-
-  var horDatas = [];
-  var horAjax = $.ajax({
-    method:"GET",
-    url:"/MountainExploer.com/back/member/countGMember",
-    dataType:"json",
-    success:function(barMap){
-      horDatas[0] = barMap.gmSize;
-      horDatas[1] = barMap.ggSize;
-      horDatas[2] = barMap.uaSize;
-      horDatas[3] = barMap.saSize;
-      horDatas[4] = barMap.adSiza;
-        // console.log(horDatas);
-    }
-  }).then(function(){
-    var ctx = $("#mbModeChart");
-    var myHorChart = new Chart(ctx, {
-      type:"horizontalBar",
-      data: {
-        labels: ["一般登山者", "登山嚮導", "未認證會員", "停權會員", "管理者"],
-        datasets: [{
-          data: horDatas,
-          backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#FF0000', '#8E8E8E'],
-          hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf', '#EA0000', '#7B7B7B'],
-          hoverBorderColor: "rgba(234, 236, 244, 1)",
-
-        }],
-      },
-      options: {
-        maintainAspectRatio: false
-      }
-    })
-      $("#mb-mode-export").on("click", function(){
-        // var image = myPieChart.toBase64Image();
-        // console.log(image);
-        downloadChart(myHorChart, "會員身分組占比橫條圖");
-      })
-
-    $("#mb-mode-export-json").on("click", function(){
-        let newData = {
-            一般登山者:horDatas[0],
-            登山嚮導:horDatas[1],
-            未認證會員:horDatas[2],
-            停權會員:horDatas[3],
-            管理員:horDatas[4]
-        }
-        jsonDownload(newData, "會員身分組占比");
-    })
-  })
+  setMbModeChart($(this).val());
 })
 
+$("#mb-mode-export").on("click", function(){
+  downloadChart(mbModeChart, "會員身分組分布圖");
+})
 
+$("#mb-mode-export-json").on("click", function(){
+  let newData = {
+    一般登山者:datas[0],
+    登山嚮導:datas[1],
+    未認證會員:datas[2],
+    停權會員:datas[3],
+    管理員:[4]
+}
+  jsonDownload(newData, "會員身分組統計");
+})
 
 function downloadChart(chartElm, fileName){
+    console.log(chartElm);
     const openURL = chartElm.toBase64Image();
     const chartType = chartElm.config.type;
     let exportName = fileName + "_" + chartType;
-    console.log(openURL);
+    // console.log(openURL);
     const a = $("a.export")[0];
-    console.log(a);
+    // console.log(a);
+    console.log("B")
 
     a.download = exportName + ".png";
     a.href = openURL;
@@ -357,72 +262,68 @@ function jsonDownload(jsonList, fileName){
 
 //性別分布
 
-$(function(){
-  var gdDatas = [];
+
+
+var setGdChart = function setGdChart(chartType){
+  var ctx = $("#gdModeChart");
+  if(gbModeChart != null){
+    gbModeChart.destroy();
+  }
+
+  let setType = "pie";
+
+  if(typeof chartType != "undefined"){
+    setType = chartType;
+  }
+
+
   var gdAjax = $.ajax({
       method:"GET",
       url:"/MountainExploer.com/back/member/countGender",
       dataType:"json",
       success:function(gdMap){
-          gdDatas[0] = gdMap.mlList;
-          gdDatas[1] = gdMap.fmList;
-          gdDatas[2] = gdMap.xList;
-          gdDatas[3] = gdMap.maskList;
-          console.log(gdDatas);
+          datas[0] = gdMap.mlList;
+          datas[1] = gdMap.fmList;
+          datas[2] = gdMap.xList;
+          datas[3] = gdMap.maskList;
+          // console.log(datas);
       }
   }).then(()=>{
-  
-      var ctx = $("#gdModeChart");
-      var gdModeChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-      
-          labels: ["男性", "女性", "第三性", "不透露"],
-          datasets: [{
-            data: gdDatas,
-            backgroundColor: ['#4e73df', '#FF0000', '#1cc88a', '#8E8E8E'],
-            hoverBackgroundColor: ['#2e59d9', '#EA0000', '#00CACAc', '#7B7B7B'],
-            hoverBorderColor: "rgba(234, 236, 244, 1)",
-          }],
-        },
-        options: {
-          maintainAspectRatio: false,
-          tooltips: {
-            backgroundColor: "rgb(255,255,255)",
-            bodyFontColor: "#858796",
-            borderColor: '#dddfeb',
-            borderWidth: 5,
-            xPadding: 15,
-            yPadding: 15,
-            displayColors: false,
-            caretPadding: 10,
-          },
-          legend: {
-            display: true
-          },
-          cutoutPercentage: 0,
-        },
-      });
-  
-      $("#gd-Mode-export").on("click", function(){
-          // var image = myPieChart.toBase64Image();
-          // console.log(image);
-          downloadChart(gdModeChart, "會員性別比例圓餅圖");
-      })
-  
-      $("#gd-Mode-export-json").on("click", function(){
-          let newData = {
-              男性:gdDatas[0],
-              女性:gdDatas[1],
-              第三性:gdDatas[2],
-              不透露:gdDatas[3]
-          }
-          jsonDownload(newData, "會員性別比例");
-      })
-      
-  })
 
-})
+      let chartSet = {
+          type: 'pie',
+          data: {
+        
+            labels: ["男性", "女性", "第三性", "不透露"],
+            datasets: [{
+              data: gdDatas,
+              backgroundColor: ['#4e73df', '#FF0000', '#1cc88a', '#8E8E8E'],
+              hoverBackgroundColor: ['#2e59d9', '#EA0000', '#00CACAc', '#7B7B7B'],
+              hoverBorderColor: "rgba(234, 236, 244, 1)",
+            }],
+          },
+          options: {
+            maintainAspectRatio: false,
+            tooltips: {
+              backgroundColor: "rgb(255,255,255)",
+              bodyFontColor: "#858796",
+              borderColor: '#dddfeb',
+              borderWidth: 5,
+              xPadding: 15,
+              yPadding: 15,
+              displayColors: false,
+              caretPadding: 10,
+            },
+            legend: {
+              display: true
+            },
+            cutoutPercentage: 0,
+          },
+        }
+      })
+  gdModeChart = new Chart(ctx, chartSet);
+}
+
 
 
 $(".pieGd").on("click", function(){
@@ -638,75 +539,7 @@ $(".barGd").on("click", function(){
 })
 
 
-$(".horizontalBarGd").on("click", function(){
-  $("#gdModeChart").remove();
-  $(".gdArea").append("<canvas id='gdModeChart'></canvas>");
 
-  var gdDatasHor = [];
-  var gdAjax = $.ajax({
-      method:"GET",
-      url:"/MountainExploer.com/back/member/countGender",
-      dataType:"json",
-      success:function(gdMap){
-          gdDatasHor[0] = gdMap.mlList;
-          gdDatasHor[1] = gdMap.fmList;
-          gdDatasHor[2] = gdMap.xList;
-          gdDatasHor[3] = gdMap.maskList;
-          // console.log(gdDatasPie);
-      }
-  }).then(()=>{
-  
-      var ctx = $("#gdModeChart");
-      var gdHorChart = new Chart(ctx, {
-        type: 'horizontalBar',
-        data: {
-      
-          labels: ["男性", "女性", "第三性", "不透露"],
-          datasets: [{
-            data: gdDatasHor,
-            backgroundColor: ['#4e73df', '#FF0000', '#1cc88a', '#8E8E8E'],
-            hoverBackgroundColor: ['#2e59d9', '#EA0000', '#00CACAc', '#7B7B7B'],
-            hoverBorderColor: "rgba(234, 236, 244, 1)",
-          }],
-        },
-        options: {
-          maintainAspectRatio: false,
-          tooltips: {
-            backgroundColor: "rgb(255,255,255)",
-            bodyFontColor: "#858796",
-            borderColor: '#dddfeb',
-            borderWidth: 5,
-            xPadding: 15,
-            yPadding: 15,
-            displayColors: false,
-            caretPadding: 10,
-          },
-          legend: {
-            display: true
-          },
-          cutoutPercentage: 70,
-        },
-      });
-  
-      $("#gd-Mode-export").on("click", function(){
-          // var image = myPieChart.toBase64Image();
-          // console.log(image);
-          downloadChart(gdHorChart, "會員性別比例圓餅圖");
-      })
-  
-      $("#gd-Mode-export-json").on("click", function(){
-          let newData = {
-              男性:gdDatas[0],
-              女性:gdDatas[1],
-              第三性:gdDatas[2],
-              不透露:gdDatas[3]
-          }
-          jsonDownload(newData, "會員身分組占比");
-      })
-      
-  })
-
-})
 
 
 
