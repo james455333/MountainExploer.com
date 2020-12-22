@@ -96,7 +96,7 @@ body {
 											<i class="fa fa-shopping-bag"></i>
 										</div>
 										<h4 class="title">
-											<a href="">商城</a>
+											<a href="/MountainExploer.com/shop/shoppingPage">商城</a>
 										</h4>
 										<p class="description">岳進者精選</p>
 									</div>
@@ -106,7 +106,7 @@ body {
 											<i class="fa fa-photo"></i>
 										</div>
 										<h4 class="title">
-											<a href="">小屋/露營地</a>
+											<a href="/MountainExploer.com/mountainHouseAct/actselectAll?page=1&no=1&parkid=">小屋/露營地</a>
 										</h4>
 										<p class="description">全台露營地&山中小屋查詢預約</p>
 									</div>
@@ -116,7 +116,7 @@ body {
 											<i class="fa fa-bar-chart"></i>
 										</div>
 										<h4 class="title">
-											<a href="">活動/路線規劃</a>
+											<a href="/MountainExploer.com/mountain/route">活動/路線規劃</a>
 										</h4>
 										<p class="description">不定時由登山嚮導舉辦活動</p>
 									</div>
