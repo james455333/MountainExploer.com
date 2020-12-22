@@ -33,6 +33,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 
 import main.generic.model.GenericTypeObject;
 import main.generic.service.GenericService;
@@ -389,13 +390,13 @@ public class ActCRUDController {
 	/* 活動詳情頁 */
 	@GetMapping(path = "/detail")
 	@ResponseBody
-	public Map<Object, Object> showActDetail(
+	public Map<Object, Object> showActDetail (
 			MemberBasic memberBasic, 
 			ActivityBasic actBasic, 
 			ActResponse actResponse,
 			ActSideResponse actSideResp, 
 			Model model, 
-			@RequestParam Map<String, String> allParam) {
+			@RequestParam Map<String, String> allParam) throws Exception{
 		// 回傳物件
 		Map<Object, Object> resultMap = new HashMap<Object, Object>();
 		int actID = 0;
@@ -414,8 +415,8 @@ public class ActCRUDController {
 		// 設定service
 		InterfaceService<GenericTypeObject> service = this.service;
 		service.save(actBasic);
-
 		actBasic = (ActivityBasic) service.select(actID);
+		if((ActivityBasic) service.select(actID) == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		resultMap.put("actBasic", actBasic);
 		service.save(new ActRegInfo());
 		String hql = "Select count(*) From ActRegInfo ari where ari.actRegistry in (From ActRegistry ar where  deniTag is null and cancelTag is null and ACTIVITY_BASIC_SEQNO = "

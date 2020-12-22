@@ -278,8 +278,8 @@ function setInfo_email(actRegInfo, thisBody){
 	thisBody.find(".rg-info-body-update").find("input").eq(6).val(actRegInfo.contactEmail)
 }
 function setInfo_controll(order,thisBody){
-	let updateBT = "<div><button class='bt-rg-info-update'>修改</button></div>"
-	let deleteBT = "<div><button class='bt-rg-info-delete'>刪除</button></div>"
+	let updateBT = "<div><button class='btn btn-dark bt-rg-info-update'>修改</button></div>"
+	let deleteBT = "<div><button class='btn btn-danger bt-rg-info-delete'>刪除</button></div>"
 	if(order > 0){
 		if(order==1) thisBody.append(updateBT)
 		if(order==2) thisBody.append(updateBT).append(deleteBT)

@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 #routeTable{
-	width : 100%;
+	width : 100%!important;
 }
 
 #routeTable tbody div:not(.toggle):not(.toggle-group):not(.d-flex){

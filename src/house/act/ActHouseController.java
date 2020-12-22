@@ -34,8 +34,6 @@ public class ActHouseController {
 	private HouseInfoBean hbean;
 	@Autowired
 	private NationalPark nParkBean;
-	@Autowired
-	private GenericService<GenericTypeObject> genService;
 	
 	
 //	@RequestMapping(/mountainHouseAct/actselectAll)

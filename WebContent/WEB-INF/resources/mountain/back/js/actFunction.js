@@ -393,13 +393,13 @@ function setResultToDT(data){
 			"狀態項" : "<div>" + hideToogle + "</div>" + "<div class='mt-2'>" + deleteToogle + "</div>",
 			"活動發布日期" : new Date(actInfo.postDate).toLocaleDateString(),
 			"活動編號" : actBasic.seqno,
-			"活動名稱" : actInfo.title + '<button class="btn update-single" ><i href="#" class="fas fa-edit"  style="color: #ff922b;" ></i></button >',
+			"活動名稱" : "<a href='/MountainExploer.com/mountain/act/detail?page=1&actID=" + actBasic.seqno + "'>" + actInfo.title + "</a>"
+				+ '<button class="btn update-single" ><i href="#" class="fas fa-edit"  style="color: #ff922b;" ></i></button >',
 			"活動開始-結束日期" : new Date(actInfo.startDate).toLocaleDateString() + " - " 
 						+ new Date(actInfo.endDate).toLocaleDateString()
 						+'<button class="btn update-single" ><i href="#" class="fas fa-edit"  style="color: #ff922b;" ></i></button >',
 			"活動報名期限" : new Date(actInfo.regEndDate).toLocaleDateString()
 						+ '<button class="btn update-single" ><i href="#" class="fas fa-edit"  style="color: #ff922b;" ></i></button >',
-			"報名狀態" : actList[i].nowReg + " / " + actInfo.regTop,
 			"控制項" :"<div class='d-flex justify-content-between align-items-center' >" + updateBtn + deleteBtn + infoBtn + "</div>",		
 			}
 //			"<div class='d-flex justify-content-between align-items-center' >" + updateBtn + deleteBtn + infoBtn + upImgBtn +"</div>"
@@ -423,7 +423,6 @@ function setDataTable(result){
             { "data": "活動名稱" },
             { "data": "活動開始-結束日期" },
             { "data": "活動報名期限" },
-            { "data": "報名狀態" },
             { "data": "控制項" },
         ],
 		"drawCallback": function( settings ) {
@@ -1882,6 +1881,7 @@ function imageUpdate(src, aTag){
 	})
 }
 function ajaxUpdateImg(file,aTag){
+	console.log(aTag)
 	let href = aTag.attr("href")
 	let formData = new FormData()
 	formData.append("image",file)

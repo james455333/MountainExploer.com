@@ -335,10 +335,9 @@
 	                                    			<td style='width: 10%'>狀態項</td>
 	                                    			<td style='width: 10%'>發布日期</td>
 	                                    			<td style='width: 7.5%'>編號</td>
-													<td style='width: 10%'>名稱</td>
-	                                    			<td style='width: 15%'>開始-結束日期</td>
+													<td style='width: 15%'>名稱</td>
+	                                    			<td style='width: 20%'>開始-結束日期</td>
 	                                    			<td style='width: 12.5%'>報名期限</td>
-	                                    			<td style='width: 10%'>報名狀態</td>
 													<td style='width: 25%'>控制項</td>
 	                                    		</tr>
 	                                    	</thead>

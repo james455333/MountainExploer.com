@@ -38,20 +38,20 @@ function openBlock(target){
 	if(LoadingCount.countTimes <= 0){
 		var count = 0;
 		var innterval = setInterval(function() {
-		if (count >=99){
-			clearInterval(innterval);
-			setTimeout(()=>{
+			if (count >=99){
+				clearInterval(innterval);
 				setTimeout(()=>{
-					IntiLoadingCount()
-					$(LoadingCount.target).loading("destroy")
-				},850)
-				$(LoadingCount.target).loading("stop")
-				return
-			},750)
-		}
-		count++;
-		$('[data-cb="countNum"]').html(count + "%");
-		$('[data-cb="countBar"]').width(count+"%");
+					setTimeout(()=>{
+						IntiLoadingCount()
+						$(LoadingCount.target).loading("destroy")
+					},850)
+					$(LoadingCount.target).loading("stop")
+					return
+				},750)
+			}
+			count++;
+			$('[data-cb="countNum"]').html(count + "%");
+			$('[data-cb="countBar"]').width(count+"%");
 		}, 0);
 	}
 }
@@ -80,9 +80,26 @@ function progressCount(message,countLoad){
 	setTimeout(() => { 
 		if(message != null) $('[data-cb="countMessage"]').html(message)
 		LoadingCount.startCount = Number((LoadingCount.eachCoount + LoadingCount.startCount).toFixed(1))
+		
 		$('[data-cb="countNum"]').html(LoadingCount.startCount + "%");
 		$('[data-cb="countBar"]').width(LoadingCount.startCount + "%");
 		$('[data-cb="countBar"]').attr("aria-valuenow", LoadingCount.startCount);
+		
+//		if(LoadingCount.countTimes <= LoadingCount.eachCoount){
+//			var count = Number($('[data-cb="countNum"]').html().replace("%",""));
+//			var innterval = setInterval(function() {
+//				if (count >=99){
+//					clearInterval(innterval);
+//					setTimeout(()=>{
+//						return
+//					},750)
+//			}
+//			count++;
+//			$('[data-cb="countNum"]').html(count + "%");
+//			$('[data-cb="countBar"]').width(count + "%");
+//			}, 0);
+//		}
+		
 		if(LoadingCount.startCount >= LoadingCount.endCount){
 			if(LoadingCount.startCount != 100){
 				$('[data-cb="countNum"]').html("100%");

@@ -4,51 +4,47 @@
 	display : inline-flex;
 }
 .m-dl1-adj{
-	position : relative;
-	width : 300px;
-	line-height : normal;
 	
 }
 
 .sideNav{
 	width : 100%;
 	height : 100%;
-	padding : 50px;
 }
 .m-hide{
 	display : none;
 }
 .m-dl2-adj{
-	position : relative;
-	height : 500px;
-	width : 1120px;
-	margin-left : 10px;
-	margin-right : auto;
-	left : auto;
-	right : auto;
 }
 .m-si-op{
-	margin-top : 25px;
-	font-size : 20px;
-	height : 50px;
-	width : 100%;
-	line-height: 40px;
-	border : 3px solid red;
+	transition : 500ms;
+	font-size : 25px;
 	cursor: pointer;
-    align-items:center;
-    justify-content:center;
+	color : #00bd00;
+	border-color: #00bd00;
+	
+}
+.m-si-op:hover{
+	background-color : #00bd00;
+	color : white;
+	border-color: white;
 }
 
 .m-ma-container{
 	width : 100%;
-	height : 500px;
-	padding : 15px;
+	min-height : 500px;
 	display : flex;
     align-items:center;
     justify-content:center;
     transition : 1000ms;
 }
 /* 舉辦活動管理 */
+.table{
+	transition : 500ms
+}
+.table td{
+	vertical-align: middle !important;
+}
 .m-ma-ta{
 	width : 100%;
 }
@@ -56,10 +52,16 @@
 	color : white;
 }
 .order-table-th{
-	font-size : 10px;
+	font-size : 15px;
+}
+#regTable tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #deffd5;
+}
+
+.m-ma-reg-ta tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #aaffff;
 }
 .d-li-na{
-	width:200px;
 }
 .hideTbody{
 	display : none;
@@ -68,7 +70,6 @@
 	font-size : 15px;
 }
 .m-tb-date{
-	width : 85px
 }
 .hideTr{
 	transition : 1000ms;
@@ -142,10 +143,10 @@
 }
 .tr-reg-bar{
 	height : 16px;
-	background-color: #f5caad;
+	background-color: #e7ffce;
 	border: 1px solid black;
 	display : flex;
-    align-items: center;
+    align-items: cergb(255, 245, 164);
     justify-content: center;
     cursor: pointer;
 }

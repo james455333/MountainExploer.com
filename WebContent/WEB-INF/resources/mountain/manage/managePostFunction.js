@@ -488,8 +488,8 @@ function setPR_RegDate(thisBody, reqDate){
 	thisBody.find("div").eq(3).html(dateFormate(reqDate))
 }
 function setPR_RegAttr(thisBody, data){
-	let confirmBT = "<button class='bt-ps-reg-confirm'>確認報名</button>";
-	let declineBT = "<button class='bt-ps-reg-decline'>拒絕報名</button>";
+	let confirmBT = "<button class='btn btn-success bt-ps-reg-confirm'>確認報名</button>";
+	let declineBT = "<button class='btn btn-warning bt-ps-reg-decline'>拒絕報名</button>";
 	if(data.cancelTag != null){
 		thisBody.find(".tr-reg-attr").html("[ 報名已取消 ]")
 		thisBody.find(".tr-reg-control").append("[ 取消原因 ] " + data.cancelRes)

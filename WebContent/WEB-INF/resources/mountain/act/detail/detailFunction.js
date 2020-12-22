@@ -51,6 +51,41 @@ function activeMainAjax(page,as){
 			setPageController(data.page)
 			
 			
+		},
+		error : function(jqXHR){
+			console.log(jqXHR.status)
+			if(jqXHR.status == 404) {
+				let timerInterval
+				Swal.fire({
+				  title: '活動不存在',
+				  icon : "error",
+				  html: '將於 <b>2</b>秒內跳回討論區',
+				  timer: 2500,
+				  timerProgressBar: true,
+				  didOpen: () => {
+				    Swal.showLoading()
+				    timerInterval = setInterval(() => {
+				      const content = Swal.getContent()
+				      if (content) {
+				        const b = content.querySelector('b')
+				        if (b) {
+							console.log( typeof b)
+				          b.textContent = Number(b.textContent)-1
+				        }
+				      }
+				    }, 1000)
+				  },
+				  willClose: () => {
+				    clearInterval(timerInterval)
+				  }
+				}).then((result) => {
+				  if (result.dismiss === Swal.DismissReason.timer) {
+					location.assign("/MountainExploer.com/mountain/list?page=1&od=1")
+				  }
+				})
+			}else{
+				Swal.fire("發生錯誤 : 讀取頁面", "錯誤代碼 : " + jqXHR.status, "error")
+			}
 		}
 	})
 }
@@ -430,8 +465,8 @@ function ajaxAddComment(thisBtn, thisComment){
 		success : function(data){
 			if(data)appendSideResp(thisBtn, thisComment);	
 		},
-		error : function(){
-			Swal.fire("發生錯誤","請通知管理員","error")
+		error : function(jqXHR){
+			Swal.fire("發生錯誤 : 新增留言", "錯誤代碼 : " + jqXHR.status, "error")
 		}		
 	})
 	
@@ -477,8 +512,8 @@ function checkResp(){
 			success : function(data){
 				confirmNewResp(data)				
 			},
-			error : function(){
-				Swal.fire("發表回覆失敗",'請聯絡管理員','error')
+			error : function(jqXHR){
+				Swal.fire("發生錯誤 : 發表回覆", "錯誤代碼 : " + jqXHR.status, "error")
 			}
 		})
 	}else{

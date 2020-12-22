@@ -79,11 +79,6 @@ public class BackActController {
 		int totalData = service.countWithHql(all);
 
 		// 得到回傳結果
-		System.out.println("=================================================");
-		System.out.println("=================================================");
-		System.out.println("start getAllwithHql");
-		System.out.println("=================================================");
-		System.out.println("=================================================");
 		List<ActivityInfo> actInfoList = (List<ActivityInfo>) service.getAllwithHQL(hql);
 		for (ActivityInfo actInfoInList : actInfoList) {
 			// Set actBasic => map
@@ -96,19 +91,6 @@ public class BackActController {
 			map.put("tagMap", tagResult);
 			// Set nowReg => map
 			service.save(new ActRegInfo());
-			String reghql = "From ActRegistry ar where "
-					+ " deniTag is null and cancelTag is null and ACTIVITY_BASIC_SEQNO = "
-					+ actBasic.getSeqno();
-			List<ActRegistry> actRegList = (List<ActRegistry>) service.getAllwithHQL(reghql);
-			int nowReg = 0;
-			if(!actRegList.isEmpty()) {
-				for (ActRegistry actRegistry : actRegList) {
-					Set<ActRegInfo> actRegInfoSet = actRegistry.getActRegInfo();
-					nowReg += actRegInfoSet.size();
-				}
-			}
-			map.put("nowReg", nowReg);
-
 			actList.add(map);
 		}
 		
