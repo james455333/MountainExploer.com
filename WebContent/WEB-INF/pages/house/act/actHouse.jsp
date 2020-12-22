@@ -10,6 +10,7 @@
 <title>山中小屋</title>
 <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
 <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
+<link rel="stylesheet" href="/MountainExploer.com/css/style.css">
 <link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <!-- 文杰 trap -->
 <link href="/MountainExploer.com/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
