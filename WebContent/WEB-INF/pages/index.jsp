@@ -423,7 +423,7 @@ body {
 											class="img-fluid" alt="">
 										<div class="portfolio-info">
 											<h4>
-												<a href="portfolio-details.html">短袖排汗衣 男 獵戶藍</a>
+												<a href="/MountainExploer.com/shop/productInfoEntry?no=6000050">短袖排汗衣 男 獵戶藍</a>
 											</h4>
 											<p>Mammut Atacazo Light Zip T-SHIRT</p>
 
@@ -446,7 +446,7 @@ body {
 											class="img-fluid" alt="">
 										<div class="portfolio-info">
 											<h4>
-												<a href="portfolio-details.html">保暖排汗衣 女 醬果紫</a>
+												<a href="/MountainExploer.com/shop/productInfoEntry?no=6000029">保暖排汗衣 女 醬果紫</a>
 											</h4>
 											<p>POWER STRETCH® PRO</p>
 
@@ -469,7 +469,7 @@ body {
 											class="img-fluid" alt="">
 										<div class="portfolio-info">
 											<h4>
-												<a href="portfolio-details.html">耐磨長褲 男 月桂綠/深森綠</a>
+												<a href="/MountainExploer.com/shop/productInfoEntry?no=6000118">耐磨長褲 男 月桂綠/深森綠</a>
 											</h4>
 											<p>81160R-625-662</p>
 
@@ -492,7 +492,7 @@ body {
 											class="img-fluid" alt="">
 										<div class="portfolio-info">
 											<h4>
-												<a href="portfolio-details.html">防水保暖透氣吊帶滑雪褲 女 女爵粉</a>
+												<a href="/MountainExploer.com/shop/productInfoEntry?no=6000150">防水保暖透氣吊帶滑雪褲 女 女爵粉</a>
 											</h4>
 											<p>CDare 2b DWW399 Attract II</p>
 											<div>
@@ -513,7 +513,7 @@ body {
 											class="img-fluid" alt="">
 										<div class="portfolio-info">
 											<h4>
-												<a href="portfolio-details.html">單人全方位超輕帳</a>
+												<a href="/MountainExploer.com/shop/productInfoEntry?no=6000810">單人全方位超輕帳</a>
 											</h4>
 											<p>犀牛 U-11 1.8kg</p>
 											<div>
@@ -534,7 +534,7 @@ body {
 											class="img-fluid" alt="">
 										<div class="portfolio-info">
 											<h4>
-												<a href="portfolio-details.html">摩卡黑森林別墅帳/露營帳篷</a>
+												<a href="/MountainExploer.com/shop/productInfoEntry?no=6000842">摩卡黑森林別墅帳/露營帳篷</a>
 											</h4>
 											<p>K9T3T005 GEOPATH</p>
 											<p>KAZMI</p>
@@ -556,7 +556,7 @@ body {
 											class="img-fluid" alt="">
 										<div class="portfolio-info">
 											<h4>
-												<a href="portfolio-details.html">野營斧頭暨直刀組</a>
+												<a href="/MountainExploer.com/shop/productInfoEntry?no=6001312">野營斧頭暨直刀組</a>
 											</h4>
 											<p>MORAKNIV Outdoor Kit</p>
 											<hr>
@@ -579,7 +579,7 @@ body {
 											class="img-fluid" alt="">
 										<div class="portfolio-info">
 											<h4>
-												<a href="portfolio-details.html">頭燈</a>
+												<a href="/MountainExploer.com/shop/productInfoEntry?no=6001051">頭燈</a>
 											</h4>
 											<p>Petzl E089 Tactikka+</p>
 											<p>黑 350流明</p>
@@ -601,7 +601,7 @@ body {
 											class="img-fluid" alt="">
 										<div class="portfolio-info">
 											<h4>
-												<a href="portfolio-details.html">輕量中筒健行鞋</a>
+												<a href="/MountainExploer.com/shop/productInfoEntry?no=6000387">輕量中筒健行鞋</a>
 											</h4>
 											<p>Zamberlan 棕 325</p>
 											<p>CORNELL LITE GTX 0325PM</p>
