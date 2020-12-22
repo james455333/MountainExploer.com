@@ -306,7 +306,7 @@
 							<div class="card shadow mb-4" id="tb-container">
 								<div class="card-body">
 									<div class='d-flex'>
-										<h2>商品選項&nbsp&nbsp&nbsp</h2>
+										<h3>商品選項&nbsp&nbsp&nbsp</h3>
 										<div>
 											<button id="newProduct"
 												class="btn btn-primary btn-icon-split ml-auto">
@@ -322,7 +322,7 @@
 									<hr>
 
 									<div class='d-flex'>
-										<h2>訂單選項&nbsp&nbsp&nbsp</h2>
+										<h3>訂單選項&nbsp&nbsp&nbsp</h3>
 										<div>
 											<button id="order"
 												class="btn btn-success btn-icon-split ml-auto">
