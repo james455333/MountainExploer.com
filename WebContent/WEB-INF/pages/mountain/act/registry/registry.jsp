@@ -8,12 +8,17 @@
 	<!-- public -->
 	<link rel="stylesheet" href="/MountainExploer.com/css/other.css">
 	<link rel="stylesheet" href="/MountainExploer.com/css/font.css">
+	<link rel="stylesheet" href="/MountainExploer.com/css/style.css">
 	<!-- bootstrap4 style sheet -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 	<!-- daterangepicker style sheet -->
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 	<!-- daterangepicker-font-awesome  style sheet -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	    <!-- jquery loading -->
+	<link rel="stylesheet" href="/MountainExploer.com/css/loading.css">
+	    <!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 	<!-- for this page -->
 	<link rel="stylesheet" href="registry/registry.css">
 	
@@ -31,12 +36,16 @@
 	<!-- jquery validator -->
 	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"></script>
+	<!-- jquery loading -->
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easy-loading/1.3.0/jquery.loading.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-loading-overlay/2.1.7/loadingoverlay.min.js'></script>
 	<!-- 自用 -->
 	<script src="/MountainExploer.com/mountain/js/mountain.js"></script>
 	<script src="registry/registry.js"></script>
 	<script src="registry/registryFunction.js"></script>
 	<!-- jquery.blockUI -->
 	<script src="http://malsup.github.io/jquery.blockUI.js"></script>
+	<script src="/MountainExploer.com/js/loading.js"></script>
 </head>
 <body>
 
@@ -54,13 +63,7 @@
 				include-html="/MountainExploer.com/forinclude/includeForIndex.html"></div>
 		</nav>
 	</header>
-	<div class="count1">
-		<div class="count1_img">
-			<img src="/MountainExploer.com/images/logo1.png">
-			<hr>
-			<h1 class="font">可能改成輪播</h1>
-			<!-- <a class="font">岳進者</a> -->
-		</div>
+	<div class="container-fluid" style="padding: 0px;" include-html="/MountainExploer.com/forinclude/carousel.html">
 	</div>
 	<div class="div_ul">
 
@@ -106,23 +109,30 @@
 							<div class="col-md-6">
 								<div class="row reg-actInfo">
 									<div class="col-md-12 cb1 text-center">備註</div>
-									<div class="col-md-12" id="act-note"></div>
+									<div class="col-md-12" id="act-note" style="overflow-wrap : anywhere "></div>
 								</div>
 							</div>
 						</div>
 						<div class="row rb">
 							<div class="col-md-12 reg-ctrl">
-								<div class="btn-group btn-group-lg bt-position" role="group">
+								<div class="btn-group btn-group-lg bt-position-center" role="group" id="btn-controller">
 									<button type="button" class="btn-regInfo-plus btn btn-success btn-lg">
-										<i class="fa fa-plus" ></i>增加報名人數
+										<i class="fa fa-plus" ></i> 增加報名人數
 									</button>
 									<button type="button" class="btn-regInfo-minus btn btn-danger btn-lg">
-										<i class="fa fa-minus"></i>減少報名人數
+										<i class="fa fa-minus"></i> 減少報名人數
 									</button>
+									<div class="d-flex ml-3">
+										<button type="button" id="regInfo-submit" class="btn btn-primary btn-block btn-lg" >
+											<i class="fas fa-clipboard-check"></i> 確認報名
+										</button>
+										<button type="button" id='btn-click-auto' class="btn btn-outline-dark "> 一鍵輸入資料</button>
+									</div>
+									
 								</div>
-								<div class="row">**所有欄位皆為必填**</div>
+								<div class="row bg-warning m-3 d-flex justify-content-center" style="font-size : 17.5px"><i class="d-block mx-5 fas fa-exclamation fa-lg fa-pulse"></i><span class="font-weight-bolder"> 所有欄位皆為必填 </span><i class="d-block mx-5 fas fa-exclamation fa-lg fa-pulse"></i> </div>
 								<div class="row regInfo">
-									<form action="/" class="regInfo-form">
+									<form class="regInfo-form">
 										<div class="regInfo-container">
 											<div class="rei-con-main">
 												<div class="rgi-con-left">
@@ -169,12 +179,6 @@
 											</div>
 											<div class="btn-rgi-reset">
 												<div class="btn-group btn-group-lg bt-position" role="group">
-													<button type="button" class="btn-regInfo-plus btn btn-success btn-lg">
-														<i class="fa fa-plus" ></i>增加報名人數
-													</button>
-													<button type="button" class="btn-regInfo-minus btn btn-danger btn-lg">
-														<i class="fa fa-minus"></i>減少報名人數
-													</button>
 													<button type="button" class="btn btn-warning btn-warning-reset">
 														<i class="fa fa-file-text"></i> 重填
 													</button>
@@ -183,9 +187,6 @@
 										</div>
 									</form>									
 								</div>
-								<button type="button" id="regInfo-submit" class="btn btn-primary btn-block"
-									type="button"><i class="fa fa-cloud-upload"></i>確認報名</button>
-								<button type="button" id='btn-click-auto' class="btn btn-outline-dark btn-lg"> 一鍵輸入資料</button>
 							</div>
 						</div>
 					</div>
@@ -197,17 +198,8 @@
 	<div class="hideDIV" style="display:none;">
 	</div>
 
-	<footer id="footer">
-		<a>全站導覽</a>
-		<button id="demo1">確認demo1</button>
-		<button id="demo2">錯誤demo2</button>
-		<button id="demo3">確認提醒demo3</button>
-		<button id="demo4">多重選項&提醒視窗demo4</button>
-		<button id="demo5">Demo5</button>
-		<button id="demo6">Demo6</button>
-
-
-
+	<footer id="footer"
+			include-html="/MountainExploer.com/forinclude/includeForFooter.html">
 	</footer>
 </body>
 <script src="/MountainExploer.com/js/upLoadImg.js"></script>

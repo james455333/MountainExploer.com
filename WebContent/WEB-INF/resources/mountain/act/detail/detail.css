@@ -13,6 +13,9 @@ body{
     	linear-gradient(90deg,hsla(0,0%,100%,.3) 1px,transparent 0);
     background-size:35px 35px,25px 25px,7.5px 7.5px,7.5px 7.5px;
 }
+.d_noteInfo_container {
+	overflow-wrap: anywhere;
+}
 .actTitle {
 	position: relative;
 	font-size: 25px;
@@ -91,6 +94,7 @@ body{
 	padding: 10px;
 	font-size : 20px;
 	min-height : 250px;
+	overflow-wrap : anywhere;
 }
 .d_text i{
 	text-align: left;

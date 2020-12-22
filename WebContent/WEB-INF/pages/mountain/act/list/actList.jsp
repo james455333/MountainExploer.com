@@ -62,7 +62,7 @@
 
 
 <body>
-	<div class="container-fluid" style="padding: 0px;" include-html="/MountainExploer.com/forinclude/carousel.html">
+	<div class="container-fluid" id="carousel-set" style="padding: 0px" include-html="/MountainExploer.com/forinclude/carousel.html">
 	</div>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light zline">
@@ -253,6 +253,7 @@
 </body>
 <!-- 設置頁面參數 -->
 <script src="../js/upLoadImg.js"></script>
+<script src="../js/includejsp.js"></script>
 <!-- 上傳頭像 -->
 <script src="../js/table.js"></script>
 <!--sweet alert-->

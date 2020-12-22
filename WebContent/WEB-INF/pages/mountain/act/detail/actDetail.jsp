@@ -156,8 +156,8 @@
 <!-- 												<img alt="" src=""> -->
 <!-- 											</div> -->
 											<!-- 備註 -->
-											<div class="d_noteInfo">
-												<div>
+											<div class="d_noteInfo" >
+												<div class="d_noteInfo_container">
 													
 												</div>
 											</div>

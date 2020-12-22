@@ -405,10 +405,10 @@ public class MemberLoginController {
 	
 	
 	//第三方登入
-	@RequestMapping(path = "/member/socialLoginEntry", method = RequestMethod.GET)
-	public String socialLoginEntry() {
-		return "member/socailLoginGoogleTest";
-	}
+//	@RequestMapping(path = "/member/socialLoginEntry", method = RequestMethod.GET)
+//	public String socialLoginEntry() {
+//		return "member/socailLoginInfo";
+//	}
 	
 	@RequestMapping(value = "/member/googleVerify", method = RequestMethod.POST)
 	public void verifyToken(String idtokenStr) {

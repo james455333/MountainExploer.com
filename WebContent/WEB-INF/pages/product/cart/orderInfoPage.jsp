@@ -8,6 +8,7 @@
 <title>訂單明細</title>
 <link rel="stylesheet" href="/MountainExploer.com/css/other.css">
 <link rel="stylesheet" href="/MountainExploer.com/css/font.css">
+<link rel="stylesheet" href="/MountainExploer.com/css/style.css">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <!-- Font Awesome -->
@@ -33,13 +34,7 @@
 
 </head>
 <body>
-	<div class="count1">
-		<div class="count1_img">
-			<img src="/MountainExploer.com/images/logo1.png">
-			<hr>
-			<h1 class="font">可能改成輪播</h1>
-			<!-- <a class="font">岳進者</a> -->
-		</div>
+	<div class="container-fluid" style="padding: 0px;" include-html="/MountainExploer.com/forinclude/carousel.html">
 	</div>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light zline">

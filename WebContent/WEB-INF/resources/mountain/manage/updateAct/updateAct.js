@@ -8,9 +8,46 @@ var urlNow = new URL(window.location.href)
 if(urlNow.searchParams.has("actID")){
 	actID = urlNow.searchParams.get("actID");
 }
-
+var includeJS = {
+	aInternal: true,
+	aListener: function(val) {},
+  	set status(val) {
+    	this.aInternal = val;
+    	this.aListener(val);
+  	},
+ 	get status() {
+    	return this.aInternal;
+  	},
+  	registerListener: function(listener) {
+    	this.aListener = listener;
+  	}
+}
 
 $(function(){
+	
+	PBBlock({
+		countTimes : 2,
+	})
+	let count = 0 ;
+	openBlock()
+	progressCount("頁面基本元素載入中")
+	includeJS.registerListener(function(val) {
+		if(val){
+			progressCount("載入完成")
+			const headerH = $("header").height()
+			const bcTop = $("#bc").offset().top
+			const trgH = bcTop-headerH
+			
+			setTimeout(()=>{
+				$("html").animate({ scrollTop: trgH }, 1000,function(){
+						console.log("count : " + count++)
+						console.log("scrollTop end")
+						activeAnimate()
+					});
+				
+			},1000)
+		}
+	})
 	setActInfo();
 	   
 	$("#npSelect").on("change",changeRtOption)

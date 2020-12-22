@@ -90,7 +90,7 @@ function activeMainAjax(page, as) {
 		data: sendData,
 		success: function(data) {
 			showData = data
-//			console.log(data)
+			console.log(data)
 			//參數給值
 			progressCount("成功取得資料")
 			progressCount("開始設置頁面")
@@ -261,7 +261,6 @@ function setRegEndDate_IM(actInfo, thisElm){
 function setPageController(page, totalPage) {
 	//判別目前
 	let url;
-	console.log("od : " + typeof od== 'undefined')
 	if (od == 1 ) {
 		url = actEnterURL + "od=1&"
 	}else if (od == 2) {

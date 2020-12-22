@@ -485,4 +485,12 @@ function setNoteInfo(data){
 	CKEDITOR.instances.note.setData(data.actInfo.addInfo)
 }
 
+function activeAnimate(){
+	
+	$("#titleContainer").toggleClass("d-none animate__fadeInTopRight")
+	setTimeout(()=>{
+		$("#form-container").toggleClass("d-none animate__lightSpeedInRight")
+	},500)
+	
+}
 

@@ -7,6 +7,7 @@ function setDefaultRouteSelect( thisElm ){
 		type : "GET",
 		dataType : "json",
 		success : function(data){
+				console.log(data)
 			for(let i in data){
 				let npOption = npSelect.find(".hideOP").clone()
 				npOption.html(data[i].name).val(data[i].id)
@@ -59,7 +60,7 @@ function setRouteSelect(npID){
 			let random
 			while(true){
 				random = Math.round(Math.random()*data.length)
-				if(random > 0) break;				
+				if(random >= 0 && random < data.length) break;				
 			}
 			for(let i in data){
 				let rtOption = rtSelect.find(".hideOP").clone()
@@ -433,12 +434,14 @@ function autoNewAct(){
 	
 	let npOptions = $("#npSelect").find("option")
 	while(true){
-		let randomNp = Math.round(Math.random()*10)
-		randomNp = Math.round(randomNp/2)
-		if( randomNp < npOptions.length && randomNp > 0 ){
+		let randomNp = Math.round(Math.random()*(npOptions.length))
+		if( randomNp < npOptions.length && randomNp >= 1 ){
+			console.log(npOptions)
+			console.log(randomNp)
 			npOptions.eq(randomNp).attr("selected",true).siblings("option").attr("selected",false)
 			$("#npSelect").selectpicker('refresh')
 			$("#rtSelect").find(".hideOP").siblings("option").remove()
+			console.log("npOptions.eq(randomNp).val() : " + npOptions.eq(randomNp).val())
 			setRouteSelect(npOptions.eq(randomNp).val())
 			break;
 		}
@@ -482,4 +485,16 @@ function autoNewAct(){
 	$("input[name='actInfo.regEndDate']").val(setRegEndDate.toLocaleDateString());
 	$("input[name='actInfo.regTop']").val( Math.round( Math.random()*15 ) )
 }
+
+
+function activeAnimate(){
+	
+	$("#titleContainer").toggleClass("d-none animate__fadeInTopRight")
+	setTimeout(()=>{
+		$("#form-container").toggleClass("d-none animate__lightSpeedInRight")
+	},500)
+	
+}
+
+
 

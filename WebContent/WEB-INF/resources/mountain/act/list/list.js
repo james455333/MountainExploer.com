@@ -40,38 +40,42 @@ if (urlNow.searchParams.has("search")) {
 mode = urlNow.searchParams.has("mode") ? urlNow.searchParams.get("mode") : "image";
 actEnterURL += ("mode=" + mode + "&")
 var defaultMode = "image"
+var includeJS = {
+	aInternal: true,
+	aListener: function(val) {},
+  	set status(val) {
+    	this.aInternal = val;
+    	this.aListener(val);
+  	},
+ 	get status() {
+    	return this.aInternal;
+  	},
+  	registerListener: function(listener) {
+    	this.aListener = listener;
+  	}
+}
+
 $(function(){
 	if(mode != defaultMode){
 		toggleShowMode()
 	}
-	$("#info-page").on("resize",function(){
-		console.log("123")
-	})
 	
-//	$("body").on("mouseenter",".act-container",function(){
-//		$(this).css({
-//			position :"relative",
-//			"margin-left" : "3px", 
-//			"margin-top" : "3px", 
-//		})
-//	}).on("mouseleave",".act-container",function(){
-//		$(this).css("position","static")
-//	})
-//	$('html, body').animate({
-//			height: $("#text-loading").offset().top
-//	},1000);
 	/*	依照頁面命令變數值(od)，給予呼叫的函式相應的參數	*/
-	
-	includeHTML().then(success=>{
-		console.log("bc height : " + $("#bc").offset().top )
-		location.hash = "bc"
-		PBBlock({
-			countTimes : 4,
-		})
-		openBlock("#info-page")
-		progressCount("頁面載入完成")
-		ajaxCheckLogin(od)
-	})
+	includeJS.registerListener(function(val) {
+		if(val){
+			const headerH = $("header").height()
+			const bcTop = $("#bc").offset().top
+			const trgH = bcTop-headerH
+			window.scrollTo(0,trgH)
+			PBBlock({
+				countTimes : 4,
+			})
+			openBlock("#info-page")
+			progressCount("頁面載入完成")
+			ajaxCheckLogin(od)
+		}
+	});
+
 
 	/* 掛載活動狀態標籤查詢方法，讓點擊選單選項執行查詢函式 */
 	$("input[name='aTag']").on("change",function(){
@@ -103,35 +107,3 @@ $(function(){
 	$("input[name='mode']").on("click",modeSwitch)
 	
 })
-let count = 1;
-
-async function includeHTML() {
-	var z, i, elmnt, file, xhttp;
-	/* Loop through a collection of all HTML elements: */
-	z = document.getElementsByTagName("*");
-	for (i = 0; i < z.length; i++) {
-		elmnt = z[i];
-		/*search for elements with a certain atrribute:*/
-		file = elmnt.getAttribute("include-html");
-		if (file) {
-			console.log("count include : " + (count++))
-					 /* Make an HTTP request using the attribute value as the file name: */
-				xhttp = new XMLHttpRequest();
-				xhttp.onreadystatechange = function() {
-				if (this.readyState == 4) {
-					if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-					if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
-					    /* Remove the attribute, and call this function once more: */
-					    elmnt.removeAttribute("include-html");
-						await includeHTML()
-					}
-				}
-			    
-			    xhttp.open("GET", file, true);
-			    xhttp.send();
-				resolve()
-		    /* Exit the function: */
-		}
-	}
-	
-}

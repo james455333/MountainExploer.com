@@ -64,7 +64,7 @@
                 <div style="border-radius: 3%; border: 10px solid white; background-color: white;">
 				
                     <fieldset>
-                        <legend>請選擇身分組</legend>
+                        <legend>請填寫基本資料</legend>
                     </fieldset>
                     <div class="form-row">
                     	<div class="form-group col-md-6">
