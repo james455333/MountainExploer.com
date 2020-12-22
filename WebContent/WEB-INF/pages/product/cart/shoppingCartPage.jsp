@@ -21,6 +21,7 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="/MountainExploer.com/member/userTop.js"></script>
+<script src="/MountainExploer.com/assets/js/main.js"></script>
 <style type="text/css">
 
 .table td{
@@ -30,14 +31,7 @@
 
 </head>
 <body>
-	<div class="count1">
-		<div class="count1_img">
-			<img src="/MountainExploer.com/images/logo1.png">
-			<hr>
-			<h1 class="font"></h1>
-			<!-- <a class="font">岳進者</a> -->
-		</div>
-	</div>
+	<div class="container-fluid" style="padding: 0px;" include-html="/MountainExploer.com/forinclude/carousel.html"></div>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light zline">
 			<a class="navbar-brand" href="#"><img
@@ -59,6 +53,7 @@
 			<li class="breadcrumb-item active">購物車</li>
 		</ol>
 	</nav>
+	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 	<div class="div_ul d-flex">
 		<c:choose>
 			<c:when test="${ShoppingCart.subtotal > 0}">

@@ -27,6 +27,7 @@
 <!-- sweetalert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="/MountainExploer.com/member/userTop.js"></script>
+<script src="/MountainExploer.com/assets/js/main.js"></script>
 <style type="text/css">
 .table td {
 	vertical-align: middle;
@@ -35,14 +36,7 @@
 
 </head>
 <body>
-	<div class="count1">
-		<div class="count1_img">
-			<img src="/MountainExploer.com/images/logo1.png">
-			<hr>
-			<h1 class="font"></h1>
-			<!-- <a class="font">岳進者</a> -->
-		</div>
-	</div>
+	<div class="container-fluid" style="padding: 0px;" include-html="/MountainExploer.com/forinclude/carousel.html"></div>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light zline">
 			<a class="navbar-brand" href="#"><img
@@ -61,10 +55,10 @@
 			<ol class="breadcrumb p-4" style="font-size : 22.5px;" id="bc">
 			<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
 			<li class="breadcrumb-item"><a href="/MountainExploer.com/shop/shoppingPage">岳進者精選</a></li>
-<!-- 			<li class="breadcrumb-item"><a href="/MountainExploer.com/shoppingcart/memberOrders">訂單查詢</a></li> -->
 			<li class="breadcrumb-item active">訂單查詢</li>
 		</ol>
 	</nav>
+	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 	<div class="div_ul d-flex">
 
 
