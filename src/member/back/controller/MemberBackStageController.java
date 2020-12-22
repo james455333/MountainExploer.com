@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +25,9 @@ import member.MemberGlobal;
 import member.back.model.MemberBasicBackService;
 import member.back.model.MemberStatusBackService;
 import member.model.MemberBasic;
+import member.model.MemberInfo;
 import member.model.MemberStatus;
+import sun.jvm.hotspot.oops.java_lang_Class;
 
 @Controller
 @RequestMapping("/back/member")
@@ -219,29 +222,37 @@ public class MemberBackStageController {
 		Map<String, Object> gdMap = new HashMap<String, Object>();
 		
 		String male = "male";
-		List<MemberBasic> mlList = mbService.selectGdAll(male);
+		List<MemberInfo> mlList = mbService.selectGdAll(male);
 		long mlListSize = mlList.size();
 		gdMap.put("mlList", mlListSize);
 		
 		String female = "female";
-		List<MemberBasic> fmList = mbService.selectGdAll(female);
+		List<MemberInfo> fmList = mbService.selectGdAll(female);
 		long fmListSize = fmList.size();
 		gdMap.put("fmList", fmListSize);
 		
 		String x = "x";
-		List<MemberBasic> xList = mbService.selectGdAll(x);
+		List<MemberInfo> xList = mbService.selectGdAll(x);
 		long xListSize = xList.size();
 		gdMap.put("xList", xListSize);
 		
 		String mask = "mask";
-		List<MemberBasic> maskList = mbService.selectGdAll(mask);
+		List<MemberInfo> maskList = mbService.selectGdAll(mask);
 		long maskListSize = maskList.size();
 		gdMap.put("maskList", maskListSize);
 		
+		System.out.println("=====================" + gdMap);
 		return gdMap;
 	}
 	
 	
+	//註冊年分分布圖
+	public Map<String, Object> processRegYear(){
+		Map<String, Object> yearMap = new HashMap<String, Object>();
+		
+		
+		
+	}
 	
 	
 	//單獨查詢

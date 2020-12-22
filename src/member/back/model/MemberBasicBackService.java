@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import member.model.MemberBasic;
+import member.model.MemberInfo;
 
 @Service
 public class MemberBasicBackService {
@@ -49,8 +50,12 @@ public class MemberBasicBackService {
 		return mbDAO.selectAll();
 	}
 	
-	public List<MemberBasic> selectGdAll(String gender){
+	public List<MemberInfo> selectGdAll(String gender){
 		return mbDAO.selectGdAll(gender);
+	}
+	
+	public List<MemberBasic> selectReg(int reg_Date){
+		return mbDAO.selectReg(reg_Date);
 	}
 	
 	public MemberBasic update(MemberBasic mb) {
