@@ -8,6 +8,7 @@
 	<!-- public -->
 	<link rel="stylesheet" href="/MountainExploer.com/css/other.css">
 	<link rel="stylesheet" href="/MountainExploer.com/css/font.css">
+	<link rel="stylesheet" href="/MountainExploer.com/css/style.css">
 	<!-- bootstrap4 style sheet -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 	<!-- daterangepicker style sheet -->
@@ -22,6 +23,8 @@
 	<link href="https://cdn.jsdelivr.net/npm/nanogallery2@3/dist/css/nanogallery2.min.css" rel="stylesheet" type="text/css">
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+		<!-- animate.css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 	<!-- for this page  style sheet -->
 	<link rel="stylesheet" href="updateAct/updateAct.css">
 	
@@ -55,10 +58,15 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
 	<!-- Bootstrap core JavaScript -->
 	<script type="text/javascript"src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<!-- jquery loading -->
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easy-loading/1.3.0/jquery.loading.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-loading-overlay/2.1.7/loadingoverlay.min.js'></script>
 	<!-- 自用 -->
 	<script src="/MountainExploer.com/mountain/js/mountain.js"></script>
 	<script src="updateAct/updateAct.js"></script>
 	<script src="updateAct/updateActFunction.js"></script>
+	<!--  active progressBar + jquery-loading -->
+	<script src="/MountainExploer.com/js/loading.js"></script>
 </head>
 <body>
 <header>
@@ -75,38 +83,33 @@
 				include-html="/MountainExploer.com/forinclude/includeForIndex.html"></div>
 		</nav>
 	</header>
-	<div class="count1">
-		<div class="count1_img">
-			<img src="/MountainExploer.com/images/logo1.png">
-			<hr>
-			<h1 class="font">可能改成輪播</h1>
-			<!-- <a class="font">岳進者</a> -->
-		</div>
+	<div class="container-fluid" id="carousel-set" style="padding: 0px" include-html="/MountainExploer.com/forinclude/carousel.html">
 	</div>
 	<div class="div_ul">
-
+		<nav>
+			<ol class="breadcrumb" id="bc">
+				<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
+				<li class="breadcrumb-item"><a href="/MountainExploer.com/mountain/list?page=1&od=1">活動討論區</a></li>
+				<li class="breadcrumb-item active">發表活動</li>
+			</ol>
+		</nav>
 		<div class="div_li1 dl1_adj"></div>
 		<div class="div_li3 dl3_adj"></div>
 		<div class="div_li2 dl2_adj">
 			<!-- 每頁不同的內容從這裡開始 -->
-			<nav>
-				<ol class="breadcrumb" id="bc">
-					<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
-					<li class="breadcrumb-item"><a href="/MountainExploer.com/mountain/list?page=1&od=1">活動討論區</a></li>
-					<li class="breadcrumb-item active">發表活動</li>
-				</ol>
-			</nav>
 			
-			<div class="container-fluid">
+			
+			<div class="container-fluid m-5 "id="mother" style="overflow: hidden;">
 				<div class="row">
-					<div class="col-md-12">
-						<div class="page-header">
-							<h1>
-								活動資訊修改 
-							</h1>
+					<div class="col-md-12 d-flex flex-column" style="min-height: 800px;">
+						<div class="d-none animate__animated " id="titleContainer">
+							<div class="page-header shadow-lg mt-3 p-3 rounded-lg" style="background-color:#FCFCFC">
+								<h1>
+									活動資訊修改 
+								</h1>
+							</div>
 						</div>
-						R
-						<div class="row form-container">
+						<div class="row form-container  d-none animate__animated " id="form-container">
 							<form id="newAct-form" class="newAct-form">
 								<div class="col-md-12 newA-back">
 									<div class="row new-form-head-con">
@@ -227,43 +230,43 @@
 											</div>
 										</div>
 									</div>
-									<div class="row new-form-head-con">
-										<div class="col-md-12">
-											<div class="row new-form-head">
-												<div class="col-md-12">
-													上傳圖片修改(上限五張)
-												</div>
-											</div>
+<!-- 									<div class="row new-form-head-con"> -->
+<!-- 										<div class="col-md-12"> -->
+<!-- 											<div class="row new-form-head"> -->
+<!-- 												<div class="col-md-12"> -->
+<!-- 													上傳圖片修改(上限五張) -->
+<!-- 												</div> -->
+<!-- 											</div> -->
 											
-											<div class="row new-form-body">
-												<div class="col-md-12" id="previewMultiple">
-													<div class='newAct-img-container hideElm'>
-														<a ><img data-toggle='tooltip' title='點擊放大' src="" alt="" class='showImage'/></a>
-														<div class="img-controller">
-															<button  data-toggle="tooltip" type="button" title='設為預設' class="btn btn-outline-success btn-img-default">
-																<i class="fas fa-anchor"></i>
-															</button>
-															<button  data-toggle="tooltip" type="button" title='更新圖片' class="btn btn-outline-info btn-img-upload">
-																<i class="fas fa-file-upload"></i>
-															</button>
-															<button  data-toggle="tooltip" type="button" title='刪除本圖片' class="btn btn-outline-danger btn-img-cancel">
-																<i class="fas fa-times"></i>
-															</button>
+<!-- 											<div class="row new-form-body"> -->
+<!-- 												<div class="col-md-12" id="previewMultiple"> -->
+<!-- 													<div class='newAct-img-container hideElm'> -->
+<!-- 														<a ><img data-toggle='tooltip' title='點擊放大' src="" alt="" class='showImage'/></a> -->
+<!-- 														<div class="img-controller"> -->
+<!-- 															<button  data-toggle="tooltip" type="button" title='設為預設' class="btn btn-outline-success btn-img-default"> -->
+<!-- 																<i class="fas fa-anchor"></i> -->
+<!-- 															</button> -->
+<!-- 															<button  data-toggle="tooltip" type="button" title='更新圖片' class="btn btn-outline-info btn-img-upload"> -->
+<!-- 																<i class="fas fa-file-upload"></i> -->
+<!-- 															</button> -->
+<!-- 															<button  data-toggle="tooltip" type="button" title='刪除本圖片' class="btn btn-outline-danger btn-img-cancel"> -->
+<!-- 																<i class="fas fa-times"></i> -->
+<!-- 															</button> -->
 															
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="row new-form-body">
-												<div class="col-md-12" >
-													<div class="custom-file">
-													    <input type="file" class="custom-file-input" id="files">
-													    <label class="custom-file-label" for="files">選擇新增圖片</label>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
+<!-- 														</div> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<!-- 											<div class="row new-form-body"> -->
+<!-- 												<div class="col-md-12" > -->
+<!-- 													<div class="custom-file"> -->
+<!-- 													    <input type="file" class="custom-file-input" id="files"> -->
+<!-- 													    <label class="custom-file-label" for="files">選擇新增圖片</label> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
 									
 									<div class="row new-form-head-con">
 										<div class="col-md-12">
@@ -282,18 +285,20 @@
 								</div>
 							</form>
 						</div>
-						<div class="row" style="margin-bottom: 10px;">
-							<div class="col-md-12">
-								<button id="btn-reset"type="button" class="btn btn-lg btn-warning btn-block">
-									重置修改
-								</button>
+						<div class="mt-auto">
+							<div class="row" style="margin-bottom: 10px;">
+								<div class="col-md-12">
+									<button id="btn-reset"type="button" class="btn btn-lg btn-warning btn-block">
+										重置修改
+									</button>
+								</div>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<button id="btn-submit"type="button" class="btn btn-lg btn-primary btn-block">
-									完成修改
-								</button>
+							<div class="row">
+								<div class="col-md-12">
+									<button id="btn-submit"type="button" class="btn btn-lg btn-primary btn-block">
+										完成修改
+									</button>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -306,17 +311,8 @@
 	<div class="hideDIV" style="display:none;">
 	</div>
 
-	<footer id="footer">
-		<a>全站導覽</a>
-		<button id="demo1">確認demo1</button>
-		<button id="demo2">錯誤demo2</button>
-		<button id="demo3">確認提醒demo3</button>
-		<button id="demo4">多重選項&提醒視窗demo4</button>
-		<button id="demo5">Demo5</button>
-		<button id="demo6">Demo6</button>
-
-
-
+	<footer id="footer"
+			include-html="/MountainExploer.com/forinclude/includeForFooter.html">
 	</footer>
 </body>
 <script src="/MountainExploer.com/js/upLoadImg.js"></script>

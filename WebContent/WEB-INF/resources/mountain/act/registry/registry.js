@@ -13,16 +13,63 @@ if (urlNow.searchParams.has("actID")) {
 }else{
 	swal("錯誤","無此活動報名","error")
 }
+var includeJS = {
+	aInternal: true,
+	aListener: function(val) {},
+  	set status(val) {
+    	this.aInternal = val;
+    	this.aListener(val);
+  	},
+ 	get status() {
+    	return this.aInternal;
+  	},
+  	registerListener: function(listener) {
+    	this.aListener = listener;
+  	}
+}
 
 
 $(function(){
-	/* */
-	setBreadcrumbURL();
-	/* 取得本頁面資訊 */
-	activeDataAS(actID)
 	
-	/* 掛載日期選擇器 */
-	setDatePicker( $("input[name^='birthDay']"))
+	includeJS.registerListener(function(val){
+		if(val){
+			PBBlock({
+				countTimes : 2
+			})
+			openBlock("body")
+			progressCount("頁面載入中...")
+				/* */
+			setBreadcrumbURL();
+			/* 取得本頁面資訊 */
+			activeDataAS(actID)
+			
+			/* 掛載日期選擇器 */
+			setDatePicker( $("input[name^='birthDay']"))
+			var originBCTop = $("#btn-controller").offset().top
+//			var originTitleW = $(".actPost").innerWidth()
+			$(window).scroll(function(){
+				let headerBottom = $("header").offset().top + $("header").height()
+				let bc = $("#btn-controller")
+				let originBCLeft = $("#btn-controller").offset().left
+				let originBCHeight = $("#btn-controller").innerHeight()
+				if( headerBottom >= originBCTop && bc.css("position") != "fixed" ){
+					bc.css({
+						position : "fixed",
+						top : $("header").height(),
+						left : originBCLeft,
+						"z-index" : 9,
+					})
+				}else if( headerBottom <= originBCTop && bc.css("position") == "fixed" ){
+					bc.css({
+						position : "static",
+					})
+				}
+			})
+			progressCount("頁面載入完成")
+			
+		}
+	})
+	
 	
 	/* 設定按鈕功能 新增人數 */
 	$("body").on("click",".btn-regInfo-plus", function(){
@@ -32,9 +79,16 @@ $(function(){
 			appedRegInfo(bodyLength)
 			$(".regInfo-form").eq(bodyLength).validate({
 				submitHandler: function(form){
+					
+					let errors = $(".error")
+					for(let i = 0 ; i < errors.length ; i++){
+						let thisDis = errors.eq(i).css("display")
+						if(thisDis != "none") return
+					}
 					let formLength = $(".regInfo-form").length
 					formArray.push(form)
 					if(formArray.length == formLength){
+						console.log("add")	
 						ajaxConfirmSWAL()
 					}else if (formArray.length > formLength){
 						formArray=[]
@@ -86,9 +140,15 @@ $(function(){
 	/* 表單掛載jQuery validator */
 	$(".regInfo-form").validate({
 		submitHandler: function(form){
+			let errors = $(".error")
+			for(let i = 0 ; i < errors.length ; i++){
+				let thisDis = errors.eq(i).css("display")
+				if(thisDis != "none") return
+			}
 			let formLength = $(".regInfo-form").length
 			formArray.push(form)
 			if(formArray.length == formLength){
+				console.log("origin")
 				ajaxConfirmSWAL()
 			}else if (formArray.length > formLength){
 				formArray=[]

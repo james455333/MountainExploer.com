@@ -533,3 +533,71 @@ function goReg(){
 			break;
 	}
 }
+
+
+function titleAndMemeberAnimate(){
+	var originTitleX = $(".actTitle").offset().top
+	var originTitleW = $(".actPost").innerWidth()
+	var originMemberW = $(".memberinfo-container").innerWidth()
+	$(window).scroll(function(){
+		let headerBottom = $("header").offset().top + $("header").height()
+		let miContainer = $(".memberinfo-container")
+		let originMemberH = $(".memberinfo-container").innerHeight()
+//		console.log(miContainer)
+		for(let i=0 ; i < miContainer.length ; i++){
+			let thisElm = miContainer.eq(i)
+			let myLeft = thisElm.offset().left
+			let thisMembetTD = thisElm.parents(".memberTD")
+			let myHeight = thisElm.height()
+			let myTop = thisElm.offset().top
+			let myBottom = originMemberH + myTop
+			let myMTDBottom = thisMembetTD.offset().top + thisMembetTD.height()
+			let myMTDTop = thisMembetTD.offset().top
+			let headerAndTitleBot = headerBottom + $(".actTitle").height() 
+			if(myTop <= myMTDTop || headerBottom<=myMTDTop){
+				thisElm.css({
+					position : "static"
+				})
+			}
+			if(myBottom > myMTDBottom && (myMTDBottom - headerAndTitleBot)<myHeight ){
+				thisElm.css({
+					position : "sticky",
+					top : myTop,
+					left : myLeft
+				})
+			}else if(myTop >= myMTDTop && (myTop <= headerAndTitleBot && (myMTDBottom - headerAndTitleBot)>myHeight ) || ( thisElm.css("position") == "sticky" && myTop>headerAndTitleBot)){
+				thisElm.css({
+					position : "fixed",
+					top : $("header").height()+$(".actTitle").height(),
+					"z-index" : 9,
+					width : originMemberW
+				})
+			}
+		}
+		
+		if(originTitleX <= headerBottom){
+			if($(".actTitle").css("position") != "fixed"){
+				$(".actTitle").css({
+					position : "fixed",
+					top : $("header").height(),
+					"z-index" : 10,
+					width : originTitleW,
+				})
+				$("#btn-top-container").removeClass("d-none") 
+			}
+		}else if(originTitleX>headerBottom){
+			$(".actTitle").css({
+				position : "static"
+			})
+			$(".actTitle").parents("body").find(".memberinfo-container").css({
+				position : "static"
+			})
+			$("#btn-top-container").addClass("d-none") 
+		}
+	})
+	$("#btn-top").on("click",function(){
+		$('html, body').animate({
+			scrollTop: $("#bc").offset().top
+		},1000);
+	})
+}
