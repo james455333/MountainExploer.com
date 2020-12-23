@@ -1,8 +1,14 @@
 package member.back.controller;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -38,6 +44,7 @@ public class MemberBackStageController {
 	
 	@Autowired
 	private MemberStatusBackService mbStService;
+
 	
 	//後台登入
 	@RequestMapping(path = "/loginEntry", method = RequestMethod.GET)
@@ -385,6 +392,101 @@ public class MemberBackStageController {
 		session.removeAttribute("Member");
 		status.setComplete();
 		return "back/index";
+	}
+	
+	
+	//批量新增假資料
+	@ResponseBody
+	@GetMapping(path = "/randomMbDate")
+	public int processRandomMbDate() throws ParseException {
+		List<String> mbAmnt = new ArrayList<String>();
+		
+		for (int i = 0; i < 30; i++) {
+			String account = mbService.getAccount();
+			boolean antChk = mbService.checkAnt(account);
+			if(antChk) {
+				continue;
+			}else {
+				MemberBasic mb = new MemberBasic();
+				MemberInfo mbInfo = new MemberInfo();
+				MemberStatus mbStat = new MemberStatus();
+				
+				String name = mbService.getName();
+				String email = mbService.getEmail();
+				String gender = mbService.getGender();
+				String phone = mbService.getPhone();
+				String regDate = mbService.getregDate();
+				String birDate = mbService.getbirDate();
+				String ncName = mbService.getNcName();
+				String group = mbService.getGroup();
+				
+				
+				String password = "DoingTest123";
+				password = MemberGlobal.getSHA1Endocing(MemberGlobal.encryptString(password));
+				
+				mb.setAccount(account);
+				mb.setPassword(password);
+				mb.setName(name);
+				mb.setEmail(email);
+				
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+				java.util.Date parse = sdf.parse(regDate);
+				Date sqlDate = new Date(parse.getTime());
+				mb.setReg_Date(sqlDate);
+				
+				java.util.Date parseBir = sdf.parse(birDate);
+				Date birSql = new Date(parseBir.getTime());
+				mbInfo.setBirthday(birSql);
+				
+				mbInfo.setPhone(phone);
+				mbInfo.setGender(gender);
+				mbInfo.setNeck_name(ncName);
+				mbInfo.setMemberBasic(mb);
+				mb.setMemberInfo(mbInfo);
+				
+				Set<MemberBasic> mbSet = new HashSet<MemberBasic>();
+				mbSet.add(mb);
+				mbStat.setMemberBasic(mbSet);
+				mb.setMemberStatus(mbStat);
+				
+				String gm = "一般登山者";
+				String gg = "登山嚮導";
+				String um = "未認證登山者";
+				String ug = "未認證嚮導";
+				String sm = "停權登山者";
+				String sg = "停權嚮導";
+				
+				if(group.equals(gm)) {
+					MemberStatus queryST = mbStService.select(100);	
+					mb.setMemberStatus(queryST);
+					mbService.insert(mb);
+				}else if (group.equals(gg)) {
+					MemberStatus queryST = mbStService.select(120);
+					mb.setMemberStatus(queryST);
+					mbService.insert(mb);
+				}else if (group.equals(um)) {
+					MemberStatus queryST = mbStService.select(110);
+					mb.setMemberStatus(queryST);
+					mbService.insert(mb);
+				}else if (group.equals(ug)) {
+					MemberStatus queryST = mbStService.select(130);
+					mb.setMemberStatus(queryST);
+					mbService.insert(mb);
+				}else if(group.equals(sm)) {
+					MemberStatus queryST = mbStService.select(140);
+					mb.setMemberStatus(queryST);
+					mbService.insert(mb);
+				}else if (group.equals(sg)) {
+					MemberStatus queryST = mbStService.select(150);
+					mb.setMemberStatus(queryST);
+					mbService.insert(mb);
+				}
+			}	
+			mbAmnt.add(account);
+		}
+		long size = mbAmnt.size();
+		System.out.println("=================輸入成功");
+		return (int) size;
 	}
 
 }

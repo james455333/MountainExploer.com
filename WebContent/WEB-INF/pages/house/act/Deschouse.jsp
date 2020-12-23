@@ -550,7 +550,7 @@ img {
 										<td><img alt=""
 											src="/MountainExploer.com/housecamp/images/housecampsmall.jpg">
 
-											<p>TWD.&nbsp${i.bedprice}</p></td>
+											<p>TWD.&nbsp${i.campprice}</p></td>
 									</tr>
 								</tbody>
 							</table>

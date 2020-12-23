@@ -976,3 +976,28 @@ function jsonDownload(jsonList, fileName){
         $(this).remove();
     })[0].click()
 }
+
+
+//批量註冊
+$(".fakeDate").on("click", function(){
+	$.ajax({
+		method:"GET",
+		url:"/MountainExploer.com/back/member/randomMbDate",
+		dataType:"json",
+		success:function(data){
+			Swal.fire({
+				icon:"success",
+				title:"資料輸入成功",
+				text:"共新增" + data +"筆資料"
+			}).then(function(){
+				window.location.reload();
+			})
+		},
+		error:function(){
+			Swal.fire({
+				icon:"error",
+				title:"資料輸入失敗"
+			})
+		}
+	})
+})

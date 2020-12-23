@@ -65,4 +65,40 @@ public class MemberBasicBackService {
 	public List<MemberBasic> updateLT(MemberBasic mb) {
 		return mbDAO.updateLT(mb);
 	}
+	
+	public String getAccount() {
+		return mbDAO.getAccount(); 
+	}
+	
+	public String getName() {
+		return mbDAO.getName();
+	}
+	
+	public String getEmail() {
+		return mbDAO.getEmail();
+	}
+
+	public String getGender() {
+		return mbDAO.getGender();
+	}
+	
+	public String getPhone() {
+		return mbDAO.getPhone();
+	}
+	
+	public String getregDate() {
+		return mbDAO.getregDate();
+	}
+	
+	public String getbirDate() {
+		return mbDAO.getbirDate();
+	}
+	
+	public String getGroup() {
+		return mbDAO.getGroup();
+	}
+	
+	public String getNcName() {
+		return mbDAO.getNcName();
+	}
 }

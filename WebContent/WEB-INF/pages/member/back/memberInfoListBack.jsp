@@ -66,6 +66,7 @@ pageEncoding="UTF-8"%>
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">岳進者後台</h1>
+                    	<button type="button" class="btn btn-secondary fakeDate">批量註冊</button>
                         <a href="#" id="exporJsonAll" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i>匯出資料表</a>
                     </div>
@@ -91,6 +92,7 @@ pageEncoding="UTF-8"%>
 							</div>
 						</div>
 					</div>
+
 					<div class='row'>
 						  <div class="col-xl-6 col-lg-7">
                             <div class="card shadow mb-4">
@@ -246,6 +248,9 @@ pageEncoding="UTF-8"%>
 											<input class="form-control mr-sm-2 account" name="account" type="text" placeholder="請輸入會員帳號"/> 
 											<button class="btn btn-primary my-2 my-sm-0 sgSelect" type="button">
 												查詢
+											</button>
+											<button class="btn btn-info my-2 my-sm-0 inpAnt" type="button">
+												快速輸入
 											</button>										
 										</div>
 									</form>									

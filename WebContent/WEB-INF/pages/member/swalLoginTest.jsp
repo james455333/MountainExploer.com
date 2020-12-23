@@ -29,6 +29,8 @@
 	
 	<button type="button" class="loginTest">測試</button>
 	
+	<button type="button" class="fakeDate">批量測試</button>
+	
 	<script src="swal2Test.js"></script>
 </body>
 </html>

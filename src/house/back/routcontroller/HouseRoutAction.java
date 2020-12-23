@@ -102,7 +102,11 @@ public class HouseRoutAction {
 		int totalData = houseService.counthousenaem(house);
 		int totalPage = (int) Math.ceil(totalData * 1.0 / 10);
 		List<HouseInfoBean> list = houseService.selectHouseName(page, 10, house, star, clickcount);
-
+		
+		int AllHouse = houseService.countHouse();
+		
+		m.addAttribute("AllHouse",AllHouse);
+		
 		m.addAttribute("House_All", list);
 		m.addAttribute("totalData", totalData);
 		m.addAttribute("totalPage", totalPage);
