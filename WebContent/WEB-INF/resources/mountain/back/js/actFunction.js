@@ -1583,12 +1583,15 @@ var setActTrendChart = function setActTrendChart(cType,month,year){
 		}
 	}
 	actData = actTrend_setActData(month,defaultYear,dateLabel)
+	console.log(actData)
 	regData = actTrend_setRegData(month,defaultYear,dateLabel)
+	console.log(regData)
 	
 	for(let i in dateLabel){
 		let origin = dateLabel[i]
 		dateLabel[i] = origin.substring(origin.indexOf("/")+1)
 	}
+	console.log(dateLabel)
 	let chartSet = {
 	  type: setType,
 	  data: {
@@ -1722,6 +1725,8 @@ var setActTrendChart = function setActTrendChart(cType,month,year){
 			
 		}
 	}
+	console.log(ctx)
+	console.log(chartSet)
 	actTrendChart = new Chart(ctx,chartSet);
 }
 
