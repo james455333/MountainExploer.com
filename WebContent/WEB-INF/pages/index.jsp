@@ -30,11 +30,15 @@
 	rel="stylesheet">
 <link href="/MountainExploer.com/assets/vendor/aos/aos.css"
 	rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 
 <!-- Template Main CSS File -->
 <link href="assets/css/style.css" rel="stylesheet">
@@ -860,6 +864,8 @@ body {
 	<script src="/MountainExploer.com/assets/js/main.js"></script>
 
 	<script src="/MountainExploer.com/member/userTop.js"></script>
+	
+	
 </body>
 
 </html>

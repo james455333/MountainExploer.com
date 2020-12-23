@@ -131,5 +131,7 @@
 <!-- <script src="/MountainExploer.com/js/sweetalert.js"></script>sweet alert -->
 <script src="/MountainExploer.com/js/includejsp.js"></script>
 <script src="formalLoginAlone.js"></script>
+<script src="userTop.js"></script>
+
 
 </html>

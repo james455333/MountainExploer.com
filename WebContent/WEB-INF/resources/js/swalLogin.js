@@ -220,22 +220,3 @@ function loginSwal(){
 	
 	
 	
-//快速登入
-$(".userLog1").on("click", function(){
-    let userNo1 = $(".userLog1").val();
-
-    $.ajax({
-        method:"GET",
-        url:"/MountainExploer.com/member/FastLoginOne",
-        data:{userLog1:userNo1},
-        dataType:"json",
-        success:function(flag){
-            if(flag){
-                window.location.href="/MountainExploer.com";
-            }else{
-                window.location.reload();
-            }
-        }
-    })
-})
-
