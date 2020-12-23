@@ -598,36 +598,36 @@
 	</div>
 
 	<script>
-// 		function delete_data() {
-// 			if (confirm("確認刪除?")) {
-// 				document.form1.submit();
-// 				return true
-// 				alert('已删除');
-// 			} else {
-// 				return false;
-// 				alert('取消')
-// 			}
-// 		}
+		function delete_data() {
+			if (confirm("確認刪除?")) {
+				document.form1.submit();
+				return true
+				alert('已删除');
+			} else {
+				return false;
+				alert('取消')
+			}
+		}
 
 
-		$("#deletehouse").on("click",function(){
-		Swal.fire({
-			  title: 'Are you sure?',
-			  text: "You won't be able to revert this!",
-			  icon: 'warning',
-			  showCancelButton: true,
-			  confirmButtonColor: '#3085d6',
-			  cancelButtonColor: '#d33',
-			  confirmButtonText: 'Yes, delete it!'
-			}).then((result) => {
-			  if (result.isConfirmed) {
-			    Swal.fire(
-			      'Deleted!',
-			      'Your file has been deleted.',
-			      'success'
-			    )}
-			})
-		})
+// 		$("#deletehouse").on("click",function(){
+// 		Swal.fire({
+// 			  title: 'Are you sure?',
+// 			  text: "You won't be able to revert this!",
+// 			  icon: 'warning',
+// 			  showCancelButton: true,
+// 			  confirmButtonColor: '#3085d6',
+// 			  cancelButtonColor: '#d33',
+// 			  confirmButtonText: 'Yes, delete it!'
+// 			}).then((result) => {
+// 			  if (result.isConfirmed) {
+// 			    Swal.fire(
+// 			      'Deleted!',
+// 			      'Your file has been deleted.',
+// 			      'success'
+// 			    )}
+// 			})
+// 		})
 
 
 		
