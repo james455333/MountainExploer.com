@@ -95,3 +95,8 @@ $(".submit").on("click", function(){
 	});
 	
 })
+
+$(".fastRg").on("click", function(){
+	$(".ncName").val("刺客");
+	$(".exp").val("3個月");
+})
