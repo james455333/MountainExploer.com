@@ -1,17 +1,17 @@
 var includeJS = {
-  aInternal: true,
-  aListener: function(val) {},
-  set status(val) {
-    this.aInternal = val;
-    this.aListener(val);
-  },
-  get status() {
-    return this.aInternal;
-  },
-  registerListener: function(listener) {
-    this.aListener = listener;
-  }
-}
+	  aInternal: true,
+	  aListener: function(val) {},
+	  set status(val) {
+	    this.aInternal = val;
+	    this.aListener(val);
+	  },
+	  get status() {
+	    return this.aInternal;
+	  },
+	  registerListener: function(listener) {
+	    this.aListener = listener;
+	  }
+	}
 
 $(function(){
 	

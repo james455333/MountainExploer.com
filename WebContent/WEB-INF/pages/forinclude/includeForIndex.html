@@ -3,7 +3,6 @@
         <a class="nav-link" href="/MountainExploer.com/">首頁 <span class="sr-only">(current)</span></a>
     </li>
     <!-- 登入 -->
-    <li class="nav-item" include-html="/MountainExploer.com/loginCheck"></li>
     <!-- 百戰百岳 -->
     <li class="nav-item dropdown" include-html="/MountainExploer.com/forinclude/mountain.html">
            </li>
@@ -23,9 +22,11 @@
     <!-- <input class="form-control mr-sm-2" type="search" placeholder="全站搜尋" aria-label="Search">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜尋</button>
  -->
- <div class="userTop"><!-- <img src="/MountainExploer.com/images/personalImg/程文杰.jpg" alt="" > -->
-     
+ <div class="d-flex justify-content-around"><!-- <img src="/MountainExploer.com/images/personalImg/程文杰.jpg" alt="" > -->
+     <div class="userTop">
      <span class="topSp">訪客</span>
-     <img style="inline;width:30px;height:30px;margin-left:5px" class="topImg" src="/MountainExploer.com/images/preset.png">  
+     <a href="/MountainExploer.com/member/memberInfoEntry"><img id="topImg" style="inline;width:30px;height:30px;margin-left:5px" class="topImg" src="/MountainExploer.com/images/preset.png">  </a>
+ 	 </div>
+ 	 <div include-html="/MountainExploer.com/loginCheck"></div>
  </div>
 </form>

@@ -24,8 +24,10 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css"rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+<script src="/MountainExploer.com/member/userTop.js"></script>
 <style>
 .images {
 	width: 18px;
@@ -80,6 +82,9 @@ img:hover {
 			<li class="breadcrumb-item"><a href="/MountainExploer.com">首頁</a></li>
 			<li class="breadcrumb-item"><a href="/MountainExploer.com/mountainHouseAct/actselectAll?page=1&no=1&parkid=">山中小屋</a></li>
 			
+			<c:if test="${ !empty Member}">
+		    		<li style="list-style-type: none;" class="breadcrumb-item ml-auto" ><a  href="/MountainExploer.com/mountainHouseActOrder/selecthouseorder?Member=Member">訂單查詢</a></li>
+			</c:if>
 		</ol>
 	</nav>
 		<div class="div_ul p-5">
@@ -118,7 +123,8 @@ img:hover {
 							<form class="d-flex"
 								action="<c:url value='/mountainHouseAct/actselectHouse'></c:url>"
 								method='GET' id="form1" name="form1">
-								<input type="text" class="light-table-filter"
+								<input type="button" class="light-table-filter" id="clickbutton" value="一鍵輸入">
+								<input type="text" class="light-table-filter" id="clickHousename"
 									placeholder="請輸入山中小屋名稱" name="selecthouse">
 								<!--                     <img class=imgSearch src="/MountainExploer.com/images/放大鏡.png" alt="" width="35px"> -->
 								<input type="image" class=imgSearch
@@ -339,6 +345,17 @@ img:hover {
 			include-html="/MountainExploer.com/forinclude/includeForFooter.html">
 	</footer>
 </body>
+
+<script type="text/javascript">
+	$(function(){
+		$("#clickbutton").on("click",function(){
+			$("#clickHousename").val("攻頂小屋")
+						})
+		
+	})
+
+</script>
+
 
 <script type="text/javascript">
 	$(function() {

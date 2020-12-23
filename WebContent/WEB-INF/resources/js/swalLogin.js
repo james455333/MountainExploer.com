@@ -23,7 +23,7 @@ function loginSwal(){
 	            <input type="checkbox" id="rememberMe" name="rememberMe" class="rememberMe" value="true"><label>記住我</label>
 				</div>
 				<div><a href="/MountainExploer.com/member/memberPwdFoundEntry">忘記密碼</a></div>
-				<div style="text-align: center;">立即<a href="/MountainExploer.com/member/memberRegisterEntry">註冊</a>帳號或<a href="/MountainExploer.com/member/memberLoginEntry">使用Facebook帳號登入</div>
+				<div style="text-align: center;">立即<a href="/MountainExploer.com/member/memberRegisterEntry">註冊</a>帳號或<a href="/MountainExploer.com/member/memberLoginEntry">使用Facebook帳號登入</a></div>
 				<div>
 				<input type="button" name="userLog1" class="btn btn-info userLog1" value="一般登入">
 				<input type="button" name="userLog2" class="btn btn-warning userLog2" value="登山嚮導登入">

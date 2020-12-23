@@ -19,8 +19,10 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css"rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+<script src="/MountainExploer.com/member/userTop.js"></script>
 <style>
 .images {
 	width: 18px;
@@ -175,7 +177,7 @@ img:hover{transform: scale(1.5);}
 										<c:when test="${not empty i.campimgid.img }">
 											<a href="${i.url}" target="_blank"><img height="100"
 												width="100"
-												src="<c:url value='/mountainCampBack/showimg?imgid=${i.campimgid.id}'/>">按</a>
+												src="<c:url value='/mountainCampBack/showimg?imgid=${i.campimgid.id}'/>"></a>
 										</c:when>
 									</c:choose></td>
 								<!-- 星星評分 -->

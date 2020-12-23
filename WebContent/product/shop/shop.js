@@ -1,5 +1,5 @@
-
 $(function() {
+	
 	//頁面參數
 	var page = 1;
 	if (typeof showData === 'undefined') var showData = 20;

@@ -56,8 +56,8 @@
 	<!-- for this page -->
 	<script src="/MountainExploer.com/mountain/js/mountain.js"></script>
 	<script src="act/list/listFunction.js"></script>
+	<script src="/MountainExploer.com/member/userTop.js"></script>
 	<script src="act/list/list.js"></script>
-
 </head>
 
 

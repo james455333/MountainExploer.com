@@ -149,15 +149,16 @@ div{margin: 20px;}
 								</div>
 								
 								<div>
-									姓名 : <input type="text" name="houseorder_peoplename" value="我是誰">
+									姓名 : <input type="text" name="houseorder_peoplename" id="clickname">
 								<div></div>
-									電話 : <input type="text" name="houseorder_cellphone" value="0912345678">
+									電話 : <input type="text" name="houseorder_cellphone" id="clickphone">
 								</div>
 								<div>
 									特別要求 :
 								</div> 
-								<div><textarea rows="4" cols="50" name="houseorder_textsuggest">無</textarea></div>
+								<div><textarea rows="4" cols="50" name="houseorder_textsuggest" id="clickdesc"></textarea></div>
 
+								<input type="button" id="clickbutton" value="一鍵輸入">
 								<input type="submit" value="送出">
 							</c:forEach>
 						</h4></div>
@@ -173,18 +174,18 @@ div{margin: 20px;}
 		</div>
 	</div>
 
-	<footer id="footer">
-		<a>全站導覽</a>
-		<button id="demo1">確認demo1</button>
-		<button id="demo2">錯誤demo2</button>
-		<button id="demo3">確認提醒demo3</button>
-		<button id="demo4">多重選項&提醒視窗demo4</button>
-		<button id="demo5">Demo5</button>
-		<button id="demo6">Demo6</button>
+<!-- 	<footer id="footer" style="mt-5"> -->
+<!-- 		<a>全站導覽</a> -->
+<!-- 		<button id="demo1">確認demo1</button> -->
+<!-- 		<button id="demo2">錯誤demo2</button> -->
+<!-- 		<button id="demo3">確認提醒demo3</button> -->
+<!-- 		<button id="demo4">多重選項&提醒視窗demo4</button> -->
+<!-- 		<button id="demo5">Demo5</button> -->
+<!-- 		<button id="demo6">Demo6</button> -->
 
 
 
-	</footer>
+<!-- 	</footer> -->
 
 	<!-- 日曆     -->
 	<script type="text/javascript"
@@ -195,6 +196,19 @@ div{margin: 20px;}
 		src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 	<link rel="stylesheet" type="text/css"
 		href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+<script type="text/javascript">
+	$(function(){
+		$("#clickbutton").on("click",function(){
+			$("#clickname").val("土豪")
+			$("#clickphone").val("0965324885")
+			$("#clickdesc").val("需要一件被子")
+						})
+		
+	})
+
+</script>
+
 
 	<script type="text/javascript">
 		$("#from").daterangepicker(

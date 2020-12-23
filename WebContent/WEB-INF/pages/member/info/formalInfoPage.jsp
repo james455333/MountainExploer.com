@@ -63,6 +63,7 @@
 					            <img alt="會員頭貼" style="width:600px;" class="img-circle img-thumbnail isTooltip userFile" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" data-original-title="Usuario">
 					            <p class="text-primary" style="font-family: Microsoft JhengHei;">點擊圖片修改頭貼</p>
 								<div  style="display:none" class="hiddenImg">
+									<img src="">
 									<input type="file" name="userImg" class="userImg" accept="image/*" style="font-family: Microsoft JhengHei;margin-left:50px">
 									<input type="button" class="updateImg" value="修改頭貼">								
 								</div>	

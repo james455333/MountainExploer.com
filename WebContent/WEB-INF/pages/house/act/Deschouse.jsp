@@ -448,7 +448,7 @@ img {
 								<div style="background-color:#ECFFFF ;border:3px #cccccc solid;">
 									<h2>${selectdate}</h2>
 									<h4>
-										共選了 <a style="color: #5599FF">${bookneight}</a> 晚
+										共選了 <a style="color: #5599FF">${bookneight}</a> 天
 									</h4>
 								</div>
 

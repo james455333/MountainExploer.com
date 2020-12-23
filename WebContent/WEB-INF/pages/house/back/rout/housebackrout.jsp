@@ -141,7 +141,7 @@
 					<!-- Page Heading -->
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">路線資料維護</h1>
+						<h1 class="h3 mb-0 text-gray-800">小屋資料維護</h1>
 						<a href="#" id="exportAll"
 							class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
 							class="fas fa-download fa-sm text-white-50"></i>匯出資料表</a>
@@ -263,9 +263,10 @@
 											<form
 												action="<c:url value='/Rout/mountainHouseBack/selectHouse'></c:url>"
 												method='get' id="form1" name="form1">
-												小屋名稱 :&nbsp <input type="text" class="light-table-filter"
-													placeholder="請輸入關鍵字" name="selecthouse"> <input
-													type="image" class="imgSearch"
+												<input type="button" id="clickbutton" class="light-table-filter" value="一鍵輸入"> 
+												小屋名稱 :&nbsp 
+												<input type="text" class="light-table-filter" id="clickHousename" placeholder="請輸入關鍵字" name="selecthouse"> 
+												<input	type="image" class="imgSearch"
 													src="/MountainExploer.com/images/放大鏡.png" width="35px"
 													onClick="document.form1.submit()">
 											</form>
@@ -632,6 +633,16 @@
 
 		
 	</script>
+
+<script type="text/javascript">
+	$(function(){
+		$("#clickbutton").on("click",function(){
+			$("#clickHousename").val("攻頂小屋")
+						})
+		
+	})
+
+</script>
 
 	<script type="text/javascript">
 		$(function() {

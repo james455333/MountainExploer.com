@@ -42,7 +42,7 @@ public class OrdersDAO {
 //  3.查詢orders表格內的所有訂單
 	public List<Orders> selectAllOrders() {
 		Session session = sessionFactory.getCurrentSession();
-		Query<Orders> query = session.createQuery("From Orders order by seqno", Orders.class);
+		Query<Orders> query = session.createQuery("From Orders order by seqno desc", Orders.class);
 		List<Orders> list = query.list();
 		return list;
 	}
@@ -50,7 +50,7 @@ public class OrdersDAO {
 //  4.查詢某會員的訂單
 	public List<Orders> selectMemberOrders(Integer memberId) {
 		Session session = sessionFactory.getCurrentSession();
-		Query<Orders> query = session.createQuery("From Orders where memberBasic = "+ memberId + " order by seqno", Orders.class);
+		Query<Orders> query = session.createQuery("From Orders where memberBasic = "+ memberId + " order by seqno desc", Orders.class);
 		List<Orders> list = query.list();
 		return list;
 	}

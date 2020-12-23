@@ -59,9 +59,10 @@ $(function(){
 	if(mode != defaultMode){
 		toggleShowMode()
 	}
-	
+	console.log("list.js before register > includeJS.status : " + includeJS.status)
 	/*	依照頁面命令變數值(od)，給予呼叫的函式相應的參數	*/
 	includeJS.registerListener(function(val) {
+		console.log("inside listener : staus : " + includeJS.status)
 		if(val){
 			const headerH = $("header").height()
 			const bcTop = $("#bc").offset().top

@@ -391,7 +391,7 @@ public class MemberLoginController {
 			HttpSession session, HttpServletRequest request, HttpServletResponse response, SessionStatus status) {
 		session.removeAttribute("Member");
 		status.setComplete();
-		return "index";
+		return "redirect:/";
 	}
 	
 	

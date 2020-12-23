@@ -45,8 +45,8 @@
                 </div>
                 <div>
                     <label for="statusId">身分組選擇</label>
-                    <input type="radio" name="statusId" value="110">一般會員
-                    <input type="radio" name="statusId" value="130">登山嚮導
+                    <input type="radio" name="statusId" class="statusId1" value="110">一般會員
+                    <input type="radio" name="statusId" class="statusId2" value="130">登山嚮導
                 </div>
                 <div style="display:none">
                 	<label>註冊時間：</label>

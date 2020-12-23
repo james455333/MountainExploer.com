@@ -169,7 +169,7 @@
 				</div>
 
 				<div >
-				<h4 class="p-3 m-3">商品介紹: </h4>
+				<h4 class="p-3 m-3">商品介紹</h4>
 				<div style="height: 200px ;overflow:auto" class="p-3 m-3 shadow animate__animated" >
 					${ProductBean.description}
 				</div>

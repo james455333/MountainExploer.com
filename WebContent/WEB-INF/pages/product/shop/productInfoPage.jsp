@@ -103,7 +103,7 @@
 	</div >
 	<br>
 	<div class="div_ul div shadow animate__animated">
-	<h3 class="p-1 m-3 ">商品介紹: </h3>
+	<h3 class="p-1 m-3 ">商品介紹 </h3>
 	<div style="height: 200px;overflow:auto" >
 		${ProductBean.description}
 	</div>

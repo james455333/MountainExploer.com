@@ -11,7 +11,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 
 import main.generic.model.GenericTypeObject;
 import main.generic.service.InterfaceService;
@@ -272,27 +274,32 @@ public class ShoppingTransFuction {
 
 	// 單一ItemBasic轉換成單一ProductBean
 		public static ProductBean transItemBasic(ItemBasic itemBasic) throws IOException, SQLException {
-
-			ProductBean productBean = new ProductBean();
-			ItemInfo itemInfo = itemBasic.getItemInfo();
-			SecondClass secondClass = itemBasic.getSecondClass();
-			FirstClass firstClass = secondClass.getFirstClass();
-
-			productBean.setSeqno(itemBasic.getSeqno());
-			productBean.setName(itemBasic.getName());
-			productBean.setType(itemInfo.getType());
-			productBean.setPrice(itemInfo.getPrice());
-			productBean.setStock(itemInfo.getStock());
-
-			String description = bytesToString(itemInfo.getDescription());
-			productBean.setDescription(description);
-
-			String firstClassName = firstClass.getName();
-			productBean.setFirstClass(firstClassName);
-			String secondClassName = secondClass.getName();
-			productBean.setSecondClass(secondClassName);
-
-			return productBean;
+			try {
+				ProductBean productBean = new ProductBean();
+				ItemInfo itemInfo = itemBasic.getItemInfo();
+				SecondClass secondClass = itemBasic.getSecondClass();
+				FirstClass firstClass = secondClass.getFirstClass();
+				
+				productBean.setSeqno(itemBasic.getSeqno());
+				productBean.setName(itemBasic.getName());
+				productBean.setType(itemInfo.getType());
+				productBean.setPrice(itemInfo.getPrice());
+				productBean.setStock(itemInfo.getStock());
+				
+				String description = bytesToString(itemInfo.getDescription());
+				productBean.setDescription(description);
+				
+				String firstClassName = firstClass.getName();
+				productBean.setFirstClass(firstClassName);
+				String secondClassName = secondClass.getName();
+				productBean.setSecondClass(secondClassName);
+				
+				return productBean;
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+			}
 		}
 	
 	

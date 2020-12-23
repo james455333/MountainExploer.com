@@ -24,6 +24,7 @@
 <!--     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="userTop.js"></script>
     <style>
 
     </style>
@@ -131,7 +132,7 @@
 <!-- <script src="/MountainExploer.com/js/sweetalert.js"></script>sweet alert -->
 <script src="/MountainExploer.com/js/includejsp.js"></script>
 <script src="formalLoginAlone.js"></script>
-<script src="userTop.js"></script>
+
 
 
 </html>

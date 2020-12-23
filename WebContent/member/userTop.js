@@ -1,52 +1,84 @@
+var includeJS = {
+	  aInternal: true,
+	  aListener: function(val) {},
+	  set status(val) {
+	    this.aInternal = val;
+	    this.aListener(val);
+	  },
+	  get status() {
+	    return this.aInternal;
+	  },
+	  registerListener: function(listener) {
+	    this.aListener = listener;
+	  }
+	}
 $(function(){
-    $.ajax({
-        method:"GET",
-        url:"/MountainExploer.com/member/memberChkLogin",
-        dataType:"json",
-        success:function(data){
-            if(data){
-                $.ajax({
-                    method:"GET",
-                    url:"/MountainExploer.com/member/getSession",
-                    dataType:"json",
-                    success:function(mbList){
-                        $.each(mbList, function(index, item){
-                            $(".userTop").find(".topSp").html("歡迎回來，" + item.memberInfo.neck_name);
-                            
-                            let img = item.memberInfo.img_name;
-                            if(img != null){
-                                let imgTop = "/MountainExploer.com/member/showUserImg?seqno=" + item.seqno;
-                                $(".userTop").find(".topImg").attr("src", imgTop);
-                            }
-
-                        })
-                    }
-                })
-            }
-        }
-
-    })   
+	console.log(includeJS.status)
+	includeJS.registerListener(function(val) {
+			console.log("includeJS : " + val)
+		if(val){
+			console.log("includeJS : " + val)
+		    $.ajax({
+		        method:"GET",
+		        url:"/MountainExploer.com/member/memberChkLogin",
+		        dataType:"json",
+		        success:function(data){
+		            if(data){
+		                $.ajax({
+		                    method:"GET",
+		                    url:"/MountainExploer.com/member/getSession",
+		                    dataType:"json",
+		                    success:function(mbList){
+		                        $.each(mbList, function(index, item){
+		                            $(".userTop").find(".topSp").html("歡迎回來，" + item.memberInfo.neck_name);
+		                            
+		                            let img = item.memberInfo.img_name;
+		                            if(img != null){
+		                                let imgTop = "/MountainExploer.com/member/showUserImg?seqno=" + item.seqno;
+		                                $(".userTop").find(".topImg").attr("src", imgTop);
+		                            }
+		
+		                        })
+		                    }
+		                })
+		            }else{
+		                console.log("A")
+		                $(".userTop ").find("a").addClass("topA");
+		                $(".userTop").find("a").removeAttr("href");
+		                $(".userTop").find("a").on("click", function(){
+		                    loginSwalforImg();
+		                })
+		            }
+		        }
+		
+		    })   
+			
+		}
+	})
+	
+	
+	
 })
 
 
-$("body").on("click", "img", function(){
-    console.log("in");
-    $.ajax({
-        method:"GET",
-        url:"/MountainExploer.com/member/memberChkLogin",
-        dataType:"json",
-        success:function(data){
-            if(data){
-                window.location.href="/MountainExploer.com/member/memberInfoEntry"
-            }else{
-                loginSwalforImg();
+// $("body").on("click", "#topImg", function(){
+//     console.log("in");
+//     $.ajax({
+//         method:"GET",
+//         url:"/MountainExploer.com/member/memberChkLogin",
+//         dataType:"json",
+//         success:function(data){
+//             if(data){
+//                 window.location.href="/MountainExploer.com/member/memberInfoEntry"
+//             }else{
+//                 loginSwalforImg();
                 
                 
-            }
-        }
+//             }
+//         }
 
-    })
-})
+//     })
+// })
 
 
 function loginSwalforImg(){
@@ -58,7 +90,7 @@ function loginSwalforImg(){
 	            <input type="checkbox" id="rememberMe" name="rememberMe" class="rememberMe" value="true"><label>記住我</label>
 				</div>
 				<div><a href="/MountainExploer.com/member/memberPwdFoundEntry">忘記密碼</a></div>
-				<div style="text-align: center;">立即<a href="/MountainExploer.com/member/memberRegisterEntry">註冊</a>帳號或<a href="/MountainExploer.com/member/memberLoginEntry">使用Facebook帳號登入</div>
+				<div style="text-align: center;">立即<a href="/MountainExploer.com/member/memberRegisterEntry">註冊</a>帳號或<a href="/MountainExploer.com/member/memberLoginEntry">使用Facebook帳號登入</a></div>
 				<div>
 				<input type="button" name="userLog1" class="btn btn-info userLog1" value="一般登入">
 				<input type="button" name="userLog2" class="btn btn-warning userLog2" value="登山嚮導登入">

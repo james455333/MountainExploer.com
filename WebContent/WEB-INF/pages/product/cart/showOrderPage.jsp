@@ -27,7 +27,7 @@
 <!-- sweetalert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="/MountainExploer.com/member/userTop.js"></script>
-<script src="/MountainExploer.com/assets/js/main.js"></script>
+<!-- <script src="/MountainExploer.com/assets/js/main.js"></script> -->
 <style type="text/css">
 .table td {
 	vertical-align: middle;

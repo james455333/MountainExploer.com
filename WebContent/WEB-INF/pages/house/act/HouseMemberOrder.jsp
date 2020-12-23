@@ -88,24 +88,7 @@
 		</div>
 		<div class="div_li2">
 			<!-- 每頁不同的內容從這裡開始 -->
-			<div class="searchBar">
-				<nav>
-
-					<div class="third_nav">
-						<!-- 控制列表內容從這邊開始 -->
-						
-
-
-						<!-- 控制列表內容到這邊結束 -->
-					</div>
-				</nav>
-
-
-				<div class="search">
-					
-				</div>
-
-			</div>
+			
 <!-- 訂單star			 -->
 			<div class="secDivContent" >
 				
@@ -125,9 +108,9 @@
 					    		</c:choose>
 					    	</div>
 					    	<div style="padding : 20px  ;">
-							<div class="order"><label class="ordertop">訂單編號 : </label>${i.orderid} <label class="ordertop" style="margin-left:50px">訂單姓名 : </label>${i.peoplename}</div>
+							<div class="order"><label class="ordertop">訂單編號 : </label>${i.orderid} <label class="ordertop" style="margin-left:50px">聯絡人: </label>${i.peoplename}</div>
 							<div class="order"><label class="ordertop">國家公園 : </label>${i.housebasicid.nationalPark.name}
-											   <label class="ordertop" style="margin-left:50px">小屋名稱 : </label><a href="jumpCampDesc?selectcampid=${i.housebasicid.housebasicid}">${i.housebasicid.name}</a>
+											   <label class="ordertop" style="margin-left:50px">小屋名稱 : </label><a href="/MountainExploer.com/mountainHouseAct/jumpHouseDesc?selecthouseid=${i.housebasicid.housebasicid}">${i.housebasicid.name}</a>
 										<c:choose>
 											<c:when
  												test="${(i.housebasicid.star*1.0 / i.housebasicid.clickcount) lt 1 || empty i.housebasicid.star}"> 
@@ -215,13 +198,13 @@
 							<div class="order"><label class="ordertop">床位數量 : </label>${i.bedamount}床 <label class="ordertop" style="margin-left:50px">營區數量 : </label>${i.campamount}區</div>
 							<div class="order"><label class="ordertop">訂單日期 : </label>${i.shoppingdate}</div>
 							<div class="order"><label class="ordertop">入住日期 : </label>${i.daterange}</div>
-							<div>
-								<form action="<c:url value='/mountainHouseActOrder/deletehouseorder'></c:url>"> 
- 									<input type="hidden" name="deleteorderid" value="${i.orderid}"> 
- 									<input type="button" value="刪除"  onclick="if(confirm('確認要刪除嗎？')) this.form.submit();"> 
- 								</form> 
+<!-- 							<div> -->
+<%-- 								<form action="<c:url value='/mountainHouseActOrder/deletehouseorder'></c:url>">  --%>
+<%--  									<input type="hidden" name="deleteorderid" value="${i.orderid}">  --%>
+<!--  									<input type="button" value="刪除"  onclick="if(confirm('確認要刪除嗎？')) this.form.submit();">  -->
+<!--  								</form>  -->
 							
-							</div>
+<!-- 							</div> -->
 							</div>
 						</div>
 				</c:forEach>

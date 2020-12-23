@@ -144,24 +144,24 @@
 									</div>
 								</div>
 								<div class="form-group col-md-6">
-									<label>小屋名稱 : </label><a class="col-sm-10"><input type="text" name="inser_house" size="20" value="大大小屋123" required="required"></a>
+									<label>小屋名稱 : </label><a class="col-sm-10"><input type="text" name="inser_house" size="20" id="clickHousename" required="required"></a>
 								</div>
 								<div class="form-group col-md-6">
-									<label>海拔高度 : </label><a class="col-sm-10"><input type="text" name="inser_height" size="20" value="330M" required="required"></a>
+									<label>海拔高度 : </label><a class="col-sm-10"><input type="text" name="inser_height" size="20" id="clickHeight" required="required"></a>
 								</div>
 								
 								<div class="form-group col-md-6">
-									<label>床位數量 : </label><a class="col-sm-10"><input type="text" name="inser_bed" size="15" value="11" required="required"></a>
+									<label>床位數量 : </label><a class="col-sm-10"><input type="text" name="inser_bed" size="15" id="clickbed" required="required"></a>
 								
-									<label>價格 : </label><a class="col-sm-10"><input type="text" name="inser_bedprice" size="15" value="500" required="required"></a>
+									<label>價格 : </label><a class="col-sm-10"><input type="text" name="inser_bedprice" size="15" id="clickbedprice" required="required"></a>
 								</div>
 								<div class="form-group col-md-6">
-									<label>營區數量 : </label><a class="col-sm-10"><input type="text" name="inser_camp" size="15" value="6" required="required"></a>
+									<label>營區數量 : </label><a class="col-sm-10"><input type="text" name="inser_camp" size="15" id="clickcamp" required="required"></a>
 								
-									<label>價格 : </label><a class="col-sm-10"><input type="text" name="inser_campprice" size="15" value="350" required="required"></a>
+									<label>價格 : </label><a class="col-sm-10"><input type="text" name="inser_campprice" size="15" id="clickcampprice" required="required"></a>
 								</div>
 								<div class="form-group col-md-6">
-									<label class="col-sm-10">營區描述 : </label><textarea name="inser_desc" rows="10" cols="50">冬季水源較不穩定，有簡易太陽能照明。有乾式生態廁所。住宿山屋者，請自備過夜及睡眠裝備。通訊品質:尚可~不穩定。為登頂雪山主峰主要之住宿山莊。請民眾依入園證之核准床位號碼入住使用。</textarea>
+									<label class="col-sm-10">營區描述 : </label><textarea name="inser_desc" rows="10" id="clickdesc" cols="50"></textarea>
 								</div>
 								<div class="form-group col-md-6">	<img id="blah" src="/MountainExploer.com/housecamp/images/imgnotfound.png"  alt="your image" />		       
 				      					<input type="file" name="mFile" id="imgInp" size="25" accept="image/*">
@@ -169,6 +169,7 @@
 				      			</div>
 				      			<div class="form-group col-md-6">
 				      					<input class="btn btn-outline-secondary" type="submit"  value="新增">
+				      					<input class="btn btn-outline-secondary" type="button" id="clickbutton" value="一鍵輸入">
 				      			</div>		
 							</fieldset>
 				
@@ -239,6 +240,23 @@
 		</div>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+	$(function(){
+		$("#clickbutton").on("click",function(){
+			$("#clickHousename").val("攻頂小屋")
+			$("#clickHeight").val("330M")
+			$("#clickbed").val("11")
+			$("#clickbedprice").val("500")
+			$("#clickcamp").val("6")
+			$("#clickcampprice").val("350")
+			$("#clickdesc").val("冬季水源較不穩定，有簡易太陽能照明。有乾式生態廁所。住宿山屋者，請自備過夜及睡眠裝備。通訊品質:尚可~不穩定。為登頂雪山主峰主要之住宿山莊。請民眾依入園證之核准床位號碼入住使用。")
+			})
+		
+	})
+
+</script>
+
 
 	<script>
 function readURL(input) {

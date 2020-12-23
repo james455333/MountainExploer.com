@@ -144,7 +144,7 @@
 											<thead>
 												<tr>
 													<!-- thead更改從這邊開始 -->
-													<th >訂單編號</th>
+													<th  >訂單編號</th>
 													<th >會員帳號</th>
 													<th >訂單金額</th>
 													<th >收貨人</th>
@@ -153,7 +153,7 @@
 													<th >訂貨日期</th>
 													<th >出貨日期</th>
 													<th >訂單狀態</th>
-													<th >確認</th>
+													<th style="width:10%">控制項</th>
 													<!-- thead更改到這邊結束 -->
 												</tr>
 											</thead>

@@ -48,6 +48,7 @@ body {
 	padding: 1px;
 }
 </style>
+<script src="/MountainExploer.com/member/userTop.js"></script>
 <script src="/MountainExploer.com/js/includejsp.js"></script>
 <script src="/MountainExploer.com/js/topBar.js"></script>
 </head>
@@ -863,7 +864,7 @@ body {
 	<script src="/MountainExploer.com/assets/vendor/aos/aos.js"></script>
 	<script src="/MountainExploer.com/assets/js/main.js"></script>
 
-	<script src="/MountainExploer.com/member/userTop.js"></script>
+
 	
 	
 </body>

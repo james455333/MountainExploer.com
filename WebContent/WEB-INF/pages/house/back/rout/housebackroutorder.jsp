@@ -185,7 +185,8 @@
 										<div class="ml-auto">
 											<form action="<c:url value='/Rout/mountainHouseBack/housebackorder'></c:url>"
 												method='post' id="form1" name="form1">
-												訂房姓名 :&nbsp <input type="text" class="light-table-filter"placeholder="請輸入關鍵字" name="peoplename" >
+<!-- 												<input type="button" class="light-table-filter" id="clickbutton" value="一鍵輸入"> -->
+												聯絡人查詢 :&nbsp <input type="text" class="light-table-filter" id="clickname" placeholder="請輸入關鍵字" name="peoplename" >
 															 
 															 <c:forEach var="i" items="${housebackorder}">
 															 <input type="hidden" value="${i.housebasicid.housebasicid}" name="orderhouseid">
@@ -241,7 +242,7 @@
 												<tr>
 													<th scope="col"><span class="tr_title">訂單編號</span></th>
 													<th scope="col"><span class="tr_title">會員資料</span></th>
-													<th scope="col"><span class="tr_title">訂房姓名</span></th>
+													<th scope="col"><span class="tr_title">聯絡人</span></th>
 													
 													<th scope="col"><span class="tr_title">總金額</span></th>
 													<th scope="col"><span class="tr_title">訂單詳細資訊</span></th>
@@ -397,6 +398,17 @@
 			}
 		}
 	</script>
+	
+	<script type="text/javascript">
+	$(function(){
+		$("#clickbutton").on("click",function(){
+			$("#clickname").val("土豪")
+						})
+		
+	})
+
+</script>
+	
 	
 	<script type="text/javascript">
 

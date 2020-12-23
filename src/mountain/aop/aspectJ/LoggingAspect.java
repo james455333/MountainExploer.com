@@ -16,17 +16,6 @@ public class LoggingAspect {
         Object target = joinPoint.getTarget();
         String methodName = joinPoint.getSignature().getName();
         Object[] args = joinPoint.getArgs();
-        System.out.println("==================================================");
-        System.out.println("==================================================");
-        System.out.println("==================================================");
-        System.out.println("==================================================");
-        System.out.println("==================================================");
-        System.out.println("==================================================");
-        System.out.println("==================================================");
-        System.out.println("==================================================");
-        System.out.println("==================================================");
-        System.out.println("==================================================");
-        System.out.println("==================================================");
         Logger.getLogger(target.getClass().getName())
               .info(String.format("%s.%s(%s)",
                 target.getClass().getName(), methodName, Arrays.toString(args)));
