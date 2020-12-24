@@ -157,7 +157,7 @@ function resetChart(canvasID){
 }
 
 function setTopCard(){
-	$.ajax({
+	return $.ajax({
 		url : routeBaseURL + "/allRoute",
 		type : "GET",
 		dataType : "json",

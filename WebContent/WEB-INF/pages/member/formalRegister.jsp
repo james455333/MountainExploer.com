@@ -70,14 +70,14 @@
                     </fieldset>
                     <div class="form-group">
                         <label for="inputAddress">帳號:</label>
-                        <input type="text" class="form-control account" name="account" id="account" placeholder="請輸入帳號" required="required">
+                        <input type="text" class="form-control account" name="account" id="account" placeholder="帳號長度至少6個字元，必須包含大小寫英文字母與數字，不可包含特殊字元" required="required">
                     	<span id="Antsp" class="Antsp"></span>
                     	<span id="chkAntsp"></span><br/>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">密碼:</label>
-                            <input type="password" class="form-control pwd" name="pwd" id="pwd" placeholder="請輸入密碼" required="required">
+                            <input type="password" class="form-control pwd" name="pwd" id="pwd" placeholder="密碼長度至少8個字元，必須包含大小寫英文字母，可包含特殊字元" required="required">
                             <span class="pwdsp"></span><br/>
                         </div>
                         <div class="form-group col-md-6">
@@ -90,19 +90,19 @@
                     <div class="form-row">
                     	<div class="form-group col-md-6">
 	                        <label>姓名:</label>
-	                        <input type="text" class="form-control name" name="name" id="name" placeholder="請輸入姓名" required="required">
+	                        <input type="text" class="form-control name" name="name" id="name" placeholder="姓名長度至少2個字元" required="required">
 	                        <span class="nmsp"></span><br/>
                         </div>
                         <div class="form-group col-md-6">
                         	<label>暱稱:</label>
-	                        <input type="text" class="form-control ncName" name="ncName" id="ncName" placeholder="請輸入暱稱" required="required">
+	                        <input type="text" class="form-control ncName" name="ncName" id="ncName" placeholder="暱稱至少2個字元" required="required">
 	                        <span class="ncsp"></span>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputCity">Email</label>
-                            <input type="text" class="form-control email" id="email" name="email" placeholder="example@gmail.com" required="required">
+                            <input type="text" class="form-control email" id="email" name="email" placeholder="example@gmail.com，此格不可為空" required="required">
                             <span class="emsp"></span><br/>
                         </div>
                         <div class="form-group col-md-4">

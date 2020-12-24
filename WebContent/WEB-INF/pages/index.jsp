@@ -82,7 +82,347 @@ body {
 
 				<main id="main">
 
-					<!-- ======= About Section ======= -->
+					
+					
+					<!-- ======= 岳進者精選 ======= -->
+					<section id="portfolio" class="clearfix">
+						<div class="container" data-aos="fade-up">
+
+							<div class="section-header">
+								<h3 class="section-title">岳進者精選</h3>
+							</div>
+
+							<div class="row" data-aos="fade-up" data-aos-delay="100">
+								<div class="col-lg-12">
+									<ul id="portfolio-flters">
+										<li data-filter="*" class="filter-active">All</li>
+										<li data-filter=".filter-clothes">上衣</li>
+										<li data-filter=".filter-pants">褲子</li>
+										<li data-filter=".filter-camp">帳篷</li>
+										<li data-filter=".filter-other">配件</li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="row portfolio-container" data-aos="fade-up"
+								data-aos-delay="200">
+
+								<!-- 只需在filter-"填上相對應的分類即可" -->
+								<div class="col-lg-4 col-md-6 portfolio-item filter-clothes">
+									<div class="portfolio-wrap">
+										<img src="/MountainExploer.com/images/shopimg/hot1.jpg"
+											class="img-fluid" alt="">
+										<div class="portfolio-info">
+											<h4>
+												<a
+													href="/MountainExploer.com/shop/productInfoEntry?no=6000100">短袖排汗衣
+													男 獵戶藍</a>
+											</h4>
+											<p>Mammut Atacazo Light Zip T-SHIRT</p>
+
+											<div>
+												<a href="/MountainExploer.com/images/shopimg/hot1.jpg"
+													data-gall="portfolioGallery" title="短袖排汗衣 男 獵戶藍"
+													class="venobox link-preview"><i class="ion ion-eye"></i></a>
+												<a
+													href="/MountainExploer.com/shop/productInfoEntry?no=6000100"
+													class="link-details" title="More Details"><i
+													class="ion ion-android-open"></i></a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-lg-4 col-md-6 portfolio-item filter-other">
+									<div class="portfolio-wrap">
+										<img src="/MountainExploer.com/images/shopimg/hot9.jpg"
+											class="img-fluid" alt="">
+										<div class="portfolio-info">
+											<h4>
+												<a
+													href="/MountainExploer.com/shop/productInfoEntry?no=6000437">輕量中筒健行鞋</a>
+											</h4>
+											<p>Zamberlan 棕 325</p>
+											<p>CORNELL LITE GTX 0325PM</p>
+											<div>
+												<a href="/MountainExploer.com/images/shopimg/hot9.jpg"
+													class="venobox link-preview" data-gall="portfolioGallery"
+													title="輕量中筒健行鞋"><i class="ion ion-eye"></i></a> <a
+													href="/MountainExploer.com/shop/productInfoEntry?no=6000437"
+													class="link-details" title="More Details"><i
+													class="ion ion-android-open"></i></a>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="col-lg-4 col-md-6 portfolio-item filter-clothes">
+									<div class="portfolio-wrap">
+										<img src="/MountainExploer.com/images/shopimg/hot2.jpg"
+											class="img-fluid" alt="">
+										<div class="portfolio-info">
+											<h4>
+												<a
+													href="/MountainExploer.com/shop/productInfoEntry?no=6000079">保暖排汗衣
+													女 醬果紫</a>
+											</h4>
+											<p>POWER STRETCH® PRO</p>
+
+											<p>RAB POWER STRETCH PRO PULL-ON</p>
+											<div>
+												<a href="/MountainExploer.com/images/shopimg/hot2.jpg"
+													class="venobox link-preview" data-gall="portfolioGallery"
+													title="保暖排汗衣 女 醬果紫"><i class="ion ion-eye"></i></a> <a
+													href="/MountainExploer.com/shop/productInfoEntry?no=6000079"
+													class="link-details" title="More Details"><i
+													class="ion ion-android-open"></i></a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-lg-4 col-md-6 portfolio-item filter-pants">
+									<div class="portfolio-wrap">
+										<img src="/MountainExploer.com/images/shopimg/hot3.jpg"
+											class="img-fluid" alt="">
+										<div class="portfolio-info">
+											<h4>
+												<a
+													href="/MountainExploer.com/shop/productInfoEntry?no=6000168">耐磨長褲
+													男 月桂綠/深森綠</a>
+											</h4>
+											<p>81160R-625-662</p>
+
+											<p>Fjallraven Vidda Pro Ventilated Trousers Reg M</p>
+											<div>
+												<a href="/MountainExploer.com/images/shopimg/hot3.jpg"
+													class="venobox link-preview" data-gall="portfolioGallery"
+													title="耐磨長褲 男 月桂綠/深森綠"><i class="ion ion-eye"></i></a> <a
+													href="/MountainExploer.com/shop/productInfoEntry?no=6000168"
+													class="link-details" title="More Details"><i
+													class="ion ion-android-open"></i></a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-lg-4 col-md-6 portfolio-item filter-pants">
+									<div class="portfolio-wrap">
+										<img src="/MountainExploer.com/images/shopimg/hot4.jpg"
+											class="img-fluid" alt="">
+										<div class="portfolio-info">
+											<h4>
+												<a
+													href="/MountainExploer.com/shop/productInfoEntry?no=6000200">防水保暖透氣吊帶滑雪褲
+													女 女爵粉</a>
+											</h4>
+											<p>CDare 2b DWW399 Attract II</p>
+											<div>
+												<a href="/MountainExploer.com/images/shopimg/hot4.jpg"
+													class="venobox link-preview" data-gall="portfolioGallery"
+													title="防水保暖透氣吊帶滑雪褲 女 女爵粉"><i class="ion ion-eye"></i></a> <a
+													href="/MountainExploer.com/shop/productInfoEntry?no=6000200"
+													class="link-details" title="More Details"><i
+													class="ion ion-android-open"></i></a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-6 portfolio-item filter-other">
+									<div class="portfolio-wrap">
+										<img src="/MountainExploer.com/images/shopimg/hot8.jpg"
+											class="img-fluid" alt="">
+										<div class="portfolio-info">
+											<h4>
+												<a
+													href="/MountainExploer.com/shop/productInfoEntry?no=6001099">頭燈</a>
+											</h4>
+											<p>Petzl E089 Tactikka+</p>
+											<p>黑 350流明</p>
+											<div>
+												<a href="/MountainExploer.com/images/shopimg/hot8.jpg"
+													class="venobox link-preview" data-gall="portfolioGallery"
+													title="頭燈"><i class="ion ion-eye"></i></a> <a
+													href="/MountainExploer.com/shop/productInfoEntry?no=6001099"
+													class="link-details" title="More Details"><i
+													class="ion ion-android-open"></i></a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+								<div class="col-lg-4 col-md-6 portfolio-item filter-camp">
+									<div class="portfolio-wrap">
+										<img src="/MountainExploer.com/images/shopimg/hot5.jpg"
+											class="img-fluid" alt="">
+										<div class="portfolio-info">
+											<h4>
+												<a
+													href="/MountainExploer.com/shop/productInfoEntry?no=6000860">單人全方位超輕帳</a>
+											</h4>
+											<p>犀牛 U-11 1.8kg</p>
+											<div>
+												<a href="/MountainExploer.com/images/shopimg/hot5.jpg"
+													class="venobox link-preview" data-gall="portfolioGallery"
+													title="單人全方位超輕帳"><i class="ion ion-eye"></i></a> <a
+													href="/MountainExploer.com/shop/productInfoEntry?no=6000860"
+													class="link-details" title="More Details"><i
+													class="ion ion-android-open"></i></a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-lg-4 col-md-6 portfolio-item filter-camp">
+									<div class="portfolio-wrap">
+										<img src="/MountainExploer.com/images/shopimg/hot6.jpg"
+											class="img-fluid" alt="">
+										<div class="portfolio-info">
+											<h4>
+												<a
+													href="/MountainExploer.com/shop/productInfoEntry?no=6000892">摩卡黑森林別墅帳/露營帳篷</a>
+											</h4>
+											<p>K9T3T005 GEOPATH</p>
+											<p>KAZMI</p>
+											<div>
+												<a href="/MountainExploer.com/images/shopimg/hot6.jpg"
+													class="venobox link-preview" data-gall="portfolioGallery"
+													title="摩卡黑森林別墅帳/露營帳篷"><i class="ion ion-eye"></i></a> <a
+													href="/MountainExploer.com/shop/productInfoEntry?no=6000892"
+													class="link-details" title="More Details"><i
+													class="ion ion-android-open"></i></a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-lg-4 col-md-6 portfolio-item filter-other">
+									<div class="portfolio-wrap">
+										<img src="/MountainExploer.com/images/shopimg/hot7.jpg"
+											class="img-fluid" alt="">
+										<div class="portfolio-info">
+											<h4>
+												<a
+													href="/MountainExploer.com/shop/productInfoEntry?no=6001362">野營斧頭暨直刀組</a>
+											</h4>
+											<p>MORAKNIV Outdoor Kit</p>
+											<hr>
+											<p>軍綠</p>
+											<div>
+												<a href="/MountainExploer.com/images/shopimg/hot7.jpg"
+													class="venobox link-preview" data-gall="portfolioGallery"
+													title="野營斧頭暨直刀組"><i class="ion ion-eye"></i></a> <a
+													href="/MountainExploer.com/shop/productInfoEntry?no=6001362"
+													class="link-details" title="More Details"><i
+													class="ion ion-android-open"></i></a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+
+
+							</div>
+
+						</div>
+					</section>
+					<!-- End Portfolio Section -->
+					
+
+					<!-- ======= 百戰百岳 ======= -->
+					<section id="services" class="section-bg">
+						<div class="container" data-aos="fade-up">
+
+							<div class="section-header">
+								<h3>百戰百岳</h3>
+								<p>登山活動&  推薦小屋</p>
+							</div>
+							<div class="row justify-content-center" id="actBox">
+								<div class="col-md-6 col-lg-5" data-aos="zoom-in"
+									data-aos-delay="100">
+									<div class="box">
+										<div class="icon">
+											<i class="ion-ios-paper-outline" style="color: #ff689b;"></i>
+										</div>
+										<h4 class="title">
+											<a href="/MountainExploer.com/mountai">【台北出發】攻略東北亞第一高峰</a>
+										</h4>
+										<p class="description">玉山主峰2天2夜登山行程｜攻略東北亞第一高峰。
+</p>
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-5" data-aos="zoom-in"
+									data-aos-delay="200">
+									<div class="box">
+										<div class="icon">
+											<i class="ion-ios-clock-outline" style="color: #e9bf06;"></i>
+										</div>
+										<h4 class="title">
+											<a href="/MountainExploer.com/mountainHouseAct/jumpHouseDesc?selecthouseid=26004">觀高登山服務站</a>
+										</h4>
+										<p class="description">冬季水源較不穩定，有簡易太陽能照明；請民眾依入園證之核准床位號碼入住使用。</p>
+									</div>
+								</div>
+
+								<div class="col-md-6 col-lg-5" data-aos="zoom-in"
+									data-aos-delay="100">
+									<div class="box">
+										<div class="icon">
+											<i class="ion-ios-paper-outline" style="color: #3fcdc7;"></i>
+										</div>
+										<h4 class="title">
+											<a href="/MountainExploer.com/mountain/act/detail?page=1&actID=40141">花蓮錐麓古道一日，太魯閣秘境。</a>
+										</h4>
+										<p class="description">新城車站接駁+入園申請。</p>
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-5" data-aos="zoom-in"
+									data-aos-delay="200">
+									<div class="box">
+										<div class="icon">
+											<i class="ion-ios-clock-outline"
+												style="color: #41cf2e;"></i>
+										</div>
+										<h4 class="title">
+											<a href="/MountainExploer.com/mountainHouseAct/jumpHouseDesc?selecthouseid=26006">巴奈伊克營地</a>
+										</h4>
+										<p class="description">所有裝備 ( 睡袋與登山裝備等 ) 及餐飲皆需自行攜帶準備。</p>
+									</div>
+								</div>
+
+								<div class="col-md-6 col-lg-5" data-aos="zoom-in"
+									data-aos-delay="100">
+									<div class="box">
+										<div class="icon">
+											<i class="ion-ios-paper-outline" style="color: #d6ff22;"></i>
+										</div>
+										<h4 class="title">
+											<a href="/MountainExploer.com/mountain/act/detail?page=1&actID=40150">【百岳入門】夢幻高山大草原[</a>
+										</h4>
+										<p class="description">南投奇萊南華登山2天2夜。</p>
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-5" data-aos="zoom-in"
+									data-aos-delay="200">
+									<div class="box">
+										<div class="icon">
+											<i class="ion-ios-clock-outline" style="color: #4680ff;"></i>
+										</div>
+										<h4 class="title">
+											<a href="/MountainExploer.com/mountainHouseAct/jumpHouseDesc?selecthouseid=26009">杜鵑營地</a>
+										</h4>
+										<p class="description">宿營地內請以簡易器具炊煮，禁止野炊、烤肉或燃火等行為。</p>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</section>
+					<!-- End Services Section -->
+
+<!-- ======= About Section ======= -->
 					<section id="about">
 						<div class="container" data-aos="fade-up">
 
@@ -307,343 +647,7 @@ body {
 					</section>
 					<!-- End About Section -->
 
-					<!-- ======= 百戰百岳 ======= -->
-					<section id="services" class="section-bg">
-						<div class="container" data-aos="fade-up">
-
-							<div class="section-header">
-								<h3>百戰百岳</h3>
-								<p>熱門登山路線以及報名活動</p>
-							</div>
-							<div class="row justify-content-center" id="actBox">
-								<div class="col-md-6 col-lg-5" data-aos="zoom-in"
-									data-aos-delay="100">
-									<div class="box">
-										<div class="icon">
-											<i class="ion-ios-analytics-outline" style="color: #ff689b;"></i>
-										</div>
-										<h4 class="title">
-											<a href="">路線1</a>
-										</h4>
-										<p class="description">路線說明</p>
-									</div>
-								</div>
-								<div class="col-md-6 col-lg-5" data-aos="zoom-in"
-									data-aos-delay="200">
-									<div class="box">
-										<div class="icon">
-											<i class="ion-ios-bookmarks-outline" style="color: #e9bf06;"></i>
-										</div>
-										<h4 class="title">
-											<a href="">活動1</a>
-										</h4>
-										<p class="description">活動說明</p>
-									</div>
-								</div>
-
-								<div class="col-md-6 col-lg-5" data-aos="zoom-in"
-									data-aos-delay="100">
-									<div class="box">
-										<div class="icon">
-											<i class="ion-ios-paper-outline" style="color: #3fcdc7;"></i>
-										</div>
-										<h4 class="title">
-											<a href="">路線2</a>
-										</h4>
-										<p class="description">路線說明</p>
-									</div>
-								</div>
-								<div class="col-md-6 col-lg-5" data-aos="zoom-in"
-									data-aos-delay="200">
-									<div class="box">
-										<div class="icon">
-											<i class="ion-ios-speedometer-outline"
-												style="color: #41cf2e;"></i>
-										</div>
-										<h4 class="title">
-											<a href="">活動2</a>
-										</h4>
-										<p class="description">說明</p>
-									</div>
-								</div>
-
-								<div class="col-md-6 col-lg-5" data-aos="zoom-in"
-									data-aos-delay="100">
-									<div class="box">
-										<div class="icon">
-											<i class="ion-ios-world-outline" style="color: #d6ff22;"></i>
-										</div>
-										<h4 class="title">
-											<a href="">路線3</a>
-										</h4>
-										<p class="description">說明</p>
-									</div>
-								</div>
-								<div class="col-md-6 col-lg-5" data-aos="zoom-in"
-									data-aos-delay="200">
-									<div class="box">
-										<div class="icon">
-											<i class="ion-ios-clock-outline" style="color: #4680ff;"></i>
-										</div>
-										<h4 class="title">
-											<a href="">活動4</a>
-										</h4>
-										<p class="description">說明</p>
-									</div>
-								</div>
-							</div>
-
-						</div>
-					</section>
-					<!-- End Services Section -->
-
-
-
-					<!-- ======= 岳進者精選 ======= -->
-					<section id="portfolio" class="clearfix">
-						<div class="container" data-aos="fade-up">
-
-							<div class="section-header">
-								<h3 class="section-title">岳進者精選</h3>
-							</div>
-
-							<div class="row" data-aos="fade-up" data-aos-delay="100">
-								<div class="col-lg-12">
-									<ul id="portfolio-flters">
-										<li data-filter="*" class="filter-active">All</li>
-										<li data-filter=".filter-clothes">上衣</li>
-										<li data-filter=".filter-pants">褲子</li>
-										<li data-filter=".filter-camp">帳篷</li>
-										<li data-filter=".filter-other">配件</li>
-									</ul>
-								</div>
-							</div>
-
-							<div class="row portfolio-container" data-aos="fade-up"
-								data-aos-delay="200">
-
-								<!-- 只需在filter-"填上相對應的分類即可" -->
-								<div class="col-lg-4 col-md-6 portfolio-item filter-clothes">
-									<div class="portfolio-wrap">
-										<img src="/MountainExploer.com/images/shopimg/hot1.jpg"
-											class="img-fluid" alt="">
-										<div class="portfolio-info">
-											<h4>
-												<a
-													href="/MountainExploer.com/shop/productInfoEntry?no=6000050">短袖排汗衣
-													男 獵戶藍</a>
-											</h4>
-											<p>Mammut Atacazo Light Zip T-SHIRT</p>
-
-											<div>
-												<a href="/MountainExploer.com/images/shopimg/hot1.jpg"
-													data-gall="portfolioGallery" title="短袖排汗衣 男 獵戶藍"
-													class="venobox link-preview"><i class="ion ion-eye"></i></a>
-												<a
-													href="/MountainExploer.com/shop/productInfoEntry?no=6000050"
-													class="link-details" title="More Details"><i
-													class="ion ion-android-open"></i></a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-lg-4 col-md-6 portfolio-item filter-other">
-									<div class="portfolio-wrap">
-										<img src="/MountainExploer.com/images/shopimg/hot9.jpg"
-											class="img-fluid" alt="">
-										<div class="portfolio-info">
-											<h4>
-												<a
-													href="/MountainExploer.com/shop/productInfoEntry?no=6000387">輕量中筒健行鞋</a>
-											</h4>
-											<p>Zamberlan 棕 325</p>
-											<p>CORNELL LITE GTX 0325PM</p>
-											<div>
-												<a href="/MountainExploer.com/images/shopimg/hot9.jpg"
-													class="venobox link-preview" data-gall="portfolioGallery"
-													title="輕量中筒健行鞋"><i class="ion ion-eye"></i></a> <a
-													href="/MountainExploer.com/shop/productInfoEntry?no=6000387"
-													class="link-details" title="More Details"><i
-													class="ion ion-android-open"></i></a>
-											</div>
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-lg-4 col-md-6 portfolio-item filter-clothes">
-									<div class="portfolio-wrap">
-										<img src="/MountainExploer.com/images/shopimg/hot2.jpg"
-											class="img-fluid" alt="">
-										<div class="portfolio-info">
-											<h4>
-												<a
-													href="/MountainExploer.com/shop/productInfoEntry?no=6000029">保暖排汗衣
-													女 醬果紫</a>
-											</h4>
-											<p>POWER STRETCH® PRO</p>
-
-											<p>RAB POWER STRETCH PRO PULL-ON</p>
-											<div>
-												<a href="/MountainExploer.com/images/shopimg/hot2.jpg"
-													class="venobox link-preview" data-gall="portfolioGallery"
-													title="保暖排汗衣 女 醬果紫"><i class="ion ion-eye"></i></a> <a
-													href="/MountainExploer.com/shop/productInfoEntry?no=6000029"
-													class="link-details" title="More Details"><i
-													class="ion ion-android-open"></i></a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-lg-4 col-md-6 portfolio-item filter-pants">
-									<div class="portfolio-wrap">
-										<img src="/MountainExploer.com/images/shopimg/hot3.jpg"
-											class="img-fluid" alt="">
-										<div class="portfolio-info">
-											<h4>
-												<a
-													href="/MountainExploer.com/shop/productInfoEntry?no=6000118">耐磨長褲
-													男 月桂綠/深森綠</a>
-											</h4>
-											<p>81160R-625-662</p>
-
-											<p>Fjallraven Vidda Pro Ventilated Trousers Reg M</p>
-											<div>
-												<a href="/MountainExploer.com/images/shopimg/hot3.jpg"
-													class="venobox link-preview" data-gall="portfolioGallery"
-													title="耐磨長褲 男 月桂綠/深森綠"><i class="ion ion-eye"></i></a> <a
-													href="/MountainExploer.com/shop/productInfoEntry?no=6000118"
-													class="link-details" title="More Details"><i
-													class="ion ion-android-open"></i></a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-lg-4 col-md-6 portfolio-item filter-pants">
-									<div class="portfolio-wrap">
-										<img src="/MountainExploer.com/images/shopimg/hot4.jpg"
-											class="img-fluid" alt="">
-										<div class="portfolio-info">
-											<h4>
-												<a
-													href="/MountainExploer.com/shop/productInfoEntry?no=6000150">防水保暖透氣吊帶滑雪褲
-													女 女爵粉</a>
-											</h4>
-											<p>CDare 2b DWW399 Attract II</p>
-											<div>
-												<a href="/MountainExploer.com/images/shopimg/hot4.jpg"
-													class="venobox link-preview" data-gall="portfolioGallery"
-													title="防水保暖透氣吊帶滑雪褲 女 女爵粉"><i class="ion ion-eye"></i></a> <a
-													href="/MountainExploer.com/shop/productInfoEntry?no=6000150"
-													class="link-details" title="More Details"><i
-													class="ion ion-android-open"></i></a>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-md-6 portfolio-item filter-other">
-									<div class="portfolio-wrap">
-										<img src="/MountainExploer.com/images/shopimg/hot8.jpg"
-											class="img-fluid" alt="">
-										<div class="portfolio-info">
-											<h4>
-												<a
-													href="/MountainExploer.com/shop/productInfoEntry?no=6001051">頭燈</a>
-											</h4>
-											<p>Petzl E089 Tactikka+</p>
-											<p>黑 350流明</p>
-											<div>
-												<a href="/MountainExploer.com/images/shopimg/hot8.jpg"
-													class="venobox link-preview" data-gall="portfolioGallery"
-													title="頭燈"><i class="ion ion-eye"></i></a> <a
-													href="/MountainExploer.com/shop/productInfoEntry?no=6001051"
-													class="link-details" title="More Details"><i
-													class="ion ion-android-open"></i></a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-
-								<div class="col-lg-4 col-md-6 portfolio-item filter-camp">
-									<div class="portfolio-wrap">
-										<img src="/MountainExploer.com/images/shopimg/hot5.jpg"
-											class="img-fluid" alt="">
-										<div class="portfolio-info">
-											<h4>
-												<a
-													href="/MountainExploer.com/shop/productInfoEntry?no=6000810">單人全方位超輕帳</a>
-											</h4>
-											<p>犀牛 U-11 1.8kg</p>
-											<div>
-												<a href="/MountainExploer.com/images/shopimg/hot5.jpg"
-													class="venobox link-preview" data-gall="portfolioGallery"
-													title="單人全方位超輕帳"><i class="ion ion-eye"></i></a> <a
-													href="/MountainExploer.com/shop/productInfoEntry?no=6000810"
-													class="link-details" title="More Details"><i
-													class="ion ion-android-open"></i></a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-lg-4 col-md-6 portfolio-item filter-camp">
-									<div class="portfolio-wrap">
-										<img src="/MountainExploer.com/images/shopimg/hot6.jpg"
-											class="img-fluid" alt="">
-										<div class="portfolio-info">
-											<h4>
-												<a
-													href="/MountainExploer.com/shop/productInfoEntry?no=6000842">摩卡黑森林別墅帳/露營帳篷</a>
-											</h4>
-											<p>K9T3T005 GEOPATH</p>
-											<p>KAZMI</p>
-											<div>
-												<a href="/MountainExploer.com/images/shopimg/hot6.jpg"
-													class="venobox link-preview" data-gall="portfolioGallery"
-													title="摩卡黑森林別墅帳/露營帳篷"><i class="ion ion-eye"></i></a> <a
-													href="/MountainExploer.com/shop/productInfoEntry?no=6000842"
-													class="link-details" title="More Details"><i
-													class="ion ion-android-open"></i></a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-lg-4 col-md-6 portfolio-item filter-other">
-									<div class="portfolio-wrap">
-										<img src="/MountainExploer.com/images/shopimg/hot7.jpg"
-											class="img-fluid" alt="">
-										<div class="portfolio-info">
-											<h4>
-												<a
-													href="/MountainExploer.com/shop/productInfoEntry?no=6001312">野營斧頭暨直刀組</a>
-											</h4>
-											<p>MORAKNIV Outdoor Kit</p>
-											<hr>
-											<p>軍綠</p>
-											<div>
-												<a href="/MountainExploer.com/images/shopimg/hot7.jpg"
-													class="venobox link-preview" data-gall="portfolioGallery"
-													title="野營斧頭暨直刀組"><i class="ion ion-eye"></i></a> <a
-													href="/MountainExploer.com/shop/productInfoEntry?no=6001312"
-													class="link-details" title="More Details"><i
-													class="ion ion-android-open"></i></a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-
-
-
-							</div>
-
-						</div>
-					</section>
-					<!-- End Portfolio Section -->
+					
 
 					<!-- ======= 感言 ======= -->
 					<section id="testimonials" class="section-bg">
@@ -670,7 +674,7 @@ body {
 										<div class="testimonial-item">
 											<img src="images/personalImg/潘威丞.jpg" class="testimonial-img"
 												alt="">
-											<h3>潘 威承</h3>
+											<h3>潘 威丞</h3>
 											<h4>技術長</h4>
 											<h4>Project Manager</h4>
 											<p>結業快樂!!!</p>
@@ -692,7 +696,7 @@ body {
 												alt="">
 											<h3>劉 士豪</h3>
 											<h4>組員</h4>
-											<p>說一些想說的話</p>
+											<p>感謝資策會，感謝java。</p>
 										</div>
 
 										<div class="testimonial-item">
@@ -700,7 +704,7 @@ body {
 												alt="">
 											<h3>程 文杰</h3>
 											<h4>組員</h4>
-											<p>說一些想說的話</p>
+											<p>辛苦大家了，結業快樂!!!!</p>
 										</div>
 
 									</div>
@@ -731,12 +735,12 @@ body {
 											<div class="member-info-content">
 												<h4>劉 怡廷</h4>
 												<span>組長</span>
-												<div class="social">
+												<!-- <div class="social">
 													<a href=""><i class="fa fa-twitter"></i></a> <a href=""><i
 														class="fa fa-facebook"></i></a> <a href=""><i
 														class="fa fa-google-plus"></i></a> <a href=""><i
 														class="fa fa-linkedin"></i></a>
-												</div>
+												</div> -->
 											</div>
 										</div>
 									</div>
@@ -748,14 +752,14 @@ body {
 										<img src="images/personalImg/潘威丞.jpg" class="img-fluid" alt="">
 										<div class="member-info">
 											<div class="member-info-content">
-												<h4>潘 威承</h4>
+												<h4>潘 威丞</h4>
 												<span>技術長</span>
-												<div class="social">
+												<!-- <div class="social">
 													<a href=""><i class="fa fa-twitter"></i></a> <a href=""><i
 														class="fa fa-facebook"></i></a> <a href=""><i
 														class="fa fa-google-plus"></i></a> <a href=""><i
 														class="fa fa-linkedin"></i></a>
-												</div>
+												</div> -->
 											</div>
 										</div>
 									</div>
@@ -769,12 +773,12 @@ body {
 											<div class="member-info-content">
 												<h4>劉 士豪</h4>
 												<span>組員</span>
-												<div class="social">
+												<!-- <div class="social">
 													<a href=""><i class="fa fa-twitter"></i></a> <a href=""><i
 														class="fa fa-facebook"></i></a> <a href=""><i
 														class="fa fa-google-plus"></i></a> <a href=""><i
 														class="fa fa-linkedin"></i></a>
-												</div>
+												</div> -->
 											</div>
 										</div>
 									</div>
@@ -788,12 +792,12 @@ body {
 											<div class="member-info-content">
 												<h4>洪 上尚</h4>
 												<span>組員</span>
-												<div class="social">
+												<!-- <div class="social">
 													<a href=""><i class="fa fa-twitter"></i></a> <a href=""><i
 														class="fa fa-facebook"></i></a> <a href=""><i
 														class="fa fa-google-plus"></i></a> <a href=""><i
 														class="fa fa-linkedin"></i></a>
-												</div>
+												</div> -->
 											</div>
 										</div>
 									</div>
@@ -808,8 +812,8 @@ body {
 												<h4>程 文杰</h4>
 												<span>組員</span>
 												<div class="social">
-													<a href="https://www.instagram.com/jack097569_/"><i
-														class="fa fa-instagram"></i></a>
+													<!-- <a href="#"><i
+														class="fa fa-instagram"></i></a> -->
 													<!-- <a href="#"><i class="fa fa-facebook"></i></a> -->
 													<a href="mailto:jack0933829140@gmail.com"><i
 														class="fa fa-google"></i></a>

@@ -196,7 +196,7 @@ public class MemberBackStageController {
 		
 		int um = 110;
 		int ug = 130;
-		List<MemberBasic> umList = mbService.selectLT(um);
+		List<MemberBasic> umList = mbService.selectST(um);
 		long umListSize = umList.size();
 		List<MemberBasic> ugList = mbService.selectST(ug);
 		long ugListSize = ugList.size();
@@ -217,6 +217,7 @@ public class MemberBackStageController {
 		long adListSize = adList.size();
 		pieMap.put("adSiza", adListSize);
 		
+		System.out.println("==================sall:" + pieMap);
 		return pieMap;
 	}
 	

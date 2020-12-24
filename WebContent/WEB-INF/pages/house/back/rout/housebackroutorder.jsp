@@ -299,7 +299,7 @@
 										<input type="hidden" name="no" value="1">
 										<input type="hidden" name="peoplename" value="">
 										<input type="hidden" name="orderhouseid" value="${i.housebasicid.housebasicid}">
-										<input type="button" class="btn btn-outline-danger" value="刪除"
+										<input type="button" class="btn btn-outline-danger" value="取消訂單"
 											onclick="if(confirm('確認要刪除嗎？')) this.form.submit();">
 									</form>
 								</div>

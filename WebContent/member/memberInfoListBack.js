@@ -1001,3 +1001,7 @@ $(".fakeDate").on("click", function(){
 		}
 	})
 })
+
+$(".inpAnt").on("click", function(){
+	$(".account").val("Asterius298");
+})

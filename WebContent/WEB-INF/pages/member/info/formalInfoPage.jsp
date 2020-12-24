@@ -147,7 +147,7 @@
 				                            	尚未填寫
 				                        </td>
 				                        <td style="display:none" class="hiddeninp">
-					                        <input type="text" class="form-control emInp" required="required">				                            	
+					                        <input type="text" class="form-control emInp" placeholder="example@gmail.com，此格不可為空" required="required">				                            	
 				                        </td>
 				                    </tr>
 				                    <tr class="phTr">        

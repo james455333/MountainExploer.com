@@ -170,8 +170,9 @@ function insertMemberTD(thisElm, memberBasic){
 	}
 	thisElm.find(".memberTD").find(".memeber-name").find("a").html(memberBasic.memberInfo.neck_name).attr("href", "/MountainExploer.com/member/memberInfoEntry")
 	thisElm.find(".memeberImgContainer").find("a").attr("href", "/MountainExploer.com/member/memberInfoEntry")
-	thisElm.find(".memeberImgContainer").find("img").attr("src","/MountainExploer.com/member/showUserImg?userSeq="+memberBasic.seqno)
+	thisElm.find(".memeberImgContainer").find("img").attr("src","/MountainExploer.com/member/showUserImg?seqno="+memberBasic.seqno)
 				.on("error",function(){
+					console.log($(this).attr("src"))
 					$(this).attr("src","/MountainExploer.com/images/預設頭像.png")
 				})
 }

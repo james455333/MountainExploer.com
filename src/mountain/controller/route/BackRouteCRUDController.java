@@ -139,7 +139,7 @@ public class BackRouteCRUDController {
 		InterfaceService<GenericTypeObject> service = this.service;
 		try {
 			service.save(nationalPark);
-//			service.delete(npID);
+			service.delete(npID);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);

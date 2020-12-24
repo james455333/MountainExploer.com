@@ -28,11 +28,13 @@ $(function(){
 		startCount : 25,
 	})
 	openBlock("#route-Container")
-	setTopCard()
-	countRtChartData()
-	usePerNpChartData()
-	setSearchBar()
-	setTable()
+	setTopCard().then(() => {
+		countRtChartData()
+		usePerNpChartData()
+		setSearchBar()
+		setTable()
+	})
+	
 	
 	$("#npSelect").on("change",changeRtAndTb)
 	$("#rtSelect").on("change",changeTbByRt)

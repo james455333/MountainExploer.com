@@ -20,6 +20,7 @@
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="/MountainExploer.com/member/userTop.js"></script>
 
 <style>
 .order{
