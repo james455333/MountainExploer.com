@@ -43,7 +43,7 @@
 	<script src="../respUpdate/respUpdateFunction.js"></script>
 	<!-- jquery.blockUI -->
 	<script src="http://malsup.github.io/jquery.blockUI.js"></script>
-
+	<script src="/MountainExploer.com/member/userTop.js"></script>
 </head>
 <body>
 <header>

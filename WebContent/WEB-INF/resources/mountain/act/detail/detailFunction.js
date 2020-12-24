@@ -170,7 +170,7 @@ function insertMemberTD(thisElm, memberBasic){
 	}
 	thisElm.find(".memberTD").find(".memeber-name").find("a").html(memberBasic.memberInfo.neck_name).attr("href", "/MountainExploer.com/member/memberInfoEntry")
 	thisElm.find(".memeberImgContainer").find("a").attr("href", "/MountainExploer.com/member/memberInfoEntry")
-	thisElm.find(".memeberImgContainer").find("img").attr("src","/MountainExploer.com/member/showUserImg?userSeq="+memberBasic.seqno)
+	thisElm.find(".memeberImgContainer").find("img").attr("src","/MountainExploer.com/member/showUserImg?seqno="+memberBasic.seqno)
 				.on("error",function(){
 					$(this).attr("src","/MountainExploer.com/images/預設頭像.png")
 				})
@@ -338,7 +338,7 @@ function insertSideResp(respElm, sideRespList){
 		let sideRespCon = respElm.find(".d-sr-body").eq(i).clone();
 		respElm.find(".d-sr-body").eq(i).css("display","flex")
 		respElm.find(".d_sr_img").eq(i).find("img")
-			.attr("src","/MountainExploer.com/member/showUserImg?userSeq=" + sideRespList[i].memberBasic.memberInfo.seqno)
+			.attr("src","/MountainExploer.com/member/showUserImg?seqno=" + sideRespList[i].memberBasic.memberInfo.seqno)
 			.on("error",function(){
 					$(this).attr("src","/MountainExploer.com/images/預設頭像.png")
 				})

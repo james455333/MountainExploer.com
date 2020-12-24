@@ -53,6 +53,7 @@
 <!-- 	<script src="/MountainExploer.com/js/blockUI.js"></script> -->
 	<script src="/MountainExploer.com/js/swalLogin.js"></script>
 	<script src="/MountainExploer.com/js/loading.js"></script>
+	<script src="/MountainExploer.com/member/userTop.js"></script>
 </head>
 
 <body>
