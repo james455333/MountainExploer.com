@@ -28,7 +28,6 @@ function downloadAllJson(){
 		type : "GET",
 		dataType : "json",
 		success : function(data){
-			console.log(data)
 			let newData = {}
 			for(let i in data){
 					let npName = data[i].np
@@ -51,7 +50,6 @@ function downloadAllJson(){
 			activeJsonDownload(newData,"路線總資料表")
 		},
 		error : function(jqXHR){
-			console.log(jqXHR)
 			Swal.fire("發生錯誤", "下載時發生錯誤，錯誤代碼 : " + jqXHR.status, "error")
 		}
 	})
@@ -60,9 +58,7 @@ function downloadAllJson(){
 function downloadChart(chartElm){
 	const openURL = chartElm.toBase64Image()
 	const chartType = chartElm.config.type
-//	console.log(openURL)
 	const a = $("a.export")[0]
-	console.log(a)
 	// 設定下載的檔名
 	a.download = chartType+"_countRtChart.png"
 	// 設定網址
@@ -97,7 +93,6 @@ function downloadChartJson(order){
 				activeJsonDownload(newData,"活動選擇_國家公園及路線使用率")
 			},
 			error : function(jqXHR){
-				console.log(jqXHR)
 				Swal.fire("發生錯誤", "下載時發生錯誤，錯誤代碼 : " + jqXHR.status, "error")
 			}
 		})
@@ -107,7 +102,6 @@ function downloadChartJson(order){
 			type : "GET",
 			dataType : "json",
 			success : function(data){
-				console.log(data)
 				let newData = {}
 				for(let i in data){
 					newData[i] = {路線總數 : data[i]}
@@ -177,6 +171,7 @@ function setTopCard(){
 			$("#rt-able-num").html(able)
 			$("#rt-forbid-num").html(forbid)
 			progressCount("圖卡設置完成")
+			return;
 		},
 		error : function(jqXHR){
 			Swal.fire("發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")
@@ -208,7 +203,6 @@ function setSearchBar(){
 			method : "GET",
 			dataType : "json",
 			success:function(data){
-				//console.log(data)
 				$("#rtSelect").append("<option selected disabled>請選擇特定路線</option>")
 				for(let i in data) $("#rtSelect").append("<option value='" + data[i].seqno + "'>" + data[i].name +"</option>")
 				progressCount("搜尋列設置完成")
@@ -282,10 +276,6 @@ function imgError(thisElm){
 }
 
 function setDataTable(result){
-	console.log(result)
-	console.log(dataTable)
-	console.log("set DataTable")
-	console.log($('#routeTable'))
 	dataTable = $('#routeTable').DataTable( {
 		"data" : result,
         "pagingType": "full_numbers",
@@ -298,11 +288,7 @@ function setDataTable(result){
             { "data": "控制項" },
         ],
     } )
-//	$("#routeTable").on("click","img",function(){
-//		console.log(123)
-//	})
 	
-	console.log("set Complete")
 	$('.btn-ctrl').bootstrapToggle();
 	$('.btn-rt-delete').tooltip();
 	$('.btn-rt-update').tooltip();
@@ -317,7 +303,6 @@ function changeRtAndTb(){
 		type : "GET",
 		dataType: 'json',
 		success:function(data){
-			//console.log(data)
 			$("#rtSelect").empty()
 			if(data.length != 0){
 				for(let i in data) 
@@ -442,7 +427,6 @@ function updateBox(btn){
 }
 
 function ajaxUpdate(result){
-	console.log(result)
 	$.ajax({
 		url : routeBaseURL + "/update." + result.rtID,
 		type : "PUT",
@@ -480,7 +464,6 @@ function deleteAlert(btn){
 		confirmButtonText: '確定刪除', 
 		cancelButtonText: '取消',
 	}).then(function(e) {
-		console.log(e)
 		if(e.isConfirmed){
 			$.ajax({
 				url : routeBaseURL + "/rt-" + rtID,
@@ -567,7 +550,6 @@ function updateImage(btn){
 		cancelButtonText: '取消修改',
 	}).then(function(result){
 		if(result.isConfirmed){
-			console.log(form)
 			let formData = new FormData(form[0])
 			$.ajax({
 				url : routeBaseURL + "/update-imgae." + rtID,
@@ -601,10 +583,8 @@ function updateImage(btn){
 }
 
 function preview(input) {
- 	console.log(input)
     // 若有選取檔案
     if (input.files && input.files[0]) {
- 		console.log(input.files[0])
         // 建立一個物件，使用 Web APIs 的檔案讀取器(FileReader 物件) 來讀取使用者選取電腦中的檔案
         var reader = new FileReader();
  
@@ -1006,6 +986,7 @@ function countRtChartData(cType){
 		success : function(data){
 			setCountRtChart(data,cType)
 			progressCount("路線數量圖設置完成")
+			return;
 		},
 		error : function(jqXHR){
 			Swal.fire("設定路線圓餅圖發生錯誤", "錯誤代碼 : " + jqXHR.status, "error")

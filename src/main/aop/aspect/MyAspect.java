@@ -1,4 +1,4 @@
-package mountain.aop.aspectJ;
+package main.aop.aspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;

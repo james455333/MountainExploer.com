@@ -210,7 +210,7 @@ public class GenericDAO<T extends GenericTypeObject> implements InterfaceDAO<T> 
 		return result;
 
 	}
-
+	@Override
 	public List<? extends GenericTypeObject> getwithHQL(String hql, Integer page, Integer showData) {
 		if (page == null) {
 			page = 1;
@@ -221,13 +221,13 @@ public class GenericDAO<T extends GenericTypeObject> implements InterfaceDAO<T> 
 		int startPosition = (page - 1) * showData;
 		Session session = sessionFactory.getCurrentSession();
 		Query<T> query = (Query<T>) session.createQuery(hql, entity.getClass());
-		List<T> result = query.setFirstResult(startPosition).setMaxResults(showData).setReadOnly(true).getResultList();
+		List<T> result = query.setFirstResult(startPosition).setMaxResults(showData).getResultList();
 
 		return result;
 
 	}
-
-	public Integer countWithHql(String hql) {
+	@Override
+	public int countWithHql(String hql) {
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery(hql);
 
@@ -236,7 +236,7 @@ public class GenericDAO<T extends GenericTypeObject> implements InterfaceDAO<T> 
 		if(result == null) result = (long)0;
 		return result.intValue();
 	}
-
+	@Override
 	public List<? extends GenericTypeObject> getAllWithHql(String hql) {
 
 		Session session = sessionFactory.getCurrentSession();

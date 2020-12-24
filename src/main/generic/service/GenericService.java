@@ -3,9 +3,13 @@ package main.generic.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import main.generic.dao.GenericDAO;
+import main.generic.dao.InterfaceDAO;
 import main.generic.model.GenericTypeObject;
 
 
@@ -13,8 +17,9 @@ import main.generic.model.GenericTypeObject;
 @Service
 public class GenericService<T extends GenericTypeObject> implements InterfaceService<T> {
 	
+//	@Qualifier("main.generic.dao.GenericDAO")
 	@Autowired
-	private GenericDAO<T> genericDAO;
+	private InterfaceDAO<T> dao;
 	
 	public GenericService() {
 	}
@@ -39,70 +44,70 @@ public class GenericService<T extends GenericTypeObject> implements InterfaceSer
 	
 	@Override
 	public void save(T entity) {
-		genericDAO.save(entity);
+		dao.save(entity);
 	}
 	
 		
 	@Override
 	public T select(Integer id) {
-		return genericDAO.select(id);
+		return dao.select(id);
 	}
 	
 	@Override
 	public T select(String name) {
-		return genericDAO.select(name);
+		return dao.select(name);
 	}
 	@Override
 	public List<? extends GenericTypeObject> selectAll(){
-		return genericDAO.selectAll();
+		return dao.selectAll();
 	}
 	@Override
 	public T insert(T entity) {
-		return genericDAO.insert(entity);
+		return dao.insert(entity);
 	}
 	@Override
 	public T update(T entity) {
-		return genericDAO.update(entity);
+		return dao.update(entity);
 	}
 	@Override
 	public boolean delete(Integer id) {
-		return genericDAO.delete(id);
+		return dao.delete(id);
 	}
 
 	@Override
 	public List<T> selectWithPage(Integer page, Integer showdata) {
-		return genericDAO.selectWithPage(page, showdata);
+		return dao.selectWithPage(page, showdata);
 	}
 
 	@Override
 	public int getAllData(T entity) {
-		return genericDAO.getAllData(entity);
+		return dao.getAllData(entity);
 	}
 
 	@Override
 	public int countWith(Integer id, String coulmnName) {
-		return genericDAO.countWith(id, coulmnName);
+		return dao.countWith(id, coulmnName);
 	}
 	@Override
 	public List<T> selectAllwithFK(Integer id, String FK){
-		return genericDAO.selectAllwithFK(id, FK);
+		return dao.selectAllwithFK(id, FK);
 	}
 	@Override
 	public List<T> selectAllwithFK(String search, String FK){
-		return genericDAO.selectAllwithFK(search, FK);
+		return dao.selectAllwithFK(search, FK);
 	}
 
 	@Override
 	public List<? extends GenericTypeObject> getwithHQL(String hql, Integer page, Integer showData) {
-		return genericDAO.getwithHQL(hql, page, showData);
+		return dao.getwithHQL(hql, page, showData);
 	}
 	@Override
 	public int countWithHql(String hql) {
-		return genericDAO.countWithHql(hql);
+		return dao.countWithHql(hql);
 	}
 	@Override
 	public List<? extends GenericTypeObject> getAllwithHQL(String hql) {
-		return genericDAO.getAllWithHql(hql);
+		return dao.getAllWithHql(hql);
 	}
 
 	

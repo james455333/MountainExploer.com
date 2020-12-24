@@ -1,33 +1,3 @@
-Skip to content
-Why GitHub? 
-Team
-Enterprise
-Explore 
-Marketplace
-Pricing 
-Search
-
-Sign in
-Sign up
-james455333
-/
-MountainExploer.com
-100
-Code
-Issues
-Pull requests
-Actions
-Projects
-Security
-Insights
-MountainExploer.com/WebContent/exception/404.jsp
-@james455333
-james455333 aop log complete
-Latest commit 957fa58 1 hour ago
- History
- 1 contributor
-110 lines (99 sloc)  2.2 KB
-  
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -138,15 +108,3 @@ Latest commit 957fa58 1 hour ago
 
 </body>
 </html>
-© 2020 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About

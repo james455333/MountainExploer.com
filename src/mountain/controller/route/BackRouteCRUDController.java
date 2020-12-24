@@ -60,6 +60,7 @@ public class BackRouteCRUDController {
 		InterfaceService<GenericTypeObject> service = this.service;
 		try {
 			service.save(routeInfo);
+		
 			List<RouteInfo> selectAll = (List<RouteInfo>) service.selectAll();
 			for (RouteInfo routeInfo2 : selectAll) {
 				Map<String, Object> map = new HashMap<String, Object>();
@@ -86,7 +87,6 @@ public class BackRouteCRUDController {
 		try {
 			
 			service.save(nationalPark);
-			
 			List<NationalPark> npList = (List<NationalPark>) service.selectAll();
 			
 			for (NationalPark nationalPark2 : npList) {
