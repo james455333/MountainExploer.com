@@ -234,8 +234,8 @@ function setPostTime_IM(actBasic, thisElm){
 		.concat(new Date(actBasic.actInfo.postDate).toLocaleTimeString())
 	
 	thisTD.find(".postDate").append(postTime);
-	thisTD.find(".author").append(actBasic.memberBasic.memberInfo.neck_name)
-	thisTD.find(".author").find("a").attr("href", "");
+	thisTD.find(".author a").append(actBasic.memberBasic.memberInfo.neck_name)
+	thisTD.find(".author a").attr("href", "#");
 	
 	
 }

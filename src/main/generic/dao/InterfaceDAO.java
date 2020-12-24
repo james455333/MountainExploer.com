@@ -32,4 +32,10 @@ public interface InterfaceDAO<T extends GenericTypeObject> {
 
 	List<T> selectAllwithFK(String search, String FK);
 
+	List<? extends GenericTypeObject> getwithHQL(String hql, Integer page, Integer showData);
+
+	int countWithHql(String hql);
+
+	List<? extends GenericTypeObject> getAllWithHql(String hql);
+
 }

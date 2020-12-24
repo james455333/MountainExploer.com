@@ -40,19 +40,14 @@ public class BackRetrieveController {
 	@Autowired
 	private GenericService<GenericTypeObject> genericService ;
 	@Autowired
-	private RouteBasic routeBasic;
-	@Autowired
-	private NationalPark nationPark;
-	@Autowired
 	private RouteBasicServiceInterface rbSpecialService;
-	@Autowired
-	private RouteInfo routeInfo;
 	
 	
 	// 預設查詢 總查詢
 	@GetMapping(value = "/all", produces = {"application/json;charset=UTF-8"})
 	@ResponseBody
 	public List<MountainBean> selectAll( Model model,
+			
 			@RequestParam(name = "page", required = false)Integer page,
 			@RequestParam(name = "showData", required = false)Integer showData) throws IOException, SQLException{
 		
@@ -83,6 +78,8 @@ public class BackRetrieveController {
 	@GetMapping("/totalData")
 	@ResponseBody
 	public int setTotalData(
+			RouteBasic routeBasic,
+			NationalPark nationPark,
 			@RequestParam(name = "nationalPark", required = false) String npID,
 			@RequestParam(name = "routeID", required = false) String routeID) {
 		Integer totalData = null;
@@ -113,6 +110,7 @@ public class BackRetrieveController {
 	@GetMapping(value = "/navNP", produces = {"application/json;charset=UTF-8"})
 	@ResponseBody
 	public List<MountainBean> npSelectList(
+			NationalPark nationPark,
 			@RequestParam(name = "nationalPark" , required = false) Integer npID,
 			@RequestParam(name = "page", required = false)Integer page,
 			@RequestParam(name = "showData", required = false)Integer showData) throws IOException, SQLException{
@@ -152,6 +150,8 @@ public class BackRetrieveController {
 	@GetMapping(value = "/navRT", produces = {"application/json;charset=UTF-8"})
 	@ResponseBody
 	public List<MountainBean> rtInfoSelectList(
+			RouteBasic routeBasic,
+			NationalPark nationPark,
 			@RequestParam( name = "nationalPark" , required = false) Integer npID,
 			@RequestParam( name = "route" , required = false) Integer routeID,
 			@RequestParam(name = "page", required = false)Integer page) throws IOException, SQLException{
@@ -174,8 +174,8 @@ public class BackRetrieveController {
 		//導覽列路線列表返回
 		service.save(nationPark);
 		NationalPark select = (NationalPark) service.select(npID);
-		Set<RouteBasic> routeBasic = select.getRouteBasic();
-		Iterator<RouteBasic> rtBasicItr = routeBasic.iterator();
+		Set<RouteBasic> routeBasicSet = select.getRouteBasic();
+		Iterator<RouteBasic> rtBasicItr = routeBasicSet.iterator();
 		
 		while (rtBasicItr.hasNext()) {
 			selectList.add(rtBasicItr.next());
@@ -188,7 +188,9 @@ public class BackRetrieveController {
 	// 顯示特定圖片
 		@RequestMapping(path = "/images", method = RequestMethod.GET)
 		@ResponseBody
-		public ResponseEntity<byte[]> showImage(@RequestParam(name = "seqno") String seqno) {
+		public ResponseEntity<byte[]> showImage(
+				RouteInfo routeInfo,
+				@RequestParam(name = "seqno") String seqno) {
 			InterfaceService<GenericTypeObject> service= genericService;
 			service.save(routeInfo);
 			Integer rbPK = Integer.valueOf(seqno);
@@ -203,7 +205,9 @@ public class BackRetrieveController {
 		
 		//顯示修改頁面資料
 		@GetMapping(path = "/updateDataPage")
-		public String updatePage(@RequestParam(name = "seqno") String seqno, Model model) {
+		public String updatePage(
+				NationalPark nationPark,
+				@RequestParam(name = "seqno") String seqno, Model model) {
 			
 			Map<String, String> errors = new HashMap<String, String>();
 			model.addAttribute("errors", errors);

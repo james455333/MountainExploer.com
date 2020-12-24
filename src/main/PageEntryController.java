@@ -45,6 +45,10 @@ public class PageEntryController {
 	public String IndexEntry(Model model) {
 		return "index";
 	}
+	@RequestMapping(path = "/exception/404" , method = RequestMethod.GET)
+	public String ex404Entry(Model model) {
+		return "exception/404";
+	}
 	@RequestMapping(path = "/loginCheck")
 	public String showNav(Model model,HttpSession session) {
 		if (session.getAttribute("Member") != null) {

@@ -28,10 +28,11 @@ $(function(){
 		startCount : 25,
 	})
 	openBlock("#route-Container")
-	setTopCard()
-	countRtChartData()
-	usePerNpChartData()
-	setSearchBar()
+	setTopCard().then(()=>{
+		countRtChartData()
+		usePerNpChartData()
+		setSearchBar()
+	})
 	setTable()
 	
 	$("#npSelect").on("change",changeRtAndTb)
@@ -55,10 +56,8 @@ $(function(){
 		let thisRtID = $(this).parents("tr").find("td").eq(2).text()
 		let thisToggle ;
 		if( !$(this).attr("class").includes("off")){
-			console.log(thisRtID + " set to off")
 			thisToggle = 1;
 		}else{
-			console.log(thisRtID + " set to on")
 			thisToggle = 0;
 		}
 		setRtToggle(thisRtID, thisToggle)

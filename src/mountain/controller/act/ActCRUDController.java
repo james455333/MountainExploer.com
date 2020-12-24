@@ -38,7 +38,6 @@ import org.springframework.web.server.ResponseStatusException;
 import main.generic.model.GenericTypeObject;
 import main.generic.service.GenericService;
 import main.generic.service.InterfaceService;
-import main.model.SystemImage;
 import member.model.MemberBasic;
 import mountain.MountainGlobal;
 import mountain.function.TagSelector;
@@ -87,9 +86,6 @@ public class ActCRUDController {
 			ActivityBasic actBasic,
 			Model model,
 			@RequestParam(name = "files", required = false) MultipartFile[] files) throws Exception {
-		System.out.println("New Activity");
-		System.out.println("=====================" + actBasic.getActInfo().getTitle());
-		System.out.println("===================== multipartfile length : " + files.length);
 		
 		Map<String, String> result = new HashMap<String, String>();
 		InterfaceService<GenericTypeObject> service = this.service;
@@ -102,7 +98,6 @@ public class ActCRUDController {
 			service.save(actBasic);
 			actBasic = (ActivityBasic) service.insert(actBasic);
 			/* 新增活動圖片 */
-			System.out.println("============= files.length : " + files.length);
 			for (MultipartFile multipartFile : files) {
 				if(!multipartFile.getOriginalFilename().isEmpty()) {
 					ActImage actImage = new ActImage();
@@ -131,8 +126,6 @@ public class ActCRUDController {
 			ActivityBasic activityBasic,
 			Model model,
 			@PathVariable("actID")Integer actID) throws Exception {
-		System.out.println("Update Activity");
-		System.out.println("=====================" + activityBasic.getSeqno());
 		Map<String, String> result = new HashMap<String, String>();
 		InterfaceService<GenericTypeObject> service = this.service;
 		try {
@@ -150,7 +143,6 @@ public class ActCRUDController {
 			originActivityInfo.setRegTop(actInfo.getRegTop());
 			originActivityInfo.setRegEndDate(actInfo.getRegEndDate());
 			originActivityInfo.setNote(actInfo.getNote());
-//			System.out.println("======note : " + new String(actInfo.getNote()));
 			originActivityInfo.setChangeDate(new Date());
 			
 			service.update(originActivityInfo);
@@ -227,7 +219,6 @@ public class ActCRUDController {
 		// 得到回傳結果
 		int totalPage = (int) Math.ceil(totalData * 1.0 / showData);
 		int thisTime = page*showData;
-		System.out.println("======================= tot");
 		for (ActivityInfo actInfoInList : actInfoList) {
 			if(0 < thisTime--) {
 				Map<String, Object> map = new HashMap<String, Object>();
@@ -350,7 +341,6 @@ public class ActCRUDController {
 		}
 		if (allParam.get("search") != null) {
 			String search = allParam.get("search");
-			System.out.println("================" + search);
 			String hql = "From ActivityInfo where Title like '%" + search + "%'" + " and deleteTag is null order by postDate desc, actBasic";
 
 			String allHql = "Select count(*) ".concat(hql);
@@ -436,7 +426,6 @@ public class ActCRUDController {
 		List<Map<String, Object>> respList = new ArrayList<Map<String, Object>>();
 		String respHql = "From ActResponse where activityBasic = " + actID + "order by postDate";
 		List<ActResponse> returnRespBeans = (List<ActResponse>) service.getwithHQL(respHql, page, respShowData);
-//			System.out.println("================returnRespBeans size :" + returnRespBeans.size());
 		for (ActResponse returnRespBean : returnRespBeans) {
 			// Set acRespMap in respList
 			Map<String, Object> actRespMap = new HashMap<String, Object>();
@@ -447,7 +436,6 @@ public class ActCRUDController {
 			// Set respMB in acRespMap
 			respList.add(actRespMap);
 		}
-		System.out.println("============== Member : " + model.getAttribute("Member"));
 		if (model.getAttribute("Member") != null) {
 			resultMap.put("login", model.getAttribute("Member"));
 		} else {
@@ -469,40 +457,6 @@ public class ActCRUDController {
 
 	}
 	/* 依日期排序 */
-	private Set<ActSideResponse> orderSetwithDate(Set<ActSideResponse> actSideResponse) {
-		Iterator<ActSideResponse> iterator = actSideResponse.iterator();
-		long[] timeArray = new long[actSideResponse.size()] ;
-		int i = 0;
-		while (iterator.hasNext()) {
-			ActSideResponse next = iterator.next();
-			timeArray[i] = next.getPostDate().getTime();
-			System.out.println("===================="+ i +  " : " + timeArray[i]);
-			i++;
-		}
-		Arrays.sort(timeArray);
-		Set<ActSideResponse> orderSet = new HashSet<ActSideResponse>();
-		System.out.println("==========before orderSet.size  : " + orderSet.size());
-		for (int j = timeArray.length-1; j >= 0 ; j--) {
-			iterator = actSideResponse.iterator();
-			while (iterator.hasNext()) {
-				ActSideResponse next = iterator.next();
-				long oldOrderTime = next.getPostDate().getTime();
-				if (oldOrderTime == timeArray[j] ) {
-					timeArray[j] = 0;
-					System.out.println("========== order" + j + " : " + oldOrderTime);
-					orderSet.add(next);
-				}
-			}
-		}
-		System.out.println("==========after orderSet.size  : " + orderSet.size());
-		Iterator<ActSideResponse> iterator2 = orderSet.iterator();
-		while (iterator2.hasNext()) {
-			System.out.println(iterator2.next().getPostDate().getTime());
-			
-		}
-		
-		return orderSet;
-	}
 
 	/*
 	 * 活動圖片顯示 回傳 : ResponseEntity<byte[]>
@@ -530,8 +484,6 @@ public class ActCRUDController {
 		}
 		try {
 			List<ActImage> imgList = (List<ActImage>) service.getwithHQL(hql, 1,1);
-			System.out.println("=============================== actID : " + actID);
-			System.out.println("=============================== imgList.isEmpty() : " + imgList.isEmpty());
 			if (!imgList.isEmpty()) {
 				for (GenericTypeObject genericTypeObject : imgList) {
 					actImage = (ActImage) genericTypeObject;
@@ -565,7 +517,6 @@ public class ActCRUDController {
 			hql = "From ActivityInfo where sysdate < startDate and (postDate+7) > sysdate " 
 					+ dTag + "order by postDate desc, actBasic";
 		} else if (tag == 2) {
-			System.out.println("enter 2 ");
 			hql = "From ActivityInfo ai where sysdate < startDate and ( ai.regTop / 2 ) <= "
 					+ nowReg + dTag + "order by postDate desc, ai.id";
 		} else if (tag == 3) {

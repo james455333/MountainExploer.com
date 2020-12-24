@@ -309,7 +309,7 @@
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div  class="chart-area">
-                                        <canvas id="mbTrendChart"></canvas>
+                                        <canvas id="actTrendChart"></canvas>
                                     </div>
 
                                 </div>

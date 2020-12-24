@@ -34,7 +34,7 @@
     <script src="route/route.js"></script>
     <script src="js/mountain.js"></script>
 	<script src="/MountainExploer.com/js/loading.js"></script>    
-
+	<script src="/MountainExploer.com/member/userTop.js"></script>
 </head>
 
 <body>

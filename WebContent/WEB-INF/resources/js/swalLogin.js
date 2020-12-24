@@ -1,5 +1,4 @@
 $(function(){
-	
 	$("body").on("click",".swalLogin" ,function(e){
 		e.preventDefault()
 		$.ajax({
@@ -12,7 +11,6 @@ $(function(){
 			}
 		})
 	})
-	
 })
 function loginSwal(){
 	Swal.fire({
