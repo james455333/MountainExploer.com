@@ -67,7 +67,6 @@
 	<script src="updateAct/updateActFunction.js"></script>
 	<!--  active progressBar + jquery-loading -->
 	<script src="/MountainExploer.com/js/loading.js"></script>
-	<script src="/MountainExploer.com/member/userTop.js"></script>
 </head>
 <body>
 <header>

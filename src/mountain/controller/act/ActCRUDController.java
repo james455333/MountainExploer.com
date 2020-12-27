@@ -213,33 +213,30 @@ public class ActCRUDController {
 		 */
 		String hql = "From ActivityInfo where sysdate < startDate and deleteTag is null order by postDate desc,actBasic";
 
-		List<ActivityInfo> actInfoList = (List<ActivityInfo>) service.getAllwithHQL(hql);
+		List<ActivityInfo> actInfoList = (List<ActivityInfo>) service.getwithHQL(hql, page, showData);
 		// 得到hql總數
-		int totalData = actInfoList.size();
+		int totalData = service.countWithHql("select count(*) " + hql);
 		// 得到回傳結果
 		int totalPage = (int) Math.ceil(totalData * 1.0 / showData);
-		int thisTime = page*showData;
 		for (ActivityInfo actInfoInList : actInfoList) {
-			if(0 < thisTime--) {
-				Map<String, Object> map = new HashMap<String, Object>();
-				// Set actBasic => map
-				actBasic = actInfoInList.getActBasic();
-				map.put("actBasic", actBasic);
-				
-				// Set tagMap => map
-				Map<Integer, Boolean> tagResult = new TagSelector(actInfoInList, service).getTagResult();
-				map.put("tagMap", tagResult);
-				
-				// Set nowReg => map
-				service.save(new ActRegInfo());
-				String reghql = "From ActRegistry ar where"
-						+ " deniTag is null and cancelTag is null and ACTIVITY_BASIC_SEQNO = "
-						+ actBasic.getSeqno();
-				List<ActRegistry> actReg = (List<ActRegistry>) service.getAllwithHQL(reghql);
-				map.put("nowReg", actReg.size());
-				
-				actList.add(map);
-			}
+			Map<String, Object> map = new HashMap<String, Object>();
+			// Set actBasic => map
+			actBasic = actInfoInList.getActBasic();
+			map.put("actBasic", actBasic);
+			
+			// Set tagMap => map
+			Map<Integer, Boolean> tagResult = new TagSelector(actInfoInList, service).getTagResult();
+			map.put("tagMap", tagResult);
+			
+			// Set nowReg => map
+			service.save(new ActRegInfo());
+			String reghql = "From ActRegistry ar where"
+					+ " deniTag is null and cancelTag is null and ACTIVITY_BASIC_SEQNO = "
+					+ actBasic.getSeqno();
+			List<ActRegistry> actReg = (List<ActRegistry>) service.getAllwithHQL(reghql);
+			map.put("nowReg", actReg.size());
+			
+			actList.add(map);
 		}
 		
 		resultMap.put("totalData", totalData);
