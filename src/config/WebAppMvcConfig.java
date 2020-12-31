@@ -19,8 +19,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 public class WebAppMvcConfig implements WebMvcConfigurer  {
 	
 	//初始啟動
-	@Override
-    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		System.out.println("congigure Start");
     	configurer.enable();
     	System.out.println("Configure Success");
@@ -39,7 +38,6 @@ public class WebAppMvcConfig implements WebMvcConfigurer  {
 	}
 	
 //	設置讀取特定路徑的真實路徑
-	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/**").addResourceLocations("/WEB-INF/pages/","/WEB-INF/resources/","/");
 	}

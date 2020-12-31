@@ -156,12 +156,6 @@ public class ActCrawler {
 							}finally {
 								Logger.getLogger("StartWebCrawler()").info("取得活動詳情結束");
 							}
-							CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> {
-								Logger.getLogger("moreInfo").info("Asncy Start");
-								return "complete";
-							}).whenComplete((ok , e) -> {
-								Logger.getLogger("moreInfo").info("Asncy complete");
-							});
 							
 						}
 						System.out.println();
